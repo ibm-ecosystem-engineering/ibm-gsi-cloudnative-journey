@@ -4,7 +4,7 @@ module.exports = {
     description: 'Cloud Native Learning Journey',
     keywords: 'gatsby,theme,carbon',
   },
-  pathPrefix: "/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey",
+  pathPrefix: "/ibm-gsi-cloudnative-journey",
   plugins: [
     {
       resolve: 'gatsby-theme-carbon',
