@@ -21,17 +21,11 @@ const FirstRightText = () => (
   </p>
 );
 
-const SecondLeftText = () => <p>Garage Method</p>;
+const SecondLeftText = () => <p>Cloud Native Journey</p>;
 
 const SecondRightText = () => (
   <p>
-      The Enablement leverages the IBM Garage principles, practices and assets, enabling consistency in delivery to all our partner channels
-    <a
-      className={calloutLink}
-      href="https://www.ibm.com/garage/method"
-    >
-      IBM Garage Method →
-    </a>
+      These practices and assets, enables our GSI partners understand how to develop and deliver enterprise standard application on IBM Cloud.
   </p>
 );
 

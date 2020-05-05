@@ -22,11 +22,13 @@ This video demonstrates how to work through the steps to create an application a
 
 
 
--  Once your terminal is opened,make sure you have followed all [Prerequisites](/getting-started/prereqs) before continuing.
+-  Make sure you have followed all [Prerequisites](/getting-started/prereqs) before continuing.
 
 -  Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
 
--  To do so, navigate to your cluster in the _IBM Cloud console_, click on the **Access** tab, and follow the instructions in the **After your cluster provisions, gain access** section to log in to the cluster from the command line
+-  To do so, navigate to your cluster in the _IBM Cloud console_, click on the **Access** tab, and follow the instructions in the **After your cluster provisions, gain access** section to log in to the cluster from the command line.
+
+**NOTE**: In case, your workshop is on Code Ready Workspaces,follow the steps in [Code Ready Workspaces Setup](/getting-started/crwsetup) before logging in to the cluster. 
 
 - You can test that you're connected to the cluster with the following simple command:
 
@@ -165,11 +167,13 @@ Create your project namespace first using the below command:
 
   ```bash
   oc new-project dev-{initials}
+  igc namespace dev-{initials} --jenkins --tekton
    ```
 
   For example:
   ```bash
-  oc new-project dev-bw
+  oc new-project dev-rr
+  igc namespace dev-rr --jenkins --tekton
    ```
 
   </AccordionItem>
@@ -184,11 +188,13 @@ Create your project namespace first using the below command:
   If the project is not created, run
   ```bash
   kubectl create namespace dev-{initials}
+  igc namespace dev-{initials} --jenkins --tekton
    ```
 
   For example:
   ```bash
-  kubectl create namespace dev-bw
+  kubectl create namespace dev-rr
+  igc namespace dev-rr --jenkins --tekton
    ```
 
   </AccordionItem>
@@ -210,13 +216,13 @@ Do not run `igc pipeline` without a namespace, this will cause your pipeline to 
     ```
 - For example:
     ```bash
-    igc pipeline -n dev-bw --tekton
+    igc pipeline -n dev-rr --tekton
     ```
 
   - You can alternatively configure your app to use **Jenkins** for CI. For
    more details review the [Continuous Integration with Jenkins Guide](/guides/continuous-integration)
       ```bash
-      igc pipeline -n dev-bw --jenkins
+      igc pipeline -n dev-rr --jenkins
       ```  
   
 - Register your repo using the `igc pipeline` command. The CLI will ask for your GitHub userid, it can be found in your GitHub settings. It will ask for you enter your **Github Personal Access Token** and finally your branch.
@@ -224,28 +230,57 @@ Do not run `igc pipeline` without a namespace, this will cause your pipeline to 
     - **Password**: Paste your GitHub personal access token
     - **Branch**: Press enter for the default git branch or type in another branch you want to register
 
-- The output looks like this:
-    ```bash
-    $ oc new-project dev-{intials}
-    $ igc pipeline -n dev-bw --jenkins
+<Tabs>
+<Tab label="Jenkins">
+
+  The output looks like this:
+    
+    $ igc pipeline -n dev-rr --jenkins
     Creating secret(s) with git credentials
-      Project git repo: https://github.com/bwoolf1/stockservice-bw.git
-    ? Provide the username: bwoolf1
+    ? Provide the username: ramyaraghuveera
+    Project git repo: https://github.com/RamyaRaghuveera/inv-svc-test.git
     ? Provide your password/personal access token: [hidden]
     ? Provide the branch the pipeline should use: master
-    Checking for existing namespace: dev-bw
-    Setting up pull secrets
-    Setting up tls secrets
-    Adding pull secrets to serviceAccount
-    Copying ConfigMaps
-    Copying Secrets
-    Copying Tekton tasks
-    Copying Tekton pipelines
+    Setting up Jenkins environment
     Copying Jenkins credentials
-    Registering pipeline: bwoolf1.stockservice-bw
+    Adding privileged scc to jenkins serviceAccount
+    Registering pipeline: RamyaRaghuveera.inv-svc-test
     Creating git webhook
-    Creating webhook to url:  https://c100-e.us-east.containers.cloud.ibm.com:32724/apis/build.openshift.io/v1/namespaces/dev-bw/buildconfigs/bwoolf1.stockservice-bw/webhooks/secret101/github
-    ```
+    Creating webhook to url:  https://c100-e.us-east.containers.cloud.ibm.com:31919/apis/build.openshift.io/v1/namespaces/dev-rr/buildconfigs/ramyaraghuveera.inv-svc-test/webhooks/secret101/github
+    
+</Tab>
+
+<Tab label="Tekton">
+
+  CLI will additionally ask for the **Pipeline** to be used in the PipelineRun.
+  
+  The output looks like this:
+
+    $igc pipeline -n dev-rr --tekton
+    Creating pipeline on openshift cluster in dev-rr namespace
+    Getting git parameters
+    ? Provide the username: ramyaraghuveera
+    Project git repo: https://github.com/RamyaRaghuveera/inv-svc-test.git
+    ? Provide your password/personal access token: [hidden]
+    ? Provide the git branch that should be used: master
+    Creating service account: pipeline
+    Creating Git PipelineResource
+    Creating Image PipelineResource
+    ? Select the Pipeline to use in the PipelineRun: 
+    igc-appmod-liberty-v1-2-0 
+    igc-java-gradle-v1-2-0 
+    igc-java-maven-v1-2-0 
+    ❯ igc-nodejs-v1-2-0 
+    Skip PipelineRun creation 
+    Select the Pipeline to use in the PipelineRun: igc-nodejs-v1-2-0
+    Copying tasks from tools
+    Copied Pipeline from tools/igc-nodejs-v1-2-0 to dev-rr/inv-svc-test
+    Creating PipelineRun for pipeline: inv-svc-test
+
+</Tab> 
+   
+</Tabs>      
+      
 
 The pipeline will be registered in your development cluster.
 
@@ -254,21 +289,7 @@ The pipeline will be registered in your development cluster.
 To view you registered pipeline, follow the steps for the type of development cluster you registered your application with.
 
 <Tabs>
-<Tab label="OpenShift311">
 
-- Open the OpenShift Web Console from the Developer Cluster instance
-
-![OpenShift](images/openshiftconsole.png)
-
-- From the top menu, switch to the **Application Console**
-- Select _dev_ project/namespace or you personal namespace that was used on the creation
-- In the left menu, select *Pipelines* -> *Pipeline Runs* and select your pipeline.
-
-You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
-
-![OpenShift](images/ospipeline.png)
-
-</Tab>
 
 <Tab label="OpenShift43">
 
@@ -327,24 +348,6 @@ Once the pipeline has completed successfully, the app will be deployed into the 
 - Use the steps below to find your application within your cluster console.
 
 <Tabs>
-<Tab label="OpenShift311">
-
-- Open the **OpenShift web console**
-- Change to the **Application Console**
-- Select you project either `dev` or the namespace you used to deploy your app
-- Click on **Deployments**
-- You should see the deployment of your application
-- Click on your application.
-- Try increasing the number of pods to see new instances being provisioned
-- Click on one of the `pod` instances
-- Click on **Logs**
-- You can see the running state of your application
-- Navigate around the console to understand where your deployment, service and pods are running
-
-![Pods on OpenShift](images/podsos.png)
-
-</Tab>
-
 
 <Tab label="OpenShift43">
 
