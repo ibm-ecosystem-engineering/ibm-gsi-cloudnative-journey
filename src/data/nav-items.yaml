@@ -2,7 +2,7 @@
   pages:
     - path: /overview/introduction
 
-- title: Cloud Native Workshop
+- title: Cloud Native Journey
   pages:
     - title: Check Sandbox
       path: /enablement/checksetup
