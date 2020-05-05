@@ -1,23 +1,26 @@
 - title: Introduction
   pages:
     - path: /overview/introduction
-
-- title: Cloud Native Workshop
-  pages:
-    - title: Check Sandbox
+    - title: Validate Enterprise Sandbox
       path: /enablement/checksetup
-    - title: Prerequisites
+    - title: Install Prerequisites - Desktop
       path: /enablement/prereqs
+    - title: Install Prerequisites - Cloud
+      path: /enablement/prereqs
+
+- title: Cloud Native Sandbox Journey
+  pages:
     - title: Content Overview
       path: /overview/content-overview
     - title: Developer Intermediate
-      path: /enablement/tasks-day1
+      path: /enablement/developer-intermediate
     - title: Developer Advanced
-      path: /enablement/tasks-day2
-    - title: Cloud Pak for Apps
-      path: /enablement/tasks-icp4a
-    - title: App Modernization
-      path: /enablement/tasks-appmod
+      path: /enablement/developer-advanced
+    - title: Application Modernization
+      path: /enablement/developer-appmod
+    - title: Application Integration
+      path: /enablement/developer-integration
+
 
 - title: Concepts
   pages:
@@ -32,7 +35,7 @@
     - title: Continuous Delivery (CD)
       path: /concepts/continuous-delivery
 
-- title: Katako Learning
+- title: Pre Learning
   pages:
     - title: Overview
       path: /activation/overview
