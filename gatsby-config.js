@@ -20,5 +20,5 @@ module.exports = {
       },
     },
   ],
-  pathPrefix: "/gsi-labs/ibm-gsi-cloud-native",
+  pathPrefix: "/gsi-labs/ibm-gsi-cloudnative-journey",
 };
