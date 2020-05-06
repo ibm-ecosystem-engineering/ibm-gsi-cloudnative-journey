@@ -1102,20 +1102,11 @@ git push
 
 #### Create a service implementation that calls the microservice
 
+- Create a folder `config` in following path `src/config`
+
 - Add a `stock-item-service.config` file in the config directory
 
 ```typescript path=src/config/stock-item-service.config.ts
-import {Provided, Provider} from 'typescript-ioc';
-
-const baseUrl: string = process.env.SERVICE_URL || 'localhost:9080';
-
-const provider: Provider = {
-  get: () => ({
-    baseUrl,
-  })
-};
-
-@Provided(provider)
 export class StockItemServiceConfig {
   baseUrl: string;
 }
@@ -1134,7 +1125,7 @@ export * from './stock-item-service.config'
 - Create a `stock-items` service in the services directory that uses the config
 
 ```typescript path=src/services/stock-items.service.ts
-import {Inject, Provides} from 'typescript-ioc';
+import {Inject} from 'typescript-ioc';
 import {get, Response} from 'superagent';
 
 import {StockItemsApi} from './stock-items.api';
@@ -1150,7 +1141,6 @@ class StockItem {
   'stock'?: number;
 }
 
-@Provides(StockItemsApi)
 export class StockItemsService implements StockItemsApi {
   @Inject
   _logger: LoggerApi;
@@ -1202,7 +1192,7 @@ export * from './stock-items.service';
 Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
 application which is that same as the name of the repository.)
 
-```yaml path=chart/base/template/values.yaml
+```yaml path=chart/base/values.yaml
 global: {}
 
 serviceUrl: "inventory-management-svc-{your initials}:80"
