@@ -1,14 +1,15 @@
 - title: Introduction
   pages:
-    - path: /overview/introduction
-    - title: Validate Enterprise Sandbox
-      path: /enablement/checksetup
+    - title: Overview
+      path: /overview/introduction
+    - title: Validate Sandbox
+      path: /getting-started/checksetup
     - title: Install Prerequisites - Desktop
-      path: /enablement/prereqs
+      path: /getting-started/prereqs
     - title: Install Prerequisites - Cloud
-      path: /enablement/prereqs
+      path: /getting-started/crwsetup
 
-- title: Cloud Native Sandbox Journey
+- title: Cloud Native Journey
   pages:
     - title: Content Overview
       path: /overview/content-overview
