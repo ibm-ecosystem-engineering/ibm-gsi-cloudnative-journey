@@ -1,10 +1,10 @@
 ---
-title: Code Ready Workspaces Setup
+title: Code Ready Workspaces
 ---
 
 <PageDescription>
 
-Following steps need to be done by all participants of the workshop while working on CRW <Globals name="env" />
+## Following steps need to be done by all participants of the workshop who need a cloud based development environment <Globals name="env" />
 
 </PageDescription>
 
@@ -32,36 +32,45 @@ develop the code and then  test, and deploy on an OpenShift environment
 
 ### Setting up your Workspace on CRW
 
-1. Login to the Openshift Cluster through the Web console, where the Code ready workspace is setup.
+- Login to the Openshift Cluster through the Web console, where the Code ready workspace is setup.
 
-2. Access the Code Ready Workspace through the appropriate Code ready workspace URL that would have been shared.
+- Access the Code Ready Workspace through the appropriate Code ready workspace URL that would have been shared.
 **Note**:If the code ready workspace is configured through openshiftoAuth, You can access the above URL, once you have logged into the Openshift Cluster
 
-3. If you are accessing it for the first time you need register as the registration page will be shown.  Ensure your user name should have strictly follow .(character allowed are 0-9, a-zand hypen in between), 
-even if default values are displaced.Ensure you provide details regarding username, Email, First name and Last name (If SSO is not configured, you need to provide the password as well.
-From the second time,you will be directly taken to workspace User Interface in step 4
+- If you are accessing it for the first time you need register as the registration page will be shown. User name can contain only these characters (0-9, a-z and hypen in between).
+Ensure you provide details regarding username, Email, First name and Last name (If SSO is not configured, you need to provide the password as well.
 
-4. Navigate to  the default Code Ready Workspace link  on your browser as shown in below picture.
+- Navigate to  the default Code Ready Workspace link  on your browser as shown in below picture.
+
   ![CRW](images/CRW_HomePage.png)
 
-5. You can create the workspace by selecting one of the template stacks as shown in Step 4. Alternatively, navigate to the Workspace and click on the "Add Workspace" button.
+
+- You can create the workspace by selecting one of the template stacks as shown in Step 4. Alternatively, navigate to the Workspace and click on the "Add Workspace" button.
+
   ![Adding Workspace](images/AddWorkspace.png)
 
-6. Provide the workspace as part of the Name field.Click on "Remove" button in the Projects section to remove the project template. 
+
+- Provide the workspace as part of the Name field. Click on "Remove" button in the Projects section to remove the project template. 
 Basically, we are going to create an empty project.
+
   ![Creating Project with Empty Template](images/CreatingNewWorkspace.png)
 
-7. Click on "Create and Open" button to create and load the workspace. Workspace will start loading. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
 
-8. Once the workspace is  created and loaded, you can see a vscode editor.
+- Click on "Create and Open" button to create and load the workspace. Workspace will start loading. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
+
+- Once the workspace is  created and loaded, you can see a vscode editor.
+
   ![CRWWorkspace](images/CRWScreen.png)
 
-9. Go to "Terminal" menu and select "Open Terminal in specific container".
+
+- Go to "Terminal" menu and select "Open Terminal in specific container".
+
   ![Open Terminal](images/OpeningTerminal.png)
 
-10. Select the "Developer Container".
 
-11. Install igc by running the following commands on the just  newly opened terminal:
+- Select the "Developer Container".
+
+- Install igc by running the following commands on the just  newly opened terminal:
     
     ```bash
     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
@@ -69,7 +78,3 @@ Basically, we are going to create an empty project.
     source ./cloud-shell-commands/install-igc
     ```
     ![igc install on terminal](images/igcInstall.png)
-
-
-
-
