@@ -1182,11 +1182,16 @@ export class StockItemsService implements StockItemsApi {
 ```
 
 - Add `stock-item.service` to `index.ts` in the service directory
+- Add `StockItemsService` instead of `StockItemsMockService` in the following files `src/resolvers/stock-item.resolver.ts` , 
+  `src/controllers/stock-items.controller.ts` and `test/controllers/stock-items.controller.spec.ts`
+
+
 - Remove `stock-items-mock.service` from `index.ts`
 
 ```typescript path=src/services/index.ts
 export * from './stock-items.service';
 ```
+
 
 - Add a `serviceUrl` property to the values.yaml file of the Helm chart. The value of the property should match the
 Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
