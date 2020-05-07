@@ -2,29 +2,17 @@
 title: Prerequisites
 ---
 
-<PageDescription>
-
-Install and configure these tools needed to use the Developer Tools environment
-
-</PageDescription>
-
-To install and use the IBM Garage for Cloud Development Tools environment, first setup the following prerequisites. Both Developers and Administrators will need these tools. Some of links navigate to the [IBM Garage for Cloud Developer Tools Assets](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide)
-
-This guide assumes that you have some basic knowledge of Kubernetes, Docker
-, and modern software delivery techniques including CI/CD. To learn more
- about these topics, after installing the environment, consult the
-  educational materials listed in the Activation section [Cloud Native
-   Deployment
-  ](/activation/cloudnative-deployment).
-
 ## Create accounts
 
 You'll need these accounts to use the Developer Tools environment.
 
-- [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working.
+- [GitHub account](http://github.com) (public, not enterprise): Create one if you do not have one aleady. If you have not logged in for a while, make sure your login is working. Make sure to add your enterprise email address as the primary address for the account.
 
 - [IBM Cloud Account](https://cloud.ibm.com): Create one if needed, make sure you can log in. 
-    - If you're going to [create a cluster](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/admin/installation-ibm-cloud), your user needs to be a [member of a paid account](https://cloud.ibm.com/docs/iam?topic=iam-iamuserinv) and have permissions to create a cluster.
+
+### Configure Github Primary Email address
+
+- Setup primary email address to match your enterprise email. Follow these [instructions](https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-primary-email-address).
 
 ### Configure Github Personal Access Token
 For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/continuous-integration-tekton), etc.) to connect to and use your GitHub repo, it will need a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) with `public_repo` and `write:repo_hook` scopes. The Personal Access Token only needs to be generated once because it is associated with the GitHub organization and can be used to access any of the organization's repos.
@@ -35,7 +23,12 @@ For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](https:
   ![Pipeline OAuth scopes](pipeline-scopes.png)
   - The GitHub UI will never again let you see this token, so be sure to save the token in your password manager or somewhere safe that you can access later on
 
+### If you are going to use yoru desktop/laptop for hands on exercises, follow the instructions in Desktop/Laptop tab
+### If you cannot install tools on your desktop/laptop, follow the cloud instructions
 
+<Tabs>
+
+<Tab label="Desktop/Laptop">
 
 ## Install CLIs and tools
 
@@ -66,9 +59,8 @@ The following is a list of desktop tools required to help with installation and 
 
     <InlineNotification >
 
-    Depending on your MacOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`*
-
-    ![security](src/pages/getting-started/prereqs/security.png)
+     Depending on your MacOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`* 
+     ![security](security.png)
 
     </InlineNotification>
 
@@ -97,3 +89,21 @@ The following is a list of desktop tools required to help with installation and 
 
 - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
     - Used for SpringBoot content
+
+</Tab>
+
+<Tab label="Cloud">
+
+On the cloud, there are two options.
+
+
+- Cloud Ready Workspaces (crw) which can be accessed over a web browser.
+
+- Cloud Shell, a free service provided by IBM Cloud.
+
+
+No need to install any tools on your desktop/laptop for using these services.
+
+</Tab>
+
+</Tabs>
