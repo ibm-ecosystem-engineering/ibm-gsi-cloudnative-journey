@@ -1,14 +1,10 @@
 ---
-title: Deploying an App
+title: Deploying an App/Create a sample application and deploy it with the CI pipeline
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
-<PageDescription>
 
-Create a sample application and deploy it with the CI pipeline
-
-</PageDescription>
 
 ### Overview
 
@@ -59,7 +55,6 @@ This video demonstrates how to work through the steps to create an application a
   <AnchorLink to="#open-developer-dashboard">Open Developer Dashboard</AnchorLink>
   <AnchorLink to="#create-your-app-in-git">Create your app in Git</AnchorLink>
   <AnchorLink to="#clone-your-code">Clone your code</AnchorLink>
-  <AnchorLink to="#running-locally">Running Locally</AnchorLink>
   <AnchorLink to="#register-the-app-in-a-devops-pipeline">Register your pipeline</AnchorLink>
   <AnchorLink to="#view-your-application-pipeline">View your application pipeline</AnchorLink>
   <AnchorLink to="#access-running-app">Access running app</AnchorLink>
@@ -231,24 +226,7 @@ Do not run `igc pipeline` without a namespace, this will cause your pipeline to 
     - **Branch**: Press enter for the default git branch or type in another branch you want to register
 
 <Tabs>
-<Tab label="Jenkins">
 
-  The output looks like this:
-    
-    $ igc pipeline -n dev-rr --jenkins
-    Creating secret(s) with git credentials
-    ? Provide the username: ramyaraghuveera
-    Project git repo: https://github.com/RamyaRaghuveera/inv-svc-test.git
-    ? Provide your password/personal access token: [hidden]
-    ? Provide the branch the pipeline should use: master
-    Setting up Jenkins environment
-    Copying Jenkins credentials
-    Adding privileged scc to jenkins serviceAccount
-    Registering pipeline: RamyaRaghuveera.inv-svc-test
-    Creating git webhook
-    Creating webhook to url:  https://c100-e.us-east.containers.cloud.ibm.com:31919/apis/build.openshift.io/v1/namespaces/dev-rr/buildconfigs/ramyaraghuveera.inv-svc-test/webhooks/secret101/github
-    
-</Tab>
 
 <Tab label="Tekton">
 
@@ -278,6 +256,25 @@ Do not run `igc pipeline` without a namespace, this will cause your pipeline to 
     Creating PipelineRun for pipeline: inv-svc-test
 
 </Tab> 
+
+<Tab label="Jenkins">
+
+  The output looks like this:
+    
+    $ igc pipeline -n dev-rr --jenkins
+    Creating secret(s) with git credentials
+    ? Provide the username: ramyaraghuveera
+    Project git repo: https://github.com/RamyaRaghuveera/inv-svc-test.git
+    ? Provide your password/personal access token: [hidden]
+    ? Provide the branch the pipeline should use: master
+    Setting up Jenkins environment
+    Copying Jenkins credentials
+    Adding privileged scc to jenkins serviceAccount
+    Registering pipeline: RamyaRaghuveera.inv-svc-test
+    Creating git webhook
+    Creating webhook to url:  https://c100-e.us-east.containers.cloud.ibm.com:31919/apis/build.openshift.io/v1/namespaces/dev-rr/buildconfigs/ramyaraghuveera.inv-svc-test/webhooks/secret101/github
+    
+</Tab>
    
 </Tabs>      
       
@@ -291,7 +288,7 @@ To view you registered pipeline, follow the steps for the type of development cl
 <Tabs>
 
 
-<Tab label="OpenShift43">
+<Tab label="OpenShift4.x">
 
 - Open the OpenShift Web Console from the Developer Cluster instance
 
@@ -349,7 +346,7 @@ Once the pipeline has completed successfully, the app will be deployed into the 
 
 <Tabs>
 
-<Tab label="OpenShift43">
+<Tab label="OpenShift4.x">
 
 - Open the **OpenShift web console**
 - Select you project either `dev` or the namespace you used to deploy your app
@@ -405,7 +402,7 @@ The next step is to prepare for Continuous Delivery, Code Analysis, and Artifact
 For more detailed instructions of how to enable to the full developer lifecycle read through the **Guides** section.
 
 <AnchorLinks small>
-  <AnchorLink to="/guides/overview">Guides</AnchorLink>
-  <AnchorLink to="/codepatterns/overview">Code Patterns
+  <AnchorLink to="../guides/overview">Guides</AnchorLink>
+  <AnchorLink to="../codepatterns/overview">Code Patterns
   </AnchorLink>
 </AnchorLinks>
