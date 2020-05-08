@@ -1412,6 +1412,7 @@ the data for our application.
 - The result of these changes should look like the following:
 
 ```javascript path=client/src/components/StockItemList.jsx
+
 class StockItemList extends Component {
     title = 'Stock Items';
     subtitle = 'This is the current inventory of items';
@@ -1451,11 +1452,106 @@ class StockItemList extends Component {
         "manufacturer": "Sony",
       }
     ];
-
-    ...
+  
 }
 ```
+- Add below function one by one cocontinuation of above file.
 
+```javascript path=client/src/components/StockItemList.jsx
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+      selectedRow: 0,
+    };
+  }
+
+  async componentDidMount() {
+
+    this.setState({
+      data: await this.props.stockService.listStockItems()
+    });
+  }
+
+  onRowClick = id => {
+    this.setState({ selectedRow: id });
+  };
+```
+```javascript path=client/src/components/StockItemList.jsx
+renderRow = (row, id) => {
+    return (
+      <StructuredListRow key={id} onClick={() => this.onRowClick(id)}>
+        <div>
+          <StructuredListInput
+            id={`row-${id}`}
+            value="row-0"
+            title="row-0"
+            name="row-0"
+            //defaultChecked={this.state.selectedRow === id}
+            checked={this.state.selectedRow === id}
+          />
+          <StructuredListCell>
+            <Icon
+              className="bx--structured-list-svg"
+              icon={iconCheckmarkSolid}
+            />
+          </StructuredListCell>
+        </div>
+        {this.columns.map(col => {
+          const format = this.formatters[col] || function(val) { return val; };
+
+          return (
+            <StructuredListCell key={col} className="simple-list-row">
+              {format(row[col])}
+            </StructuredListCell>
+          );
+        })}
+      </StructuredListRow>
+    );
+  };
+```
+
+```javascript path=client/src/components/StockItemList.jsx
+
+  render() {
+    const data = this.state.data;
+
+    return (
+      <div className="bx--grid pattern-container">
+        <Header
+          title={this.title}
+          subtitle={this.subtitle}
+        />
+        <div className="bx--row">
+          <div className="bx--col-xs-12">
+            <StructuredListWrapper selection border>
+              <StructuredListHead>
+                <StructuredListRow head>
+                  <StructuredListCell head />
+                  {this.columns.map(key => {
+                    return (
+                      <StructuredListCell head key={key}>
+                        {key.charAt(0).toUpperCase() +
+                          key.slice(1).replace(/([A-Z])/g, " $1")}
+                      </StructuredListCell>
+                    );
+                  })}
+                </StructuredListRow>
+              </StructuredListHead>
+
+              <StructuredListBody>
+                {data.map((row, i) => {
+                  return this.renderRow(row, i);
+                })}
+              </StructuredListBody>
+            </StructuredListWrapper>
+          </div>
+        </div>
+      </div>
+    );
+  }
+```
 - View the new data in your local UI: `http://localhost:3000/`
 
 - Push the changes we've made to the repository
@@ -1741,7 +1837,7 @@ export default App;
 - The deployment is already configured to use the value of `apiHost` for our proxy service. We need to
 configure the `apiHost` value to point to the Kubernetes service resource of the BFF.
 
-```javascript path=chart/base/template/values.yaml
+```javascript path=chart/base/values.yaml
 apiHost: "inventory-management-bff-{your initials}:80"
 ```
 
