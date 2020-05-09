@@ -6,7 +6,7 @@
       path: /getting-started/prereqs      
     - title: Validate Sandbox
       path: /getting-started/checksetup
-    - title: Dev. Environment Setup
+    - title: Dev. tools Setup
       path: /getting-started/devenvsetup      
 
 - title: Cloud Native Journey
