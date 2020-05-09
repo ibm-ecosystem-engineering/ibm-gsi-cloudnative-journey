@@ -2,12 +2,12 @@
   pages:
     - title: Overview
       path: /overview/introduction
+    - title: Install Prerequisites
+      path: /getting-started/prereqs      
     - title: Validate Sandbox
       path: /getting-started/checksetup
-    - title: Install Prerequisites - Desktop
-      path: /getting-started/prereqs
-    - title: Install Prerequisites - Cloud
-      path: /getting-started/crwsetup
+    - title: Dev. Environment Setup
+      path: /getting-started/devenvsetup      
 
 - title: Cloud Native Journey
   pages:
