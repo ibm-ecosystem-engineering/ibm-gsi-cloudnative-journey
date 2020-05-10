@@ -2,9 +2,9 @@ import React from 'react';
 import Footer from 'gatsby-theme-carbon/src/components/Footer';
 
 const currentYear = new Date().getFullYear();
-const lastUpdated = "January 2020";
+const lastUpdated = "May 2020";
 
-const version = "1.0.1";
+const version = "1.0.0";
 
 const Content = () => (
     <>
@@ -13,7 +13,7 @@ const Content = () => (
             <br /> an issue on{' '}
             <a
                 style={{ textDecoration: 'underline' }}
-                href="https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloud-native/issues/new/choose">
+                href="https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey/issues/new/choose">
                 GitHub.
             </a>
         </p>
