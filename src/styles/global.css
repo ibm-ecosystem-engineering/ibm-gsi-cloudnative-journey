@@ -111,15 +111,28 @@ div[class*='Code-module--row']{
     background-color:cornflowerblue;
 }
 
-.osIcon {
-    background-image: url("/images/openshift.png");
-    background-repeat: no-repeat;
-    background-size: 25px;
-    background-position: top center;
+
+ul[class*='Tabs-module--tab-list']{
+    margin-left: 0rem;
 }
 
-.kubeIcon {
-    background-image: url("/images/kubernetes.png");
-    background-repeat: no-repeat;
-    alignment: center;
+
+section[class*='Tabs-module--panel']{
+    margin-left: 0rem;
+    margin-right: 0rem;
 }
+
+.bx--list--nested {
+    margin-bottom: 1.5rem;
+}
+
+.bx--resource-card--dark .bx--tile {
+    background-color:grey;
+}
+
+.bx--resource-card--dark .bx--tile:hover {
+    background-color:cornflowerblue;
+}
+
+
+
