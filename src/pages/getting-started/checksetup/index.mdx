@@ -1,10 +1,10 @@
 ---
-title: Welcome to your IBM GSI Sandbox
+title: Welcome to your IBM GSI Enterprise Sandbox
 ---
 
 <PageDescription>
 
-The following steps verify you have access to the IBM Cloud Enterprise 
+The following steps verify you have access to the IBM GSI Enterprise 
  Sandbox
 
 </PageDescription>
@@ -16,7 +16,9 @@ Congratulations on becoming part of the IBM Cloud Native Learning Journey. You s
 
 <InlineNotification kind="warning">
 
-**Warning:** If you did not receive the Welcome email this will mean you may not have been given access to the IBM Cloud account. Please contact your GSI Business Development Executive.
+**Warning:** If you did not receive the Welcome email this will mean you may
+ not have been given access to the IBM Cloud account. Please contact your GSI
+  Business Development Executive or you GSI Lab Leader to validate your invite
 
 </InlineNotification>
 
@@ -29,6 +31,15 @@ The Welcome email gives you detail on how to access the development environment 
 - **Team**: This is the name of your development team
 - **GitHub Organization**: This is the GitHub organization that will be used for storing your code during your learning activities
 - **Resource Group**: This is the IBM Cloud resource group where the development cluster and cloud resources have been provisioned.
+- Example of the key information in your email:
+    ```
+    Cloud               : https://cloud.ibm.com/
+    Account             : 1924691 - GSI Labs - IBM
+    Location            : London (eu-gb)
+    Sandbox Team        : GSI Cloud Native Squad
+    GitHub Organization : https://github.com/gsi-enablement-one
+    Resource Group      : gsi-cloudnative-squad
+    ```
 
 You must associate your email address with your public GitHub account or make sure you have a public account that is using an email address that matches the one you have linked to your sandbox environment. 
 
@@ -56,7 +67,10 @@ The IBM Cloud Enterprise Sandbox has been configured exactly how IBM
  setting up a multi-tennat development team on the IBM Cloud. 
 
 Each development team can contain up to **200+** developers. Each team has
- been configured in [IAM](https://cloud.ibm.com/docs/iam) with its own access group with a corresponding resource group. Your resources for your team's Developer Tools environment have been created in that resource group. As a member of your team's access group, you'll have access to the resources in your team's Developer Tools environment. You are restricted from creating new cloud resources or deleting existing ones.
+ been configured in [IAM](https://cloud.ibm.com/docs/iam) with its own access
+  group with a corresponding resource group. Your resources for your team's
+   Sandbox environment have been created in that resource group. As a member of
+    your team's access group, you'll have access to the resources in your team's Developer Tools environment. You are restricted from creating new cloud resources or deleting existing ones.
 
 The following diagram shows how access has been configured. Imagine you are the Green user: There will be a number of other users in your team accessing the same development cluster. You will all be sharing the same cloud resources. The Sandbox administrators will be monitoring the cluster to identify any issues early and resolve them.
 

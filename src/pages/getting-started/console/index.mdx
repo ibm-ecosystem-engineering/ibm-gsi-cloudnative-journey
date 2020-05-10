@@ -35,7 +35,7 @@ follow the instructions to login from the command line
 
 - You can open the Dashboard from the enviornment you are configured with, use the [IGC CLI](/guides/cli#dashboard).
     ```
-    igc dashboard | kubectl dashboard | igc dashboard
+    igc dashboard
     ```
   
 - This will open the Dashboard
@@ -44,7 +44,7 @@ follow the instructions to login from the command line
 
 - To list the ingress endpoints for all of the installed tools, use the [Developer Tools CLI](../getting-started/cli) to run the following command:
     ```bash
-    igc endpoints -n tools | kubectl endpoints | igc endpoints
+    igc endpoints -n tools 
     ```
 
 - This will return the ingress URLs for all of the tools installed in the Developer Tools cluster.
