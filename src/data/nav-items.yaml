@@ -2,12 +2,14 @@
   pages:
     - title: Overview
       path: /overview/introduction
-    - title: Install Prerequisites
+    - title: Setup Prerequisites
       path: /getting-started/prereqs      
     - title: Validate Sandbox
       path: /getting-started/checksetup
-    - title: Dev. tools Setup
-      path: /getting-started/devenvsetup      
+    - title: Development Tools Setup
+      path: /getting-started/devenvsetup
+    - title: OpenShift Console
+      path: /getting-started/console
 
 - title: Cloud Native Journey
   pages:
@@ -35,7 +37,7 @@
     - title: Continuous Delivery (CD)
       path: /concepts/continuous-delivery
 
-- title: Pre Learning
+- title: Useful Pre Learning
   pages:
     - title: Overview
       path: /activation/overview
