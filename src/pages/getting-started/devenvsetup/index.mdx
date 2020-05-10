@@ -181,7 +181,7 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 - Login to IBM Cloud console (cloud.ibm.com), if not already done
 
 - Invoke Cloud shell by clicking on the button at the top right hand corner of the browser window
-![Invoke Cloud Shell](./images/Invoke_Cloud_Shell.png)
+![Invoke Cloud Shell](./images/invokecloudshell.png)
 
 - Install igc by running the following commands on the just newly opened terminal:
     
@@ -190,22 +190,82 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
     export PATH=~/cloud-shell-commands:$PATH
     source ./cloud-shell-commands/install-igc
     ```
-    Successful installation will look something like this.
 
-    ![igc install on terminal](./images/igcInstall.png)
-    
+    Successful execution will look like this.
+
+    ```bash
+    abalasu1@cloudshell:~/inventory-svc-ab$ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    Cloning into 'cloud-shell-commands'...
+    remote: Enumerating objects: 50, done.
+    remote: Counting objects: 100% (50/50), done.
+    remote: Compressing objects: 100% (44/44), done.
+    remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+        Unpacking objects: 100% (50/50), done.
+    Checking connectivity... done.
+    abalasu1@cloudshell:~/inventory-svc-ab$ export PATH=~/cloud-shell-commands:$PATH
+    abalasu1@cloudshell:~/inventory-svc-ab$ source ./cloud-shell-commands/install-igc
+    npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+    /home/abalasu1/.npm/bin/kubectl-dashboard -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/abalasu1/.npm/bin/kubectl-enable -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/abalasu1/.npm/bin/kubectl-credentials -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    /home/abalasu1/.npm/bin/igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/abalasu1/.npm/bin/kubectl-endpoints -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/abalasu1/.npm/bin/kubectl-git-secret -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/abalasu1/.npm/bin/kubectl-igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/abalasu1/.npm/bin/kubectl-pipeline -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/abalasu1/.npm/bin/kubectl-sync -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/abalasu1/.npm/bin/kubectl-tool-config -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+
+    > jsonpath@1.0.2 postinstall /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    > node lib/aesprim.js > generated/aesprim-browser.js
+
+    npm WARN ws@7.2.5 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.2.5 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+    + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
+    added 311 packages from 358 contributors in 50.079s
+    abalasu1@cloudshell:~/inventory-svc-ab$ 
+    ```
+
 </Tab>
 
 </Tabs>
 
 ## Log into IBM Cloud
 
-- Use ibmcloud command line to log into the cloud account.
+- Use ibmcloud command line to log into the cloud account. Replace the user_id, password and team name in the sandbox name
 ```bash
 ibmcloud login -u <user_id> -p <password> -g sandbox-team-n.. -r us-south
 ```
+- Select Account Number that you are boarded on.
+```bash
+abalasu1@cloudshell:~/inventory-svc-ab$ ibmcloud login -u abalasu1@in.ibm.com -p XXX -g sandbox-team-one -r us-south
+API endpoint: https://cloud.ibm.com
+Authenticating...
+OK
 
-![Select Account](./images/SelectAccount.png)
+Select an account:
+1. Arun Balasubramanyan (d7627906acd716cc06d005b524bfa02f)
+2. GSI Labs - XXX (0f42478cb66d4ce0b11c9168b02c5690) <-> 2050804
+3. GSI Labs - IBM (7e341a8be8c9464e8778c7107b2bcccc) <-> 1924691
+Enter a number> 3
+Targeted account GSI Labs - XXX (0f42478cb66d4ce0b11c9168b02c5690) <-> 2050804
+
+Targeted resource group sandbox-team-one
+
+Targeted region us-south
+
+                      
+API endpoint:      https://cloud.ibm.com   
+Region:            us-south   
+User:              abalasu1@in.ibm.com   
+Account:           GSI Labs - XXX (0f42478cb66d4ce0b11c9168b02c5690) <-> 2050804   
+Resource group:    sandbox-team-one   
+CF API endpoint:      
+Org:                  
+Space:        
+```
+
 
 ## Log into Openshift Cluster
 
@@ -221,5 +281,14 @@ ibmcloud login -u <user_id> -p <password> -g sandbox-team-n.. -r us-south
 - Copy the login command and execute it from the terminal
 ![Openshift Login](./images/getlogincommand.png)
 
-- Execute the login command in the terminal
-![Execute Login Command](./images/executelogincommand.png)
+- Execute the login command copied in the last step in the terminal
+
+```bash
+abalasu1@cloudshell:~/inventory-svc-ab$ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
+Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#abalasu1@in.ibm.com" using the token provided.
+
+You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
+
+Using project "dev-ab".
+abalasu1@cloudshell:~/inventory-svc-ab$   
+```
