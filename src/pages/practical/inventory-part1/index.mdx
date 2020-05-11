@@ -6,7 +6,7 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
 <PageDescription>
 
-Ddevelop and deploy an example microservices application
+Develop and deploy an example microservices application
 
 </PageDescription>
 
@@ -73,7 +73,7 @@ If you want to skip the guide and just get the components running, see [Deploy t
 
 Create the initial project and register it with a pipeline for automated builds.
 
-- Create a new repository from the [Spring Boot Microservice](https://github.com/ibm-garage-cloud/template-java-spring/generate) template
+- Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
 
     You can also access this template on the <Globals name="templates" /> page in the [<Globals name="dashboard" />](/getting-started/dashboard).
 
@@ -88,28 +88,49 @@ Create the initial project and register it with a pipeline for automated builds.
 
 - Clone the new repository to your machine
 
-- Log in to the cluster from the command line, then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+  ```
+  git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
+  ```
+
+- Go into the repository directory cloned and execute the following
 
     ```
-    igc pipeline -n dev-{your initials}
+    igc sync dev-{your initials} --dev
+    ```
+
+- Register the pipeline [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+
+    ```
+    igc pipeline --tekton
     ```
 
    replacing `{your initials}` with your actual initials
 
-- Run `igc credentials` to get the credentials for the Jenkins instance
+- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select igc-java-gradle-v1-2-0
+  ```bash
+  abalasu1@cloudshell:~/inventory-svc-ab$ igc pipeline --tekton
+  Creating pipeline on openshift cluster in dev-ab namespace
+  Getting git parameters
+  Git credentials have already been stored for user: abalasu1
+    Project git repo: https://github.com/ibm-workshop-team-one/inventory-svc-ab.git
+  ? Provide the git branch that should be used: master
+  Creating service account: pipeline
+  Creating Git PipelineResource
+  Creating Image PipelineResource
+  ? Select the Pipeline to use in the PipelineRun: igc-java-gradle-v1-2-0
+  Copying tasks from tools
+  Copied Pipeline from tools/igc-java-gradle-v1-2-0 to dev-ab/inventory-svc-ab
+  Creating PipelineRun for pipeline: inventory-svc-ab
+  abalasu1@cloudshell:~/inventory-svc-ab$   
+  ```
 
 - [Open the pipeline](/getting-started/deploy-app#view-your-application-pipeline) to see it running
 
 - When the pipeline is completed, run `igc ingress -n dev-{your initials}`. You should see an entry
-for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are 
+developing on code ready workspaces/cloud shell, copy the url and paste it in a new browser window.
 
 - Run the service locally
-
-    ```
-    npm start
-    ```
-   
-    OR
    
     ```
     ./gradlew bootRun
@@ -117,9 +138,25 @@ for the app we just pushed. Select the entry and hit `Enter` to launch the brows
 
    When the execution output says "Server started", the app is running.
 
-- Open a browser to `http://localhost:9080/swagger-ui.html`
+- Access the running service. This service runs on port 9080.
 
-    This will display the Swagger UI page that provides a user interface to exercise the APIs.
+<Tabs>
+
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
+</Tab>
+<Tab label="Cloud Ready Workspaces">
+
+</Tab>
+<Tab label="Cloud Shell">
+
+ ![Access Local App](./images/accesslocalapp.png)
+
+</Tab>
+
+</Tabs>
+
+This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
 #### Create initial components 
 
@@ -318,12 +355,6 @@ public class StockItemController {
 ```
 
 - Start the local server
-
-```bash
-npm start
-```
-
-or 
 
 ```bash
 ./gradlew bootRun
@@ -627,12 +658,6 @@ public class StockItemService implements StockItemApi {
 #### Verify the service locally and push the changes
 
 - Start the application
-
-    ```bash
-    npm start
-    ```
-   
-    or
     
     ```bash
     ./gradlew bootRun

@@ -17,6 +17,12 @@
       path: /overview/content-overview
     - title: Developer Intermediate
       path: /enablement/developer-intermediate
+    - title: Developer Advanced
+      path: /enablement/developer-advanced
+    - title: Application Modernization
+      path: /enablement/developer-appmod
+    - title: Application Integration
+      path: /enablement/developer-integration
 
 - title: Concepts
   pages:

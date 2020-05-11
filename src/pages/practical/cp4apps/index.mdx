@@ -14,6 +14,7 @@ This guide assumes the following:
 
 1. You are using a <Globals name="env" /> that has already been installed.
 1. Cloud Pak for Applications has already been installed in the environment.
+1. Docker is installed and running 
 
 This guide consists of the following sections:
 
@@ -23,7 +24,7 @@ This guide consists of the following sections:
   <AnchorLink to="#create-a-new-app-using-the-appsody-cli">Create a new app using the Appsody CLI</AnchorLink>
   <AnchorLink to="#create-a-new-app-using-codewind">Create a new app using Codewind</AnchorLink>
   <AnchorLink to="#build-an-app-with-a-tekton-pipeline">Build an app with a Tekton pipeline</AnchorLink>
-  <AnchorLink to="#scale-to-zero-serverless">Scale to zero with Serverless</AnchorLink>
+  <AnchorLink to="#scale-to-zero-with-serverless">Scale to zero with Serverless</AnchorLink>
 </AnchorLinks>
 
 
@@ -56,9 +57,9 @@ Set up the dev tools.
 
 Install Codewind and Appsody.
 
-- [Install Codewind for VS Code IDE](https://www.eclipse.org/codewind/mdt-vsc-installinfo.html)
+- [Install Codewind for VS Code IDE](https://www.eclipse.org/codewind/vsc-getting-started.html)
 
-- [Install Codewind for Eclipse IDE](https://www.eclipse.org/codewind/mdt-eclipse-installinfo.html)
+- [Install Codewind for Eclipse IDE](https://www.eclipse.org/codewind/eclipse-getting-started.html)
 
 - [Install the Appsody CLI](https://appsody.dev/docs/getting-started/installation)
 
@@ -73,13 +74,13 @@ Now that we've installed the Appsody CLI, we'll configure it and use it to imple
 
 ### Configure the Appsody CLI
 
-The CP4Apps installation in your OpenShift cluster includes an instance of Kabanero Enterprise. In the CP4Apps dashboard, the Instance page shows details about this Kabanero Enterprise instance. Configure your Appsody CLI to access this instance.
+The CP4Apps installation in your OpenShift cluster includes an instance of Kabanero. In the CP4Apps dashboard, the Instance page shows details about this Kabanero instance. Configure your Appsody CLI to access this instance.
 
 - In the CP4Apps dashboard, go to the Instance page
 
-- In the Collection Hub section, copy the Appsody URL (i.e. {Appsody-URL})
+- In the Instance section of the Instances tab, copy the Appsody URL (i.e. {Appsody-URL})
 
-- Add the repository in Kabanero Enterprise to your local Appsody CLI's configuration
+- Add the repository in Kabanero to your local Appsody CLI's configuration
 
     ```bash
     appsody repo add kabanero-0.6.3 {Appsody-URL}
@@ -91,7 +92,7 @@ The CP4Apps installation in your OpenShift cluster includes an instance of Kaban
     appsody repo add kabanero-0.6.3 https://github.com/kabanero-io/kabanero-stack-hub/releases/download/0.6.3/kabanero-stack-hub-index.yaml  
     ```
 
-Make the repo in Kabanero Enterprise the default, as shown by the astrix (`*`) in the list of repos.
+Make the repo in Kabanero the default, as shown by the astrix (`*`) in the list of repos.
 
 - Set the default repo and list them
 
@@ -117,14 +118,14 @@ Make the repo in Kabanero Enterprise the default, as shown by the astrix (`*`) i
     kabanero-0.6.3  nodejs-express          0.2.10          scaffold, *simple       Express web framework for Node.js
     ```
 
-    Notice that the stacks listed are the same as the list of Collections back on the Instance page.
+    Notice that the stacks listed are the same as the list of Stacks back on the Instance page.
 
 
 ### Create an application
 
 Now that we've configured our Appsody CLI, let's use it to create an application.
 
-Create an application named `nodejs-express-{initials}` using Appsody and the Kabanero Enterprise application stack in our cluster.
+Create an application named `nodejs-express-{initials}` using Appsody and the Kabanero application stack in our cluster.
 
 - Create an empty project directory named `nodejs-express-{initials}`
 
@@ -145,7 +146,7 @@ To run the application, you don't need to have node.js or the Java SDK installed
     appsody run
     ```
 
-Whenever any of the application files are edited, Kabanero Enterprise detects the change and automatically restarts the application.
+Whenever any of the application files are edited, Kabanero detects the change and automatically restarts the application.
 
 - Using your favorite editor, edit `app.js`
 
@@ -182,20 +183,18 @@ Now that we've installed the Codewind plugin, we'll configure it and use it to i
 
 ### Configure the Codewind plugin
 
-The CP4Apps installation in your OpenShift cluster includes an instance of Kabanero Enterprise. In the CP4Apps dashboard, the Instance page shows details about this Kabanero Enterprise instance. Configure your Codewind plugin to access this instance.
+The CP4Apps installation in your OpenShift cluster includes an instance of Kabanero. In the CP4Apps dashboard, the Instance page shows details about this Kabanero instance. Configure your Codewind plugin to access this instance.
 
 Set the Collection Hub URL as a Template Source in Codewind:
 
-- If using the VS Code IDE, see [Configuring template sources for VS Code](https://www.eclipse.org/codewind/mdt-vsc-workingwithtemplates.html)
-
-- If using the Eclipse IDE, See [Configuring template sources for Eclipse](https://www.eclipse.org/codewind/mdteclipseworkingwithtemplates.html)
+- Both for VS Code IDE and Eclpise IDC, see [Configuring template sources for VS Code](https://www.eclipse.org/codewind/workingwithtemplates.html)
 
 
 ### Create an application
 
 Now that we've configured our Codewind plugin, let's use it to create an application.
 
-Create an application named `nodejs-express-{initials}` using Codewind and the Kabanero Enterprise application stack in our cluster.
+Create an application named `nodejs-express-{initials}` using Codewind and the Kabanero application stack in our cluster.
 
 - Select Projects (Local), then select New Project
 
@@ -209,15 +208,14 @@ To work with the source code, right click on Projects and select Open CodeWind W
 
 Experiment with using Codewind to perform actions on your running application.
 
-- In the CodeWind view, right click on your application to see the actions the plugin can perform
+- In the CodeWind view, right click on your application to see the actions the plugin can perform. 
 
-    ![CodeWind Options](images/codewind.png)
 
 - Perform each of the actions on your application:
-    - Open App
+    - Open Application
     - Open Project Overview, verify the ports and status
     - Open Container Shell, explore the filesystem
-    - Open Application Monitor, use the application and see the traffic metrics
+    - Open Application Monitor/ Metrics Dashboard, use the application and see the traffic metrics
     - Open Performance Dashboard and run a load test, see the traffic metrics
     - Restart in Debug mode, insert a break point in `app.js` and run the app to stop the application in debug view
 
@@ -260,9 +258,9 @@ Create a Git repository for your app and connect it to the Tekton pipeline.
 
 First, create the Git repo.
 
-- In your MOOC team's GitHub organization, create a Git repo named `nodejs-express-{initials}`
+- In your github repository, create a Git repo named `nodejs-express-{initials}`
 
-    - For example, `https://github.com/mooc-team-one/nodejs-express-cs.git`
+    - For example, `https://github.com/{your-git-repo}/nodejs-express-cs.git`
 
 Second, open the Tekton dashboard.
 
@@ -278,11 +276,11 @@ Second, open the Tekton dashboard.
 
 - In the Tekton dashboard, select the Pipelines page
 
-Notice that Kabanero Enterprise includes pipelines for building apps based on different technologies: MicroProfile, Open Liberty, Spring Boot, Node.js, and Express.js. When a pipeline runs, it'll run in a certain Kubernetes namespace (a.k.a. OpenShift project). Each of the pipeline's tasks will run in a new container and pod. A task's steps all run in the same container.
+Notice that Kabanero includes pipelines for building apps based on different technologies: MicroProfile, Open Liberty, Spring Boot, Node.js, and Express.js. When a pipeline runs, it'll run in a certain Kubernetes namespace (a.k.a. OpenShift project). Each of the pipeline's tasks will run in a new container and pod. A task's steps all run in the same container.
 
 </InlineNotification>
 
-Third, create the webhook. The Kabanero Enterprise instance already includes several pipelines. Create a webhook in the Git repo that triggers the proper pipeline.
+Third, create the webhook. The Kabanero instance already includes several pipelines. Create a webhook in the Git repo that triggers the proper pipeline.
 
 - In the Tekton dashboard, select the Webhooks page
 
@@ -290,15 +288,15 @@ Third, create the webhook. The Kabanero Enterprise instance already includes sev
 
 - In the Create Webhook form, enter the following values:
 
-    ![Create Webhook](images/create-webhook3.png)
+    ![Create Webhook](images/create-webhook4.png)
 
     - **Name**: `nodejs-express-{initials}`, such as `nodejs-express-cs`
-    - **Repository URL**: `https://github.com/mooc-team-{name}/nodejs-express-{initials}.git`, such as `https://github.com/mooc-team-one/nodejs-express-cs.git`
-    - **Access Token**: Select `github.com-mooc-access-token` (no need to create a new access token)
+    - **Repository URL**: `https://github.com/{repo-name}/nodejs-express-{initials}.git`, such as `https://github.com/{ibmworkshop}/nodejs-express-{cs}.git`
+    - **Access Token**: Select your `github.access-token` (no need to create a new access token)
     - **Namespace**: Select `kabanero` (not your own namespace)
     - **Pipeline**: Select `nodejs-express-build-deploy-pipeline`
     - **Service Account**: Select `kabanero-operator`
-    - **Docker Registry**: `docker-registry.default.svc:5000/dev-{initials}`, such as `docker-registry.default.svc:5000/dev-cs`
+    - **Docker Registry**: `image-registry.openshift-image-registry.svc:5000/dev-{initials}`, such as `image-registry.openshift-image-registry.svc:5000/dev-cs`
 
 <InlineNotification>
 
@@ -339,7 +337,7 @@ Configure the local repo to map to the git renote repo you created earlier and s
 
 - Add the remote repo URL and push
     ```bash
-    git remote add origin git@github.com:mooc-team-{id}/nodejs-express-{initials}.git
+    git remote add origin https://github.com/{repo-name}/nodejs-express-{initials}.git
     git push -u origin master
     ```
 
@@ -357,8 +355,7 @@ Click on a PipelineRun to see its details. In its list of Tasks, expand one to s
 
 </InlineNotification>
 
-
-## Scale to zero (Serverless)
+## Scale to zero with Serverless
 
 Use the Git repo created for Tekton to deploy the app using Knative.
 
