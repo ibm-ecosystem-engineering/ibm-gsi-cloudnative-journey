@@ -90,9 +90,13 @@ Deploy the <Globals name="template" /> named Spring Boot Microservice.
     - Name the new repo something like `sonar-java`
     - Be sure to run the CI pipeline for your project, and confirm that it runs the Sonar scan stage
 
-Examine SonarQube's analysis report for your app.
+Examine SonarQube's analysis report for your app
 
-- Use the [<Globals name="dashboard" />](/getting-started/dashboard) to open the SonarQube dashboard
+- Go to the openshift console. On the top, you will find an icon of a square made of 9 small squares. 
+- Clicking on that icon will give you all the tools shortcut. Click on SonarQube icon to open the SonarQube dashboard.
+
+![ConsoleWithToolsShortcuts](ToolsShortCut.png)
+
 
 - Go to the Projects page
     
@@ -203,7 +207,9 @@ The first problem is that the quality gate says that the app passed. The default
 
 Let's create a new quality gate that checks for bugs.
 
-- Use the <Globals name="dashboard" /> to open the SonarQube dashboard
+- Open the SonarQube dashboard through openshift console shortcut as shown below:
+
+![OpenShiftConsoleToolsShortcut](ToolsShortCut.png)
 
 - To create and install a new quality gate, first log in to SonarQube
 
