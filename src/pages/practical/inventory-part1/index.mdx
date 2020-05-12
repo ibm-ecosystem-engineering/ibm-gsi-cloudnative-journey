@@ -216,6 +216,9 @@ public class Application extends SpringBootServletInitializer {
 ```
 
 - Delete `application.app`
+```
+git rm -r src/main/java/application/
+```
 
 - Run the service locally. The swagger page should no longer contain the `/hello`
 API endpoint.
@@ -690,7 +693,7 @@ The Inventory solution will use [GraphQL](https://graphql.org/) for its BFF laye
 
 To get the initial BFF project created and registered with a pipeline for automated builds follow these steps.
 
-- Create a new repository from the [Typescript GraphQL <Globals name="template" />](https://github.com/ibm-garage-cloud/template-graphql-typescript/generate)
+- Create a new repository from the [Typescript GraphQL <Globals name="template" />](https://github.com/IBM/template-graphql-typescript/generate)
 
     <InlineNotification kind="warning">
 
@@ -713,10 +716,11 @@ To get the initial BFF project created and registered with a pipeline for automa
 
    replacing `{your initials}` with your actual initials
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
 - When the pipeline is completed, run `igc ingress -n dev-{your initials}`. You should see an entry
-for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+for the app we just pushed. Select the entry and hit `Enter` to launch the browser, if you are working 
+on your desktop/laptop. Otherwise copy the url and paste it in a new browser tab.
 
 #### Build the controller for the REST interface
 
@@ -805,7 +809,7 @@ git commit -m "Adds stock items controller"
 git push
 ```
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
 #### Update the controller to call a service
 
@@ -826,9 +830,10 @@ export class StockItemModel {
 }
 ```
 
-- Register the model with the `index.ts` file in the models directory
+- Register the model with the `index.ts` file in the models directory. Append this to end of the file.
 
 ```typescript path=src/models/index.ts
+...
 export * from './stock-item.model';
 ```
 
@@ -854,10 +859,14 @@ like a class or `implemented` like an interface.
 
 </InlineNotification>
 
-- Add the abstract class to the `index.ts` file in the services directory
+- Add the abstract class to the `index.ts` file in the services directory. Add it to the end of other export statements, do not overwrite the file.
 
 ```typescript path=src/services/index.ts
+...
+
 export * from './stock-items.api';
+
+...
 ```
 
 - Update the controller test to inject the service into the controller and to return the value from the service
@@ -1008,6 +1017,7 @@ export class StockItemsMockService implements StockItemsApi {
 ```typescript path=src/services/index.ts
 ...
 export * from './stock-items-mock.service';
+...
 ```
 
 - Start the service
