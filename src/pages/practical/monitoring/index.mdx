@@ -29,21 +29,6 @@ Open the Sysdig web UI for your environment's cluster
     ![Sysdig Monitoring Instance](sysdig-monitoring-instance.png)
     - In the monitoring instance, press the **View Sysdig** button to open the Sysdig web UI
 
-Finish onboarding the agent
-- If this is your first time opening the Sysdig dashboard on your cluster's monitoring agent, Sysdig will open the Onboarding wizard
-- The first page shows the hosts (i.e. Kubernetes nodes) and containers that Sysdig found, as well as the integrations it has
-selected to monitor them
-    ![Sysdig Onboarding pt 1](sysdig-wizard-1.png)
-    Notice there are different types of integrations for different types of runtimes such as Java, servers such as Tomcat,
-    and even infrasturcture integrations for monitoring the Kubernetes cluster itself and its containerd engines.
-
-- Press **Next**
-
-- The second page shows the predefined metrics, dashboards, and alerts that Sysdig will start using to monitor the apps
-in your cluster
-    ![Sysdig Onboarding pt 2](sysdig-wizard-2.png)
-    - Press **Complete Onboarding**
-
 ### Explore your application
 
 By default, the Sysdig dashboard opens the **Explore** page on its **Deployments and Pods** grouping.
