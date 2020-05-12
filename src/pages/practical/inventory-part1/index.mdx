@@ -1146,15 +1146,32 @@ export class StockItemServiceConfig {
   baseUrl: string;
 }
 ```
+- Add a `stock-item-service.config.provider` file in the config directory
+
+```typescript path=src/config/stock-item-service.config.provider.ts
+import {ObjectFactory} from 'typescript-ioc';
+
+const baseUrl: string = process.env.SERVICE_URL || 'localhost:9080';
+
+export const stockItemConfigFactory: ObjectFactory = () => ({
+  baseUrl,
+});
+```
 
 The config class separates how the config is loaded from how it is used. In this case the config is simply
 retrieved from an environment variable but in more complex cases the value(s) can be retrived from external
 data sources.
 
-- Add the stock-item-service config to an index.ts of the config directory
+- Add the `stock-item-service.config` to an index.ts of the config directory
 
 ```typescript path=src/config/index.ts
-export * from './stock-item-service.config'
+import {StockItemServiceConfig} from './stock-item-service.config';
+import {stockItemConfigFactory} from './stock-item-service.config.provider';
+import {Container} from 'typescript-ioc';
+
+export * from './stock-item-service.config';
+
+Container.bind(StockItemServiceConfig).factory(stockItemConfigFactory);
 ```
 
 - Create a `stock-items` service in the services directory that uses the config
@@ -1253,9 +1270,11 @@ this section.) The value of this environment variable should come from the `serv
   ...
   env:
     - name: INGRESS_HOST
-      value: {{ include "starter-kit-chart.host" . }}
+      value: ""
     - name: PROTOCOLS
-      value: {{ include "starter-kit-chart.protocols" . }}
+      value: ""
+    - name: LOG_LEVEL
+      value: {{ .Values.logLevel | quote }}
     - name: SERVICE_URL
       value: {{ .Values.serviceUrl | quote }}
   ...
