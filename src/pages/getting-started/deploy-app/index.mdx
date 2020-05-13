@@ -22,9 +22,7 @@ need for your solutions. The approach for getting started is exactly the same fo
 
 **Note:** The instructions provided below lean heavily on the use of the <Globals name="igccli"/> to both show how the
 CLI works in context and to streamline the process (the reason for creating the CLI in the first place). However, the 
-use of the CLI is in no way required to use the <Globals name="shortName"/>. If you would prefer to work through these 
-instructions without the use of the CLI, we have provided the equivalent manual steps for each command on 
-the [Cloud Native Toolkit CLI](/getting-started/cli) page.
+use of the CLI is in no way required to use the <Globals name="shortName"/>. 
 
 This video demonstrates how to work through the steps to create an application and use a deployment pipeline to install
 it into your development cluster.
@@ -50,13 +48,12 @@ it into your development cluster.
 ### 1. Log into your Development Cluster from the command line
 
 1. Make sure you have installed all the [Prerequisite Dev Tools](/getting-started/devenvsetup) before continuing
-2. Open a terminal
-3. Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
+2. Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
 
     To do so, navigate to your cluster in the _IBM Cloud console_, click on the **Access** tab, and follow the 
-    instructions to log in to the cluster from the command line
+    instructions  in **After your cluster provisions, gain access**  section to log in to the cluster from the command line
     
-4. You can test that you're connected to the cluster with the following simple command:
+3. You can test that you're connected to the cluster with the following simple command:
 
   ```shell script
   oc get pods -n tools
@@ -127,7 +124,7 @@ you prefer to work with.
 3. Complete the [GitHub create repository from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) 
 process.
 
-  **Owner**: Select a validate GitHub organization that you are authorized to create repositories within or the one you were given for the shared cluster (See warning above)
+  **Owner**: Select a valid GitHub organization that you are authorized to create repositories within or the one you were given for the shared cluster (See warning above)
 
   **Repository name**: Enter a valid name for you repo, GitHub will help with showing a green tick if it is valid (See warning above)
 
@@ -145,7 +142,7 @@ The new repository will be created in your selected organization.
 2. Click on **Clone or download**
 3. Copy the clone _SSH link_, and use the `git clone` command to clone it to your developer desktop machine.
     ```shell script
-    git clone git@github.com:bwoolf1/stockbffnode.git
+    git clone github.com/bwoolf1/stockbffnode.git
     ```
 4. Change into the cloned directory
     ```shell script
