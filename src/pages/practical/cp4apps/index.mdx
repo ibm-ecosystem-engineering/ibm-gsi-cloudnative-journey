@@ -14,6 +14,7 @@ This guide assumes the following:
 
 1. You are using a <Globals name="env" /> that has already been installed.
 1. Cloud Pak for Applications has already been installed in the environment.
+1. Ensure the  Secret for IBM Cloud Registry is configured for the Tekton Pipeline
 1. Docker is installed and running 
 
 This guide consists of the following sections:
@@ -296,7 +297,7 @@ Third, create the webhook. The Kabanero instance already includes several pipeli
     - **Namespace**: Select `kabanero` (not your own namespace)
     - **Pipeline**: Select `nodejs-express-build-deploy-pipeline`
     - **Service Account**: Select `kabanero-operator`
-    - **Docker Registry**: `image-registry.openshift-image-registry.svc:5000/dev-{initials}`, such as `image-registry.openshift-image-registry.svc:5000/dev-cs`
+    - **Docker Registry**: `us.icr.io/{ibmcloud-namespace}`, such as `us.icr.io/gsi-cloudnative-dev-squad`
 
 <InlineNotification>
 
