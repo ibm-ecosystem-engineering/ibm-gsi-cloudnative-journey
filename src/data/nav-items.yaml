@@ -3,7 +3,7 @@
     - title: Overview
       path: /overview/introduction
     - title: Setup Prerequisites
-      path: /getting-started/prereqs      
+      path: /getting-started/prereqs
     - title: Validate Sandbox
       path: /getting-started/checksetup
     - title: Development Tools Setup
@@ -11,19 +11,13 @@
     - title: OpenShift Console
       path: /getting-started/console
 
-- title: Cloud Native Journey
-  pages:
-    - title: Content Overview
-      path: /overview/content-overview
-    - title: Developer Intermediate
-      path: /enablement/developer-intermediate
 
 - title: Concepts
   pages:
     - title: What is Cloud Native
       path: /concepts/cloud-native-overview
-    - title: Cloud Native AppDev
-      path: /concepts/cloud-native-overview/appDev
+    - title: Cloud Native App Dev
+      path: /concepts/cloud-native-app-dev
     - title: Containers
       path: /concepts/containers
     - title: Continuous Integration (CI)
@@ -31,12 +25,45 @@
     - title: Continuous Delivery (CD)
       path: /concepts/continuous-delivery
 
+- title: Developer Intermediate
+  pages:
+    - title: Agenda
+      path: /enablement/developer-intermediate
+    - title: Overview
+      path: /overview/content-overview
+    - title: Deploy First App
+      path: /getting-started/deploy-app
+    - title: Code Analysis
+      path: /practical/code-analysis
+    - title: Image Registry
+      path: /practical/image-registry
+    - title: Artifact Management
+      path: /practical/artifact-management
+    - title: Monitoring
+      path: /practical/monitoring
+    - title: Logging
+      path: /practical/log-management
+    - title: Inventory Appplication
+      path: /practical/inventory-part1
+    - title: Inventory Service
+      path: /practical/inventory-part1#inventory-service
+    - title: Inventory BFF
+      path: /practical/inventory-part1#inventory-bff
+    - title: Inventory UI
+      path: /practical/inventory-part1#inventory-ui
+    - title: Application Modernization
+      path: /cp4apps/appmodern
+    - title: Transformation Advisor
+      path: /practical/appmod-exercise1/
+
+
+
 - title: Useful Pre Learning
   pages:
     - title: Overview
       path: /activation/overview
     - title: Cloud Native Development
-      path: /activation/cloudnative-development      
+      path: /activation/cloudnative-development
     - title: Cloud Native Deployment
       path: /activation/cloudnative-deployment
     - title: OpenShift Interactive Learning Portal
