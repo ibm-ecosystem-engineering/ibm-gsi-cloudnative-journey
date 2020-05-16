@@ -5,7 +5,7 @@ title: Code Patterns Git Repos
 ### Overview
 
 In the [Overview](../overview) section we describe why _Code
- Patterns_ provide a perfect on ramp to help projects get started. The Developer Tools project is providing a set of seed templates that can be used to get projects moving quickly and focusing on use case business logic.
+ Patterns_ provide a perfect on ramp to help projects get started. The Developer Tools project is providing a set templates that can be used to get projects up and running quickly and focusing on use case and business logic.
 
 Read up on why you should start with a **Code Pattern** and if you have not
  already tried to deploy your first app to show you how easy it is to get
@@ -26,11 +26,11 @@ Here are links to the base set of **Code Patterns** provided for the _IBM Garage
     ```bash
     oc login
     oc get pods
-    npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
-    git clone {code pattern}
-    cd {code pattern}
+    npm install -g @ibmgaragecloud/cloud-native-toolkit-cli
+    git clone <code pattern> | cd <code pattern>
     igc enable | git add . | git commit -m "Update"" | git push
-    igc pipeline -n dev --tekton
+    igc sync <project> --dev
+    igc pipeline
     ```
 
 ### Git Repo Links

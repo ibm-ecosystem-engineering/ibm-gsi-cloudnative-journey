@@ -11,21 +11,21 @@ The <Globals name="env" /> tools are integrated with the OpenShift console
 </PageDescription>
 
 With the release of **<Globals name="ocp" />** it is now even easier for
- developers to integrate the SDLC tools into the OpenShift console. The
-  common SDLC tools are integrated into the OpenShift console. This enables
-   easy access to all the common tools a developer needs. 
- 
+ developers to integrate the DevSecOps tools into the OpenShift console. The
+  common DevSecOps tools are integrated into the OpenShift console. This enables
+   easy access to all the common tools a developer needs.
+
 ### Tools configured with OpenShift Console
 
 When the <Globals name="shortName" /> was configured for your development
  cluster. The administrator can now configure a set of short cut links to
-  common tools you often use as a developer. 
-  
+  common tools you often use as a developer.
+
 ![OpenShift Links](/images/openshift-console-tools.png)
 
 You can see how these tools are confgured by reading the [Tools configuration
 ](/admin/config-install)
- 
+
 ### Opening the Dashboard
 
 - Open a terminal
@@ -37,20 +37,20 @@ follow the instructions to login from the command line
     ```
     igc dashboard
     ```
-  
+
 - This will open the Dashboard
 
 ### Access the tools URLs
 
 - To list the ingress endpoints for all of the installed tools, use the [Developer Tools CLI](../getting-started/cli) to run the following command:
     ```bash
-    igc endpoints -n tools 
+    igc endpoints -n tools
     ```
 
 - This will return the ingress URLs for all of the tools installed in the Developer Tools cluster.
     ```bash
    ? Endpoints in the 'tools' namespace. Select an endpoint to launch the default browser or 'Exit'.
-   
+
      1) Exit
      2) developer-dashboard - http://dashboard.garage-dev-ocp4-c-518489-0143c5dd31acd8e030a1d6e0ab1380e3-0000.us-east.containers.appdomain.cloud
      3) argocd-server - https://argocd-tools.gsi-learning-ocp311-clu-7ec5d722a0ab3f463fdc90eeb94dbc70-0001.eu-gb.containers.appdomain.cloud
@@ -65,7 +65,7 @@ follow the instructions to login from the command line
 
 ### Credentials
 
-In the future, the tools in the Dashboard will be linked using a single sign-on (SSO) service. 
+In the future, the tools in the Dashboard will be linked using a single sign-on (SSO) service.
 In the meantime, the CLI includes a command to list the tools' logins.
 
 - To list the logins for all of the installed tools, use the [Developer Tools CLI](../getting-started/cli) to run the following command:
@@ -74,7 +74,7 @@ In the meantime, the CLI includes a command to list the tools' logins.
     ```
 - The command lists the `userid` and `password` for each tool installed. You can use these credentials to log into each of the installed tools.
 - More of the tools in <Globals name="ocp" /> will be integrated into the
- OpenShift console login process 
+ OpenShift console login process
 
 ### Developer Dashboard
 
