@@ -52,6 +52,7 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
     ```
 
 - Successful execution will look like this.
+
     ```bash
     abalasu1@cloudshell:~/inventory-svc-ab$ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
@@ -223,7 +224,39 @@ Basically, we are going to create an empty project.
     ```
     Successful installation will look something like this.
 
-    ![igc install on terminal](./images/igcInstall.png)
+    ```bash
+    abalasu1:~/inventory-svc-ab$ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    Cloning into 'cloud-shell-commands'...
+    remote: Enumerating objects: 50, done.
+    remote: Counting objects: 100% (50/50), done.
+    remote: Compressing objects: 100% (44/44), done.
+    remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+        Unpacking objects: 100% (50/50), done.
+    Checking connectivity... done.
+    abalasu1:~/inventory-svc-ab$ export PATH=~/cloud-shell-commands:$PATH
+    abalasu1:~/inventory-svc-ab$ source ./cloud-shell-commands/install-igc
+    npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+    /home/abalasu1/.npm/bin/kubectl-dashboard -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/abalasu1/.npm/bin/kubectl-enable -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/abalasu1/.npm/bin/kubectl-credentials -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    /home/abalasu1/.npm/bin/igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/abalasu1/.npm/bin/kubectl-endpoints -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/abalasu1/.npm/bin/kubectl-git-secret -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/abalasu1/.npm/bin/kubectl-igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/abalasu1/.npm/bin/kubectl-pipeline -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/abalasu1/.npm/bin/kubectl-sync -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/abalasu1/.npm/bin/kubectl-tool-config -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+
+    > jsonpath@1.0.2 postinstall /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    > node lib/aesprim.js > generated/aesprim-browser.js
+
+    npm WARN ws@7.2.5 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.2.5 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+    + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
+    added 311 packages from 358 contributors in 50.079s
+    abalasu1:~/inventory-svc-ab$
+    ```
 
 </Tab>
 
