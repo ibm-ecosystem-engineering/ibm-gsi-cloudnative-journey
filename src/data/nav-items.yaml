@@ -2,11 +2,11 @@
   pages:
     - title: Overview
       path: /overview/introduction
-    - title: Setup Prerequisites
+    - title: Prerequisites
       path: /getting-started/prereqs
     - title: Validate Sandbox
       path: /getting-started/checksetup
-    - title: Development Tools Setup
+    - title: Developer Tools Setup
       path: /getting-started/devenvsetup
     - title: OpenShift Console
       path: /getting-started/console
@@ -14,7 +14,7 @@
 
 - title: Concepts
   pages:
-    - title: What is Cloud Native
+    - title: What is Cloud Native?
       path: /concepts/cloud-native-overview
     - title: Cloud Native App Dev
       path: /concepts/cloud-native-app-dev
@@ -29,7 +29,7 @@
   pages:
     - title: Agenda
       path: /enablement/developer-intermediate
-    - title: Overview
+    - title: DevSecOps Overview
       path: /overview/content-overview
     - title: Deploy First App
       path: /getting-started/deploy-app
@@ -41,7 +41,7 @@
       path: /practical/artifact-management
     - title: Monitoring
       path: /practical/monitoring
-    - title: Logging
+    - title: Log Management
       path: /practical/log-management
     - title: Inventory Appplication
       path: /practical/inventory-part1
