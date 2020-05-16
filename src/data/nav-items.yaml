@@ -43,7 +43,7 @@
       path: /practical/monitoring
     - title: Log Management
       path: /practical/log-management
-    - title: Inventory Appplication
+    - title: Inventory Appplication - Part 1
       path: /practical/inventory-part1
     - title: Inventory Service
       path: /practical/inventory-part1#inventory-service
@@ -75,5 +75,5 @@
   pages:
     - title: Code Patterns Overview
       path: /codepatterns/overview
-    - title: Code Pattern repositories
+    - title: Code Pattern Repositories
       path: /codepatterns/gitrepos
