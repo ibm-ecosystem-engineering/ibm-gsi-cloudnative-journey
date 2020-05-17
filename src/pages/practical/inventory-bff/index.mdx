@@ -603,7 +603,7 @@ this section.) The value of this environment variable should come from the `conn
     - name: LOG_LEVEL
       value: {{ .Values.logLevel | quote }}
     - name: SERVICE_URL
-      value: {{ printf "%s:80" .Values.connectsTo | quote }
+      value: {{ printf "%s:80" .Values.connectsTo | quote }}
   ...
 ```
 
