@@ -384,7 +384,8 @@ The webhook doesn't just notify Tekton when the Git repo's contents have changed
 - Press Create to close the form and create the webhook
 
 ### Configure the application deployment
-
+  
+  
 - Edit the generated file, `app-deploy.yaml`
 
     - Specify the namespace to deploy the application into
@@ -392,12 +393,18 @@ The webhook doesn't just notify Tekton when the Git repo's contents have changed
     metadata:
       namespace: dev-{initials}
     ```
-   
+    
+    - Add the service account name as 'default'. You need to make this entry under section 'spec':
+    ```yaml
+    spec:
+      serviceAccountName: default
+        
+
 - Check the files into Git
     ```bash
     git status
     git add .
-    git commit -m "added namespace"
+    git commit -m "added namespace and serviceAccountName"
     ```
 
 
