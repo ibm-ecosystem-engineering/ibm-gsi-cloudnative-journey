@@ -253,7 +253,7 @@ Create a project or use an existing one. Set the OpenShift Container Platform CL
     ```
 
 
-### Connect the pipeline to Git
+### Create the Git Repo and add the base code to the repository
 
 Create a Git repository for your app and connect it to the Tekton pipeline.
 
@@ -261,9 +261,85 @@ First, create the Git repo.
 
 - In your github repository, create a Git repo named `nodejs-express-{initials}`
 
-    - For example, `https://github.com/{your-git-repo}/nodejs-express-cs.git`
+- For example, `https://github.com/{your-git-repo}/nodejs-express-cs.git`
 
-Second, open the Tekton dashboard.
+<Tabs>
+<Tab label="Desktop/Laptop" open="true">  
+
+
+-  Generate the Appsody manifest
+   ```bash
+    appsody deploy --generate-only
+    ```
+    
+- Check the files into Git
+    ```bash
+    git init
+    git add .
+    git commit -m "first commit"
+    ```
+
+- Configure the local repo to map to the git remote repo you created and sync them.
+
+- Add the remote repo URL and push
+    ```bash
+    git remote add origin 'https://github.com/{repo-name}/nodejs-express-{initials}.git'
+    git push -u origin master
+    ```
+
+</Tab>
+<Tab label="Cloud Shell" open="true">
+
+- Clone the appsody based node-js template project from the git for deployment 
+
+    ```bash
+    git clone https://github.com/ibm-gsi-ecosystem/appsody-template-node-js.git
+    cd appsody-template-node-js/
+    ```
+    
+- List your existing remotes in order to get the name of the remote you want to change.
+    ```bash
+    git remote -v
+    > origin  https://github.com/ibm-gsi-ecosystem/appsody-template-node-js.git (fetch)
+    > origin  https://github.com/ibm-gsi-ecosystem/appsody-template-node-js.git (push)
+    ```
+
+- Change the remote's URL from the clone repo to your git repo.
+    ```bash
+    git remote set-url origin 'https://github.com/{repo-name}/nodejs-express-{initials}.git'
+    ```
+
+- Now list your existing remotes and you will see that it points to your repo
+    ```bash
+    git remote -v
+    > origin  'https://github.com/{repo-name}/nodejs-express-{initials}.git' (fetch)
+    > origin  'https://github.com/{repo-name}/nodejs-express-{initials}.git' (push)
+    ```
+
+- Configure the credentials for your git hub
+    ```
+    git config --global user.email "you@example.com"
+    git config --global user.name "Your Name"
+    ```
+
+- Check the files into Git
+    ```bash
+    git init
+    git add .
+    git commit -m "first commit"
+    git push
+    ```
+
+</Tab>
+</Tabs>
+
+
+
+### Connect the pipeline to Git
+
+
+
+Open the Tekton dashboard.
 
 - In the CP4Apps dashboard, go to the Instance page
 
@@ -297,7 +373,7 @@ Third, create the webhook. The Kabanero instance already includes several pipeli
     - **Namespace**: Select `kabanero` (not your own namespace)
     - **Pipeline**: Select `nodejs-express-build-deploy-pipeline`
     - **Service Account**: Select `kabanero-operator`
-    - **Docker Registry**: `us.icr.io/{ibmcloud-namespace}`, such as `us.icr.io/gsi-cloudnative-dev-squad`
+    - **Docker Registry**: `{ibm region registry location}}/{ibmcloud-namespace}`, such as `uk.icr.io/sandbox-team-one`
 
 <InlineNotification>
 
@@ -308,34 +384,8 @@ The webhook doesn't just notify Tekton when the Git repo's contents have changed
 - Press Create to close the form and create the webhook
 
 ### Configure the application deployment
-
-Add some code to the local repo.
-
-
-<Tabs>
-<Tab label="Desktop/Laptop" open="true">  
-
--  Generate the Appsody manifest
-
-   ```bash
-    appsody deploy --generate-only
-    ```
-
-</Tab>
-<Tab label="Cloud Shell" open="true">
-
-- Clone the appsody based node-js template project from the git for deployment 
-
-    ```bash
-    git clone https://github.com/ibm-gsi-ecosystem/appsody-template-node-js.git
-    ```
-
-</Tab>
-</Tabs>
-
-
-
-
+  
+  
 - Edit the generated file, `app-deploy.yaml`
 
     - Specify the namespace to deploy the application into
@@ -343,12 +393,18 @@ Add some code to the local repo.
     metadata:
       namespace: dev-{initials}
     ```
-   
+    
+    - Add the service account name as 'default'. You need to make this entry under section 'spec':
+    ```yaml
+    spec:
+      serviceAccountName: default
+        
+
 - Check the files into Git
     ```bash
-    git init
+    git status
     git add .
-    git commit -m "first commit"
+    git commit -m "added namespace and serviceAccountName"
     ```
 
 
@@ -358,8 +414,7 @@ Configure the local repo to map to the git renote repo you created earlier and s
 
 - Add the remote repo URL and push
     ```bash
-    git remote add origin https://github.com/{repo-name}/nodejs-express-{initials}.git
-    git push -u origin master
+    git push
     ```
 
 When you push the changes to the server, that triggers the Tekton pipeline.
