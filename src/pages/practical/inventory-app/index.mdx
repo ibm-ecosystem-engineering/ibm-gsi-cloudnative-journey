@@ -73,16 +73,16 @@ named `inventory-management-svc-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+    
     ```
     oc pipeline -n dev-{your initials}
     ```
-
    - replacing `{your initials}` with your actual initials
 
 - Run `oc credentials` to get the credentials for the Jenkins instance.
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
 ### Inventory BFF
 
@@ -91,24 +91,33 @@ named `inventory-management-bff-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+    
     ```
     oc pipeline -n dev-{your initials}
     ```
-
    - replacing `{your initials}` with your actual initials
 
 - Run `oc credentials` to get the credentials for the Jenkins instance.
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
-- Update the `serviceUrl` value in `charts/base/templates/values.yaml` to point to the kubernetes
-service of the microservice. The value most likely will be `inventory-management-svc-{initials}:80`.
+- Get the backend service name this value by executing the command `oc get svc -n dev-{initials}.
+    ```
+    $ oc get svc -n dev-ar    
+    NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    inventory-bff-ar   ClusterIP   172.21.180.68   <none>        80/TCP    14m
+    inventory-svc-ar   ClusterIP   172.21.4.95     <none>        80/TCP    20m
+    ```
+
+- Update the `connectsTo` value in `charts/base/values.yaml` to point to the kubernetes
+service of the microservice: `connectsTo: inventory-svc-ar`
+
 
 - Commit and push the changes
     ```bash
     git add .
-    git commit -m "Update the serviceUrl"
+    git commit -m "Update the connectsTo"
     git push
     ```
 
@@ -119,24 +128,30 @@ named `inventory-management-ui-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
     ```
     oc pipeline -n dev-{your initials}
     ```
 
    - replacing `{your initials}` with your actual initials
 
-- Run `oc credentials` to get the credentials for the Jenkins instance.
+- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Get the bff service name this value by executing the command `oc get svc -n dev-{initials}.
+    ```
+    $ oc get svc -n dev-ar    
+    NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    inventory-bff-ar   ClusterIP   172.21.180.68   <none>        80/TCP    14m
+    inventory-svc-ar   ClusterIP   172.21.4.95     <none>        80/TCP    20m
+    ```
 
-- Update the `hostApi` value in `charts/base/templates/values.yaml` to point to the kubernetes
-service of the BFF. The value most likely will be `inventory-management-bff-{initials}:80`.
+- Update the `connectsTo` value in `charts/base/values.yaml` to point to the kubernetes
+service of the microservice: `connectsTo: inventory-bff-ar`
 
 - Commit and push the changes
     ```bash
     git add .
-    git commit -m "Update the hostApi"
+    git commit -m "Update the connectTo"
     git push
     ```
 

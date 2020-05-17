@@ -572,14 +572,14 @@ export * from './stock-items.service';
 ```
 
 
-- Add a `serviceUrl` property to the values.yaml file of the Helm chart. The value of the property should match the
+- Modify `connectsTo` property to the values.yaml file of the Helm chart. The value of the property should match the
 Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
 application which is that same as the name of the repository.)
 
 ```yaml path=chart/base/values.yaml
-global: {}
+...
 
-serviceUrl: "inventory-management-svc-{your initials}:80"
+connectsTo: inventory-management-svc-{your initials}
 
 ...
 ```
@@ -590,7 +590,7 @@ template file to use our new variable.
 
 - Add a new environment variable named `SERVICE_URL` to the list of existing environment variables in deployment.yaml.
 (`SERVICE_URL` is the name we gave the environment variable in our `stock-item-service.config` class as the first step in
-this section.) The value of this environment variable should come from the `serviceUrl` value we defined. You can add 
+this section.) The value of this environment variable should come from the `connectsTo` value we defined. You can add 
 `| quote` to wrap the value in quotes in case the value is not formatted correctly.
 
 ```yaml path=chart/base/templates/deployment.yaml
@@ -603,7 +603,7 @@ this section.) The value of this environment variable should come from the `serv
     - name: LOG_LEVEL
       value: {{ .Values.logLevel | quote }}
     - name: SERVICE_URL
-      value: {{ .Values.serviceUrl | quote }}
+      value: {{ printf "%s:80" .Values.connectsTo | quote }
   ...
 ```
 
