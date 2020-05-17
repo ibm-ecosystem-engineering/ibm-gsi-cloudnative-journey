@@ -6,7 +6,7 @@ This developer enablement will enable GSI technical teams to understand how to
  use the tools to manage the full
 lifecycle of Cloud Native development with IBM Kubernetes Service or managed Red Hat OpenShift on IBM Cloud.
 
-The rendered Learning Journey can be viewed here - [GSI Cloud Native Enablement](https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloud-native/)
+The rendered Learning Journey can be viewed here - [GSI Cloud Native Enablement](https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/)
 
 To update and manage the Learning Journey follow these steps.
 
@@ -58,7 +58,7 @@ npm run build
 npm run deploy
 ```
 
-The result of the `deploy` can be viewed here - https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/
+The result of the `deploy` can be viewed here - https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/
 
 **Note:** There is a time delay between when the deploy process completes and when the
 content is available on the published site.
