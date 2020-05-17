@@ -1,5 +1,5 @@
 ---
-title: Deploying First Application
+title: Deploy First Application
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
@@ -74,7 +74,7 @@ This is something that would typically happen once at the beginning of a project
 formed and assigned to the cluster.
 
 ```shell script
-igc sync {DEV_NAMESPACE} --dev
+oc sync {DEV_NAMESPACE} --dev
 ```
 
 <InlineNotification kind="info">
@@ -93,7 +93,7 @@ make seeding your development project very easy.
 2. Open the dashboard by running the following command:
 
     ```shell script
-    igc dashboard
+    oc dashboard
     ```
 
 ### 4. Create your app in Git
@@ -207,7 +207,7 @@ different build engines, please see [Continuous Integration with Jenkins Guide](
 1. Start the process to create a pipeline
 
     ```shell script
-    igc pipeline
+    oc pipeline
     ```
 
 2. The first time a pipeline is registered in the namespace, the CLI will ask for a username and 
@@ -264,7 +264,7 @@ You will see your application dev ops pipeline now starting to build and once co
 1. Open the Developer Dashboard
 
     ```shell script
-    igc dashboard
+    oc dashboard
     ```
   
 2. Select the `Tekton` tile to launch the Tekton UI
@@ -310,9 +310,9 @@ the image below.
 </Tab>
 <Tab label="Kubernetes">
 
-1. Run the command `igc dashboard` in your terminal to open your Developer Dashboard.
+1. Run the command `oc dashboard` in your terminal to open your Developer Dashboard.
 2. Select the Jenkins tool to open the Jenkins dashboard
-3. Run the command `igc credentials` in your terminal to get the list of logins for the tools
+3. Run the command `oc credentials` in your terminal to get the list of logins for the tools
 4. Use the Jenkins userid and password to log into the Jenkins dashboard
 
 Wait for the pipeline stages to start building. Once the stages have completed, you will see a view similar to the one below.
@@ -338,7 +338,7 @@ registering the pipeline. To validate the app is running follow these steps:
 1. Retrieve the app ingress endpoint using commands below in your terminal.
 
     ```bash
-    igc endpoints 
+    oc endpoints 
     ```
   
 2. From the endpoints listed, select the URL for the repo that was just deployed and press **Enter** to 

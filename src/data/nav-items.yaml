@@ -43,14 +43,14 @@
       path: /practical/monitoring
     - title: Log Management
       path: /practical/log-management
-    - title: Inventory Appplication - Part 1
-      path: /practical/inventory-part1
+    - title: Inventory Appplication
+      path: /practical/inventory-app
     - title: Inventory Service
-      path: /practical/inventory-part1#inventory-service
+      path: /practical/inventory-svc
     - title: Inventory BFF
-      path: /practical/inventory-part1#inventory-bff
+      path: /practical/inventory-bff
     - title: Inventory UI
-      path: /practical/inventory-part1#inventory-ui
+      path: /practical/inventory-ui
     - title: Application Modernization
       path: /cp4apps/appmodern
     - title: Transformation Advisor
