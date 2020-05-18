@@ -111,6 +111,12 @@ div[class*='Code-module--row']{
     background-color:cornflowerblue;
 }
 
+@media (min-width: 66rem) {
+    .bx--col-lg-8 {
+        /* flex: 0 0 66.66667%; */
+        /* max-width: 66.66667%; */
+    }
+}
 
 ul[class*='Tabs-module--tab-list']{
     margin-left: 0rem;
