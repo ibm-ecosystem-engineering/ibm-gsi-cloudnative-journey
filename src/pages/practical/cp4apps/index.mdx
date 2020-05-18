@@ -321,6 +321,20 @@ First, create the Git repo.
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"
     ```
+- Change the name of the name of the project to 'nodejs-express-{initial} from 'appsody-template-node-js'
+
+   <InlineNotification kind="edityaml"> 
+
+    From
+    ```
+    name: appsody-template-node-js
+    ```
+
+    To
+    ```
+    name: nodejs-express-{initials}
+    ```
+    </InlineNotification>
 
 - Check the files into Git
     ```bash
@@ -419,11 +433,16 @@ Configure the local repo to map to the git renote repo you created earlier and s
 
 When you push the changes to the server, that triggers the Tekton pipeline.
 
-- In the Tekton dashboard, select the PipelineRuns page
+- In the Tekton dashboard, select the PipelineRuns page. The page shows the list of pipelines.
 
-    ![PipelineRuns](images/pipelinerun-starts.png)
+    ![PipelineRuns](images/icp4apps-pipelinerun-2.png)
 
-    The page shows the pipeline running.
+    
+
+- When you access one of the pipelines, the details of the pipeline tasks are displayed
+
+    ![PipelineRuns](images/icp4apps-pipelinerun-1.png)
+
 
 <InlineNotification>
 
