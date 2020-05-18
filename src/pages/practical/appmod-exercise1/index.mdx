@@ -220,11 +220,10 @@ In order to simulate a real traditional WebSphere ND customer environment on you
 - Select the Operating system of the Application WAS Server Environment. Then Click download.
 
 - Copy the installable zip to the Application WAS Server Environment.
-
-- Extract the downloaded tgz file 
     ```bash
-    tar xvfz {downloaded tgz file name}.tgz
+    docker cp {downloaded tgz file name}.tgz twas-plantsbywebsphere:/demo
     ```
+
 
 
 #### Run the data collector
@@ -236,11 +235,15 @@ Now that you have validated that the PlantsByWebSphere application is running in
     ```bash
     docker exec -it twas-plantsbywebsphere bash
     ```
+- Extract the downloaded tgz file 
+    ```bash
+    tar xvfz {downloaded tgz file name}.tgz
+    ```
 
 - Navigate to the data collector directory
 
     ```bash
-    cd /demo/transformationadvisor-2.0.1
+    cd /demo/transformationadvisor-2.0.3
     ```
 
 - Execute the data collector
