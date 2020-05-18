@@ -12,15 +12,15 @@ Use SonarQube to analyze your code's quality
 
 In IBM Garage Method, one of the Develop practices is to [automate tests for continuous delivery](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/), in part by using [static source code analysis tools](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/tool_lint). [SonarQube](https://www.sonarqube.org/) automates performing static code analysis and enables it to be added to a continuous integration pipeline. The <Globals name="env" />'s CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) includes a SonarQube stage. Simply by building your app using the pipeline, your code gets analyzed, just open the SonarQube UI to browse the findings.
 
-## What is code analysis 
+## What is code analysis
 
-Static code analysis (a.k.a. code analysis) is a method of debugging by performing automated evaluation of code 
-without executing the program. The analysis is structured as a set of coding rules that evaluate the code's quality. 
+Static code analysis (a.k.a. code analysis) is a method of debugging by performing automated evaluation of code
+without executing the program. The analysis is structured as a set of coding rules that evaluate the code's quality.
 Analysis can be performed on source code or compiled code. The analyzer must support the programming language
 the code is written in so that it can parse the code like a compiler or simulate its execution.
 
-Static code analysis differs from dynamic analysis, which observes and evaluates a running program. Dynamic analysis 
-requires test inputs and can measure user functionality as well as runtime qualities like execution time and resource consumption. 
+Static code analysis differs from dynamic analysis, which observes and evaluates a running program. Dynamic analysis
+requires test inputs and can measure user functionality as well as runtime qualities like execution time and resource consumption.
 A code review is static code analysis performed by a human.
 
 Static code analysis can evaluate several different aspects of code quality, such as:
@@ -44,7 +44,7 @@ Static code analysis can evaluate several different aspects of code quality, suc
 
 Static code analysis collects several metrics that measure code quality:
 - **Issues**
-    - **Type**: Bug, Vunerability, Code Smell
+    - **Type**: Bug, Venerability, Code Smell
     - **Severity**
         - **Blocker**: Bug with a high probability to impact the behavior of the application in production
         - **Critical**: Bug with a low probability to impact the behavior of the application in production, or a security vulnerability
@@ -67,15 +67,15 @@ SonarQube performs static code analysis to evaluate code quality, using analysis
 - **Application Security**: Detect vulnerabilities and hotspots that can be exploited to compromise the program
 - **Technical Debt**: Keep you codebase maintainable to increase developer velocity
 
-SonarQube [plugs into the application lifecycle management (ALM)](https://docs.sonarqube.org/latest/architecture/architecture-integration/#header-2) process to make continuous inspection part of continuous integration. 
-Adding code analysis to ALM provides regular, timely feedback on the quality of the code being produced. 
+SonarQube [plugs into the application lifecycle management (ALM)](https://docs.sonarqube.org/latest/architecture/architecture-integration/#header-2) process to make continuous inspection part of continuous integration.
+Adding code analysis to ALM provides regular, timely feedback on the quality of the code being produced.
 The goal is to detect problems as soon as possible so that they can be resolved before they can impact production end users.
 
 The continuous integration (CI) server integrates SonarQube into the ALM.
-The SonarQube solution consists of several components: The central component is the SonarQube Server, 
-which runs the SonarScanner, processes the resulting analysis reports, stores the reports in SonarQube Database, 
-and displays the reports in the SonarQube UI. 
-A CI server uses a stage/goal/task in its build automation to trigger the language-specific SonarScanner to scan the code being built. 
+The SonarQube solution consists of several components: The central component is the SonarQube Server,
+which runs the SonarScanner, processes the resulting analysis reports, stores the reports in SonarQube Database,
+and displays the reports in the SonarQube UI.
+A CI server uses a stage/goal/task in its build automation to trigger the language-specific SonarScanner to scan the code being built.
 Developers can view the resulting analysis report in the SonarQube UI.
 
 ## Code Analysis in the Pipeline
@@ -92,28 +92,26 @@ Deploy the <Globals name="template" /> named Spring Boot Microservice.
 
 Examine SonarQube's analysis report for your app
 
-- Go to the openshift console. On the top, you will find an icon of a square made of 9 small squares. 
+- Go to the OpenShift console. On the top, you will find an icon of a square made of 9 small squares.
 - Clicking on that icon will give you all the tools shortcut. Click on SonarQube icon to open the SonarQube dashboard.
-
-![ConsoleWithToolsShortcuts](./ToolsShortCut.png)
-
+- Use `oc credentials` to get the user name and password if you a prompted to log in
 
 - Go to the Projects page
-    
+
     You should see your project in the list, such as `bwoolf1.sonar-java`.
 
     ![Sonar Project](sonar-project.png)
 
     The project summary shows several characteristics meansured in the app:
     - The quality gate passed
-   - Several issues were found, catagorized by type
+   - Several issues were found, categorized by type
         - 2 bugs for a C rating
-        - 0 vunerabilities for an A rating
+        - 0 vulnerabilities for an A rating
         - 17 code smells but an A rating
         - None of the code was tested
         - None of it is duplicate code
     - It scanned 1.5k lines of code written in Java, a small program (XS, S, M, L, XL)
- 
+
 - In the Projects list, click on the project name (such as `bwoolf1.sonar-java`) to open your project
 
     The project overview shows more detail about how many issues were found in the app
@@ -146,7 +144,7 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
 
     Now you need to investigate to figure out why the code violates this rule.
 
-    Want to see if you can track down the problem before seeing the solution? 
+    Want to see if you can track down the problem before seeing the solution?
     What to fix is pretty obvious--the Rule explains what to do--but tracking down why takes some effort.
 
     -----
@@ -155,7 +153,7 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
 
     The error is not in the file's parent class, `ResettableHttpServletRequest`, but in its embedded class, `SimpleServletInputStream`,
     which extends `javax.servlet.ServletInputStream`. The Javadocs for `ServletInputStream` show that it extends
-    `java.io.InputStream`. The [original Java 1.0 Javadocs](http://physics.usc.edu/java/api/java.io.InputStream.html) 
+    `java.io.InputStream`. The [original Java 1.0 Javadocs](http://physics.usc.edu/java/api/java.io.InputStream.html)
     show that these methods in InputStream are indeed synchronized:
 
     ```java
@@ -164,10 +162,10 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
     public synchronized void reset() throws IOException
     ```
 
-    [More recent Javadocs](https://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html#mark(int)) 
+    [More recent Javadocs](https://docs.oracle.com/javase/7/docs/api/java/io/InputStream.html#mark(int))
     haven't shown these signatures for years, but the compiler says the class is still defined that way.
-    There's some debate about [whether mark and reset really need to be synchronized](https://stackoverflow.com/questions/33525923/synchronized-methods-in-java-io-streams). But SonarQube doesn't judge, it just reports: 
-    Since the superclass defined the method signatures as synchronized, 
+    There's some debate about [whether mark and reset really need to be synchronized](https://stackoverflow.com/questions/33525923/synchronized-methods-in-java-io-streams). But SonarQube doesn't judge, it just reports:
+    Since the superclass defined the method signatures as synchronized,
     SonarQube is warning that the subclass is supposed to do so as well.
 
 ### Examine the other issues
@@ -291,5 +289,5 @@ It's a good idea to incorporate code analysis as part of your application develo
 so you can use its findings to help enforce and improve your code quality.
 Here, the <Globals name="env" /> uses SonarQube, but you never had to run SonarQube.
 Just run the <Globals name="env" />'s build pipeline on your app and it gets scanned automatically.
-After running the pipeline, open the SonarQube UI and browse the findings in your app's project to figure 
+After running the pipeline, open the SonarQube UI and browse the findings in your app's project to figure
 out what code you ought to fix.
