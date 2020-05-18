@@ -89,11 +89,6 @@ In order to simulate a real traditional WebSphere ND customer environment on you
 
 </InlineNotification>
 
-<InlineNotification kind="info">
-
-**Note:** The DB2 database used for this exercise is at `169.62.104.36` on port `32612`.
-
-</InlineNotification>
 
 - Clone the repository to your machine
 
@@ -391,7 +386,21 @@ Transformation Advisor creates some accelerators to speed up the process of migr
 
 - From the main recommendations page, click the `...` link on the right for the `PlantsByWebSphere8.ear` and select View migration plan
 
-    ![pbw](images/ta-assets.jpg)
+- You will Navigate to the Migration Bundle Page of the Transformation Advisor
+
+![pbw](images/ta-migration-repo.png)
+
+- Select the Build type as binary
+
+- Ensure "Don't use" is selected for the "Use Accelerator for Teams Collection"
+
+- Select Manual upload for "application Dependencies"
+
+    - As per the application dependencies select the application binary and the db2 driver(db2jcc.jar) that we have downloaded earlier
+
+- The migration files section show the below bundle
+
+    ![pbw](images/ta-bindle.png)
 
     The migration plan shows the files that Transformation Advisor has generated:
     - **server.xml** - Transformation Advisor extracts most of the configuration from traditional WebSphere and generates a server.xml for Liberty to use
@@ -399,20 +408,18 @@ Transformation Advisor creates some accelerators to speed up the process of migr
     - **Operator resources** - Used in Red Hat OpenShift to deploy the application using the [Open Liberty operator](https://operatorhub.io/operator/open-liberty)
     - **pom.xml** - Used for Maven builds, particularly useful if the application does not already employ build scripts
 
-We will push the Transformation generated files along with the Application binary and Db2-jcc.jar file to the git repo. 
-- To do this, we will create a new repo in your public git hub for the migration files. Navigate to your gitrepo and create "ta-appmodern-migarate" repo with Something like  'https://github.com/{user}/ta-appmodern-migrate.git'
+- We will push the Transformation generated files along with the Application binary and Db2-jcc.jar file to the git repo. 
 
-- Select the Build type as binary
+- To do previous step, 
+    - First we will create a new repository in your public git hub. Let us name the repository as "ta-appmodern-migrate"
 
-- Ensure "Don't use" is selected for the "Use Accelerator for Teams Collection"
+    - Copy the Https Url of your repository,
+    'https://github.com/{username}/ta-appmodern-migrate.git'
 
-- Select Manual upload for "application Dependencies
+   - Use this git repository in your Transformation Migration 
+    
+   - Once this is done, select the "send to git option" in the "Migration Bundle Page" to push the migration files to your git repository
 
-    - As per the application dependencies select the application binary and the db2 driver(db2jcc.jar) that we have downloaded earlier
-
-- Once this is done, select the "send to git option" to your new repo you have created.
-
-![pbw](images/ta-migration-repo.png)
 
 - we need to edit the server.xml to change the database properties and the db2jcc_licence_cu.jar. so lets clone the git repo to the local system
 
@@ -519,9 +526,18 @@ Now that we are ready for the application deployment on the Openshift cluster, w
 
     ```bash
     oc new-app 'https://github.com/{repo}/ta-appmodern-migrate.git' --name=plantsbyliberty
+    .....
+    .....
+
+    --> Success
+        Build scheduled, use 'oc logs -f bc/plantsbyliberty' to track it progress
+        Application is not exposed. You can expose services to the outside world by 
+    executing one or more of the commands below:
+          'oc expose svc/plantsbyliberty'
+        Run 'oc status' to view your app
     ```
 
-![pbw](images/S2Image.png)
+
 
 - Check the logs to track the build and deployment. This will take few minutes to deploy
     ```bash
@@ -535,7 +551,7 @@ Now that we are ready for the application deployment on the Openshift cluster, w
     oc status
     ```
 
-- If you need to redeploy the app after some changes, you can do this trigger manually as
+- If you need to redeploy the app after some changes, you can do this by manually triggering the below command
     ```bash
     oc start-build plantsbyliberty
     ```
