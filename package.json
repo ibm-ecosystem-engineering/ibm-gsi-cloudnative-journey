@@ -25,14 +25,14 @@
     "gatsby-theme-carbon": "^1.21.1",
     "gatsby-transformer-json": "^2.2.20",
     "lodash": "latest",
-    "node-sass": "^4.14.0",
+    "prismjs": "^1.20.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1"
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1",
+    "gh-pages": "^2.2.0",
     "prettier": "^1.19.1"
   }
 }

@@ -8,6 +8,8 @@
       path: /getting-started/checksetup
     - title: Developer Tools Setup
       path: /getting-started/devenvsetup
+    - title: Developer Tools CLI
+      path: /getting-started/cli
     - title: OpenShift Console
       path: /getting-started/console
 
