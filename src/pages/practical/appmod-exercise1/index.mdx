@@ -75,6 +75,23 @@ This exercise has the following steps:
 
 ### Scan the existing application
 
+<Tabs>
+<Tab label="Desktop/Laptop" open="true">  
+
+-  Ensure your laptop has necessary previlages and open internet connectivity, to set up the local docker environment inorder to setup the local WAS and DB2 server for deploying the local application.
+
+- You can then proceed on the below steps from scanning the location application using Data Collector tool of Transformation Advisore and further follow the steps to Analyze the Application and later deploy on the Open Shift cluster
+
+</Tab>
+<Tab label="Cloud Shell" open="true">
+
+- The first part of the exercise until "Analyze the scan results" will be a demo. 
+
+- The Scan results of the application and the application binaries are upload to the git and the same can be used for analysis the results using Transfromation advisor and later deploy them on the Open Shfit Cluster
+
+</Tab>
+</Tabs>
+
 Note: If you do not have Docker running on your laptop/desktop, you will not be able to preform this step. Read through it,
 but you will not be able to execute the steps until "Analyze the scan results"
 
@@ -116,7 +133,7 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     #java_opt=-Xmx2g
     ```
 - Review the `wsadmin.py` file
-    - Ensure that the `serverName` and `port` for the DataSources match the values of your DB2 database (above)
+    - Ensure that the `serverName` and `port` for the DataSources match the values of your DB2 database (above).
 
 - Build the Docker image
 
@@ -201,9 +218,8 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     ![apps](images/twas-pbw.jpg)
 
 #### Download Datacollector From Transformation Advisor
-- Access the Transformation Advisor Page to Download the data collector
+- Access the Transformation Advisor Page to Download the data collector. The TA access link can be referred as part of the Cloud Native Toolkit menu, in the open shift dashboard.
 
-    ![apps](images/OC-TA-Access.png)
 
 - Click on the "Add a new workspace (+) Button". The Enter the Name for the Workspace (Example: AppMod-{initials})
 
@@ -282,6 +298,25 @@ Now that you have validated that the PlantsByWebSphere application is running in
 
 ### Analyze the scan results
 
+<Tabs>
+<Tab label="Desktop/Laptop" open="true">  
+
+- You now have the Scan Results of the application for analyzing
+
+- The Application Binary (plantsbywebsphere8.ear) is present in the below location. You will need this uploading to the transformation advisor
+    ```binaries
+    cd icp-dev-workshop/lab4/CreatePreConfiguredtWASContainer/lab4/binary/application
+     ```
+
+- The DB2 libararies are present in the below location. You will upload the "db2jcc.jar" in the Transformation advisor and later push the "db2jcc_license_cu.jar" to your git repository (one you will be creating during this phase for the migration bundle)
+
+    ```binaries
+    cd icp-dev-workshop/lab4/CreatePreConfiguredtWASContainer/lab4/binary/lib
+    ```
+
+</Tab>
+<Tab label="Cloud Shell" open="true">
+
 - Download the Scan results, reference application binaries and libaries from the below repository
     ```
     git clone https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git
@@ -295,11 +330,15 @@ Now that you have validated that the PlantsByWebSphere application is running in
         b) db2jcc_license_cu.jar has to be separately uploaded to the repo that is created for migration in the coming below steps. This would be in newly created repo to the folder represented(src/main/liberty/lib/)
 
 
+</Tab>
+</Tabs>
+
+
+
 In this section, you will upload the results from the data collector to the Transformation Advisor UI and analyze the findings.
 
-- Access the Open Shift Cluster Dashboard to open the Transformation Advisor dashboard
+- Access the Open Shift Cluster Dashboard to open the Transformation Advisor dashboard which as part of the Cloud Native Toolkit menu.
 
-    ![apps](images/OC-TA-Access.png)
 
 - Now that namespace and collection are created, access the Workspace (AppMod-{initials}) and the Collection.
 
