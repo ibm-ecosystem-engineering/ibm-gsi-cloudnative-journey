@@ -39,7 +39,7 @@ it into your development cluster.
   <AnchorLink to="#3.-open-the-developer-dashboard">3. Open the Developer Dashboard</AnchorLink>
   <AnchorLink to="#4.-create-your-app-in-git">4. Create your app in Git</AnchorLink>
   <AnchorLink to="#5.-clone-your-code">5. Clone your code</AnchorLink>
-  <AnchorLink to="#6.-run-the-application-locally">6. Run the application locally</AnchorLink>
+  <AnchorLink to="#6.-run-the-application">6. Run the application</AnchorLink>
   <AnchorLink to="#7.-set-the-namespace-context">7. Set the namespace context</AnchorLink>
   <AnchorLink to="#8.-register-the-app-in-a-devops-pipeline">8. Register your pipeline</AnchorLink>
   <AnchorLink to="#9.-view-your-application-pipeline">9. View your application pipeline</AnchorLink>
@@ -81,19 +81,11 @@ it into your development cluster.
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
 section that allows you to select a set of preconfigured [<Globals name="templates" />](/codepatterns/overview) that make seeding your development project very easy.
 
-- If you are logged into the OpenShift console you can select the tools menu and select *Developer Dashboard**
+- If you are logged into the OpenShift console you can select the tools menu and select **Developer Dashboard**
 
 - If you are on a laptop/desktop Open a browser and make sure you are logged into [Github](https://github.com)
-- Open the dashboard by running the following command:
-
-    ```shell script
-    oc dashboard
-    ```
-
 
 ### 4. Create your app in Git
-
-
 
 - From the Developer Dashboard, click on **<Globals name="templates" />** tab
 
@@ -108,7 +100,7 @@ section that allows you to select a set of preconfigured [<Globals name="templat
 
     </InlineNotification>
 
-- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with.
+- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application select the **Typescript Microservice**. This works well in the Cloud Shell as well.
 
   Click on a <Globals name="template" /> **Tile** to create your app github repository from the
     template repository selected. You can also click on the **Git Icon** to browse the source template
@@ -133,10 +125,12 @@ process.
 
 - Next, clone it to your local machine.
 - Click on **Clone or download**
-- Copy the clone _SSH link_, and use the `git clone` command to clone it to your developer desktop machine.
+- Copy the clone _HTTPS link_, and use the `git clone` command to clone it to your terminal.
     ```shell script
-    git clone github.com/{gitorg}/stockbffnode.git
+    git clone https://github.com/gsi-ecosystem-demo/stockbffnode-mjp.git
     ```
+- You will be required to enter your **GitHub User ID** and use your **Git Hub Personal Access Token** as your password. This will complete the clone of your git repository.
+
 - Change into the cloned directory
     ```shell script
     cd stockbffnode
@@ -150,11 +144,30 @@ process.
     git commit -m "Update application name"
     git push
     ```
+- You will be required to enter your **GitHub User ID** and use your **Git Hub Personal Access Token** as your password. This will push your changes back to the repository.
+
 ## Running the Application
 
-### 6. Run the application locally
+### 6. Run the application
 
-Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally. You may be required to install a specific runtime like **Java**, **Node**, or **Python**.
+Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
+
+- For the inside the folder for the code cloned from GitHub, run the following command to install the Node.js dependencies.
+    ```
+    npm install
+    ```
+- Then you can run the app from inside your cloud shell.
+    ```
+    npm run start
+    ```
+- To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+- You can try out the sample API that is provided with this **Code Pattern**
+
+- You can now add new features and function from inside the Cloud Shell and experiment with your code before you push you changes back to git.
+
 
 ### 7. Set the namespace context
 
@@ -182,8 +195,6 @@ kubectl config set-context --current --namespace={DEV_NAMESPACE}
 Up to this point you have the code in a GitHub repository and have cloned it to you local development environment. You now need to register the repository with the continuous integration pipeline. The <Globals name="env" /> supports both [Tekton](/guides/continuous-integration-tekton) and [Jenkins](/guides/continuous-integration) for continuous
 integration.
 
-
-
 - Start the process to create a pipeline
 
     ```shell script
@@ -198,6 +209,7 @@ integration.
 
     </InlineNotification>
 
+- For the deployment of your first app with OpenShift select **Tekton** as the chosen CI engine.
 
 - The first time a pipeline is registered in the namespace, the CLI will ask for a username and
 **Personal Access Token** for the Git repository that will be stored in a secret named `git-credentials`. It will
@@ -209,13 +221,20 @@ also ask for the branch that should be used for the pipeline.
 
   **Branch**: Press enter for the default git branch or type in another branch you want to register
 
-- When registering a `Tekton` pipeline, you will also be prompted to select which pipeline you want to use for your
-application
+- When registering a `Tekton` pipeline, you will be prompted to select which pipeline you want to use for your application. If you selected Node based Code Pattern select the Node pipeline. If you selected Java select the Gradle pipeline.
+- For the first app select the `igc-nodejs-v1.x.0` version of the pipeline. This will use the Node based CI pipeline with Tekton.
+    ```
+    ? Select the Pipeline to use in the PipelineRun: (Use arrow keys)❯
+     igc-appmod-liberty-v1-2-0
+     igc-java-gradle-v1-2-0
+     igc-java-maven-v1-2-0
+     igc-nodejs-v1-2-0
+     Skip PipelineRun creation
+    ```
 
 - When registering a `Jenkins` pipeline, the CLI will also set up a webhook with the git host
 
-    **Note:** if the webhook registration step fails it is likely because the Git credentials are incorrect or do
-    not have enough permission in the repository
+    **Note:** if the webhook registration step fails it is likely because the Git credentials are incorrect or do not have enough permission in the repository
 
 - The pipeline will be registered in your development cluster.
 
@@ -347,10 +366,9 @@ below will walk through locating the installed application within the Web Consol
 
 <InlineNotification kind="success">
 
-**Success:** You should now have your application running inside your development cluster
+**Success:** You will now have your application running inside your development cluster and beig delivered using a Tekton based CI pipeline, this is beginning of the developer journey with IBM Cloud
 
 </InlineNotification>
 
 Having reached this point, we recommend you repeat the process a few more
- times using different **Code Pattern** templates and explore the environment
-  to get familiar with it.
+ times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
