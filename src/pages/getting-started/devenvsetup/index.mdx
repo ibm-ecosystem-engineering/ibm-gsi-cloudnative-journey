@@ -44,7 +44,7 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 - Invoke Cloud shell by clicking on the button at the top right hand corner of the browser window
     ![Invoke Cloud Shell](./images/invokecloudshell.png)
 
-- Install igc by running the following commands on the just newly opened terminal:
+- Install `igc` by running the following commands on the just newly opened terminal:
     ```bash
     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     export PATH=~/cloud-shell-commands:$PATH
@@ -54,7 +54,7 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 - Successful execution will look like this.
 
     ```bash
-    abalasu1@cloudshell:~/inventory-svc-ab$ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
     remote: Enumerating objects: 50, done.
     remote: Counting objects: 100% (50/50), done.
@@ -62,7 +62,7 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
     remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
         Unpacking objects: 100% (50/50), done.
     Checking connectivity... done.
-    abalasu1@cloudshell:~/inventory-svc-ab$ export PATH=~/cloud-shell-commands:$PATH
+    $ export PATH=~/cloud-shell-commands:$PATH
     abalasu1@cloudshell:~/inventory-svc-ab$ source ./cloud-shell-commands/install-igc
     npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
     /home/abalasu1/.npm/bin/kubectl-dashboard -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
@@ -84,11 +84,15 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 
     + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
     added 311 packages from 358 contributors in 50.079s
-    abalasu1@cloudshell:~/inventory-svc-ab$
+    $
+    ```
+- You can check the CLI tools were installed correctly by checking the version
+    ```
+    $ oc sync --version
+    0.5.3
     ```
 
 </Tab>
-
 
 <Tab label="Desktop/Laptop">
 
@@ -191,11 +195,9 @@ Ensure you provide details regarding username, Email, First name and Last name (
 
   ![CRW](./images/CRW_HomePage.png)
 
-
 - You can create the workspace by selecting one of the template stacks as shown in Step 4. Alternatively, navigate to the Workspace and click on the "Add Workspace" button.
 
   ![Adding Workspace](./images/AddWorkspace.png)
-
 
 - Provide the workspace as part of the Name field. Click on "Remove" button in the Projects section to remove the project template.
 Basically, we are going to create an empty project.
@@ -208,24 +210,22 @@ Basically, we are going to create an empty project.
 
   ![CRWWorkspace](./images/CRWScreen.png)
 
-
 - Go to "Terminal" menu and select "Open Terminal in specific container".
 
   ![Open Terminal](./images/OpeningTerminal.png)
 
-
 - Select the "Developer Container".
 
-- Install igc by running the following commands on the just newly opened terminal:
+- Install `igc` by running the following commands on the just newly opened terminal:
     ```bash
     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     export PATH=~/cloud-shell-commands:$PATH
     source ./cloud-shell-commands/install-igc
     ```
-    Successful installation will look something like this.
+- Successful installation will look something like this.
 
     ```bash
-    abalasu1:~/inventory-svc-ab$ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
     remote: Enumerating objects: 50, done.
     remote: Counting objects: 100% (50/50), done.
@@ -255,11 +255,15 @@ Basically, we are going to create an empty project.
 
     + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
     added 311 packages from 358 contributors in 50.079s
-    abalasu1:~/inventory-svc-ab$
+    $
+    ```
+- You can check the CLI tools were installed correctly by checking the version
+    ```
+    $ oc sync --version
+    0.5.3
     ```
 
 </Tab>
-
 
 </Tabs>
 
