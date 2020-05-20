@@ -48,7 +48,7 @@ The **LogDNA** service is already created, bound and configured to listen to log
 
 - Open up the **LogDNA** console and narrow the logs to just your app
 
-- Open the app into a browser: Run `igc ingress -n {your namespace}` and select your running app
+- Open the app into a browser: Run `oc endpoints -n {your namespace}` and select your running app
 - Switch to `HTTPS` and test the `/hello/{name}` API and pass in some data. You have introduced a `DEBUG` message and an `ERROR` into this API logic. Click the **Execute** button a few times to simulate some API calls.
 - Try the API with your own name, and you will see just the `DEBUG` message appearing
 - Try the API with `ERROR` as the name , and this will trigger the error code we put in the API service

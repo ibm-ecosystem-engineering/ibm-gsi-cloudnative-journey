@@ -49,7 +49,7 @@ Create the initial project and register it with a pipeline for automated builds.
 
 - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select igc-java-gradle-v1-2-0
   ```bash
-  abalasu1@cloudshell:~/inventory-svc-ab$ oc pipeline --tekton
+  $ oc pipeline --tekton
   Creating pipeline on openshift cluster in dev-ab namespace
   Getting git parameters
   Git credentials have already been stored for user: abalasu1
@@ -62,17 +62,17 @@ Create the initial project and register it with a pipeline for automated builds.
   Copying tasks from tools
   Copied Pipeline from tools/igc-java-gradle-v1-2-0 to dev-ab/inventory-svc-ab
   Creating PipelineRun for pipeline: inventory-svc-ab
-  abalasu1@cloudshell:~/inventory-svc-ab$   
+  $
   ```
 
 - [Open the pipeline](/getting-started/deploy-app#view-your-application-pipeline) to see it running
 
-- When the pipeline is completed, run `oc ingress -n dev-{your initials}`. You should see an entry
-for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are 
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
+for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are
 developing on code ready workspaces/cloud shell, copy the url and paste it in a new browser window.
 
 - Run the service locally
-   
+
     ```
     ./gradlew bootRun
     ```
@@ -99,7 +99,7 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 
 This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
-#### Create initial components 
+#### Create initial components
 
 Spring Boot uses annotations to configure the various components that will be injected into and
 used by the applications. A class with the `@SpringBootApplication` annotation is the starting
@@ -109,7 +109,7 @@ for components.
 
 We will start by creating the initial application component.
 
-- Create a class named `Application` in the `com.ibm.inventory_management.app` package. 
+- Create a class named `Application` in the `com.ibm.inventory_management.app` package.
 
 - Add the `@SpringBootApplication` and `@ComponentScan` annotation to the class. The `@ComponentScan`
 annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garage.*`, and `com.ibm.health`
@@ -176,7 +176,7 @@ git push
 
 In Spring Boot, the `@RestController` annotation tells the framework that the class provides a
 REST interface. Additional annotations like `@GetMapping` are used to provide the specific configuration
-for the REST service. 
+for the REST service.
 
 - Start the tests in tdd mode with `npm run tdd` (or `./gradlew test --continuous`)
 
@@ -416,7 +416,7 @@ public class StockItem implements Serializable {
     }
 }
 ```
-    
+
 ```java path=src/main/java/com/ibm/inventory_management/services/StockItemApi.java
 package com.ibm.inventory_management.services;
 
@@ -428,7 +428,7 @@ public interface StockItemApi {
     List<StockItem> listStockItems();
 }
 ```
-    
+
 ```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
 package com.ibm.inventory_management.controllers;
 
@@ -602,7 +602,7 @@ public class StockItemService implements StockItemApi {
 #### Verify the service locally and push the changes
 
 - Start the application
-    
+
     ```bash
     ./gradlew bootRun
     ```
@@ -621,6 +621,5 @@ git commit -m "Adds StockItem service implementation"
 git push
 ```
 
-- The pipeline should kick off and you will be able to see the running service by running `oc ingress -n dev-{initials}` and selecting the
-ingress of your service
+- The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the route of your service
 

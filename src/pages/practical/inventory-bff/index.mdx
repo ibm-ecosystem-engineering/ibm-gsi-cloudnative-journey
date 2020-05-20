@@ -35,18 +35,24 @@ To get the initial BFF project created and registered with a pipeline for automa
 
 - Run `npm install` to install all the package dependencies
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Go into the repository directory cloned and execute the following
 
     ```
-    oc pipeline -n dev-{your initials}
+    oc sync dev-{your initials} --dev
+    ```
+
+- Register the pipeline [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+
+    ```
+    oc pipeline --tekton
     ```
 
    replacing `{your initials}` with your actual initials
 
 - Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
 
-- When the pipeline is completed, run `oc ingress -n dev-{your initials}`. You should see an entry
-for the app we just pushed. Select the entry and hit `Enter` to launch the browser, if you are working 
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
+for the app we just pushed. Select the entry and hit `Enter` to launch the browser, if you are working
 on your desktop/laptop. Otherwise copy the url and paste it in a new browser tab.
 
 #### Build the controller for the REST interface
@@ -561,7 +567,7 @@ export class StockItemsService implements StockItemsApi {
 ```
 
 - Add `stock-item.service` to `index.ts` in the service directory
-- Add `StockItemsService` instead of `StockItemsMockService` in the following files `src/resolvers/stock-item.resolver.ts` , 
+- Add `StockItemsService` instead of `StockItemsMockService` in the following files `src/resolvers/stock-item.resolver.ts` ,
   `src/controllers/stock-items.controller.ts` and `test/controllers/stock-items.controller.spec.ts`
 
 
@@ -590,7 +596,7 @@ template file to use our new variable.
 
 - Add a new environment variable named `SERVICE_URL` to the list of existing environment variables in deployment.yaml.
 (`SERVICE_URL` is the name we gave the environment variable in our `stock-item-service.config` class as the first step in
-this section.) The value of this environment variable should come from the `connectsTo` value we defined. You can add 
+this section.) The value of this environment variable should come from the `connectsTo` value we defined. You can add
 `| quote` to wrap the value in quotes in case the value is not formatted correctly.
 
 ```yaml path=chart/base/templates/deployment.yaml
