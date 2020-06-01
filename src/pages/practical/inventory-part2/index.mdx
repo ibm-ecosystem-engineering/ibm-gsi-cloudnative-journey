@@ -46,25 +46,25 @@ Let's get started with using Argo CD.
     ```bash
     git checkout -b test
     ```
-  
+
 - Push the branch to the remote
     ```bash
     git push -u origin test
     ```
-  
-- Create the test namespace with the CLI by running `igc namespace test-{initials}`
+
+- Create the test namespace with the CLI by running `oc sync test-{initials} --dev`
 
 ### Register the GitOps repo in ArgoCD
 
 Now that the repository has been created, we need to tell ArgoCD where it is.
 
-- Get the ArgoCD login information from the `igc credentials` cli command
+- Get the ArgoCD login information from the `oc credentials` cli command
 
     <InlineNotification>
         Note: You need to be logged into the cluster on the command-line for the CLI to access the cluster information.
     </InlineNotification>
 
-- Log into ArgoCD (use `igc credentials` to obtain your credentials and login to argo)
+- Log into ArgoCD (use `oc credentials` to obtain your credentials and login to argo)
 
 - Click on the gear icon on the left menu to access the Settings options
 
@@ -77,7 +77,7 @@ for the GitOps repo you just created.
 
 ### Create a project in ArgoCD (Optional)
 
-In ArgoCD terms, each deployable component is an `Application` and applications are grouped into `Projects`. Projects are not 
+In ArgoCD terms, each deployable component is an `Application` and applications are grouped into `Projects`. Projects are not
 required for ArgoCD to be able to deploy applications but it helps to organize applications and provide some restrictions
 on what can be done for applications that make up a project.
 
@@ -98,17 +98,17 @@ To create a project, do the following:
     - `name` - the name for the project (provide `inventory-management)
     - `description` - a brief description of the project
     - `sources` - click `add source` and pick the Git repository from the list that was added previously
-    - `destinations` 
+    - `destinations`
         - Add `https://kubernetes.default.svc` for the cluster url and `test-{initials}` for the namespace
         - Add `https://kubernetes.default.svc` for the cluster url and `staging-{initials}` for the namespace
 
-    **Note:** Initially, the only cluster that is available is the one in which ArgoCD is - 
+    **Note:** Initially, the only cluster that is available is the one in which ArgoCD is -
     `https://kubernetes.default.svc`. By adding the two destinations we have allowed the project to be deployed
     to both the `test-{initials}` and `staging-{initials}` namespaces within the current cluster.
 
 ### Configure the GitOps repo for Inventory Management service
 
-- Copy the `app-artifactory` folder and give it a name that matches the Inventory Management service component 
+- Copy the `app-artifactory` folder and give it a name that matches the Inventory Management service component
 (e.g. `inventory-management-svc-{initials}`)
 
 - Update `inventory-management-svc-{initials}/Chart.yaml` and update the name to match the directory name
@@ -231,7 +231,7 @@ with git credentials very easy.
 personal access token, and the branch to put in the secret.
 
 ### What just happened?
-    
+
 - The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above, we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.) You can verify the secret was created by running:
     ```bash
     kubectl get secrets/gitops-cd-secret -n dev-{initials} -o yaml
@@ -265,7 +265,7 @@ file of the helm chart.
     kubectl get -n dev secrets | grep -E "binding.*appid"
     ```
 
-- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to 
+- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to
     set the value for the AppId binding secret from the previous step
     ```yaml path=/chart/template-node-react/values.yaml
     ...
@@ -284,7 +284,7 @@ file of the helm chart.
 
 ### AppId redirect url config
 
-- Get the ingress for the UI component by running `igc ingress -n dev-{initials}`.
+- Get the routes for the UI component by running `oc endpoints -n dev-{initials}`.
 
 - Open the IBM Cloud resource list - `https://cloud.ibm.com/resources`
 
@@ -296,7 +296,7 @@ file of the helm chart.
 the following form:
 
     `{ingress url}/appid_callback`
-    
+
     e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/appid_callback`
 
 ### Add users to AppId
@@ -485,7 +485,7 @@ build.gradle file
 apply from:   'gradle/build-cloudant.gradle'
 ```
 
-- Run `./gradlew init` to validate the changes and load the libraries 
+- Run `./gradlew init` to validate the changes and load the libraries
 
 #### Add configuration values
 
@@ -649,7 +649,7 @@ public class CloudantConfigFactory {
 
 #### Set up local development
 
-- Open the mappings.json file under src/main/resources and add a `DATABASE_NAME` value with the value 
+- Open the mappings.json file under src/main/resources and add a `DATABASE_NAME` value with the value
 `inventory-{namespace}` where `namespace` is the namespace where the pipeline is running (e.g. dev-{initials})
 
 ```json path=src/main/resources/mappings.json

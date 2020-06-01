@@ -58,7 +58,7 @@ You will approach creating the Micro App bottom up, this means you will start by
 
 ## Solution Links
 
-If you want to skip the guide and just get the components running, here are the solution Git Repositories. You can clone these and `igc pipeline` them to register them in the CI pipeline. The **README.md** may include additional setup for populating test data etc.
+If you want to skip the guide and just get the components running, here are the solution Git Repositories. You can clone these and `oc pipeline` them to register them in the CI pipeline. The **README.md** may include additional setup for populating test data etc.
 
 <AnchorLinks>
   <AnchorLink to="https://github.com/ibm-garage-cloud/inventory-management-ui">Inventory Management User Interface</AnchorLink>
@@ -88,16 +88,16 @@ Get the initial project created and register the pipeline for automated builds.
 - Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
-    igc pipeline -n dev-{your initials}
+    oc pipeline -n dev-{your initials}
     ```
 
    replacing `{your initials}` with your actual initials
 
-- Run `igc credentials` to get the credentials for the Jenkins instance.
+- Run `oc credentials` to get the credentials for the Jenkins instance.
 
 - Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
 
-- When the pipeline is completed, run `igc ingress -n dev-{your initials}`. You should see an entry
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
 for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
 
 - Run the service locally
@@ -105,17 +105,17 @@ for the app we just pushed. Select the entry and hit `Enter` to launch the brows
     ```
     npm start
     ```
-   
+
     OR
-   
+
     ```
     ./gradlew bootRun
     ```
-   
-- Open a browser to `http://localhost:9080/swagger-ui.html`. This will display the Swagger UI page
-that provides a user interface to exercise the APIs. 
 
-#### Create initial components 
+- Open a browser to `http://localhost:9080/swagger-ui.html`. This will display the Swagger UI page
+that provides a user interface to exercise the APIs.
+
+#### Create initial components
 
 SpringBoot uses annotations to configure the various components that will be injected into and
 used by the applications. A class with the `@SpringBootApplication` annotation is the starting
@@ -125,7 +125,7 @@ for components.
 
 We will start by creating the initial application component.
 
-- Create a class named `Application` in the `com.ibm.inventory_management.app` package. 
+- Create a class named `Application` in the `com.ibm.inventory_management.app` package.
 
 - Add the `@SpringBootApplication` and `@ComponentScan` annotation to the class. The `@ComponentScan`
 annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garage.*`, and `com.ibm.health`
@@ -189,7 +189,7 @@ git push
 
 In SpringBoot, the `@RestController` annotation tells the framework that the class provides a
 REST interface. Additional annotations like `@GetMapping` are used to provide the specific configuration
-for the REST service. 
+for the REST service.
 
 - Start the tests in tdd mode with `npm run tdd` (or `./gradlew test --continuous`)
 
@@ -317,7 +317,7 @@ public class StockItemController {
 npm start
 ```
 
-or 
+or
 
 ```bash
 ./gradlew bootRun
@@ -435,7 +435,7 @@ public class StockItem implements Serializable {
     }
 }
 ```
-    
+
 ```java path=src/main/java/com/ibm/inventory_management/services/StockItemApi.java
 package com.ibm.inventory_management.services;
 
@@ -447,7 +447,7 @@ public interface StockItemApi {
     List<StockItem> listStockItems();
 }
 ```
-    
+
 ```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
 package com.ibm.inventory_management.controllers;
 
@@ -625,9 +625,9 @@ public class StockItemService implements StockItemApi {
     ```bash
     npm start
     ```
-   
+
     or
-    
+
     ```bash
     ./gradlew bootRun
     ```
@@ -646,8 +646,7 @@ git commit -m "Adds StockItem service implementation
 git push
 ```
 
-- The pipeline should kick off and you will be able to see the running service by running `igc ingress -n dev-{initials}` and selecting the
-ingress of your service
+- The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the ingress/route of your service
 
 ### Inventory BFF
 
@@ -677,15 +676,15 @@ To get the initial BFF project created and registered with a pipeline for automa
 - Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
-    igc pipeline -n dev-{your initials}
+    oc sync dev-{your initials} --dev
+    oc pipeline
     ```
 
    replacing `{your initials}` with your actual initials
 
 - Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
 
-- When the pipeline is completed, run `igc ingress -n dev-{your initials}`. You should see an entry
-for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
 
 #### Build the controller for the REST interface
 
@@ -812,10 +811,10 @@ export abstract class StockItemsApi {
 ```
 
     **Why an abstract class and not an interface?**
-    
+
     Typescript introduces both abstract classes and interfaces. When Typescript gets transpiled into
     JavaScript, abstract classes are generated as classes but interfaces disappear since there isn't an equivalent type
-    in Javascript. As a result, they cannot be used as a binding type for the `typescript-ioc` framework. Fortunately, 
+    in Javascript. As a result, they cannot be used as a binding type for the `typescript-ioc` framework. Fortunately,
     abstract classes can be used ane they have the quirky behavior in Typescript allowing them to either be `extended`
     like a class or `implemented` like an interface.
 
@@ -1185,7 +1184,7 @@ export * from './stock-items.service';
 ```
 
 - Add a `serviceUrl` property to the values.yaml file of the helm chart. The value of the property should match the
-kubernetes service of the microservice (for starter kit projects the service name is the same as the name of the 
+kubernetes service of the microservice (for starter kit projects the service name is the same as the name of the
 application which is that same as the name of the repository)
 
 ```yaml path=chart/template-graphql-typescript/values.yaml
@@ -1202,7 +1201,7 @@ serviceUrl: "inventory-management-service-{your initials}:80"
 
 - Add a new environment variable named `SERVICE_URL` to the list of existing environment variables in deployment.yaml.
 (`SERVICE_URL` is the name we gave the environment variable in our `stock-item-service.config` class as the first step in
-this section.) The value of this environment variable should come from the `serviceUrl` value we defined. You can add 
+this section.) The value of this environment variable should come from the `serviceUrl` value we defined. You can add
 `| quote` to wrap the value in quotes in case the value is not formatted correctly.
 
 ```yaml path=chart/template-graphql-typescript/templates/deployment.yaml
@@ -1220,8 +1219,8 @@ this section.) The value of this environment variable should come from the `serv
     `deployment.yaml` is a templatized kubernetes yaml file that describes the deployment of our component.
     The deployment will create one or more pods based on the pod template defined in the deployment.
     Each pod that starts will have the envionment variables that we have defined in the `env` section
-    available for the container image to reference. 
-    
+    available for the container image to reference.
+
 - Commit and push the changes to git
 
 ```bash
@@ -1251,7 +1250,8 @@ each of these steps can be found in the [Deploying an App](/getting-started/depl
 - Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
-    igc pipeline -n dev-{your initials}
+    oc sync dev-{your intials} --dev
+    oc pipeline
     ```
 
    replacing `{your initials}` with your actual initials
@@ -1277,7 +1277,7 @@ npm run start:dev
 - Make a copy of the `TableList` pattern component from the `pattern-component` directory into the
 `components` folder. Rename the file and the class inside to `StockItemList`.
 
-    
+
 ```javascript path=client/src/components/StockItemList.jsx
 import React, { Component } from "react";
 import {
@@ -1352,7 +1352,7 @@ class UIShellBody extends Component {
 export default UIShellBody;
 ```
 
-- With the application running in the first terminal, open a second terminal in the repository directory 
+- With the application running in the first terminal, open a second terminal in the repository directory
 and push the changes we've made to the repository
 
 ```bash
@@ -1364,7 +1364,7 @@ git push
 
 - Return to the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
 
-- Refresh the browser from earlier (or follow the steps from before to use `igc ingress` to open the browser). The
+- Refresh the browser from earlier (or follow the steps from before to use `oc endpoints` to open the browser). The
 changes we just made should be reflected in the UI.
 
 #### Update StockItemList contents
@@ -1376,7 +1376,7 @@ the data for our application.
 
 - Update the `title` and `subtitle` with values for our Stock Items view.
 
-- Update the `columns` and `data` fields with the list of columns and sample data to match the UI. 
+- Update the `columns` and `data` fields with the list of columns and sample data to match the UI.
 Set the `formatters` to `{}` for now.
 
     The value in the `columns` array maps to one of the attributes in our data values
@@ -1521,7 +1521,7 @@ describe('App', () => {
   });
 });
 ```
-    
+
 ```javascript path=client/src/App.jsx
 import React, { Component } from "react";
 import UIShell from "./components/UIShell";
@@ -1635,7 +1635,7 @@ git push
 #### Add a service that calls the BFF
 
 Now that we have a mock service that injects data we can build an implementation of the service
-that calls our BFF. For the service we will use a package called `superagent` to make the calls 
+that calls our BFF. For the service we will use a package called `superagent` to make the calls
 to the BFF.
 
 - With npm, install the `superagent` and `@types/superagent` dependencies
