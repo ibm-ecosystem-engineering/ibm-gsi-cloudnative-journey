@@ -1,0 +1,225 @@
+---
+title: Application Modernization - Part 3 
+---
+
+import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+
+<PageDescription>
+
+## **Migrate Application to Liberty Container on IBM Cloud**
+
+</PageDescription>
+
+<InlineNotification kind="info">
+
+**Recap : ** 
+- As part of the Transformation Advisor : Part 2 - Analyse the scan results, we covered
+
+1. Uploading the scanned results to the Transformation Advisor 
+1. Transformation Advisor generates the recommendations and reports based on the scanned results
+1. Analyzed the Technology report, Inventory report and Analysis report of the existing application to see the fitment for migration.
+
+</InlineNotification>
+
+
+
+### Migrate to Liberty
+
+As part of this session, we will start with preparation stage of the existing application to container based stack on IBM Cloud using the Transformation advisor. As in the previous part, navigate to your workspace in the Transformation Advisor that is already created earlier.
+
+Transformation Advisor creates some accelerators to speed up the process of migrating an application. These files are a starting point for most modernization journeys and require modification. In this section, you will modify those files for PlantsByWebSphere.
+
+- From the main recommendations page, click the `...` link on the right for the `PlantsByWebSphere8.ear` and select View migration plan
+
+- You will Navigate to the Migration Bundle Page of the Transformation Advisor
+
+![pbw](images/ta-migration-repo.png)
+
+- Select the Build type as binary
+
+- Ensure "Don't use" is selected for the "Use Accelerator for Teams Collection"
+
+- Select Manual upload for "application Dependencies"
+
+    - As per the application dependencies select the application binary and the db2 driver(db2jcc.jar) that we have downloaded earlier
+
+- The migration files section show the below bundle
+
+    ![pbw](images/ta-bindle.png)
+
+    The migration plan shows the files that Transformation Advisor has generated:
+    - **server.xml** - Transformation Advisor extracts most of the configuration from traditional WebSphere and generates a server.xml for Liberty to use
+    - **Dockerfile** - Used to create the Docker image, which includes the application and configuration for Liberty
+    - **Operator resources** - Used in Red Hat OpenShift to deploy the application using the [Open Liberty operator](https://operatorhub.io/operator/open-liberty)
+    - **pom.xml** - Used for Maven builds, particularly useful if the application does not already employ build scripts
+
+- We will push the Transformation generated files along with the Application binary and Db2-jcc.jar file to the git repo. 
+
+- To do previous step, 
+    - First we will create a new repository in your public git hub. Let us name the repository as "ta-appmodern-migrate"
+
+    - Copy the Https Url of your repository,
+    'https://github.com/{username}/ta-appmodern-migrate.git'
+
+   - Use this git repository in your Transformation Migration 
+    
+   - Once this is done, select the "send to git option" in the "Migration Bundle Page" to push the migration files to your git repository
+
+
+- we need to edit the server.xml to change the database properties and the db2jcc_licence_cu.jar. so lets clone the git repo to the local system
+
+    ```bash
+    git clone 'https://github.com/{user}/ta-appmodern-migrate.git'
+    ```
+
+
+- Copy `db2jcc_licence_cu.jar` to the folder `src/main/liberty/binary/lib`  from you earlier download folder of the binaries.
+
+Ideally, Transformation Advisor could figure out enough from the original application so that the generated files contain exactly what's needed and we could use these files as-is. Unfortunately, there are some details Transformation Advisor cannot discern, so we'll need to add those into the files manually.
+
+- Edit the `server.xml` file using your favorite editor to make the following changes:
+
+    - Change the `jpa-2.1` feature to `jpa-2.0`
+
+    - Uncomment the `dataSources` and `jdbcDrivers`
+
+    - In the dataSources, for the jdbcDriverRefs `DB2_Universal_JDBC_Driver_Provider` and `DB2_Universal_JDBC_Driver_Provider_(XA)`, change the DB2 driver locations to be `${shared.config.dir}/lib/global/db2jcc.jar` and `${shared.config.dir}/lib/global/db2jcc_license_cu.jar`. (THERE ARE TWO SETS OF FILE NAMES THAT MUST BE CHANGED)
+
+    - In the `PlantsByWebSphereDataSourceNONJTA` datasource, in the `properties.db2.jcc` line, add `user="{to share}" password="{to share}" transactional="false"`
+
+    - In the `PlantsByWebSphereDataSource` datasource, in the `properties.db2.jcc` line, add `user="{to share}" password="{to share}" transactional="true"` (Database user name and password)
+
+    - Also to change the Database name and Host name
+
+    - Validate the application tag to be <application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
+
+    - Save your changes
+
+The modified `server.xml` should look like this:
+
+```
+<?xml version="1.0" encoding="UTF-8"?><!--Generated by IBM TransformationAdvisor
+Thu Nov 21 20:49:39 GMT 2019--><server>
+<!--These elements have been identified from this application's configuration.-->
+  <featureManager>
+    <feature>beanValidation-1.1</feature>
+    <feature>cdi-1.2</feature>
+    <feature>ejbLite-3.2</feature>
+    <feature>el-3.0</feature>
+    <feature>javaMail-1.5</feature>
+    <feature>jndi-1.0</feature>
+    <feature>jpa-2.0</feature>
+    <feature>jsf-2.2</feature>
+    <feature>jsp-2.3</feature>
+    <feature>servlet-3.1</feature>
+  </featureManager>
+  <!-- <variable name="DERBY_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/derby/lib"/> -->
+  <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+  <!-- <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value=""/> -->
+  <variable name="DERBY_JDBC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
+  <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value="${shared.config.dir}/lib/global"/>
+  <applicationManager autoExpand="true"/>
+  <!--These elements are from the profile level configuration. Not all of them may be necessary for your application.-->
+  <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSourceNONJTA" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider" jndiName="jdbc/PlantsByWebSphereDataSourceNONJTA">
+    <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="false" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+  </dataSource>
+  <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_(XA)" jndiName="jdbc/PlantsByWebSphereDataSource">
+    <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="true" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" name="PlantsByWebSphereDataSource" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="false" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+  </dataSource>
+  <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
+      <library>
+          <file name="/config/lib/db2jcc.jar"/>
+          <file name="/config/lib/db2jcc_license_cu.jar"/>
+      </library>
+  </jdbcDriver>
+  <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_(XA)" javax.sql.DataSource="com.ibm.db2.jcc.DB2XADataSource">
+      <library>
+          <file name="/config/lib/db2jcc.jar"/>
+          <file name="/config/lib/db2jcc_license_cu.jar"/>
+      </library>
+  </jdbcDriver>
+  <authData id="DefaultNode01/PlantsAuthAlias" password="???" user="db2inst1"/>
+  <application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
+</server>
+```
+
+- Push the change to Git (server.xml and db2jcc_license_cu.jar)
+    ```bash
+    git add .
+    git commit -m "Changes related to DB -server.xml and db2jcc_license_cu.jar"
+    git push
+    ```
+
+
+Now that we've configured Liberty and the application, let's deploy it on the Openshift.
+
+
+### Run the application on Liberty
+
+Now that we are ready for the application deployment on the Openshift cluster, we will here follow the S2I (Source to Image approach) for the build and deployment. Let us use the Cloud Shell for the same
+
+- Login to your OC cluster using the Copy Login Command from the browser
+    ```bash
+    oc login {Cluster info}
+    oc project dev-{initial} 
+    oc project -q  
+    ```
+
+- Let us use openshift S2I to build and deploy
+
+    ```bash
+    oc new-app 'https://github.com/{repo}/ta-appmodern-migrate.git' --name=plantsbyliberty
+    .....
+    .....
+
+    --> Success
+        Build scheduled, use 'oc logs -f bc/plantsbyliberty' to track it progress
+        Application is not exposed. You can expose services to the outside world by 
+    executing one or more of the commands below:
+          'oc expose svc/plantsbyliberty'
+        Run 'oc status' to view your app
+    ```
+
+
+
+- Check the logs to track the build and deployment. This will take few minutes to deploy
+    ```bash
+    oc logs -f bc/plantsbyliberty
+    ```
+
+    Once the deployment is completed, create the service for the application
+
+    ```bash
+    oc expose svc/plantsbyliberty
+    oc status
+    ```
+
+- If you need to redeploy the app after some changes, you can do this by manually triggering the below command
+    ```bash
+    oc start-build plantsbyliberty
+    ```
+
+
+- Now you can access the application by getting the hostname for the application by using get routes
+    ```bash
+    oc get routes | grep plantsbyliberty
+    ```
+
+  
+- Test the app
+
+    - Open browser to 'http://{host}/PlantsByWebSphere'
+
+    - You will be able to landup in the home page of the applicatio
+
+    ![PlantsByLiberty](images/twas-pbw.jpg)
+
+
+
+That's it. You now have this application running on Liberty in a Docker container which is sufficient for this exercise.
+
+## Summary
+
+You have now completed a simple Application Modernization exercises in multiple steps. This exercise demonstrated a simple runtime modernization scenario that can be moved to cloud without any code change to the application.
