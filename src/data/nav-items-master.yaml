@@ -56,3 +56,5 @@
       path: /codepatterns/overview
     - title: Code Pattern repositories
       path: /codepatterns/gitrepos
+    - title: Sandbox Runbook
+      path: /codepatterns/sandboxrunbook 
