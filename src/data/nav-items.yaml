@@ -78,8 +78,14 @@
       path: /practical/inventory-ui
     - title: Application Modernization
       path: /cp4apps/appmodern
-    - title: Transformation Advisor
-      path: /practical/appmod-exercise1/
+    - title: App Modernization - Part 1
+      path: /practical/appmod-exercise1-part1/
+    - title: App Modernization - Part 2
+      path: /practical/appmod-exercise1-part2/
+    - title: App Modernization - Part 3
+      path: /practical/appmod-exercise1-part3/
+
+
 
 - title: Developer Advanced
   pages:
@@ -105,3 +111,5 @@
       path: /codepatterns/overview
     - title: Code Pattern Repositories
       path: /codepatterns/gitrepos
+    - title: Sandbox Runbook
+      path: /codepatterns/sandboxrunbook
