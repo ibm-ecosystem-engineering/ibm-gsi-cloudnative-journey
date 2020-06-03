@@ -27,6 +27,29 @@
     - title: Continuous Delivery (CD)
       path: /concepts/continuous-delivery
 
+- title: Developer Foundation
+  pages:
+    - title: Kubernetes
+      path: /kubernetes/read
+    - title: K8s Overview
+      path: /kubernetes/
+    - title: K8s Core Concepts
+      path: /kubernetes/core-concepts/
+    - title: K8s Configuration
+      path: /kubernetes/configuration/
+    - title: K8s Multi-Container Pods
+      path: /kubernetes/multi-container-pods/
+    - title: K8s Observability
+      path: /kubernetes/observability/
+    - title: K8s Pod Design
+      path: /kubernetes/pod-design/
+    - title: K8s Services & Networking
+      path: /kubernetes/services-networking/
+    - title: K8s State Persistence
+      path: /kubernetes/state-persistence/
+    - title: K8s Troubleshoot
+      path: /kubernetes/troubleshooting/
+
 - title: Developer Intermediate
   pages:
     - title: Agenda
@@ -64,7 +87,10 @@
 
 
 
-
+- title: Developer Advanced
+  pages:
+    - title: Agenda
+      path: /enablement/developer-advanced
 
 - title: Useful Pre Learning
   pages:
