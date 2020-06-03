@@ -29,25 +29,27 @@
 
 - title: Developer Foundation
   pages:
-    - title: Kubernetes
+    - title: Openshift Overview
+      path: /concepts/openshift
+    - title: Kubernetes Overview
       path: /kubernetes/read
-    - title: K8s Overview
+    - title: Kubernetes Concepts
       path: /kubernetes/
-    - title: K8s Core Concepts
+    - title: Kubernetes Core Concepts
       path: /kubernetes/core-concepts/
-    - title: K8s Configuration
+    - title: Kubernetes Configuration
       path: /kubernetes/configuration/
-    - title: K8s Multi-Container Pods
+    - title: Multi-Container Pods
       path: /kubernetes/multi-container-pods/
-    - title: K8s Observability
+    - title: Observability
       path: /kubernetes/observability/
-    - title: K8s Pod Design
+    - title: Pod Design
       path: /kubernetes/pod-design/
-    - title: K8s Services & Networking
+    - title: Services & Networking
       path: /kubernetes/services-networking/
-    - title: K8s State Persistence
+    - title: State Persistence
       path: /kubernetes/state-persistence/
-    - title: K8s Troubleshoot
+    - title: Troubleshoot
       path: /kubernetes/troubleshooting/
 
 - title: Developer Intermediate
@@ -90,7 +92,7 @@
 - title: Developer Advanced
   pages:
     - title: Agenda
-      path: /enablement/developer-advanced
+      path: /enablement/developer-advanced/agenda
 
 - title: Useful Pre Learning
   pages:
