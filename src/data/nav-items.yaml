@@ -29,15 +29,15 @@
 
 - title: Developer Foundation
   pages:
-    - title: Openshift Overview
-      path: /concepts/openshift
+    - title: Agenda
+      path: /enablement/developer-foundation
     - title: Kubernetes Overview
       path: /kubernetes/read
-    - title: Kubernetes Concepts
-      path: /kubernetes/
-    - title: Kubernetes Core Concepts
+    - title: Openshift Overview
+      path: /concepts/openshift
+    - title: Core Concepts
       path: /kubernetes/core-concepts/
-    - title: Kubernetes Configuration
+    - title: Configuration
       path: /kubernetes/configuration/
     - title: Multi-Container Pods
       path: /kubernetes/multi-container-pods/
@@ -70,7 +70,7 @@
       path: /practical/monitoring
     - title: Log Management
       path: /practical/log-management
-    - title: Inventory Appplication
+    - title: Inventory Application
       path: /practical/inventory-app
     - title: Inventory Service
       path: /practical/inventory-svc
@@ -80,11 +80,11 @@
       path: /practical/inventory-ui
     - title: Application Modernization
       path: /cp4apps/appmodern
-    - title: App Modernization - Part 1
+    - title: Scan Legacy Application
       path: /practical/appmod-exercise1-part1/
-    - title: App Modernization - Part 2
+    - title: Analyze with TA
       path: /practical/appmod-exercise1-part2/
-    - title: App Modernization - Part 3
+    - title: Migrate to Openshift
       path: /practical/appmod-exercise1-part3/
 
 
