@@ -113,5 +113,5 @@
       path: /codepatterns/overview
     - title: Code Pattern Repositories
       path: /codepatterns/gitrepos
-    - title: Sandbox Runbook
-      path: /codepatterns/sandboxrunbook
+    - title: Workshop Runbook
+      path: /codepatterns/workshoprunbook
