@@ -92,11 +92,7 @@
 - title: Developer Advanced
   pages:
     - title: Agenda
-      path: /enablement/developer-advanced/agenda
-    - title: Artifactory Setup
-      path: /admin/artifactory-setup
-    - title: ArgoCD Setup
-      path: /admin/argocd-setup
+      path: /enablement/developer-advanced
     - title: CD with ArgoCD
       path: /guides/continuous-delivery
 
