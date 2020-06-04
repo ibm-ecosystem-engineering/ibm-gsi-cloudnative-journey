@@ -30,7 +30,7 @@
 - title: Developer Foundation
   pages:
     - title: Agenda
-      path: /enablement/developer-intermediate
+      path: /enablement/developer-foundation
     - title: Kubernetes Overview
       path: /kubernetes/read
     - title: Openshift Overview
