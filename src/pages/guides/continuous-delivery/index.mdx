@@ -67,7 +67,7 @@ Argo CD synchronizes the application state with the desired state defined in Git
 
 ## Configuring GitOps with Argo CD
 
-You must have completed the [Argo CD Setup](/getting-started/argocd-setup) before continuing.
+You must have completed the [Argo CD Setup](/admin/artifactory-setup) before continuing.
 
 **Terminology:**
 
@@ -83,7 +83,7 @@ Argo CD uses a number of terms to refer to the components
 
 Argo CD uses a Git repo to express the desired state of the Kubernetes environment. The basic setup uses one repository to represent one [*project*](https://argoproj.github.io/argo-cd/user-guide/projects/). Within that repository, each [*application*](https://argoproj.github.io/argo-cd/operator-manual/declarative-setup/#applications) that makes up the project will be described in its own folder. The repository will also contain a branch for each destination (i.e. cluster and namespace) into which we want to deploy the applications.
 
-1. Create a new repo from the [Argo CD <Globals name="template" />](https://github.com/ibm-garage-cloud/template-argocd-test/generate)
+1. Create a new repo from the [Argo CD <Globals name="template" />](https://github.com/IBM/template-argocd-gitops/generate)
 
 1. Clone the project to your machine
 
@@ -212,7 +212,7 @@ Create the `gitops-cd-secret`:
 
 1. Change the directory to the root of the Argo CD <Globals name="template" /> repo that was cloned previously.
 
-1. Run `igc git-secret gitops-cd-secret -n dev-{initials}` to create the secret. This command will prompt for the username, personal access token, and the branch to put in the secret.
+1. Run `igc git-secret gitops-repo -n dev-{initials}` to create the secret. This command will prompt for the username, personal access token, and the branch to put in the secret.
 
 #### What just happened?
 
