@@ -93,8 +93,12 @@
   pages:
     - title: Agenda
       path: /enablement/developer-advanced
-    - title: CD with ArgoCD
-      path: /guides/continuous-delivery
+    - title: Continous Delivery Overivew
+      path: /guides/gitops/read
+    - title: GitOps & ArgoCD Overview
+      path: /guides/gitops
+    - title: CD For Inventory Micro App
+      path: /practical/inventory-part2
 
 - title: Useful Pre Learning
   pages:
