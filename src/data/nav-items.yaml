@@ -119,6 +119,8 @@
       path: /codepatterns/overview
     - title: Code Pattern Repositories
       path: /codepatterns/gitrepos
+    - title: Frequently Asked Questions
+      path: /faqs 
 
 - title: Logistics
   pages:      
