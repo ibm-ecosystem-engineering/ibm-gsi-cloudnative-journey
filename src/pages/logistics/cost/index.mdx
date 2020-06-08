@@ -1,0 +1,24 @@
+---
+title: Cost
+---
+
+### Cost of conducting a developer-intermediate journey 
+
+#### Number of Developers:	      200
+#### Total Cost for 3 months($):  8652.36
+#### Cost Per Developer($):   	  43.2618
+#### Cost per Developer/Month($): 14.4206
+####
+
+| Component               | Description           | Monthly Cost($) | Total Cost($) | Remarks          |
+| ------------------------| ----------------------|:----------------|---------------|------------------|
+|VPC|VPC with subnet, floating IP, connection to classic| 1 | 3 | |
+|Openshift|3 worker nodes, 16x32 worker node config| 2116.8 | 6350.4 |Single zone, VPC clutser, OCP entitlements excluded with cloud pak entitlements|
+|Openshift|2 additional worker nodes during workshop| 210.96 | 210.96 |Scale up during workshop for 3 days|
+|Sysdig|Sysdig Monitoring (Assuming 300 containers, 1M API Calls, 1k time series calls per host)| 180 | 540 | |
+|LogDNA|LogDNA, 7 Day Log Search (Assuming 300 GB/Month)| 300 | 900 | |
+|Container Registry|Standard (Assuming 200 GB pull traffic, 250 GB Storage)| 28 | 84 | |
+|Db2 Service|Flex Plan (Assuming 1 instance, 4GB RAM and 2 GB Storage, More than 5 Concurrent Users)| 189 | 564 |Database Service for the Application Modernization|
+|Cloud Pak for Applications|Entitlement from passport advantage| 0 | 0 | |
+|Slack|Channel for communication during workshop| 0 | 0 | |
+|Github|Free Tier| 0 | 0 | |
