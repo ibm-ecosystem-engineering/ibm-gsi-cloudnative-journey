@@ -99,6 +99,10 @@
       path: /guides/gitops
     - title: CD For Inventory App
       path: /practical/inventory-cd
+    - title: Inventory App Part2
+      path: /practical/inventory-part2
+    - title: Cloudant Integration
+      path: /practical/cloudantintegration
 
 - title: Useful Pre Learning
   pages:
