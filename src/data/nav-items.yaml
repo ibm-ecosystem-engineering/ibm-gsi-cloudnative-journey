@@ -29,25 +29,27 @@
 
 - title: Developer Foundation
   pages:
-    - title: Kubernetes
+    - title: Agenda
+      path: /enablement/developer-foundation
+    - title: Kubernetes Overview
       path: /kubernetes/read
-    - title: K8s Overview
-      path: /kubernetes/
-    - title: K8s Core Concepts
+    - title: Openshift Overview
+      path: /concepts/openshift
+    - title: Core Concepts
       path: /kubernetes/core-concepts/
-    - title: K8s Configuration
+    - title: Configuration
       path: /kubernetes/configuration/
-    - title: K8s Multi-Container Pods
+    - title: Multi-Container Pods
       path: /kubernetes/multi-container-pods/
-    - title: K8s Observability
+    - title: Observability
       path: /kubernetes/observability/
-    - title: K8s Pod Design
+    - title: Pod Design
       path: /kubernetes/pod-design/
-    - title: K8s Services & Networking
+    - title: Services & Networking
       path: /kubernetes/services-networking/
-    - title: K8s State Persistence
+    - title: State Persistence
       path: /kubernetes/state-persistence/
-    - title: K8s Troubleshoot
+    - title: Troubleshoot
       path: /kubernetes/troubleshooting/
 
 - title: Developer Intermediate
@@ -68,7 +70,7 @@
       path: /practical/monitoring
     - title: Log Management
       path: /practical/log-management
-    - title: Inventory Appplication
+    - title: Inventory Application
       path: /practical/inventory-app
     - title: Inventory Service
       path: /practical/inventory-svc
@@ -78,11 +80,11 @@
       path: /practical/inventory-ui
     - title: Application Modernization
       path: /cp4apps/appmodern
-    - title: App Modernization - Part 1
+    - title: Scan Legacy Application
       path: /practical/appmod-exercise1-part1/
-    - title: App Modernization - Part 2
+    - title: Analyze with TA
       path: /practical/appmod-exercise1-part2/
-    - title: App Modernization - Part 3
+    - title: Migrate to Openshift
       path: /practical/appmod-exercise1-part3/
 
 
@@ -91,6 +93,12 @@
   pages:
     - title: Agenda
       path: /enablement/developer-advanced
+    - title: Continous Delivery Overivew
+      path: /guides/gitops/read
+    - title: GitOps & ArgoCD Overview
+      path: /guides/gitops
+    - title: CD For Inventory App
+      path: /practical/inventory-cd
 
 - title: Useful Pre Learning
   pages:
@@ -111,5 +119,12 @@
       path: /codepatterns/overview
     - title: Code Pattern Repositories
       path: /codepatterns/gitrepos
-    - title: Workshop Runbook
-      path: /codepatterns/workshoprunbook
+    - title: Frequently Asked Questions
+      path: /faqs 
+
+- title: Logistics
+  pages:      
+    - title: Runbook
+      path: /logistics/runbook
+    - title: Cost
+      path: /logistics/cost      
