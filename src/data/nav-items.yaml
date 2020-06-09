@@ -97,8 +97,8 @@
       path: /guides/gitops/read
     - title: GitOps & ArgoCD Overview
       path: /guides/gitops
-    - title: CD For Inventory Micro App
-      path: /practical/inventory-part2
+    - title: CD For Inventory App
+      path: /practical/inventory-cd
 
 - title: Useful Pre Learning
   pages:
