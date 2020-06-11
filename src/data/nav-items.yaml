@@ -93,7 +93,7 @@
   pages:
     - title: Agenda
       path: /enablement/developer-advanced
-    - title: Continous Delivery Overivew
+    - title: Continous Delivery Overview
       path: /guides/gitops/read
     - title: GitOps & ArgoCD Overview
       path: /guides/gitops
