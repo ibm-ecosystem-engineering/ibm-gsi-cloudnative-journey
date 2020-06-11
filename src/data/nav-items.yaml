@@ -95,6 +95,8 @@
       path: /enablement/developer-advanced
     - title: CD with ArgoCD
       path: /guides/continuous-delivery
+    - title: AppID For Inventory Micro App 
+      path: /practical/inventorymicroapp-appid/
 
 - title: Useful Pre Learning
   pages:
