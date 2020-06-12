@@ -103,6 +103,8 @@
       path: /practical/inventory-part2
     - title: Cloudant Integration
       path: /practical/cloudantintegration
+    - title: AppID For Inventory App 
+      path: /practical/inventorymicroapp-appid/
 
 - title: Useful Pre Learning
   pages:
