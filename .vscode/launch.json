@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "type": "node",
+            "name": "Debug hello-world",
+            "request": "attach",
+            "address": "127.0.0.1",
+            "localRoot": "/Users/admin/codewind-workspace/hello-world",
+            "remoteRoot": "/project/user-app",
+            "restart": true
+        },
+        {
+            "type": "java",
+            "name": "Debug spring-boot-hw",
+            "request": "attach",
+            "hostName": "127.0.0.1",
+            "projectName": "spring-boot-hw"
+        }
+    ]
+}

@@ -1,12 +1,14 @@
 ---
-title: AppID For Inventory App
+title: App ID Integration
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
+<PageDescription>
 
+Securing Inventory App with App ID
 
-## Securing the solution with **App ID**
+</PageDescription>
 
 To secure the application we are using the capabilities available within the IBMCloud platform that use
 a simple annotation on the ingress to enable integration with AppId. The <Globals name="templates" /> have already been
@@ -20,7 +22,7 @@ file of the helm chart.
     kubectl get -n dev secrets | grep -E "binding.*appid"
     ```
 
-- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to
+- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to 
     set the value for the AppId binding secret from the previous step
     ```yaml path=/chart/template-node-react/values.yaml
     ...
@@ -39,7 +41,7 @@ file of the helm chart.
 
 ### AppId redirect url config
 
-- Get the routes for the UI component by running `oc endpoints -n dev-{initials}`.
+- Get the ingress for the UI component by running `igc ingress -n dev-{initials}`.
 
 - Open the IBM Cloud resource list - `https://cloud.ibm.com/resources`
 
@@ -51,7 +53,7 @@ file of the helm chart.
 the following form:
 
     `{ingress url}/appid_callback`
-
+    
     e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/appid_callback`
 
 ### Add users to AppId
@@ -69,7 +71,3 @@ the following form:
 - You should be met with the AppId login screen. (This screen can be customized from the AppId service console but for now we are showing the default screen.)
 
 - Provide the email address and password you configured in the previous steps. You should be granted access to the UI.
-
-
-
-
