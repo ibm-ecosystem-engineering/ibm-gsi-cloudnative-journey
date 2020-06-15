@@ -16,7 +16,7 @@
 - title: Developer Foundation
   pages:
     - title: Agenda
-      path: /enablement/developer-foundation
+      path: /developer-foundation
     - title: What is Cloud Native?
       path: /concepts/cloud-native-overview
     - title: Cloud Native App Dev
@@ -28,25 +28,25 @@
     - title: Containers Overview
       path: /concepts/containers      
     - title: Kubernetes Overview
-      path: /kubernetes/read
+      path: /developer-foundation/k8s-overview/read
     - title: Openshift Overview
       path: /concepts/openshift
     - title: Core Concepts
-      path: /kubernetes/core-concepts/
+      path: /developer-foundation/k8s-core-concepts/
     - title: Configuration
-      path: /kubernetes/configuration/
+      path: /developer-foundation/k8s-configuration/
     - title: Multi-Container Pods
-      path: /kubernetes/multi-container-pods/
+      path: /developer-foundation/k8s-multi-container-pods/
     - title: Observability
-      path: /kubernetes/observability/
+      path: /developer-foundation/k8s-observability/
     - title: Pod Design
-      path: /kubernetes/pod-design/
+      path: /developer-foundation/k8s-pod-design/
     - title: Services & Networking
-      path: /kubernetes/services-networking/
+      path: /developer-foundation/k8s-services-networking/
     - title: State Persistence
-      path: /kubernetes/state-persistence/
+      path: /developer-foundation/k8s-state-persistence/
     - title: Troubleshoot
-      path: /kubernetes/troubleshooting/
+      path: /developer-foundation/k8s-troubleshooting/
     - title: Garage Method
       path: /activation/garage-development      
 
@@ -88,33 +88,26 @@
 - title: Developer Advanced
   pages:
     - title: Agenda
-      path: /enablement/developer-advanced
+      path: /developer-advanced
     - title: Continuous Delivery
       path: /guides/continuous-delivery
     - title: GitOps & ArgoCD
       path: /guides/gitops
     - title: CD for Inventory App
-      path: /practical/inventory-cd
+      path: /developer-advanced/inventory-cd
     - title: Cloudant Integration
-      path: /practical/inventory-cloudant
+      path: /developer-advanced/inventory-cloudant
     - title: AppID Integration 
-      path: /practical/inventory-appid/
-
-- title: Useful Pre Learning
-  pages:
-    - title: Overview
-      path: /activation/overview
-    - title: Cloud Native Deployment
-      path: /activation/cloudnative-deployment
+      path: /developer-advanced/inventory-appid/
 
 - title: Resources
   pages:
     - title: Code Patterns Overview
-      path: /codepatterns/overview
+      path: /resources/codepatterns-overview
     - title: Code Pattern Repositories
-      path: /codepatterns/gitrepos
+      path: /resources/codepatterns-gitrepos
     - title: Frequently Asked Questions
-      path: /faqs 
+      path: /resources/faqs
 
 - title: Logistics
   pages:      
