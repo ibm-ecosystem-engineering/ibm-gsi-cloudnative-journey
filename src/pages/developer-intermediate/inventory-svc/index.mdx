@@ -39,7 +39,7 @@ Create the initial project and register it with a pipeline for automated builds.
     oc sync dev-{your initials} --dev
     ```
 
-- Register the pipeline [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
@@ -65,7 +65,7 @@ Create the initial project and register it with a pipeline for automated builds.
   $
   ```
 
-- [Open the pipeline](/getting-started/deploy-app#view-your-application-pipeline) to see it running
+- [Open the pipeline](/developer-intermediate/deploy-app#view-your-application-pipeline) to see it running
 
 - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
 for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are
