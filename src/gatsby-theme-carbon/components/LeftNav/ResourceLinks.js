@@ -16,10 +16,6 @@ const links = [
     href: 'https://www.ibm.com/partnerworld/public',
   },  
   {
-    title: 'IBM Cloud Native',
-    href: 'https://ibm-cloud-architecture.github.io/deliverables/cloud-native.html',
-  },  
-  {
     title: 'IBM Garage Method',
     href: 'https://www.ibm.com/garage/method',
   },

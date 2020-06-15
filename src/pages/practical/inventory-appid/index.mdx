@@ -1,0 +1,73 @@
+---
+title: App ID Integration
+---
+
+import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+
+<PageDescription>
+
+Securing Inventory App with App ID
+
+</PageDescription>
+
+To secure the application we are using the capabilities available within the IBMCloud platform that use
+a simple annotation on the ingress to enable integration with AppId. The <Globals name="templates" /> have already been
+set up to use this feature and all that is required is update the configuration within the `values.yaml`
+file of the helm chart.
+
+### Inventory Management UI
+
+- Find the app id binding secret by running the following command from a terminal where the kubernetes context has been set up (i.e. `oc login` has been done)
+    ```bash
+    kubectl get -n dev secrets | grep -E "binding.*appid"
+    ```
+
+- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to 
+    set the value for the AppId binding secret from the previous step
+    ```yaml path=/chart/template-node-react/values.yaml
+    ...
+
+    ingress:
+      enabled: true
+      appid:
+        enabled: true
+        # web or app - https://cloud.ibm.com/docs/services/appid?topic=appid-kube-auth
+        requestType: web
+        binding:
+          name: "{binding secret}"
+          namespace: dev
+        ...
+    ```
+
+### AppId redirect url config
+
+- Get the ingress for the UI component by running `igc ingress -n dev-{initials}`.
+
+- Open the IBM Cloud resource list - `https://cloud.ibm.com/resources`
+
+- Open the AppId instance to the `Manage Authentication` -> `Authentication Settings` view
+
+    ![AppId authentication settings](images/appid-authentication-settings.png)
+
+- Add the redirect url for the application to the web redirect URLs. The redirect url will have
+the following form:
+
+    `{ingress url}/appid_callback`
+    
+    e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/appid_callback`
+
+### Add users to AppId
+
+- Open the AppId instance to `Cloud Directory` -> `Users`
+
+    ![AppId cloud directory users](images/appid-cloud-directory-users.png)
+
+- Add yourself as a user with an email address, name, and password
+
+### Access the UI
+
+- Open a browser to the UI ingress
+
+- You should be met with the AppId login screen. (This screen can be customized from the AppId service console but for now we are showing the default screen.)
+
+- Provide the email address and password you configured in the previous steps. You should be granted access to the UI.
