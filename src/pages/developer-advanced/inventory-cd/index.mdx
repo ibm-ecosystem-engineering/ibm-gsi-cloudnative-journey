@@ -121,8 +121,9 @@ To create a project, do the following:
       repository: http://artifactory.mooc-one-rhos-cluster.us-east.containers.appdomain.cloud/artifactory/generic-local/mooc-team-one/
     ```
 
-    - The url of the Artifactory helm repository can be determines by following the steps described in
-    [Administrator Guide - ArgoCD setup](/admin/argocd-setup/#get-the-helm-repository-location)
+- The url of the Artifactory helm repository can be taken from the ArgoCD Setup. 
+
+     ![ArtifactoryURLSetup config](/images/artifactoryurlsetup.png)
 
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
 for the cluster
