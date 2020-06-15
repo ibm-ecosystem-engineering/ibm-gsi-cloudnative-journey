@@ -41,7 +41,7 @@ To get the initial BFF project created and registered with a pipeline for automa
     oc sync dev-{your initials} --dev
     ```
 
-- Register the pipeline [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
@@ -49,7 +49,7 @@ To get the initial BFF project created and registered with a pipeline for automa
 
    replacing `{your initials}` with your actual initials
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
 for the app we just pushed. Select the entry and hit `Enter` to launch the browser, if you are working
@@ -142,7 +142,7 @@ git commit -m "Adds stock items controller"
 git push
 ```
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 #### Update the controller to call a service
 
@@ -370,7 +370,7 @@ git commit -m "Adds a mock service implementation"
 git push
 ```
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
 
 #### Add a GraphQL implementation of Stock Items
 
@@ -466,7 +466,7 @@ git commit -m "Adds a graphql interface"
 git push
 ```
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
 
 #### Create a service implementation that calls the microservice
 
@@ -626,5 +626,5 @@ git commit -m "Adds service implementation"
 git push
 ```
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
 

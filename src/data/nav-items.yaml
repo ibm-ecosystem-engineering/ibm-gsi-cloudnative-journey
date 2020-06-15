@@ -1,7 +1,7 @@
 - title: Introduction
   pages:
     - title: Overview
-      path: /overview/introduction
+      path: /getting-started/introduction
     - title: Prerequisites
       path: /getting-started/prereqs
     - title: Validate Sandbox
@@ -60,27 +60,27 @@
     - title: Agenda
       path: /developer-intermediate
     - title: DevSecOps Overview
-      path: /overview/content-overview
+      path: /developer-intermediate/content-overview
     - title: Deploy First App
-      path: /getting-started/deploy-app
+      path: /developer-intermediate/deploy-app
     - title: Code Analysis
-      path: /practical/code-analysis
+      path: /developer-intermediate/code-analysis
     - title: Image Registry
-      path: /practical/image-registry
+      path: /developer-intermediate/image-registry
     - title: Artifact Management
-      path: /practical/artifact-management
+      path: /developer-intermediate/artifact-management
     - title: Monitoring
-      path: /practical/monitoring
+      path: /developer-intermediate/monitoring
     - title: Log Management
-      path: /practical/log-management
+      path: /developer-intermediate/log-management
     - title: Inventory Application
-      path: /practical/inventory-app
+      path: /developer-intermediate/inventory-app
     - title: Inventory Service
-      path: /practical/inventory-svc
+      path: /developer-intermediate/inventory-svc
     - title: Inventory BFF
-      path: /practical/inventory-bff
+      path: /developer-intermediate/inventory-bff
     - title: Inventory UI
-      path: /practical/inventory-ui
+      path: /developer-intermediate/inventory-ui
     - title: Application Modernization
       path: /developer-intermediate/appmodern
     - title: Scan Legacy Application
