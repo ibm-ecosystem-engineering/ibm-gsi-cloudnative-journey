@@ -34,10 +34,10 @@ Note that you do not need a very large team to start reaping benefits from an ar
 ## Artifact management in the Pipeline
 
 The <Globals name="env" /> will eventually be extended to store a number of artifact types in Artifactory. Thus far, the CI and CD pipelines exchange two types of artifacts: Docker images and Helm charts. The CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) builds these artifacts and ArgoCD deploys them. To store and share the artifacts, the pipeline uses two repositories:
-- **Docker images**: The [Developer Tools Image Registry](/practical/image-registry)
+- **Docker images**: The [Developer Tools Image Registry](/developer-intermediate/image-registry)
 - **Helm charts**: A Helm repository in Artifactory
 
-The [<Globals name="templates" />](/codepatterns/overview) have also been configured to store their Helm charts in Artificatory.
+The [<Globals name="templates" />](/resources/codepatterns-overview) have also been configured to store their Helm charts in Artificatory.
 
 Artifactory is part of the <Globals name="env" />'s complete CI/CD solution:
 

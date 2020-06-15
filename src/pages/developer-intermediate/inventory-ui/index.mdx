@@ -13,7 +13,7 @@ Develop and deploy the UI component of the inventory application
 #### Setup
 
 Get the initial project created and register the pipeline for automated builds. Detailed instructions for
-each of these steps can be found in the [Deploying an App](/getting-started/deploy-app) guide.
+each of these steps can be found in the [Deploying an App](/developer-intermediate/deploy-app) guide.
 
 - Create a new repository from the React UI Patterns <Globals name="template" /> into your Git org - https://github.com/IBM/template-node-react/generate
 
@@ -29,7 +29,7 @@ each of these steps can be found in the [Deploying an App](/getting-started/depl
     ```
     oc sync dev-{your initials} --dev
     ```
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
@@ -37,7 +37,7 @@ each of these steps can be found in the [Deploying an App](/getting-started/depl
 
    replacing `{your initials}` with your actual initials
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
 
 #### Create the initial components
 
@@ -144,7 +144,7 @@ git push
 ```
 
 
-- Return to the [pipeline to see it running](/getting-started/deploy-app#view-your-application-pipeline)
+- Return to the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
 
 - Refresh the browser from earlier (or follow the steps from before to use `oc endpoints` to open the browser). The changes we just made should be reflected in the UI.
 

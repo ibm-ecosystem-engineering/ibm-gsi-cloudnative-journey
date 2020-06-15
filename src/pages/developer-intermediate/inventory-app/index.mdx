@@ -73,7 +73,7 @@ named `inventory-management-svc-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
     
     ```
     oc pipeline -n dev-{your initials}
@@ -82,7 +82,7 @@ named `inventory-management-svc-{initials}`
 
 - Run `oc credentials` to get the credentials for the Jenkins instance.
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 ### Inventory BFF
 
@@ -91,7 +91,7 @@ named `inventory-management-bff-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
     
     ```
     oc pipeline -n dev-{your initials}
@@ -100,7 +100,7 @@ named `inventory-management-bff-{initials}`
 
 - Run `oc credentials` to get the credentials for the Jenkins instance.
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 - Get the backend service name this value by executing the command `oc get svc -n dev-{initials}.
     ```
@@ -128,14 +128,14 @@ named `inventory-management-ui-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/getting-started/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
     ```
     oc pipeline -n dev-{your initials}
     ```
 
    - replacing `{your initials}` with your actual initials
 
-- Open the [pipeline to see it running](/getting-started/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 - Get the bff service name this value by executing the command `oc get svc -n dev-{initials}.
     ```
