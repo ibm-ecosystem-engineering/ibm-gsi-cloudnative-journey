@@ -13,6 +13,11 @@
     - title: OpenShift Console
       path: /getting-started/console
 
+- title: What's New?
+  pages:
+    - title: What's New?
+      path: /whatsnew    
+
 - title: Developer Foundation
   pages:
     - title: Agenda
@@ -77,13 +82,13 @@
     - title: Inventory UI
       path: /practical/inventory-ui
     - title: Application Modernization
-      path: /cp4apps/appmodern
+      path: /developer-intermediate/appmodern
     - title: Scan Legacy Application
-      path: /practical/appmod-exercise1-part1/
+      path: /developer-intermediate/appmod-exercise1-part1/
     - title: Analyze with TA
-      path: /practical/appmod-exercise1-part2/
+      path: /developer-intermediate/appmod-exercise1-part2/
     - title: Migrate to Openshift
-      path: /practical/appmod-exercise1-part3/
+      path: /developer-intermediate/appmod-exercise1-part3/
 
 - title: Developer Advanced
   pages:
