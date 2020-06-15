@@ -13,24 +13,29 @@
     - title: OpenShift Console
       path: /getting-started/console
 
+- title: What's New?
+  pages:
+    - title: What's New?
+      path: /whatsnew    
+
 - title: Developer Foundation
   pages:
     - title: Agenda
       path: /developer-foundation
     - title: What is Cloud Native?
-      path: /concepts/cloud-native-overview
+      path: /developer-foundation/cloud-native-overview
     - title: Cloud Native App Dev
-      path: /concepts/cloud-native-app-dev
+      path: /developer-foundation/cloud-native-app-dev
     - title: Continuous Integration (CI)
-      path: /concepts/continuous-integration
+      path: /developer-foundation/continuous-integration
     - title: Continuous Delivery (CD)
-      path: /concepts/continuous-delivery      
+      path: /developer-foundation/continuous-delivery      
     - title: Containers Overview
-      path: /concepts/containers      
+      path: /developer-foundation/containers      
     - title: Kubernetes Overview
       path: /developer-foundation/k8s-overview/read
     - title: Openshift Overview
-      path: /concepts/openshift
+      path: /developer-foundation/openshift
     - title: Core Concepts
       path: /developer-foundation/k8s-core-concepts/
     - title: Configuration
@@ -48,12 +53,12 @@
     - title: Troubleshoot
       path: /developer-foundation/k8s-troubleshooting/
     - title: Garage Method
-      path: /activation/garage-development      
+      path: /developer-foundation/garage-development      
 
 - title: Developer Intermediate
   pages:
     - title: Agenda
-      path: /enablement/developer-intermediate
+      path: /developer-intermediate
     - title: DevSecOps Overview
       path: /overview/content-overview
     - title: Deploy First App
@@ -77,22 +82,20 @@
     - title: Inventory UI
       path: /practical/inventory-ui
     - title: Application Modernization
-      path: /cp4apps/appmodern
+      path: /developer-intermediate/appmodern
     - title: Scan Legacy Application
-      path: /practical/appmod-exercise1-part1/
+      path: /developer-intermediate/appmod-exercise1-part1/
     - title: Analyze with TA
-      path: /practical/appmod-exercise1-part2/
+      path: /developer-intermediate/appmod-exercise1-part2/
     - title: Migrate to Openshift
-      path: /practical/appmod-exercise1-part3/
+      path: /developer-intermediate/appmod-exercise1-part3/
 
 - title: Developer Advanced
   pages:
     - title: Agenda
       path: /developer-advanced
-    - title: Continuous Delivery
-      path: /guides/continuous-delivery
     - title: GitOps & ArgoCD
-      path: /guides/gitops
+      path: /developer-advanced/gitops
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
     - title: Cloudant Integration

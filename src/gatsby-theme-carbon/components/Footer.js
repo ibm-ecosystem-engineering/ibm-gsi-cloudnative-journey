@@ -16,7 +16,7 @@ const Content = () => (
                 href="https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey/issues/new/choose">
                 GitHub.
             </a>
-        </p>
+        </p>       
         <p>
             Components version {version}
             <br />
