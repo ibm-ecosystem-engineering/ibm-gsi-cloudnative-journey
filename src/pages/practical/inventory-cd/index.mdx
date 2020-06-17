@@ -119,12 +119,11 @@ To create a project, do the following:
     ```
 
 -  The url of the Artifactory helm repository can be determines by following these steps:
-        - Log into Artifactory (use `igc credentials `to obtain your credentials and login to artifactory console).Go to the Artifactory tab and select "Artifacts".
-          ![Artifactory Menu](/images/ArtifactoryMenu.png)
+        -Log into Artifactory (use `igc credentials `to obtain your credentials and login to artifactory console).Go to the Artifactory tab and select "Artifacts".
+           ![Artifactory Menu](/images/ArtifactoryMenu.png)
         - Click on Set Me Up.
         ![Set Me Up](/images/Artifactory-SetMeUp.png)
-        - In the Set Me Up Section, select the tool as "Generic" and repository as "generic-local".
-        - Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL.
+        - In the Set Me Up Section, select the tool as "Generic" and repository as "generic-local".Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL.
         ![Artifactory Helm Repository URL ](/images/HelmRepoURL.png)
 
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
@@ -229,9 +228,9 @@ personal access token, and the branch to put in the secret.
 
 ### What just happened?
 
-- The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above, we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.) You can verify the secret was created by running:
+- The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above, we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.). It creates a secret "git-credentials" and configmap "gitops-cd-secret" You can verify the secret was created by running:
     ```bash
-    kubectl get secrets/gitops-cd-secret -n dev-{initials} -o yaml
+    kubectl get configmap/gitops-cd-secret -n dev-{initials} -o yaml
     ```
 
 **Note:**
