@@ -99,6 +99,10 @@
       path: /practical/inventory-cloudant
     - title: AppID Integration 
       path: /practical/inventory-appid/
+    - title: Inventory Part1 Application
+      path: /practical/inventory-part1
+    - title: Inventory Part2 Application
+      path: /practical/inventory-part2 
 
 - title: Useful Pre Learning
   pages:

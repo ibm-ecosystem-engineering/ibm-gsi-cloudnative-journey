@@ -22,9 +22,6 @@ This Micro App guidance continues to build upon the microserivces that were buil
 
 ## Using CD to deploy to Test
 
-ArgoCD is a tool that provides continuous delivery for projects and applications. If you haven't already, be sure to read
-through the [Continuous Delivery with ArgoCD guide](/guides/continuous-delivery).
-
 For this exercise, we are going to use ArgoCD to push the Inventory app from `dev` to `test` (and possibly `staging` as well). If you have already completed the Inventory Micro App , then it can be used for the ArgoCD process (although perhaps with some minor pipeline updates). If you haven't completed the exercise, you can start from the [solution repositories](/practical/inventory-app#deploy-the-inventory-app-solution) to perform the ArgoCD steps.
 
 
@@ -121,8 +118,14 @@ To create a project, do the following:
       repository: http://artifactory.mooc-one-rhos-cluster.us-east.containers.appdomain.cloud/artifactory/generic-local/mooc-team-one/
     ```
 
-    - The url of the Artifactory helm repository can be determines by following the steps described in
-    [Administrator Guide - ArgoCD setup](/admin/argocd-setup/#get-the-helm-repository-location)
+-  The url of the Artifactory helm repository can be determines by following these steps:
+        - Log into Artifactory (use `igc credentials `to obtain your credentials and login to artifactory console).Go to the Artifactory tab and select "Artifacts".
+          ![Artifactory Menu](/images/ArtifactoryMenu.png)
+        - Click on Set Me Up.
+        ![Set Me Up](/images/Artifactory-SetMeUp.png)
+        - In the Set Me Up Section, select the tool as "Generic" and repository as "generic-local".
+        - Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL.
+        ![Artifactory Helm Repository URL ](/images/HelmRepoURL.png)
 
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
 for the cluster
@@ -240,7 +243,4 @@ the CD pipeline. `test` is the recommended value for the branch field.
 - Trigger the pipeline for the Inventory Management service to build by making a change
 to the Inventory Management Service code and push the changes to Git.
 
-### Repeat for BFF and UI components
 
-Starting from [Configure the GitOps repo for Inventory Management service](#Configure-the-gitops-repo-for-inventory-management-service),
-the steps need to be repeated for each application within the project.
