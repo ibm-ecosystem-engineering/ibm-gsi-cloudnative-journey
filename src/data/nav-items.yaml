@@ -98,6 +98,12 @@
       path: /developer-advanced/gitops
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
+    - title: DevSecOps With Trivy
+      path: /developer-advanced/devsecops-trivy
+    - title: DevSecOps With Aquasec CSP
+      path: /developer-advanced/devsecops-aquasec-csp
+    - title: DevSecOps With Twistlock
+      path: /developer-advanced/devsecops-twistlock      
     - title: Cloudant Integration
       path: /developer-advanced/inventory-cloudant
     - title: AppID Integration 
