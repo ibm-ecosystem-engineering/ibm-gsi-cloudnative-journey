@@ -1,7 +1,7 @@
 - title: Introduction
   pages:
     - title: Overview
-      path: /overview/introduction
+      path: /getting-started/introduction
     - title: Prerequisites
       path: /getting-started/prereqs
     - title: Validate Sandbox
@@ -13,112 +13,116 @@
     - title: OpenShift Console
       path: /getting-started/console
 
+- title: What's New?
+  pages:
+    - title: What's New?
+      path: /whatsnew    
+
 - title: Developer Foundation
   pages:
     - title: Agenda
-      path: /enablement/developer-foundation
+      path: /developer-foundation
     - title: What is Cloud Native?
-      path: /concepts/cloud-native-overview
+      path: /developer-foundation/cloud-native-overview
     - title: Cloud Native App Dev
-      path: /concepts/cloud-native-app-dev
+      path: /developer-foundation/cloud-native-app-dev
     - title: Continuous Integration (CI)
-      path: /concepts/continuous-integration
+      path: /developer-foundation/continuous-integration
     - title: Continuous Delivery (CD)
-      path: /concepts/continuous-delivery      
+      path: /developer-foundation/continuous-delivery      
     - title: Containers Overview
-      path: /concepts/containers      
+      path: /developer-foundation/containers      
     - title: Kubernetes Overview
-      path: /kubernetes/read
+      path: /developer-foundation/k8s-overview/read
     - title: Openshift Overview
-      path: /concepts/openshift
+      path: /developer-foundation/openshift
     - title: Core Concepts
-      path: /kubernetes/core-concepts/
+      path: /developer-foundation/k8s-core-concepts/
     - title: Configuration
-      path: /kubernetes/configuration/
+      path: /developer-foundation/k8s-configuration/
     - title: Multi-Container Pods
-      path: /kubernetes/multi-container-pods/
+      path: /developer-foundation/k8s-multi-container-pods/
     - title: Observability
-      path: /kubernetes/observability/
+      path: /developer-foundation/k8s-observability/
     - title: Pod Design
-      path: /kubernetes/pod-design/
+      path: /developer-foundation/k8s-pod-design/
     - title: Services & Networking
-      path: /kubernetes/services-networking/
+      path: /developer-foundation/k8s-services-networking/
     - title: State Persistence
-      path: /kubernetes/state-persistence/
+      path: /developer-foundation/k8s-state-persistence/
     - title: Troubleshoot
-      path: /kubernetes/troubleshooting/
+      path: /developer-foundation/k8s-troubleshooting/
     - title: Garage Method
-      path: /activation/garage-development      
+      path: /developer-foundation/garage-development      
 
 - title: Developer Intermediate
   pages:
     - title: Agenda
-      path: /enablement/developer-intermediate
+      path: /developer-intermediate
     - title: DevSecOps Overview
-      path: /overview/content-overview
+      path: /developer-intermediate/content-overview
     - title: Deploy First App
-      path: /getting-started/deploy-app
+      path: /developer-intermediate/deploy-app
     - title: Code Analysis
-      path: /practical/code-analysis
+      path: /developer-intermediate/code-analysis
     - title: Image Registry
-      path: /practical/image-registry
+      path: /developer-intermediate/image-registry
     - title: Artifact Management
-      path: /practical/artifact-management
+      path: /developer-intermediate/artifact-management
     - title: Monitoring
-      path: /practical/monitoring
+      path: /developer-intermediate/monitoring
     - title: Log Management
-      path: /practical/log-management
+      path: /developer-intermediate/log-management
     - title: Inventory Application
-      path: /practical/inventory-app
+      path: /developer-intermediate/inventory-app
     - title: Inventory Service
-      path: /practical/inventory-svc
+      path: /developer-intermediate/inventory-svc
     - title: Inventory BFF
-      path: /practical/inventory-bff
+      path: /developer-intermediate/inventory-bff
     - title: Inventory UI
-      path: /practical/inventory-ui
+      path: /developer-intermediate/inventory-ui
     - title: Application Modernization
-      path: /cp4apps/appmodern
+      path: /developer-intermediate/appmodern
     - title: Scan Legacy Application
-      path: /practical/appmod-exercise1-part1/
+      path: /developer-intermediate/appmod-exercise1-part1/
     - title: Analyze with TA
-      path: /practical/appmod-exercise1-part2/
+      path: /developer-intermediate/appmod-exercise1-part2/
     - title: Migrate to Openshift
-      path: /practical/appmod-exercise1-part3/
+      path: /developer-intermediate/appmod-exercise1-part3/
 
 - title: Developer Advanced
   pages:
     - title: Agenda
-      path: /enablement/developer-advanced
-    - title: Continuous Delivery
-      path: /guides/continuous-delivery
+      path: /developer-advanced
     - title: GitOps & ArgoCD
-      path: /guides/gitops
+      path: /developer-advanced/gitops
     - title: CD for Inventory App
-      path: /practical/inventory-cd
+      path: /developer-advanced/inventory-cd
+    - title: DevSecOps With Trivy
+      path: /developer-advanced/devsecops-trivy
+    - title: DevSecOps With Aquasec CSP
+      path: /developer-advanced/devsecops-aquasec-csp
+    - title: DevSecOps With Twistlock
+      path: /developer-advanced/devsecops-twistlock      
     - title: Cloudant Integration
-      path: /practical/inventory-cloudant
+      path: /developer-advanced/inventory-cloudant
     - title: AppID Integration 
-      path: /practical/inventory-appid/
-    - title: Inventory Part1 Application
-      path: /practical/inventory-part1
+      path: /developer-advanced/inventory-appid/
+    - title: Advanced Monitoring 
+      path: /developer-advanced/monitoring/
+    - title: Advanced Log Management 
+      path: /developer-advanced/log-management/
     - title: Inventory Part2 Application
-      path: /practical/inventory-part2 
-
-- title: Useful Pre Learning
-  pages:
-    - title: Overview
-      path: /activation/overview
-    - title: Cloud Native Deployment
-      path: /activation/cloudnative-deployment
+      path: /developer-advanced/inventory-part2 
 
 - title: Resources
   pages:
     - title: Code Patterns Overview
-      path: /codepatterns/overview
+      path: /resources/codepatterns-overview
     - title: Code Pattern Repositories
-      path: /codepatterns/gitrepos
+      path: /resources/codepatterns-gitrepos
     - title: Frequently Asked Questions
-      path: /faqs 
+      path: /resources/faqs
 
 - title: Logistics
   pages:      
