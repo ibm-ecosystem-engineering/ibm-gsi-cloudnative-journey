@@ -1,0 +1,53 @@
+---
+title: DevSecOps Overview
+description: Security in the Container World
+---
+
+### Container Security 
+Container security is the process of implementing security tools and policies that will give you the assurance that everything in your container is running as intended. 
+This includes protecting the infrastructure, the software delivery chain, runtime, and everything in between.With this in mind, the process of securing containers is continuous. 
+It should be integrated into your development process, automated to remove the number of manual touch points, and extended into the maintenance and operation of the underlying infrastructure. 
+This means protecting your build pipeline container images and runtime host, platform, and application layers. 
+Implementing security as part of the continuous delivery life cycle means your business will mitigate risk and reduce vulnerabilities across an ever-growing attack surface.
+
+![Container Securirty ]( images/ContainerSecurity.png "Security Aspects for Conatiner")
+
+## Build
+
+- Source code
+- Image Quality - Where is it coming from ?
+- Image Quality - Who is it coming from ?
+- Least Privileged user
+- CI tools ( Jenkins / Tekton / etc)
+- Scanning Tools
+- Secrets Management
+- Signed Images
+
+
+## Ship
+
+- Trusted Registries and Repos
+- Signature Authenticating and Authorizing
+- Image Scanning
+- Policies
+- Ongoing assessment and automated remediation
+- Integrity Assurance
+
+## Run
+
+- Prevent deployment of images  with known vulnerabilities
+- Prevent deployment of  containers that require root
+- Validate image signatures
+- Monitor for new vulnerabilities
+= Alerting Monitoring Deployments
+- Resource Management
+- Network segmentation
+- Fine-grain application controls
+
+
+Tools Explored ;
+- IBM Vulnerabilty Advisor
+- AquaSecure CSP
+- Prisma™ Cloud
+- Opensource Trivy
+
