@@ -105,7 +105,7 @@
     - title: DevSecOps With Twistlock
       path: /developer-advanced/devsecops-twistlock      
     - title: Cloudant Integration
-      path: /developer-advanced/cloudantintegration
+      path: /developer-advanced/inventory-cloudant
     - title: AppID Integration 
       path: /developer-advanced/inventory-appid/
     - title: Advanced Monitoring 

@@ -23,7 +23,7 @@ sandbox-n..-ocp43 [ Redhat Openshift Cluster 4.X]
 The enablement has been crafted to be used as self-paced material or within a GSI managed Journey. Support is being offered through a Slack Channel. Read the introduction and agenda to get more detail of what you will learn. 
  
 GSI Cloud Native Learning Journey Content : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/
-Introduction Cloud Native Learning Journey : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/overview/introduction
+Introduction Cloud Native Learning Journey : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/getting-started/introduction
 Access the Learning Journey Developer Intermediate agenda : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/enablement/developer-intermediate
  
 To ensure you have been added correctly, please follow the directions in this page to validate your access using the details above: Welcome to your GSI Enterprise Sandbox :https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/getting-started/checksetup
