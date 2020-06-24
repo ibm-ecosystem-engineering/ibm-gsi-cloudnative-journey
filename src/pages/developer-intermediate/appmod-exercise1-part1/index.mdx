@@ -126,8 +126,12 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     #featureList=--featureList --excludeFiles=".*/directory/LargeXMLFileName.xml"
     #java_opt=-Xmx2g
     ```
-- Review the `wsadmin.py` file
+- Review the `wsadmin.py` file.  
+   **Note : **  If the WAS Environment is set up using the Lab Procedure, no changes would be required. Incase if you are using your custom WAS and DB2 environment, ensure you have the serverName and port are correctly mapped to the Database.
+   
     - Ensure that the `serverName` and `port` for the DataSources match the values of your DB2 database (above).
+    
+
 
 - Build the Docker image
 
@@ -215,9 +219,9 @@ In order to simulate a real traditional WebSphere ND customer environment on you
 - Access the Transformation Advisor Page to Download the data collector. The TA access link can be referred as part of the Cloud Native Toolkit menu, in the open shift dashboard.
 
 
-- Click on the "Add a new workspace (+) Button". The Enter the Name for the Workspace (Example: AppMod-{initials})
+- Click on the "Add a new workspace (+) Button". The Enter the Name for the Workspace (Example: AppMod_{initials})
 
-- Now Create a new Collection and provide a name for the collection and click on 'Save'. (Example: was-ta)
+- Now Create a new Collection and provide a name for the collection and click on 'Save'. (Example: was_ta)
 
 - The Datacollector / Upload data screen appears as shown
 
@@ -280,7 +284,7 @@ Now that you have validated that the PlantsByWebSphere application is running in
 - Copy the `AppSrv01.zip` file from within the Docker container to your local disk
 
     ```bash
-    docker cp twas-plantsbywebsphere:/demo/transformationadvisor-2.0.1/AppSrv01.zip .
+    docker cp twas-plantsbywebsphere:/demo/transformationadvisor-2.0.3/AppSrv01.zip .
     ```
 
 - Stop and remove the Docker container
