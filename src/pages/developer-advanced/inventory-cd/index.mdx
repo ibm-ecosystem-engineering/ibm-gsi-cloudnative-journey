@@ -235,10 +235,11 @@ personal access token, and the branch to put in the secret.
 
 ### What just happened?
 
-- The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above,  we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.) You can verify the secret was created by running:
+-  The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above, we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.). It creates a secret "git-credentials" and configmap "gitops-cd-secret" You can verify the secret was created by running:
+   
     ```bash
-    kubectl get secrets/gitops-cd-secret -n dev-{initials} -o yaml
-    ```
+    kubectl get configmap/gitops-cd-secret -n dev-{initials} -o yaml
+    ``` 
 
 **Note:**
 - For the secret to be available to the CI pipeline, the secret needs to be created in the same namespace
