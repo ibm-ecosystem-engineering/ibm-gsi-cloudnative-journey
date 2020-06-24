@@ -126,9 +126,11 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     #featureList=--featureList --excludeFiles=".*/directory/LargeXMLFileName.xml"
     #java_opt=-Xmx2g
     ```
-- Review the `wsadmin.py` file
+- Review the `wsadmin.py` file.  
+   **Note : **  If the WAS Environment is set up using the Lab Procedure, no changes would be required. Incase if you are using your custom WAS and DB2 environment, ensure you have the serverName and port are correctly mapped to the Database.
+   
     - Ensure that the `serverName` and `port` for the DataSources match the values of your DB2 database (above).
-    - **Note : **  If the WAS Environment is set up using the Lab Procedure, no changes would be required. Incase if you are using your custom WAS and DB2 environment, ensure you have the serverName and port are correctly mapped to the Database.
+    
 
 
 - Build the Docker image

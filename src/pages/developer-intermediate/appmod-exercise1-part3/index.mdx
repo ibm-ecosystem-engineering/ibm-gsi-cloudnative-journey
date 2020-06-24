@@ -85,6 +85,7 @@ Edit the `server.xml` file using your favorite editor to make the following chan
     ```bash
     <feature>mpHealth-1.0</feature> 
     ```
+- Uncomment the `dataSources` and `jdbcDrivers`
 
 - As part of the server.xml, there are two references to jdbcDriver. Each reference will map the path of the db2 and db2 licence jar  locations as `${shared.config.dir}/lib/global/db2jcc.jar` and `${shared.config.dir}/lib/global/db2jcc_license_cu.jar`. While one of jdbcDrive id is mapped to `DB2_Universal_JDBC_Driver_Provider` and the second is mapped to `DB2_Universal_JDBC_Driver_Provider_(XA)`.  The jdbcDriver tag snipped should be like as below 
 
@@ -104,15 +105,13 @@ Edit the `server.xml` file using your favorite editor to make the following chan
 ```        
 
 
-- Uncomment the `dataSources` and `jdbcDrivers`
-
 - server.xml will have two reference of `datasource` tag. Each will have an element named jdbcDriverRefs. change the jdbcDriverRefs for first one as 'DB2_Universal_JDBC_Driver_Provider' and for the second one as `DB2_Universal_JDBC_Driver_Provider_(XA)`
 
 - In the `PlantsByWebSphereDataSourceNONJTA` datasource, in the `properties.db2.jcc` line, add `user="{to share}" password="{to share}" transactional="false"`
 
 - In the `PlantsByWebSphereDataSource` datasource, in the `properties.db2.jcc` line, add `user="{to share}" password="{to share}" transactional="true"` (Database user name and password).  
 
-- Also to change the databaseName="{to share}", serverName="{to share}" and portNumber="{to share}" 
+- Also change the databaseName="{to share}", serverName="{to share}" and portNumber="{to share}" 
 
 - After changing the datasource tag with jdbcDriverRefs, username & password, Database details (databaseName, serverName and portNumber), the dataSource snipped should like as below:
     - **Note:*** ???? should be replaced by actual values
