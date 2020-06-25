@@ -33,13 +33,17 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
 - The Application Binary (plantsbywebsphere8.ear) is present in the below location. You will need this uploading to the transformation advisor
     ```binaries
-    cd icp-dev-workshop/lab4/CreatePreConfiguredtWASContainer/lab4/binary/application
+    cd icp-dev-workshop/lab4/binary/application
      ```
 
 - The DB2 libararies are present in the below location. You will upload the "db2jcc.jar" in the Transformation advisor and later push the "db2jcc_license_cu.jar" to your git repository (one you will be creating during this phase for the migration bundle)
 
     ```binaries
-    cd icp-dev-workshop/lab4/CreatePreConfiguredtWASContainer/lab4/binary/lib
+    cd icp-dev-workshop/lab4/binary/lib
+    ```
+- Also, download the application related files from the below repository, which shall be used for the deployment of the application during the course of the Lab exercise. 
+    ```
+    git clone https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git
     ```
 
 </Tab>
@@ -76,7 +80,7 @@ In this section, you will upload the results from the data collector to the Tran
 - Access the Open Shift Cluster Dashboard to open the Transformation Advisor dashboard which as part of the Cloud Native Toolkit menu.
 
 
-- Now that namespace and collection are created, access the Workspace (AppMod-{initials}) and the Collection.
+- Now that namespace and collection are created, access the Workspace (AppMod_{initials}) and the Collection.
 
 - The Data collector / Upload data screen appears as shown
 

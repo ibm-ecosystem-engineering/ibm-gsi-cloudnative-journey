@@ -6,11 +6,11 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
 <PageDescription>
 
-Integrating Aquasec Trivy in Cloud Native Toolkit for DevSecOps
+Integrating Aquasec Trivy in in CICD Pipeline for DevSecOps
 
 </PageDescription>
 
-## Guide
+## Overview
 
 DevSecOps ensures the security by doing Vulnerability scanning on the container images. There are several tools available for image scanning. 
 
@@ -18,46 +18,199 @@ DevSecOps ensures the security by doing Vulnerability scanning on the container 
 
 The more information on Trivy is available in https://github.com/aquasecurity/trivy
 
-In this article, we will see, how the trivy was integrated into the `Jenkins` and `Tekton` pipelines of Cloud Native Toolkit.
+## Working with Trivy Commands
+
+### Installation 
+Trivy installation is very simple. You can use homebrew on macOS to install
+```
+$ brew install aquasecurity/trivy/trivy
+```
+
+### Trivy Standalone Run
+Trivy can be run as standalone in Desktop or in laptop .
+```
+$ trivy [YOUR_IMAGE_NAME]
 
 
-## 1. Integrating Trivy in jenkins
+$ trivy python:3.4-alpine
+```
+
+Output
+```
+2020-06-23T23:11:07.297+0530	INFO	Detecting Alpine vulnerabilities...
+
+python:3.4-alpine (alpine 3.9.2)
+================================
+Total: 15 (UNKNOWN: 0, LOW: 1, MEDIUM: 10, HIGH: 4, CRITICAL: 0)
+
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| LIBRARY | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |             TITLE              |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| bzip2   | CVE-2019-12900   | HIGH     | 1.0.6-r6          | 1.0.6-r7      | bzip2: out-of-bounds write in  |
+|         |                  |          |                   |               | function BZ2_decompress        |
++---------+------------------+          +-------------------+---------------+--------------------------------+
+| expat   | CVE-2018-20843   |          | 2.2.6-r0          | 2.2.7-r0      | expat: large number of colons  |
+|         |                  |          |                   |               | in input makes parser consume  |
+|         |                  |          |                   |               | high amount...                 |
++         +------------------+----------+                   +---------------+--------------------------------+
+|         | CVE-2019-15903   | MEDIUM   |                   | 2.2.7-r1      | expat: heap-based buffer       |
+|         |                  |          |                   |               | over-read via crafted XML      |
+|         |                  |          |                   |               | input                          |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| musl    | CVE-2019-14697   | HIGH     | 1.1.20-r4         | 1.1.20-r5     | musl libc through 1.1.23       |
+|         |                  |          |                   |               | has an x87 floating-point      |
+|         |                  |          |                   |               | stack adjustment imbalance,    |
+|         |                  |          |                   |               | related...                     |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| openssl | CVE-2019-1543    | MEDIUM   | 1.1.1a-r1         | 1.1.1b-r1     | openssl: ChaCha20-Poly1305     |
+|         |                  |          |                   |               | with long nonces               |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2019-1549    |          |                   | 1.1.1d-r0     | openssl: information           |
+|         |                  |          |                   |               | disclosure in fork()           |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2019-1551    |          |                   | 1.1.1d-r2     | openssl: Integer overflow in   |
+|         |                  |          |                   |               | RSAZ modular exponentiation on |
+|         |                  |          |                   |               | x86_64                         |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2019-1563    |          |                   | 1.1.1d-r0     | openssl: information           |
+|         |                  |          |                   |               | disclosure in PKCS7_dataDecode |
+|         |                  |          |                   |               | and CMS_decrypt_set1_pkey      |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2020-1967    |          |                   | 1.1.1g-r0     | openssl: Segmentation fault in |
+|         |                  |          |                   |               | SSL_check_chain causes denial  |
+|         |                  |          |                   |               | of service                     |
++         +------------------+----------+                   +---------------+--------------------------------+
+|         | CVE-2019-1547    | LOW      |                   | 1.1.1d-r0     | openssl: side-channel weak     |
+|         |                  |          |                   |               | encryption vulnerability       |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| sqlite  | CVE-2019-8457    | HIGH     | 3.26.0-r3         | 3.28.0-r0     | sqlite: heap out-of-bound read |
+|         |                  |          |                   |               | in function rtreenode()        |
++         +------------------+----------+                   +---------------+--------------------------------+
+|         | CVE-2019-16168   | MEDIUM   |                   | 3.28.0-r1     | sqlite: division by zero in    |
+|         |                  |          |                   |               | whereLoopAddBtreeIndex in      |
+|         |                  |          |                   |               | sqlite3.c                      |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2019-19242   |          |                   | 3.28.0-r2     | sqlite: SQL injection in       |
+|         |                  |          |                   |               | sqlite3ExprCodeTarget in       |
+|         |                  |          |                   |               | expr.c                         |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2019-5018    |          |                   | 3.28.0-r0     | sqlite: use-after-free in      |
+|         |                  |          |                   |               | window function leading to     |
+|         |                  |          |                   |               | remote code execution          |
++         +------------------+          +                   +---------------+--------------------------------+
+|         | CVE-2020-11655   |          |                   | 3.28.0-r3     | sqlite: malformed              |
+|         |                  |          |                   |               | window-function query leads to |
+|         |                  |          |                   |               | DoS                            |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+```
+
+### Trivy Docker Run
+
+Trivy can be run from Docker.
+
+```
+$ docker run --rm -v [YOUR_CACHE_DIR]:/root/.cache/ aquasec/trivy [YOUR_IMAGE_NAME]
+
+$ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy python:3.4-alpine
+```
+
+### Trivy Results as JSON
+
+Trivy output can be generated as json.
+
+```
+$ trivy -f json -o results.json python:3.4-alpine
+```
+
+### Filter vulnerabilities by severities
+
+Vulnerability results can be filtered. In the below example HIGH and CRITICAL issues are displayed
+
+```
+$ trivy --severity HIGH,CRITICAL python:3.4-alpine
+```
+
+```
+
+python:3.4-alpine (alpine 3.9.2)
+================================
+Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 4, CRITICAL: 0)
+
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| LIBRARY | VULNERABILITY ID | SEVERITY | INSTALLED VERSION | FIXED VERSION |             TITLE              |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+| bzip2   | CVE-2019-12900   | HIGH     | 1.0.6-r6          | 1.0.6-r7      | bzip2: out-of-bounds write in  |
+|         |                  |          |                   |               | function BZ2_decompress        |
++---------+------------------+          +-------------------+---------------+--------------------------------+
+| expat   | CVE-2018-20843   |          | 2.2.6-r0          | 2.2.7-r0      | expat: large number of colons  |
+|         |                  |          |                   |               | in input makes parser consume  |
+|         |                  |          |                   |               | high amount...                 |
++---------+------------------+          +-------------------+---------------+--------------------------------+
+| musl    | CVE-2019-14697   |          | 1.1.20-r4         | 1.1.20-r5     | musl libc through 1.1.23       |
+|         |                  |          |                   |               | has an x87 floating-point      |
+|         |                  |          |                   |               | stack adjustment imbalance,    |
+|         |                  |          |                   |               | related...                     |
++---------+------------------+          +-------------------+---------------+--------------------------------+
+| sqlite  | CVE-2019-8457    |          | 3.26.0-r3         | 3.28.0-r0     | sqlite: heap out-of-bound read |
+|         |                  |          |                   |               | in function rtreenode()        |
++---------+------------------+----------+-------------------+---------------+--------------------------------+
+```
+
+### Trivy Run - Exit Code
+
+Exit code can be used to break the build based on condition. 
+
+This is useful while using Trivy in CICD
+
+
+#### Stop Build
+
+Build stops, when CRITICAL and HIGH severities are found.
+
+```
+$ trivy --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
+```
+
+
+#### Continue Build
+
+Build doesn't stop, when MEDIUM and LOW found.
+
+```
+$ trivy --exit-code 0 --severity MEDIUM,LOW python:3.4-alpine
+```
+
+
+## Integrating Trivy with Jenkins and Tekton`
+
+Lets integrate the Trivy in `Jenkins` and `Tekton` pipelines of Cloud Native Toolkit
+
+- Create an App using [Deploy First App](/developer-intermediate/deploy-app).
+
+- Make changes to the `Jenkins` or `Tekton` pipelines as given below.
+
+<Tabs>
+<Tab label="Jenkins">
 
 The CICD process contains several steps. There is a step called `Build Image` that will build a image and Push the image to the image registry.
-
 ![Jenkins Pipeline](/images/01-jenkins-pipeline.png)
 
 Need to split the step into 3 steps.
+- Build Image
+- Trivy Scan
+- Push Image
 
-```
-    Build Image
-    Trivy Scan
-    Push Image
-```
-
-Here is the modified pipeline.
-
+The modified pipeline should look like this.
 ![Jenkins Pipeline with Trivy](/images/02-jenkins-pipeline-with-trivy.png)
 
-
-
 #### Build Image
-
 The build image will build the image.
 
 #### Trivy Scan
-
 Trivy scan will scan the image and print the Vulnerability count as Low, Medium, High and Critical.
-
 Based on the configured exit criteria (0 Critical) the next step would in the pipeline will continue.
 
-Here is the logs written during the pipeline execution.
-
-![Trivy Log](/images/03-jenkins-pipeline-trivy-log.png)
-
-
 #### Push Image
-
 After the scan is completed, it Pushes the image to the Image Registry.
 
 <BR></BR>
@@ -65,31 +218,70 @@ After the scan is completed, it Pushes the image to the Image Registry.
 
 The pipeline scripts are defined in the `jenkinsfile`. lets us see the changes done in the jenkins file.
 
-## 2. Jenkinsfile Changes
+## Jenkinsfile Changes
 
 ### Declaration
 
-Here is the declaration about the Trivy image in the `containers` section under `podTemplate` in the `jenkinsfile`
+The below code snippet is the declaration about Trivy image, to be added in the `containers` section under `podTemplate` in the `jenkinsfile`
 
-![Jenkins file declaration](/images/04-jenkinsfile-1-declaration.png)
+    ```
+    - name: trivy
+        image: docker.io/aquasec/trivy
+        tty: true
+        command: ["/bin/sh"]
+        workingDir: ${workingDir}
+        securityContext:
+        privileged: true
+        envFrom:
+        - configMapRef:
+            name: ibmcloud-config
+        - secretRef:
+            name: ibmcloud-apikey       
+    ```
 
-1. Name `trivy` will be used in the script to refer the trivy container.
-
-2. The image tag of the `trivy`.
-
-3. A configmap contains `username` details to connect to IBM Cloud Container registry.
-
-4. A secrte contains `password` to connect to IBM Cloud Container registry.
+1. `name`  -  `trivy` will be used in the script to refer the trivy container.
+2. `image` - image tag of the `trivy`.
+3. `configMapRef` -  A configmap contains `username` details to connect to IBM Cloud Container registry.
+4. `secretRef` A secrte contains `password` to connect to IBM Cloud Container registry.
 
 ### Build Image
 
-Here are the steps to Build Image.
+Here are the steps to Build Image. Replace the existing content under the `container(name: 'buildah'`
 
-![Jenkins build](/images/04-jenkinsfile-2-build.png)
+```
+container(name: 'buildah', shell: '/bin/bash') {
+    stage('Build image') {
+        sh '''#!/bin/bash
+            set -e
+            . ./env-config
 
-1. Temp image name is framed. 
+            echo TLSVERIFY=${TLSVERIFY}
+            echo CONTEXT=${CONTEXT}
+        IMAGE_VERSION="0.0.1"
 
-2. Image is build using `buildah`. Here temp image name is used.
+            if [[ -z "${REGISTRY_PASSWORD}" ]]; then
+                REGISTRY_PASSWORD="${APIKEY}"
+            fi
+
+        APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+
+        echo "Image... $APP_IMAGE"
+
+        buildah bud --tls-verify=${TLSVERIFY} --format=docker -f ${DOCKERFILE} -t ${APP_IMAGE} ${CONTEXT}
+
+        if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
+            buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+        fi
+
+        buildah push --tls-verify=${TLSVERIFY} "${APP_IMAGE}" "docker://${APP_IMAGE}"
+        '''
+    }
+}
+```
+
+1. The variable `APP_IMAGE=` contains the Temp image name. 
+
+2. Image is build using `buildah` and tagged with temp image name.
 
 3. Login into IBM Cloud Container Registry using `buildah`.
 
@@ -98,138 +290,388 @@ Here are the steps to Build Image.
 
 ### Trivy Scan
 
-Here are the steps for trivy Scanning
+The below code snippet is for trivy Scanning. Add the below code under the previous step `Build Image'
 
-![Jenkins scan](/images/04-jenkinsfile-3-scan.png)
+```
+        container(name: 'trivy', shell: '/bin/sh') {
+            stage('Trivy Scan') {
 
-1. Refers the temp image name created in the previous step. 
+                  sh '''#!/bin/sh
 
-2. Registry URL and user details to login into IBM Cloud Container Registry by trivy.
+                    set -e
+                    . ./env-config
 
-3. Trivy scanning the temp image found in the IBM Cloud Container Registry.
+                    echo TLSVERIFY=${TLSVERIFY}
+                    echo CONTEXT=${CONTEXT}
+                    IMAGE_VERSION="0.0.1"
+
+                    if [[ -z "${REGISTRY_PASSWORD}" ]]; then
+                      REGISTRY_PASSWORD="${APIKEY}"
+                    fi
+
+                    APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+
+                    export TRIVY_AUTH_URL=${REGISTRY_URL}
+                    export TRIVY_USERNAME=${REGISTRY_USER}
+                    export TRIVY_PASSWORD=${REGISTRY_PASSWORD}
+
+                    echo "Trivy image scanning started.... $APP_IMAGE_Temp"
+
+                    # Trivy scan
+                    trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE_Temp}
+                    #trivy ${APP_IMAGE_Temp}
+
+                    # Check scan results
+                    my_exit_code=$?
+                    echo "scan exit code : $my_exit_code"
+                    if [ ${my_exit_code} == 1 ]; then
+                        echo "Image scanning failed. Some vulnerabilities found"
+                        exit 1;
+                    else
+                        echo "Image is scanned Successfully. No vulnerabilities found"
+                    fi;
+                '''
+            }
+        }
+
+```
+
+1. The temporary image is scanned here.
+
+2. `TRIVY_AUTH_URL,` `TRIVY_USERNAME`, `TRIVY_PASSWORD` refers the Registry URL and user details to login into IBM Cloud Container Registry by trivy.
+
+3. `trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE_Temp}` - step scans the temp image available in the IBM Cloud Container Registry.
+
+4. The step stops and then the pipeline also stops when there is a CRITICAL issue found.
+
+5. If you don't want to stop the pipeline though the CRITICAL issue is found then replace the above triy scan line with `trivy ${APP_IMAGE_Temp}`.
+
+6. The scan results will be printed in the console.
+
 
 ### Push Image
 
-Here are the steps for Push Image.
+The below code snippet is for Pushing Image. Add the below code under the previous step `Trivy Scan'
 
-![Jenkins Push](/images/04-jenkinsfile-4-push.png)
+```
+        container(name: 'buildah', shell: '/bin/bash') {
+            stage('Push image') {
+                sh '''#!/bin/bash
+                    set -e
+                    . ./env-config
 
-1. Refers the temp image name created in the previous step. 
+		            echo TLSVERIFY=${TLSVERIFY}
+		            echo CONTEXT=${CONTEXT}
+                IMAGE_VERSION="0.0.1"
 
-2. Login into IBM Cloud Container Registry using `buildah`.
+		            if [[ -z "${REGISTRY_PASSWORD}" ]]; then
+		              REGISTRY_PASSWORD="${APIKEY}"
+		            fi
 
-3. Pull the temp image using `buildah`.
+                APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${IMAGE_VERSION}"
+                APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
 
-4. Tag the image to the actual image name.
+                if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
+                    buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+                fi
+        
+                buildah pull ${APP_IMAGE_Temp}
+                buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}
+                buildah push --tls-verify=${TLSVERIFY} "${APP_IMAGE}" "docker://${APP_IMAGE}"
+                buildah rmi ${APP_IMAGE_Temp}
+                '''
+            }
+        }
+```
 
-5. Push the actual image to IBM Cloud Container Registry using `buildah`.
+The code snippet does the followings.
 
-6. Remove the temp image from IBM Cloud Container Registry using `buildah`.
+1. Login into IBM Cloud Container Registry using `buildah`.
 
+2. Pull the temp image using `buildah`.
 
-## 2. Integrating Trivy in Tekton
+3. Tag the image to the actual image name.
+
+4. Push the actual image to IBM Cloud Container Registry using `buildah`.
+
+5. Remove the temp image from IBM Cloud Container Registry using `buildah`.
+
+</Tab>
+
+<Tab label="Tekton">
 
 The CICD process contains several steps. There is a step called `Build` that will build a image and Push the image to the image registry.
 
 ![Tekton Pipeline](/images/05-tekton-pipeline.png)
 
-
 Need to split the step into 3 steps.
+- build
+- image-scan
+- push
 
-```
-    build
-    image-scan
-    push
-```
-
-Here is the modified pipeline.
-
+The modified pipeline should look like this.
 ![Tekton Pipeline with Trivy](/images/06-tekton-pipeline-with-trivy.png)
+
+#### build
+The build image will build the image.
+
+#### image-scan
+Image scan will scan the image and print the Vulnerability count as Low, Medium, High and Critical.
+Based on the configured exit criteria (0 Critical) the next step would in the pipeline will continue.
+
+#### push
+After the scan is completed, it Pushes the image to the Image Registry.
 
 
 The pipeline scripts are defined as Task in the yaml file. lets us see the changes done in the task file.
 
-
-# 2. Tekton Task Changes
+## Tekton Task Changes
 
 ### Declaration
 
-Here is the declaration about the Trivy image in the `Task`
+Add the below code code snippet as declaration about the Trivy image in the `Task`
+```
+    - default: docker.io/aquasec/trivy
+      name: trivy
+      type: string     
+```
 
-![Tekton Pipeline declaration](/images/07-tekton-task-1-declaration.png)
+- After adding the Task code should be like this.
+- Replace the namespace `dev-gan2`, with your project namespace.
 
-1. Image details of the `buildah`.
-
-2. The variable name of the `buildah`.
-
-3. Image details of the `trivy`.
-
-4. The variable name of the `trivy`.
+```
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  name: igc-build-tag-push-v1-2-0
+  namespace: dev-gan2
+spec:
+  inputs:
+    params:
+    - default: docker.io/node:12-stretch
+      name: js-image
+      type: string
+    - default: quay.io/buildah/stable:v1.11.0
+      name: BUILDER_IMAGE
+      type: string
+    - default: docker.io/aquasec/trivy
+      name: trivy
+      type: string      
+    - default: ./Dockerfile
+      name: DOCKERFILE
+      type: string
+    - default: .
+      name: CONTEXT
+      type: string
+    - default: "false"
+      name: TLSVERIFY
+      type: string
+    resources:
+    - name: source
+      type: git
+```
 
 ### Build Image
 
-Here are the steps for Build Image.
+Add the below code snippet in the `Task` for building image
 
-![Tekton Build](/images/07-tekton-task-2-build.png)
+```
+  - args:
+    - -c
+    - |
+      set -e
 
-1. Temp image name is framed. 
+      . ./env-config
 
-2. Image is build using `buildah`. Here temp image name is used.
+      IMAGE_URL=$(outputs.resources.image.url)
 
-3. Login into IBM Cloud Container Registry using `buildah`.
+      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
+      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-4. Temp image is pushed to IBM Cloud Container Registry using `buildah`.
+      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
 
-5. Username details to Login into IBM Cloud Container Registry.
+      buildah bud --tls-verify=$(inputs.params.TLSVERIFY) --format=docker -f $(inputs.params.DOCKERFILE) -t ${APP_IMAGE}  $(inputs.params.CONTEXT)
+      if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
+        buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+      fi
+      buildah push --tls-verify=$(inputs.params.TLSVERIFY) "${APP_IMAGE}" "docker://${APP_IMAGE}"
+    command:
+    - /bin/bash
+    env:
+    - name: REGISTRY_USER
+      valueFrom:
+        secretKeyRef:
+          key: REGISTRY_USER
+          name: ibmcloud-apikey
+          optional: true
+    - name: REGISTRY_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: APIKEY
+          name: ibmcloud-apikey
+          optional: true
+    image: $(inputs.params.BUILDER_IMAGE)
+    name: build
+    resources: {}
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+    workingDir: $(inputs.resources.source.path)
 
-6. Password details to Login into IBM Cloud Container Registry.
+```
 
-7. Image details reference `buildah` from input param.
+1. Temp image is build using `buildah`
+2. Login into IBM Cloud Container Registry using `buildah`.
+3. Temp image is pushed to IBM Cloud Container Registry using `buildah`.
+4. env `REGISTRY_USER` contains Username details to Login into IBM Cloud Container Registry.
+5. env `REGISTRY_PASSWORD` contains Password details to Login into IBM Cloud Container Registry.
+6. `name: build` refers the name of the step
 
-8. Name of the step
+### Image Scan
 
-### Trivy Scan
+Add the below code code snippet in the `Task` for trivy scanning.
 
-Here are the steps for Scanning
+```
+  - args:
+    - -c
+    - |
+      set -e
 
-![Tekton Scan](/images/07-tekton-task-3-scan.png)
+      . ./env-config
 
-1. Refers the temp image name created in the previous step. 
+      IMAGE_URL=$(outputs.resources.image.url)
 
-2. Trivy scanning the temp image found in the IBM Cloud Container Registry 
+      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
+      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-3. Username details to Login into IBM Cloud Container Registry.
+      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
 
-4. Password details to Login into IBM Cloud Container Registry.
+      export TRIVY_AUTH_URL=${REGISTRY_URL}
+      export TRIVY_USERNAME=${REGISTRY_USER}
+      export TRIVY_PASSWORD=${REGISTRY_PASSWORD}
 
-5. Image details of the `trivy` from input param.
+      echo "Trivy image scanning.... $APP_IMAGE"
 
-6. Name of the step.
+      # Trivy scan
+      trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE}
+      #trivy ${APP_IMAGE_Temp}
 
-7. Registry URL and user details to login into IBM Cloud Container Registry by trivy.
+      # Check scan results
+      my_exit_code=$?
+      echo "scan exit code : $my_exit_code"
+      if [ ${my_exit_code} == 1 ]; then
+          echo "Image scanning failed. Some vulnerabilities found"
+          exit 1;
+      else
+          echo "Image is scanned Successfully. No vulnerabilities found"
+      fi;
+    command:
+    - /bin/bash
+    env:
+    - name: REGISTRY_USER
+      valueFrom:
+        secretKeyRef:
+          key: REGISTRY_USER
+          name: ibmcloud-apikey
+          optional: true
+    - name: REGISTRY_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: APIKEY
+          name: ibmcloud-apikey
+          optional: true
+    image: $(inputs.params.trivy)
+    name: image-scan
+    resources: {}
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+    workingDir: $(inputs.resources.source.path)
 
+```
+
+1. The temporary image is scanned here.
+
+2. `TRIVY_AUTH_URL,` `TRIVY_USERNAME`, `TRIVY_PASSWORD` refers the Registry URL and user details to login into IBM Cloud Container Registry by trivy.
+
+3. `trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE_Temp}` - step scans the temp image available in the IBM Cloud Container Registry.
+
+4. The step stops and then the pipeline also stops when there is a CRITICAL issue found.
+
+5. If you don't want to stop the pipeline though the CRITICAL issue is found then replace the above triy scan line with `trivy ${APP_IMAGE_Temp}`.
+
+6. The scan results will be printed in the console.
 
 
 ### Push Image
 
-Here are the steps for Pushing Image.
+Add the below code code snippet in the `Task` for pushing image.
 
-![Tekton Push](/images/07-tekton-task-4-push.png)
+```
+  - args:
+    - -c
+    - |
+      set -e
+      . ./env-config
 
-1. Refers the image url passed as a parameter. 
+      IMAGE_URL=$(outputs.resources.image.url)
 
-2. Refers the temp image name created in the previous step. 
+      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
+      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-3. Login into IBM Cloud Container Registry using `buildah`.
+      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${IMAGE_VERSION}"
+      APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
 
-4. Pull the temp image using `buildah`.
+      if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
+          buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+      fi
 
-5. Tag the image to the actual image name.
+      buildah pull ${APP_IMAGE_Temp}
+      buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}
+      buildah push --tls-verify=${TLSVERIFY} "${APP_IMAGE}" "docker://${APP_IMAGE}"
+      buildah rmi ${APP_IMAGE_Temp}
+    command:
+    - /bin/bash
+    env:
+    - name: REGISTRY_USER
+      valueFrom:
+        secretKeyRef:
+          key: REGISTRY_USER
+          name: ibmcloud-apikey
+          optional: true
+    - name: REGISTRY_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: APIKEY
+          name: ibmcloud-apikey
+          optional: true
+    image: $(inputs.params.BUILDER_IMAGE)
+    name: push
+    resources: {}
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+    workingDir: $(inputs.resources.source.path)
 
-6. Push the actual image to IBM Cloud Container Registry using `buildah`.
+```
+The code snippet does the followings.
 
-7. Remove the temp image from IBM Cloud Container Registry using `buildah`.
+1. Login into IBM Cloud Container Registry using `buildah`.
 
-8. Image details of the `buildah` from input param.
+2. Pull the temp image using `buildah`.
 
-9. Name of the step.
+3. Tag the image to the actual image name.
+
+4. Push the actual image to IBM Cloud Container Registry using `buildah`.
+
+5. Remove the temp image from IBM Cloud Container Registry using `buildah`.
+
+</Tab>
+
+</Tabs>
