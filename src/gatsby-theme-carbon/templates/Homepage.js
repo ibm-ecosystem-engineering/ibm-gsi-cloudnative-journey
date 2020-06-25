@@ -7,7 +7,7 @@ import Carbon from '../../images/cloudnative3.jpg';
 
 const BannerText = () => <h1>Cloud Native Learning Journey </h1>;
 
-const FirstLeftText = () => <p>GSI Labs</p>;
+const FirstLeftText = () => <p>Partner Ecosystem</p>;
 
 const FirstRightText = () => (
   <p>
@@ -25,7 +25,7 @@ const SecondLeftText = () => <p>Cloud Native Journey</p>;
 
 const SecondRightText = () => (
   <p>
-      These practices and assets, enables our GSI partners understand how to develop and deliver enterprise standard application on IBM Cloud.
+      These practices and assets, enables our partners understand how to develop and deliver enterprise standard application on IBM Cloud.
   </p>
 );
 
