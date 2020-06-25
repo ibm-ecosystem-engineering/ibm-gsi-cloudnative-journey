@@ -5,7 +5,7 @@ const CustomHeader = props => (
 
 
   <Header {...props}>
-    <span>IBM GSI Labs</span>&nbsp;Enterprise Sandbox
+    <span>IBM Partner</span>&nbsp;Enterprise Sandbox
 
   </Header>
 
