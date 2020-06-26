@@ -1,0 +1,126 @@
+---
+title: Operator
+---
+
+import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+
+<PageDescription>
+
+An Operator extends Kubernetes to automate the management of the entire lifecycle of a particular application. 
+</PageDescription>
+
+## Introduction
+Operators serve as a packaging mechanism for distributing applications on Kubernetes, and they monitor, maintain, recover, and upgrade the software they deploy.
+
+An Operator is a Kubernetes-native set of resources, defined as a controller combined with one or more custom resource definitions. The controller is custom code that is deployed to a Kubernetes cluster and is designed to watch for changes to custom Kubernetes resources and react to them. 
+
+An Operator builds upon the Kubernetes resource and controller pattern but also includes application-specific knowledge to automate common tasks.  It extends the Kubernetes API to create, configure, and manage instances of complex applications. An Operator essentially understands 2 domains: Kubernetes and something else. By combining knowledge of both domains, it can automate tasks that usually require a human operator that understands both domains.
+
+ ![Model](images/OperatorArch.png)
+
+### How Operators Work
+
+Operators work by extending the Kubernetes control plane and API. In its simplest form, an Operator adds an endpoint to the Kubernetes API, called a custom resource (CR), along with a control plane component that monitors and maintains resources of the new type. 
+
+###  Operator maturity model
+Conceptually, an Operator takes human operational knowledge and encodes it into software that is more easily packaged and shared with consumers. How you approach and build your Operator is up to you. Advanced Operators are designed to handle upgrades seamlessly, react to failures automatically, and not take shortcuts, such as skipping a software backup process to save time.
+
+A Kubernetes application is both deployed on Kubernetes and managed using the Kubernetes APIs and kubectl/oc tooling. You can think of Operators as the runtime that manages this type of application on Kubernetes.
+
+There are a number of entry points into developing Operators depending on where you are coming from. Red Hat describes the maturity of each as follows:
+
+ ![Model](images/FirstSteps.png)
+
+
+
+### General Operator Design
+
+Content provides a well-defined package of artifacts that includes primarily:
+
+* Kubernetes Custom Resource Definitions (CRDs)
+* Controllers - Usually written in Go, controllers react to Kubernetes resource events and watch over the state of the content as defined in the CRD.
+
+The community provides an SDK to build operator packages and to install them into a Kubernetes environment.
+
+Additionally, operators may integrate with the Operator Lifecycle Manager (OLM) which makes the content available in a catalog or marketplace similar to other clouds.
+
+### Operator Framework
+
+Operators give you a convenient way to package, deploy, manage and distribute applications for Kubernetes. The method allows you to package configuration so that users can deploy operators from a simple catalog without having to engage administrators. You can distribute operators beyond your organization using OperatorHub.io which is open to all contributions or the Red Hat OpenShift OperatorHub using Red Hat's certification process. 
+
+#### Operator SDK 
+  
+  Allows developers to build, package and test an Operator based on your expertise without requiring all the knowledge of Kubernetes API complexities
+
+#### Operator Lifecycle Management (OLM)
+
+In many cloud implementations today, content integration with the cloud catalog or marketplace has been accomplished through to an API called a service broker. Firstly, the service broker registers (cloud-specific) as a service and makes it content available through their catalog. The cloud catalog presents the content's offering portals, education, plans, prices, etc. Consumers leverage the catalog to acquire an instance of the content; which may result in a single-tenant or multi-tenant deployment of the specific content. The cloud content/service dashboards will show the instance, a link or embedded management UI, and usage metrics.
+
+The operators design provides for the operator to implement OLM lifecycle methods in a Kubernetes environment. (Note: Operators can manage resources that are not managed by Kubernetes, the OLM and operators are leveraging Kubernetes.) More information on OLM: https://github.com/operator-framework/operator-lifecycle-manager.
+
+#### Operatorhub.io Community
+
+The open source community, and in particular RHEL, has engaged cloud content providers on a Kubernetes-centric content contribution and content operations . The community is working at https://operatorhub.io.
+
+#### Overview of the OperatorHub
+
+The OperatorHub is available via the OpenShift Container Platform web console and is the interface that cluster administrators use to discover and install Operators. With one click, an Operator can be pulled from their off-cluster source, installed and subscribed on the cluster, and made ready for engineering teams to self-service manage the product across deployment environments using the Operator Lifecycle Manager (OLM).
+
+Cluster administrators can choose from OperatorSources grouped into the following categories:
+
+| Category          | Description |
+| ------------------| ------------- | 
+| Redhat Operators  | Red Hat products packaged and shipped by Red Hat. Supported by Red Hat. |
+| Certified Operators  | Products from leading independent software vendors (ISVs). Red Hat partners with ISVs to package and ship. Supported by the ISV. |
+| Community Operators  | Optionally-visible software maintained by relevant representatives in the operator-framework/community-operators GitHub repository. No official support. |
+| Custom Operators     |  Operators you add to the cluster yourself. If you have not added any Custom Operators, the Custom category does not appear in the web console on your OperatorHub. |
+
+### OLM Life-cycle
+
+OLM defines a ClusterServiceVersion(CSV) custom resource which represents how the content provider would like the catalog to display the content and how the consumer should interact with the content.
+#### Publish to Catalog
+
+Using the SDK to install the operator causes a CSV to be create in the Kubernetes environment. Successfully installing the operator causes the CSV to direct the catalog to publish the content for consumers.
+#### Update Catalog
+
+Updates are made by leverage Kubernetes document processing -- e.g. kubectl apply -f updated-content.csv. Operators also expose the notion of a Subscription which can keep the catalog updated automatically.
+
+Note: By updating the CSV, it is possible (likely) the operator is also upgraded.
+#### Retrieve Catalog
+
+The OLM delivers a catalog UI which can be used to display content. Alternatively, the consumer can display
+#### Remove from Catalog
+
+Simply delete the ClusterServiceVersion Kubernetes CR.
+
+#### Expose
+
+ClusterServiceVerion necessarily is deployed to a specific Kubernetes namespace.
+
+#### Provision
+
+Deploying an application using an Operator is likely to be the gateway into the Operator world for many products. For products that have heavily invested in using Helm to deploy their Kubernetes applications, Operator-SDK provides a Helm chart to Operator conversion tool. This tool comes with a number of caveats described here: http://icp-content-playbook.rch.stglabs.ibm.com/build-operator-from-helm-chart/
+
+### Writing a new custom Operator from scratch
+
+This is the standard entry point into developing Operators. It requires a deep knowledge of Kubernetes and the declarative model, but also allows the most flexibility in developing a Kubernetes-native product. The Red Hat Operator-SDK provides a framework to quickly scaffold and deploy a sample Operator.
+
+The following steps are recommended for developing a custom Operator from scratch:
+  * Install the Red Hat Operator-SDK and follow the instructions to create, build, and deploy their sample Operator
+  * Review and build the Operator examples
+  * Review Operator concepts to get an idea of how Operators work:
+    * Custom Resource Definitions (CRDs)
+    * Controllers and Finalizers
+    * Custom Resource Status
+    * Operator RBAC and Scope
+    * Operator Upgrade
+
+### Learn more
+
+Learn more about using Operator:
+<AnchorLinks>
+  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/olm-what-operators-are.html/">Understanding Operators </AnchorLink>
+  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/operator_sdk/osdk-getting-started.html/">Getting started with the Operator SDK </AnchorLink>
+  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/operator-reference.html">Redhat Operators</AnchorLink>
+  <AnchorLink to="https://developers.redhat.com/books/kubernetes-operators/">Kubernetes Operators Book </AnchorLink>
+</AnchorLinks>

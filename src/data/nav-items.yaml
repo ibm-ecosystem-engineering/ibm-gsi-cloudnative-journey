@@ -116,6 +116,8 @@
       path: /developer-advanced/monitoring/
     - title: Advanced Log Management 
       path: /developer-advanced/log-management/
+    - title: Operator 
+      path: /developer-advanced/operator/
     
 
 - title: Resources
