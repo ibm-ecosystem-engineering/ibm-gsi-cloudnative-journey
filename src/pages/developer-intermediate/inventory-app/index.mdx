@@ -73,14 +73,21 @@ named `inventory-management-svc-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
-    
-    ```
-    oc pipeline -n dev-{your initials}
-    ```
-   - replacing `{your initials}` with your actual initials
+- Go into the repository directory cloned and execute the following
 
-- Run `oc credentials` to get the credentials for the Jenkins instance.
+    ```
+    oc sync dev-{your initials} --dev
+    ```
+
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+
+    ```
+    oc pipeline --tekton
+    ```
+
+   replacing `{your initials}` with your actual initials
+
+- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-java-gradle-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
@@ -91,14 +98,17 @@ named `inventory-management-bff-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
-    
-    ```
-    oc pipeline -n dev-{your initials}
-    ```
-   - replacing `{your initials}` with your actual initials
+- Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
 
-- Run `oc credentials` to get the credentials for the Jenkins instance.
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+
+    ```
+    oc pipeline --tekton
+    ```
+
+   replacing `{your initials}` with your actual initials
+
+- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
@@ -128,12 +138,17 @@ named `inventory-management-ui-{initials}`
 
 - Clone the repository to your local machine
 
-- Log into the cluster from the command-line then [register the pipeline](/developer-intermediate/deploy-app#8.-register-the-app-in-a-devops-pipeline)
+- Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
+
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+
     ```
-    oc pipeline -n dev-{your initials}
+    oc pipeline --tekton
     ```
 
-   - replacing `{your initials}` with your actual initials
+   replacing `{your initials}` with your actual initials
+
+- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
