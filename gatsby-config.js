@@ -1,10 +1,16 @@
+const title = process.env.TITLE || 'Cloud-Native Toolkit';
+const trackingId = process.env.ANALYTICS_ID || "";
+
+const gitRepo = process.env.GITHUB_REPOSITORY || 'ibm-garage-cloud/ibm-cloudnative-journey';
+const pathPrefix = '/' + gitRepo.split('/')[1].toLowerCase();
+
 module.exports = {
   siteMetadata: {
-    title: 'IBM Partner Sandbox',
-    description: 'Cloud Native Learning Journey',
-    keywords: 'gatsby,theme,carbon',
+    title,
+    description: 'Cloud-Native Learning Journey',
+    keywords: 'IBM,cloud-native,learning,activation',
   },
-  pathPrefix: "/ibm-gsi-cloudnative-journey",
+  pathPrefix,
   plugins: [
     {
       resolve: 'gatsby-theme-carbon',
@@ -12,7 +18,7 @@ module.exports = {
         isSearchEnabled: true,
         repository: {
           baseUrl:
-              'https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey',
+              `https://github.com/${gitRepo}`,
           subDirectory: '/',
         },
       },
@@ -28,7 +34,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-155887541-1",
+        trackingId,
         head:true
       },
     },
