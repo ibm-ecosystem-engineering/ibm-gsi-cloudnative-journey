@@ -66,11 +66,11 @@ You can install the SDK CLI using Homebrew.
 
 1. Install the SDK CLI using the brew command:
    
-   $ brew install operator-sdk
+    $ brew install operator-sdk
 
 2. Verify that the CLI tool was installed correctly:
   
-   $ operator-sdk version
+    $ operator-sdk version
 
 ### Building a Helm-based Operator using the Operator SDK
 
@@ -92,14 +92,12 @@ This creates the nginx-operator project specifically for watching the Nginx reso
 #### 2. Customize the Operator logic.
 
 
-##### (A) Review the Nginx Helm chart.
-
 
 #### 3. Deploy the CRD.
 
 Before running the Operator, Kubernetes needs to know about the new custom resource definition (CRD) the operator will be watching. Deploy the following CRD:
 
-      $ oc create -f deploy/crds/example_v1alpha1_nginx_crd.yaml
+    $ oc create -f deploy/crds/example_v1alpha1_nginx_crd.yaml
 
 #### 4. Build and run the Operator.
 
@@ -169,3 +167,14 @@ Check that the Service port is set to the default 80:
     $ oc delete -f deploy/service_account.yaml
     $ oc delete -f deploy/crds/example_v1alpha1_nginx_crd.yaml
 
+### Learn more
+
+Learn more about using Operators:
+<AnchorLinks>
+  <AnchorLink to="https://coreos.com/operators/">Operators</AnchorLink>
+  <AnchorLink to="https://github.com/operator-framework">Operator Framework</AnchorLink>
+  <AnchorLink to="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/ ">Kubernetes – operator pattern</AnchorLink>
+  <AnchorLink to="https://docs.openshift.com/container-platform/4.3/operators/operator_sdk/osdk-getting-started.html">OpenShift 4.3 - Getting started with the Operator SDK </AnchorLink>
+  <AnchorLink to="https://blog.openshift.com/operators-on-ocp-4-x/">Operators on Red Hat OpenShift 4.x</AnchorLink>
+  <AnchorLink to="https://www.redhat.com/en/resources/oreilly-kubernetes-operators-automation-ebook">O’Reilly: Kubernetes Operators: Automating the Container Orchestration Platform</AnchorLink>
+</AnchorLinks>
