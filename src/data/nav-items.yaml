@@ -20,6 +20,8 @@
 
 - title: Developer Foundation
   pages:
+    - title: Developer Tools Setup
+      path: /developer-foundation/devenvsetup
     - title: Agenda
       path: /developer-foundation
     - title: What is Cloud Native?

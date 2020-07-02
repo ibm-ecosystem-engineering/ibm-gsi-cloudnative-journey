@@ -17,6 +17,9 @@
     {"title":"Building Applications On OpenShift", "subtitle":"Use RedHat middleware to deliver value","author":"Link","href":"https://learn.openshift.com/middleware/","color":"red"},
     {"title":"Subsystems, Components, and Internals", "subtitle":"How does it work","author":"Link","href":"https://learn.openshift.com/subsystems/","color":"red"}
   ],
+  "openshift_dev" : [
+    {"title":"Foundations of OpenShift", "subtitle":"Getting Started with OpenShift for Developers","author":"Link","href":"https://www.katacoda.com/openshift/courses/introduction/getting-started","color":"red"}
+  ],
   "openshift_adv" : [
     {"title":"Service Mesh Workshop with Istio", "subtitle":"Service to Service communication","author":"Link","href":"https://learn.openshift.com/servicemesh/","color":"red"},
     {"title":"Building Operators on OpenShift", "subtitle":"The core to OpenShift 4.x","author":"Link","href":"https://learn.openshift.com/operatorframework/","color":"red"}
