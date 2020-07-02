@@ -16,11 +16,13 @@ Implementing security as part of the continuous delivery life cycle means your b
 Goal : Shift-left by securing your pipeline, reduce risk
 
 - Image Quality 
+  
   Before using a docker image - it is important to understand Where is it coming from and Who is it coming from 
   Image labels provide metadata for the image you’re building. This help users understand how to use the image easily. 
   The most common label is “maintainer”, which specifies the email address and the name of the person maintaining this image.
 
 - Least Privileged user
+  
   When a Dockerfile doesn’t specify a USER, it defaults to executing the container using the root user. Docker defaults to running containers using the root user.
   When that namespace is then mapped to the root user in the running container, it means that the container potentially has root access on the Docker host. 
   Having an application on the container run with the root user further broadens the attack surface and enables an easy path to privilege escalation 
@@ -57,6 +59,7 @@ Example: Redhat Quay , IBM Container Registry , AWS ECR , Azure Container Regist
 
 - Image scanning
 Regularly scans images from the registry for vulnerabilities, sensitive data, and malware and issues alerts when detecting vulnerabilities
+
 
 - Integrity Assurance
 
