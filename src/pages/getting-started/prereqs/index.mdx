@@ -19,7 +19,7 @@ You will need the following accounts to use the **Partner Enterprise
 - Setup primary email address to match your enterprise email. Follow these [instructions](https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-primary-email-address).
 
 ### Configure Github Personal Access Token
-For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/continuous-integration-tekton)) to connect to and use your GitHub repo, it will need a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) with `public_repo` and `write:repo_hook` scopes. The Personal Access Token only needs to be generated once because it is associated with the GitHub organization and can be used to access any of the organization's repos.
+For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton)) to connect to and use your GitHub repo, it will need a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) with `public_repo` and `write:repo_hook` scopes. The Personal Access Token only needs to be generated once because it is associated with the GitHub account and can be used to access any organizations and repos that the account can access.
 
   - Navigate to [Developer Settings](https://github.com/settings/tokens) and generate a new token; name it something like "CI pipeline"
   - Select `public_repo` scope to enable git clone
@@ -29,4 +29,4 @@ For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](https:
    the token in your password manager or somewhere safe that you can access later on
    
    Once you have created these accounts you can validate you can access your
-    **Partner Enterprise Sandbox** cloud native development environment.
+    **Partner Enterprise Sandbox** cloud-native development environment.
