@@ -1,0 +1,124 @@
+---
+title: Developer Tools Setup
+---
+
+import ActivationPage from 'gatsby-theme-carbon/src/templates/ActivationPage';
+
+To enable the best experience for working through the hands on exercises you
+ need to select the environment you plan to use for development and the tools
+  you require to integration to the IBM Cloud.
+
+- If you are going to use your desktop/laptop for hands on exercises, follow
+ the instructions in Desktop/Laptop tab. You will require a modern MacOS or
+  Windows 10 operating systems for he Desktop/Laptop option
+- If you cannot install tools on your desktop/laptop, follow the Cloud Shell
+ instructions
+- If you want to try the full web IDE experience, then follow the Code Ready
+ Workspaces setup instructions
+
+Once you have completed these setup requirements you will be ready to
+ complete the **Developer Foundation** agenda.
+
+<Tabs>
+
+<Tab label="Cloud Shell">
+
+## Config Cloud Shell
+
+IBM Cloud Shell is instantly accessible from your free IBM Cloud account — no other installation is needed.
+
+IBM Cloud Shell is a free service from IBM which gives you complete control of your cloud resources, applications and infrastructure, from any web browser.
+
+Features of IBM Cloud Shell include:
+
+- Preconfigured environment
+IBM Cloud Shell provides a curated, cloud-based workspace with dozens of preinstalled tools and programming languages. It automatically authenticates to your IBM Cloud account so you can get right to work.
+
+- File upload/download
+Utilize file upload/download functionality to import files to IBM Cloud Shell, or pull down data to your local machine.
+
+- Multiple sessions
+Use up to five shell sessions at a time to maximize your productivity. Mirror workflows on your local machine, or view logs on one session while editing a file in another
+
+### Set up Cloud Shell
+- Login to IBM Cloud console (cloud.ibm.com), if not already done
+
+- Invoke Cloud shell by clicking on the button at the top right hand corner of the browser window
+    ![Invoke Cloud Shell](./images/invokecloudshell.png)
+
+
+
+</Tab>
+
+<Tab label="Desktop/Laptop">
+
+-  Launch your local terminal, Login into the   **IBM Cloud** and **Openshift Cluster**.
+
+</Tab>
+
+<Tab label="Katacoda Interactive Shell">
+
+<ActivationPage content="openshift_dev" tileColor="bx--article-card--ibm">
+</ActivationPage>
+
+
+</Tab>
+
+</Tabs>
+
+## Log into IBM Cloud
+
+- Use `ibmcloud` CLI command line to log into the cloud account. Replace the user_id, password and team name in the sandbox name
+    ```bash
+    ibmcloud login -u <user_id> -p <password> -g sandbox-team-n.. -r us-south
+    ```
+
+- Select Account Number that you are boarded on.
+    ```bash
+    $ ibmcloud login -u email@company.com -p XXX -g sandbox-team-one -r us-south
+    API endpoint: https://cloud.ibm.com
+    Authenticating...
+    OK
+
+    Select an account:
+    1. GSI Labs - IBM
+    Enter a number> 1
+    Targeted account GSI Labs
+
+    Targeted resource group sandbox-team-one
+
+    Targeted region us-south
+
+    API endpoint:      https://cloud.ibm.com
+    Region:            us-south
+    User:              email@company.com
+    Account:           GSI Labs
+    Resource group:    sandbox-team-one
+    CF API endpoint:
+    Org:
+    Space:
+
+    ```
+
+## Log into Openshift Cluster
+
+- Log into the openshift cluster from the cloud console
+    ![Openshift](./images/openshiftcluster.png)
+
+- Access the openshift console by clicking on the button
+    ![Openshift Console](./images/openshiftconsole.png)
+
+- Get the login command with token to login to the openshift from command line
+    ![Openshift Login](./images/LoginCommand.png)
+
+- Execute the login command copied in the last step in the terminal
+    ```bash
+    $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
+    Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
+
+    You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
+
+    Using project "dev-ab".
+    $
+    ```
+
