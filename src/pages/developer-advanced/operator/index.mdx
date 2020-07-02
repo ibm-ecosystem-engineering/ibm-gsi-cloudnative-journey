@@ -4,123 +4,185 @@ title: Operator
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
-<PageDescription>
-
-An Operator extends Kubernetes to automate the management of the entire lifecycle of a particular application. 
-</PageDescription>
-
 ## Introduction
 Operators serve as a packaging mechanism for distributing applications on Kubernetes, and they monitor, maintain, recover, and upgrade the software they deploy.
 
 An Operator is a Kubernetes-native set of resources, defined as a controller combined with one or more custom resource definitions. The controller is custom code that is deployed to a Kubernetes cluster and is designed to watch for changes to custom Kubernetes resources and react to them. 
 
-An Operator builds upon the Kubernetes resource and controller pattern but also includes application-specific knowledge to automate common tasks.  It extends the Kubernetes API to create, configure, and manage instances of complex applications. An Operator essentially understands 2 domains: Kubernetes and something else. By combining knowledge of both domains, it can automate tasks that usually require a human operator that understands both domains.
-
- ![Model](images/OperatorArch.png)
-
 ### How Operators Work
 
 Operators work by extending the Kubernetes control plane and API. In its simplest form, an Operator adds an endpoint to the Kubernetes API, called a custom resource (CR), along with a control plane component that monitors and maintains resources of the new type. 
 
+ ![Model](images/OperatorArch.png)
+
+
 ###  Operator maturity model
 Conceptually, an Operator takes human operational knowledge and encodes it into software that is more easily packaged and shared with consumers. How you approach and build your Operator is up to you. Advanced Operators are designed to handle upgrades seamlessly, react to failures automatically, and not take shortcuts, such as skipping a software backup process to save time.
-
-A Kubernetes application is both deployed on Kubernetes and managed using the Kubernetes APIs and kubectl/oc tooling. You can think of Operators as the runtime that manages this type of application on Kubernetes.
 
 There are a number of entry points into developing Operators depending on where you are coming from. Red Hat describes the maturity of each as follows:
 
  ![Model](images/FirstSteps.png)
 
 
-
-### General Operator Design
-
-Content provides a well-defined package of artifacts that includes primarily:
-
-* Kubernetes Custom Resource Definitions (CRDs)
-* Controllers - Usually written in Go, controllers react to Kubernetes resource events and watch over the state of the content as defined in the CRD.
-
-The community provides an SDK to build operator packages and to install them into a Kubernetes environment.
-
-Additionally, operators may integrate with the Operator Lifecycle Manager (OLM) which makes the content available in a catalog or marketplace similar to other clouds.
-
 ### Operator Framework
 
 Operators give you a convenient way to package, deploy, manage and distribute applications for Kubernetes. The method allows you to package configuration so that users can deploy operators from a simple catalog without having to engage administrators. You can distribute operators beyond your organization using OperatorHub.io which is open to all contributions or the Red Hat OpenShift OperatorHub using Red Hat's certification process. 
 
+![Model](images/OperatorFramework.png)
+
 #### Operator SDK 
   
   Allows developers to build, package and test an Operator based on your expertise without requiring all the knowledge of Kubernetes API complexities
+ ![Model](images/OperatorSDK.png)
 
-#### Operator Lifecycle Management (OLM)
+#### Operator Lifecycle Manager (OLM)
 
-In many cloud implementations today, content integration with the cloud catalog or marketplace has been accomplished through to an API called a service broker. Firstly, the service broker registers (cloud-specific) as a service and makes it content available through their catalog. The cloud catalog presents the content's offering portals, education, plans, prices, etc. Consumers leverage the catalog to acquire an instance of the content; which may result in a single-tenant or multi-tenant deployment of the specific content. The cloud content/service dashboards will show the instance, a link or embedded management UI, and usage metrics.
+Helps you to deploy, and update, and generally manage the lifecycle of all of the Operators (and their associated services) running across your clusters
 
-The operators design provides for the operator to implement OLM lifecycle methods in a Kubernetes environment. (Note: Operators can manage resources that are not managed by Kubernetes, the OLM and operators are leveraging Kubernetes.) More information on OLM: https://github.com/operator-framework/operator-lifecycle-manager.
+#### Operatorhub.io 
 
-#### Operatorhub.io Community
-
-The open source community, and in particular RHEL, has engaged cloud content providers on a Kubernetes-centric content contribution and content operations . The community is working at https://operatorhub.io.
+Publishing platform for Kubernetes Operators, allows for easy discovery and install of Operators using a graphical user interface
 
 #### Overview of the OperatorHub
 
-The OperatorHub is available via the OpenShift Container Platform web console and is the interface that cluster administrators use to discover and install Operators. With one click, an Operator can be pulled from their off-cluster source, installed and subscribed on the cluster, and made ready for engineering teams to self-service manage the product across deployment environments using the Operator Lifecycle Manager (OLM).
+The OperatorHub is available via the OpenShift Container Platform web console and is the interface that cluster administrators use to discover and install Operators. 
 
-Cluster administrators can choose from OperatorSources grouped into the following categories:
+ ![Model](images/OperatorTypes.png)
 
-| Category          | Description |
-| ------------------| ------------- | 
-| Redhat Operators  | Red Hat products packaged and shipped by Red Hat. Supported by Red Hat. |
-| Certified Operators  | Products from leading independent software vendors (ISVs). Red Hat partners with ISVs to package and ship. Supported by the ISV. |
-| Community Operators  | Optionally-visible software maintained by relevant representatives in the operator-framework/community-operators GitHub repository. No official support. |
-| Custom Operators     |  Operators you add to the cluster yourself. If you have not added any Custom Operators, the Custom category does not appear in the web console on your OperatorHub. |
+### Creating Helm-based Operators OR Ansible Based Operator using the Operator SDK [ ROKS Known Limitation - Work in Progress ]
 
-### OLM Life-cycle
+ #### Installing from Homebrew (MacOS)
 
-OLM defines a ClusterServiceVersion(CSV) custom resource which represents how the content provider would like the catalog to display the content and how the consumer should interact with the content.
-#### Publish to Catalog
+You can install the SDK CLI using Homebrew.
 
-Using the SDK to install the operator causes a CSV to be create in the Kubernetes environment. Successfully installing the operator causes the CSV to direct the catalog to publish the content for consumers.
-#### Update Catalog
+#### Prerequisites
 
-Updates are made by leverage Kubernetes document processing -- e.g. kubectl apply -f updated-content.csv. Operators also expose the notion of a Subscription which can keep the catalog updated automatically.
+  * Homebrew
+  * docker v17.03+, podman v1.2.0+, or buildah v1.7+
+  * OpenShift CLI (oc) 4.4+ installed
+  * Access to a cluster based on Kubernetes v1.12.0+
+  * Access to a container registry 
 
-Note: By updating the CSV, it is possible (likely) the operator is also upgraded.
-#### Retrieve Catalog
+#### Procedure
 
-The OLM delivers a catalog UI which can be used to display content. Alternatively, the consumer can display
-#### Remove from Catalog
+1. Install the SDK CLI using the brew command:
+   
+    $ brew install operator-sdk 
 
-Simply delete the ClusterServiceVersion Kubernetes CR.
+2. Verify that the CLI tool was installed correctly:
+  
+    $ operator-sdk version
 
-#### Expose
 
-ClusterServiceVerion necessarily is deployed to a specific Kubernetes namespace.
+### Building a Helm-based Operator using the Operator SDK
 
-#### Provision
+This procedure walks through an example of building a simple Nginx Operator powered by a Helm chart using tools and libraries provided by the Operator SDK. 
 
-Deploying an application using an Operator is likely to be the gateway into the Operator world for many products. For products that have heavily invested in using Helm to deploy their Kubernetes applications, Operator-SDK provides a Helm chart to Operator conversion tool. This tool comes with a number of caveats described here: http://icp-content-playbook.rch.stglabs.ibm.com/build-operator-from-helm-chart/
 
-### Writing a new custom Operator from scratch
+#### 1. Create a new Operator project
 
-This is the standard entry point into developing Operators. It requires a deep knowledge of Kubernetes and the declarative model, but also allows the most flexibility in developing a Kubernetes-native product. The Red Hat Operator-SDK provides a framework to quickly scaffold and deploy a sample Operator.
+To create a new Helm-based, namespace-scoped nginx-operator project, use the following command:
 
-The following steps are recommended for developing a custom Operator from scratch:
-  * Install the Red Hat Operator-SDK and follow the instructions to create, build, and deploy their sample Operator
-  * Review and build the Operator examples
-  * Review Operator concepts to get an idea of how Operators work:
-    * Custom Resource Definitions (CRDs)
-    * Controllers and Finalizers
-    * Custom Resource Status
-    * Operator RBAC and Scope
-    * Operator Upgrade
+    $ operator-sdk new nginx-operator \
+      --api-version=example.com/v1alpha1 \
+      --kind=Nginx \
+      --type=helm
+
+    $ cd nginx-operator
+
+This creates the nginx-operator project specifically for watching the Nginx resource with APIVersion example.com/v1apha1 and Kind Nginx.
+
+#### 2. Customize the Operator logic
+
+
+#### 3. Deploy the CRD
+
+Before running the Operator, Kubernetes needs to know about the new custom resource definition (CRD) the operator will be watching. Deploy the following CRD:
+
+    $ oc create -f deploy/crds/example_v1alpha1_nginx_crd.yaml
+
+#### 4. Build and run the Operator.
+
+There are two ways to build and run the Operator:
+  * As a Pod inside a Kubernetes cluster.
+  * As a Go program outside the cluster using the operator-sdk up command. 
+
+
+  ##### (A) Build the nginx-operator image and push it to a registry:
+
+    $ operator-sdk build quay.io/example/nginx-operator:v0.0.1
+
+    $ podman push quay.io/example/nginx-operator:v0.0.1
+      
+      
+  ##### (B) Deployment manifests are generated in the deploy/operator.yaml file. 
+  
+  The deployment image in this file needs to be modified from the placeholder REPLACE_IMAGE to the previous built image. To do this, run:
+      
+      $ sed -i 's|REPLACE_IMAGE|quay.io/example/nginx-operator:v0.0.1|g' deploy/operator.yaml
+
+  ##### (C) Deploy the nginx-operator:
+
+      $ oc create -f deploy/service_account.yaml
+      $ oc create -f deploy/role.yaml
+      $ oc create -f deploy/role_binding.yaml
+      $ oc create -f deploy/operator.yaml
+
+  ##### (D) Verify that the nginx-operator is up and running:
+
+      $ oc get deployment
+
+
+  
+#### 5. Deploy the Nginx CR.
+
+  Apply the Nginx CR that you modified earlier:
+
+    $ oc apply -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml
+
+  Ensure that the nginx-operator creates the Deployment for the CR:
+
+    $ oc get deployment
+
+  Check the Pods to confirm two replicas were created:
+
+    $ oc get pods
+
+  Check that the Service port is set to 8080:
+
+#### 6. Update the replicaCount and remove the port.
+
+Change the spec.replicaCount field from 2 to 3, remove the spec.service field, and apply the change:
+
+    $ cat deploy/crds/example.com_v1alpha1_nginx_cr.yaml
+
+    $ oc apply -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml
+
+Confirm that the Operator changes the Deployment size:
+
+    $ oc get deployment
+
+Check that the Service port is set to the default 80:
+
+    $ oc get service
+
+#### 7. Clean up the resources:
+
+    $ oc delete -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml
+    $ oc delete -f deploy/operator.yaml
+    $ oc delete -f deploy/role_binding.yaml
+    $ oc delete -f deploy/role.yaml
+    $ oc delete -f deploy/service_account.yaml
+    $ oc delete -f deploy/crds/example_v1alpha1_nginx_crd.yaml
 
 ### Learn more
 
-Learn more about using Operator:
+Learn more about using Operators:
 <AnchorLinks>
-  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/olm-what-operators-are.html/">Understanding Operators </AnchorLink>
-  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/operator_sdk/osdk-getting-started.html/">Getting started with the Operator SDK </AnchorLink>
-  <AnchorLink to="https://docs.openshift.com/container-platform/4.4/operators/operator-reference.html">Redhat Operators</AnchorLink>
-  <AnchorLink to="https://developers.redhat.com/books/kubernetes-operators/">Kubernetes Operators Book </AnchorLink>
+  <AnchorLink to="https://coreos.com/operators/">Operators</AnchorLink>
+  <AnchorLink to="https://github.com/operator-framework">Operator Framework</AnchorLink>
+  <AnchorLink to="https://kubernetes.io/docs/concepts/extend-kubernetes/operator/ ">Kubernetes – operator pattern</AnchorLink>
+  <AnchorLink to="https://docs.openshift.com/container-platform/4.3/operators/operator_sdk/osdk-getting-started.html">OpenShift 4.3 - Getting started with the Operator SDK </AnchorLink>
+  <AnchorLink to="https://blog.openshift.com/operators-on-ocp-4-x/">Operators on Red Hat OpenShift 4.x</AnchorLink>
+  <AnchorLink to="https://www.redhat.com/en/resources/oreilly-kubernetes-operators-automation-ebook">O’Reilly: Kubernetes Operators: Automating the Container Orchestration Platform</AnchorLink>
 </AnchorLinks>
