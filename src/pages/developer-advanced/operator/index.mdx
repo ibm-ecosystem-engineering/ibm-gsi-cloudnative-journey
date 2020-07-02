@@ -35,13 +35,13 @@ Operators give you a convenient way to package, deploy, manage and distribute ap
   Allows developers to build, package and test an Operator based on your expertise without requiring all the knowledge of Kubernetes API complexities
  ![Model](images/OperatorSDK.png)
 
-#### Operator Lifecycle Management (OLM)
+#### Operator Lifecycle Manager (OLM)
 
-The operators design provides for the operator to implement OLM lifecycle methods in a Kubernetes environment. More information on OLM: https://github.com/operator-framework/operator-lifecycle-manager.
+Helps you to deploy, and update, and generally manage the lifecycle of all of the Operators (and their associated services) running across your clusters
 
-#### Operatorhub.io Community
+#### Operatorhub.io 
 
-The open source community, and in particular RHEL, has engaged cloud content providers on a Kubernetes-centric content contribution and content operations . The community is working at https://operatorhub.io.
+Publishing platform for Kubernetes Operators, allows for easy discovery and install of Operators using a graphical user interface
 
 #### Overview of the OperatorHub
 
@@ -67,10 +67,7 @@ You can install the SDK CLI using Homebrew.
 
 1. Install the SDK CLI using the brew command:
    
-    $ brew install operator-sdk \
-
-    $ cd nginx-operator
-
+    $ brew install operator-sdk 
 
 2. Verify that the CLI tool was installed correctly:
   
@@ -82,7 +79,7 @@ You can install the SDK CLI using Homebrew.
 This procedure walks through an example of building a simple Nginx Operator powered by a Helm chart using tools and libraries provided by the Operator SDK. 
 
 
-#### 1. Create a new Operator project. 
+#### 1. Create a new Operator project
 
 To create a new Helm-based, namespace-scoped nginx-operator project, use the following command:
 
@@ -95,10 +92,10 @@ To create a new Helm-based, namespace-scoped nginx-operator project, use the fol
 
 This creates the nginx-operator project specifically for watching the Nginx resource with APIVersion example.com/v1apha1 and Kind Nginx.
 
-#### 2. Customize the Operator logic.
+#### 2. Customize the Operator logic
 
 
-#### 3. Deploy the CRD.
+#### 3. Deploy the CRD
 
 Before running the Operator, Kubernetes needs to know about the new custom resource definition (CRD) the operator will be watching. Deploy the following CRD:
 
@@ -132,7 +129,9 @@ There are two ways to build and run the Operator:
       $ oc create -f deploy/operator.yaml
 
   ##### (D) Verify that the nginx-operator is up and running:
+
       $ oc get deployment
+
 
   
 #### 5. Deploy the Nginx CR.
@@ -143,7 +142,7 @@ There are two ways to build and run the Operator:
 
   Ensure that the nginx-operator creates the Deployment for the CR:
 
-   $ oc get deployment
+    $ oc get deployment
 
   Check the Pods to confirm two replicas were created:
 
