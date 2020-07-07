@@ -20,6 +20,8 @@
 
 - title: Developer Foundation
   pages:
+    - title: Sandbox
+      path: /developer-foundation/checksetup
     - title: Developer Tools Setup
       path: /developer-foundation/devenvsetup
     - title: Agenda
