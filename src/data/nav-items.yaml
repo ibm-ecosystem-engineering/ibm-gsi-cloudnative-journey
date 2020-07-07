@@ -20,6 +20,8 @@
 
 - title: Developer Foundation
   pages:
+    - title: Sandbox
+      path: /developer-foundation/checksetup
     - title: Developer Tools Setup
       path: /developer-foundation/devenvsetup
     - title: Agenda
@@ -118,8 +120,10 @@
       path: /developer-advanced/monitoring/
     - title: Advanced Log Management 
       path: /developer-advanced/log-management/
-    - title: Operator 
+    - title: Operator Overview
       path: /developer-advanced/operator/
+    - title: Operator Labs
+      path: /developer-advanced/operator/lab
     
 
 - title: Resources

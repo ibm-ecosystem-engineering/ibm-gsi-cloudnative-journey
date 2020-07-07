@@ -18,7 +18,9 @@
     {"title":"Subsystems, Components, and Internals", "subtitle":"How does it work","author":"Link","href":"https://learn.openshift.com/subsystems/","color":"red"}
   ],
   "openshift_dev" : [
-    {"title":"Foundations of OpenShift", "subtitle":"Getting Started with OpenShift for Developers","author":"Link","href":"https://www.katacoda.com/openshift/courses/introduction/getting-started","color":"red"}
+    {"title":"Foundations of OpenShift", "subtitle":"Getting Started with OpenShift for Developers using Katacoda","author":"Link","href":"https://www.katacoda.com/openshift/courses/introduction/getting-started","color":"red"},
+    {"title":"Developing On Openshift", "subtitle":"Getting Started with OpenShift for Developers using Openshift Interactive Shell","author":"Link","href":"https://learn.openshift.com/developing-on-openshift/","color":"red"},
+    {"title":"Foundations On Kubernetes", "subtitle":"Getting Started with Kubernetes for Developers using Katacoda","author":"Link","href":"https://www.katacoda.com/courses/kubernetes","color":"red"}
   ],
   "openshift_adv" : [
     {"title":"Service Mesh Workshop with Istio", "subtitle":"Service to Service communication","author":"Link","href":"https://learn.openshift.com/servicemesh/","color":"red"},
