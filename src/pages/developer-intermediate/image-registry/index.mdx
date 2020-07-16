@@ -45,18 +45,18 @@ The logins [determine the namespaces you can access](https://cloud.ibm.com/docs/
 
 ## Registry organization
 
-Like the directories and file names in a file system, a Docker registry is a single collection of images that is cataloged with hierarchical names. A Docker registry such as Docker Hub (or, as we'll see, a registry in IBM Cloud) stores an image with a hierarchical name: namespace, repository, and tag. This path is specified when tagging and pushing the image:
+Like the directories and file names in a file system, a Docker registry is a single collection of images that are cataloged with hierarchical names. A Docker registry such as Docker Hub (or, as we'll see, a registry in IBM Cloud) stores an image with a hierarchical name: namespace, repository, and tag. This path is specified when tagging and pushing the image:
 
 ```bash
-$ docker tag <image> <namesapce>/<repo-name>:<tag>
+$ docker tag <image> <namespace>/<repo-name>:<tag>
 
-$ docker push <namesapce>/<repo-name>:<tag>
+$ docker push <namespace>/<repo-name>:<tag>
 ```
 
-To tag and push an image to any registry other than Doker Hub, you have to specify its domain as part of the path:
+To tag and push an image to any registry other than Docker Hub, you have to specify its domain as part of the path:
 
 ```bash
-$ docker push <domain>/<namesapce>/<repo-name>:<tag>
+$ docker push <domain>/<namespace>/<repo-name>:<tag>
 ```
 
 ### Registry organization in an IBM Cloud account
@@ -67,9 +67,9 @@ IBM's registry organizes images in this same hierarchical structure.
 
 **Namespace**: A namespace is associated with an IBM Cloud account and groups the account's images. Every user in the account can view and work with all images in the namespace, but users outside of the account cannot access images in the account's namespaces. An account may use multiple namespaces to organize images for groupings such as development vs. production or approved vs. experimental. Each namespace must have a name that is unique within a region for all accounts (not just your account).
 
-**Repository**: A repo is often thought of as the name of the image, but techincally the same image can have different names (but the same image ID). Within a registry, different images with the same name stored in the same namespace will be stored in the same repo as long as they have different tags.
+**Repository**: A repo is often thought of as the name of the image, but technically the same image can have different names (but the same image ID). Within a registry, different images with the same name stored in the same namespace will be stored in the same repo as long as they have different tags.
 
-**Tag**: Optional; if a command does not specify it, the default tag is `latest`. Two different tags enable a namesapce to store two images with different image IDs but the same repository name. The tag typically specifies a different build of an image with a different image ID. Two builds usually package two different versions of an application's code, but Docker does not enforce that. The two builds could just be the same Dockerfile run twice with the same inputs (and therefore equivalent), or two completely unrelated sets of software. But two builds usually run software that is similar but at least slightly different, such as a new version of an application's code, but could be simply an alternative implementation of the code (such as for A/B testing).
+**Tag**: Optional; if a command does not specify it, the default tag is `latest`. Two different tags enable a namespace to store two images with different image IDs but the same repository name. The tag typically specifies a different build of an image with a different image ID. Two builds usually package two different versions of an application's code, but Docker does not enforce that. The two builds could just be the same Dockerfile run twice with the same inputs (and therefore equivalent), or two completely unrelated sets of software. But two builds usually run software that is similar but at least slightly different, such as a new version of an application's code, but could be simply an alternative implementation of the code (such as for A/B testing).
 
 Therefore, when [adding an image to a registry in IBM Cloud](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#gs_registry_images_pushing), the push command specifies the image's hierarchical path like this:
 
@@ -101,15 +101,15 @@ It shows more clearly that each image has two tags, rather than being two differ
 
 ## IBM Cloud Container Registry features
 
-IBM Cloud Container Registry is not only a Docker registry hosted in IBM Cloud, it adds several features to the registry service. The registry in each region is private, multitenant, and highly available--properties that a simple registry doesn't have. Here are some other features and capabilities.
+IBM Cloud Container Registry is not only a Docker registry hosted in IBM Cloud, it also adds several features to the registry service. The registry in each region is private, multitenant, and highly available--properties that a simple registry doesn't have. Here are some other features and capabilities.
 
-[**Vulnerability Advisor**](https://cloud.ibm.com/docs/services/va) scans images in the registry to search for known security issues and generates reports with advice on how to fix your images and better secure your environment. Lists of the vunerabilities scanned for are available in [Vulnerable packages](https://cloud.ibm.com/docs/services/va?topic=va-va_index#packages). An administrator can specify exemptions that should not be reported. [Running containers are not scanned](https://cloud.ibm.com/docs/services/Registry?topic=registry-registry_release_notes#27jun2019), just the images in the registry. In the image lists shown above, the *Security status* column shows the number of issues found; the report will explain them in greater detail. In the console, click on the number of issues for details.
+[**Vulnerability Advisor**](https://cloud.ibm.com/docs/services/va) scans images in the registry to search for known security issues and generates reports with advice on how to fix your images and better secure your environment. Lists of the vulnerabilities scanned for are available in [Vulnerable packages](https://cloud.ibm.com/docs/services/va?topic=va-va_index#packages). An administrator can specify exemptions that should not be reported. Keep in mind that [running containers are not scanned](https://cloud.ibm.com/docs/services/Registry?topic=registry-registry_release_notes#27jun2019), only the images in the registry are. In the image lists shown above, the *Security status* column shows the number of issues found; the report will explain them in greater detail. In the console, click on the number of issues for details.
 
 [**Trusted content technology**](https://cloud.ibm.com/docs/services/Registry?topic=registry-registry_trustedcontent): IBM Cloud Container Registry supports images signed using [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). The signature confirms who built the image, such as the CI tool. The push and pull commands maintain image signatures.
 
 [**Container Image Security Enforcement**](https://cloud.ibm.com/docs/services/Registry?topic=registry-security_enforce#security_enforce) verifies container images before deploying them to a cluster. You can control where images are deployed from, enforce Vulnerability Advisor policies, and ensure that content trust is properly applied to the image. If an image does not meet your policy requirements, the pod is not deployed to your cluster or updated.
 
-[**User authorization**](https://cloud.ibm.com/docs/services/Registry?topic=registry-iam): While all users in an account have access to that account's namespaces in the registry, an account administrator can use IAM to manage the access for different users. For example, a common customer concern is: "How can an administrator control which images can be downloaded from Docker Hub and deployed into production?" With IAM in the registry, an administrator can disable the ability to push, build, or delete images, then create a policy to allow these actions and only assign it to certain trusted users such as the CI pipeline's service ID. These privledged users should only add approved images into the registry, thereby limiting the containers that the developers can deploy. The administrators can likewise limit what the CD pipeline can possibly deploy to production by creating a namespace that only includes images approved for production and restricing the CD pipeline to deploy from that namespace.
+[**User authorization**](https://cloud.ibm.com/docs/services/Registry?topic=registry-iam): While all users in an account have access to that account's namespaces in the registry, an account administrator can use IAM to manage the access for different users. For example, a common customer concern is: "How can an administrator control which images can be downloaded from Docker Hub and deployed into production?" With IAM in the registry, an administrator can disable the ability to push, build, or delete images, then create a policy to allow these actions and only assign it to certain trusted users such as the CI pipeline's service ID. These privileged users should only add approved images into the registry, thereby limiting the containers that the developers can deploy. The administrators can likewise limit what the CD pipeline can possibly deploy to production by creating a namespace that only includes images approved for production and restricting the CD pipeline to deploy from that namespace.
 
 
 ## Image registry in the Pipeline
@@ -129,7 +129,7 @@ Let's take a look at using the registry.
     - I deployed my in a project named dev-guide-example-bw
 
 - In the IBM Cloud console, navigate to either **Kubernetes** or **OpenShift** and then **Registry**
-    - It doesn't matter whether you navigate via the Kubernetes panel or the OpenShift panel, the share the same registry
+    - It doesn't matter whether you navigate via the Kubernetes panel or the OpenShift panel, they both share the same registry
     - The registry is the IBM Cloud Container Registry for your region
 
 - In the registry, search for the image named for your project
@@ -146,7 +146,7 @@ Let's take a look at using the registry.
     ![Registry Console Image Details](console-image-details.png)
 
 - Under **Security Status**, click on **5 issues** to see the issues that Vulnerability Advisor found in this image
-    - What it found was configuration issues
+    - What it found were configuration issues
         ![Registry Console Image Issues Overview](console-image-issues-overview.png)
 
     - Scroll down to see the list of configuration issues

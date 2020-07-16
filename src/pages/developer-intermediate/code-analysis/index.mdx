@@ -10,7 +10,7 @@ Use SonarQube to analyze your code's quality
 
 </PageDescription>
 
-In IBM Garage Method, one of the Develop practices is to [automate tests for continuous delivery](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/), in part by using [static source code analysis tools](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/tool_lint). [SonarQube](https://www.sonarqube.org/) automates performing static code analysis and enables it to be added to a continuous integration pipeline. The <Globals name="env" />'s CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) includes a SonarQube stage. Simply by building your app using the pipeline, your code gets analyzed, just open the SonarQube UI to browse the findings.
+In IBM Garage Method, one of the Develop practices is to [automate tests for continuous delivery](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/), in part by using [static source code analysis tools](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/tool_lint). [SonarQube](https://www.sonarqube.org/) automates performing static code analysis and enables it to be added to a continuous integration pipeline. The <Globals name="env" />'s CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) includes a SonarQube stage. Simply by building your app using the pipeline, your code gets analyzed, and the SonarQube UI displays the findings.
 
 ## What is code analysis
 
@@ -53,8 +53,8 @@ Static code analysis collects several metrics that measure code quality:
         - **Info**: Neither a bug nor a code smell, just a finding
 - **Size**
     - **Classes**: Number of class definitions (concrete, abstract, nested, interfaces, enums, annotations)
-    - **Lines of code**: Linespace seperated text that is not whitespace or comments
-    - **Comment lines**: Linespace seperated text containing significant commentary or commented-out code
+    - **Lines of code**: Linespace separated text that is not whitespace or comments
+    - **Comment lines**: Linespace separated text containing significant commentary or commented-out code
 - **Coverage**
     - **Test coverage**: Code that was executed by a test suite
 
@@ -65,7 +65,7 @@ A **Quality gate** defines a policy that assesses pass/fail whether or not the n
 SonarQube performs static code analysis to evaluate code quality, using analysis rules that focus on three areas:
 - **Code Reliability**: Detect bugs that will impact end-user functionality
 - **Application Security**: Detect vulnerabilities and hotspots that can be exploited to compromise the program
-- **Technical Debt**: Keep you codebase maintainable to increase developer velocity
+- **Technical Debt**: Keep your codebase maintainable to increase developer velocity
 
 SonarQube [plugs into the application lifecycle management (ALM)](https://docs.sonarqube.org/latest/architecture/architecture-integration/#header-2) process to make continuous inspection part of continuous integration.
 Adding code analysis to ALM provides regular, timely feedback on the quality of the code being produced.
@@ -88,12 +88,12 @@ Deploy the <Globals name="template" /> named Spring Boot Microservice.
 - Follow the directions in [Deploying an App](/developer-intermediate/deploy-app)
     - Deploy the Spring Boot Microservice template
     - Name the new repo something like `sonar-java`
-    - Be sure to run the CI pipeline for your project, and confirm that it runs the Sonar scan stage
+    - Be sure to run the CI pipeline (using the version igc-java-gradle-v1-x-0) for your project, and confirm that it runs the Sonar scan stage
 
 Examine SonarQube's analysis report for your app
 
 - Go to the OpenShift console. On the top, you will find an icon of a square made of 9 small squares.
-- Clicking on that icon will give you all the tools shortcut. Click on SonarQube icon to open the SonarQube dashboard.
+- Clicking on that icon will give you all the tools shortcut. Select SonarQube to open the SonarQube dashboard.
 - Use `oc credentials` to get the user name and password if you a prompted to log in
 
 - Go to the Projects page
@@ -102,7 +102,7 @@ Examine SonarQube's analysis report for your app
 
     ![Sonar Project](sonar-project.png)
 
-    The project summary shows several characteristics meansured in the app:
+    The project summary shows several characteristics measured in the app:
     - The quality gate passed
    - Several issues were found, categorized by type
         - 2 bugs for a C rating
@@ -133,7 +133,7 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
 
 - In the Issues list, click on either issue to see where the issues appeared in the code
 
-    The Issues detail shows the soure code file for the Java class.
+    The Issues detail shows the source code file for the Java class.
     The issue descriptions are embedded after the `mark` and `reset` method signatures.
 
     ![Sonar Bugs in Code](SonarQube-bugs-code.png)
@@ -170,7 +170,7 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
 
 ### Examine the other issues
 
-Besides the bugs, SonarQube also found issues that are hostspots and code smells.
+Besides the bugs, SonarQube also found issues that are hotspots and code smells.
 
 - In the SonarQube dashboard, go back to the Issues page
 
@@ -191,7 +191,7 @@ Besides the bugs, SonarQube also found issues that are hostspots and code smells
      - This block of commented-out lines of code should be removed.
      - Replace this use of System.out or System.err by a logger.
 
-     None of these break your app's functionality, but they do make the code more difficilt to maintain.
+     None of these break your app's functionality, but they do make the code more difficult to maintain.
 
 ## Give it a try
 
@@ -205,7 +205,7 @@ The first problem is that the quality gate says that the app passed. The default
 
 Let's create a new quality gate that checks for bugs.
 
-- Open the SonarQube dashboard through openshift console shortcut as shown below:
+- Open the SonarQube dashboard through OpenShift console shortcut as shown below:
 
 ![OpenShiftConsoleToolsShortcut](ToolsShortCut.png)
 
@@ -233,7 +233,7 @@ Good news, the quality gate is working and SonarQube fails the project now!
 
 <InlineNotification kind="error">
 
-Do not complete this step for the homework task, when working on the the shared development environment, the [SonarQube Plugin](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) is not correctly configured for this environment.
+Do not complete this step for the homework task, when working on the shared development environment, the [SonarQube Plugin](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) is not correctly configured for this environment.
 
 </InlineNotification>
 
