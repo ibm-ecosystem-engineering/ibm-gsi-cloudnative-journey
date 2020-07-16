@@ -42,7 +42,7 @@ You can install the SDK CLI using Homebrew.
 This procedure walks through an example of building a simple Nginx Operator powered by a Helm chart using tools and libraries provided by the Operator SDK. 
 
 
-#### 1. Create a new Operator project
+#### Create a new Operator project
 
 To create a new Helm-based, namespace-scoped nginx-operator project, use the following command:
 
@@ -55,13 +55,13 @@ To create a new Helm-based, namespace-scoped nginx-operator project, use the fol
 
 This creates the nginx-operator project specifically for watching the Nginx resource with APIVersion example.com/v1apha1 and Kind Nginx.
 
-#### 2. Deploy the CRD
+#### Deploy the CRD
 
 Before running the Operator, Kubernetes needs to know about the new custom resource definition (CRD) the operator will be watching. Deploy the following CRD:
 
     $ oc create -f deploy/crds/example_v1alpha1_nginx_crd.yaml
 
-#### 3. Build and run the Operator.
+#### Build and run the Operator.
 
 There are two ways to build and run the Operator:
 
@@ -69,7 +69,7 @@ There are two ways to build and run the Operator:
 - As a Go/Helm/Ansible program outside the cluster using the operator-sdk up command. 
 
 
-##### (A) Build the nginx-operator image and push it to a registry:
+##### Build the nginx-operator image and push it to a registry:
 
   ```  
   $ operator-sdk build docker.io/$DOCKER_USERNAME/nginx-operator:v0.0.1
@@ -83,7 +83,7 @@ There are two ways to build and run the Operator:
   $ docker push docker.io/$DOCKER_USERNAME/nginx-operator:v0.0.1
   ```    
       
-##### (B) Deployment manifests are generated in the deploy/operator.yaml file. 
+##### Deployment manifests are generated in the deploy/operator.yaml file. 
   
   The deployment image in this file needs to be modified from the placeholder REPLACE_IMAGE to the previous built image. To do this, run:
       
@@ -93,18 +93,18 @@ Note If you are performing these steps on OSX, use the following sed command ins
 
       $ sed -i "" 's|REPLACE_IMAGE|docker.io/$DOCKER_USERNAME/nginx-operator:v0.0.1|g' deploy/operator.yaml
 
-##### (C) Deploy the nginx-operator:
+##### Deploy the nginx-operator:
 
       $ oc create -f deploy/service_account.yaml
       $ oc create -f deploy/role.yaml
       $ oc create -f deploy/role_binding.yaml
       $ oc create -f deploy/operator.yaml
 
-##### (D) Verify that the nginx-operator is up and running:
+##### Verify that the nginx-operator is up and running:
 
       $ oc get deployment
   
-#### 4. Deploy the Nginx CR.
+#### Deploy the Nginx CR.
 
   Apply the Nginx CR that you modified earlier:
 
@@ -153,7 +153,7 @@ Delete the pod from the OpenShift Console which will recreate the POD
 
  ![Model](../images/ApplyCR.png)
 
-#### 5. Update the replicaCount
+#### Update the replicaCount
 
 Change the spec.replicaCount field from 2 to 3, remove the spec.service field, and apply the change:
 
@@ -169,7 +169,7 @@ Check that the Service port is set to the default 80:
 
     $ oc get service
 
-#### 5. Create Route for the service & Access via browser
+#### Create Route for the service & Access via browser
 
 - Create the Route for the example nginx service
 
@@ -183,7 +183,7 @@ Check that the Service port is set to the default 80:
 
 This demonstrates how you use operator sdk to develop the helm based operator for the nginx web server which is successfully installed and working
 
-#### 6. Clean up the resources:
+#### Clean up the resources:
 
     $ oc delete -f deploy/crds/example.com_v1alpha1_nginx_cr.yaml
     $ oc delete -f deploy/operator.yaml
