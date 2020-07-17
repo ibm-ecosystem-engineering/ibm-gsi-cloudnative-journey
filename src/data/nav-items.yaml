@@ -122,7 +122,7 @@
       path: /developer-advanced/log-management/
     - title: Operator Overview
       path: /developer-advanced/operator/
-    - title: Operator Labs
+    - title: Operator Development
       path: /developer-advanced/operator/lab
     
 
