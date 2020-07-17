@@ -29,11 +29,11 @@ An application's performance, efficiency, and behaviors are reliant upon it's ab
 
 ### Runtime Dependencies
  
-One of the most common runtime dependency's is the exposure of a container's specific port through hostPort.  Different applications can specify the same port through hostPort which reserves the port on each node in the cluster for the specific container.  This declaration restricts multiple continers with the same hostPort to be deployed on the same nodes in the cluster and restricts the scale of pods to the number of nodes you have in the cluster.  
+One of the most common runtime dependency is the exposure of a container's specific port through hostPort.  Different applications can specify the same port through hostPort which reserves the port on each node in the cluster for the specific container.  This declaration restricts multiple containers with the same hostPort to be deployed on the same nodes in the cluster and restricts the scale of pods to the number of nodes you have in the cluster.  
 
-Another runtime dependency is file storage for saving the application state.  Kubernetes offers Pod-level storage utilities that are capable of surviving container restarts.  Applications needing to read or write to these storage mechanisms will require nodes that is provided the type of volume required by the application.  If there is no nodes available with the required volume type, then the pod will not be scheduled to be deployed at all. 
+Another runtime dependency is file storage for saving the application state.  Kubernetes offers Pod-level storage utilities that are capable of surviving container restarts.  Applications needing to read or write to these storage mechanisms will require nodes that is provided the type of volume required by the application.  If there are no nodes available with the required volume type, then the pod will not be scheduled to be deployed at all. 
 
-A different kind of dependency is configurations.  ConfigMaps are used by Kubernetes to strategically plan out how to consume it's settings through either environment variables or the filesystem.  Secrets are consumed the same was as a ConfigMap in Kubernetes.  Secrets are a more secure way to distribute environment-specific configurations to containers within the pod. 
+A different kind of dependency are configurations.  ConfigMaps are used by Kubernetes to strategically plan out how to consume its settings through either environment variables or the filesystem.  Secrets are consumed the same was as a ConfigMap in Kubernetes.  Secrets are a more secure way to distribute environment-specific configurations to containers within the pod. 
 
 
 ### Resource Profiles
@@ -104,7 +104,7 @@ The Health Probe pattern revolves the health of applications being communicated 
 
 ### Process Health Checks
 
-The simplest health check in kubernetes is the Process Health Check.  Kubernetes simply probes the application's processes to see if they are running or not. The process check tells kubernetes when a process for an application needs to be restarted or shut down in the case of a failure.
+The simplest health check in Kubernetes is the Process Health Check.  Kubernetes simply probes the application's processes to see if they are running or not. The process check tells Kubernetes when a process for an application needs to be restarted or shut down in the case of a failure.
 
 ### Liveness Probes
 
