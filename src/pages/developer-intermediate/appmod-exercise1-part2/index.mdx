@@ -11,42 +11,20 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 </PageDescription>
 
 
-<InlineNotification kind="info">
-
 **Recap : ** 
-- As part of the Transformation Advisor : Part I - Scan Existing Application Session, we covered
+
+As part of the Transformation Advisor : Part I - Scan Existing Application Session, we covered
 
 1. Accessing the Existing Websphere Application, as a data center app, deployed in a local environment.
 1. Created a workspace in the Transformation Advisor environment and then downloaded the datacollector based on the local operating and Application runtime environment. In this Websphere Application runtime.
 1. Configured the Data collector to the existing application environment and then executed the datacollector to scan the existing application
 1. datacollector created the scan results and published it a zip file, which will be used in this session for analyzing the results.
 
-</InlineNotification>
 
 
 ### Analyze the scan results
 
 <Tabs>
-<Tab label="Desktop/Laptop" open="true">  
-
-- You now have the Scan Results of the application for analyzing
-
-- The Application Binary (plantsbywebsphere8.ear) is present in the below location. You will need this uploading to the transformation advisor
-    ```binaries
-    cd icp-dev-workshop/lab4/binary/application
-     ```
-
-- The DB2 libararies are present in the below location. You will upload the "db2jcc.jar" in the Transformation advisor and later push the "db2jcc_license_cu.jar" to your git repository (one you will be creating during this phase for the migration bundle)
-
-    ```binaries
-    cd icp-dev-workshop/lab4/binary/lib
-    ```
-- Also, download the application related files from the below repository, which shall be used for the deployment of the application during the course of the Lab exercise. 
-    ```
-    git clone https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git
-    ```
-
-</Tab>
 <Tab label="Cloud Shell" open="true">
 
 - Download the Scan results, reference application binaries and libaries from the below repository. 
@@ -69,6 +47,26 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
     - charts (folder): Contains the files related to pipeline deployment configuration
 
 
+
+</Tab>
+<Tab label="Desktop/Laptop" open="true">  
+
+- You now have the Scan Results of the application for analyzing
+
+- The Application Binary (plantsbywebsphere8.ear) is present in the below location. You will need this uploading to the transformation advisor
+    ```binaries
+    cd icp-dev-workshop/lab4/binary/application
+     ```
+
+- The DB2 libararies are present in the below location. You will upload the "db2jcc.jar" in the Transformation advisor and later push the "db2jcc_license_cu.jar" to your git repository (one you will be creating during this phase for the migration bundle)
+
+    ```binaries
+    cd icp-dev-workshop/lab4/binary/lib
+    ```
+- Also, download the application related files from the below repository, which shall be used for the deployment of the application during the course of the Lab exercise. 
+    ```
+    git clone https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git
+    ```
 
 </Tab>
 </Tabs>
