@@ -98,7 +98,7 @@
   pages:
     - title: Agenda
       path: /developer-advanced
-    - title: GitOps & ArgoCD
+    - title: Continuous Delivery (CD)
       path: /developer-advanced/gitops
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
@@ -122,7 +122,7 @@
       path: /developer-advanced/log-management/
     - title: Operator Overview
       path: /developer-advanced/operator/
-    - title: Operator Labs
+    - title: Operator Development
       path: /developer-advanced/operator/lab
     
 
