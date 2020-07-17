@@ -49,6 +49,8 @@ To get the initial BFF project created and registered with a pipeline for automa
 
    replacing `{your initials}` with your actual initials
 
+- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select igc-nodejs-v1-2-0.
+
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
 
 - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
@@ -129,8 +131,35 @@ export * from './stock-items.controller';
 ```bash
 npm start
 ```
+<Tabs>
 
+<Tab label="Desktop/Laptop">
 - Open a browser to `http://localhost:3000/api-docs` to see the swagger page
+</Tab>
+<Tab label="Cloud Ready Workspaces">
+
+![CRW Open Link](./images/crwopenlink.png)
+
+
+- Click on open link 
+
+
+![CRW Open App](./images/crwopenapp.png)
+
+
+- To view this application in new tab click top right corner arrow icon
+
+</Tab>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+</Tabs>
 
 - Expand our service from the list, click `Try it out`, then click `Execute`
 
@@ -358,9 +387,35 @@ export * from './stock-items-mock.service';
 ```bash
 npm start
 ```
+<Tabs>
 
+<Tab label="Desktop/Laptop">
 - Open a browser to `http://localhost:3000/api-docs` and execute the stock items controller. You should see the data from
 above returned by the service.
+</Tab>
+<Tab label="Cloud Ready Workspaces">
+
+![CRW Open Link](./images/crwopenlink.png)
+
+
+- Click on open link 
+
+
+![CRW Open App](./images/crwopenapp.png)
+
+
+- To view this application in new tab click top right corner arrow icon
+
+</Tab>
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+</Tabs>
 
 - Push the changes we've made to the repository
 
@@ -453,10 +508,42 @@ export * from './stock-item.resolver';
 ```bash
 npm start
 ```
-
 - Verify that the that the resolver is available using the Graph QL browser provided by the <Globals name="template" />
     - Open GraphQL Playground: `http://localhost:3000`
     - Run the query `query { stockItems { name } }`
+    
+<Tabs>
+
+<Tab label="Desktop/Laptop">
+- Open GraphQL Playground: `http://localhost:3000`
+
+</Tab>
+<Tab label="Cloud Ready Workspaces">
+
+![CRW Open Link](./images/crwopenlink.png)
+
+
+- Click on open link 
+
+
+![CRW Open App](./images/crwgraphql.png)
+
+
+- To view this application in new tab click top right corner arrow icon
+
+</Tab>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+</Tabs>
+
+
 
 - Push the changes we've made to the repository
 

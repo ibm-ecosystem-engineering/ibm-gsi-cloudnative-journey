@@ -22,7 +22,7 @@ need for your solutions. The approach for getting started is exactly the same fo
 
 **Note:** The instructions provided below lean heavily on the use of the <Globals name="igccli"/> to both show how the
 CLI works in context and to streamline the process (the reason for creating the CLI in the first place). However, the
-use of the CLI is in no way required to use the <Globals name="shortName"/>.If you would prefer to work through these
+use of the CLI is in no way required to use the <Globals name="shortName"/>. If you would prefer to work through these
 instructions without the use of the CLI, we have provided the equivalent manual steps for each command on
 the [Cloud Native Toolkit CLI](/getting-started/cli) page.
 
@@ -34,7 +34,7 @@ it into your development cluster.
 ### Links
 
 <AnchorLinks>
-  <AnchorLink to="#1.-log-into-your-development-cluster-from-the-command-line">1. Log into you Development Cluster from the command line</AnchorLink>
+  <AnchorLink to="#1.-log-into-your-development-cluster-from-the-command-line">1. Log into your Development Cluster from the command line</AnchorLink>
   <AnchorLink to="#2.-create-the-development-namespace">2. Create the development namespace</AnchorLink>
   <AnchorLink to="#3.-open-the-developer-dashboard">3. Open the Developer Dashboard</AnchorLink>
   <AnchorLink to="#4.-create-your-app-in-git">4. Create your app in Git</AnchorLink>
@@ -53,7 +53,7 @@ it into your development cluster.
 - Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
 
     To do so, navigate to your cluster in the _IBM Cloud console_, click on the **Access** tab, and follow the
-    instructions  in **After your cluster provisions, gain access**  section to log in to the cluster from the command line
+    instructions in **After your cluster provisions, gain access**  section to log in to the cluster from the command line
 
 - You can test that you're connected to the cluster with the following simple command:
 
@@ -63,14 +63,14 @@ it into your development cluster.
 
     <InlineNotification kind="info">
 
-    **NOTE**: In case, your workshop is on Code Ready Workspaces,follow the steps in [Code Ready Workspaces Setup](/getting-started/crwsetup) before logging in to the cluster.
+    **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
 
     </InlineNotification>
 
 ### 2. Create the development namespace
 
 - Before getting started, the development namespace/project needs to be created and prepared for the DevOps pipelines.
-- This is something that would typically happen once at the beginning of a project as a development team is formed and assigned to the cluster.
+- This is something that would typically happen once at the beginning of a project when a development team is formed and assigned to the cluster.
 
     ```
     oc sync {DEV_NAMESPACE} --dev
@@ -81,9 +81,9 @@ it into your development cluster.
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
 section that allows you to select a set of preconfigured [<Globals name="templates" />](/resources/codepatterns-overview) that make seeding your development project very easy.
 
-- If you are logged into the OpenShift console you can select the tools menu and select **Developer Dashboard**
+- If you are logged into the OpenShift console, you can select the tools menu and select **Developer Dashboard**
 
-- If you are on a laptop/desktop Open a browser and make sure you are logged into [Github](https://github.com)
+- If you are on a laptop/desktop, open a browser and make sure you are logged into [Github](https://github.com)
 
 ### 4. Create your app in Git
 
@@ -100,18 +100,18 @@ section that allows you to select a set of preconfigured [<Globals name="templat
 
     </InlineNotification>
 
-- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application select the **Typescript Microservice**. This works well in the Cloud Shell as well.
+- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application, select the **Typescript Microservice**. This also works well in the Cloud Shell.
 
   Click on a <Globals name="template" /> **Tile** to create your app github repository from the
     template repository selected. You can also click on the **Git Icon** to browse the source template
-    repository and click on the **Template** to create the template
+    repository and click on the **Template** to create the template.
 
 - Complete the [GitHub create repository from template](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template)
 process.
 
   **Owner**: Select a valid GitHub organization that you are authorized to create repositories within or the one you were given for the shared cluster (See warning above)
 
-  **Repository name**: Enter a valid name for you repo, GitHub will help with showing a green tick if it is valid (See warning above)
+  **Repository name**: Enter a name for your repo. GitHub will help with showing a green tick if it is valid (See warning above)
 
   **Description**: Describe your app
 
@@ -123,7 +123,7 @@ process.
 
 ### 5. Clone your code
 
-- Next, clone it to your local machine.
+- Next, clone the Github repo to your local machine.
 - Click on **Clone or download**
 - Copy the clone _HTTPS link_, and use the `git clone` command to clone it to your terminal.
     ```shell script
@@ -135,7 +135,7 @@ process.
     ```shell script
     cd stockbffnode
     ```
-- You must rename the app to match your git repo or to a unique name for your solution. Then applications move into a _test_ environment they need to unique names.
+- You must rename the app to match your git repo or to a unique name for your solution. When applications move into a _test_ environment, they need to have unique names.
 - Edit `package.json` and edit the `name:` field and change it from its template name to your chosen name.
 - Save the edits
 - Push the changes back to your repository
@@ -152,11 +152,11 @@ process.
 
 Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
 
-- For the inside the folder for the code cloned from GitHub, run the following command to install the Node.js dependencies.
+- From inside the folder where the code was cloned from GitHub, run the following command to install the Node.js dependencies.
     ```
     npm install
     ```
-- Then you can run the app from inside your cloud shell.
+- Run the following command to start the application.
     ```
     npm run start
     ```
@@ -192,13 +192,13 @@ Most developers like to run the code natively in local development environment. 
 
 - You can try out the sample API that is provided with this **Code Pattern**
 
-- You can now add new features and function from inside the Cloud Shell and experiment with your code before you push you changes back to git.
+- You can now add new features and function from inside the Cloud Shell and experiment with your code before you push any changes back to git.
 
 
 ### 7. Set the namespace context
 
-Before running these remainder of the instructions commands it is important to set the
-namespace/project context. (**Notes:** The `kubernetes` command will work for both `openshift`
+Before running the remaining commands, it is important to set the
+namespace/project context. (**Note:** The `kubernetes` command will work for both `openshift`
 and `kubernetes`.)
 
 <Tabs>
@@ -218,7 +218,7 @@ kubectl config set-context --current --namespace={DEV_NAMESPACE}
 
 ### 8. Register the App in a DevOps Pipeline
 
-Up to this point you have the code in a GitHub repository and have cloned it to you local development environment. You now need to register the repository with the continuous integration pipeline. The <Globals name="env" /> supports both [Tekton](/guides/continuous-integration-tekton) and [Jenkins](/guides/continuous-integration) for continuous
+Up to this point you have the code in a GitHub repository and have cloned it to your local development environment. You now need to register the repository with the continuous integration pipeline. The <Globals name="env" /> supports both [Tekton](/guides/continuous-integration-tekton) and [Jenkins](/guides/continuous-integration) for continuous
 integration.
 
 - Start the process to create a pipeline
@@ -245,10 +245,10 @@ also ask for the branch that should be used for the pipeline.
 
   **Personal Access Token**: Paste your GitHub personal access token
 
-  **Branch**: Press enter for the default git branch or type in another branch you want to register
+  **Branch**: Press enter to use the default git branch, master, or type in another branch you want to register
 
-- When registering a `Tekton` pipeline, you will be prompted to select which pipeline you want to use for your application. If you selected Node based Code Pattern select the Node pipeline. If you selected Java select the Gradle pipeline.
-- For the first app select the `igc-nodejs-v1.x.0` version of the pipeline. This will use the Node based CI pipeline with Tekton.
+- When registering a `Tekton` pipeline, you will be prompted to select which pipeline you want to use for your application. If you selected Node based Code Pattern, select the Node pipeline. If you selected Java, select the Gradle pipeline.
+- For the first app, select the `igc-nodejs-v1-x-0` version of the pipeline. This will use the Node based CI pipeline with Tekton.
     ```
     ? Select the Pipeline to use in the PipelineRun: (Use arrow keys)❯
      igc-appmod-liberty-v1-2-0
@@ -260,7 +260,7 @@ also ask for the branch that should be used for the pipeline.
 
 - When registering a `Jenkins` pipeline, the CLI will also set up a webhook with the git host
 
-    **Note:** if the webhook registration step fails it is likely because the Git credentials are incorrect or do not have enough permission in the repository
+    **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository
 
 - The pipeline will be registered in your development cluster.
 
@@ -276,13 +276,13 @@ platform version (`IKS`, `OCP 3.11`, or `OCP 4.3`).
 
     ![OpenShift](images/openshiftconsole.png)
 
-- From menu on the left switch to the **Developer** mode
+- In the menu on the left, switch to the **Developer** mode
 
-- Select _dev_ project that was used for the application pipeline registration
+- Select the _dev_ project that was used for the application pipeline registration
 
 - In the left menu, select *Pipelines*
 
-- You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
+- You will see your application DevOps pipeline now starting to build. When completed, it will look similar to the image below.
 
     ![OpenShift](images/tektonpipeline.png)
 
@@ -330,13 +330,13 @@ registering the pipeline. To validate the app is running follow these steps:
     ```
 
 - From the endpoints listed, select the URL for the repo that was just deployed and press **Enter** to
-open that URL in a web browser and validate the application is working as expected
+open that URL in a web browser. Validate the application is working as expected.
 
 ### 11. Locate the app in the web console
 
 The build pipeline is configured to build the source code from the Git repository into a container image. This
-image is stored in the [Image Registry](/guides/image-registry). After that the image is deployed into the
-same namespace/project within development cluster where the pipeline ran and validated for its health. The steps
+image is stored in the [Image Registry](/developer-intermediate/image-registry). After that, the image is deployed into the
+same namespace/project within the development cluster where the pipeline ran and validated for its health. The steps
 below will walk through locating the installed application within the Web Console.
 
 <Tabs>
@@ -346,9 +346,10 @@ below will walk through locating the installed application within the Web Consol
 - Change to the **Developer** view
 - Click on **Topology** menu
 - Click on your application deployment in the topology view
-- Click on on the **Overview** tab
-- Increase the number of running pods
-- Click **Resource** tab and then on the pod **View Logs** link
+- Click on the **Overview** tab
+- Increase the number of running pods to 2 pods
+- Click on the **Resources** tab to view the list of pods
+- Click on **View Logs** link to view the logs from each pod
 - You can see the running state of your application
 
 ![Pods on OpenShift](images/topology.png)
@@ -392,7 +393,7 @@ below will walk through locating the installed application within the Web Consol
 
 <InlineNotification kind="success">
 
-**Success:** You will now have your application running inside your development cluster and beig delivered using a Tekton based CI pipeline, this is beginning of the developer journey with IBM Cloud
+**Success:** You now have your application running inside your development cluster and being delivered using a Tekton based CI pipeline. This is the beginning of the developer journey with IBM Cloud.
 
 </InlineNotification>
 

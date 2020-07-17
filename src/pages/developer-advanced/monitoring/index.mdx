@@ -20,7 +20,7 @@ In IBM Garage Method, one of the Operate practices is to [automate application m
 
 Open the Sysdig web UI for your environment's cluster
 - [Step 4: Launch the web UI](https://cloud.ibm.com/docs/services/Monitoring-with-Sysdig?topic=Sysdig-getting-started#step4) explains how to open the web UI
-    - In the IBM Cloud dashboard, navigate to **Observability** > **Monitoring**
+    - In the IBM Cloud dashboard, In the navigation menu, select Observability ** > **Monitoring
     - Find the monitoring instance named after your environment's cluster, such as `showcase-dev-iks-sysdig`
     ![Sysdig Monitoring Instance](images/sysdig-monitoring-instance.png)
     - In the monitoring instance, press the **View Sysdig** button to open the Sysdig web UI
@@ -42,7 +42,7 @@ in your cluster
 
 ### Explore your application
 
-By default, the Sysdig dashboard opens the **Explore** page on its **Deployments and Pods** grouping.
+By default, the Sysdig dashboard opens the **Explore** page. Select the **Deployments** grouping.
 
 - Select your cluster
 
@@ -65,12 +65,12 @@ gives some instructions on monitoring, managing, and what to do next.
 
 ## Give it a try
 
-Before you start to understanding how to monitor your application instances, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. This _Git it a Try_ uses [template-node-typescript](https://github.com/IBM/template-node-typescript/generate) as an example.
+Before you start to understanding how to monitor your application instances, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Uses this git repo [template-node-typescript](https://github.com/IBM/template-node-typescript/generate) as an example.
 
 The **SysDig** service is already created, bound and configured to listen to monitoring metrics and events for your development cluster. You can see this in the HTTP overview.
 
 - Open the **SysDig** instance that is named the same as your development cluster.
-- Go to **Dashboards** > **HTTP Overview**
+- Go to **Dashboards** > ** Default Dashboards** > **Application** > **HTTP Top Request**
 
 The dashboard shows stats for all incoming HTTP requests for all apps in the cluster. Browse through these views to get a feel for what they're showing.
 
@@ -125,6 +125,8 @@ The New Alert/Metric wizard enables you to configure a wide range of alerts.
 - In the **Notification Subject & Event Title** field, add your namespace to the end, e.g. `- Dev-MJP namespace`
     ![Notify](images/section2.png)
 
+- In Section 3: Act wizard enable the **Activate Sysdig Capture**  and give the respective details. 
+  ![Notify](images/act.png)
 - Press **Save**
 
 ### Cause the event

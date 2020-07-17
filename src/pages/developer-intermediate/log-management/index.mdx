@@ -14,8 +14,8 @@ In IBM Garage Method, one of the Operate practices is to [automate application m
 
 Given that your application is logging, as are lots of other applications and services in your cloud environment, these logs need to be managed and made accessible. LogDNA adds log management capabilities to a Kubernetes cluster and its deployments. The <Globals name="env" /> includes an IBM Log Analysis with LogDNA service instance configured with a LogDNA agent installed in the environment's cluster. Simply by deploying your application into the <Globals name="env" />, LogDNA collects the logs.
 
-- Open the LogDNA web UI by navigating to the openshift web console  and click on 9 squares icon. It gives a list of the developer tools.
-- Select LogDNA and navigate to the UI as shown below:
+- Open the LogDNA web UI by navigating to the OpenShift web console and click on 9 squares icon. It gives a list of the developer tools.
+- Select LogDNA and navigate to the UI as shown below
 
 
 ## LogDNA log management
@@ -35,12 +35,12 @@ you can filter by your resource group.
 
 ## Give it a try
 
-Before you start to understanding how to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
+Before you begin to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
 
 The **LogDNA** service is already created, bound and configured to listen to logs from your development cluster.
 
-- Open the **LogDNA instance that is named the same as your development cluster
-- Click on **All Apps** and enter the name of your app or narrow the app selection using the suffix that you used to create it
+- Open the LogDNA instance that is named the same as your development cluster
+- Click on **All Apps** and enter the name of your app, or, to narrow the app selection, use the suffix that you used to create it
 ![AllAps](allapps.png)
 - Select the app you want to monitor
 
@@ -57,10 +57,11 @@ The **LogDNA** service is already created, bound and configured to listen to log
 
 ![Error](errorcondition.png)
 
-- Try scaling you pods for the app and calling the API again and come and watch the logs and see where the API call is being routed and which pod is triggering the error
+- Try scaling your pods for the app and calling the API again. Watch the logs and see where the API call is being routed and which pod is triggering the error
 
-There is lots more information around how to use **LogDNA**, these links will help:
+### Learn more
 
+Learn more about using LogDNA:
 <AnchorLinks>
   <AnchorLink to="https://docs.logdna.com/docs/filters">More information on using LogDNA log filtering</AnchorLink>
   <AnchorLink to="https://docs.logdna.com/docs/time">Understand how to jump to a specific timeframe</AnchorLink>
@@ -68,4 +69,4 @@ There is lots more information around how to use **LogDNA**, these links will he
 
 ## Conclusion
 
-It's important to be able to manage the logs of your deployed applications to help identify issues and quickly understand how to resolve them. The Developer Tools configures LogDNA directly to you development cluster to make it easy to get the log you data you need as a developer. Just deploy your application into your <Globals name="env" /> and its logs start appearing automatically, open the LogDNA web UI and browse your logs.
+It's important to be able to manage the logs of your deployed applications to help identify issues and quickly understand how to resolve them. The Developer Tools configures LogDNA directly to your development cluster to make it easy to get the log data you need as a developer. Just deploy your application into your <Globals name="env" /> and its logs start appearing automatically, open the LogDNA web UI and browse your logs.

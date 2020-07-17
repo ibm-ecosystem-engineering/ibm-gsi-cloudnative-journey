@@ -29,10 +29,10 @@ $ brew install aquasecurity/trivy/trivy
 ### Trivy Standalone Run
 Trivy can be run as standalone in Desktop or in laptop .
 ```
-$ trivy [YOUR_IMAGE_NAME]
+$ trivy image [YOUR_IMAGE_NAME]
 
 
-$ trivy python:3.4-alpine
+$ trivy image python:3.4-alpine
 ```
 
 Output
@@ -119,7 +119,7 @@ $ docker run --rm -v $HOME/Library/Caches:/root/.cache/ aquasec/trivy python:3.4
 Trivy output can be generated as json.
 
 ```
-$ trivy -f json -o results.json python:3.4-alpine
+$ trivy image -f json -o results.json python:3.4-alpine
 ```
 
 ### Filter vulnerabilities by severities
@@ -127,7 +127,7 @@ $ trivy -f json -o results.json python:3.4-alpine
 Vulnerability results can be filtered. In the below example HIGH and CRITICAL issues are displayed
 
 ```
-$ trivy --severity HIGH,CRITICAL python:3.4-alpine
+$ trivy image --severity HIGH,CRITICAL python:3.4-alpine
 ```
 
 ```
@@ -168,7 +168,7 @@ This is useful while using Trivy in CICD
 Build stops, when CRITICAL and HIGH severities are found.
 
 ```
-$ trivy --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
+$ trivy image --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
 ```
 
 
@@ -177,7 +177,7 @@ $ trivy --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
 Build doesn't stop, when MEDIUM and LOW found.
 
 ```
-$ trivy --exit-code 0 --severity MEDIUM,LOW python:3.4-alpine
+$ trivy image --exit-code 0 --severity MEDIUM,LOW python:3.4-alpine
 ```
 
 
@@ -318,8 +318,8 @@ The below code snippet is for trivy Scanning. Add the below code under the previ
                     echo "Trivy image scanning started.... $APP_IMAGE_Temp"
 
                     # Trivy scan
-                    trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE_Temp}
-                    #trivy ${APP_IMAGE_Temp}
+                    trivy image --exit-code 1 --severity CRITICAL ${APP_IMAGE_Temp}
+                    #trivy image ${APP_IMAGE_Temp}
 
                     # Check scan results
                     my_exit_code=$?
@@ -405,31 +405,67 @@ The CICD process contains several steps. There is a step called `Build` that wil
 ![Tekton Pipeline](/images/05-tekton-pipeline.png)
 
 Need to split the step into 3 steps.
-- build
-- image-scan
-- push
+- image-build
+- image-scan-trivy
+- image-push
 
 The modified pipeline should look like this.
 ![Tekton Pipeline with Trivy](/images/06-tekton-pipeline-with-trivy.png)
 
-#### build
-The build image will build the image.
+#### image-build
+This step will build the image.
 
-#### image-scan
-Image scan will scan the image and print the Vulnerability count as Low, Medium, High and Critical.
+#### image-scan-trivy
+This step will scan the image and print the Vulnerability count as Low, Medium, High and Critical.
 Based on the configured exit criteria (0 Critical) the next step would in the pipeline will continue.
 
-#### push
-After the scan is completed, it Pushes the image to the Image Registry.
+#### image-push
+After the scan is completed, this step Pushes the image to the Image Registry.
 
 
 The pipeline scripts are defined as Task in the yaml file. lets us see the changes done in the task file.
 
 ## Tekton Task Changes
 
+
+### Extract the existing tekton task yaml
+
+1.Run the below command
+
+```
+oc get tasks    
+```
+
+you may get the output like this. The relvant task related to the build and push would be `igc-build-tag-push-v1-23-0`.
+
+
+```
+NAME                               AGE
+igc-build-tag-push-v1-23-0         52m
+igc-deploy-v1-23-0                 52m
+igc-gitops-v1-23-0                 52m
+igc-goland-test                    52m
+igc-gradle-pact-verify-v1-23-0     52m
+igc-health-check-v1-23-0           52m
+igc-helm-package-v1-23-0           52m
+igc-java-gradle-test-v1-23-0       52m
+igc-java-maven-test-v1-23-0        52m
+igc-liberty-server-check-v1-23-0   52m
+igc-nodejs-test-v1-23-0            52m
+```
+
+2.Run the below command to extract the task content into 
+
+```
+oc get tasks igc-build-tag-push-v1-23-0 -o yaml > igc-build-tag-push-v1-23-0.yaml
+```
+
+3.Update the `igc-build-tag-push-v1-23-0.yaml` file as per the given below steps.
+
 ### Declaration
 
 Add the below code code snippet as declaration about the Trivy image in the `Task`
+
 ```
     - default: docker.io/aquasec/trivy
       name: trivy
@@ -437,88 +473,101 @@ Add the below code code snippet as declaration about the Trivy image in the `Tas
 ```
 
 - After adding the Task code should be like this.
-- Replace the namespace `dev-gan2`, with your project namespace.
+- Replace the namespace `trivy-demo`, with your project namespace.
 
 ```
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: igc-build-tag-push-v1-2-0
-  namespace: dev-gan2
+  name: igc-build-tag-push-v1-23-0
+  namespace: trivy-demo
+  labels:
+    version: 1.23.0
 spec:
   inputs:
     params:
-    - default: docker.io/node:12-stretch
-      name: js-image
-      type: string
-    - default: quay.io/buildah/stable:v1.11.0
-      name: BUILDER_IMAGE
-      type: string
-    - default: docker.io/aquasec/trivy
-      name: trivy
-      type: string      
-    - default: ./Dockerfile
-      name: DOCKERFILE
-      type: string
-    - default: .
-      name: CONTEXT
-      type: string
-    - default: "false"
-      name: TLSVERIFY
-      type: string
+      - default: 'docker.io/node:12-stretch'
+        name: js-image
+        type: string
+      - default: 'quay.io/buildah/stable:v1.11.0'
+        name: BUILDER_IMAGE
+        type: string
+      - default: ./Dockerfile
+        name: DOCKERFILE
+        type: string
+      - default: docker.io/aquasec/trivy
+        name: trivy
+        type: string      
+      - default: .
+        name: CONTEXT
+        type: string
+      - default: 'false'
+        name: TLSVERIFY
+        type: string
     resources:
-    - name: source
-      type: git
+      - name: source
+        type: git
+  outputs:
+    resources:
+      - name: image
+        type: image
 ```
 
-### Build Image
+### Image Build
 
-Add the below code snippet in the `Task` for building image
+Replace the content of the step 'build' with the below code snippet.
 
 ```
-  - args:
-    - -c
-    - |
-      set -e
+    - resources: {}
+      name: image-build
+      command:
+        - /bin/bash
+      env:
+        - name: REGISTRY_USER
+          valueFrom:
+            secretKeyRef:
+              key: REGISTRY_USER
+              name: ibmcloud-apikey
+              optional: true
+        - name: REGISTRY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: APIKEY
+              name: ibmcloud-apikey
+              optional: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
+      image: $(inputs.params.BUILDER_IMAGE)
+      workingDir: $(inputs.resources.source.path)
+      args:
+        - '-c'
+        - >
+          set -e
 
-      . ./env-config
+          . ./env-config
 
-      IMAGE_URL=$(outputs.resources.image.url)
+          IMAGE_URL=$(outputs.resources.image.url)
 
-      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
-      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+          REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
 
-      buildah bud --tls-verify=$(inputs.params.TLSVERIFY) --format=docker -f $(inputs.params.DOCKERFILE) -t ${APP_IMAGE}  $(inputs.params.CONTEXT)
-      if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
-        buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
-      fi
-      buildah push --tls-verify=$(inputs.params.TLSVERIFY) "${APP_IMAGE}" "docker://${APP_IMAGE}"
-    command:
-    - /bin/bash
-    env:
-    - name: REGISTRY_USER
-      valueFrom:
-        secretKeyRef:
-          key: REGISTRY_USER
-          name: ibmcloud-apikey
-          optional: true
-    - name: REGISTRY_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          key: APIKEY
-          name: ibmcloud-apikey
-          optional: true
-    image: $(inputs.params.BUILDER_IMAGE)
-    name: build
-    resources: {}
-    securityContext:
-      privileged: true
-    volumeMounts:
-    - mountPath: /var/lib/containers
-      name: varlibcontainers
-    workingDir: $(inputs.resources.source.path)
+          REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
+
+
+          APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+
+
+          buildah bud --tls-verify=$(inputs.params.TLSVERIFY) --format=docker -f $(inputs.params.DOCKERFILE) -t ${APP_IMAGE}  $(inputs.params.CONTEXT)
+
+          if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]];
+          then
+            buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+          fi
+
+          buildah push --tls-verify=$(inputs.params.TLSVERIFY) "${APP_IMAGE}" "docker://${APP_IMAGE}"
 
 ```
 
@@ -529,69 +578,85 @@ Add the below code snippet in the `Task` for building image
 5. env `REGISTRY_PASSWORD` contains Password details to Login into IBM Cloud Container Registry.
 6. `name: build` refers the name of the step
 
-### Image Scan
+### Image Scan Trivy
 
 Add the below code code snippet in the `Task` for trivy scanning.
 
 ```
-  - args:
-    - -c
-    - |
-      set -e
+    - resources: {}
+      name: image-scan-trivy
+      command:
+      - /bin/sh
+      env:
+        - name: REGISTRY_USER
+          valueFrom:
+            secretKeyRef:
+              key: REGISTRY_USER
+              name: ibmcloud-apikey
+              optional: true
+        - name: REGISTRY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: APIKEY
+              name: ibmcloud-apikey
+              optional: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
+      image: $(inputs.params.trivy)
+      workingDir: $(inputs.resources.source.path)
+      args:
+        - '-c'
+        - >
+          set -e
 
-      . ./env-config
 
-      IMAGE_URL=$(outputs.resources.image.url)
+          . ./env-config
 
-      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
-      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+          IMAGE_URL=$(outputs.resources.image.url)
 
-      export TRIVY_AUTH_URL=${REGISTRY_URL}
-      export TRIVY_USERNAME=${REGISTRY_USER}
-      export TRIVY_PASSWORD=${REGISTRY_PASSWORD}
 
-      echo "Trivy image scanning.... $APP_IMAGE"
+          REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
 
-      # Trivy scan
-      trivy --exit-code 1 --severity CRITICAL ${APP_IMAGE}
-      #trivy ${APP_IMAGE_Temp}
+          REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
 
-      # Check scan results
-      my_exit_code=$?
-      echo "scan exit code : $my_exit_code"
-      if [ ${my_exit_code} == 1 ]; then
-          echo "Image scanning failed. Some vulnerabilities found"
-          exit 1;
-      else
-          echo "Image is scanned Successfully. No vulnerabilities found"
-      fi;
-    command:
-    - /bin/bash
-    env:
-    - name: REGISTRY_USER
-      valueFrom:
-        secretKeyRef:
-          key: REGISTRY_USER
-          name: ibmcloud-apikey
-          optional: true
-    - name: REGISTRY_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          key: APIKEY
-          name: ibmcloud-apikey
-          optional: true
-    image: $(inputs.params.trivy)
-    name: image-scan
-    resources: {}
-    securityContext:
-      privileged: true
-    volumeMounts:
-    - mountPath: /var/lib/containers
-      name: varlibcontainers
-    workingDir: $(inputs.resources.source.path)
 
+          APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+
+          export TRIVY_AUTH_URL=${REGISTRY_URL}
+
+          export TRIVY_USERNAME=${REGISTRY_USER}
+
+          export TRIVY_PASSWORD=${REGISTRY_PASSWORD}
+    
+          echo "Trivy image scanning...111. $APP_IMAGE"
+    
+          # Trivy scan
+
+          trivy image ${APP_IMAGE}
+
+          #trivy image --exit-code 1 --severity CRITICAL ${APP_IMAGE}
+
+          echo "Trivy image scanning...222. $APP_IMAGE"
+
+          # Trivy scan result processing
+          
+          my_exit_code=$?
+
+          echo "RESULT 1:--- $my_exit_code"
+    
+          if [ ${my_exit_code} == 1 ]; then
+
+              echo "Image scanning failed. Some vulnerabilities found"
+
+              exit 1;
+          else
+              echo "Image is scanned Successfully. No vulnerabilities found"
+
+          fi;
 ```
 
 1. The temporary image is scanned here.
@@ -607,59 +672,68 @@ Add the below code code snippet in the `Task` for trivy scanning.
 6. The scan results will be printed in the console.
 
 
-### Push Image
+### Image Push
 
 Add the below code code snippet in the `Task` for pushing image.
 
 ```
-  - args:
-    - -c
-    - |
-      set -e
-      . ./env-config
+     - resources: {}
+      name: image-push
+      command:
+        - /bin/bash
+      env:
+        - name: REGISTRY_USER
+          valueFrom:
+            secretKeyRef:
+              key: REGISTRY_USER
+              name: ibmcloud-apikey
+              optional: true
+        - name: REGISTRY_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: APIKEY
+              name: ibmcloud-apikey
+              optional: true
+      securityContext:
+        privileged: true
+      volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
+      image: $(inputs.params.BUILDER_IMAGE)
+      workingDir: $(inputs.resources.source.path)
+      args:
+        - '-c'
+        - >
+          set -e
 
-      IMAGE_URL=$(outputs.resources.image.url)
 
-      REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
-      REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
+          . ./env-config
 
-      APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${IMAGE_VERSION}"
-      APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
 
-      if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
-          buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
-      fi
+          IMAGE_URL=$(outputs.resources.image.url)
 
-      buildah pull ${APP_IMAGE_Temp}
-      buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}
-      buildah push --tls-verify=${TLSVERIFY} "${APP_IMAGE}" "docker://${APP_IMAGE}"
-      buildah rmi ${APP_IMAGE_Temp}
-    command:
-    - /bin/bash
-    env:
-    - name: REGISTRY_USER
-      valueFrom:
-        secretKeyRef:
-          key: REGISTRY_USER
-          name: ibmcloud-apikey
-          optional: true
-    - name: REGISTRY_PASSWORD
-      valueFrom:
-        secretKeyRef:
-          key: APIKEY
-          name: ibmcloud-apikey
-          optional: true
-    image: $(inputs.params.BUILDER_IMAGE)
-    name: push
-    resources: {}
-    securityContext:
-      privileged: true
-    volumeMounts:
-    - mountPath: /var/lib/containers
-      name: varlibcontainers
-    workingDir: $(inputs.resources.source.path)
 
+          REGISTRY_URL=$(echo $IMAGE_URL | awk -F / '{print $1}')
+
+          REGISTRY_NAMESPACE=$(echo $IMAGE_URL | awk -F / '{print $2}')
+
+          APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${IMAGE_VERSION}"
+
+          APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
+    
+          if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
+              buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
+          fi
+    
+          buildah pull ${APP_IMAGE_Temp}
+
+          buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}
+
+          buildah push --tls-verify=$(inputs.params.TLSVERIFY) "${APP_IMAGE}"  "docker://${APP_IMAGE}"
+
+          buildah rmi ${APP_IMAGE_Temp}
 ```
+
 The code snippet does the followings.
 
 1. Login into IBM Cloud Container Registry using `buildah`.
@@ -671,6 +745,15 @@ The code snippet does the followings.
 4. Push the actual image to IBM Cloud Container Registry using `buildah`.
 
 5. Remove the temp image from IBM Cloud Container Registry using `buildah`.
+
+
+### Push the pipeline changes
+
+Run the below command to apply the pipeline changes back to the cluster.
+```
+oc apply -f igc-build-tag-push-v1-23-0.yaml
+```
+
 
 </Tab>
 

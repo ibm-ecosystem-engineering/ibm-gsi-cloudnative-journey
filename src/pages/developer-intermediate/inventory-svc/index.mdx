@@ -16,7 +16,7 @@ Create the initial project and register it with a pipeline for automated builds.
 
 - Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
 
-    You can also access this template on the <Globals name="templates" /> page in the [<Globals name="dashboard" />](/getting-started/dashboard).
+    You can also access this template on the <Globals name="templates" /> page in the [<Globals name="dashboard" />](/developer-intermediate/deploy-app/#3.-open-the-developer-dashboard).
 
     <InlineNotification kind="warning">
 
@@ -83,14 +83,18 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 
 <Tabs>
 
-<Tab label="Cloud Shell">
-
- ![Access Local App](./images/accesslocalapp.png)
-
-</Tab>
 <Tab label="Desktop/Laptop">
 - Open a browser to `http://localhost:9080/swagger-ui.html`
 </Tab>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
 <Tab label="Cloud Ready Workspaces">
 
 - Click on yes
@@ -312,9 +316,35 @@ public class StockItemController {
 ```bash
 ./gradlew bootRun
 ```
+<Tabs>
 
+<Tab label="Desktop/Laptop">
 - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should
 see the stock item entry in the list
+</Tab>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+- Click on yes
+![CRW Open Link](./images/crwexposeservice.png)
+
+- Click on open link 
+![CRW Open Link](./images/crwopenlink.png)
+
+- To view this application in new tab click top right corner arrow icon
+![CRW Open App](./images/crwopenapp.png)
+
+</Tab>
+
+</Tabs>
 
 - Commit and push the changes to Git.
 
@@ -616,7 +646,37 @@ public class StockItemService implements StockItemApi {
     ./gradlew bootRun
     ```
 
-- Open a browser to `http://localhost:9080/swagger-ui.html` to see the Swagger page
+
+
+<Tabs>
+
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
+
+</Tab>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+- Click on yes
+![CRW Open Link](./images/crwexposeservice.png)
+
+- Click on open link 
+![CRW Open Link](./images/crwopenlink.png)
+
+- To view this application in new tab click top right corner arrow icon
+![CRW Open App](./images/crwopenapp.png)
+
+</Tab>
+
+</Tabs>
 
 - Run the service by selecting `Try it out` then `Execute`
 

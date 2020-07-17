@@ -20,6 +20,10 @@
 
 - title: Developer Foundation
   pages:
+    - title: Sandbox
+      path: /developer-foundation/checksetup
+    - title: Developer Tools Setup
+      path: /developer-foundation/devenvsetup
     - title: Agenda
       path: /developer-foundation
     - title: What is Cloud Native?
@@ -98,12 +102,14 @@
       path: /developer-advanced/gitops
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
-    - title: DevSecOps With Trivy
-      path: /developer-advanced/devsecops-trivy
+    - title: DevSecOps Overview
+      path: /developer-advanced/devsecops      
     - title: DevSecOps With Aquasec CSP
       path: /developer-advanced/devsecops-aquasec-csp
     - title: DevSecOps With Twistlock
-      path: /developer-advanced/devsecops-twistlock      
+      path: /developer-advanced/devsecops-twistlock 
+    - title: DevSecOps With Trivy
+      path: /developer-advanced/devsecops-trivy           
     - title: Cloudant Integration
       path: /developer-advanced/inventory-cloudant
     - title: AppID Integration 
@@ -114,6 +120,10 @@
       path: /developer-advanced/monitoring/
     - title: Advanced Log Management 
       path: /developer-advanced/log-management/
+    - title: Operator Overview
+      path: /developer-advanced/operator/
+    - title: Operator Labs
+      path: /developer-advanced/operator/lab
     
 
 - title: Resources

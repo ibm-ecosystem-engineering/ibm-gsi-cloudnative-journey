@@ -60,6 +60,13 @@ export default ({content,tileColor}) => {
             href
             color
           }
+          openshift_dev {
+            title
+            subtitle
+            author
+            href
+            color
+          }
           openshift_adv {
             title
             subtitle
