@@ -16,7 +16,7 @@
 - title: What's New?
   pages:
     - title: What's New?
-      path: /whatsnew    
+      path: /whatsnew
 
 - title: Developer Foundation
   pages:
@@ -26,16 +26,16 @@
       path: /developer-foundation/devenvsetup
     - title: Agenda
       path: /developer-foundation
-    - title: What is Cloud Native?
+    - title: What is Cloud-Native?
       path: /developer-foundation/cloud-native-overview
-    - title: Cloud Native App Dev
+    - title: Cloud-Native App Dev
       path: /developer-foundation/cloud-native-app-dev
     - title: Continuous Integration (CI)
       path: /developer-foundation/continuous-integration
     - title: Continuous Delivery (CD)
-      path: /developer-foundation/continuous-delivery      
+      path: /developer-foundation/continuous-delivery
     - title: Containers Overview
-      path: /developer-foundation/containers      
+      path: /developer-foundation/containers
     - title: Kubernetes Overview
       path: /developer-foundation/k8s-overview/read
     - title: Openshift Overview
@@ -57,7 +57,7 @@
     - title: Troubleshoot
       path: /developer-foundation/k8s-troubleshooting/
     - title: Garage Method
-      path: /developer-foundation/garage-development      
+      path: /developer-foundation/garage-development
 
 - title: Developer Intermediate
   pages:
@@ -103,28 +103,28 @@
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
     - title: DevSecOps Overview
-      path: /developer-advanced/devsecops      
+      path: /developer-advanced/devsecops
     - title: DevSecOps With Aquasec CSP
       path: /developer-advanced/devsecops-aquasec-csp
     - title: DevSecOps With Twistlock
-      path: /developer-advanced/devsecops-twistlock 
+      path: /developer-advanced/devsecops-twistlock
     - title: DevSecOps With Trivy
-      path: /developer-advanced/devsecops-trivy           
+      path: /developer-advanced/devsecops-trivy
     - title: Cloudant Integration
       path: /developer-advanced/inventory-cloudant
-    - title: AppID Integration 
+    - title: AppID Integration
       path: /developer-advanced/inventory-appid/
     - title: Inventory Application Summary
-      path: /developer-advanced/inventoryappln-summary/  
-    - title: Advanced Monitoring 
+      path: /developer-advanced/inventoryappln-summary/
+    - title: Advanced Monitoring
       path: /developer-advanced/monitoring/
-    - title: Advanced Log Management 
+    - title: Advanced Log Management
       path: /developer-advanced/log-management/
     - title: Operator Overview
       path: /developer-advanced/operator/
     - title: Operator Development
       path: /developer-advanced/operator/lab
-    
+
 
 - title: Resources
   pages:
@@ -136,8 +136,8 @@
       path: /resources/faqs
 
 - title: Logistics
-  pages:      
+  pages:
     - title: Runbook
       path: /logistics/runbook
     - title: Cost
-      path: /logistics/cost      
+      path: /logistics/cost

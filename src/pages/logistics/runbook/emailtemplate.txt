@@ -1,10 +1,10 @@
 Welcome to the:
 
 
-IBM Partner Enterprise Sandbox - Cloud Native Learning Journey
+IBM Partner Enterprise Sandbox - Cloud-Native Learning Journey
 IBM Cloud Red Hat OpenShift and Cloud Pak Sandbox
  
-Congratulations, you have been successfully added to the IBM Partner Cloud Native Sandbox which has been enabled for active learning with IBM RedHat OpenShift , Cloud Pak for Applications and Cloud Pak for Integration
+Congratulations, you have been successfully added to the IBM Partner Cloud-Native Sandbox which has been enabled for active learning with IBM RedHat OpenShift , Cloud Pak for Applications and Cloud Pak for Integration
  
 This development environment is configured in the exact same way clients will configure their development teams on the IBM Cloud. Below you will find details about your assigned IBM Partner Enterprise Sandbox. Each sandbox can consist of up to 200+ partner developers and architects.
  
@@ -22,8 +22,8 @@ sandbox-n..-ocp43 [ Redhat Openshift Cluster 4.X]
  
 The enablement has been crafted to be used as self-paced material or within a Partner managed Journey. Support is being offered through a Slack Channel. Read the introduction and agenda to get more detail of what you will learn. 
  
-Partner Cloud Native Learning Journey Content : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/
-Introduction Cloud Native Learning Journey : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/getting-started/introduction
+Partner Cloud-Native Learning Journey Content : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/
+Introduction Cloud-Native Learning Journey : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/getting-started/introduction
 Access the Learning Journey Developer Intermediate agenda : https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/enablement/developer-intermediate
  
 To ensure you have been added correctly, please follow the directions in this page to validate your access using the details above: Welcome to your Partner Enterprise Sandbox :https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/getting-started/checksetup
@@ -36,5 +36,5 @@ We are very excited to be using the IBM Partner Enterprise Sandbox for deliverin
  
 Thank you,
  
-Cloud Native Squad
+Cloud-Native Squad
 IBM Partner Ecosystem 

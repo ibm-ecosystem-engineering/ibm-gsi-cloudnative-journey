@@ -12,7 +12,7 @@ DevSecOps with Aquasec CSP
 
 ## Guide
 
-Aqua CSP provides full lifecycle security for your cloud native applications (containers, orchestrators, cloud VMs, and serverless functions) at a very granular level. Aqua includes preventive controls to secure the development pipeline; protects applications in runtime; detects and blocks attacks; and provides visibility and auditing for security risk management and compliance.
+Aqua CSP provides full lifecycle security for your Cloud-Native applications (containers, orchestrators, cloud VMs, and serverless functions) at a very granular level. Aqua includes preventive controls to secure the development pipeline; protects applications in runtime; detects and blocks attacks; and provides visibility and auditing for security risk management and compliance.
 
 Aqua CSP:
 
@@ -43,7 +43,7 @@ On IBM Managed Openshift 4.3 , the installation of Aqua CSP 4.6 was carried out
 ## Installation on IBM Cloud Managed Openshift v4.3 :
 The Aqua Server components ( Server, DB Gateway ) are deployed as Pods and Services, while the Aqua Enforcer is deployed as a DaemonSet.
 
-### Installation Guide for AquaSec CSP on IBM Managed Openshift Cluster 4.3 
+### Installation Guide for AquaSec CSP on IBM Managed Openshift Cluster 4.3
 
 Aqua CSP is installed on IBM Managed Openshift Cluster 4.3 leveraging the steps detailed out below
 
@@ -59,70 +59,70 @@ oc login --token=<token> -server=https://c104-e.us-east.containers.cloud.ibm.com
 ```
 
 ####	2. Create Aqua Project
-The commands below will create a new OpenShift project (aqua) for the Aqua components 
+The commands below will create a new OpenShift project (aqua) for the Aqua components
 ```
 oc new-project aqua
 ```
 
-#### 3. Create a Service Account 
+#### 3. Create a Service Account
 Create the service account "aqua-sa" which will be used for assigning privileges to the aqua project
  ```
- oc create serviceaccount aqua-sa -n aqua serviceaccount/aqua-sa created 
+ oc create serviceaccount aqua-sa -n aqua serviceaccount/aqua-sa created
 ```
 
-#### 4. Add cluster role and scc to account 
+#### 4. Add cluster role and scc to account
 Add cluster role for the "aqua-sa" service account
 ```
-oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:aqua:aqua-sa 
+oc adm policy add-cluster-role-to-user cluster-reader system:serviceaccount:aqua:aqua-sa
 ```
 
 Add security context constraints (scc) for the "aqua-sa" service account
 ```
-oc adm policy add-scc-to-user privileged system:serviceaccount:aqua:aqua-sa 
+oc adm policy add-scc-to-user privileged system:serviceaccount:aqua:aqua-sa
 ```
 ```
-oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua:aqua-sa 
-```
-
-#### 5.	Create Aqua registry secret 
-Set up OpenShift secrets called "aqua-registry" 
-```
-oc create secret docker-registry aqua-registry --docker-server=registry.aquasec.com –docker-username=<AQUA_USERNAME> --docker-password=<AQUA_PASSWORD> --dockeremail=no@email.com -n aqua 
+oc adm policy add-scc-to-user hostaccess system:serviceaccount:aqua:aqua-sa
 ```
 
-Replace `<AQUA_USERNAME>` and `<AQUA_PASSWORD>` with the credentials 
+#### 5.	Create Aqua registry secret
+Set up OpenShift secrets called "aqua-registry"
+```
+oc create secret docker-registry aqua-registry --docker-server=registry.aquasec.com –docker-username=<AQUA_USERNAME> --docker-password=<AQUA_PASSWORD> --dockeremail=no@email.com -n aqua
+```
+
+Replace `<AQUA_USERNAME>` and `<AQUA_PASSWORD>` with the credentials
 #you have received from Aqua Security.
 
-#### 6. Add the "aqua-registry" secret to the "aqua-sa" service account 
+#### 6. Add the "aqua-registry" secret to the "aqua-sa" service account
 ```
-oc secrets add aqua-sa aqua-registry --for=pull -n aqua 
+oc secrets add aqua-sa aqua-registry --for=pull -n aqua
 ```
 
 #### 7.	Create the database password secret
 Create the database password secret.
 Replace <DB_PASSWORD> with the password of your choice.
-This needs to be done for both managed or internal DBs. 
-Set up OpenShift secret called  "aqua-db". 
+This needs to be done for both managed or internal DBs.
+Set up OpenShift secret called  "aqua-db".
  ```
-oc create secret generic aqua-db –-from-literal=password=<dbpasDB_PASSWORDsword> -n aqua 
+oc create secret generic aqua-db –-from-literal=password=<dbpasDB_PASSWORDsword> -n aqua
  ```
 
- #### 8.	Create Cluster Role and Role Bindings 
-To search and scan images from an OpenShift integrated registry,deploy these manifest files 
+ #### 8.	Create Cluster Role and Role Bindings
+To search and scan images from an OpenShift integrated registry,deploy these manifest files
 
  ```
-oc create -f cluster-role.yaml 
+oc create -f cluster-role.yaml
  ```
   ```
 oc create -f cluster-role-binding.yaml
  ```
 
-#### 9.	Deploy CSP component : DB 
-To deploy an internal DB (not recommended for production usage) 
+#### 9.	Deploy CSP component : DB
+To deploy an internal DB (not recommended for production usage)
 
 Create persistent storage for the DB
  ```
-oc create -f aqua-db-pvc.yaml 
+oc create -f aqua-db-pvc.yaml
  ```
 Check that PVC is created successfully by running
 
@@ -132,7 +132,7 @@ Check that PVC is created successfully by running
 
 Now that PVC is created successfully , go ahead with the db deployment
 ```
-oc create -f db-deployment-vis.yaml 
+oc create -f db-deployment-vis.yaml
 ```
 
 Check the deployment is successful by running
@@ -141,26 +141,26 @@ oc get pods
 ```
 Create a service for the DB
 ```
-oc create -f db-service.yaml 
+oc create -f db-service.yaml
 ```
 Check service is created successfully
 ```
-oc get svc 
+oc get svc
 ```
 
-#### 10.	Deploy the Aqua Server 
+#### 10.	Deploy the Aqua Server
 
 Create persistent storage for the Server
 ```
-oc create -f aqua-web-pvc.yaml  
+oc create -f aqua-web-pvc.yaml
 ```
 Check that PVC is craeted successfully
 ```
 oc get pvc
 ```
-Create Server Deployment 
+Create Server Deployment
 ```
-oc create -f server-deployment.yaml 
+oc create -f server-deployment.yaml
 ```
 Create a service for the Server
 ```
@@ -168,46 +168,46 @@ oc create -f server-service.yaml
 ```
 Check service is created successfully
 ```
-oc get svc 
+oc get svc
 ```
 Next create a route for the Server
 ```
-oc create -f server-route.yaml 
+oc create -f server-route.yaml
 ```
 
-#### 11.	Deploy the Aqua Gateway 
+#### 11.	Deploy the Aqua Gateway
 
 Create the Gateway Deployment
 ```
-oc create -f gatewaydeployment.yaml 
+oc create -f gatewaydeployment.yaml
 ```
 
 Create the Gateway Service
 ```
-oc create -f gatewayservice.yaml 
+oc create -f gatewayservice.yaml
 ```
 
-#### 12.	Check the deployment 
+#### 12.	Check the deployment
 Run the below command to check the status of all deployments
 ```
-oc status 
+oc status
 ```
 
-Example Output 
+Example Output
 ```
-Smiths-MBP-d81f:4. aqua gateway smith$ oc status 
+Smiths-MBP-d81f:4. aqua gateway smith$ oc status
 
-In project aqua on server https://c104-e.useast.containers.cloud.ibm.com:31814 
- 
-svc/aqua-db - 172.21.109.50:5432 
-  deployment/aqua-db deploys registry.aquasec.com/database:4.6     deployment #1 running for about an hour - 1 pod 
- 
-svc/aqua-gateway - 172.21.215.125 ports 8443, 3622 
-  deployment/aqua-gateway deploys registry.aquasec.com/gateway:4.6 
-    deployment #1 running for 57 seconds - 1 pod 
- 
+In project aqua on server https://c104-e.useast.containers.cloud.ibm.com:31814
+
+svc/aqua-db - 172.21.109.50:5432
+  deployment/aqua-db deploys registry.aquasec.com/database:4.6     deployment #1 running for about an hour - 1 pod
+
+svc/aqua-gateway - 172.21.215.125 ports 8443, 3622
+  deployment/aqua-gateway deploys registry.aquasec.com/gateway:4.6
+    deployment #1 running for 57 seconds - 1 pod
+
 http://aqua-web-aqua.gsi-learning-ocp437ec5d722a0ab3f463fdc90eeb94dbc70-0000.us-
-east.containers.appdomain.cloud to pod port 8080 (svc/aqua-web)   deployment/aqua-web deploys registry.aquasec.com/console:4.6     deployment #1 running for 32 minutes - 1 pod 
+east.containers.appdomain.cloud to pod port 8080 (svc/aqua-web)   deployment/aqua-web deploys registry.aquasec.com/console:4.6     deployment #1 running for 32 minutes - 1 pod
 ```
 
 #### 13.	Login into Aqua CSP console
@@ -215,22 +215,22 @@ You need to point your web browser to the IP address or DNS name of the Aqua Ser
 
 Run the command below to get the IP address or DNS name of the Aqua Server.
 ```
-oc get route/aqua-web -n aqua 
+oc get route/aqua-web -n aqua
 ```
 The Aqua Server IP address or DNS name will appear as shown under HOST/PORT, as seen in this example:
 
 ```
-NAME       HOST/PORT                                                           
-PATH      SERVICES   PORT      TERMINATION   WILDCARD 
+NAME       HOST/PORT
+PATH      SERVICES   PORT      TERMINATION   WILDCARD
 aqua-web   aqua-web-aqua.gsi-learning-ocp437ec5d722a0ab3f463fdc90eeb94dbc70-0000.us-
-east.containers.appdomain.cloud             aqua-web   8080                    None 
+east.containers.appdomain.cloud             aqua-web   8080                    None
 ```
 
 Login to this address or DNS name, as shown in this example (port number is not required):
 
- http://aqua-web-aqua.gsilearning-ocp43-7ec5d722a0ab3f463fdc90eeb94dbc70-0000.useast.containers.appdomain.cloud 
+ http://aqua-web-aqua.gsilearning-ocp43-7ec5d722a0ab3f463fdc90eeb94dbc70-0000.useast.containers.appdomain.cloud
 
-You should see the screen shown below. When you access the Aqua Server for the first time, you must enter and confirm the password for the administrator username. 
+You should see the screen shown below. When you access the Aqua Server for the first time, you must enter and confirm the password for the administrator username.
 
  ![Aqua CSP Login](/images/Aqua-Login-Creation.png "Aqua CSP Login")
 
@@ -253,40 +253,40 @@ Deploy Aqua Enforcers across your OpenShift cluster by using a Kubernetes Daemon
 
 Enforcer group is a set of zero or more Aqua Enforcers with the same configuration.
 
-Click on Enforcers – click on “Add Enforcer Group” 
+Click on Enforcers – click on “Add Enforcer Group”
 
 ![Aqua CSO Add Enforcer ](/images/Aqua-Add-Enforcer-Group.png "Aqua Add Enforcer Group")
 
-On the Aqua UI  go to Enforcers > Create new group screen that appears, fill in the settings as shown  
+On the Aqua UI  go to Enforcers > Create new group screen that appears, fill in the settings as shown
 
-* Orchestrator: OpenShift 
-* Service Account: aqua-sa 
-* Project: aqua 
+* Orchestrator: OpenShift
+* Service Account: aqua-sa
+* Project: aqua
 
 ![Aqua CSO Add Enforcer 1](/images/Aqua-Add-Enforcer-Group1.png "Aqua Add Enforcer Group 2")
 
-Next fill up the security settings 
+Next fill up the security settings
 
 ![Aqua CSO Add Enforcer 2](/images/Aqua-Add-Enforcer-Group2.png "Aqua Add Enforcer Group 2")
 
-Click Create Group. You will see a pop-up window titled "Install Command",  
+Click Create Group. You will see a pop-up window titled "Install Command",
 
- 
+
 ![Aqua CSO Add Enforcer YAML](/images/Aqua-Add-Enforcer-Group-YAML.png "Aqua Add Enforcer Group YAML")
 
-And then click on Install Command 
+And then click on Install Command
 
-Scroll to the bottom of the screen, and click Copy to Clipboard to copy the DaemonSet YAML text to the clipboard. Save the text as the file aqua-enforcer-new-43.yaml on your host and Click Close. 
+Scroll to the bottom of the screen, and click Copy to Clipboard to copy the DaemonSet YAML text to the clipboard. Save the text as the file aqua-enforcer-new-43.yaml on your host and Click Close.
 
 #### 15. Deploy the Enforcers
 A byproduct of the Enforcer group creation is the DaemonSet required for OpenShift. Aqua does not automatically deploy the Enforcer on the host; you do this with the oc create command. You can run this command to deploy Enforcers on one or more hosts.
 
 ```
-oc create -f aqua-enforcer-new-43.yaml 
+oc create -f aqua-enforcer-new-43.yaml
 ```
 Check that the daemon set is created successfully.
 ```
-oc get ds 
+oc get ds
 ```
 
 Now that we have daemonsets running  ,The enforcers are now available :
@@ -306,7 +306,7 @@ This plugin is installed in Jenkins. Once installed, you include details for sca
 
 During the build process, the image is scanned by the scanner and, optionally, actions are taken if the scan results are negative. Scanning results can be viewed in Jenkins.
 
-### Jenkins Plugin Installation & Configuration 
+### Jenkins Plugin Installation & Configuration
 
 #### 1.	Add user with role scanner
 * In the Aqua UI: Navigate to System > Users and Roles.
@@ -317,12 +317,12 @@ During the build process, the image is scanned by the scanner and, optionally, a
 
 #### 2. Install and configure the Jenkins plugin
 
-In Jenkins: Select Manage Jenkins and then select Manage Plugins from the list. 
+In Jenkins: Select Manage Jenkins and then select Manage Plugins from the list.
 Make sure that the list of available plugins is up to date.
 
 Install the Jenkins plugin
 * In Jenkins: Select Manage Jenkins -> Manage Plugins
-* Select the Available tab, search for "Aqua Security Scanner", and select it. 
+* Select the Available tab, search for "Aqua Security Scanner", and select it.
 * Click  Install without restart. This will install the plugin
 
 ![Jenkins Add Aqua Plugin](/images/Aqua-Jenkins-Plugins.png "Jenkins Add Aqua Plugin ")
@@ -332,9 +332,9 @@ Check the plugin is successfully installed
 ![Jenkins Aqua Plugin installed](/images/Aqua-Jenkins-Plugins-installed.png "Jenkins Add Aqua Plugin installed ")
 
 #### 3. Configure the Jenkins plugin
-In Jenkins: 
-* Select Manage Jenkins, then select Configure System. 
-* In the Aqua Security section and fill in the following fields: 
+In Jenkins:
+* Select Manage Jenkins, then select Configure System.
+* In the Aqua Security section and fill in the following fields:
  the scanner image, Aqua Server URL, scanner user created in Aqua in the previous step, and the password.
 * You can also optionally specify the scan timeout (where 0 means unlimited) and include additional docker run options (for example: if you want to run the scanner with --privileged parameters you can add it here).
 * Select "Do not verify TLS certificates" if you are working in an environment (such as a development environment) without certificates.
@@ -360,7 +360,7 @@ In the Configure page for a job, click Add Build Step Select "Aqua Security".
 
 * Select the action to be taken when image doesn't comply with Aqua policy. The option "Perform the action defined in Aqua's policy" refers to the action specified in the Image Assurance Policy
 
-* Select the image to be scanned. 
+* Select the image to be scanned.
 
 * If the image is local (not in a registry), select Local image, and enter the image name. If the image is in a registry, select Hosted image, and enter the URL for the registry and the image name.
 
@@ -387,7 +387,7 @@ Drill down
 ### Jenkins Freestyle project - Scan via Aqua CSP
 
 You can use the plugin for Jenkins in the build process in Pipeline jobs. You can configure the job to scan images during the build process, or after the build completes and the image is pushed to a registry.
- 
+
 In Pipeline jobs, the build step for Aqua scanning is included in a pipeline script, as part of the job configuration.
 
 * In Jenkins, in the Configure page for a job, scroll to the Pipeline section.
