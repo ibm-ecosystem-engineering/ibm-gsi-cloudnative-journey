@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from 'gatsby-theme-carbon/src/components/Footer';
 
 const currentYear = new Date().getFullYear();
-const lastUpdated = "May 2020";
+const lastUpdated = "July 2020";
 
 const version = "1.0.0";
 
@@ -16,7 +16,7 @@ const Content = () => (
                 href="https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey/issues/new/choose">
                 GitHub.
             </a>
-        </p>       
+        </p>
         <p>
             Components version {version}
             <br />
