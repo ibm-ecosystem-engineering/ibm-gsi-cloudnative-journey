@@ -10,16 +10,16 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
 </PageDescription>
 
-<InlineNotification kind="info">
+
 
 **Recap : ** 
-- As part of the Transformation Advisor : Part 2 - Analyse the scan results, we covered
+
+As part of the Transformation Advisor : Part 2 - Analyse the scan results, we covered
 
 1. Uploading the scanned results to the Transformation Advisor 
 1. Transformation Advisor generates the recommendations and reports based on the scanned results
 1. Analyzed the Technology report, Inventory report and Analysis report of the existing application to see the fitment for migration.
 
-</InlineNotification>
 
 
 
@@ -79,19 +79,18 @@ Ideally, Transformation Advisor could figure out enough from the original applic
 
 Edit the `server.xml` file using your favorite editor to make the following changes:
 
-<InlineNotification> 
+
 
 **Note:**
 
-Ensure you get the details of database from the instructor. The details includes
-
+The db2 service provisioned in the IBM cloud shall be used as the database. Access the db2 service and navigate to the "Service Credentials Tab" to retrieve the database information listed below:
 1. User name
 1. password
 1. db name
 1. db host name
 1. db port
 
-</InlineNotification>
+
 
 - Change the `jpa-2.1` feature to `jpa-2.0`
 
@@ -103,20 +102,20 @@ Ensure you get the details of database from the instructor. The details includes
 
 - As part of the server.xml, there are two references to jdbcDriver. Each reference will map the path of the db2 and db2 licence jar  locations as `${shared.config.dir}/lib/global/db2jcc.jar` and `${shared.config.dir}/lib/global/db2jcc_license_cu.jar`. While one of jdbcDrive id is mapped to `DB2_Universal_JDBC_Driver_Provider` and the second is mapped to `DB2_Universal_JDBC_Driver_Provider_(XA)`.  The jdbcDriver tag snipped should be like as below 
 
-```bash 
-<jdbcDriver id="DB2_Universal_JDBC_Driver_Provider" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
-    <library>
-        <file name="${shared.config.dir}/lib/global/db2jcc.jar"/>
-        <file name="${shared.config.dir}/lib/global/db2jcc_license_cu.jar"/>
-    </library>
-</jdbcDriver>
-<jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_(XA)" javax.sql.DataSource="com.ibm.db2.jcc.DB2XADataSource">
-    <library>
-        <file name="${shared.config.dir}/lib/global/db2jcc.jar"/>
-        <file name="${shared.config.dir}/lib/global/db2jcc_license_cu.jar"/>
-    </library>
-</jdbcDriver>
-```        
+    ```bash 
+    <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
+        <library>
+            <file name="${shared.config.dir}/lib/global/db2jcc.jar"/>
+            <file name="${shared.config.dir}/lib/global/db2jcc_license_cu.jar"/>
+        </library>
+    </jdbcDriver>
+    <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_(XA)" javax.sql.DataSource="com.ibm.db2.jcc.DB2XADataSource">
+        <library>
+            <file name="${shared.config.dir}/lib/global/db2jcc.jar"/>
+            <file name="${shared.config.dir}/lib/global/db2jcc_license_cu.jar"/>
+        </library>
+    </jdbcDriver>
+    ```        
 
 
 - server.xml will have two reference of `datasource` tag. Each will have an element named jdbcDriverRefs. change the jdbcDriverRefs for first one as 'DB2_Universal_JDBC_Driver_Provider' and for the second one as `DB2_Universal_JDBC_Driver_Provider_(XA)`
@@ -128,88 +127,86 @@ Ensure you get the details of database from the instructor. The details includes
 - Also change the databaseName="{to share}", serverName="{to share}" and portNumber="{to share}" 
 
 - After changing the datasource tag with jdbcDriverRefs, username & password, Database details (databaseName, serverName and portNumber), the dataSource snipped should like as below:
-    - **Note:*** ???? should be replaced by actual values
+    
+     ```bash 
+    DATASOURCE FIRST REFERENCE:
 
-```bash 
-DATASOURCE FIRST REFERENCE:
+    <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSourceNONJTA" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider" jndiName="jdbc/PlantsByWebSphereDataSourceNONJTA">
+        <properties.db2.jcc password="????" user="????" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="????" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="?????" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="????" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+    </dataSource>
 
-<dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSourceNONJTA" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider" jndiName="jdbc/PlantsByWebSphereDataSourceNONJTA">
-    <properties.db2.jcc password="????" user="????" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="????" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="?????" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="????" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
-    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
-</dataSource>
+    ```
+    **Note:*** ???? should be replaced by actual values
+    ```bash 
+    DATASOURCE SECOND REFERENCE:
 
-```
+    <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_(XA)" jndiName="jdbc/PlantsByWebSphereDataSource">
+        <properties.db2.jcc password="????" user="????" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="????" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" name="PlantsByWebSphereDataSource" nonTransactionalDataSource="false" portNumber="????" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="false" serverName="????" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+    </dataSource>
 
-```bash 
-DATASOURCE SECOND REFERENCE:
-
-<dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_(XA)" jndiName="jdbc/PlantsByWebSphereDataSource">
-    <properties.db2.jcc password="????" user="????" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="????" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" name="PlantsByWebSphereDataSource" nonTransactionalDataSource="false" portNumber="????" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="false" serverName="????" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
-    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
-</dataSource>
-
-```
+    ```
 
 - Validate the application tag to be 
     
-```bash
-<application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
-```
+    ```bash
+    <application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
+    ```
 
 - Save your changes
 
 - Reference server.xml with the changes is also available in the downloaded reference repo '(https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git)’. The location is liberty/config/server.xml.  The database details marked in ???? has to be replaced by the actual database info.
 
-The modified `server.xml` should look like this:
-
-```
-<?xml version="1.0" encoding="UTF-8"?><!--Generated by IBM TransformationAdvisor
-Thu Nov 21 20:49:39 GMT 2019--><server>
-<!--These elements have been identified from this application's configuration.-->
-  <featureManager>
-    <feature>beanValidation-1.1</feature>
-    <feature>cdi-1.2</feature>
-    <feature>ejbLite-3.2</feature>
-    <feature>el-3.0</feature>
-    <feature>javaMail-1.5</feature>
-    <feature>jndi-1.0</feature>
-    <feature>jpa-2.0</feature>
-    <feature>jsf-2.2</feature>
-    <feature>jsp-2.3</feature>
-    <feature>servlet-3.1</feature>
-    <feature>mpHealth-1.0</feature>
-  </featureManager>
-  <!-- <variable name="DERBY_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/derby/lib"/> -->
-  <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
-  <!-- <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value=""/> -->
-  <variable name="DERBY_JDBC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
-  <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value="${shared.config.dir}/lib/global"/>
-  <applicationManager autoExpand="true"/>
-  <!--These elements are from the profile level configuration. Not all of them may be necessary for your application.-->
-  <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSourceNONJTA" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider" jndiName="jdbc/PlantsByWebSphereDataSourceNONJTA">
-    <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="false" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
-    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
-  </dataSource>
-  <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_(XA)" jndiName="jdbc/PlantsByWebSphereDataSource">
-    <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="true" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" name="PlantsByWebSphereDataSource" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="false" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
-    <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
-  </dataSource>
-  <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
-      <library>
-          <file name="/config/lib/db2jcc.jar"/>
-          <file name="/config/lib/db2jcc_license_cu.jar"/>
-      </library>
-  </jdbcDriver>
-  <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_(XA)" javax.sql.DataSource="com.ibm.db2.jcc.DB2XADataSource">
-      <library>
-          <file name="/config/lib/db2jcc.jar"/>
-          <file name="/config/lib/db2jcc_license_cu.jar"/>
-      </library>
-  </jdbcDriver>
-  <authData id="DefaultNode01/PlantsAuthAlias" password="???" user="db2inst1"/>
-  <application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
-</server>
-```
+- The modified `server.xml` should look like this:
+   ```
+    <?xml version="1.0" encoding="UTF-8"?><!--Generated by IBM TransformationAdvisor
+    Thu Nov 21 20:49:39 GMT 2019--><server>
+    <!--These elements have been identified from this application's configuration.-->
+    <featureManager>
+        <feature>beanValidation-1.1</feature>
+        <feature>cdi-1.2</feature>
+        <feature>ejbLite-3.2</feature>
+        <feature>el-3.0</feature>
+        <feature>javaMail-1.5</feature>
+        <feature>jndi-1.0</feature>
+        <feature>jpa-2.0</feature>
+        <feature>jsf-2.2</feature>
+        <feature>jsp-2.3</feature>
+        <feature>servlet-3.1</feature>
+        <feature>mpHealth-1.0</feature>
+    </featureManager>
+    <!-- <variable name="DERBY_JDBC_DRIVER_PATH" value="${WAS_INSTALL_ROOT}/derby/lib"/> -->
+    <httpEndpoint host="*" httpPort="9080" httpsPort="9443" id="defaultHttpEndpoint"/>
+    <!-- <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value=""/> -->
+    <variable name="DERBY_JDBC_DRIVER_PATH" value="${shared.config.dir}/lib/global"/>
+    <variable name="DB2UNIVERSAL_JDBC_DRIVER_NATIVEPATH" value="${shared.config.dir}/lib/global"/>
+    <applicationManager autoExpand="true"/>
+    <!--These elements are from the profile level configuration. Not all of them may be necessary for your application.-->
+    <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSourceNONJTA" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider" jndiName="jdbc/PlantsByWebSphereDataSourceNONJTA">
+        <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="false" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+    </dataSource>
+    <dataSource containerAuthDataRef="DefaultNode01/PlantsAuthAlias" id="PlantsByWebSphereDataSource" jdbcDriverRef="DB2_Universal_JDBC_Driver_Provider_(XA)" jndiName="jdbc/PlantsByWebSphereDataSource">
+        <properties.db2.jcc user="db2inst1" password="db2Pa2359w0rd123" transactional="true" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="PLANTSDB" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" name="PlantsByWebSphereDataSource" nonTransactionalDataSource="false" portNumber="32612" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="false" serverName="169.62.104.36" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3"/>
+        <connectionManager agedTimeout="0" connectionTimeout="180" maxIdleTime="1800" maxPoolSize="10" minPoolSize="0" reapTime="180"/>
+    </dataSource>
+    <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider" javax.sql.DataSource="com.ibm.db2.jcc.DB2ConnectionPoolDataSource">
+        <library>
+            <file name="/config/lib/db2jcc.jar"/>
+            <file name="/config/lib/db2jcc_license_cu.jar"/>
+        </library>
+    </jdbcDriver>
+    <jdbcDriver id="DB2_Universal_JDBC_Driver_Provider_(XA)" javax.sql.DataSource="com.ibm.db2.jcc.DB2XADataSource">
+        <library>
+            <file name="/config/lib/db2jcc.jar"/>
+            <file name="/config/lib/db2jcc_license_cu.jar"/>
+        </library>
+    </jdbcDriver>
+    <authData id="DefaultNode01/PlantsAuthAlias" password="???" user="db2inst1"/>
+    <application id="PlantsByWebSphere8" location="plantsbywebsphere8.ear" name="PlantsByWebSphere8" type="ear"/>
+    </server>
+    ```
 
 - Push the change to Git (server.xml and db2jcc_license_cu.jar)
     ```bash
@@ -225,90 +222,8 @@ Now that we've configured Liberty and the application, let's deploy it on the Op
 ### Run the application on Liberty
 
 <Tabs>
-<Tab label="S2I" open="true">  
-Now that we are ready for the application deployment on the Openshift cluster, we will here follow the S2I (Source to Image approach) for the build and deployment. Let us use the Cloud Shell for the same
 
-<InlineNotification> 
-
-**Note:**
-
-Ensure you don't copy and push to the git, any of the below folders and files that are used by the igc pipeline from the reference repo ‘(https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git)’.
-
-1. Copy charts (folder) 
-1. Copy assets (folder)
-1. Copy Jenkinsfile (file) 
-1. Copy pom.xml (file). Use only the default pom generated by the TA 
-
-
-</InlineNotification>
-
-- Login to your OC cluster using the Copy Login Command from the browser of the openshift console
-    ```bash
-    oc login {Cluster info}
-    oc project dev-{initial} 
-    oc project -q  
-    ```
-
-- Let us use openshift S2I to build and deploy
-
-    ```bash
-    oc new-app 'https://github.com/{repo}/ta-appmodern-migrate.git' --name=plantsbyliberty
-    .....
-    .....
-
-    --> Success
-        Build scheduled, use 'oc logs -f bc/plantsbyliberty' to track it progress
-        Application is not exposed. You can expose services to the outside world by 
-    executing one or more of the commands below:
-          'oc expose svc/plantsbyliberty'
-        Run 'oc status' to view your app
-    ```
-
-
-
-- Check the logs to track the build and deployment. This will take few minutes to deploy
-    ```bash
-    oc logs -f bc/plantsbyliberty
-    ```
-
-    Once the deployment is completed, create the service for the application
-
-    ```bash
-    oc expose svc/plantsbyliberty
-    oc status
-    ```
-
-- If you need to redeploy the app after some changes, you can do this by manually triggering the below command
-    ```bash
-    oc start-build plantsbyliberty
-    ```
-
-
-- Now you can access the application by getting the hostname for the application by using get routes
-    ```bash
-    oc get routes | grep plantsbyliberty
-    ```
-
-- Test the app
-
-    - Open the browser and navigate to the OpenShift dashboard console
-
-    - Navigate to the 'Topology' section in the left nav.
-
-    - Select your project/name-space and then select the Application. 
-
-    - After selection of the application, on the right you will be able to see details of the application in tabs/sections as Overview and Resources
-
-    - As part of the Resource tab, you can get the routes of the application.
-
-    - Click the link of the route  and add the Path /PlantsByWebSphere to access the application
-
-    - You will be able to landup in the home page of the application
-
-    ![PlantsByLiberty](images/twas-pbw.jpg)
-
-</Tab>
-<Tab label="igc pipeline" open="true">
+<Tab label="oc pipeline" open="true">
 
 As we plan to use the Tekton pipeline to deploy the application to the Openshift environment, we need additional files to be copied. 
 
@@ -592,6 +507,89 @@ Now that we are ready for the application deployment on the Openshift cluster, w
 
     ![PlantsByLiberty](images/twas-pbw.jpg)
 
+
+</Tab>
+<Tab label="S2I" open="true">  
+Now that we are ready for the application deployment on the Openshift cluster, we will here follow the S2I (Source to Image approach) for the build and deployment. Let us use the Cloud Shell for the same.
+
+**Note:**
+
+Ensure you **don't copy** and push to the git, any of the below folders and files that are used by the pipeline from the reference repo ‘(https://github.com/ibm-gsi-ecosystem/appmod-plants-app.git)’.
+
+1. Copy charts (folder) 
+1. Copy assets (folder)
+1. Copy Jenkinsfile (file) 
+1. Copy pom.xml (file). Use only the default pom generated by the TA 
+
+
+The steps below will help to deploy the application to the cluster using S2I
+
+- Login to your OC cluster using the Copy Login Command from the browser of the openshift console
+    ```bash
+    oc login {Cluster info}
+    oc project dev-{initial} 
+    oc project -q  
+    ```
+
+- Let us use openshift S2I to build and deploy
+
+    ```bash
+    oc new-app 'https://github.com/{repo}/ta-appmodern-migrate.git' --name=plantsbyliberty
+    .....
+    .....
+
+    --> Success
+        Build scheduled, use 'oc logs -f bc/plantsbyliberty' to track it progress
+        Application is not exposed. You can expose services to the outside world by 
+    executing one or more of the commands below:
+          'oc expose svc/plantsbyliberty'
+        Run 'oc status' to view your app
+    ```
+
+
+
+- Check the logs to track the build and deployment. This will take few minutes to deploy
+    ```bash
+    oc logs -f bc/plantsbyliberty
+    ```
+
+    Once the deployment is completed, create the service for the application
+
+    ```bash
+    oc expose svc/plantsbyliberty
+    oc status
+    ```
+
+- If you need to redeploy the app after some changes, you can do this by manually triggering the below command
+    ```bash
+    oc start-build plantsbyliberty
+    ```
+
+
+- Now you can access the application by getting the hostname for the application by using get routes
+    ```bash
+    oc get routes | grep plantsbyliberty
+    ```
+
+- Test the app
+
+    - Open the browser and navigate to the OpenShift dashboard console
+
+    - Navigate to the 'Topology' section in the left nav.
+
+    - Select your project/name-space and then select the Application. 
+
+    - After selection of the application, on the right you will be able to see details of the application in tabs/sections as Overview and Resources
+
+    - As part of the Resource tab, you can get the routes of the application.
+
+    - Click the link of the route  that you retrieved using "oc get routes | grep plantsbyliberty" 
+    
+    - The route will open a new tab. Add the Path /PlantsByWebSphere at the end, to access the application
+
+    - You will be able to landup in the home page of the application
+
+    ![PlantsByLiberty](images/twas-pbw.jpg)
 
 </Tab>
 </Tabs>

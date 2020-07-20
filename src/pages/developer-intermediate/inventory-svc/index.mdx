@@ -83,10 +83,6 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 
 <Tabs>
 
-<Tab label="Desktop/Laptop">
-- Open a browser to `http://localhost:9080/swagger-ui.html`
-</Tab>
-
 <Tab label="Cloud Shell">
 
  - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
@@ -106,6 +102,9 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 - To view this application in new tab click top right corner arrow icon
 ![CRW Open App](./images/crwopenapp.png)
 
+</Tab>
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
 </Tab>
 
 </Tabs>
@@ -129,44 +128,44 @@ annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garag
 packages.
 
 ```java path=src/main/java/com/ibm/inventory_management/app/Application.java
-package com.ibm.inventory_management.app;
+    package com.ibm.inventory_management.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.env.Environment;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.boot.CommandLineRunner;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.ComponentScan;
+    import org.springframework.core.env.Environment;
 
-@SpringBootApplication
-@ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
-public class Application extends SpringBootServletInitializer {
-    @Autowired
-    Environment environment;
+    @SpringBootApplication
+    @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
+    public class Application extends SpringBootServletInitializer {
+        @Autowired
+        Environment environment;
 
-    public static void main(String[] args) {
-        SpringApplication.run(com.ibm.inventory_management.app.Application.class, args);
+        public static void main(String[] args) {
+            SpringApplication.run(com.ibm.inventory_management.app.Application.class, args);
+        }
+
+        @Bean
+        public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+            return args -> {
+                String port = environment.getProperty("local.server.port");
+
+                System.out.println();
+                System.out.println("Server started - http://localhost:" + port + "/swagger-ui.html");
+            };
+        }
+
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            return application.sources(Application.class);
+        }
     }
-
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            String port = environment.getProperty("local.server.port");
-
-            System.out.println();
-            System.out.println("Server started - http://localhost:" + port + "/swagger-ui.html");
-        };
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
-}
 ```
 
 - Delete `application.app`
@@ -318,11 +317,6 @@ public class StockItemController {
 ```
 <Tabs>
 
-<Tab label="Desktop/Laptop">
-- When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should
-see the stock item entry in the list
-</Tab>
-
 <Tab label="Cloud Shell">
 
  - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
@@ -343,6 +337,13 @@ see the stock item entry in the list
 ![CRW Open App](./images/crwopenapp.png)
 
 </Tab>
+
+<Tab label="Desktop/Laptop">
+- When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should
+see the stock item entry in the list
+</Tab>
+
+
 
 </Tabs>
 
@@ -650,11 +651,6 @@ public class StockItemService implements StockItemApi {
 
 <Tabs>
 
-<Tab label="Desktop/Laptop">
-- Open a browser to `http://localhost:9080/swagger-ui.html`
-
-</Tab>
-
 <Tab label="Cloud Shell">
 
  - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
@@ -675,6 +671,12 @@ public class StockItemService implements StockItemApi {
 ![CRW Open App](./images/crwopenapp.png)
 
 </Tab>
+
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
+
+</Tab>
+
 
 </Tabs>
 
