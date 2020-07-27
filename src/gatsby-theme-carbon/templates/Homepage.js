@@ -6,6 +6,7 @@ import { calloutLink } from './Homepage.module.scss';
 import Carbon from '../../images/cloudnative3.jpg';
 
 const audience = 'developer'; // 'partners'
+const bannerText = 'Cloud-Native Expertise Roadmap';
 
 const titleCase = (title) => {
     if (!title) {
@@ -18,13 +19,13 @@ const plural = (title) => {
     return title + 's';
 }
 
-const BannerText = () => <h1>Cloud-Native Learning Journey </h1>;
+const BannerText = () => <h1>{bannerText}</h1>;
 
 const FirstLeftText = () => <p>{titleCase(audience)} Ecosystem</p>;
 
 const FirstRightText = () => (
   <p>
-      This Learning Journey is optimised to enable {plural(audience)} to deliver cloud native solutions with Red Hat OpenShift on IBM Cloud.
+      This content is optimised to enable {plural(audience)} to deliver cloud native solutions with Red Hat OpenShift on IBM Cloud.
     <a
       className={calloutLink}
       href="https://www.ibm.com/cloud"
