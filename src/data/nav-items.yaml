@@ -18,7 +18,7 @@
     - title: What's New?
       path: /whatsnew    
 
-- title: Developer Foundation
+- title: Cloud-Native Foundation
   pages:
     - title: Agenda
       path: /developer-foundation
@@ -55,7 +55,7 @@
     - title: Garage Method
       path: /developer-foundation/garage-development      
 
-- title: Developer Intermediate
+- title: Cloud-Native Intermediate
   pages:
     - title: Agenda
       path: /developer-intermediate
@@ -90,7 +90,7 @@
     - title: Migrate to Openshift
       path: /developer-intermediate/appmod-exercise1-part3/
 
-- title: Developer Advanced
+- title: Cloud-Native Advanced
   pages:
     - title: Agenda
       path: /developer-advanced
