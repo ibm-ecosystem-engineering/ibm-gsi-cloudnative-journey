@@ -88,7 +88,7 @@ Deploy the <Globals name="template" /> named Spring Boot Microservice.
 - Follow the directions in [Deploying an App](/developer-intermediate/deploy-app)
     - Deploy the Spring Boot Microservice template
     - Name the new repo something like `sonar-java`
-    - Be sure to run the CI pipeline (using the version igc-java-gradle-v1-x-0) for your project, and confirm that it runs the Sonar scan stage
+    - Be sure to run the CI pipeline (using the version igc-java-gradle-v1-x-0) for your project, and confirm that it runs the Sonar scan in test stage
 
 Examine SonarQube's analysis report for your app
 
@@ -229,41 +229,9 @@ Run the pipeline again to scan the code again.
 
 Good news, the quality gate is working and SonarQube fails the project now!
 
-### Add a stage to Jenkins
-
-<InlineNotification kind="error">
-
-Do not complete this step for the homework task, when working on the shared development environment, the [SonarQube Plugin](https://docs.sonarqube.org/latest/analysis/scan/sonarscanner-for-jenkins/) is not correctly configured for this environment.
-
-</InlineNotification>
-
-
-However, take a look at your pipeline (in the OpenShift console). It kept right on going! We don't want the pipeline to keep going and deploy the app; if the code fails the quality gate, we want the pipeline to stop.
-
-Modify the Jenkins pipeline to add a Quality Gate stage.
-
-- In the local Git repo that contains your source code (e.g. `sonar-app-bw`), edit the file named `Jenkinsfile`
-
-- After the stage called Sonar Scan, insert this stage:
-
-    ```jenkins
-    stage("Quality Gate") {
-        timeout(time: 1, unit: 'HOURS') {
-        // Parameter indicates whether to set pipeline to UNSTABLE if Quality Gate fails
-        // true = set pipeline to UNSTABLE, false = don't
-        waitForQualityGate abortPipeline: true
-    }
-    ```
-
--  Push the change to the server repo, which runs the pipeline again, and the Quality Gate stage fails
-
-![Pipeline Quality Gate Failed](pipeline-gate-stage-failed.png)
-
-Good. Now, when SonarQube finds bugs in our app, the quality gate fails and the Jenkins stage fails.
-
 ### Fix the code
 
-Now that our pipeline detects problems in our code, let's fix those problems. As discussed before, the bugs are that two methods need to be marked as synchronized. Let's fix the code.
+ Let's fix the problems. As discussed before, the bugs are that two methods need to be marked as synchronized. Let's fix the code.
 
 - Edit the class `com.ibm.cloud_garage.logging.inbound.ResettableHttpServletRequest`
 

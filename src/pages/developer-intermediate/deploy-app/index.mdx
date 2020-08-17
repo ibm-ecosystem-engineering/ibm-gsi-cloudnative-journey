@@ -24,7 +24,7 @@ need for your solutions. The approach for getting started is exactly the same fo
 CLI works in context and to streamline the process (the reason for creating the CLI in the first place). However, the
 use of the CLI is in no way required to use the <Globals name="shortName"/>. If you would prefer to work through these
 instructions without the use of the CLI, we have provided the equivalent manual steps for each command on
-the [Cloud Native Toolkit CLI](/getting-started/cli) page.
+the [Cloud-Native Toolkit CLI](/getting-started/cli) page.
 
 This video demonstrates how to work through the steps to create an application and use a deployment pipeline to install
 it into your development cluster.
@@ -137,6 +137,7 @@ process.
     ```
 - You must rename the app to match your git repo or to a unique name for your solution. When applications move into a _test_ environment, they need to have unique names.
 - Edit `package.json` and edit the `name:` field and change it from its template name to your chosen name.
+- In case of a java gradle application(Spring Boot Microservice), edit the `settings.gradle` file. Edit the `rootProject.name` field and change it from its template name to your chosen name.
 - Save the edits
 - Push the changes back to your repository
     ```bash
@@ -163,15 +164,21 @@ Most developers like to run the code natively in local development environment. 
 
 <Tabs>
 
-<Tab label="Desktop/Laptop">
-- Open a browser to `http://localhost:3000/api-docs/`
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
 </Tab>
+
+
 <Tab label="Cloud Ready Workspaces">
 
 ![CRW Open Link](./images/crwopenlink.png)
 
 
-- Click on open link 
+- Click on open link
 
 
 ![CRW Open App](./images/crwopenapp.png)
@@ -180,12 +187,9 @@ Most developers like to run the code natively in local development environment. 
 - To view this application in new tab click top right corner arrow icon
 
 </Tab>
-<Tab label="Cloud Shell"> 
 
- - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
-
-    ![View App](./images/viewapp.png)
-
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:3000/api-docs/`
 </Tab>
 
 </Tabs>

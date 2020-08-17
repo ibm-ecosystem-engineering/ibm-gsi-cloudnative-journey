@@ -5,13 +5,13 @@ import { calloutLink } from './Homepage.module.scss';
 
 import Carbon from '../../images/cloudnative3.jpg';
 
-const BannerText = () => <h1>Cloud Native Learning Journey </h1>;
+const BannerText = () => <h1>Cloud-Native Learning Journey </h1>;
 
 const FirstLeftText = () => <p>Partner Ecosystem</p>;
 
 const FirstRightText = () => (
   <p>
-      This Learning Journey is optimised for IBM Partners. To enable them to delivery cloud native solutions with Red Hat OpenShift on IBM Cloud.
+      This Learning Journey is optimised for IBM Partners. To enable them to delivery cloud-native solutions with Red Hat OpenShift on IBM Cloud.
     <a
       className={calloutLink}
       href="https://www.ibm.com/cloud"
@@ -21,7 +21,7 @@ const FirstRightText = () => (
   </p>
 );
 
-const SecondLeftText = () => <p>Cloud Native Journey</p>;
+const SecondLeftText = () => <p>Cloud-Native Journey</p>;
 
 const SecondRightText = () => (
   <p>

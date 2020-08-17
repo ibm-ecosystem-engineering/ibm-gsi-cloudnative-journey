@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'IBM Partner Sandbox',
-    description: 'Cloud Native Learning Journey',
+    description: 'Cloud-Native Learning Journey',
     keywords: 'gatsby,theme,carbon',
   },
   pathPrefix: "/ibm-gsi-cloudnative-journey",
