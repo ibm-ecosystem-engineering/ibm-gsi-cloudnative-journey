@@ -110,6 +110,8 @@
       path: /developer-advanced/devsecops-twistlock
     - title: DevSecOps With Trivy
       path: /developer-advanced/devsecops-trivy
+    - title: MongoDB Integration
+      path: /developer-advanced/mongodb-integration
     - title: Cloudant Integration
       path: /developer-advanced/inventory-cloudant
     - title: AppID Integration
