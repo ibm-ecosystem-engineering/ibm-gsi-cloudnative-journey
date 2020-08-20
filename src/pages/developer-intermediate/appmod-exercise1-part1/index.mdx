@@ -1,5 +1,5 @@
 ---
-title: Scan Legacy Application 
+title: Scan Legacy Application
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
@@ -55,7 +55,7 @@ For the purposes of this lab exercise, you will run a simulation of the WebSpher
 
 This modernization exercise has the following requirements:
 - No code changes -- You don't even have access to source code
-- The target is to get the application running on Liberty in a Open Shift Cluster on IBM Cloud 
+- The target is to get the application running on Liberty in a Open Shift Cluster on IBM Cloud
 - The IBM Cloud based DB2 Service is used for Database connectivity
 
 ## Guide
@@ -65,23 +65,23 @@ Overall the Modernization exercise has the three parts that performs the below s
 - Load the scan results in to Transformation Advisor running in the IBM Cloud environment's Red Hat OpenShift cluster
 - Review the Transformation Advisor analysis
 - Use the Open Shift S2I to build a Docker image with Liberty and deploy the application in the IBM Cloud Open Shift Cluster
-- Access the newly created application on Container based Light weight Open Liberty 
+- Access the newly created application on Container based Light weight Open Liberty
 
 ### Scan the existing application
 
 <Tabs>
-<Tab label="Desktop/Laptop" open="true">  
+<Tab label="Cloud Shell" open="true">
+
+- The first part of the exercise until "Analyze the scan results" will be a demo.
+
+- The Scan results of the application and the application binaries are upload to the git and the same can be used for analysis the results using Transfromation advisor and later deploy them on the Open Shfit Cluster
+
+</Tab>
+<Tab label="Desktop/Laptop" open="true">
 
 -  Ensure your laptop has necessary previlages and open internet connectivity, to set up the local docker environment inorder to setup the local WAS and DB2 server for deploying the local application.
 
 - You can then proceed on the below steps from scanning the location application using Data Collector tool of Transformation Advisore and further follow the steps to Analyze the Application and later deploy on the Open Shift cluster
-
-</Tab>
-<Tab label="Cloud Shell" open="true">
-
-- The first part of the exercise until "Analyze the scan results" will be a demo. 
-
-- The Scan results of the application and the application binaries are upload to the git and the same can be used for analysis the results using Transfromation advisor and later deploy them on the Open Shfit Cluster
 
 </Tab>
 </Tabs>
@@ -126,11 +126,11 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     #featureList=--featureList --excludeFiles=".*/directory/LargeXMLFileName.xml"
     #java_opt=-Xmx2g
     ```
-- Review the `wsadmin.py` file.  
+- Review the `wsadmin.py` file.
    **Note : **  If the WAS Environment is set up using the Lab Procedure, no changes would be required. Incase if you are using your custom WAS and DB2 environment, ensure you have the serverName and port are correctly mapped to the Database.
-   
+
     - Ensure that the `serverName` and `port` for the DataSources match the values of your DB2 database (above).
-    
+
 
 
 - Build the Docker image
@@ -216,7 +216,7 @@ In order to simulate a real traditional WebSphere ND customer environment on you
     ![apps](images/twas-pbw.jpg)
 
 #### Download Datacollector From Transformation Advisor
-- Access the Transformation Advisor Page to Download the data collector. The TA access link can be referred as part of the Cloud Native Toolkit menu, in the open shift dashboard.
+- Access the Transformation Advisor Page to Download the data collector. The TA access link can be referred as part of the Cloud-Native Toolkit menu, in the open shift dashboard.
 
 
 - Click on the "Add a new workspace (+) Button". The Enter the Name for the Workspace (Example: AppMod_{initials})
@@ -249,7 +249,7 @@ Now that you have validated that the PlantsByWebSphere application is running in
     ```bash
     docker exec -it twas-plantsbywebsphere bash
     ```
-- Extract the downloaded tgz file 
+- Extract the downloaded tgz file
     ```bash
     tar xvfz {downloaded tgz file name}.tgz
     ```

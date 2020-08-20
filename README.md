@@ -1,12 +1,12 @@
 # IBM Partner Ecosystem
 
-## Cloud Native Learning Journey
+## Cloud-Native Learning Journey
 
 This developer enablement will enable Partner technical teams to understand how to
  use the tools to manage the full
-lifecycle of Cloud Native development with IBM Kubernetes Service or managed Red Hat OpenShift on IBM Cloud.
+lifecycle of Cloud-Native development with IBM Kubernetes Service or managed Red Hat OpenShift on IBM Cloud.
 
-The rendered Learning Journey can be viewed here - [Partner Cloud Native Enablement](https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/)
+The rendered Learning Journey can be viewed here - [Partner Cloud-Native Enablement](https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/)
 
 To update and manage the Learning Journey follow these steps.
 

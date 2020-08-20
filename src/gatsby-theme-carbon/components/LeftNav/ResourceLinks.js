@@ -13,8 +13,8 @@ const links = [
   },
   {
     title: 'IBM PartnerWorld',
-    href: 'https://www.ibm.com/partnerworld/public',
-  },  
+    href: 'https://www.ibm.com/partnerworld/public/program-overview',
+  },
   {
     title: 'IBM Garage Method',
     href: 'https://www.ibm.com/garage/method',
