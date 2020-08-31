@@ -132,6 +132,8 @@
       path: /developer-advanced/operator/
     - title: Operator Development
       path: /developer-advanced/operator/lab
+    - title: Contract-testing
+      path: /developer-advanced/contract-testing/
 
 
 - title: Resources
