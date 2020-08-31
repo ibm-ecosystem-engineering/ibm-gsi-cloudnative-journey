@@ -30,10 +30,6 @@
       path: /developer-foundation/cloud-native-overview
     - title: Cloud-Native App Dev
       path: /developer-foundation/cloud-native-app-dev
-    - title: Continuous Integration (CI)
-      path: /developer-foundation/continuous-integration
-    - title: Continuous Delivery (CD)
-      path: /developer-foundation/continuous-delivery
     - title: Containers Overview
       path: /developer-foundation/containers
     - title: Kubernetes Overview
@@ -63,8 +59,12 @@
   pages:
     - title: Agenda
       path: /developer-intermediate
+    - title: Continuous Integration (CI)
+      path: /developer-intermediate/continuous-integration
+    - title: Continuous Delivery (CD)
+      path: /developer-intermediate/continuous-delivery      
     - title: DevSecOps Overview
-      path: /developer-intermediate/content-overview
+      path: /developer-intermediate/content-overview      
     - title: Deploy First App
       path: /developer-intermediate/deploy-app
     - title: Code Analysis
@@ -99,9 +99,27 @@
     - title: Agenda
       path: /developer-advanced
     - title: Continuous Delivery (CD)
-      path: /developer-advanced/gitops
+      path: /developer-intermediate/continuous-delivery
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
+    - title: Database with Cloudant
+      path: /developer-advanced/inventory-cloudant
+    - title: Database with MongoDB
+      path: /developer-advanced/inventory-mongodb
+    - title: Database with Postgres
+      path: /developer-advanced/inventory-postgres      
+    - title: Authentication with AppID
+      path: /developer-advanced/inventory-appid/    
+    - title: API Consumption
+      path: /developer-advanced/inventory-api/
+    - title: Inventory Mobile App
+      path: /developer-advanced/inventory-mobile-app/    
+    - title: Inventory Application Summary
+      path: /developer-advanced/inventoryappln-summary/
+    - title: Advanced Monitoring
+      path: /developer-advanced/monitoring/
+    - title: Advanced Log Management
+      path: /developer-advanced/log-management/
     - title: DevSecOps Overview
       path: /developer-advanced/devsecops
     - title: DevSecOps With Aquasec CSP
