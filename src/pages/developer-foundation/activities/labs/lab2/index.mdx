@@ -10,11 +10,10 @@ title: Kubernetes Lab 2 - Pod Configuration
     </div>
     <div class="bx--row">
         <div class="bx--col-sm-2 bx--col-md-2 bx--col-lg-2">
-        
          <div id="slideshowNavigator" style="font-size:15px; text-align: center; border-right: 1px solid gray;">
             <div style="padding: 10px 0 10px 0px; width:70px">
                 <img src="images/goal.png"/>
-                Goal
+                Problem
             </div>
             <div style="padding: 10px 0 10px 0px;  width:80px; ">
                 <img src="images/learn.png"/>
@@ -24,25 +23,23 @@ title: Kubernetes Lab 2 - Pod Configuration
                 <img src="images/faq.png"/>
                 Exercises
             </div>
-            <div style="padding: 10px 0 10px 0px;  width:55px">
-                <img src="images/explore.png"/>
-                Explore
-            </div>
         </div>
         </div>
         <div class="bx--col-sm-7 bx--col-md-7 bx--col-lg-7">
             <div class="bx--row" style="padding: 22px 10px;">
-            Create a pod definition named  <span style="padding-left: 5px;background-color: #c6c6c6;"> yoda-service-pod.yml </span>, and then create a pod in the cluster using this definition to make sure it works.
+            Create definition file like  <span style="padding: 0px 5px 0px 10px;background-color: grey;border-radius: 4px;"> yoda-service-pod.yml </span>, and then using the definition file create a POD, ConfigMap,Secret and Service Account.
             </div>
-            <div class="bx--row" style="padding: 20px 0px 0px 0px;">
-            For this exercises creating the Service, ConfigMap, Secret and learn the each resource definition. 
+            <div class="bx--row" style="padding: 20px 0px 0px 10px;">
+           To learn the POD, ConfigMap, Secret and Service Account creation and configuration. 
             </div>
             <div class="bx--row" style="padding: 50px 0px 0px 0px;">
-            Paly around  resources like <span> Service, ConfigMap, Secret </span> and execute the command to create the resource in Openshift Console.
+            <ul style="padding-left: 10px; !important">
+            <li>Create the definition file for POD, ConfigMap, Secret and Service Account</li>
+            <li>Execute the command and create the respective resources</li>
+            <li>Verify the created resources</li>
+            </ul>
             </div>
-            <div class="bx--row" style="padding: 32px 0px 0px 0px;">
-               Explore the resources configuration and definition
-            </div>
+           
         </div>
          <div class="bx--col-sm-2 bx--col-md-2 bx--col-lg-2">
             <div class="bx--row" style="padding-top: 15px;">
@@ -57,48 +54,12 @@ title: Kubernetes Lab 2 - Pod Configuration
             Beginner
             </div>
             <div class="bx--row" style="font-weight:bold; padding-top: 7px;">
-            5 Min
+            15 Min
             </div>
         </div>
     </div>
 
 
-## Specification
-
- - The current image for the container is `bitnami/nginx`. You do not need a custom command or args.
- - There is some configuration data the container will need:
-    - `yoda.baby.power=100000000`
-    - `yoda.strength=10`
- - It will expect to find this data in a file at `/etc/yoda-service/yoda.cfg`. Store the configuration data in a ConfigMap called `yoda-service-config` and provide it to the container as a mounted volume.
- - The container should expect to use `64Mi` of memory and `250m` CPU (use resource requests).
- - The container should be limited to `128Mi` of memory and `500m` CPU (use resource limits).
- - The container needs access to a database password in order to authenticate with a backend database server. The password is `0penSh1ftRul3s!`. It should be stored as a Kubernetes secret called `yoda-db-password` and passed to the container as an *environment variable* called `DB_PASSWORD`.
- - The container will need to access the Kubernetes API using the ServiceAccount `yoda-svc`. Create the service account if it doesn't already exist, and configure the pod to use it.
-
-
-## Solutions
-
-- Create the Service Account executing the following command.
-
- ```shell script
-  oc create sa yoda-svc -n {DEV_NAMESPACE}
-  ```
-
-- Once the Service Account created, create the ConfigMap,Secret.
-
-- Create the Yaml file for POD, ConfigMap, Secret using below POD configuration.
-
-- Execute the below command for creating ConfigMap,Secret.
-
-  ```shell script
-  oc apply -f Downloads/yoda-service-config.yaml -n {DEV_NAMESPACE}
-  oc apply -f Downloads/yoda-db-password.yaml -n {DEV_NAMESPACE}
-  ```  
-- Execute the below command for creating the POD.
-
- ```shell script
-  oc apply -f Downloads/yoda-service-pod.yml -n {DEV_NAMESPACE}
-  ``` 
 
 <Accordion>
 <AccordionItem title="Pod Configuration">
@@ -151,12 +112,36 @@ title: Kubernetes Lab 2 - Pod Configuration
             cpu: "500m"
       volumes:
       - name: config-volume
-          configMap:
+        configMap:
             name: yoda-service-config
+            key:service-config
     
 </AccordionItem>
 </Accordion>
 
+
+- Create the Service Account executing the following command.
+
+ ```shell script
+  oc create sa yoda-svc -n {DEV_NAMESPACE}
+  ```
+
+- Once the Service Account created, create the ConfigMap,Secret.
+
+- Create the Yaml file for POD, ConfigMap, Secret using below POD configuration.
+
+- Execute the below command for creating ConfigMap,Secret.
+
+  ```shell script
+  oc apply -f Downloads/yoda-service-config.yaml -n {DEV_NAMESPACE}
+  oc apply -f Downloads/yoda-db-password.yaml -n {DEV_NAMESPACE}
+  ```  
+- Execute the below command for creating the POD.
+
+ ```shell script
+  oc apply -f Downloads/yoda-service-pod.yml -n {DEV_NAMESPACE}
+  ``` 
+  
 ## Verification
 
 To verify your setup is complete, check `/etc/yoda-service` for the `yoda.cfg` file and use the `cat` command to check it's contents.

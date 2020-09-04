@@ -79,6 +79,8 @@
       path: /developer-intermediate/log-management
     - title: Inventory Application
       path: /developer-intermediate/inventory-app
+    - title: Inventory Prebuild Solution
+      path: /developer-intermediate/inventory-prebuild-solution
     - title: Inventory Service
       path: /developer-intermediate/inventory-svc
     - title: Inventory BFF
