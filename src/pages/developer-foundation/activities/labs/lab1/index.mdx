@@ -13,7 +13,7 @@ title: Kubernetes Lab 1 - Pod Creation
          <div id="slideshowNavigator" style="font-size:15px; text-align: center; border-right: 1px solid gray;">
             <div style="padding: 10px 0 10px 0px; width:70px">
                 <img src="images/goal.png"/>
-                Goal
+                Problem
             </div>
             <div style="padding: 10px 0 10px 0px;  width:80px; ">
                 <img src="images/learn.png"/>
@@ -21,27 +21,24 @@ title: Kubernetes Lab 1 - Pod Creation
             </div>
             <div style="padding: 10px 0 10px 0px;  width:55px">
                 <img src="images/faq.png"/>
-                Exercises
+                Solution
             </div>
-            <div style="padding: 10px 0 10px 0px;  width:55px">
-                <img src="images/explore.png"/>
-                Explore
-            </div>
+          
         </div>
         </div>
         <div class="bx--col-sm-7 bx--col-md-7 bx--col-lg-7">
-            <div class="bx--row" style="margin: 22px 10px;">Write a pod definition named  yoda-service-pod.yml. Create a pod in the cluster using this definition to make sure it works.</div>
-            <div class="bx--row">
-            <ul style="padding-left: 1em; !important;">
-            <li>Use the bitnami/nginx container image.</li>
-            <li>The container needs a containerPort of 80.</li>
-            <li>Set the command to run as nginx</li>
-            <li>Pass in the -g daemon off; -q args to run nginx in quiet mode.</li>
-            <li>Create the pod in the web namespace.</li>
+            <div class="bx--row" style="margin: 25px 10px;">Create the POD and verify the POD is working or not.</div>
+            <div class="bx--row" style="padding-top: 60px; padding-left: 10px;">
+             To learn the POD creation with nginx container image.  
+            </div>
+            <div class="bx--row" style="padding-top: 25px;">
+            <ul style="padding-left: 10px; !important">
+            <li>Create the POD definition YAML file</li>
+            <li>Execute the command with specific namespace for creating the POD in Openshift Cluster.</li>
+            <li>Execute the command to verify whether the POD is created or not.</li>
             </ul>
             </div>
-            <div class="bx--row" style="padding-top: 25px;">Paly around  POD definition and execute the command to create the Pod in Openshift Console.</div>
-            <div class="bx--row" style="padding-top: 25px;">Explore the Pod creation command, Configuration, Definition</div>
+           
         </div>
          <div class="bx--col-sm-2 bx--col-md-2 bx--col-lg-2">
             <div class="bx--row" style="padding-top: 15px;">
@@ -56,20 +53,11 @@ title: Kubernetes Lab 1 - Pod Creation
             Beginner
             </div>
             <div class="bx--row" style="font-weight:bold; padding-top: 7px;">
-            5 Min
+            10 Min
             </div>
         </div>
     </div>
 
-## Solution:
-
-
-- Create Yaml file using above POD definition.
-- Execute the below command.
-
- ```shell script
-  oc apply -f Downloads/podcreation.yaml -n {DEV_NAMESPACE}
-  ```
 
 <Accordion>
 <AccordionItem title="Pod Creation">
@@ -91,7 +79,12 @@ title: Kubernetes Lab 1 - Pod Creation
 </AccordionItem>
 </Accordion>
 
+- Create Yaml file using above POD definition.
+- Execute the below command.
 
+ ```shell script
+  oc apply -f Downloads/podcreation.yaml -n {DEV_NAMESPACE}
+  ```
 
 ## Verification
 
