@@ -209,7 +209,7 @@ and `kubernetes`.)
 <Tab label="OpenShift">
 
 ```shell script
-oc project {DEV_NAMESPACE}
+oc project {DEV_NAMESPACE} 
 ```
 </Tab>
 <Tab label="Kubernetes">
@@ -261,20 +261,24 @@ also ask for the branch that should be used for the pipeline.
      igc-nodejs-v1-2-0
      Skip PipelineRun creation
     ```
+- It also gives you a option of vulnerability scanning the images.The scan is performed by the Vulnerability Advisor of IBM Image Registry. This scan is performed in "scan" stage of pipeline after "img-release" stage.
+  ```
+  ? Would you like to enable the pipeline to scan the image for vulnerabilities?(Y/n)
+  ```
+- To skip the scan, you have type "n" (No).Otherwise, type "y" (Yes) for performing Vulnerability Scanning on the image.
+- When registering a pipeline, the CLI will also set up a webhook with the git host
 
-- When registering a `Jenkins` pipeline, the CLI will also set up a webhook with the git host
-
-    **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository
+    **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository. 
 
 - The pipeline will be registered in your development cluster.
 
 ### 9. View your application pipeline
 
 The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container
-platform version (`IKS`, `OCP 3.11`, or `OCP 4.3`).
+platform version (`IKS` or `OCP 4.3`).
 
 <Tabs>
-<Tab label="OpenShift 4.3 Tekon">
+<Tab label="OpenShift 4.x Tekon">
 
 - Open the OpenShift Web Console from the Developer Cluster instance
 
@@ -292,7 +296,7 @@ platform version (`IKS`, `OCP 3.11`, or `OCP 4.3`).
 
 </Tab>
 
-<Tab label="OpenShift 4.3 Jenkins">
+<Tab label="OpenShift 4.x Jenkins">
 
 1. Open the OpenShift Web Console from the Developer Cluster instance
 
@@ -344,7 +348,7 @@ same namespace/project within the development cluster where the pipeline ran and
 below will walk through locating the installed application within the Web Console.
 
 <Tabs>
-<Tab label="OpenShift 4.3">
+<Tab label="OpenShift 4.x">
 
 - Open the **OpenShift web console**
 - Change to the **Developer** view
@@ -357,23 +361,6 @@ below will walk through locating the installed application within the Web Consol
 - You can see the running state of your application
 
 ![Pods on OpenShift](images/topology.png)
-
-</Tab>
-<Tab label="OpenShift 3.11">
-
-- Open the **OpenShift web console**
-- Change to the **Application Console**
-- Select you project either `dev` or the namespace you used to deploy your app
-- Click on **Deployments**
-- You should see the deployment of your application
-- Click on your application, and the corresponding deployment number
-- Try increasing the number of pods to see new instances being provisioned
-- Click on one of the `pod` instances
-- Click on **Logs**
-- You can see the running state of your application
--. Navigate around the console to understand where your deployment, service and pods are running
-
-![Pods on OpenShift](images/podsos.png)
 
 </Tab>
 
@@ -403,3 +390,21 @@ below will walk through locating the installed application within the Web Consol
 
 Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
+
+### 12. Test the webhook
+-  Go to your cloned git project and navigate to <i>chart/base</i> directory.
+```
+cd stockbffnode
+cd chart/base
+```
+- Open the file `Chart.yaml` in edit mode and change the `description` field's value from "A Helm chart for Kubernetes" to "A Helm chart for [yourprojectName]"
+- Save the edits
+- Push the changes back to your repository
+    ```bash
+    git add .
+    git commit -m "Update application name"
+    git push
+    ```
+- As soon as you push your code changes successfully, the webhook will trigger a new pipeline run for your project in your namespace in OCP.
+  
+  **Note:** if the webhook registration step fails, the git push will not trigger the pipeline.
