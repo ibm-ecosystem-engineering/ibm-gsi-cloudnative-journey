@@ -114,8 +114,10 @@
       path: /developer-advanced/inventory-appid/    
     - title: API Consumption
       path: /developer-advanced/inventory-api/
+    - title: Contract-testing
+      path: /developer-advanced/contract-testing/      
     - title: Inventory Mobile App
-      path: /developer-advanced/inventory-mobile-app/    
+      path: /developer-advanced/inventory-mobile-app/  
     - title: Inventory Application Summary
       path: /developer-advanced/inventoryappln-summary/
     - title: Advanced Monitoring
@@ -130,25 +132,16 @@
       path: /developer-advanced/devsecops-twistlock
     - title: DevSecOps With Trivy
       path: /developer-advanced/devsecops-trivy
-    - title: MongoDB Integration
-      path: /developer-advanced/mongodb-integration
-    - title: Cloudant Integration
-      path: /developer-advanced/inventory-cloudant
-    - title: AppID Integration
-      path: /developer-advanced/inventory-appid/
     - title: Inventory Application Summary
       path: /developer-advanced/inventoryappln-summary/
-    - title: Advanced Monitoring
-      path: /developer-advanced/monitoring/
-    - title: Advanced Log Management
-      path: /developer-advanced/log-management/
     - title: Operator Overview
       path: /developer-advanced/operator/
     - title: Operator Development
       path: /developer-advanced/operator/lab
-    - title: Contract-testing
-      path: /developer-advanced/contract-testing/
-
+    - title: Application Modernization
+      path: /developer-advanced/appmod-overview
+    - title: Operator Development
+      path: /developer-advanced/operator/lab      
 
 - title: Resources
   pages:
