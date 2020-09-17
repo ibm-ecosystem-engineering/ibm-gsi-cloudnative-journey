@@ -24,7 +24,7 @@ need for your solutions. The approach for getting started is exactly the same fo
 CLI works in context and to streamline the process (the reason for creating the CLI in the first place). However, the
 use of the CLI is in no way required to use the <Globals name="shortName"/>. If you would prefer to work through these
 instructions without the use of the CLI, we have provided the equivalent manual steps for each command on
-the [Cloud-Native Toolkit CLI](/getting-started/cli) page.
+the [Cloud-Native Toolkit CLI](https://cloudnativetoolkit.dev/getting-started/cli) page.
 
 This video demonstrates how to work through the steps to create an application and use a deployment pipeline to install
 it into your development cluster.
@@ -39,7 +39,7 @@ it into your development cluster.
   <AnchorLink to="#3.-open-the-developer-dashboard">3. Open the Developer Dashboard</AnchorLink>
   <AnchorLink to="#4.-create-your-app-in-git">4. Create your app in Git</AnchorLink>
   <AnchorLink to="#5.-clone-your-code">5. Clone your code</AnchorLink>
-  <AnchorLink to="#6.-run-the-application">6. Run the application</AnchorLink>
+  <AnchorLink to="#6.-run-the-application locally">6. Run the application locally</AnchorLink>
   <AnchorLink to="#7.-set-the-namespace-context">7. Set the namespace context</AnchorLink>
   <AnchorLink to="#8.-register-the-app-in-a-devops-pipeline">8. Register your pipeline</AnchorLink>
   <AnchorLink to="#9.-view-your-application-pipeline">9. View your application pipeline</AnchorLink>
@@ -64,13 +64,15 @@ it into your development cluster.
     <InlineNotification kind="info">
 
     **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
+    The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
 
     </InlineNotification>
 
 ### 2. Create the development namespace
 
 - Before getting started, the development namespace/project needs to be created and prepared for the DevOps pipelines.
-- This is something that would typically happen once at the beginning of a project when a development team is formed and assigned to the cluster.
+- This is something that would typically happen once at the beginning of a project when a development team is formed and 
+  assigned to the cluster.This step copies the common `secrets` and `configMaps` to your new namespace. This enables the pipelines to reference the values easily for you project
 
     ```
     oc sync {DEV_NAMESPACE} --dev
@@ -84,6 +86,11 @@ section that allows you to select a set of preconfigured [<Globals name="templat
 - If you are logged into the OpenShift console, you can select the tools menu and select **Developer Dashboard**
 
 - If you are on a laptop/desktop, open a browser and make sure you are logged into [Github](https://github.com)
+
+- Open the dashboard by running the following command:
+  ```
+  oc dashboard
+  ```
 
 ### 4. Create your app in Git
 
@@ -149,9 +156,15 @@ process.
 
 ## Running the Application
 
-### 6. Run the application
+### 6. Run the application locally
 
 Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
+You may be required to install a specific runtime like **Java**, **Node** or **Go**.
+
+- If you want to quickly access your git repo you can run a helper command to open the git webpage.
+    ```
+    oc git
+    ``` 
 
 - From inside the folder where the code was cloned from GitHub, run the following command to install the Node.js dependencies.
     ```
@@ -266,7 +279,8 @@ also ask for the branch that should be used for the pipeline.
   ? Would you like to enable the pipeline to scan the image for vulnerabilities?(Y/n)
   ```
 - To skip the scan, you have type "n" (No).Otherwise, type "y" (Yes) for performing Vulnerability Scanning on the image.
-- When registering a pipeline, the CLI will also set up a webhook with the git host
+
+- After the pipeline has been created,the command will set up a webhook from the Git host to the pipeline event listener
 
     **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository. 
 
@@ -274,33 +288,65 @@ also ask for the branch that should be used for the pipeline.
 
 ### 9. View your application pipeline
 
-The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container
-platform version (`IKS` or `OCP 4.3`).
+The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container platform version.
+
+<Accordion>
+<AccordionItem title="Tekton">
 
 <Tabs>
-<Tab label="OpenShift 4.x Tekon">
+<Tab label="OpenShift 4.x">
 
-- Open the OpenShift Web Console from the Developer Cluster instance
+1. Open the OpenShift Web Console
 
-    ![OpenShift](images/openshiftconsole.png)
+    ```shell script
+    oc console
+    ```
 
-- In the menu on the left, switch to the **Developer** mode
+    **OR**
 
-- Select the _dev_ project that was used for the application pipeline registration
+    ![IBM Cloud console](./images/openshiftconsole.png)
 
-- In the left menu, select *Pipelines*
+2. From menu on the left switch to the **Developer** mode
 
-- You will see your application DevOps pipeline now starting to build. When completed, it will look similar to the image below.
+3. Select _dev_ project that was used for the application pipeline registration
 
-    ![OpenShift](images/tektonpipeline.png)
+4. In the left menu, select *Pipelines*
+
+You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
+
+![OpenShift](./images/tektonpipeline.png)
 
 </Tab>
+<Tab label="Kubernetes">
 
-<Tab label="OpenShift 4.x Jenkins">
+1. Open the Developer Dashboard
 
-1. Open the OpenShift Web Console from the Developer Cluster instance
+    ```shell script
+    kubectl dashboard
+    ```
 
-    ![OpenShift](images/openshiftconsole.png)
+2. Select the `Tekton` tile to launch the Tekton UI
+
+3. Select your development project
+
+</Tab>
+</Tabs>
+
+</AccordionItem>
+<AccordionItem title="Jenkins">
+
+<Tabs>
+<Tab label="OpenShift 4.x">
+
+1. Open the OpenShift Web Console
+
+    ```shell script
+    oc console
+    ```
+
+    **OR**
+
+    ![IBM Cloud console](./images/openshiftconsole.png)
 
 2. From the left-hand menu, select `Builds` -> `Build Configs`
 
@@ -309,19 +355,23 @@ platform version (`IKS` or `OCP 4.3`).
 4. The registered pipeline should appear in the list
 
 </Tab>
-<Tab label="Kubernetes Jenkins ">
+<Tab label="Kubernetes">
 
-1. Run the command `oc dashboard` in your terminal to open your Developer Dashboard.
+1. Run the command `oc dashboard` in your terminal to open your [<Globals name="dashboard" />](/getting-started-day-1/dashboard)
 2. Select the Jenkins tool to open the Jenkins dashboard
-3. Run the command `oc credentials` in your terminal to get the list of logins for the tools
+3. Run the command `kubectl credentials` in your terminal to get the list of logins for the tools
 4. Use the Jenkins userid and password to log into the Jenkins dashboard
 
 Wait for the pipeline stages to start building. Once the stages have completed, you will see a view similar to the one below.
 
-![Jenkins Pipeline](images/pipeline.png)
+![Jenkins Pipeline](./images/pipeline.png)
 
 </Tab>
 </Tabs>
+
+</AccordionItem>
+
+</Accordion>
 
 ### 10. Access the running app
 
@@ -351,6 +401,9 @@ below will walk through locating the installed application within the Web Consol
 <Tab label="OpenShift 4.x">
 
 - Open the **OpenShift web console**
+  ```shell script
+    oc console
+    ```
 - Change to the **Developer** view
 - Click on **Topology** menu
 - Click on your application deployment in the topology view
@@ -367,6 +420,9 @@ below will walk through locating the installed application within the Web Consol
 <Tab label="Kubernetes">
 
 - Open the **Kubernetes Dashboard**
+```shell script
+    kubectl console
+```
 - Change to the namespace from `default` to either `dev` or the namespace you used to deploy your app
 - Click on **Deployments**
 - You should see the deployment of your application
