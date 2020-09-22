@@ -457,7 +457,10 @@ Now that we are ready for the application deployment on the Openshift cluster, w
         - branch (Press enter if branch is (master)) otherwise provide the branch details
 
     - Next it would request for the "Select the Pipeline to use in the PipelineRun"
-        - Select the option : igc-java-maven-v1-2-0 
+        - Select the option : ibm-java-maven
+
+    - Next it would request for "Would you like to enable the pipeline to scan the image for vulnerabilities"
+        - Select Yes (if you want to include the image scan) /  No (if you don't want to include the image scan)
 
 -  The output of the exection of oc pipeline as below
     ```bash
@@ -472,10 +475,16 @@ Now that we are ready for the application deployment on the Openshift cluster, w
     Creating service account: pipeline
     Creating Git PipelineResource
     Creating Image PipelineResource
-    ? Select the Pipeline to use in the PipelineRun: igc-java-maven-v1-2-0
+    ? Select the Pipeline to use in the PipelineRun: ibm-java-maven
+    ? Would you like to enable the pipeline to scan the image for vulnerabilities? Yes
     Copying tasks from tools
-    Copied Pipeline from tools/igc-java-maven-v1-2-0 to ....
-    Creating PipelineRun for pipeline: transform-adv-appmod-ear-pipeline
+    Copied Pipeline from tools/ibm-java-maven to {Openshift Project Name /Application Name}
+    Creating TriggerTemplate for pipeline: {Application Name}
+    Creating TriggerBinding for pipeline: {Application Name}
+    Creating TriggerEventListener for pipeline: {Application Name}
+    Creating Route for pipeline: {Application Name}
+    Creating PipelineRun for pipeline: {Application Name}
+    Creating webhook for repo: {github repo}
 
     ```
 
@@ -483,7 +492,7 @@ Now that we are ready for the application deployment on the Openshift cluster, w
 
     - Navigate to the Developer Console -> Navigate to the 'Pipelines' in the left Nav -> Select your project space from the drop down option -> select your application link -> Select the 'Pipeline Runs' and again the application link.
 
-![tekton-pipeline](images/ta_pipelineruns.png)
+![tekton-pipeline-runs](images/ta_pipelineruns.png)
 
 - Once the pipeline is executed successfully, the application can be tested. To get the routes of the application first navigate to the 
 
