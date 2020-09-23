@@ -115,7 +115,9 @@
     - title: API Consumption
       path: /developer-advanced/inventory-api/
     - title: Contract-testing
-      path: /developer-advanced/contract-testing/      
+      path: /developer-advanced/contract-testing/
+    - title: Inventory Contract Testing
+      path: /developer-advanced/Inventory-contract-testing       
     - title: Inventory Mobile App
       path: /developer-advanced/inventory-mobile-app/  
     - title: Inventory Application Summary
