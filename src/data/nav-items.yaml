@@ -22,8 +22,6 @@
   pages:
     - title: Sandbox
       path: /developer-foundation/checksetup
-    - title: Developer Tools Setup
-      path: /developer-foundation/devenvsetup
     - title: Agenda
       path: /developer-foundation
     - title: What is Cloud-Native?
@@ -100,8 +98,6 @@
   pages:
     - title: Agenda
       path: /developer-advanced
-    - title: Continuous Delivery (CD)
-      path: /developer-intermediate/continuous-delivery
     - title: CD for Inventory App
       path: /developer-advanced/inventory-cd
     - title: Database with Cloudant
