@@ -12,13 +12,13 @@ Prisma Cloud Compute Edition (Twistlock)
 
 ## Guide
 
-Prisma™ Cloud is a cloud security posture management (CSPM) and cloud workload protection platform (CWPP) that provides comprehensive visibility and threat detection across your organization’s hybrid, multi-cloud infrastructure. 
+Prisma™ Cloud is a cloud security posture management (CSPM) and cloud workload protection platform (CWPP) that provides comprehensive visibility and threat detection across your organization’s hybrid, multi-cloud infrastructure.
 
 For securing your host, container, and functions across the application lifecycle , Prisma Cloud is available as:
 
-* Prisma Cloud Compute Edition, which is is the downloadable, self-hosted software that you can use to protect hosts, containers, and serverless functions running in any cloud, including on-premises and even fully air-gapped environments. You must deploy and operate the Console and Defenders in your own environment. 
+* Prisma Cloud Compute Edition, which is is the downloadable, self-hosted software that you can use to protect hosts, containers, and serverless functions running in any cloud, including on-premises and even fully air-gapped environments. You must deploy and operate the Console and Defenders in your own environment.
 
-* Prisma Cloud Compute, which is the SaaS version of the full Cloud Native Security Platform that delivers host, container, and serverless capabilities along with the cloud security posture management capabilities. Palo Alto Networks operates the Console for you, and you must deploy the agents (Defenders) into your environment to secure hosts, containers, and serverless functions running in any cloud, including on-premises. 
+* Prisma Cloud Compute, which is the SaaS version of the full Cloud-Native Security Platform that delivers host, container, and serverless capabilities along with the cloud security posture management capabilities. Palo Alto Networks operates the Console for you, and you must deploy the agents (Defenders) into your environment to secure hosts, containers, and serverless functions running in any cloud, including on-premises.
 
 
 ## Version
@@ -30,7 +30,7 @@ Prisma Cloud consists of a central management interface, called Console, securit
 * Console is Prisma Cloud’s management interface. It lets you define policy and monitor your environment. Console is delivered as a container image.
 * Defender protects your environment according to the policies set in Console. There are a number of Defender types, each designed to protect a specific resource type.
 * The Prisma Cloud Intelligence Stream is a real-time threat feed delivered from the Prisma Cloud content delivery network (CDN) to our customers' installations. This service gathers, analyzes, and prepares threat data for distribution to the Console located on your network. Console pulls data down from the Threat Intelligence Stream using HTTPS requests. The Intelligence Stream is Console’s only required external dependency.
- 
+
 * The twistcli tool is a command-line control and configuration tool. It ships with your Prisma Cloud release and can be found in the Prisma Cloud release tarball. Support is provided for both Linux and MacOs.
 The twistcli tool provides a number of functions:
 
@@ -44,7 +44,7 @@ The twistcli tool provides a number of functions:
 
 
 ## Installation on IBM Cloud Managed Openshift v4.3 :
-Prisma Cloud software consists of two components: Console and Defender. 
+Prisma Cloud software consists of two components: Console and Defender.
 
 Install Prisma Cloud in two steps. First, install Console. Then install Defender.
 
@@ -53,25 +53,25 @@ Install Prisma Cloud in two steps. First, install Console. Then install Defender
 * OpenShift, offer DaemonSets, which guarantee that an agent runs on every node in the cluster. Prisma Cloud Defender, therefore, is deployed in Kubernetes and OpenShift clusters as a DaemonSet.
 
 
-# Installation Guide for Prisma Cloud Compute(Twistlock) on IBM Managed Openshift Cluster 4.3 
+# Installation Guide for Prisma Cloud Compute(Twistlock) on IBM Managed Openshift Cluster 4.3
 
 Prisma Cloud Console is deployed as a ReplicationController, which ensures it’s always running. Prisma Cloud Defenders are deployed as a DaemonSet, which ensures that an instance of Defender runs on every node in the cluster. You can run Defenders on OpenShift master and infrastructure nodes using node selectors.
 
-### 1.Login into Openshift cluster v4.3 
+### 1.Login into Openshift cluster v4.3
 Login in as an OpenShift with your token so you can run the oc adm commands:
 ```
 oc login --token=<token> --server=https://c100-e.us-east.containers.cloud.ibm.com:30223
 ```
 
 ### 2.	Create Twistlock Project
-The commands below will create a new OpenShift project (twistlock) which will house all the Twistlock components.  
+The commands below will create a new OpenShift project (twistlock) which will house all the Twistlock components.
 ```
 oc new-project twistlock
 ```
 
 ### 3.	Determine the Service for your OpenShift internal registry
 ```
-oc get svc -n openshift-image-registry 
+oc get svc -n openshift-image-registry
 ```
 Results:
 ```
@@ -82,7 +82,7 @@ image-registry-operator   ClusterIP   None           <none>        60000/TCP   1
 
 ### 4.	Determine the endpoint for your OpenShift internal registry
 ```
-oc get routes -n openshift-image-registry 
+oc get routes -n openshift-image-registry
 ```
 
 Results:
@@ -105,7 +105,7 @@ In Docker Engine on local machine  from which installation is being executed, ad
 docker login docker-registry-openshift-image-registry.gsi-dev-ocp43-7ec5d722a0ab3f463fdc90eeb94dbc70-0000.us-east.containers.appdomain.cloud -u $(oc whoami) -p $(oc whoami -t)
 ```
 
-### 7. Pull the Twistlock Defender and Console Images 
+### 7. Pull the Twistlock Defender and Console Images
 Images for both console and defender are pulled from Prisma Cloud Registry using licensed access token
 
 ```
@@ -187,7 +187,7 @@ From the OpenShift web interface, go to the twistlock project.
 * Go to Networking > Routes
 * Select Create Route
 * Enter a name for the route, such as twistlock-console
-* Hostname = blank 
+* Hostname = blank
 * Path = /
 * Service = twistlock-console
 * Target Port = 8083 → 8083
@@ -198,12 +198,12 @@ From the OpenShift web interface, go to the twistlock project.
 
 ![Twistlock Console Route Settings](/images/Twistlock-Console-Route.png "Twistlock Console Route Settings")
 
-### 16.	Access the console 
+### 16.	Access the console
 Access the console through route created and create administrator account and apply Licenses
 
 ![Twistlock Console Login](/images/Twistlock-Login.png "Twistlock Console Login")
 
-and apply the License 
+and apply the License
 
 ![Twistlock Console License](/images/Twistlock-License.png "Twistlock Console License")
 
@@ -240,12 +240,12 @@ And then click on
 ![Twistlock Defender Config](/images/Twistlock-Defenders-yaml.png "Twistlock Defender Config")
 
 
-Prisma Cloud Defenders run as containers on the nodes in your OpenShift cluster. They are deployed as a DaemonSet. 
+Prisma Cloud Defenders run as containers on the nodes in your OpenShift cluster. They are deployed as a DaemonSet.
 
 
 ### 19 .	Deploy the defenders
 ```
-oc create -f daemonset-new.yaml 
+oc create -f daemonset-new.yaml
 ```
 
 Result :
@@ -261,7 +261,7 @@ service/defender created
 
 ### 20 .	Confirm the Defenders were deployed
 ```
-oc get ds 
+oc get ds
 ```
 ```
 NAME                    DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR   AGE
@@ -295,13 +295,13 @@ The sequence of events is described below:
 o	In Jenkins, within the project/job page, or relevant dashboard view.
 o	In Prisma Cloud Console, on the Monitor > Vulnerabilities > Jenkins Jobs page.
 
-The Jenkins plugin is built for Jenkins on Linux. 
+The Jenkins plugin is built for Jenkins on Linux.
 To scan images with Jenkins on other operating systems, use a platform-specific twistcli binary.
 
 
 ### Twist CLI Installation
 
-On the Twistlock Console Navigate to Manage -> System -> Downloads 
+On the Twistlock Console Navigate to Manage -> System -> Downloads
 
 ![Twistlock CLI Download](/images/Twistlock-CLI-Download.png "Twistlock CLI Download")
 
@@ -371,7 +371,7 @@ Create a new project.
 Add Build Step
 
 * Scroll down to the Build section.
-* In the Add build step drop-down list, select 
+* In the Add build step drop-down list, select
 * Execute shell
 * In the Command text box, enter the following:
 

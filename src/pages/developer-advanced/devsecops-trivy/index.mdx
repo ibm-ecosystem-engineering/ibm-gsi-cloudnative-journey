@@ -12,7 +12,7 @@ Integrating Aquasec Trivy in in CICD Pipeline for DevSecOps
 
 ## Overview
 
-DevSecOps ensures the security by doing Vulnerability scanning on the container images. There are several tools available for image scanning. 
+DevSecOps ensures the security by doing Vulnerability scanning on the container images. There are several tools available for image scanning.
 
 `Trivy` is a Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI.
 
@@ -20,7 +20,7 @@ The more information on Trivy is available in https://github.com/aquasecurity/tr
 
 ## Working with Trivy Commands
 
-### Installation 
+### Installation
 Trivy installation is very simple. You can use homebrew on macOS to install
 ```
 $ brew install aquasecurity/trivy/trivy
@@ -158,7 +158,7 @@ Total: 4 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 4, CRITICAL: 0)
 
 ### Trivy Run - Exit Code
 
-Exit code can be used to break the build based on condition. 
+Exit code can be used to break the build based on condition.
 
 This is useful while using Trivy in CICD
 
@@ -183,7 +183,7 @@ $ trivy image --exit-code 0 --severity MEDIUM,LOW python:3.4-alpine
 
 ## Integrating Trivy with Jenkins and Tekton`
 
-Lets integrate the Trivy in `Jenkins` and `Tekton` pipelines of Cloud Native Toolkit
+Lets integrate the Trivy in `Jenkins` and `Tekton` pipelines of Cloud-Native Toolkit
 
 - Create an App using [Deploy First App](/developer-intermediate/deploy-app).
 
@@ -236,7 +236,7 @@ The below code snippet is the declaration about Trivy image, to be added in the 
         - configMapRef:
             name: ibmcloud-config
         - secretRef:
-            name: ibmcloud-apikey       
+            name: ibmcloud-apikey
     ```
 
 1. `name`  -  `trivy` will be used in the script to refer the trivy container.
@@ -279,7 +279,7 @@ container(name: 'buildah', shell: '/bin/bash') {
 }
 ```
 
-1. The variable `APP_IMAGE=` contains the Temp image name. 
+1. The variable `APP_IMAGE=` contains the Temp image name.
 
 2. Image is build using `buildah` and tagged with temp image name.
 
@@ -374,7 +374,7 @@ The below code snippet is for Pushing Image. Add the below code under the previo
                 if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
                     buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
                 fi
-        
+
                 buildah pull ${APP_IMAGE_Temp}
                 buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}
                 buildah push --tls-verify=${TLSVERIFY} "${APP_IMAGE}" "docker://${APP_IMAGE}"
@@ -433,7 +433,7 @@ The pipeline scripts are defined as Task in the yaml file. lets us see the chang
 1.Run the below command
 
 ```
-oc get tasks    
+oc get tasks
 ```
 
 you may get the output like this. The relvant task related to the build and push would be `igc-build-tag-push-v1-23-0`.
@@ -454,7 +454,7 @@ igc-liberty-server-check-v1-23-0   52m
 igc-nodejs-test-v1-23-0            52m
 ```
 
-2.Run the below command to extract the task content into 
+2.Run the below command to extract the task content into
 
 ```
 oc get tasks igc-build-tag-push-v1-23-0 -o yaml > igc-build-tag-push-v1-23-0.yaml
@@ -469,7 +469,7 @@ Add the below code code snippet as declaration about the Trivy image in the `Tas
 ```
     - default: docker.io/aquasec/trivy
       name: trivy
-      type: string     
+      type: string
 ```
 
 - After adding the Task code should be like this.
@@ -497,7 +497,7 @@ spec:
         type: string
       - default: docker.io/aquasec/trivy
         name: trivy
-        type: string      
+        type: string
       - default: .
         name: CONTEXT
         type: string
@@ -631,9 +631,9 @@ Add the below code code snippet in the `Task` for trivy scanning.
           export TRIVY_USERNAME=${REGISTRY_USER}
 
           export TRIVY_PASSWORD=${REGISTRY_PASSWORD}
-    
+
           echo "Trivy image scanning...111. $APP_IMAGE"
-    
+
           # Trivy scan
 
           trivy image ${APP_IMAGE}
@@ -643,11 +643,11 @@ Add the below code code snippet in the `Task` for trivy scanning.
           echo "Trivy image scanning...222. $APP_IMAGE"
 
           # Trivy scan result processing
-          
+
           my_exit_code=$?
 
           echo "RESULT 1:--- $my_exit_code"
-    
+
           if [ ${my_exit_code} == 1 ]; then
 
               echo "Image scanning failed. Some vulnerabilities found"
@@ -720,11 +720,11 @@ Add the below code code snippet in the `Task` for pushing image.
           APP_IMAGE="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}:${IMAGE_VERSION}"
 
           APP_IMAGE_Temp="${REGISTRY_URL}/${REGISTRY_NAMESPACE}/${IMAGE_NAME}-temp:${IMAGE_VERSION}"
-    
+
           if [[ -n "${REGISTRY_USER}" ]] && [[ -n "${REGISTRY_PASSWORD}" ]]; then
               buildah login -u "${REGISTRY_USER}" -p "${REGISTRY_PASSWORD}" "${REGISTRY_URL}"
           fi
-    
+
           buildah pull ${APP_IMAGE_Temp}
 
           buildah tag ${APP_IMAGE_Temp} ${APP_IMAGE}

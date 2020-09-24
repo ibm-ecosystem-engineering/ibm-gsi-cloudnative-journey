@@ -16,7 +16,7 @@ Create the initial project and register it with a pipeline for automated builds.
 
 - Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
 
-    You can also access this template on the <Globals name="templates" /> page in the [<Globals name="dashboard" />](/getting-started/dashboard).
+    You can also access this template on the <Globals name="templates" /> page in the [<Globals name="dashboard" />](/developer-intermediate/deploy-app/#3.-open-the-developer-dashboard).
 
     <InlineNotification kind="warning">
 
@@ -83,16 +83,42 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 
 <Tabs>
 
-<Tab label="Desktop/Laptop">
-- Open a browser to `http://localhost:9080/swagger-ui.html`
-</Tab>
-<Tab label="Cloud Ready Workspaces">
-
-</Tab>
 <Tab label="Cloud Shell">
 
- ![Access Local App](./images/accesslocalapp.png)
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Gitpod">
+
+ - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+
+    ![View App](./images/gitpod01.png)
+
+- Selecting "Open Preview" opens a window inside gitpod workspace tab.
+
+![OpenPreview](./images/gitpod02.png)
+
+- Selecting "Open Browser" opens a new browser tab for accessing the URL.
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+- Click on yes
+![CRW Open Link](./images/crwexposeservice.png)
+
+- Click on open link 
+![CRW Open Link](./images/crwopenlink.png)
+
+- To view this application in new tab click top right corner arrow icon
+![CRW Open App](./images/crwopenapp.png)
+
+</Tab>
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
 </Tab>
 
 </Tabs>
@@ -116,44 +142,44 @@ annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garag
 packages.
 
 ```java path=src/main/java/com/ibm/inventory_management/app/Application.java
-package com.ibm.inventory_management.app;
+    package com.ibm.inventory_management.app;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.env.Environment;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.boot.CommandLineRunner;
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
+    import org.springframework.boot.builder.SpringApplicationBuilder;
+    import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+    import org.springframework.context.ApplicationContext;
+    import org.springframework.context.annotation.Bean;
+    import org.springframework.context.annotation.ComponentScan;
+    import org.springframework.core.env.Environment;
 
-@SpringBootApplication
-@ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
-public class Application extends SpringBootServletInitializer {
-    @Autowired
-    Environment environment;
+    @SpringBootApplication
+    @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
+    public class Application extends SpringBootServletInitializer {
+        @Autowired
+        Environment environment;
 
-    public static void main(String[] args) {
-        SpringApplication.run(com.ibm.inventory_management.app.Application.class, args);
+        public static void main(String[] args) {
+            SpringApplication.run(com.ibm.inventory_management.app.Application.class, args);
+        }
+
+        @Bean
+        public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+            return args -> {
+                String port = environment.getProperty("local.server.port");
+
+                System.out.println();
+                System.out.println("Server started - http://localhost:" + port + "/swagger-ui.html");
+            };
+        }
+
+        @Override
+        protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+            return application.sources(Application.class);
+        }
     }
-
-    @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
-        return args -> {
-            String port = environment.getProperty("local.server.port");
-
-            System.out.println();
-            System.out.println("Server started - http://localhost:" + port + "/swagger-ui.html");
-        };
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Application.class);
-    }
-}
 ```
 
 - Delete `application.app`
@@ -303,9 +329,37 @@ public class StockItemController {
 ```bash
 ./gradlew bootRun
 ```
+<Tabs>
 
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+- Click on yes
+![CRW Open Link](./images/crwexposeservice.png)
+
+- Click on open link 
+![CRW Open Link](./images/crwopenlink.png)
+
+- To view this application in new tab click top right corner arrow icon
+![CRW Open App](./images/crwopenapp.png)
+
+</Tab>
+
+<Tab label="Desktop/Laptop">
 - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should
 see the stock item entry in the list
+</Tab>
+
+
+
+</Tabs>
 
 - Commit and push the changes to Git.
 
@@ -607,7 +661,38 @@ public class StockItemService implements StockItemApi {
     ./gradlew bootRun
     ```
 
-- Open a browser to `http://localhost:9080/swagger-ui.html` to see the Swagger page
+
+
+<Tabs>
+
+<Tab label="Cloud Shell">
+
+ - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
+
+    ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+- Click on yes
+![CRW Open Link](./images/crwexposeservice.png)
+
+- Click on open link 
+![CRW Open Link](./images/crwopenlink.png)
+
+- To view this application in new tab click top right corner arrow icon
+![CRW Open App](./images/crwopenapp.png)
+
+</Tab>
+
+<Tab label="Desktop/Laptop">
+- Open a browser to `http://localhost:9080/swagger-ui.html`
+
+</Tab>
+
+
+</Tabs>
 
 - Run the service by selecting `Try it out` then `Execute`
 

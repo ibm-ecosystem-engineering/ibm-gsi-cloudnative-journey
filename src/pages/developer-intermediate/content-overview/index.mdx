@@ -7,28 +7,28 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 <PageDescription>
 
 An Overview of what DevSecOps is, and how it can help you
- speed up you cloud native solution delivery
+ speed up Cloud-Native solution delivery
 
 </PageDescription>
 
-One of the patterns emerging with development teams is the ability to use [CNCF Tools](https://landscape.cncf.io/) as part of a more open multi cloud CI/CD strategy. This approach is aligning around the Kubernetes platform. The IBM Cloud supports both upstream Kubernetes for advanced cutting edge workloads and Red Hat OpenShift the proven mutli cloud distribution of Kubernetes that can install on IBM Cloud, Azure, AWS, VMWare and on Premise and many more places. This approach removes cloud vendor lock in around CI/CD tools and enables development teams to be more flexible and the target cloud they focus on deploying and developing with.
+One of the patterns emerging with development teams is the ability to use [CNCF Tools](https://landscape.cncf.io/) as part of a more open multicloud CI/CD strategy. This approach is aligning around the Kubernetes platform. The IBM Cloud supports both upstream Kubernetes for advanced cutting edge workloads and Red Hat OpenShift, the proven mutlicloud distribution of Kubernetes that can install on IBM Cloud, Azure, AWS, VMWare and on Premise and many more places. This approach removes cloud vendor lock in around CI/CD tools and enables development teams to be more flexible with the target cloud they focus on deploying and developing in.
 
 There are two patterns from this approach:
 
 - There are a core set of Development Tools that are installed inside the Kubernetes environment with the use of Operators the management and support of these tools can be controlled with centralized operations teams
 - Integration of centralized operations tools like Source Code Management, Artifact Management, Image Management, Logging and Monitoring
 
-This model enables agile cloud native development teams to execute quickly while also conforming to the enterprise standards required for CI/CD. This pattern also enable the reduction of costs of managing expensive centralized multi tenant CI services and enables the development teams to use a percentage of their development cluster to support CI activities. This approach with Tekton enable the centralized operations teams to impose specific pipeline tasks that need to be supported by development teams without the complex
+This model enables agile Cloud-Native development teams to execute quickly while also conforming to the enterprise standards required for CI/CD. This pattern also enable the reduction of costs of managing expensive centralized multi-tenant CI services and enables development teams to use a percentage of their development cluster to support CI activities. This approach with Tekton enables the centralized operations teams to impose specific pipeline tasks that need to be supported by development teams without the complex
 
 
 ### Overview
 
-This short video introduces the cloud native concepts of CI/CD DevOps with <Globals name="ocp" />:
+This short video introduces the Cloud-Native concepts of CI/CD DevOps with <Globals name="ocp" />:
 <iframe width="80%" height="500" src="https://www.youtube.com/embed/GOPWObjFTsI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <p></p>
 
-Each Cluster can have a selection of CNCF DevSecOps tools installed using IasC(Infrastrcture As Code) using Terraform. The cluster then turns from a production state cluster into a cluster that is used for multi tenant development teams.
+Each Cluster can have a selection of CNCF DevSecOps tools installed using IasC (Infrastructure As Code) using Terraform. The cluster then turns from a production state cluster into a cluster that is used for multi tenant development teams.
 
 The following describes the requirements:
 
@@ -42,7 +42,7 @@ The following describes the requirements:
 
 A core set of tools are sourced from the [IBM Cloud Catalog](https://cloud.ibm.com/catalog?search=label%3Ahelm#software) that can be found in the <Globals name="ic" />. This approach helps assemble these reliable open source development tools into an end-to-end developer experience that is fully integrated with <Globals name="ic" />'s managed container orchestration services.
 
-the tools can also be source from the [Operator Hub](https://operatorhub.io/) and the [Redhat Marketplace](https://marketplace.redhat.com/en-us). The Operations team that owns the IasC can decide the best approach to install the tools either using **Helm3** or **Operators**
+The tools can also be sourced from the [Operator Hub](https://operatorhub.io/) and the [Red Hat Marketplace](https://marketplace.redhat.com/en-us). The Operations team that owns the IasC can decide the best approach to install the tools either using **Helm3** or **Operators**.
 
 Typically a **Cloud System Admin** installs and sets up a new <Globals name="env" />, providing a place for the developers to start developing the [minimum viable product (MVP)](https://www.ibm.com/garage/method/practices/think/inception/practice_minimum_viable_product). The objective is to reduce the time required for a team to configure and prepare their development environment. The key benefit is to make the end-to-end [CI/CD development lifecycle](https://www.ibm.com/garage/method/practices/deliver/practice_continuous_delivery/) consistent across each platform and make the out-of-the-box developer experience as simple as possible.
 

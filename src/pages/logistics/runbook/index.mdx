@@ -2,12 +2,12 @@
 title: RunBook
 ---
 
-### 1. Finalize the schedule & mode of delivery for the workshop 
+### 1. Finalize the schedule & mode of delivery for the workshop
 - Webex: 4 days x 2.5hours
 - Self Paced
 - In Person: 1 day x 8.5 hours
 
-### 2. Identify primary mentor for the journey 
+### 2. Identify primary mentor for the journey
 
 ### 3.  Collect the data required for the sessions from the participants
 [Participant Data Collection Sheet](Participant_Data_Sheet.xlsx)
@@ -16,10 +16,10 @@ title: RunBook
 - Create a github organization: **SI-Name**-sandbox-team-n..
 - Add all participants as members of the organization.
 
-### 5. Slack Channel Setup 
+### 5. Slack Channel Setup
 Set up a new slack channel (**SI-Name**-cloudnative) and add all participants
 
-### 6. IBM Cloud Setup: 
+### 6. IBM Cloud Setup:
 - Create resource group **sandbox-team-n..** under the SI Account to be used for the worksop
 
 - Create access groups **SANDBOX-TEAM-N..-ADMIN** and **SANDBOX-TEAM-N..-USER** and make all users part of the SANDBOX-TEAM-ONE-USER group.
@@ -34,8 +34,8 @@ Set up a new slack channel (**SI-Name**-cloudnative) and add all participants
 ### 7. Cluster Setup:
 - Setup a redhat openshift cluster (sandbox-ocp43-n..) in London datacenter with 3 worker nodes (16 cores x 32 GB)
 
-### 8. Cloud Native Toolkit Setup:
-a) Install Cloud Native toolkit onto the OCP Cluster (Follow instructions outlined in https://cloudnativetoolkit.dev/admin/installation-existing)
+### 8. Cloud-Native Toolkit Setup:
+a) Install Cloud-Native toolkit onto the OCP Cluster (Follow instructions outlined in https://cloudnativetoolkit.dev/admin/installation-existing)
 
 - [Install Tekton tasks](https://github.com/IBM/ibm-garage-tekton-tasks/tree/master)
 - [Artifactory Post Install Setup] (https://cloudnativetoolkit.dev/admin/artifactory-setup)
@@ -57,7 +57,7 @@ d) Finish the sysdig dashboard setip
 
 ### 10. Smoke test 
 Test access control.
-Add personal id to SANDBOX-ONE-USER access group. 
+Add personal id to SANDBOX-ONE-USER access group.
 Log into IBM Cloud as the personal id and run the following test cases:
 
 - Check only the resources assigned to sandbox: 1 cluster and 2 services under sandbox-team-one resource group should be visible.
@@ -66,7 +66,7 @@ Log into IBM Cloud as the personal id and run the following test cases:
 - Try creating a resource group/access group. It should get permission errors.
 - Go to Classic Infrastructure. Should give access denied error.
 - Reboot a worker node. Should not be a allowed operation.
-- Check if sysdig instance created by cloud native toolkit is collecting metrics from the resorces, and if it is not, set those up.
+- Check if sysdig instance created by Cloud-Native toolkit is collecting metrics from the resorces, and if it is not, set those up.
 - Run pipelines of some starter kits and make sure they work.
 - Check links from openshift and dashboard.
 
@@ -91,7 +91,7 @@ igc tool-config --name ta --url url-for-ta
 - Execute the Insert scripts to populate data for the Plants application (Refer Populate-PlantsDB.sql in the box folder).
 - Navigate to the **'connectioninfo'** tab and select the option 'without-sso'. Capture the Connection Details as well which is needed for the application
 
-### 14.  Email the Participants 
+### 14.  Email the Participants
 Send an email to all participants inviting them to the sandbox journeys.
 [Email Template](emailtemplate.txt)
 

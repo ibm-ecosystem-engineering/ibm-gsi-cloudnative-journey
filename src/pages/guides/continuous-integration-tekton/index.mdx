@@ -37,7 +37,7 @@ The IBM Cloud is standardizing on using Tekton in both IBM Cloud DevOps
 This guide will focus on using Tekton when the Development tools have been
  installed in Redhat OpenShift, IBM Kubernetes Managed services and **Red Hat
   Code Ready Containers** to give you choice for you Continuous Integration
-   cloud native development toolset.
+   Cloud-Native development toolset.
 
 <InlineNotification>
 
@@ -48,7 +48,7 @@ This guide will focus on using Tekton when the Development tools have been
 ### Common App Tasks
 
 The following gives a description of each `Task` that is commonly used in a
- `Pipeline`. The *Optional* stages can be deleted or ignored if the tool support it is not installed. These stages represent a typical production pipeline flow for a Cloud Native application.
+ `Pipeline`. The *Optional* stages can be deleted or ignored if the tool support it is not installed. These stages represent a typical production pipeline flow for a Cloud-Native application.
 
 - **Setup** clones the code into the pipeline
 - **Build** runs the build commands for the code
@@ -69,12 +69,12 @@ The following gives a description of each `Task` that is commonly used in a
 Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
  service and RedHat Code Ready Containers. To install the necessary
   components follow the steps below.
-  
+
 - Install IBM Garage for Cloud Developer Tools on your
  managed OpenShift,CRC or IKS development cluster on the IBM Cloud. This will
   help configure the tools and `secrets` and `configMap` to make working with
    IBM Cloud so much easier.
-    
+
 <Tabs>
 
 <Tab label="OpenShift 4.x">
@@ -96,10 +96,10 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
 - Install Tekton via Knative add-on (can be found in the **Add On** tab in
  the Kubernetes managed service dashboard)
 , it includes
- Tekton support by default and the Webhook extension. 
+ Tekton support by default and the Webhook extension.
 - Install [Tekton Dashboard](https://github.com/tektoncd/dashboard#install-dashboard) follow the instructions in the `README.md`
 - Add Ingress endpoint for the **Tekton Dashboard** add a host name that uses
- the IKS cluster subdomain     
+ the IKS cluster subdomain
     ```yaml
       apiVersion: extensions/v1beta1
       kind: Ingress
@@ -115,11 +115,11 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
                 serviceName: tekton-dashboard
                 servicePort: 9097
     ```
-- Install [Tekton Webhook Extension](https://github.com/tektoncd/experimental/tree/master/webhooks-extension#install-webhook-extension) 
+- Install [Tekton Webhook Extension](https://github.com/tektoncd/experimental/tree/master/webhooks-extension#install-webhook-extension)
 
 </Tab>
 
-</Tabs> 
+</Tabs>
 
 ### Setup Tekton
 
@@ -131,9 +131,9 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
     ```
 - Install the `Pipelines`
     ```bash
-    kubectl create -f ibm-garage-tekton-tasks/pipelines/ -n dev  
+    kubectl create -f ibm-garage-tekton-tasks/pipelines/ -n dev
     ```
-  
+
 ### Configure namespace for development
 
 - Install the Tekton CLI `tkn` https://github.com/tektoncd/cli
@@ -197,11 +197,11 @@ If you are running **Tekton** with IBM Cloud Pak for Applications or Knative
 
 - Review your **Pipeline**
     ```bash
-    tkn pipelinerun list              
+    tkn pipelinerun list
     ```
 - Review **Pipeline** details
     ```bash
-    tkn pipelinerun describe {pipeline-name}              
+    tkn pipelinerun describe {pipeline-name}
     ```
 
 </Tab>

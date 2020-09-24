@@ -1,5 +1,5 @@
 ---
-title: Advanced Log Management Concepts
+title: Advanced Log Management
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
@@ -23,7 +23,7 @@ Given that your application is logging, as are lots of other applications and se
 Open the LogDNA web UI for your environment's cluster
 - [IBM Log Analysis with LogDNA: Viewing logs](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-view_logs)
 explains how to open the web UI
-- In the IBM Cloud dashboard, navigate to **Observability** > **Logging**
+- In the IBM Cloud dashboard, In the navigation menu. Select the **Observability** > **Logging**
 - Find the logging instance named after your environment's cluster, such as `showcase-dev-iks-logdna`. To help find it, 
 you can filter by your resource group.
     ![LogDNA Logging Instance](images/logdna-logging-instance.png)
@@ -31,7 +31,7 @@ you can filter by your resource group.
 
 ## Give it a try
 
-Before you start to understanding how to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, this _Git it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript/generate) as an example.
+Before you start to understanding how to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, Use this git repo  [template-node-typescript](https://github.com/IBM/template-node-typescript/generate) as an example.
 
 The **LogDNA** service is already created, bound and configured to listen to logs from your development cluster.
 
@@ -45,6 +45,8 @@ The **LogDNA** service is already created, bound and configured to listen to log
 ### Add some logging to your app
 
 All the common logging frameworks support the ability publish different types of log statement. The developer can use the log level to help trap specific information or error conditions. The common log levels are  `info`, `debug`, `warn` and `fatal`. It is best practice to add log statements to help operations teams and monitoring services to help identify possible issues quickly.
+
+- Use this pattern [template-node-typescript](https://github.com/IBM/template-node-typescript/generate) for the following implementation.
 
 - Add the following `debug` statement and `error` condition to the `greetings` implementation in your app.
 
@@ -90,7 +92,12 @@ Now that we have introduced some debug messages, let's adjust the log level for 
 
 - Open up the **LogDNA** console and narrow the logs to just your app
 
-- Open the app into a browser: Run `igc ingress -n {your namespace}` and select your running app
+
+- Retrieve the app ingress endpoint using commands below in your terminal.
+
+    ```bash
+    oc endpoints
+    ```
 - Switch to `HTTPS` and test the `/hello/{name}` API and pass in some data. You have introduced a `DEBUG` message and an `ERROR` into this API logic. Click the **Execute** button a few times to simulate some API calls.
 - Try the API with your own name, and you will see just the `DEBUG` message appearing
 - Try the API with `ERROR` as the name , and this will trigger the error code we put in the API service
@@ -110,4 +117,4 @@ There is lots more information around how to use **LogDNA**, these links will he
 
 ## Conclusion
 
-It's important to be able to manage the logs of your deployed applications to help identify issues and quickly understand how to resolve them. The Developer Tools configures LogDNA directly to you development cluster to make it easy to get the log you data you need as a developer. Just deploy your application into your <Globals name="env" /> and its logs start appearing automatically, open the LogDNA web UI and browse your logs.
+It's important to be able to manage the logs of your deployed applications to help identify issues and quickly understand how to resolve them. The Developer Tools configures LogDNA directly to your development cluster to make it easy to get the log you data you need as a developer. Just deploy your application into your <Globals name="env" /> and its logs start appearing automatically, open the LogDNA web UI and browse your logs.

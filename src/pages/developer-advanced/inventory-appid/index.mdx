@@ -1,5 +1,5 @@
 ---
-title: App ID Integration
+title: Authentication with App ID
 ---
 
 import Globals from 'gatsby-theme-carbon/src/templates/Globals';
@@ -10,36 +10,106 @@ Securing Inventory App with App ID
 
 </PageDescription>
 
-To secure the application we are using the capabilities available within the IBMCloud platform that use
-a simple annotation on the ingress to enable integration with AppId. The <Globals name="templates" /> have already been
-set up to use this feature and all that is required is update the configuration within the `values.yaml`
-file of the helm chart.
+To secure the application we are using the capabilities available within the IBMCloud platform to enable integration with AppId.With Openshift 3.11,
+a simple annotation was used on the ingress to enable Appid.In Openshift 4.x,Red Hat OpenShift on IBM Cloud annotations (ingress.bluemix.net/[annotation]) 
+and NGINX annotations (nginx.ingress.kubernetes.io/[annotation_name]) are not supported for the router or the Ingress resource. With Openshift 4.x,AppId 
+integration is enabled with SDKs.
 
-### Inventory Management UI
+## Prerequisites
 
-- Find the app id binding secret by running the following command from a terminal where the kubernetes context has been set up (i.e. `oc login` has been done)
+The following prerequisites are required for AppId integration:
+- An instance of the App ID service:
+  In IBM Cloud Dashboard, go to "Services" and select the AppId instance.
+  
+  ![AppId Service](images/AppIdIntegration01.png)
+
+- A set of service credentials:
+    - In AppId instance, go to "Application". 
+    - Click on "Add application".
+    - Enter your application name 
+    - Select the type as Regular web application.
+    - Click on Save to create the service credentials for your application.
+   
+    ![AppId Credentials Creation](images/AppIdInt02a.png)
+
+    - After saving, your application credentials will get created.Click on the down Arrow at 
+    the left end of your application name and get the credentials.
+    
+    ![AppId Credentials Creation](images/AppidInt03.png)
+    
+
+- NPM version 4 or higher.
+- Node version 6 or higher.
+- Set your redirect URI in the App ID service dashboard:
+    - In the AppID instance, go to Manage Authentication and select the Authentication Settings tab.
+    - Under "Add web redirect URLs", type the URL which you want to be redirected.
+    - Click on the Circle Plus symbol in the end to add your URL. 
+
+    ![AppId Redirect URI](images/AppidInt04.png)    
+  
+
+
+
+## Nodejs SDK 
+
+- Installation: 
+    -   By using the command line, change to the directory that contains your Node.js app.
+    -   Install the AppID service.
     ```bash
-    kubectl get -n dev secrets | grep -E "binding.*appid"
+    npm install --save ibmcloud-appid
     ```
 
-- Update the `values.yaml` file in the Inventory Management UI chart to set `ingress.appId.enabled=true` and to 
-    set the value for the AppId binding secret from the previous step
-    ```yaml path=/chart/template-node-react/values.yaml
-    ...
-
-    ingress:
-      enabled: true
-      appid:
-        enabled: true
-        # web or app - https://cloud.ibm.com/docs/services/appid?topic=appid-kube-auth
-        requestType: web
-        binding:
-          name: "{binding secret}"
-          namespace: dev
-        ...
+- Add the following <i>require</i> definitions to your <i>server.js</i>:
+    ```bash
+    const express = require('express');
+    const session = require('express-session')
+    const passport = require('passport');
+    const WebAppStrategy = require("ibmcloud-appid").WebAppStrategy;
+    const CALLBACK_URL = "/ibm/cloud/appid/callback";
     ```
 
-### AppId redirect url config
+- Set up your express app to use express-session middleware.
+    ```bash
+    const app = express();
+    app.use(session({
+            secret: "123456",
+            resave: true,
+            saveUninitialized: true
+        }));
+    app.use(passport.initialize());
+    app.use(passport.session());
+    ```
+
+-  Obtain your credentials by navigating to the <b>Applications</b> tab of the AppId dashboard as mentioned in [Prerequisites](#prerequisites).
+
+-  Initialize the SDK using the information obtained in the previous steps.
+   ```bash
+    passport.use(new WebAppStrategy({
+    tenantId: "{tenant-id}",
+    clientId: "{client-id}",
+    secret: "{secret}",
+    oauthServerUrl: "{oauth-server-url}",
+    redirectUri: "{app-url}" + CALLBACK_URL
+    }));
+    ```
+
+-   Configure passport with serialization and deserialization. This configuration step is required for authenticated session persistence across HTTP requests. For more information, see the [passport docs](http://www.passportjs.org/docs/)
+    ```bash
+    passport.serializeUser(function(user, cb) {
+    cb(null, user);
+    });
+    passport.deserializeUser(function(obj, cb) {
+    cb(null, obj);
+    });
+    ```
+
+-   Add the following code to your <i>server.js</i> to issue the service redirects.
+    ```bash
+    app.get(CALLBACK_URL, passport.authenticate(WebAppStrategy.STRATEGY_NAME));
+    app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME ));
+    ```    
+
+## AppId redirect url config
 
 - Get the ingress for the UI component by running `igc ingress -n dev-{initials}`.
 
@@ -52,11 +122,11 @@ file of the helm chart.
 - Add the redirect url for the application to the web redirect URLs. The redirect url will have
 the following form:
 
-    `{ingress url}/appid_callback`
+    `{ingress url}/ibm/cloud/appid/callback`
     
-    e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/appid_callback`
+    e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/ibm/cloud/appid/callback`
 
-### Add users to AppId
+## Add users to AppId
 
 - Open the AppId instance to `Cloud Directory` -> `Users`
 
@@ -64,10 +134,12 @@ the following form:
 
 - Add yourself as a user with an email address, name, and password
 
-### Access the UI
+## Access the UI
 
-- Open a browser to the UI ingress
+- Open a browser to the UI Application URL
 
 - You should be met with the AppId login screen. (This screen can be customized from the AppId service console but for now we are showing the default screen.)
+
+     ![AppId Login Page](images/AppidLogin.png)
 
 - Provide the email address and password you configured in the previous steps. You should be granted access to the UI.
