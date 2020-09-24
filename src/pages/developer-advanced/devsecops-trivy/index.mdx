@@ -256,6 +256,8 @@ $ trivy image --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
 
 Trivy scan is integrated in IBM Garage Cloud-Native Toolkit. Lets see how the trivy was integrated.
 
+https://github.com/IBM/ibm-garage-tekton-tasks/
+
 ### Tekton Pipeline
 
 Here is the tekton pipeline of the toolkit. Here Trivy scan is done just after the image is created (build) and just before it is deployed in the cluster for health check and so on.
@@ -269,7 +271,9 @@ Pipeline contains list of tasks.
  ![Cloud-Native Toolkit Pipeline ](/images/2-pipeline.png "Cloud-Native Toolkit Pipeline")
 
 Line no. 50: Shows build task 
+
 Line no. 70: Shows trivy-scan task
+
 Line no. 80: Shows deploy task
 
 ### Build Task
@@ -279,6 +283,7 @@ Here is the build task, where the image is build using the dockerfile and pushed
  ![Cloud-Native Toolkit Pipeline ](/images/3-task-build.png "Cloud-Native Toolkit Pipeline")
 
 Line no. 102: Shows buildah is login into local container registry
+
 Line no. 106: Shows buildah is pushing image to the local container registry
 
 ```
@@ -289,9 +294,12 @@ Line no. 106: Shows buildah is pushing image to the local container registry
 
 Trivy-Scan task that shows 2 steps. The steps are Pull-image and Scan-image.
 
+https://github.com/IBM/ibm-garage-tekton-tasks/blob/master/tasks/3-img-scan-trivy.yaml
+
  ![Cloud-Native Toolkit Pipeline ](/images/4-task-scan-1.png "Cloud-Native Toolkit Pipeline")
 
 Line no. 29: Shows pull-image step
+
 Line no. 71: Shows scan-image step
 
 
@@ -314,7 +322,10 @@ This is second step of of the trivy-scan task.  This step will kick start the tr
  ![Cloud-Native Toolkit Pipeline ](/images/6-task-scan-3.png "Cloud-Native Toolkit Pipeline")
 
 Line no. 80: Trivy scan is done and it print alls the vulnerabilities found in the image.
+
 Line no. 81: Trivy scan is done and it print alls the CRITICAL vulnerabilities found in the image. 
+
 Line no. 84: Checks if any CRITICAL vulnerabilities found
+
 Line no. 86: Exits the pipeline when CRITICAL vulnerabilities found
 
