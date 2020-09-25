@@ -14,78 +14,71 @@ Trivy is an open-source tool from Aqua Security to scan container images for vul
 
 Trivy can detects vulnerabilities of operating systems packages (CentOS, RHEL, Alpine and etc.) and application dependencies (npm, yarn, Composer, etc). Trivy is easy to use. Just install the binary and start the scanning by specifying the target such as an image name of the container.
 
-It is now available as an integrated option within a number of platforms. Trivy is also integrated into the Tekton pipeline of IBM Garage Cloud-Native Toolkit.
+It is now available as an integrated option within a number of platforms. Trivy is also integrated into the Tekton pipeline of Cloud-Native Toolkit.
 
 With the frequent feature and vulnerability database updates and its comprehensive vulnerability scanning, trivy brings in the higher levels of usability and performance.
 
-Trivy is highly used in Continous-Integration. Before pushing image and other artifacts to a registry or deploying your application, You can scan them easily.
+Trivy is highly used in Continuous-Integration. Before pushing image and other artifacts to a registry or deploying your application, You can scan them easily.
 
 ## Features
 
-* Easy install
-  * No pre-requisites such as installation of DB, libraries, etc
-  * apt-get install, yum install and brew install options are available for quick installation
+#### Easy install
+* No pre-requisites such as installation of DB, libraries, etc
+* apt-get install, yum install and brew install options are available for quick installation
 
-* Simple
-  * Specify only an image name or artifact name.
+#### Simple
+* Specify only an image name or artifact name.
 
-* Fast
-  * The first scan will finish within 10 seconds (depending on your network). Consequent scans will finish in few seconds.
+#### Fast
+* The first scan will finish within 10 seconds (depending on your network). Consequent scans will finish in few seconds.
 
-* Detect comprehensive vulnerabilities
-  * OS packages (Alpine, Red Hat Universal Base Image, Red Hat Enterprise Linux, CentOS, Oracle Linux, Debian, Ubuntu, Amazon Linux, openSUSE Leap, SUSE Enterprise Linux, Photon OS and Distroless)
-  * Application dependencies (Bundler, Composer, Pipenv, Poetry, npm, yarn and Cargo)
+#### Detect comprehensive vulnerabilities
+* OS packages (Alpine, Red Hat Universal Base Image, Red Hat Enterprise Linux, CentOS, Oracle Linux, Debian, Ubuntu, Amazon Linux, openSUSE Leap, SUSE Enterprise Linux, Photon OS and Distroless)
+* Application dependencies (Bundler, Composer, Pipenv, Poetry, npm, yarn and Cargo)
 
-* High accuracy
-  * Especially Alpine Linux and RHEL/CentOS
-  * Other OSes are also high
+#### High accuracy
+* Especially Alpine Linux and RHEL/CentOS
+* Other OSes are also high
 
-* DevSecOps
-  * Suitable for CI such as Travis CI, CircleCI, Jenkins, GitLab CI, etc.
+#### DevSecOps
+* Suitable for CI such as Travis CI, CircleCI, Jenkins, GitLab CI, etc.
 
 Thanks to https://github.com/aquasecurity/trivy
 
 
-
-
-
-## Scanning various artifacts
+## Artifacts scanned by Trivy
 
 Trivy can scan the following type of artifacts.
 
-## Image
-
+#### Image
 Trivy can scan container images from the repository.
 
   ex: trivy image python:3.4-alpine
 
-## Filesystem
-
+#### Filesystem
 Trivy can go through filesystems such as
 * host machine
 * a virtual machine image 
 * unpacked container image filesystem 
 
 By going through the filesystems it can find and scan the following.
-  * Image file as tar (ex: trivy image --input ruby-2.3.0.tar)
-  * OCI image (ex: trivy image --input /path/to/alpine)
-  * Project containing lock files (ex. Gemfile.lock and package-lock.json)
+* Image file as tar (ex: trivy image --input ruby-2.3.0.tar)
+* OCI image (ex: trivy image --input /path/to/alpine)
+* Project containing lock files (ex. Gemfile.lock and package-lock.json)
 
-## Embed in Dockerfile
-
-Trivy can scan your image as part of the build process when Trivy is embedded in the Dockerfile. 
-
-## Git Repository
-
+#### Git Repository
 Trivy can scan your remote git repository for OS Packages.
 
 ex: trivy repo https://github.com/knqyf263/trivy-ci-test
 
+#### Embed in Dockerfile
+Trivy can scan your image as part of the build process when Trivy is embedded in the Dockerfile. 
+
 
 
 ## Installation
+Trivy installation is very simple. You can use homebrew on macOS to install.
 
-Trivy installation is very simple. You can use homebrew on macOS to install
 ```
 $ brew install aquasecurity/trivy/trivy
 ```
@@ -231,7 +224,7 @@ $ trivy image -f json -o results.json python:3.4-alpine
 
 ## CI with Trivy
 
-As part of the Continoue Integration pipeline you can scan your image using the Trivy. The pipeline can be continued or stoped based on the vulnerabilities detected. To stop the pipeline `--exit-code 1` to be used.
+As part of the Continuous Integration pipeline you can scan your image using the Trivy. The pipeline can be continued or stopped based on the vulnerabilities detected. To stop the pipeline `--exit-code 1` to be used.
 
 So exit-code is used to break the pipeline based on vulnerability findings.
 
@@ -252,80 +245,93 @@ $ trivy image --exit-code 1 --severity CRITICAL,HIGH python:3.4-alpine
 ```
 
 
-## Trivy Scan in IBM Garage Cloud-Native Toolkit
+## Trivy Scan in Cloud-Native Toolkit
 
-Trivy scan is integrated in IBM Garage Cloud-Native Toolkit. Lets see how the trivy was integrated.
+Trivy scan is available as part of the Cloud-Native Toolkit Tekton pipeline. 
 
-https://github.com/IBM/ibm-garage-tekton-tasks/
+The pipeline scripts are available at https://github.com/IBM/ibm-garage-tekton-tasks/
 
-### Tekton Pipeline
+### Pipeline
 
-Here is the tekton pipeline of the toolkit. Here Trivy scan is done just after the image is created (build) and just before it is deployed in the cluster for health check and so on.
+Here is the tekton pipeline of the toolkit. Here `Trivy scan` task is placed in between `build` and `deploy` to make sure the image is scanned before it is deployed in the cluster for health check and so on.
 
  ![Cloud-Native Toolkit Pipeline ](/images/1-pipeline-tasks.png "Cloud-Native Toolkit Pipeline")
 
+Lets us explore in detail about the trivy-scan task.
+
 ### Pipeline Tasks
 
-Pipeline contains list of tasks. 
+Pipeline contains list of tasks.
 
- ![Cloud-Native Toolkit Pipeline ](/images/2-pipeline.png "Cloud-Native Toolkit Pipeline")
+![Cloud-Native Toolkit Pipeline ](/images/2-pipeline.png "Cloud-Native Toolkit Pipeline")
 
-Line no. 50: Shows build task 
+Line no. 50: Shows `build` task 
 
-Line no. 70: Shows trivy-scan task
+Line no. 70: Shows `trivy-scan` task, which runs after `build` (line no 74).
 
-Line no. 80: Shows deploy task
+Line no. 80: Shows `deploy` task, which runs after `trivy-scan` (line no 84).
 
-### Build Task
+### Task : build
 
-Here is the build task, where the image is build using the dockerfile and pushed to the local container registry.
+The build task executes the logic to build a container image, tag it and push it to a local container image repository (Ex: image-registry.openshift-image-registry.svc:5000/dev-g2/dev-g-trivy6:605b0ec).
 
- ![Cloud-Native Toolkit Pipeline ](/images/3-task-build.png "Cloud-Native Toolkit Pipeline")
+Here `Buildah` tool is used to build, tag and push the the container image.  Buildah is a tool that facilitates building Open Container Initiative (OCI) container images.
+
+![Cloud-Native Toolkit Pipeline ](/images/3-task-build.png "Cloud-Native Toolkit Pipeline")
 
 Line no. 102: Shows buildah is login into local container registry
 
-Line no. 106: Shows buildah is pushing image to the local container registry
+Line no. 106: Shows buildah is pushing image to the local container registry. Given below the buildah push with variables substituted with values.
 
 ```
 + buildah --storage-driver=overlay push --tls-verify=false --digestfile ./image-digest image-registry.openshift-image-registry.svc:5000/dev-g2/dev-g-trivy6:605b0ec docker://image-registry.openshift-image-registry.svc:5000/dev-g2/dev-g-trivy6:605b0ec
 ```
 
-### trivy-scan Tasks
+### Task: trivy-scan 
 
-Trivy-Scan task that shows 2 steps. The steps are Pull-image and Scan-image.
+Trivy-Scan task contains 2 steps. The steps are `Pull-image` and `Scan-image`. Lets see them in detail in the below sections.
 
 https://github.com/IBM/ibm-garage-tekton-tasks/blob/master/tasks/3-img-scan-trivy.yaml
 
- ![Cloud-Native Toolkit Pipeline ](/images/4-task-scan-1.png "Cloud-Native Toolkit Pipeline")
+![Cloud-Native Toolkit Pipeline ](/images/4-task-scan-1.png "Cloud-Native Toolkit Pipeline")
 
-Line no. 29: Shows pull-image step
+Line no. 29: Shows `pull-image` step
 
-Line no. 71: Shows scan-image step
+Line no. 71: Shows `scan-image` step
 
 
-### pull-image step
+### Step: pull-image 
 
-This is first step of of the trivy-scan task.  This step will copy the image from local container registry to OCI image directory.
+This step will pull the image from the local container registry (which was built in the previous task) and store it in the OCI image directory. 
 
- ![Cloud-Native Toolkit Pipeline ](/images/5-task-scan-2.png "Cloud-Native Toolkit Pipeline")
+Here `skopeo` tool is used to the copy the image from local container registry to OCI image directory. Skopeo is a command line utility that performs various operations on container images and image repositories such as Copying an image from and to various storage mechanisms, Inspecting a remote image,  Deleting an image from an image repository and etc.
 
-Line no. 70: Using skopeo, the image copy from local container registry to OCI image directory is done.
+There is an option to skip this scan. When the flag `params.scan-image` is set to false then this can will be skipped.
+
+![Cloud-Native Toolkit Pipeline ](/images/5-task-scan-2.png "Cloud-Native Toolkit Pipeline")
+
+Line no. 70: skopeo copies the image from local container registry to OCI image directory. Given below the skopeo copy command with variables substituted with values. Here image is copied to `oci:/var/oci/image`.
 
 ```
 skopeo copy --src-creds=xxxx --src-tls-verify=false docker://image-registry.openshift-image-registry.svc:5000/dev-g2/dev-g-trivy6:605b0ec oci:/var/oci/image
 ```
 
-### scan-image step
 
-This is second step of of the trivy-scan task.  This step will kick start the trivy scan using the image stored in the OCI image directory .
+### Step : scan-image 1
+
+This step runs an image scan with Trivy and fails the pipeline if issues are found.
+
+In the previous step the image is copied to the OCI image directory `oci:/var/oci/image`. The variable `PATH_TO_IMAGE` would be pointing to this OCI image directory. This `PATH_TO_IMAGE` is passed to the trivy scan (line no 80 and 81). 
+
+The trivy scanning is done and `--exit-code` would be set according to the scan results. Based on the `--exit-code` pipeline will be continued or stopped.
 
  ![Cloud-Native Toolkit Pipeline ](/images/6-task-scan-3.png "Cloud-Native Toolkit Pipeline")
 
-Line no. 80: Trivy scan is done and it print alls the vulnerabilities found in the image.
+Line no. 80: Trivy scan is done and it print all the vulnerabilities found in the image.
 
-Line no. 81: Trivy scan is done and it print alls the CRITICAL vulnerabilities found in the image. 
+Line no. 81: Trivy scan is done and it print all the CRITICAL vulnerabilities found in the image. 
 
-Line no. 84: Checks if any CRITICAL vulnerabilities found
+Line no. 84: Checks if any CRITICAL vulnerabilities found, based on the `--exit-code` from line no. 81.
 
-Line no. 86: Exits the pipeline when CRITICAL vulnerabilities found
+Line no. 86: Exits the pipeline when CRITICAL vulnerabilities found.
 
