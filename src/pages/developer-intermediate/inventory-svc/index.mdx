@@ -99,7 +99,7 @@ developing on code ready workspaces/cloud shell, copy the url and paste it in a 
 
 - Selecting "Open Preview" opens a window inside gitpod workspace tab.
 
-![OpenPreview](./images/gitpod02.png)
+    ![OpenPreview](./images/gitpod02.png)
 
 - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
@@ -141,8 +141,8 @@ We will start by creating the initial application component.
 annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garage.*`, and `com.ibm.health`
 packages.
 
-```java path=src/main/java/com/ibm/inventory_management/app/Application.java
-    package com.ibm.inventory_management.app;
+   ```java path=src/main/java/com/ibm/inventory_management/app/Application.java
+      package com.ibm.inventory_management.app;
 
     import org.springframework.beans.factory.annotation.Autowired;
     import org.springframework.boot.CommandLineRunner;
@@ -180,23 +180,23 @@ packages.
             return application.sources(Application.class);
         }
     }
-```
+  ```
 
 - Delete `application.app`
-```
-git rm -r src/main/java/application/
-```
+  ```
+   git rm -r src/main/java/application/
+   ```
 
 - Run the service locally. The swagger page should no longer contain the `/hello`
 API endpoint.
 
 - Commit and push the changes to Git.
 
-```base
-git add .
-git commit -m "Adds Application and Removes default Application class"
-git push
-```
+   ```base
+      git add .
+      git commit -m "Adds Application and Removes default Application class"
+      git push
+    ```
 
 #### Add StockItem controller
 
@@ -208,30 +208,30 @@ for the REST service.
 
 - Add a StockItemControllerTest.java in `com.ibm.inventory_management.controllers` under the `test` folder
 
-```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
-package com.ibm.inventory_management.controllers;
+   ```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
+      package com.ibm.inventory_management.controllers;
 
-import org.junit.jupiter.api.DisplayName;
+      import org.junit.jupiter.api.DisplayName;
 
-@DisplayName("StockItemController")
-public class StockItemControllerTest {
-}
-```
+      @DisplayName("StockItemController")
+      public class StockItemControllerTest {
+      }
+    ```
 
 - Add the MockMvc infrastructure and create the `StockItemController`
 
-```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
-package com.ibm.inventory_management.controllers;
+  ```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
+     package com.ibm.inventory_management.controllers;
 
-import static org.mockito.Mockito.spy;
+     import static org.mockito.Mockito.spy;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+     import org.junit.jupiter.api.BeforeEach;
+     import org.junit.jupiter.api.DisplayName;
+     import org.springframework.test.web.servlet.MockMvc;
+     import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@DisplayName("StockItemController")
-public class StockItemControllerTest {
+     @DisplayName("StockItemController")
+     public class StockItemControllerTest {
     StockItemController controller;
 
     MockMvc mockMvc;
@@ -242,35 +242,35 @@ public class StockItemControllerTest {
 
         mockMvc = MockMvcBuilders.standaloneSetup(controller).build();
     }
-}
-```
+    }
+ ```
 
-```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
-package com.ibm.inventory_management.controllers;
+ ```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
+    package com.ibm.inventory_management.controllers;
 
-public class StockItemController {
-}
-```
+    public class StockItemController {
+    }
+ ```
 
 - Add the tests for the controller behavior and make the corresponding changes to make the tests pass
 
-```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
-package com.ibm.inventory_management.controllers;
+  ```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
+     package com.ibm.inventory_management.controllers;
 
-import static org.mockito.Mockito.spy;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+     import static org.mockito.Mockito.spy;
+     import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+     import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+     import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+     import org.junit.jupiter.api.BeforeEach;
+     import org.junit.jupiter.api.DisplayName;
+     import org.junit.jupiter.api.Nested;
+     import org.junit.jupiter.api.Test;
+     import org.springframework.test.web.servlet.MockMvc;
+     import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-@DisplayName("StockItemController")
-public class StockItemControllerTest {
+     @DisplayName("StockItemController")
+     public class StockItemControllerTest {
     StockItemController controller;
 
     MockMvc mockMvc;
@@ -301,34 +301,35 @@ public class StockItemControllerTest {
             mockMvc.perform(get("/stock-items").accept("application/json"))
                     .andExpect(content().json("[]"));
         }
-    }
-}
-```
+       }
+       }
+    ```
 
-```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
-package com.ibm.inventory_management.controllers;
+     ```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
+        package com.ibm.inventory_management.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+        import java.util.ArrayList;
+        import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+        import org.springframework.web.bind.annotation.GetMapping;
+        import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-public class StockItemController {
+        @RestController
+       public class StockItemController {
 
-    @GetMapping(path = "/stock-items", produces = "application/json")
-    public List listStockItems() {
+       @GetMapping(path = "/stock-items", produces = "application/json")
+       public List listStockItems() {
         return new ArrayList();
-    }
-}
-```
+       }
+       }
+    ```
 
 - Start the local server
 
-```bash
-./gradlew bootRun
-```
+   ```bash
+     ./gradlew bootRun
+   ```
+
 <Tabs>
 
 <Tab label="Cloud Shell">
@@ -336,6 +337,20 @@ public class StockItemController {
  - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
     ![View App](./images/viewapp.png)
+
+</Tab>
+
+<Tab label="Gitpod">
+
+ - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+
+    ![View App](./images/gitpod01.png)
+
+- Selecting "Open Preview" opens a window inside gitpod workspace tab.
+
+    ![OpenPreview](./images/gitpod02.png)
+
+- Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
 </Tab>
 
@@ -363,11 +378,11 @@ see the stock item entry in the list
 
 - Commit and push the changes to Git.
 
-```base
-git add .
-git commit -m "Adds StockItemController"
-git push
-```
+  ```base
+     git add .
+     git commit -m "Adds StockItemController"
+     git push
+  ```
 
 #### Add a service for providing results
 
@@ -377,31 +392,31 @@ should be placed in a component that is given a `@Service` annotation.
 
 - Update the controller test to include returning data from the service
 
-```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
-package com.ibm.inventory_management.controllers;
+   ```java path=src/test/java/com/ibm/inventory_management/controllers/StockItemControllerTest.java
+      package com.ibm.inventory_management.controllers;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+   import static org.mockito.Mockito.mock;
+   import static org.mockito.Mockito.spy;
+   import static org.mockito.Mockito.when;
+   import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+   import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+   import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.Arrays;
-import java.util.List;
+   import java.util.Arrays;
+   import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+   import org.junit.jupiter.api.BeforeEach;
+   import org.junit.jupiter.api.DisplayName;
+   import org.junit.jupiter.api.Nested;
+   import org.junit.jupiter.api.Test;
+   import org.springframework.test.web.servlet.MockMvc;
+   import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import com.ibm.inventory_management.models.StockItem;
-import com.ibm.inventory_management.services.StockItemApi;
+  import com.ibm.inventory_management.models.StockItem;
+  import com.ibm.inventory_management.services.StockItemApi;
 
-@DisplayName("StockItemController")
-public class StockItemControllerTest {
+  @DisplayName("StockItemController")
+  public class StockItemControllerTest {
     StockItemController controller;
     StockItemApi service;
 
@@ -446,93 +461,93 @@ public class StockItemControllerTest {
             mockMvc.perform(get("/stock-items").accept("application/json"))
                     .andExpect(content().json("[{}]"));
         }
-    }
-}
-```
+        }
+        }
+      ```
 
-```java path=src/main/java/com/ibm/inventory_management/models/StockItem.java
-package com.ibm.inventory_management.models;
+      ```java path=src/main/java/com/ibm/inventory_management/models/StockItem.java
+         package com.ibm.inventory_management.models;
 
-import java.io.Serializable;
+         import java.io.Serializable;
 
-public class StockItem implements Serializable {
-    private String name;
+         public class StockItem implements Serializable {
+         private String name;
 
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
+         public String getName() {
+          return name;
+         }
+         public void setName(String name) {
         this.name = name;
-    }
-    public StockItem withName(String name) {
+         }
+         public StockItem withName(String name) {
         this.setName(name);
         return this;
-    }
-}
-```
+        }
+        }
+      ```
 
-```java path=src/main/java/com/ibm/inventory_management/services/StockItemApi.java
-package com.ibm.inventory_management.services;
+      ```java path=src/main/java/com/ibm/inventory_management/services/StockItemApi.java
+         package com.ibm.inventory_management.services;
 
-import java.util.List;
+         import java.util.List;
 
-import com.ibm.inventory_management.models.StockItem;
+         import com.ibm.inventory_management.models.StockItem;
 
-public interface StockItemApi {
-    List<StockItem> listStockItems();
-}
-```
+         public interface StockItemApi {
+              List<StockItem> listStockItems();
+        }
+      ```
 
-```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
-package com.ibm.inventory_management.controllers;
+      ```java path=src/main/java/com/ibm/inventory_management/controllers/StockItemController.java
+         package com.ibm.inventory_management.controllers;
 
-import java.util.List;
+         import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+         import org.springframework.web.bind.annotation.GetMapping;
+         import org.springframework.web.bind.annotation.RestController;
 
-import com.ibm.inventory_management.models.StockItem;
-import com.ibm.inventory_management.services.StockItemApi;
+         import com.ibm.inventory_management.models.StockItem;
+         import com.ibm.inventory_management.services.StockItemApi;
 
-@RestController
-public class StockItemController {
+         @RestController
+         public class StockItemController {
 
-    private final StockItemApi service;
+         private final StockItemApi service;
 
-    public StockItemController(StockItemApi service) {
+         public StockItemController(StockItemApi service) {
         this.service = service;
-    }
+        }
 
-    @GetMapping(path = "/stock-items", produces = "application/json")
-    public List<StockItem> listStockItems() {
+        @GetMapping(path = "/stock-items", produces = "application/json")
+       public List<StockItem> listStockItems() {
         return this.service.listStockItems();
-    }
-}
-```
+       }
+      }
+    ```
 
 - At this points the tests should pass even though we haven't provided an implementation of the service yet since we are
 creating a mocking the service in the unit test
 
 - Update the `StockItem` model to include the remaining fields
 
-```java path=src/main/java/com/ibm/inventory_management/models/StockItem.java
-package com.ibm.inventory_management.models;
+  ```java path=src/main/java/com/ibm/inventory_management/models/StockItem.java
+     package com.ibm.inventory_management.models;
 
-import java.io.Serializable;
+     import java.io.Serializable;
 
-public class StockItem implements Serializable {
-    private String name;
-    private String id = null;
-    private int stock = 0;
-    private double price = 0.0;
-    private String manufacturer = "";
+     public class StockItem implements Serializable {
+     private String name;
+     private String id = null;
+     private int stock = 0;
+     private double price = 0.0;
+     private String manufacturer = "";
 
-    public StockItem() {
+     public StockItem() {
         super();
-    }
+     }
     public StockItem(String id) {
         this.id = id;
-    }
+     }
 
     public String getName() {
         return name;
@@ -596,26 +611,26 @@ public class StockItem implements Serializable {
         this.setManufacturer(manufacturer);
         return this;
     }
-}
-```
+    }
+  ```
 
 - Provide an implementation of the service that just returns a couple of hard-coded data values, for now. Services are
 denoted in Spring Boot with the `@Service` annotation
 
-```java path=src/main/java/com/ibm/inventory_management/services/StockItemService.java
-package com.ibm.inventory_management.services;
+  ```java path=src/main/java/com/ibm/inventory_management/services/StockItemService.java
+     package com.ibm.inventory_management.services;
 
-import static java.util.Arrays.asList;
+     import static java.util.Arrays.asList;
 
-import java.util.List;
+     import java.util.List;
 
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Service;
+     import org.springframework.context.annotation.Primary;
+     import org.springframework.stereotype.Service;
 
-import com.ibm.inventory_management.models.StockItem;
+     import com.ibm.inventory_management.models.StockItem;
 
-@Service
-public class StockItemService implements StockItemApi {
+      @Service
+     public class StockItemService implements StockItemApi {
     @Override
     public List<StockItem> listStockItems() {
         return asList(
@@ -636,22 +651,22 @@ public class StockItemService implements StockItemApi {
                         .withManufacturer("Panasonic")
         );
     }
-}
-```
+    }
+  ```
 
 - Replace the `api()` method in the SwaggerDocket class to restrict the swagger page to only show the `/stock-items` API
 
-```java path=src/main/java/com/ibm/cloud_garage/swagger/SwaggerDocket.java
-    @Bean
-    public Docket api() {
+   ```java path=src/main/java/com/ibm/cloud_garage/swagger/SwaggerDocket.java
+      @Bean
+      public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(buildApiRequestHandler())
                 .paths(PathSelectors.regex(".*stock-item.*"))
                 .build()
                 .apiInfo(buildApiInfo());
-    }
-```
+       }
+     ```
 
 #### Verify the service locally and push the changes
 
@@ -672,6 +687,22 @@ public class StockItemService implements StockItemApi {
     ![View App](./images/viewapp.png)
 
 </Tab>
+
+<Tab label="Gitpod">
+
+ - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+
+    ![View App](./images/gitpod01.png)
+
+- Selecting "Open Preview" opens a window inside gitpod workspace tab.
+
+    ![OpenPreview](./images/gitpod02.png)
+
+- Selecting "Open Browser" opens a new browser tab for accessing the URL.
+
+</Tab>
+
+
 
 <Tab label="Cloud Ready Workspaces">
 
@@ -700,11 +731,11 @@ public class StockItemService implements StockItemApi {
 
 - Commit and push the changes to git
 
-```bash
-git add .
-git commit -m "Adds StockItem service implementation"
-git push
-```
+  ```bash
+     git add .
+     git commit -m "Adds StockItem service implementation"
+     git push
+   ```
 
 - The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the route of your service
 

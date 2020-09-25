@@ -193,7 +193,7 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
 
 - Selecting "Open Preview" opens a window inside gitpod workspace tab.
 
-![OpenPreview](./images/gitpod02.png)
+     ![OpenPreview](./images/gitpod02.png)
 
 - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
@@ -202,13 +202,13 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
 
 <Tab label="Cloud Ready Workspaces">
 
-![CRW Open Link](./images/crwopenlink.png)
+  ![CRW Open Link](./images/crwopenlink.png)
 
 
 - Click on open link
 
 
-![CRW Open App](./images/crwopenapp.png)
+  ![CRW Open App](./images/crwopenapp.png)
 
 
 - To view this application in new tab click top right corner arrow icon
@@ -463,17 +463,17 @@ Having reached this point, we recommend you repeat the process a few more
 
 ### 12. Test the webhook
 -  Go to your cloned git project and navigate to <i>chart/base</i> directory.
-```
-cd stockbffnode
-cd chart/base
-```
+    ```
+      cd stockbffnode
+      cd chart/base
+    ```
 - Open the file `Chart.yaml` in edit mode and change the `description` field's value from "A Helm chart for Kubernetes" to "A Helm chart for [yourprojectName]"
 - Save the edits
 - Push the changes back to your repository
     ```bash
-    git add .
-    git commit -m "Update application name"
-    git push
+       git add .
+       git commit -m "Updated application name in Chart.yaml"
+       git push
     ```
 - As soon as you push your code changes successfully, the webhook will trigger a new pipeline run for your project in your namespace in OCP.
   
