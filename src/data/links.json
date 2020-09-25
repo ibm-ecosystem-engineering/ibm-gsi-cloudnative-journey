@@ -39,9 +39,9 @@
     {"title":"DevOps CD", "subtitle":"Continuous delivery with a delivery pipeline","author":"Link","href":"https://www.ibm.com/cloud/garage/practices/deliver/practice_continuous_delivery/","color":"dark"}
   ],
   "cnd" : [
-    {"title":"Cloud Overview", "subtitle":"The fundamentals of cloud computing","author":"Link","href":"https://developer.ibm.com/articles/cl-best-practices-deploying-apps-in-cloud/","color":"dark"},
+    {"title":"Cloud Overview", "subtitle":"The fundamentals of cloud computing","author":"Link","href":"https://cognitiveclass.ai/courses/introduction-to-cloud","color":"dark"},
     {"title":"Cloud Essentials", "subtitle":"The fundamentals of cloud computing","author":"Link","href":"https://cognitiveclass.ai/courses/ibm-cloud-essentials/","color":"dark"},
-    {"title":"12 Factor Applications", "subtitle":"Best practices for cloud applications","author":"Link","href":"https://developer.ibm.com/courses-center/twelve-factor-app-methodology-dwc002/","color":"dark"},
+    {"title":"12 Factor Applications", "subtitle":"Best practices for cloud applications","author":"Link","href":"https://12factor.net/","color":"dark"},
     {"title":"Microservices", "subtitle":"Compose an application from business tasks","author":"Link","href":"https://www.ibm.com/cloud/garage/architectures/microservices","color":"dark"},
     {"title":"Microservices Architecture", "subtitle":"Compose an application from business tasks","author":"Link","href":"https://developer.ibm.com/articles/challenges-and-benefits-of-the-microservice-architectural-style-part-1/","color":"dark"},
     {"title":"API Design Method", "subtitle":"Expose functionality and hide implementation","author":"Link","href":"https://www.ibm.com/cloud/garage/content/tracks/api_track_overview","color":"dark"},
