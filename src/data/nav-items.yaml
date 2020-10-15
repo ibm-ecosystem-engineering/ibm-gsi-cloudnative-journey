@@ -94,52 +94,55 @@
     - title: Migrate to Openshift
       path: /developer-intermediate/appmod-exercise1-part3/
 
-- title: Developer Advanced
+- title: Developer Advanced-Appdev
   pages:
     - title: Agenda
-      path: /developer-advanced
+      path: /developer-advanced-1
     - title: CD for Inventory App
-      path: /developer-advanced/inventory-cd
+      path: /developer-advanced-1/inventory-cd
     - title: Database with Cloudant
-      path: /developer-advanced/inventory-cloudant
+      path: /developer-advanced-1/inventory-cloudant
     - title: Database with MongoDB
-      path: /developer-advanced/inventory-mongodb
+      path: /developer-advanced-1/inventory-mongodb
     - title: Database with Postgres
-      path: /developer-advanced/inventory-postgres      
+      path: /developer-advanced-1/inventory-postgres      
     - title: Authentication with AppID
-      path: /developer-advanced/inventory-appid/    
+      path: /developer-advanced-1/inventory-appid/    
     - title: API Consumption
-      path: /developer-advanced/inventory-api/
+      path: /developer-advanced-1/inventory-api/
     - title: Contract-testing
-      path: /developer-advanced/contract-testing/
+      path: /developer-advanced-1/contract-testing-overview/
     - title: Inventory Contract Testing
-      path: /developer-advanced/Inventory-contract-testing       
+      path: /developer-advanced-1/inventory-contract-testing
     - title: Inventory Mobile App
-      path: /developer-advanced/inventory-mobile-app/  
+      path: /developer-advanced-1/inventory-mobile-app/  
     - title: Inventory Application Summary
-      path: /developer-advanced/inventoryappln-summary/
+      path: /developer-advanced-1/inventoryappln-summary/
     - title: Advanced Monitoring
-      path: /developer-advanced/monitoring/
+      path: /developer-advanced-1/monitoring/
     - title: Advanced Log Management
-      path: /developer-advanced/log-management/
-    - title: DevSecOps Overview
-      path: /developer-advanced/devsecops
-    - title: DevSecOps With Aquasec CSP
-      path: /developer-advanced/devsecops-aquasec-csp
-    - title: DevSecOps With Twistlock
-      path: /developer-advanced/devsecops-twistlock
-    - title: DevSecOps With Trivy
-      path: /developer-advanced/devsecops-trivy
+      path: /developer-advanced-1/log-management/
     - title: Inventory Application Summary
-      path: /developer-advanced/inventoryappln-summary/
-    - title: Operator Overview
-      path: /developer-advanced/operator/
-    - title: Operator Development
-      path: /developer-advanced/operator/lab
+      path: /developer-advanced-1/inventoryappln-summary/
     - title: Application Modernization
-      path: /developer-advanced/appmod-overview
+      path: /developer-advanced-1/appmod-overview
+    
+- title: Developer Advanced-Devsecops
+  pages:
+    - title: Agenda
+      path: /developer-advanced-2  
+    - title: DevSecOps Overview
+      path: /developer-advanced-2/devsecops
+    - title: DevSecOps With Aquasec CSP
+      path: /developer-advanced-2/devsecops-aquasec-csp
+    - title: DevSecOps With Twistlock
+      path: /developer-advanced-2/devsecops-twistlock
+    - title: DevSecOps With Trivy
+      path: /developer-advanced-2/devsecops-trivy
+    - title: Operator Overview
+      path: /developer-advanced-2/operator-overview/
     - title: Operator Development
-      path: /developer-advanced/operator/lab      
+      path: /developer-advanced-2/operator-lab/lab     
 
 - title: Resources
   pages:
