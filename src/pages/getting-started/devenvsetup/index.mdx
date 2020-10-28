@@ -45,9 +45,8 @@ Features of IBM Cloud Shell include:
     $ source ./cloud-shell-commands/install-igc
     ```
 
-- If sucessful, you should see something like the following:
+- If successful, you should see something like the following:
     ```bash
-
     $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
     remote: Enumerating objects: 50, done.
@@ -82,7 +81,7 @@ Features of IBM Cloud Shell include:
     added 354 packages from 390 contributors in 26.049s
     ```
 
-- You can verify that the CLI tools package was installed correctly by checking its version:
+-  You can check the CLI tools package was installed correctly by checking the `oc` version:
     ```bash
     $ oc sync --version
     1.0.1
@@ -94,42 +93,39 @@ Features of IBM Cloud Shell include:
 
 ## Gitpod
 
-Gitpod provides continuous dev environments for the development flows of common code hosting platforms. 
-It is based on theia, the opensource VSCode ide.Its salient features include:
-- Parallel sessions: You can open upto 4 parallel workspaces with 4 different git repos at a time.
-- Share running workspaces: You can share your live running workspaces with others such that they can see exactly the same processes that you are looking at.
-  Share running workspaces feature makes it easy for collaborate and take help to resolve issues. 
-- Snapshots: You can take a clone of your complete environament and share it as a workspace with snapshot. It can be used to share some complicated,
-  difficult-to-reproduce issues  with teammates or you can save the Snapshot URL your work in the same environment where you left it off.
-- Ports: It gives you the option of making the public or private.
-- Git integration: As Gitpod has a git integration, pull requests and code reviews can be easily managed from the IDE only.
+Gitpod provides continuous development environments for common code hosting platforms flows.
+It's is based on Theia, an open-source IDE. Its features include:
+- Parallel sessions: you can open up to 4 parallel workspaces with 4 different git repositories at a time.
+- Share running workspaces: you can share your live running workspaces with others so they can see the same processes that you are looking at. This makes it easier to collaborate, and to help to resolve issues. 
+- Snapshots: You can take a snapshot of your workspace. It can be used to share some complicated, difficult-to-reproduce issues with teammates or to save your workspace at a specific point.
+- Ports: gives you the option of making the public or private.
+- Git integration: allows pull requests and code reviews to be easily managed from the IDE.
 
 
 ### Gitpod Access:
 
-Gitpod is available as an extension on Chrome and Firefox:
-- Chrome: https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki
+Gitpod is available as an extension in Chrome and Firefox:
+- Chrome: https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki.
 
-- Firefox: https://addons.mozilla.org/en-US/firefox/addon/gitpod/
+- Firefox: https://addons.mozilla.org/en-US/firefox/addon/gitpod/.
 
-Other than extension, you can access gitpod by prefixing your github/gitlab/bitbucket repo url with "https://gitpod.io/#"
+You can also access Gitpod by prefixing your GitHub/GitLab/BitBucket repository URL with "https://gitpod.io/#".
 
-Both these options will give a gitpod button for accessing the gitpod workspace of that code repository
+Both options will display a Gitpod button to access the Gitpod workspace of that code repository.
 ![Gitpod](./images/gitpod.png)
 
 ### Gitpod Setup:
 
-Execute the following steps in the same order on the gitpod terminal:
+Execute the following steps in the same order on the Gitpod terminal:
 
-- Gitpod gives access to only /workspace directory. Create a bin folder inside /workspace directory with appropriate permissions and install
-  everything here:
+- Gitpod only allows to the `/workspace` folder. Create a `bin` folder inside `/workspace` with appropriate permissions to install the required tools:
   ```bash
      cd /workspace
      mkdir -m 755 bin
      cd bin
   ```
 
-- Install IBM Cloud
+- Install IBM Cloud:
 
   ```bash
      wget https://clis.cloud.ibm.com/download/bluemix-cli/1.2.2/linux64/archive
@@ -139,7 +135,7 @@ Execute the following steps in the same order on the gitpod terminal:
      cp ibmcloud-analytics ../
   ```   
 
-- Install kubectl,IBM Cloud plugins and oc
+- Install kubectl, IBM Cloud plugins, and oc:
 
    ```bash
       cd /workspace/bin
@@ -156,7 +152,7 @@ Execute the following steps in the same order on the gitpod terminal:
      source ./cloud-shell-commands/install-igc
   ```
 
-- Successful execution will look like this.
+- A successful output will look like this:
 
     ```bash
        $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
@@ -191,10 +187,9 @@ Execute the following steps in the same order on the gitpod terminal:
 
        + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
        added 354 packages from 390 contributors in 26.049s
-
     ```
 
-- Add the bin directory to the path such that all the installations are available as commands on terminal:   
+- Add the `bin` directory to the path and set execution permissions so the commands are available:   
   ```bash 
      echo $PATH
      export PATH=$PATH:$PWD
@@ -287,7 +282,7 @@ CodeReady Workspaces includes a powerful in-browser IDE with support for Microso
 - Log in to the OpenShift Cluster through the Web console, where the Code Ready Workspace is set up.
 
 - Access the Code Ready Workspace through the URL that has been shared with you.
-**Note**: If the code ready workspace is configured through OpenShift oAuth, you can access the above URL once you have logged into the OpenShift Cluster.
+**Note**: if the code ready workspace is configured through OpenShift oAuth, you can access the above URL once you have logged into the OpenShift Cluster.
 
 - You will need to register the first time you access the Code Ready Workspace. The user name can contain only Latin lowercase characters (a-z), digits, and hyphens in between.
 Ensure you provide your user name, email, first name, and last name. If SSO is not configured, you will need to provide the password as well.
@@ -358,7 +353,7 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
     added 354 packages from 390 contributors in 26.049s
 
     ```
-- You can check that the CLI tools package was installed correctly by checking its version:
+- You can check the CLI tools package was installed correctly by checking the `oc` version:
     ```
     $ oc sync --version
     1.0.1
