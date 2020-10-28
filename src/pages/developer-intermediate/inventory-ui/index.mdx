@@ -58,8 +58,31 @@ npm run start:dev
 ```
 - Access the running service. This service runs on port 3000.
 
-- Make a copy of the `TableList` pattern component from the `pattern-component` directory into the
-`components` folder. Rename the file and the class inside to `StockItemList`.
+- Create Component View For access the StockItemList `UI-pattern`.
+
+
+```javascript path=client/src/components/list/StockItemList.jsx
+import React, { Component } from "react";
+import StockItemList from '../../ui-patterns/list/StockItemList';
+import { Container } from 'typescript-ioc';
+
+class StockItemListView extends Component<any, any> {
+    constructor(props: any) {
+        super(props);
+    }
+    render() {
+        return (
+            <div className="pattern-container">
+                <StockItemList />
+            </div>
+        );
+    }
+}
+export default StockItemListView;
+```
+
+
+- Make a copy of the `TableList` pattern  from the `ui-patterns/list` directory. Rename the file and the class inside to `StockItemList`.
 
 
 ```javascript path=client/src/components/StockItemList.jsx
@@ -230,15 +253,36 @@ display dynamic data provided from a database in the table. As a first step towa
 need to separate the UI logic from the logic that retrieves the data. We will do that with a service
 component. For this first pass the service component will just return mock data.
 
-- Create a directory called `services` under the client/src folder
+- Create the Model class for StockItem in the `models/list` directory.
 
-- Create a file named `stock-item-mock.service.js` in the service directory. Our
-StockItem service component will have a single asynchronous function called `listStockItems()`
+```javascript path=client/src/models/list/StockItem.ts
+export interface StockItem {
+    name: string;
+    description: string;
+    stock: number;
+    unitPrice: number;
+    picture: string;
+    manufacturer: string;
+
+}
+```
+
+-  Navigate to `services/list` folder under the `src` folder
+
+- Create a file named `stock-item-mock.service.js and stock-item-mock.api.ts` in the service directory. Our
+StockItem service component will have a single asynchronous function called `getStockItems()`
 that returns a list of StockItems.
 
-```javascript path=client/src/services/stock-item-mock.service.js
-export class StockItemMockService {
-  async listStockItems() {
+```javascript path=src/services/list/stock-item-mock.api.ts
+import { StockItem } from "../../models/list/StockItem";
+export abstract class StockItemApi {
+    abstract async getStockItems(): Promise<StockItem[]>;
+}
+```
+
+```javascript path=src/services/list/stock-item-mock.service.js
+export class StockItemMockService implements StockItemApi {
+  async getStockItems() {
     return [];
   }
 }
@@ -247,11 +291,13 @@ export class StockItemMockService {
 - Implement the service by copying the data array from `StockItemList` and returning it in the function. You can add a call
 to `timer()` to simulate wait time
 
-```javascript path=client/src/services/stock-item-mock.service.js
+```javascript path=src/services/list/stock-item-mock.service.js
 import timer from '../util/timer';
-
-export class StockItemMockService {
-  async listStockItems() {
+import { StockItem } from '../../models/list/StockItem';
+import { StockItemApi } from './stock-item-mock.api';
+import * as superagent from 'superagent';
+export class StockItemMockService implements StockItemApi {
+  async getStockItems(): Promise<StockItem[]> {
     // wait 1 second before returning data
     await timer(1000);
 
@@ -284,6 +330,34 @@ export class StockItemMockService {
   }
 }
 ```
+- Update Mocke service into the  'StockItemList.tsx' component view in `components/list/StockItemList` directory.
+
+```javascript path=src/components/list/StockItemList.tsx
+import React, { Component } from "react";
+import StockItemList from '../../ui-patterns/list/StockItemList';
+import { Container } from 'typescript-ioc';
+import { StockItemApi } from '../../services';
+
+class StockItemListView extends Component<any, any> {
+    stockApi: StockItemApi;
+    constructor(props: any) {
+        super(props);
+        this.stockApi = this.stockService()
+    }
+    stockService(): StockItemApi {
+        return Container.get(StockItemApi);
+    }
+
+    render() {
+        return (
+            <div className="pattern-container">
+                <StockItemList data={this.stockApi} />
+            </div>
+        );
+    }
+}
+export default StockItemListView;
+```
 
 - Update the components to pass the service in the properties
 
@@ -304,29 +378,6 @@ describe('App', () => {
     ReactDOM.unmountComponentAtNode(div);
   });
 });
-```
-
-```javascript path=client/src/App.jsx
-import React, { Component } from "react";
-import UIShell from "./components/UIShell";
-import "./App.scss";
-import {StockItemMockService} from "./services/stock-item-mock.service";
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.stockService = props.stockService || new StockItemMockService();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <UIShell stockService={this.stockService}/>
-      </div>
-    );
-  }
-}
 ```
 
 ```javascript path=client/src/components/UIShell.jsx
@@ -355,7 +406,7 @@ class UIShell extends Component {
             </SideNavMenu>
           </SideNavItems>
         </SideNav>
-        <Content id="main-content"><UIShellBody patternName={this.state.patternName} stockService={this.props.stockService} /></Content>
+        <Content id="main-content"><UIShellBody patternName={this.state.patternName} /></Content>
       </div>
     );
   }
@@ -378,7 +429,7 @@ class UIShellBody extends Component {
     ];
     return (
       <div className="pattern-container">
-        <PatternName showDescription={true} stockService={this.props.stockService} />
+        <PatternName showDescription={true}/>
       </div>
     );
   }
@@ -386,7 +437,7 @@ class UIShellBody extends Component {
 export default UIShellBody;
 ```
 
-- Update `StockItemList` to use the provided service
+- Update `StockItemList` in `ui-patterns` to use the provided service
 
 ```javascript path=src/components/StockItemList.jsx
 ...
@@ -402,12 +453,11 @@ class StockItemList extends Component {
     };
   }
 
-  async componentDidMount() {
-
-    this.setState({
-      data: await this.props.stockService.listStockItems()
-    });
-  }
+ async componentDidMount() {
+        this.setState({
+            data: await this.props.data.getStockItems()
+        });
+    }
 
   onRowClick = id => {
     this.setState({ selectedRow: id });
@@ -519,67 +569,57 @@ npm i -s superagent
 npm i -D @types/superagent
 ```
 
-- Create a service implementation in the `services` directory called `stock-item.service.js`
+- Create the API implementation in the `services/list` directory called `stock-item.api.js`
 
-```javascript path=client/src/services/stock-item.service.js
-export class StockItemService {
-  async listStockItems() {
+```javascript path=src/services/list/stock-item.api.ts
+import { StockItem } from "../../models/list/StockItem";
+export abstract class StockItemApi {
+    abstract async getStockItems(): Promise<StockItem[]>;
+}
+```
+
+- Create a service implementation in the `services/list` directory called `stock-item.service.js`
+
+```javascript path=src/services/list/stock-item.service.js
+export class StockItemService implements StockItemApi {
+  async getStockItems() {
     return [];
   }
 }
 ```
 
-- Add an implementation of `listStockItems()` that calls the BFF through the `/api` proxy
+- Add an implementation of `getStockItems()` that calls the BFF through the `/api` proxy
 
-```javascript path=client/src/services/stock-item.service.js
+```javascript path=src/services/list/stock-item.service.js
+import { StockItem } from '../../models/list/StockItem';
+import { StockItemApi } from './stock-item-mock.api';
 import * as superagent from 'superagent';
 
-export class StockItemService {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl || '/api';
-  }
+export class StockItemService implements StockItemApi {
+    baseUrl: string;
 
-  async listStockItems() {
-    return superagent
-      .get(this.baseUrl + '/stock-items')
-      .set('accept', 'application/json')
-      .then(res => {
-        console.log('Got response: ', res);
-        return res.body || [];
-      });
-  }
+    constructor(baseUrl: string) {
+        this.baseUrl = baseUrl || '/api';
+    }
+
+    async getStockItems(): Promise<StockItem[]> {
+
+        return superagent
+            .get(this.baseUrl + '/stock-items')
+            .set('accept', 'application/json')
+            .then(res => {
+                console.log('Got response: ', res);
+                return res.body || [];
+            });
+    }
+
 }
 ```
 
 **Note:** In dev mode, the proxy is configured in `client/package.json`. When running with the express
 server, the proxy is configured in `server/routers/api.js`. By default, the value points to `localhost:3001`.
 
-- Update `App.jsx` to use the new service instead of the mock service.
-
-```javascript path=client/src/App.jsx
-import React, { Component } from "react";
-import UIShell from "./components/UIShell";
-import "./App.scss";
-
-import {StockItemService} from "./services/stock-item.service";
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.stockService = props.stockService || new StockItemService();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <UIShell stockService={this.stockService}/>
-      </div>
-    );
-  }
-}
-export default App;
-```
+- Update `StockItemList.tsx`  in the `src/components/list/` directory to use the new service instead of the mock service.
 
 - Modify `connectsTo` property to the values.yaml file of the Helm chart. The value of the property should match the
 Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
