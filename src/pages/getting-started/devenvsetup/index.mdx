@@ -2,57 +2,50 @@
 title: Developer Tools Setup
 ---
 
-To enable the best experience for working through the hands on exercises you
- need to select the environment you plan to use for development and the tools
-  you require to integration to the IBM Cloud.
+To enable the best working experience through the hands-on exercises, you
+ need to select the environment you plan to use for development and the required tools for integration with IBM Cloud.
 
-- If you are going to use your desktop/laptop for hands on exercises, follow
- the instructions in Desktop/Laptop tab. You will require a modern MacOS or
-  Windows 10 operating systems for he Desktop/Laptop option
+- If you plan to use your desktop/laptop for hands-on exercises, follow
+ the instructions in the Desktop/Laptop tab. You will need a recent macOS or
+  Windows 10 operating system for this option.
 - If you cannot install tools on your desktop/laptop, follow the Cloud Shell
- instructions
+ instructions.
 - If you want to try the full web IDE experience, then follow the Code Ready
- Workspaces setup instructions
+ Workspaces setup instructions.
 
-Once you have completed these setup requirements you will be ready to
- complete the **Developer Intermediate** agenda.
+Once you have fulfilled these setup requirements you will be ready to
+ start the **Developer Intermediate** agenda.
 
 <Tabs>
 
 <Tab label="Cloud Shell">
 
-## Config Cloud Shell
+## Introduction to Cloud Shell
 
-IBM Cloud Shell is instantly accessible from your free IBM Cloud account — no other installation is needed.
-
-IBM Cloud Shell is a free service from IBM which gives you complete control of your cloud resources, applications and infrastructure, from any web browser.
+IBM Cloud Shell is a free service that gives you complete control of your cloud resources, applications, and infrastructure, from any web browser. It's instantly accessible from your free IBM Cloud account--no other installation is needed.
 
 Features of IBM Cloud Shell include:
 
-- Preconfigured environment
-IBM Cloud Shell provides a curated, cloud-based workspace with dozens of preinstalled tools and programming languages. It automatically authenticates to your IBM Cloud account so you can get right to work.
+- Preconfigured environment: IBM Cloud Shell provides a curated, cloud-based workspace with dozens of preinstalled tools and programming languages. It's automatically authenticated with your IBM Cloud account so you can start to develop immediately.
 
-- File upload/download
-Utilize file upload/download functionality to import files to IBM Cloud Shell, or pull down data to your local machine.
+- File upload/download: use this feature to import files to IBM Cloud Shell or pull-down data to your local machine.
 
-- Multiple sessions
-Use up to five shell sessions at a time to maximize your productivity. Mirror workflows on your local machine, or view logs on one session while editing a file in another
+- Multiple sessions: use up to five shell sessions at a time to maximize your productivity. Mirror workflows on your local machine, or view logs on one session while editing a file in another.
 
-### Set up Cloud Shell
-- Login to IBM Cloud console (cloud.ibm.com), if not already done
+### Cloud Shell setup
+- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
 
-- Invoke Cloud shell by clicking on the button at the top right hand corner of the browser window
+- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
     ![Invoke Cloud Shell](./images/invokecloudshell.png)
 
-- Install `igc` by running the following commands on the just newly opened terminal:
+- Install `igc` by running the following commands on the just opened terminal:
     ```bash
-    git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
-    export PATH=~/cloud-shell-commands:$PATH
-    source ./cloud-shell-commands/install-igc
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    $ export PATH=~/cloud-shell-commands:$PATH
+    $ source ./cloud-shell-commands/install-igc
     ```
 
-- Successful execution will look like this.
-
+- If sucessful, you should see something like the following:
     ```bash
     $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
@@ -84,10 +77,9 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 
     + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
     added 311 packages from 358 contributors in 50.079s
-    $
     ```
-- You can check the CLI tools were installed correctly by checking the version
-    ```
+- You can verify that the CLI tools package was installed correctly by checking its version:
+    ```bash
     $ oc sync --version
     0.5.3
     ```
@@ -96,134 +88,123 @@ Use up to five shell sessions at a time to maximize your productivity. Mirror wo
 
 <Tab label="Desktop/Laptop">
 
-## Install CLIs and tools
+## Tools installation
 
-The following is a list of desktop tools required to help with installation and development.
+The following tools are required:
 
-- [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+- [Git Client](https://git-scm.com/): needs to be installed in your development operating system, it comes as standard for Mac OS.
 
-- [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
-    - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+- [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): required for the management of your IBM Cloud Account, and managed IBM Kubernetes and Red Hat OpenShift clusters
+    - Aside from installing the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), you will need to install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt) too:
+    ```bash
+    $ curl -sL https://ibm.biz/idt-installer | bash
     ```
-    curl -sL https://ibm.biz/idt-installer | bash
-    ```
-    - Note: If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. (You can also use this API key for [installing the Developer Tools environment](/admin/installation-ibm-cloud).)
+    - Note: if you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) to log in to the CLI. You can also use this API key for [installing the Developer Tools environment](/admin/installation-ibm-cloud).
 
-- [OpenShift OC CLI](https://mirror.openshift.com/pub/openshift-v4/clients/oc/): Required for Red Hat OpenShift management and development, select 4.3.18 or later version.
-    - Place `oc` and `kubectl` in your Terminal `PATH`
+- [OpenShift OC CLI](https://mirror.openshift.com/pub/openshift-v4/clients/oc/): required for Red Hat OpenShift management and development, select 4.3.18 or later version.
+    - Place `oc` and `kubectl` in your Terminal `PATH`:
 
     - #### MacOS/Linux
-    - Once downloaded navigate to Download folder
+    - Once downloaded navigate to the `Download` folder:
+    ```bash
+    $ cd ~/Downloads/openshift-origin-client-tools-v3/
     ```
-    cd ~/Downloads/openshift-origin-client-tools-v3/
-    ```
-    - Then copy `oc` and `kubectl` to the system-wide available scripts folder (which is already in your PATH)
-    ```
-    cp kubectl /usr/local/bin/kubectl
-    cp oc /usr/local/bin/oc
+    - Then copy `oc` and `kubectl` to the system-wide available scripts folder (which is already in your PATH).
+    ```bash
+    $ cp kubectl /usr/local/bin/kubectl
+    $ cp oc /usr/local/bin/oc
     ```
 
     <InlineNotification >
 
-     Depending on your MacOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`*
+     Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
      ![security](security.png)
 
     </InlineNotification>
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop): Required for running common tools and [Developer Tools Image](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/tools-image)
-    - Installed and running on your local machine
+- [Docker Desktop](https://www.docker.com/products/docker-desktop): required for running common tools and [Developer Tools Image](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/tools-image).
+    - Installed and running on your local machine.
 
-- [Node](https://nodejs.org/en/): Required for running the [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli)
-    - Installed on your local machine
-    - Recommended `v12.x LTS`
+- [Node](https://nodejs.org/en/): required for running the [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli).
+    - Installed on your local machine.
+    - Recommended: `v12.x LTS`.
 
-- [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli): Used to help make working with the development tools as easy as possible
+- [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli): used to help make working with the development tools as easy as possible.
+    ```bash 
+    $ npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
     ```
-    npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
-    ```
 
-- [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton
+- [Tekton CLI](https://github.com/tektoncd/cli): used to help control Tekton
  pipelines from the command line.
     ```
-    brew tap tektoncd/tools
-    brew install tektoncd/tools/tektoncd-cli
+    $ brew tap tektoncd/tools
+    $ brew install tektoncd/tools/tektoncd-cli
   ```
 
-- [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
-    - You will be required to edit some files, having a good quality editor is always best practice
-    - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+- [Visual Studio Code](https://code.visualstudio.com/download): a popular code editor
+    - You will need to edit some files, having a good quality editor is a good practice.
+    - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line).
 
-- [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
-    - Used for SpringBoot content
+- [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) (_optional_): installed on your local machine.
+    - Used for SpringBoot content.
 
 </Tab>
 
 <Tab label="Cloud Ready Workspaces">
 
-## Code Ready Workspace
-CodeReady Workspaces is a developer workspace server and cloud IDE. Workspaces are defined as project
-code files and all of their dependencies necessary to edit, build, run, and debug them. Each workspace
-has its own private IDE hosted within it. The IDE is accessible through a browser. The browser downloads
-the IDE as a single-page web application.
-CodeReady Workspaces will enable a 100% developer experience to
-be delivered from a users browser.
+## CodeReady Workspace
+CodeReady Workspaces (CRW) is a developer workspace server and cloud IDE. Workspaces are defined as the project's code files and all of their required dependencies to edit, build, run, and debug it. Each workspace has its private and full-featured IDE hosted within it. This IDE is accessible through a single-page web application you can run in your web browser.
 
  Red Hat CodeReady Workspaces provides:
- - Workspaces that include runtimes and IDEs
- - RESTful workspace server
- - A browser-based IDE
- - Plugins for languages, framework, and tools
- - An SDK for creating plugins and assemblies
+ - Workspaces that include runtimes and browser-based IDEs.
+ - RESTful workspace server.
+ - Plugins for languages, frameworks, and tools.
+ - An SDK for creating plugins and assemblies.
 
-### CRW in Workshop
-CodeReady Workspaces includes a powerful in-browser IDE with support for Microsoft Visual Studio Code
-extensions. As part of the workshop, we need only a machine capable of running a web browser through
-which CRW will provide an integrated environment to access the code repo, and the build environment to
-develop the code and then  test, and deploy on an OpenShift environment
+### CRW IDE
+CodeReady Workspaces includes a powerful in-browser IDE with support for Microsoft Visual Studio Code extensions. As part of the workshop, we need only a machine capable of running a web browser through which CRW will provide an integrated environment to access the code repository and the build environment required to develop the application, and then test and deploy it on an OpenShift environment.
 
 ### Setting up your Workspace on CRW
 
-- Login to the Openshift Cluster through the Web console, where the Code ready workspace is setup.
+- Log in to the OpenShift Cluster through the Web console, where the Code Ready Workspace is set up.
 
-- Access the Code Ready Workspace through the appropriate Code ready workspace URL that would have been shared.
-**Note**:If the code ready workspace is configured through openshiftoAuth, You can access the above URL, once you have logged into the Openshift Cluster
+- Access the Code Ready Workspace through the URL that has been shared with you.
+**Note**: If the code ready workspace is configured through OpenShift oAuth, you can access the above URL once you have logged into the OpenShift Cluster.
 
-- If you are accessing it for the first time you need register as the registration page will be shown. User name can contain only these characters (0-9, a-z and hypen in between).
-Ensure you provide details regarding username, Email, First name and Last name (If SSO is not configured, you need to provide the password as well.
+- You will need to register the first time you access the Code Ready Workspace. The user name can contain only Latin lowercase characters (a-z), digits, and hyphens in between.
+Ensure you provide your user name, email, first name, and last name. If SSO is not configured, you will need to provide the password as well.
 
-- Navigate to  the default Code Ready Workspace link  on your browser as shown in below picture.
+- Navigate to the default Code Ready Workspace link  on your browser as shown in the picture below.
 
   ![CRW](./images/CRW_HomePage.png)
 
-- You can create the workspace by selecting one of the template stacks as shown in Step 4. Alternatively, navigate to the Workspace and click on the "Add Workspace" button.
+- You can create the workspace by selecting one of the template stacks. Alternatively, you can navigate to the Workspace and click on the "Add Workspace" button.
 
   ![Adding Workspace](./images/AddWorkspace.png)
 
-- Provide the workspace as part of the Name field. Click on "Remove" button in the Projects section to remove the project template.
-Basically, we are going to create an empty project.
+- Provide the workspace as part of the Name field. In the Projects section click on the "Remove" button to remove the project template thus creating an empty project.
 
   ![Creating Project with Empty Template](./images/CreatingNewWorkspace.png)
 
-- Click on "Create and Open" button to create and load the workspace. Workspace will start loading. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
+- Click on the "Create and Open" button to create and load the workspace. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
 
-- Once the workspace is  created and loaded, you can see a vscode editor.
+- Once the workspace is loaded, you can see the Visual Studio Code editor:
 
   ![CRWWorkspace](./images/CRWScreen.png)
 
-- Go to "Terminal" menu and select "Open Terminal in specific container".
+- Go to the "Terminal" menu and select "Open Terminal in specific container".
 
   ![Open Terminal](./images/OpeningTerminal.png)
 
 - Select the "Developer Container".
 
-- Install `igc` by running the following commands on the just newly opened terminal:
+- Install `igc` by running the following commands on the newly opened terminal:
     ```bash
-    git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
-    export PATH=~/cloud-shell-commands:$PATH
-    source ./cloud-shell-commands/install-igc
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    $ export PATH=~/cloud-shell-commands:$PATH
+    $ source ./cloud-shell-commands/install-igc
     ```
-- Successful installation will look something like this.
-
+- Successful installation will look something like this:
     ```bash
     $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
@@ -257,7 +238,7 @@ Basically, we are going to create an empty project.
     added 311 packages from 358 contributors in 50.079s
     $
     ```
-- You can check the CLI tools were installed correctly by checking the version
+- You can check that the CLI tools package was installed correctly by checking its version:
     ```
     $ oc sync --version
     0.5.3
@@ -267,14 +248,14 @@ Basically, we are going to create an empty project.
 
 </Tabs>
 
-## Log into IBM Cloud
+## Log in to IBM Cloud
 
-- Use `ibmcloud` CLI command line to log into the cloud account. Replace the user_id, password and team name in the sandbox name
+- Use the `ibmcloud` command to log in to the cloud account. Replace the user_id, password and team name with the sandbox ones:
     ```bash
-    ibmcloud login -u <user_id> -p <password> -g sandbox-team-n.. -r us-south
+    $ ibmcloud login -u <user_id> -p <password> -g <sandbox-team> -r us-south
     ```
 
-- Select Account Number that you are boarded on.
+- Select the account number you have been assigned to:
     ```bash
     $ ibmcloud login -u email@company.com -p XXX -g sandbox-team-one -r us-south
     API endpoint: https://cloud.ibm.com
@@ -301,18 +282,18 @@ Basically, we are going to create an empty project.
 
     ```
 
-## Log into Openshift Cluster
+## Log in to OpenShift Cluster
 
-- Log into the openshift cluster from the cloud console
-    ![Openshift](./images/openshiftcluster.png)
+- Log in to OpenShift Cluster from the cloud console:
+    ![OpenShift](./images/openshiftcluster.png)
 
-- Access the openshift console by clicking on the button
-    ![Openshift Console](./images/openshiftconsole.png)
+- Access the OpenShift console by clicking on the button:
+    ![OpenShift Console](./images/openshiftconsole.png)
 
-- Get the login command with token to login to the openshift from command line
-    ![Openshift Login](./images/LoginCommand.png)
+- Get the OpenShift login command, which includes a token:
+    ![OpenShift Login](./images/LoginCommand.png)
 
-- Execute the login command copied in the last step in the terminal
+- Run the login command in the terminal:
     ```bash
     $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
     Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
@@ -320,14 +301,13 @@ Basically, we are going to create an empty project.
     You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
 
     Using project "dev-ab".
-    $
     ```
 
 ### Configure git
 
-- Execute the following commands
+- Execute the following commands replacing the email and short name:
 
   ```
-  git config --global user.email "<email>"
-  git config --global user.name "<short_name>"
+  $ git config --global user.email "<email>"
+  $ git config --global user.name "<short_name>"
   ```
