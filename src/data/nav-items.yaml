@@ -94,7 +94,7 @@
     - title: Migrate to Openshift
       path: /developer-intermediate/appmod-exercise1-part3/
 
-- title: Developer Advanced-Appdev
+- title: Developer Advanced - 1
   pages:
     - title: Agenda
       path: /developer-advanced-1
@@ -107,9 +107,7 @@
     - title: Database with Postgres
       path: /developer-advanced-1/inventory-postgres      
     - title: Authentication with AppID
-      path: /developer-advanced-1/inventory-appid/    
-    - title: API Consumption
-      path: /developer-advanced-1/inventory-api/
+      path: /developer-advanced-1/inventory-appid/
     - title: Contract-testing
       path: /developer-advanced-1/contract-testing-overview/
     - title: Inventory Contract Testing
@@ -122,12 +120,8 @@
       path: /developer-advanced-1/monitoring/
     - title: Advanced Log Management
       path: /developer-advanced-1/log-management/
-    - title: Inventory Application Summary
-      path: /developer-advanced-1/inventoryappln-summary/
-    - title: Application Modernization
-      path: /developer-advanced-1/appmod-overview
     
-- title: Developer Advanced-Devsecops
+- title: Developer Advanced - 2
   pages:
     - title: Agenda
       path: /developer-advanced-2  
@@ -142,7 +136,9 @@
     - title: Operator Overview
       path: /developer-advanced-2/operator-overview/
     - title: Operator Development
-      path: /developer-advanced-2/operator-lab/lab     
+      path: /developer-advanced-2/operator-lab/lab  
+    - title: Application Modernization
+      path: /developer-advanced-2/appmod-overview         
 
 - title: Resources
   pages:
