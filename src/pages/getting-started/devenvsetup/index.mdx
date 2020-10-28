@@ -47,6 +47,7 @@ Features of IBM Cloud Shell include:
 
 - If sucessful, you should see something like the following:
     ```bash
+
     $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
     Cloning into 'cloud-shell-commands'...
     remote: Enumerating objects: 50, done.
@@ -58,31 +59,148 @@ Features of IBM Cloud Shell include:
     $ export PATH=~/cloud-shell-commands:$PATH
     $ source ./cloud-shell-commands/install-igc
     npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
-    /home/abalasu1/.npm/bin/kubectl-dashboard -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
-    /home/abalasu1/.npm/bin/kubectl-enable -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
-    /home/abalasu1/.npm/bin/kubectl-credentials -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
-    /home/abalasu1/.npm/bin/igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
-    /home/abalasu1/.npm/bin/kubectl-endpoints -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
-    /home/abalasu1/.npm/bin/kubectl-git-secret -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
-    /home/abalasu1/.npm/bin/kubectl-igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
-    /home/abalasu1/.npm/bin/kubectl-pipeline -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
-    /home/abalasu1/.npm/bin/kubectl-sync -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
-    /home/abalasu1/.npm/bin/kubectl-tool-config -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
-
-    > jsonpath@1.0.2 postinstall /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+    /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+    /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+    /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+    /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
     > node lib/aesprim.js > generated/aesprim-browser.js
 
-    npm WARN ws@7.2.5 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
-    npm WARN ws@7.2.5 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
 
-    + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
-    added 311 packages from 358 contributors in 50.079s
+    + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+    added 354 packages from 390 contributors in 26.049s
     ```
+
 - You can verify that the CLI tools package was installed correctly by checking its version:
     ```bash
     $ oc sync --version
-    0.5.3
+    1.0.1
     ```
+
+</Tab>
+
+<Tab label="Gitpod">
+
+## Gitpod
+
+Gitpod provides continuous dev environments for the development flows of common code hosting platforms. 
+It is based on theia, the opensource VSCode ide.Its salient features include:
+- Parallel sessions: You can open upto 4 parallel workspaces with 4 different git repos at a time.
+- Share running workspaces: You can share your live running workspaces with others such that they can see exactly the same processes that you are looking at.
+  Share running workspaces feature makes it easy for collaborate and take help to resolve issues. 
+- Snapshots: You can take a clone of your complete environament and share it as a workspace with snapshot. It can be used to share some complicated,
+  difficult-to-reproduce issues  with teammates or you can save the Snapshot URL your work in the same environment where you left it off.
+- Ports: It gives you the option of making the public or private.
+- Git integration: As Gitpod has a git integration, pull requests and code reviews can be easily managed from the IDE only.
+
+
+### Gitpod Access:
+
+Gitpod is available as an extension on Chrome and Firefox:
+- Chrome: https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki
+
+- Firefox: https://addons.mozilla.org/en-US/firefox/addon/gitpod/
+
+Other than extension, you can access gitpod by prefixing your github/gitlab/bitbucket repo url with "https://gitpod.io/#"
+
+Both these options will give a gitpod button for accessing the gitpod workspace of that code repository
+![Gitpod](./images/gitpod.png)
+
+### Gitpod Setup:
+
+Execute the following steps in the same order on the gitpod terminal:
+
+- Gitpod gives access to only /workspace directory. Create a bin folder inside /workspace directory with appropriate permissions and install
+  everything here:
+  ```bash
+     cd /workspace
+     mkdir -m 755 bin
+     cd bin
+  ```
+
+- Install IBM Cloud
+
+  ```bash
+     wget https://clis.cloud.ibm.com/download/bluemix-cli/1.2.2/linux64/archive
+     tar -xvf archive
+     cd IBM_Cloud_CLI
+     cp ibmcloud ../
+     cp ibmcloud-analytics ../
+  ```   
+
+- Install kubectl,IBM Cloud plugins and oc
+
+   ```bash
+      cd /workspace/bin
+      curl -sL https://ibm.biz/idt-installer | bash
+      wget https://downloads-openshift-console.appdev-cloudnative-ocp4-3b1fc50af0b2002f0241bdf5d2432efd-0000.eu-gb.containers.appdomain.cloud/amd64/linux/oc.tar
+      tar -xvf oc.tar
+   ```
+
+- Install `igc` by running the following commands on terminal:
+  
+  ```bash
+     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+     export PATH=~/cloud-shell-commands:$PATH
+     source ./cloud-shell-commands/install-igc
+  ```
+
+- Successful execution will look like this.
+
+    ```bash
+       $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+       Cloning into 'cloud-shell-commands'...
+       remote: Enumerating objects: 50, done.
+       remote: Counting objects: 100% (50/50), done.
+       remote: Compressing objects: 100% (44/44), done.
+       remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+          Unpacking objects: 100% (50/50), done.
+       Checking connectivity... done.
+       $ export PATH=~/cloud-shell-commands:$PATH
+       $ source ./cloud-shell-commands/install-igc
+       npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+       npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+       /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+       /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+       /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+       /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+       /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+       /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+       /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+       /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+       /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+       /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+       /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+       /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+       > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+       > node lib/aesprim.js > generated/aesprim-browser.js
+
+       npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+       npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+       + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+       added 354 packages from 390 contributors in 26.049s
+
+    ```
+
+- Add the bin directory to the path such that all the installations are available as commands on terminal:   
+  ```bash 
+     echo $PATH
+     export PATH=$PATH:$PWD
+     cd ../
+     chmod -R 755 bin
+   ```
 
 </Tab>
 
@@ -214,34 +332,36 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
     remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
         Unpacking objects: 100% (50/50), done.
     Checking connectivity... done.
-    abalasu1:~/inventory-svc-ab$ export PATH=~/cloud-shell-commands:$PATH
-    abalasu1:~/inventory-svc-ab$ source ./cloud-shell-commands/install-igc
+    $ export PATH=~/cloud-shell-commands:$PATH
+    $ source ./cloud-shell-commands/install-igc
     npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
-    /home/abalasu1/.npm/bin/kubectl-dashboard -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
-    /home/abalasu1/.npm/bin/kubectl-enable -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
-    /home/abalasu1/.npm/bin/kubectl-credentials -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
-    /home/abalasu1/.npm/bin/igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
-    /home/abalasu1/.npm/bin/kubectl-endpoints -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
-    /home/abalasu1/.npm/bin/kubectl-git-secret -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
-    /home/abalasu1/.npm/bin/kubectl-igc -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
-    /home/abalasu1/.npm/bin/kubectl-pipeline -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
-    /home/abalasu1/.npm/bin/kubectl-sync -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
-    /home/abalasu1/.npm/bin/kubectl-tool-config -> /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
-
-    > jsonpath@1.0.2 postinstall /home/abalasu1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+    /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+    /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+    /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+    /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
     > node lib/aesprim.js > generated/aesprim-browser.js
 
-    npm WARN ws@7.2.5 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
-    npm WARN ws@7.2.5 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
 
-    + @ibmgaragecloud/cloud-native-toolkit-cli@0.5.3
-    added 311 packages from 358 contributors in 50.079s
-    $
+    + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+    added 354 packages from 390 contributors in 26.049s
+
     ```
 - You can check that the CLI tools package was installed correctly by checking its version:
     ```
     $ oc sync --version
-    0.5.3
+    1.0.1
     ```
 
 </Tab>

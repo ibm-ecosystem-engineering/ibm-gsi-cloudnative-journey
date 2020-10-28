@@ -7,11 +7,11 @@ import Carbon from '../../images/cloudnative3.jpg';
 
 const BannerText = () => <h1>Cloud-Native Learning Journey </h1>;
 
-const FirstLeftText = () => <p>Partner Ecosystem</p>;
+const FirstLeftText = () => <p>Cloud Ecosystem</p>;
 
 const FirstRightText = () => (
   <p>
-      This Learning Journey, optimized for IBM Partners, enables them to deliver cloud-native solutions with Red Hat OpenShift on IBM Cloud.
+      This Learning Journey, optimized for IBM Cloud users, enables them to deliver cloud-native solutions with Red Hat OpenShift on IBM Cloud.
     <a
       className={calloutLink}
       href="https://www.ibm.com/cloud"
