@@ -25,7 +25,7 @@ const SecondLeftText = () => <p>Cloud-Native Journey</p>;
 
 const SecondRightText = () => (
   <p>
-      These practices and assets enable our partners to understand how to develop and deliver standard enterprise applications on IBM Cloud.
+      These practices and assets enable our customers to understand how to develop and deliver standard enterprise applications on IBM Cloud.
   </p>
 );
 
