@@ -1,0 +1,452 @@
+---
+title: Developer Tools Setup
+---
+
+To enable the best experience for working through the hands on exercises you
+ need to select the environment you plan to use for development and the tools
+  you require to integration to the IBM Cloud.
+
+- If you are going to use your desktop/laptop for hands on exercises, follow
+ the instructions in Desktop/Laptop tab. You will require a modern MacOS or
+  Windows 10 operating systems for he Desktop/Laptop option
+- If you cannot install tools on your desktop/laptop, follow the Cloud Shell
+ instructions
+- If you want to try the full web IDE experience, then follow the Code Ready
+ Workspaces setup instructions
+
+Once you have completed these setup requirements you will be ready to
+ complete the **Developer Intermediate** agenda.
+
+<Tabs>
+
+<Tab label="Cloud Shell">
+
+## Config Cloud Shell
+
+IBM Cloud Shell is instantly accessible from your free IBM Cloud account — no other installation is needed.
+
+IBM Cloud Shell is a free service from IBM which gives you complete control of your cloud resources, applications and infrastructure, from any web browser.
+
+Features of IBM Cloud Shell include:
+
+- Preconfigured environment
+IBM Cloud Shell provides a curated, cloud-based workspace with dozens of preinstalled tools and programming languages. It automatically authenticates to your IBM Cloud account so you can get right to work.
+
+- File upload/download
+Utilize file upload/download functionality to import files to IBM Cloud Shell, or pull down data to your local machine.
+
+- Multiple sessions
+Use up to five shell sessions at a time to maximize your productivity. Mirror workflows on your local machine, or view logs on one session while editing a file in another
+
+### Set up Cloud Shell
+- Login to IBM Cloud console (cloud.ibm.com), if not already done
+
+- Invoke Cloud shell by clicking on the button at the top right hand corner of the browser window
+    ![Invoke Cloud Shell](./images/invokecloudshell.png)
+
+- Install `igc` by running the following commands on the just newly opened terminal:
+    ```bash
+    git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    export PATH=~/cloud-shell-commands:$PATH
+    source ./cloud-shell-commands/install-igc
+    ```
+
+- Successful execution will look like this.
+
+    ```bash
+
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    Cloning into 'cloud-shell-commands'...
+    remote: Enumerating objects: 50, done.
+    remote: Counting objects: 100% (50/50), done.
+    remote: Compressing objects: 100% (44/44), done.
+    remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+        Unpacking objects: 100% (50/50), done.
+    Checking connectivity... done.
+    $ export PATH=~/cloud-shell-commands:$PATH
+    $ source ./cloud-shell-commands/install-igc
+    npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+    npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+    /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+    /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+    /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+    /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    > node lib/aesprim.js > generated/aesprim-browser.js
+
+    npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+    + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+    added 354 packages from 390 contributors in 26.049s
+
+    ```
+- You can check the CLI tools were installed correctly by checking the version
+    ```
+    $ oc sync --version
+    1.0.1
+    ```
+
+</Tab>
+
+<Tab label="Gitpod">
+
+## Gitpod
+
+Gitpod provides continuous dev environments for the development flows of common code hosting platforms. 
+It is based on theia, the opensource VSCode ide.Its salient features include:
+- Parallel sessions: You can open upto 4 parallel workspaces with 4 different git repos at a time.
+- Share running workspaces: You can share your live running workspaces with others such that they can see exactly the same processes that you are looking at.
+  Share running workspaces feature makes it easy for collaborate and take help to resolve issues. 
+- Snapshots: You can take a clone of your complete environament and share it as a workspace with snapshot. It can be used to share some complicated,
+  difficult-to-reproduce issues  with teammates or you can save the Snapshot URL your work in the same environment where you left it off.
+- Ports: It gives you the option of making the public or private.
+- Git integration: As Gitpod has a git integration, pull requests and code reviews can be easily managed from the IDE only.
+
+
+### Gitpod Access:
+
+Gitpod is available as an extension on Chrome and Firefox:
+- Chrome: https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki
+
+- Firefox: https://addons.mozilla.org/en-US/firefox/addon/gitpod/
+
+Other than extension, you can access gitpod by prefixing your github/gitlab/bitbucket repo url with "https://gitpod.io/#"
+
+Both these options will give a gitpod button for accessing the gitpod workspace of that code repository
+![Gitpod](./images/gitpod.png)
+
+### Gitpod Setup:
+
+Execute the following steps in the same order on the gitpod terminal:
+
+- Gitpod gives access to only /workspace directory. Create a bin folder inside /workspace directory with appropriate permissions and install
+  everything here:
+  ```bash
+     cd /workspace
+     mkdir -m 755 bin
+     cd bin
+  ```
+
+- Install IBM Cloud
+
+  ```bash
+     wget https://clis.cloud.ibm.com/download/bluemix-cli/1.2.2/linux64/archive
+     tar -xvf archive
+     cd IBM_Cloud_CLI
+     cp ibmcloud ../
+     cp ibmcloud-analytics ../
+  ```   
+
+- Install kubectl,IBM Cloud plugins and oc
+
+   ```bash
+      cd /workspace/bin
+      curl -sL https://ibm.biz/idt-installer | bash
+      wget https://downloads-openshift-console.appdev-cloudnative-ocp4-3b1fc50af0b2002f0241bdf5d2432efd-0000.eu-gb.containers.appdomain.cloud/amd64/linux/oc.tar
+      tar -xvf oc.tar
+   ```
+
+- Install `igc` by running the following commands on terminal:
+  
+  ```bash
+     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+     export PATH=~/cloud-shell-commands:$PATH
+     source ./cloud-shell-commands/install-igc
+  ```
+
+- Successful execution will look like this.
+
+    ```bash
+       $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+       Cloning into 'cloud-shell-commands'...
+       remote: Enumerating objects: 50, done.
+       remote: Counting objects: 100% (50/50), done.
+       remote: Compressing objects: 100% (44/44), done.
+       remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+          Unpacking objects: 100% (50/50), done.
+       Checking connectivity... done.
+       $ export PATH=~/cloud-shell-commands:$PATH
+       $ source ./cloud-shell-commands/install-igc
+       npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+       npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+       /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+       /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+       /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+       /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+       /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+       /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+       /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+       /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+       /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+       /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+       /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+       /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+       > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+       > node lib/aesprim.js > generated/aesprim-browser.js
+
+       npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+       npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+       + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+       added 354 packages from 390 contributors in 26.049s
+
+    ```
+
+- Add the bin directory to the path such that all the installations are available as commands on terminal:   
+  ```bash 
+     echo $PATH
+     export PATH=$PATH:$PWD
+     cd ../
+     chmod -R 755 bin
+   ```
+
+</Tab>
+
+<Tab label="Desktop/Laptop">
+
+## Install CLIs and tools
+
+The following is a list of desktop tools required to help with installation and development.
+
+- [Git Client](https://git-scm.com/): Needs to be installed in your development operating system, it comes as standard for Mac OS
+
+- [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started): Required for management of IBM Cloud Account and management of your managed IBM Kubernetes and Red Hat OpenShift clusters
+    - Don't install just the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-install-ibmcloud-cli), install the [IBM Cloud CLI and Developer Tools](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started#step1-install-idt)
+    ```
+    curl -sL https://ibm.biz/idt-installer | bash
+    ```
+    - Note: If you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) for logging into the CLI. (You can also use this API key for [installing the Developer Tools environment](/admin/installation-ibm-cloud).)
+
+- [OpenShift OC CLI](https://mirror.openshift.com/pub/openshift-v4/clients/oc/): Required for Red Hat OpenShift management and development, select 4.3.18 or later version.
+    - Place `oc` and `kubectl` in your Terminal `PATH`
+
+    - #### MacOS/Linux
+    - Once downloaded navigate to Download folder
+    ```
+    cd ~/Downloads/openshift-origin-client-tools-v3/
+    ```
+    - Then copy `oc` and `kubectl` to the system-wide available scripts folder (which is already in your PATH)
+    ```
+    cp kubectl /usr/local/bin/kubectl
+    cp oc /usr/local/bin/oc
+    ```
+
+    <InlineNotification >
+
+     Depending on your MacOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`*
+     ![security](security.png)
+
+    </InlineNotification>
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop): Required for running common tools and [Developer Tools Image](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/tools-image)
+    - Installed and running on your local machine
+
+- [Node](https://nodejs.org/en/): Required for running the [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli)
+    - Installed on your local machine
+    - Recommended `v12.x LTS`
+
+- [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli): Used to help make working with the development tools as easy as possible
+    ```
+    npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
+    ```
+
+- [Tekton CLI](https://github.com/tektoncd/cli): Used to help control Tekton
+ pipelines from the command line.
+    ```
+    brew tap tektoncd/tools
+    brew install tektoncd/tools/tektoncd-cli
+  ```
+
+- [Visual Studio Code](https://code.visualstudio.com/download): A popular code editor
+    - You will be required to edit some files, having a good quality editor is always best practice
+    - Enabling [launching VSCode from a terminal](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+
+- [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html): _Optional_ installed on your local machine
+    - Used for SpringBoot content
+
+</Tab>
+
+<Tab label="Cloud Ready Workspaces">
+
+## Code Ready Workspace
+CodeReady Workspaces is a developer workspace server and cloud IDE. Workspaces are defined as project
+code files and all of their dependencies necessary to edit, build, run, and debug them. Each workspace
+has its own private IDE hosted within it. The IDE is accessible through a browser. The browser downloads
+the IDE as a single-page web application.
+CodeReady Workspaces will enable a 100% developer experience to
+be delivered from a users browser.
+
+ Red Hat CodeReady Workspaces provides:
+ - Workspaces that include runtimes and IDEs
+ - RESTful workspace server
+ - A browser-based IDE
+ - Plugins for languages, framework, and tools
+ - An SDK for creating plugins and assemblies
+
+### CRW in Workshop
+CodeReady Workspaces includes a powerful in-browser IDE with support for Microsoft Visual Studio Code
+extensions. As part of the workshop, we need only a machine capable of running a web browser through
+which CRW will provide an integrated environment to access the code repo, and the build environment to
+develop the code and then  test, and deploy on an OpenShift environment
+
+### Setting up your Workspace on CRW
+
+- Login to the Openshift Cluster through the Web console, where the Code ready workspace is setup.
+
+- Access the Code Ready Workspace through the appropriate Code ready workspace URL that would have been shared.
+**Note**:If the code ready workspace is configured through openshiftoAuth, You can access the above URL, once you have logged into the Openshift Cluster
+
+- If you are accessing it for the first time you need register as the registration page will be shown. User name can contain only these characters (0-9, a-z and hypen in between).
+Ensure you provide details regarding username, Email, First name and Last name (If SSO is not configured, you need to provide the password as well.
+
+- Navigate to  the default Code Ready Workspace link  on your browser as shown in below picture.
+
+  ![CRW](./images/CRW_HomePage.png)
+
+- You can create the workspace by selecting one of the template stacks as shown in Step 4. Alternatively, navigate to the Workspace and click on the "Add Workspace" button.
+
+  ![Adding Workspace](./images/AddWorkspace.png)
+
+- Provide the workspace as part of the Name field. Click on "Remove" button in the Projects section to remove the project template.
+Basically, we are going to create an empty project.
+
+  ![Creating Project with Empty Template](./images/CreatingNewWorkspace.png)
+
+- Click on "Create and Open" button to create and load the workspace. Workspace will start loading. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
+
+- Once the workspace is  created and loaded, you can see a vscode editor.
+
+  ![CRWWorkspace](./images/CRWScreen.png)
+
+- Go to "Terminal" menu and select "Open Terminal in specific container".
+
+  ![Open Terminal](./images/OpeningTerminal.png)
+
+- Select the "Developer Container".
+
+- Install `igc` by running the following commands on the just newly opened terminal:
+    ```bash
+    git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    export PATH=~/cloud-shell-commands:$PATH
+    source ./cloud-shell-commands/install-igc
+    ```
+- Successful installation will look something like this.
+
+    ```bash
+    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
+    Cloning into 'cloud-shell-commands'...
+    remote: Enumerating objects: 50, done.
+    remote: Counting objects: 100% (50/50), done.
+    remote: Compressing objects: 100% (44/44), done.
+    remote: Total 50 (delta 23), reused 14 (delta 4), pack-reused 0
+        Unpacking objects: 100% (50/50), done.
+    Checking connectivity... done.
+    $ export PATH=~/cloud-shell-commands:$PATH
+    $ source ./cloud-shell-commands/install-igc
+    npm WARN deprecated request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+    npm WARN deprecated har-validator@5.1.5: this library is no longer supported
+    /home/ramragh1/.npm/bin/igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-dashboard -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-dashboard.js
+    /home/ramragh1/.npm/bin/kubectl-console -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-console.js
+    /home/ramragh1/.npm/bin/kubectl-enable -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-enable.js
+    /home/ramragh1/.npm/bin/kubectl-git -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git.js
+    /home/ramragh1/.npm/bin/kubectl-endpoints -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-endpoints.js
+    /home/ramragh1/.npm/bin/kubectl-pipeline -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-pipeline.js
+    /home/ramragh1/.npm/bin/kubectl-git-secret -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-git-secret.js
+    /home/ramragh1/.npm/bin/kubectl-sync -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-namespace.js
+    /home/ramragh1/.npm/bin/kubectl-tool-config -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-tool-config.js
+    /home/ramragh1/.npm/bin/kubectl-igc -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script.js
+    /home/ramragh1/.npm/bin/kubectl-credentials -> /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/dist/script-credentials.js
+    > jsonpath@1.0.2 postinstall /home/ramragh1/.npm/lib/node_modules/@ibmgaragecloud/cloud-native-toolkit-cli/node_modules/jsonpath
+    > node lib/aesprim.js > generated/aesprim-browser.js
+
+    npm WARN ws@7.3.1 requires a peer of bufferutil@^4.0.1 but none is installed. You must install peer dependencies yourself.
+    npm WARN ws@7.3.1 requires a peer of utf-8-validate@^5.0.2 but none is installed. You must install peer dependencies yourself.
+
+    + @ibmgaragecloud/cloud-native-toolkit-cli@1.0.1
+    added 354 packages from 390 contributors in 26.049s
+
+    ```
+- You can check the CLI tools were installed correctly by checking the version
+    ```
+    $ oc sync --version
+    1.0.1
+    ```
+
+</Tab>
+
+</Tabs>
+
+## Log into IBM Cloud
+
+- Use `ibmcloud` CLI command line to log into the cloud account. Replace the user_id, password and team name in the sandbox name
+    ```bash
+    ibmcloud login -u <user_id> -p <password> -g sandbox-team-n.. -r us-south
+    ```
+
+- Select Account Number that you are boarded on.
+    ```bash
+    $ ibmcloud login -u email@company.com -p XXX -g sandbox-team-one -r us-south
+    API endpoint: https://cloud.ibm.com
+    Authenticating...
+    OK
+
+    Select an account:
+    1. GSI Labs - IBM
+    Enter a number> 1
+    Targeted account GSI Labs
+
+    Targeted resource group sandbox-team-one
+
+    Targeted region us-south
+
+    API endpoint:      https://cloud.ibm.com
+    Region:            us-south
+    User:              email@company.com
+    Account:           GSI Labs
+    Resource group:    sandbox-team-one
+    CF API endpoint:
+    Org:
+    Space:
+
+    ```
+
+## Log into Openshift Cluster
+
+- Log into the openshift cluster from the cloud console
+    ![Openshift](./images/openshiftcluster.png)
+
+- Access the openshift console by clicking on the button
+    ![Openshift Console](./images/openshiftconsole.png)
+
+- Get the login command with token to login to the openshift from command line
+    ![Openshift Login](./images/LoginCommand.png)
+
+- Execute the login command copied in the last step in the terminal
+    ```bash
+    $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
+    Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
+
+    You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
+
+    Using project "dev-ab".
+    $
+    ```
+
+### Configure git
+
+- Execute the following commands
+
+  ```
+  git config --global user.email "<email>"
+  git config --global user.name "<short_name>"
+  ```
