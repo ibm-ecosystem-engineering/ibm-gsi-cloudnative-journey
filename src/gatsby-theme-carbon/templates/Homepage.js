@@ -11,11 +11,7 @@ const FirstLeftText = () => <p>Cloud Ecosystem</p>;
 
 const FirstRightText = () => (
   <p>
-<<<<<<< HEAD
       This Learning Journey, optimized for IBM Cloud users, enables them to deliver cloud-native solutions with Red Hat OpenShift on IBM Cloud.
-=======
-      This Learning Journey, optimized for IBM Cloud developers and operators, enables them to deliver cloud-native solutions with Red Hat OpenShift on IBM Cloud.
->>>>>>> origin/master
     <a
       className={calloutLink}
       href="https://www.ibm.com/cloud"
@@ -29,11 +25,7 @@ const SecondLeftText = () => <p>Cloud-Native Journey</p>;
 
 const SecondRightText = () => (
   <p>
-<<<<<<< HEAD
       These practices and assets enable our partners to understand how to develop and deliver standard enterprise applications on IBM Cloud.
-=======
-      These practices and assets enable our customers to understand how to develop and deliver standard enterprise applications on IBM Cloud.
->>>>>>> origin/master
   </p>
 );
 
