@@ -11,27 +11,25 @@ The <Globals name="shortName" /> Command Line Interface (CLI)
 
 The <Globals name="longName" /> includes the IBM Garage for Cloud (IGC) Command Line Interface (CLI).
 The [<Globals name="igccli" />](https://github.com/ibm-garage-cloud/ibm-garage-cloud-cli) provides a set of helpful
-utilities that can be invoked from the command line. It was created to automate and simplify complicated and repetitive
-tasks, allowing developers to be more productive.
+utilities that can be invoked from the command line. It's designed to automate and simplify complicated and repetitive
+tasks thus allowing developers to be more productive.
 
-Use of the CLI is in no way required to work with the <Globals name="shortName" /> and everything done by the CLI can
-be done manually instead. For each of the commands, the equivalent manual steps are also given for the sake of full
-transparency and to take away any notion of "magic" that the CLI might be performing.
+The CLI is not a <Globals name="shortName" /> requirement as all its actions can be performed manually instead. For each command, the equivalent manual steps are also given for the sake of full transparency and to take away any notion of "magic" that the CLI might be performing.
 
 Some of the utilities provided by the CLI include:
-- Register your application's git repo into a CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.)
-- List the ingress URLs and route URLs defined within the cluster
-- List the connection information (endpoints, user names, and passwords) for the tools configured in the environment
-- Help copy `config maps` and `secrets` into new projects/namespace
-- Enable existing <Globals name="templates" /> with the necessary artifacts to be integrated easily into the <Globals name="env" />
+- Register your application's Git repository into a CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.).
+- List the ingress URLs and route URLs defined within the cluster.
+- List the connection information (endpoints, user names, and passwords) for the tools configured in the environment.
+- Help copy `config maps` and `secrets` into new projects/namespace.
+- Enable existing <Globals name="templates" /> with the necessary artifacts to be integrated easily into the <Globals name="env" />.
 
-You can either install the CLI onto your computer or install the Cloud Shell Commands environment.
+You can either install the CLI or the Cloud Shell Commands environment on your computer:
 
 <Accordion>
 
 <AccordionItem title="Install the Cloud Shell" open="true">
 
-Follow the instructions in the [cloud-shell-commands readme](https://github.com/ibm-garage-cloud/cloud-shell-commands/blob/master/README.md) to install the Cloud Shell Commands.
+Follow the instructions in the [cloud-shell-commands readme](https://github.com/ibm-garage-cloud/cloud-shell-commands/blob/master/README.md).
 
 </AccordionItem>
 
@@ -53,8 +51,7 @@ Follow the instructions in the [cloud-shell-commands readme](https://github.com/
 
 ## Invoking the CLI
 
-- When the CLI is installed, it adds an executable named `igc` to the PATH. Running `igc --help` will list
-the available commands.
+- Once the CLI is installed, the `igc` executable will be available in your system. Running `igc --help` will list the available commands.
 - The output text will be similar to the following:
 
     ```
@@ -92,7 +89,7 @@ the available commands.
     ```
 
 - The <Globals name="igccli" /> will now install the commands as plugins to the `kubectl` and `oc` CLIs.
-- For example, all of the following are equivalent:
+- For example, all of the following comands are equivalent:
 
     ```
     igc pipeline
@@ -106,15 +103,15 @@ the available commands.
 
 Some of the commands provided by the <Globals name="igccli" /> orchestrate interactions between other CLIs. To get
 started please install the [prerequisite tools](/getting-started/devenvsetup), in particular:
-- The <Globals name="kube" /> CLI
-- The <Globals name="ocp" /> CLI
-- The <Globals name="ic" /> CLI - used to interact with IBM Cloud vlans (not needed if tools will not run on IBM Cloud)
+- The <Globals name="kube" /> CLI.
+- The <Globals name="ocp" /> CLI.
+- The <Globals name="ic" /> CLI - used to interact with IBM Cloud virtual LANs (not needed if tools will not run on IBM Cloud).
 
 </InlineNotification>
 
 ### Log into your cluster
 
-Most all of the commands provided by the <Globals name="igccli" /> interact with a cluster. It probably comes as no
+Most of the commands provided by the <Globals name="igccli" /> interact with a cluster. It probably comes as no
 surprise then that you should be logged into the prior to running the commands.
 
 <Accordion>
