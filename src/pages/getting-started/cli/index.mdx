@@ -146,8 +146,7 @@ ibmcloud ks cluster config --cluster <CLUSTER>
 
 Opens the Developer Dashboard in the default browser. If the default browser has not been configured, then it prints the dashboard URL.
 
-The dashboard displays the <Globals name="shortName" /> tools configured within the cluster along with links to
-activation content and Starter Kits to initiate a project quickly.
+The dashboard displays the <Globals name="shortName" /> tools configured within the cluster along with links to activation content and Starter Kits to initiate a project quickly.
 
 This command requires to be logged into the cluster so the context is established.
 
@@ -176,9 +175,9 @@ open "https://$HOST"
 </Tab>
 <Tab label="Kubernetes">
 
-The following commands does the same function on OpenShift:
+The following commands does the same function on Kubernetes:
 
-```shell script
+```bash
 HOST=$(kubectl get ingress/developer-dashboard -n tools -o jsonpath='{.spec.rules[0].host}')
 open "https://$HOST"
 ```
@@ -189,9 +188,9 @@ open "https://$HOST"
 **Related commands**
 
 - [`credentials`](#credentials): shows information about the same tools shown in the dashboard from the command-line.
-- `[tool-config`](#tool-config): allows configuration for additional tools to be added to the cluster, making them available to the dashboard and `credentials` command.
+- [`tool-config`](#tool-config): allows configuration for additional tools to be added to the cluster, making them available to the dashboard and `credentials` command.
 
-### credentials
+### `credentials`
 
 Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to
 get the login credentials for each of the installed tools. Ideally all of the tools would be accessible via SSO at which
