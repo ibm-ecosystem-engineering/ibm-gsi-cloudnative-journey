@@ -89,7 +89,7 @@ Follow the instructions in the [cloud-shell-commands readme](https://github.com/
     ```
 
 - The <Globals name="igccli" /> will now install the commands as plugins to the `kubectl` and `oc` CLIs.
-- For example, all of the following comands are equivalent:
+- For example, all of the following commands are equivalent:
 
     ```
     igc pipeline
@@ -103,16 +103,15 @@ Follow the instructions in the [cloud-shell-commands readme](https://github.com/
 
 Some of the commands provided by the <Globals name="igccli" /> orchestrate interactions between other CLIs. To get
 started please install the [prerequisite tools](/getting-started/devenvsetup), in particular:
-- The <Globals name="kube" /> CLI.
-- The <Globals name="ocp" /> CLI.
-- The <Globals name="ic" /> CLI - used to interact with IBM Cloud virtual LANs (not needed if tools will not run on IBM Cloud).
+- <Globals name="kube" /> CLI.
+- <Globals name="ocp" /> CLI.
+- <Globals name="ic" /> CLI--used to interact with IBM Cloud virtual LANs.
 
 </InlineNotification>
 
 ### Log into your cluster
 
-Most of the commands provided by the <Globals name="igccli" /> interact with a cluster. It probably comes as no
-surprise then that you should be logged into the prior to running the commands.
+Most of the commands provided by the <Globals name="igccli" /> interact with a cluster, so you need to log in to be able to run these.
 
 <Accordion>
 
@@ -133,9 +132,9 @@ ibmcloud ks cluster config --cluster <CLUSTER>
 
 </Accordion>
 
-### Log into your IBM Cloud account
+### Log in to your IBM Cloud account
 
-- Log into your <Globals name="ic" /> account with the correct region and resource group:
+- Log in to your <Globals name="ic" /> account with the correct region and resource group:
 
     ```bash
     ibmcloud login -a cloud.ibm.com -r <region> -g <resource group>
@@ -143,25 +142,23 @@ ibmcloud ks cluster config --cluster <CLUSTER>
 
 ## Available commands
 
-## dashboard
+### `dashboard`
 
-Opens the Developer Dashboard in the default browser. If a default browser has not been
-configured, then the URL to the Dashboard will be printed out.
+Opens the Developer Dashboard in the default browser. If the default browser has not been configured, then it prints the dashboard URL.
 
-The dashboard displays the <Globals name="shortName" /> tools configured within the cluster along with links to
-activation content and links to Starter Kits to start a project quickly.
+The dashboard displays the <Globals name="shortName" /> tools configured within the cluster along with links to activation content and Starter Kits to initiate a project quickly.
 
-This command requires that the login context for the cluster has already been established.
+This command requires to be logged into the cluster so the context is established.
 
 **Command flags**
-- `-n`: the namespace where the dashboard has been deployed; the default is `tools`
+- `-n`: the namespace where the dashboard has been deployed; the default is `tools`.
 
 **Usage**
 
 <Tabs>
 <Tab label="CLI">
 
-The command is used in the following way:
+The command syntax is:
 
 ```bash
 igc dashboard
@@ -169,7 +166,7 @@ igc dashboard
 </Tab>
 <Tab label="OpenShift">
 
-The following commands would have the same result on OpenShift:
+The following commands does the same function on OpenShift:
 
 ```shell script
 HOST=$(oc get routes/dashboard -n tools -o jsonpath='{.spec.host}')
@@ -178,9 +175,9 @@ open "https://$HOST"
 </Tab>
 <Tab label="Kubernetes">
 
-The following commands would have the same result on Kubernetes:
+The following commands does the same function on Kubernetes:
 
-```shell script
+```bash
 HOST=$(kubectl get ingress/developer-dashboard -n tools -o jsonpath='{.spec.rules[0].host}')
 open "https://$HOST"
 ```
@@ -190,24 +187,22 @@ open "https://$HOST"
 
 **Related commands**
 
-- [credentials](#credentials): shows information about the same tools shown in the dashboard from the
-command-line
-- [tool-config](#tool-config): allows configuration for additional tools to be added to the cluster, making them
-available to the dashboard and `credentials` command
+- [`credentials`](#credentials): shows information about the same tools shown in the dashboard from the command-line.
+- [`tool-config`](#tool-config): allows configuration for additional tools to be added to the cluster, making them available to the dashboard and `credentials` command.
 
-## credentials
+### `credentials`
 
 Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to
 get the login credentials for each of the installed tools. Ideally all of the tools would be accessible via SSO at which
 point this command will be obsolete.
 
 The command works by reading information available in the cluster. When each tool is installed by the toolkit, a
-`config map` and `secret` are created to store the url and credential for the tool. That information is used in a
+`config map` and `secret` are created to store the URL and credential for the tool. That information is used in a
 number of different ways within the environment:
 
-- Provide configuration information to the pipelines
+- Provide configuration information to the pipelines.
 - Populate the tiles on the Developer Dashboard.
-- Populate the results of the `credentials` command
+- Populate the results of the `credentials` command.
 
 This command requires that the login context for the cluster has already been established.
 
