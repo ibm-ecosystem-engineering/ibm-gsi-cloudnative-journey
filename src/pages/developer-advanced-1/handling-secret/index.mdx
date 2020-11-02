@@ -1,0 +1,146 @@
+---
+title: Handling Secret
+---
+
+import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+
+<PageDescription>
+
+Continuous Deployment with Argo CD & IBM Key Protect.
+
+</PageDescription>
+
+## Problem
+
+Continues Delivery need secrets for deploying the application. Secrets with sensitive information cannot be put in Git where it is exposed.
+
+## Solution
+
+To solve the above problem, secrets can be stored in key protect and retrieved by argocd during CD. ArgoCD will fetch secrets from IBM Key Protect and deploy the application in a testing environment.
+
+- This gitops repository is used by ArgoCD to get inputs for continous deployment whenever there is a change to the source application.
+
+- A configuration contains secrets which are needed and ArgoCD retreives them dynamically from Keyprotect and creates them in the target environment.
+
+## Using CD to fetch Secret From IBM Key Protect
+
+ArgoCD is a tool that provides continuous delivery for projects and applications. If you haven't already, be sure to read
+through the [Continuous Delivery with ArgoCD guide](/guides/continuous-delivery).
+
+For this exercise, we are going to use ArgoCD to fetch the Secret from IBM Key Protect and push into the openshift console in the specifed namespace from `dev` to `test` (and possibly `staging` as well). 
+
+### Set up the Gitops Secure Credential Handler repo
+
+Let's get started with using Argo CD.
+
+- Create a new repo from the [ArgoCD <Globals name="template" />](https://github.com/ibm-gsi-ecosystem/gitops-secure-credential-handler/generate)
+
+- Clone the project to your machine
+
+- Create a branch named `test`
+    ```bash
+    git checkout -b test
+    ```
+
+- Push the branch to the remote
+    ```bash
+    git push -u origin test
+    ```
+
+- Create the test namespace with the CLI by running `oc sync test-{initials} --dev`
+
+### Register the GitOps repo in ArgoCD
+
+Now that the repository has been created, we need to tell ArgoCD where it is.
+
+- Get the ArgoCD login information from the `oc credentials` cli command
+
+    <InlineNotification>
+        Note: You need to be logged into the cluster on the command-line for the CLI to access the cluster information.
+    </InlineNotification>
+
+- Log into ArgoCD (use `oc credentials` to obtain your credentials and login to argo)
+
+- Click on the gear icon on the left menu to access the Settings options
+
+    ![ArgoCD config](/images/argocd-config.png)
+
+- Select the `Repositories` option
+
+- Click either the `Connect Repo using HTTPS` or `Connect Repo using SSH` button at the top and provide the information
+for the GitOps repo you just created.
+
+### Create a project in ArgoCD (Optional)
+
+In ArgoCD terms, each deployable component is an `Application` and applications are grouped into `Projects`. Projects are not
+required for ArgoCD to be able to deploy applications but it helps to organize applications and provide some restrictions
+on what can be done for applications that make up a project.
+
+To create a project, do the following:
+
+- Log into ArgoCD
+
+- Click on the gear icon on the left menu to access the Settings options
+
+    ![ArgoCD config](/images/argocd-config.png)
+
+- Select the `Projects` option
+
+- Click the `New Project` button at the top of the page.
+
+- Provide the following values then press `Create`:
+
+    - `name` - the name for the project (provide `inventory-management)
+    - `description` - a brief description of the project
+    - `sources` - click `add source` and pick the Git repository from the list that was added previously
+    - `destinations`
+        - Add `https://kubernetes.default.svc` for the cluster url and `test-{initials}` for the namespace
+        - Add `https://kubernetes.default.svc` for the cluster url and `staging-{initials}` for the namespace
+
+    **Note:** Initially, the only cluster that is available is the one in which ArgoCD is -
+    `https://kubernetes.default.svc`. By adding the two destinations we have allowed the project to be deployed
+    to both the `test-{initials}` and `staging-{initials}` namespaces within the current cluster.
+
+### Configure the Secret Configuration
+
+- In the cloned repo navigate to the `secret-configuration` folder and open the `secret-handler-secret.yaml`.
+
+- Update your `instanceId` and `region` of IBM Key Protect Service.
+
+- Update the username as `base64` value.
+
+- Update the password with IBM Key Protect `keyId`.
+
+
+- Commit and push the changes
+    ```bash
+    git add .
+    git commit -m "Adds inventory-management-svc config"
+    git push
+    ```
+
+
+
+### Add an application in ArgoCD for the Secret Manager service using `Key Protect Secret` plugin.
+
+- Log into ArgoCD
+
+- Click `New Application` and provide the following values:
+
+    - `application name` - `gitgitops-secure-credential-handler`
+    - `project` - `secure-credential-handler`
+    - `sync-policy` - `Automatic`
+    - `repository url` - The Git url where the Secret Configuration is stored
+    - `revision` - `test`
+    - `path` - `secure-credential-handler-{initials}`
+    - `destination cluster` - The cluster url for the deployment
+    - `destination namespace` - `test-{initials}`
+    -  The DropDown choose the plugin option.
+    -  Plugin Name choose `key-protect-secret` plugin.
+
+- Click `Create`
+
+- Click on the newly created application. A graph of kubernetes resources should be shown
+if everything is configured correctly. Once the application running successfully it will fetch the secret from `IBM Key Protect` and push into openshift cluster. 
+
+

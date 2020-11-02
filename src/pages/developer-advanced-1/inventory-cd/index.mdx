@@ -258,32 +258,6 @@ the CD pipeline. `test` is the recommended value for the branch field.
 - Trigger the pipeline for the Inventory Management service to build by making a change
 to the Inventory Management Service code and push the changes to Git.
 
-
-
-### Add an application in ArgoCD for the Secret Manager service using `Key Protect Secret` plugin.
-
-Continues Delivery need secrets for deploying the application. Secrets can be stored in key protect and retrieved by argocd during CD. ArgoCD will fetch secrets from IBM Key Protect and deploy the application in a testing environment.
-
-- Log into ArgoCD
-
-- Click `New Application` and provide the following values:
-
-    - `application name` - `gitgitops-secure-credential-handler`
-    - `project` - `secure-credential-handler`
-    - `sync-policy` - `Automatic`
-    - `repository url` - The Git url where the Secret Configuration is stored
-    - `revision` - `test`
-    - `path` - `secure-credential-handler-{initials}`
-    - `destination cluster` - The cluster url for the deployment
-    - `destination namespace` - `test-{initials}`
-    -  The DropDown choose the plugin option.
-    -  Plugin Name choose `key-protect-secret` plugin.
-
-- Click `Create`
-
-- Click on the newly created application. A graph of kubernetes resources should be shown
-if everything is configured correctly.
-
 ### Repeat for BFF and UI components
 
 Starting from [Configure the GitOps repo for Inventory Management service](#Configure-the-gitops-repo-for-inventory-management-service),

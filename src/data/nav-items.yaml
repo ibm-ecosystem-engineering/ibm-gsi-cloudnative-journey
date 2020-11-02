@@ -100,6 +100,8 @@
       path: /developer-advanced-1
     - title: CD for Inventory App
       path: /developer-advanced-1/inventory-cd
+    - title: Handling Secret
+      path: /developer-advanced-1/handling-secret
     - title: Database with Cloudant
       path: /developer-advanced-1/inventory-cloudant
     - title: Database with MongoDB
