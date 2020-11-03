@@ -168,7 +168,7 @@ igc dashboard
 
 The following commands does the same function on OpenShift:
 
-```shell script
+```bash
 HOST=$(oc get routes/dashboard -n tools -o jsonpath='{.spec.host}')
 open "https://$HOST"
 ```
@@ -187,27 +187,23 @@ open "https://$HOST"
 
 **Related commands**
 
-- [`credentials`](#credentials): shows information about the same tools shown in the dashboard from the command-line.
-- [`tool-config`](#tool-config): allows configuration for additional tools to be added to the cluster, making them available to the dashboard and `credentials` command.
+- [`credentials`](#credentials): shows the same credentials information that can be seen in the dashboard.
+- [`tool-config`](#tool-config): allows adding configuration for additional tools to the cluster, making them available to the dashboard and the `credentials` command.
 
 ### `credentials`
 
-Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to
-get the login credentials for each of the installed tools. Ideally all of the tools would be accessible via SSO at which
-point this command will be obsolete.
+Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to get the login credentials for each of the installed tools. Ideally, all of the tools will be accessible via SSO, at which point this command will be obsolete.
 
-The command works by reading information available in the cluster. When each tool is installed by the toolkit, a
-`config map` and `secret` are created to store the URL and credential for the tool. That information is used in a
-number of different ways within the environment:
+This command works by reading the information available in the cluster. For each tool installed by the toolkit, a config map and a secret are created to store its URL and credentials. This information is used in several ways within the environment:
 
 - Provide configuration information to the pipelines.
 - Populate the tiles on the Developer Dashboard.
 - Populate the results of the `credentials` command.
 
-This command requires that the login context for the cluster has already been established.
+This command requires to be logged into the cluster so the context is established.
 
 **Command flags**
-- `-n`: the namespace where the tools have been deployed; the default is `tools`
+- `-n`: the namespace where the tools have been deployed. The default value is `tools`.
 
 **Usage**
 
@@ -216,13 +212,13 @@ This command requires that the login context for the cluster has already been es
 
 The command is used in the following way:
 
-```shell script
+```bash
 igc credentials
 ```
 
 The credential output is JSON format like this
 
-```shell script
+```bash
 Credentials:  {
   argocd: {
     user: 'admin',
@@ -242,7 +238,7 @@ Credentials:  {
 
 The following commands have the same result (note the dependency on `jq`):
 
-```shell script
+```bash
 # config maps
 kubectl get configmap -n tools -l grouping=garage-cloud-native-toolkit -o json | \
   jq '[.items[] | select(.metadata.name != "ibmcloud-config").data]'
@@ -289,7 +285,7 @@ igc endpoints
 
 The following commands list the route and ingress endpoints:
 
-```shell script
+```bash
 # routes
 kubectl get route -n tools
 
@@ -301,7 +297,7 @@ kubectl get ingress -n tools
 
 The following commands list the ingress endpoints:
 
-```shell script
+```bash
 kubectl get ingress -n tools
 ```
 </Tab>
@@ -354,13 +350,13 @@ namespace will also have the `ConfigMaps` and `Secrets` copied over.
 
 Create a `test` namespace
 
-```shell script
+```bash
 igc sync test
 ```
 
 Create a `dev` namespace for development
 
-```shell script
+```bash
 igc sync dev --dev
 ```
 </Tab>
@@ -368,7 +364,7 @@ igc sync dev --dev
 
 The following commands will copy the pull secret(s) from the `default` namespace and add them to the service account:
 
-```shell script
+```bash
 export NAMESPACE="NAMESPACE"
 export SERVICE_ACCOUNT="default"
 
@@ -398,7 +394,7 @@ fi
 
 The following steps will copy the `ConfigMaps` and `Secrets` from a template namespace to a target namespace:
 
-```shell script
+```bash
   export TEMPLATE_NAMESPACE="tools"
   export NAMESPACE="NAMESPACE"
 
@@ -447,13 +443,13 @@ is the current branch.
 <Tab label="CLI">
 Create a Jenkins pipeline in the `dev` namespace and prompt for the Git credentials
 
-```shell script
+```bash
 igc pipeline --jenkins
 ```
 
 Create a Tekton pipeline in the `my-dev` namespace, using the Git credentials `gituser` and `gitpat`
 
-```shell script
+```bash
 igc pipeline -n my-dev -u gituser -p gitpat --tekton
 ```
 </Tab>
@@ -576,7 +572,7 @@ It's _ephemeral_ meaning it doesn't allocate any persistent storage in the clust
 
 1. Set the project/namespace
 
-```shell script
+```bash
 oc project {NAMESPACE}
 ```
 
@@ -585,7 +581,7 @@ where:
 
 2. Run the following command to provision the Jenkins instance in your namespace
 
-```shell script
+```bash
 oc new-app jenkins-ephemeral
 ```
 
@@ -605,7 +601,7 @@ With the Jenkins build engine, all the build processes run as the `jenkins` serv
 container to run as root on OpenShift we will need to give the `privileged` security context constraint (scc) to
 `jenkins` service account with the following command:
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc adm policy add-scc-to-user privileged -z jenkins
 ```
@@ -644,7 +640,7 @@ where:
 
 2. After logging into the cluster, create the secret by running the following:
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc create -f gitsecret.yaml
 ```
@@ -691,7 +687,7 @@ where:
 
 2. Assuming you are still logged into the cluster, create the buildconfig resource in the cluster
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc create -f buildconfig.yaml
 ```
@@ -782,7 +778,7 @@ dealt with.
 
 2. Apply the pipeline updates using the CLI command
 
-```shell script
+```bash
 igc enable
 ```
 
@@ -803,7 +799,7 @@ dealt with.
 
 2. Download the `index.yaml` file containing the available pipeline versions
 
-    ```shell script
+    ```bash
     curl -O https://ibm-garage-cloud.github.io/garage-pipelines/index.yaml
     ```
 
@@ -811,14 +807,14 @@ dealt with.
 
 4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball
 
-    ```shell script
+    ```bash
     curl -O ${PIPELINE_URL}
     ```
 
 5. Extract the tar-ball into your repository directory. You will be prompted to overwrite files. Overwrite as
 appropriate
 
-    ```shell script
+    ```bash
     tar xzf ${PIPELINE_FILE}
     ```
 
