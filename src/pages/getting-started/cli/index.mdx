@@ -200,7 +200,7 @@ This command works by reading the information available in the cluster. For each
 - Populate the tiles on the Developer Dashboard.
 - Populate the results of the `credentials` command.
 
-This command requires to be logged into the cluster so the context is established.
+This command requires that the login context for the cluster has already been established.
 
 **Command flags**
 - `-n`: the namespace where the tools have been deployed. The default value is `tools`.
@@ -216,7 +216,7 @@ The command is used in the following way:
 igc credentials
 ```
 
-The credential output is JSON format like this
+It will output the credentials in JSON format:
 
 ```bash
 Credentials:  {
@@ -236,7 +236,7 @@ Credentials:  {
 </Tab>
 <Tab label="OpenShift or Kubernetes">
 
-The following commands have the same result (note the dependency on `jq`):
+The following commands does the same function (note the dependency on `jq`):
 
 ```bash
 # config maps
@@ -250,24 +250,14 @@ kubectl get secret -n tools -l grouping=garage-cloud-native-toolkit -o json | \
 </Tab>
 </Tabs>
 
-**Related commands**
+### `endpoints`
 
-- [dashboard](#dashboard): displays the url of the Developer Dashboard and launches the default browser
-- [tool-config](#tool-config): allows configuration for additional tools to be added to the cluster, making them
-available to the dashboard and `credentials` command
-
-## endpoints
-
-Lists the ingress and/or route URLs for the applications in a given namespace. An attempt will be made to get the
-namespace from the current context if one is not provided as an argument. Results of the command are provided in an
-interactive menu. If one of the endpoints is selected, it will display the URL and launch it in the default browser.
-Selecting `Exit` will print the full list of endpoints and exit.
+Lists the ingress and/or route URLs for the applications in a given namespace. If a namespace is not provided as an argument, it will try to get it from the current context. The results are shown in an interactive menu. If one of the endpoints is selected, it will display the URL and launch it in the default browser. Selecting `Exit` will print the full list of endpoints and exit.
 
 This command requires that the login context for the cluster has already been established.
 
 **Command flags**
-- `-n`: the namespace from which the endpoints will be read; the value will be read from the current context if not
-provided
+- `-n`: the namespace from which the endpoints will be retrieved. The value will be read from the current context if not provided.
 
 **Usage**
 
@@ -303,45 +293,43 @@ kubectl get ingress -n tools
 </Tab>
 </Tabs>
 
-## sync
+### `sync`
 
 Creates a Kubernetes namespace or OpenShift project (if it doesn't already exist) and sets it up so that the namespace
-can be used as a target for application deployments and/or to host the <Globals name="env" />. The command performs two
-major functions - 1) set up a service account in the namespace with the pull secret(s) for the IBM Container Registry
-and 2) synchronize the `ConfigMaps` and `Secrets` from a template namespace to create a "development" namespace. After
-the command has run successfully it will set the provided namespace in the current context
-(e.g. equivalent to `oc project X`)
+can be used as a target for application deployments and/or host the <Globals name="env" />.
 
-The pull secret(s) are required in order for pods to pull images that are stored in the IBM Container Registry.
-When the cluster is created in IBM Cloud, a pull secret is provided in the `default` namespace. In order for a
-pod in another namespace to use it, the secret must first be copied into the namespace. After that, the pod either
-needs to reference the pull secret directly or the service account used by the resource needs to have a reference to
-the secret. The CLI copies the pull secret over and adds it to the service account so the pod can take either
-approach.
+The command performs two major functions, 1) set up a service account in the namespace with the pull secret(s) for the IBM Container Registry and 2) synchronize the `ConfigMaps` and `Secrets` from a template namespace to create a "development" namespace.
 
-The other function this command performs is to copy relevant `ConfigMaps` and `Secrets` into the namespace that are
-needed for development activities. Managing resources across namespaces (particularly `ConfigMaps` and `Secrets`) is a
+Once the command has run successfully, it will set the provided namespace in the current context (e.g. equivalent to `oc project X`).
+
+The pull secret(s) are required for pods to pull images stored in the IBM Container Registry. When a cluster is created in IBM Cloud, a pull secret is provided in the `default` namespace.
+
+For a pod in another namespace to use the pull secret, it must first be copied into that namespace. After that, the pod either
+needs to reference the pull secret directly, or the service account used by the resource needs to have a reference to
+the secret. The CLI copies the pull secret over and adds it to the service account so the pod can take either approach.
+
+The other function this command performs is to copy relevant `ConfigMaps` and `Secrets` needed for development into the namespace. Managing resources across namespaces (particularly `ConfigMaps` and `Secrets`) is a
 common challenge in Kubernetes environments. We have provided the command at this time to simplify the steps required
-to get everything ready. Ultimately, this problem seems like an ideal one for an Operator to solve and when one is
-available (either from the Toolkit or elsewhere) this command will be retired or transitioned.
+to get everything ready. Ultimately, this problem seems like an ideal one for a command to solve and when another one is
+available (either from the Toolkit or elsewhere) this one will be retired or transitioned.
 
 There are two different types of namespaces that the command will set up:
 
-- "release" namespace where applications can be deployed (e.g. test, staging)
+- "release" namespace where applications can be deployed (e.g. test, staging).
 
 -OR-
 
 - "development" namespace where DevOps pipelines can be run and where application components can be deployed
-(e.g. dev)
+(e.g. dev).
 
 Both "release" and "development" namespaces will have the pull secret(s) created. However, only the "development"
-namespace will also have the `ConfigMaps` and `Secrets` copied over.
+one will also have the `ConfigMaps` and `Secrets` copied over.
 
 **Command flags**
-- `-t`: the template namespace that will be the source of the `config maps` and `secrets`; the default is `tools`
-- `-z`: the name of the service account; the default is `default`
-- `--dev`: flag indicating the namespace should be set for development
-- `--verbose`: flag indicating that the console output should persist on the screen
+- `-t`: the template namespace that will be the source of the `config maps` and `secrets`. The default is `tools`.
+- `-z`: the name of the service account. The default is `default`.
+- `--dev`: flag indicating the namespace should be set for development.
+- `--verbose`: flag indicating that the console output should persist on the screen.
 
 **Usage**
 
@@ -414,7 +402,7 @@ The following steps will copy the `ConfigMaps` and `Secrets` from a template nam
 </Tab>
 </Tabs>
 
-## pipeline
+## `pipeline`
 
 Connects a branch in a Git repo to a either a Jenkins or Tekton CI pipeline in the <Globals name="env" /> and triggers
 an initial build. A webhook is also created so that when a new commit is added to the branch, the pipeline is triggered
