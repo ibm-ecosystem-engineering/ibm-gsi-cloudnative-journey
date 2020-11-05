@@ -120,6 +120,8 @@
       path: /developer-advanced-1/monitoring/
     - title: Advanced Log Management
       path: /developer-advanced-1/log-management/
+    - title: OpenAPI and Swagger
+      path: /developer-advanced-1/swagger-and-openapi/
     
 - title: Developer Advanced - 2
   pages:
@@ -155,3 +157,7 @@
       path: /logistics/runbook
     - title: Cost
       path: /logistics/cost
+
+- title: How to contribute
+  pages:
+    - path: /contributing
