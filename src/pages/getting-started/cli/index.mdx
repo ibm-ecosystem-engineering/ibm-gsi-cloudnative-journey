@@ -336,13 +336,13 @@ one will also have the `ConfigMaps` and `Secrets` copied over.
 <Tabs>
 <Tab label="CLI">
 
-Create a `test` namespace
+Create a `test` namespace:
 
 ```bash
 igc sync test
 ```
 
-Create a `dev` namespace for development
+Create a `dev` namespace for development:
 
 ```bash
 igc sync dev --dev
@@ -357,30 +357,30 @@ export NAMESPACE="NAMESPACE"
 export SERVICE_ACCOUNT="default"
 
 if [[ $(kubectl get secrets -n "${NAMESPACE}" -o jsonpath='{ range .items[*] }{ .metadata.name }{ "\n" }{ end }' | grep icr | wc -l | xargs) -eq 0 ]]; then
-    echo "*** Copying pull secrets from default namespace to ${NAMESPACE} namespace"
+    echo "*** Copying pull secrets from default namespace to the ${NAMESPACE} namespace"
 
     kubectl get secrets -n default | grep icr | sed "s/\([A-Za-z-]*\) *.*/\1/g" | while read default_secret; do
         kubectl get secret ${default_secret} -n default -o yaml --export | sed "s/name: default-/name: /g" | kubectl -n ${NAMESPACE} create -f -
     done
 else
-    echo "*** Pull secrets already exist on ${NAMESPACE} namespace"
+    echo "*** Pull secrets already exist in the ${NAMESPACE} namespace"
 fi
 
 
 EXISTING_SECRETS=$(kubectl get serviceaccount/${SERVICE_ACCOUNT} -n "${NAMESPACE}" -o json  | tr '\n' ' ' | sed -E "s/.*imagePullSecrets.: \[([^]]*)\].*/\1/g" | grep icr | wc -l | xargs)
 if [[ ${EXISTING_SECRETS} -eq 0 ]]; then
-    echo "*** Adding secrets to serviceaccount/${SERVICE_ACCOUNT} in ${NAMESPACE} namespace"
+    echo "*** Adding secrets to serviceaccount/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
 
     PULL_SECRETS=$(kubectl get secrets -n "${NAMESPACE}" -o jsonpath='{ range .items[*] }{ "{\"name\": \""}{ .metadata.name }{ "\"}\n" }{ end }' | grep icr | grep -v "${NAMESPACE}" | paste -sd "," -)
     kubectl patch -n "${NAMESPACE}" serviceaccount/${SERVICE_ACCOUNT} -p "{\"imagePullSecrets\": [${PULL_SECRETS}]}"
 else
-    echo "*** Pull secrets already applied to serviceaccount/${SERVICE_ACCOUNT} in ${NAMESPACE} namespace"
+    echo "*** Pull secrets already applied to service account/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
 fi
 ```
 </Tab>
 <Tab label="Manual ConfigMap and Secret setup">
 
-The following steps will copy the `ConfigMaps` and `Secrets` from a template namespace to a target namespace:
+The following steps will copy `ConfigMaps` and `Secrets` from a template namespace to a target namespace:
 
 ```bash
   export TEMPLATE_NAMESPACE="tools"
@@ -402,40 +402,36 @@ The following steps will copy the `ConfigMaps` and `Secrets` from a template nam
 </Tab>
 </Tabs>
 
-## `pipeline`
+### `pipeline`
 
-Connects a branch in a Git repo to a either a Jenkins or Tekton CI pipeline in the <Globals name="env" /> and triggers
-an initial build. A webhook is also created so that when a new commit is added to the branch, the pipeline is triggered
-to start the process to rebuild and redeploy the app using the new code. The Git repo needs to be hosted using a site
-that supports triggers such as GitHub or GitLab.
+Connects a Git repository branch to either a Jenkins or Tekton CI pipeline in the <Globals name="env" /> and triggers
+an initial build. A webhook is created so that when a new commit is added to the branch, the pipeline is triggered
+to rebuild and redeploy the app with the updated code. The Git repository needs to be hosted in a service that supports triggers such as GitHub or GitLab.
 
-This command requires that the terminal is already logged in to the cluster. It also requires that the terminal's
-current directory is the repository directory for your local copy of the Git repo. The command uses the local Git
-repo's configuration to find the server copy.
+This command requires the user to be logged into the cluster through a terminal, and that the terminal's current directory be your local copy of the Git repository as it uses its configuration to find the server copy.
 
-If Jenkins or Tekton are not specified when the command is invoked then you will be prompted for which CI tool to use.
-The command will also prompt for the username and personal access token to access the Git repository, unless those are
-provided as command-line parameters. It will also prompt you for the branch to use to trigger builds; the default
-is the current branch.
+If Jenkins or Tekton are not specified when the command is invoked you will be prompted for which CI tool to use.
+The command will also prompt for the username and personal access token to access the Git repository unless those are
+provided as command-line parameters. It will also prompt you for the branch to use to trigger builds. The default is the current branch.
 
 **Command flags**
-- `-n`: the deployment namespace; if not provided the namespace from the current context will be used
-- `-u`: the username for accessing the Git repo
-- `-p`: the personal access token for accessing the Git repo
-- `--jenkins`: deploy using a Jenkins pipeline
-- `--tekton`: deploy using a Tekton pipeline
+- `-n`: the deployment namespace. If not provided, the namespace from the current context will be used.
+- `-u`: the username for accessing the Git repository.
+- `-p`: the personal access token for accessing the Git repository.
+- `--jenkins`: deploy using a Jenkins pipeline.
+- `--tekton`: deploy using a Tekton pipeline.
 
 **Usage**
 
 <Tabs>
 <Tab label="CLI">
-Create a Jenkins pipeline in the `dev` namespace and prompt for the Git credentials
+Create a Jenkins pipeline in the `dev` namespace and prompt for the Git credentials:
 
 ```bash
 igc pipeline --jenkins
 ```
 
-Create a Tekton pipeline in the `my-dev` namespace, using the Git credentials `gituser` and `gitpat`
+Create a Tekton pipeline in the `my-dev` namespace, using the Git credentials `gituser` and `gitpat`:
 
 ```bash
 igc pipeline -n my-dev -u gituser -p gitpat --tekton
@@ -443,34 +439,29 @@ igc pipeline -n my-dev -u gituser -p gitpat --tekton
 </Tab>
 <Tab label="Manual Steps for Tekton">
 
-The following is the list of steps required to manually configure a **Tekton**
-pipeline with your development cluster.
+The following steps are required to manually configure a **Tekton**
+pipeline in your development cluster:
 <br></br>
 
 
-- Configure the service account `pipeline` if it doesn't exist, on OpenShift 4 the operator takes care of this you can skip.
-  ```
+- Configure the service account `pipeline` if it doesn't exist. In OpenShift 4 the operator takes care of it, so you can skip this step.
+  ```bash
   oc create serviceaccount pipeline
   oc adm policy add-scc-to-user privileged -z pipeline
   oc adm policy add-role-to-user edit -z pipeline
   ```
-- Clone the tasks from the `tools` namespace into the `new-namespace`
+- Clone the tasks from the `tools` namespace into the `new-namespace` one:
   ```
   kubectl get tasks --export -o yaml -n tools  | sed s/"namespace: tools/namespace: $(oc project -q)"/ | kubectl apply -f -
   ```
-- Clone the pipelines from the `tools` namespace into the `new-namespace`
+- Clone the pipelines from the `tools` namespace into the `new-namespace` one:
   ```
   kubectl get pipelines --export -o yaml -n tools  | sed s/"namespace: tools/namespace: $(oc project -q)"/ | kubectl apply -f -
   ```
 
 ### Pipeline Resource
 
-- Create a Pipeline resource for the git repository, replace with the correct github url for your repository
-  Use the `tkn` CLI to create `git` resource input the github repo url for `url` and branch for `revision`
-  ```
-  tkn resource create
-  ```
-  Here is the an example of the cli
+- The `tkn` CLI creates a pipeline resource for a Git repository. Use `git` as resource type, replace the URL with the correct GitHub one for your repository, and set the desired branch for `revision`:
   ```
   tkn resource create
   ? Enter a name for a pipeline resource : nodejs-typescript-git
@@ -486,7 +477,7 @@ pipeline with your development cluster.
   ```
   Select `image` for type.
 
-  Enter the corresponding `url` for container registry, use the new-namespace} in the url
+  Enter the corresponding `url` for container registry, use the new-namespace} in the URL
 
   For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}/node-typescript:latest`
 
@@ -535,8 +526,8 @@ pipeline with your development cluster.
     - Click **Webhook** on the menu
     - Click **Add Webhook** and enter the information for the webhook
     - Name: **insert name**
-    - Repository UR: **template git repo url**
-    - Access Token: Create github access token with permission minimum write:repo_hook
+    - Repository URL: **template git repo URL**
+    - Access Token: Create GitHub access token with permission minimum write:repo_hook
     - Namespace: **insert namespace**
     - Pipeline: select **igc-java-gradle** or **igc-nodejs**
     - Service Account: **pipeline**
@@ -545,7 +536,7 @@ pipeline with your development cluster.
         - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}`
         - For external registry like IBM Container registry based on region use `us.icr.io/{namespace}` use an existing namespace in your IBM Cloud. Make sure to configure docker credentials in the Tekton Dashboard using your IAM API Key and `iamapikey` for username in your namespace.
 
-- Check that Webhook is created on the Github repository (Settings-Webhooks)
+- Check that Webhook is created on the GitHub repository (Settings-Webhooks)
 
 - Make a change to the git repo and push the change to remote git repository or click on **Pipelines**
 and manually kick of a pipeline build
@@ -670,7 +661,7 @@ spec:
 
 where:
  - `Name` is in the name of your pipeline
- - `Git-Repo-URL` is the https url to the git repository
+ - `Git-Repo-URL` is the https URL to the git repository
  - `{NAMESPACE}` is the development namespace where the pipelines will run
 
 2. Assuming you are still logged into the cluster, create the buildconfig resource in the cluster
@@ -704,7 +695,7 @@ where:
  - `{Name}` is the name used in the previous step for the build config
  - `{NAMESPACE}` is the development namespace where the pipelines will run
 
-The webhook url will have a structure similar to:
+The webhook URL will have a structure similar to:
 
 `http://{openshift_api_host:port}/oapi/v1/namespaces/{namespace}/buildconfigs/{name}/webhooks/{secret}/generic`
 
@@ -714,7 +705,7 @@ In this case `{secret}` will be `my-secret-value`
 
 3. Select `Settings` then `Webhooks`. Press `Add webhook`
 
-4. Paste the webhook url from the previous step into the `Payload url`
+4. Paste the webhook URL from the previous step into the `Payload url`
 
 5. Set the content-type to `application/json` and leave the rest of the values as the defaults
 
@@ -791,7 +782,7 @@ dealt with.
     curl -O https://ibm-garage-cloud.github.io/garage-pipelines/index.yaml
     ```
 
-3. Look through the `index.yaml` file to identify the url for the desired pipeline branch and version
+3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version
 
 4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball
 
