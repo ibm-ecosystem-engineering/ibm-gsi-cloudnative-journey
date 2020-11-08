@@ -470,44 +470,46 @@ pipeline in your development cluster:
   ? Enter a value for revision :  master
   New git resource "nodejs-typescript-git" has been created
   ```
-- Create a Pipeline resource for the docker image registry, you can use the internal registry in OpenShift or use an external registry like IBM Container Registry (credentials need setup)
-  Use the `tkn` CLI to create `image` resource
-  ```
-  tkn resource create
-  ```
-  Select `image` for type.
+- To create a Pipeline resource for the docker image registry, you can use the internal registry in OpenShift or use an external registry like IBM Container Registry (credentials need setup).
+  - With the `tkn` CLI, create an `image` resource:
+    ```
+    tkn resource create
+    ```
+  - Select `image` for type.
 
-  Enter the corresponding `url` for container registry, use the new-namespace} in the URL
+    - Enter the corresponding `url` for the container registry, and replace `{new-namespace}` with your namespace.
 
-  For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}/node-typescript:latest`
+    - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}/node-typescript:latest`.
 
-  For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}/node-typescript:latest`
+    - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}/node-typescript:latest`.
 
-  For external registry like IBM Container registry based on region use `us.icr.io/{namespace}/node-typescript:latest` use an existing namespace in your IBM Cloud
-  ```
-  tkn resource create
-  ? Enter a name for a pipeline resource : nodejs-typescript-image
-  ? Select a resource type to create : image
-  ? Enter a value for url :  docker-registry.default.svc:5000/dev/node-typescript:latest
-  ? Enter a value for digest :
-  New image resource "nodejs-typescript-image" has been created
-  ```
-- Select the pipeline, to show the available pipeline run
+    - For an external registry like IBM Container Registry based on region use `us.icr.io/{namespace}/node-typescript:latest`, replacing `{namespace}` with an existing namespace in your IBM Cloud.
+    ```
+    tkn resource create
+    ? Enter a name for a pipeline resource : nodejs-typescript-image
+    ? Select a resource type to create : image
+    ? Enter a value for url :  docker-registry.default.svc:5000/dev/node-typescript:latest
+    ? Enter a value for digest :
+    New image resource "nodejs-typescript-image" has been created
+    ```
+
+- List the available pipelines:
   ```
   tkn pipeline ls
   NAME              AGE              LAST RUN   STARTED   DURATION   STATUS
   igc-java-gradle   33 minutes ago   ---        ---       ---        ---
   igc-nodejs        33 minutes ago   ---        ---       ---        ---
   ```
-  In this case use `igc-java-gradle` for java or `igc-nodejs` for nodejs.
-- Run the Pipeline using the `git` and `image` Pipeline resources.
-  Set the following environment variable for convienience:
+  In this case we can use `igc-java-gradle` for java or `igc-nodejs` for nodejs.
+
+- Start the pipeline using the `git` and `image` pipeline resources.
+  Set the following environment variables for convienience:
   ```
   export PIPELINE=igc-nodejs
   export GIT=nodejs-typescript-git
   export IMAGE=nodejs-typescript-image
   ```
-  Then run the `tkn pipeline start` with the input arguments using the service account `pipeline`
+  Then run `tkn pipeline start` with the input arguments using the service account `pipeline`:
   ```
   tkn pipeline start \
   ${PIPELINE} \
@@ -522,53 +524,52 @@ pipeline in your development cluster:
 
 - Create a Webhook in the Tekton Dashboard
 
-
-    - Click **Webhook** on the menu
-    - Click **Add Webhook** and enter the information for the webhook
-    - Name: **insert name**
-    - Repository URL: **template git repo URL**
-    - Access Token: Create GitHub access token with permission minimum write:repo_hook
-    - Namespace: **insert namespace**
-    - Pipeline: select **igc-java-gradle** or **igc-nodejs**
-    - Service Account: **pipeline**
+  - Click **Webhook** on the menu.
+  - Click **Add Webhook** and enter the information for the webhook.
+    - Name: **insert name**.
+    - Repository URL: **template git repo URL**.
+    - Access Token: Create GitHub access token with permission minimum write:repo_hook.
+    - Namespace: **insert namespace**.
+    - Pipeline: select **igc-java-gradle** or **igc-nodejs**.
+    - Service Account: **pipeline**.
     - Docker Registry:
-        - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}`
-        - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}`
-        - For external registry like IBM Container registry based on region use `us.icr.io/{namespace}` use an existing namespace in your IBM Cloud. Make sure to configure docker credentials in the Tekton Dashboard using your IAM API Key and `iamapikey` for username in your namespace.
+      - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}`.
+      - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}`.
+      - For an external registry like IBM Container Registry based on region use `us.icr.io/{namespace}` replacing `{namespace}` with an existing namespace from your IBM Cloud. Make sure to configure docker credentials in the Tekton Dashboard using your IAM API Key and `iamapikey` for the your namespace username.
 
-- Check that Webhook is created on the GitHub repository (Settings-Webhooks)
+- Check that the webhook is created in the GitHub repository (Settings - Webhooks).
 
-- Make a change to the git repo and push the change to remote git repository or click on **Pipelines**
-and manually kick of a pipeline build
+- Make a commit to the git repo and push the commit to the remote git repository or click on **Pipelines**
+and manually trigger a pipeline build.
 
 </Tab>
 <Tab label="Manual steps for Jenkins on OpenShift">
 
-### 1. Provision Jenkins ephemeral
+### 1. Provision Jenkins Ephemeral
 
-Jenkins ephemeral provides a kubernetes native version of Jenkins that dynamically provisions build agents on-demand.
-It's _ephemeral_ meaning it doesn't allocate any persistent storage in the cluster.
+Jenkins Ephemeral provides a Kubernetes native version of Jenkins that dynamically provisions build agents on-demand.
+It's _ephemeral_ in the sense that it doesn't allocate any persistent storage in the cluster.
 
-1. Set the project/namespace
+1. Set the project/namespace:
 
 ```bash
 oc project {NAMESPACE}
 ```
 
 where:
-- `{NAMESPACE}` is the development namespace where the pipelines will run
+- `{NAMESPACE}` is the development namespace where the pipelines will run.
 
-2. Run the following command to provision the Jenkins instance in your namespace
+2. Run the following command to provision the Jenkins instance in your namespace:
 
 ```bash
 oc new-app jenkins-ephemeral
 ```
 
-3. Open the OpenShift console as described in the login steps above
+3. Open the OpenShift console as described in the login steps above.
 
-4. Select `Workloads -> Pods` from the left-hand menu
+4. Select `Workloads -> Pods` from the left-hand menu.
 
-5. At the top of the page select your project/namespace from the drop-down list to see the Jenkins instance running
+5. At the top of the page select your project/namespace from the drop-down list to see the Jenkins instance running.
 
 ### 2. Give the `jenkins` service account `privileged` access
 
