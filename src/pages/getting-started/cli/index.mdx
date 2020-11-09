@@ -168,7 +168,7 @@ igc dashboard
 
 The following commands does the same function on OpenShift:
 
-```shell script
+```bash
 HOST=$(oc get routes/dashboard -n tools -o jsonpath='{.spec.host}')
 open "https://$HOST"
 ```
@@ -187,18 +187,14 @@ open "https://$HOST"
 
 **Related commands**
 
-- [`credentials`](#credentials): shows information about the same tools shown in the dashboard from the command-line.
-- [`tool-config`](#tool-config): allows configuration for additional tools to be added to the cluster, making them available to the dashboard and `credentials` command.
+- [`credentials`](#credentials): shows the same credentials information that can be seen in the dashboard.
+- [`tool-config`](#tool-config): allows adding configuration for additional tools to the cluster, making them available to the dashboard and the `credentials` command.
 
 ### `credentials`
 
-Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to
-get the login credentials for each of the installed tools. Ideally all of the tools would be accessible via SSO at which
-point this command will be obsolete.
+Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to get the login credentials for each of the installed tools. Ideally, all of the tools will be accessible via SSO, at which point this command will be obsolete.
 
-The command works by reading information available in the cluster. When each tool is installed by the toolkit, a
-`config map` and `secret` are created to store the URL and credential for the tool. That information is used in a
-number of different ways within the environment:
+This command works by reading the information available in the cluster. For each tool installed by the toolkit, a config map and a secret are created to store its URL and credentials. This information is used in several ways within the environment:
 
 - Provide configuration information to the pipelines.
 - Populate the tiles on the Developer Dashboard.
@@ -207,7 +203,7 @@ number of different ways within the environment:
 This command requires that the login context for the cluster has already been established.
 
 **Command flags**
-- `-n`: the namespace where the tools have been deployed; the default is `tools`
+- `-n`: the namespace where the tools have been deployed. The default value is `tools`.
 
 **Usage**
 
@@ -216,13 +212,13 @@ This command requires that the login context for the cluster has already been es
 
 The command is used in the following way:
 
-```shell script
+```bash
 igc credentials
 ```
 
-The credential output is JSON format like this
+It will output the credentials in JSON format:
 
-```shell script
+```bash
 Credentials:  {
   argocd: {
     user: 'admin',
@@ -240,9 +236,9 @@ Credentials:  {
 </Tab>
 <Tab label="OpenShift or Kubernetes">
 
-The following commands have the same result (note the dependency on `jq`):
+The following commands does the same function (note the dependency on `jq`):
 
-```shell script
+```bash
 # config maps
 kubectl get configmap -n tools -l grouping=garage-cloud-native-toolkit -o json | \
   jq '[.items[] | select(.metadata.name != "ibmcloud-config").data]'
@@ -254,24 +250,14 @@ kubectl get secret -n tools -l grouping=garage-cloud-native-toolkit -o json | \
 </Tab>
 </Tabs>
 
-**Related commands**
+### `endpoints`
 
-- [dashboard](#dashboard): displays the url of the Developer Dashboard and launches the default browser
-- [tool-config](#tool-config): allows configuration for additional tools to be added to the cluster, making them
-available to the dashboard and `credentials` command
-
-## endpoints
-
-Lists the ingress and/or route URLs for the applications in a given namespace. An attempt will be made to get the
-namespace from the current context if one is not provided as an argument. Results of the command are provided in an
-interactive menu. If one of the endpoints is selected, it will display the URL and launch it in the default browser.
-Selecting `Exit` will print the full list of endpoints and exit.
+Lists the ingress and/or route URLs for the applications in a given namespace. If a namespace is not provided as an argument, it will try to get it from the current context. The results are shown in an interactive menu. If one of the endpoints is selected, it will display the URL and launch it in the default browser. Selecting `Exit` will print the full list of endpoints and exit.
 
 This command requires that the login context for the cluster has already been established.
 
 **Command flags**
-- `-n`: the namespace from which the endpoints will be read; the value will be read from the current context if not
-provided
+- `-n`: the namespace from which the endpoints will be retrieved. The value will be read from the current context if not provided.
 
 **Usage**
 
@@ -289,7 +275,7 @@ igc endpoints
 
 The following commands list the route and ingress endpoints:
 
-```shell script
+```bash
 # routes
 kubectl get route -n tools
 
@@ -301,66 +287,64 @@ kubectl get ingress -n tools
 
 The following commands list the ingress endpoints:
 
-```shell script
+```bash
 kubectl get ingress -n tools
 ```
 </Tab>
 </Tabs>
 
-## sync
+### `sync`
 
 Creates a Kubernetes namespace or OpenShift project (if it doesn't already exist) and sets it up so that the namespace
-can be used as a target for application deployments and/or to host the <Globals name="env" />. The command performs two
-major functions - 1) set up a service account in the namespace with the pull secret(s) for the IBM Container Registry
-and 2) synchronize the `ConfigMaps` and `Secrets` from a template namespace to create a "development" namespace. After
-the command has run successfully it will set the provided namespace in the current context
-(e.g. equivalent to `oc project X`)
+can be used as a target for application deployments and/or host the <Globals name="env" />.
 
-The pull secret(s) are required in order for pods to pull images that are stored in the IBM Container Registry.
-When the cluster is created in IBM Cloud, a pull secret is provided in the `default` namespace. In order for a
-pod in another namespace to use it, the secret must first be copied into the namespace. After that, the pod either
-needs to reference the pull secret directly or the service account used by the resource needs to have a reference to
-the secret. The CLI copies the pull secret over and adds it to the service account so the pod can take either
-approach.
+The command performs two major functions, 1) set up a service account in the namespace with the pull secret(s) for the IBM Container Registry and 2) synchronize the `ConfigMaps` and `Secrets` from a template namespace to create a "development" namespace.
 
-The other function this command performs is to copy relevant `ConfigMaps` and `Secrets` into the namespace that are
-needed for development activities. Managing resources across namespaces (particularly `ConfigMaps` and `Secrets`) is a
+Once the command has run successfully, it will set the provided namespace in the current context (e.g. equivalent to `oc project X`).
+
+The pull secret(s) are required for pods to pull images stored in the IBM Container Registry. When a cluster is created in IBM Cloud, a pull secret is provided in the `default` namespace.
+
+For a pod in another namespace to use the pull secret, it must first be copied into that namespace. After that, the pod either
+needs to reference the pull secret directly, or the service account used by the resource needs to have a reference to
+the secret. The CLI copies the pull secret over and adds it to the service account so the pod can take either approach.
+
+The other function this command performs is to copy relevant `ConfigMaps` and `Secrets` needed for development into the namespace. Managing resources across namespaces (particularly `ConfigMaps` and `Secrets`) is a
 common challenge in Kubernetes environments. We have provided the command at this time to simplify the steps required
-to get everything ready. Ultimately, this problem seems like an ideal one for an Operator to solve and when one is
-available (either from the Toolkit or elsewhere) this command will be retired or transitioned.
+to get everything ready. Ultimately, this problem seems like an ideal one for a command to solve and when another one is
+available (either from the Toolkit or elsewhere) this one will be retired or transitioned.
 
 There are two different types of namespaces that the command will set up:
 
-- "release" namespace where applications can be deployed (e.g. test, staging)
+- "release" namespace where applications can be deployed (e.g. test, staging).
 
 -OR-
 
 - "development" namespace where DevOps pipelines can be run and where application components can be deployed
-(e.g. dev)
+(e.g. dev).
 
 Both "release" and "development" namespaces will have the pull secret(s) created. However, only the "development"
-namespace will also have the `ConfigMaps` and `Secrets` copied over.
+one will also have the `ConfigMaps` and `Secrets` copied over.
 
 **Command flags**
-- `-t`: the template namespace that will be the source of the `config maps` and `secrets`; the default is `tools`
-- `-z`: the name of the service account; the default is `default`
-- `--dev`: flag indicating the namespace should be set for development
-- `--verbose`: flag indicating that the console output should persist on the screen
+- `-t`: the template namespace that will be the source of the `config maps` and `secrets`. The default is `tools`.
+- `-z`: the name of the service account. The default is `default`.
+- `--dev`: flag indicating the namespace should be set for development.
+- `--verbose`: flag indicating that the console output should persist on the screen.
 
 **Usage**
 
 <Tabs>
 <Tab label="CLI">
 
-Create a `test` namespace
+Create a `test` namespace:
 
-```shell script
+```bash
 igc sync test
 ```
 
-Create a `dev` namespace for development
+Create a `dev` namespace for development:
 
-```shell script
+```bash
 igc sync dev --dev
 ```
 </Tab>
@@ -368,37 +352,37 @@ igc sync dev --dev
 
 The following commands will copy the pull secret(s) from the `default` namespace and add them to the service account:
 
-```shell script
+```bash
 export NAMESPACE="NAMESPACE"
 export SERVICE_ACCOUNT="default"
 
 if [[ $(kubectl get secrets -n "${NAMESPACE}" -o jsonpath='{ range .items[*] }{ .metadata.name }{ "\n" }{ end }' | grep icr | wc -l | xargs) -eq 0 ]]; then
-    echo "*** Copying pull secrets from default namespace to ${NAMESPACE} namespace"
+    echo "*** Copying pull secrets from default namespace to the ${NAMESPACE} namespace"
 
     kubectl get secrets -n default | grep icr | sed "s/\([A-Za-z-]*\) *.*/\1/g" | while read default_secret; do
         kubectl get secret ${default_secret} -n default -o yaml --export | sed "s/name: default-/name: /g" | kubectl -n ${NAMESPACE} create -f -
     done
 else
-    echo "*** Pull secrets already exist on ${NAMESPACE} namespace"
+    echo "*** Pull secrets already exist in the ${NAMESPACE} namespace"
 fi
 
 
 EXISTING_SECRETS=$(kubectl get serviceaccount/${SERVICE_ACCOUNT} -n "${NAMESPACE}" -o json  | tr '\n' ' ' | sed -E "s/.*imagePullSecrets.: \[([^]]*)\].*/\1/g" | grep icr | wc -l | xargs)
 if [[ ${EXISTING_SECRETS} -eq 0 ]]; then
-    echo "*** Adding secrets to serviceaccount/${SERVICE_ACCOUNT} in ${NAMESPACE} namespace"
+    echo "*** Adding secrets to serviceaccount/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
 
     PULL_SECRETS=$(kubectl get secrets -n "${NAMESPACE}" -o jsonpath='{ range .items[*] }{ "{\"name\": \""}{ .metadata.name }{ "\"}\n" }{ end }' | grep icr | grep -v "${NAMESPACE}" | paste -sd "," -)
     kubectl patch -n "${NAMESPACE}" serviceaccount/${SERVICE_ACCOUNT} -p "{\"imagePullSecrets\": [${PULL_SECRETS}]}"
 else
-    echo "*** Pull secrets already applied to serviceaccount/${SERVICE_ACCOUNT} in ${NAMESPACE} namespace"
+    echo "*** Pull secrets already applied to service account/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
 fi
 ```
 </Tab>
 <Tab label="Manual ConfigMap and Secret setup">
 
-The following steps will copy the `ConfigMaps` and `Secrets` from a template namespace to a target namespace:
+The following steps will copy `ConfigMaps` and `Secrets` from a template namespace to a target namespace:
 
-```shell script
+```bash
   export TEMPLATE_NAMESPACE="tools"
   export NAMESPACE="NAMESPACE"
 
@@ -418,75 +402,66 @@ The following steps will copy the `ConfigMaps` and `Secrets` from a template nam
 </Tab>
 </Tabs>
 
-## pipeline
+### `pipeline`
 
-Connects a branch in a Git repo to a either a Jenkins or Tekton CI pipeline in the <Globals name="env" /> and triggers
-an initial build. A webhook is also created so that when a new commit is added to the branch, the pipeline is triggered
-to start the process to rebuild and redeploy the app using the new code. The Git repo needs to be hosted using a site
-that supports triggers such as GitHub or GitLab.
+Connects a Git repository branch to either a Jenkins or Tekton CI pipeline in the <Globals name="env" /> and triggers
+an initial build. A webhook is created so that when a new commit is added to the branch, the pipeline is triggered
+to rebuild and redeploy the app with the updated code. The Git repository needs to be hosted in a service that supports triggers such as GitHub or GitLab.
 
-This command requires that the terminal is already logged in to the cluster. It also requires that the terminal's
-current directory is the repository directory for your local copy of the Git repo. The command uses the local Git
-repo's configuration to find the server copy.
+This command requires the user to be logged into the cluster through a terminal, and that the terminal's current directory be your local copy of the Git repository as it uses its configuration to find the server copy.
 
-If Jenkins or Tekton are not specified when the command is invoked then you will be prompted for which CI tool to use.
-The command will also prompt for the username and personal access token to access the Git repository, unless those are
-provided as command-line parameters. It will also prompt you for the branch to use to trigger builds; the default
-is the current branch.
+If Jenkins or Tekton are not specified when the command is invoked you will be prompted for which CI tool to use.
+The command will also prompt for the username and personal access token to access the Git repository unless those are
+provided as command-line parameters. It will also prompt you for the branch to use to trigger builds. The default is the current branch.
 
 **Command flags**
-- `-n`: the deployment namespace; if not provided the namespace from the current context will be used
-- `-u`: the username for accessing the Git repo
-- `-p`: the personal access token for accessing the Git repo
-- `--jenkins`: deploy using a Jenkins pipeline
-- `--tekton`: deploy using a Tekton pipeline
+- `-n`: the deployment namespace. If not provided, the namespace from the current context will be used.
+- `-u`: the username for accessing the Git repository.
+- `-p`: the personal access token for accessing the Git repository.
+- `--jenkins`: deploy using a Jenkins pipeline.
+- `--tekton`: deploy using a Tekton pipeline.
 
 **Usage**
 
 <Tabs>
 <Tab label="CLI">
-Create a Jenkins pipeline in the `dev` namespace and prompt for the Git credentials
+Create a Jenkins pipeline in the `dev` namespace and prompt for the Git credentials:
 
-```shell script
+```bash
 igc pipeline --jenkins
 ```
 
-Create a Tekton pipeline in the `my-dev` namespace, using the Git credentials `gituser` and `gitpat`
+Create a Tekton pipeline in the `my-dev` namespace, using the Git credentials `gituser` and `gitpat`:
 
-```shell script
+```bash
 igc pipeline -n my-dev -u gituser -p gitpat --tekton
 ```
 </Tab>
 <Tab label="Manual Steps for Tekton">
 
-The following is the list of steps required to manually configure a **Tekton**
-pipeline with your development cluster.
+The following steps are required to manually configure a **Tekton**
+pipeline in your development cluster:
 <br></br>
 
 
-- Configure the service account `pipeline` if it doesn't exist, on OpenShift 4 the operator takes care of this you can skip.
-  ```
+- Configure the service account `pipeline` if it doesn't exist. In OpenShift 4 the operator takes care of it, so you can skip this step.
+  ```bash
   oc create serviceaccount pipeline
   oc adm policy add-scc-to-user privileged -z pipeline
   oc adm policy add-role-to-user edit -z pipeline
   ```
-- Clone the tasks from the `tools` namespace into the `new-namespace`
+- Clone the tasks from the `tools` namespace into the `new-namespace` one:
   ```
   kubectl get tasks --export -o yaml -n tools  | sed s/"namespace: tools/namespace: $(oc project -q)"/ | kubectl apply -f -
   ```
-- Clone the pipelines from the `tools` namespace into the `new-namespace`
+- Clone the pipelines from the `tools` namespace into the `new-namespace` one:
   ```
   kubectl get pipelines --export -o yaml -n tools  | sed s/"namespace: tools/namespace: $(oc project -q)"/ | kubectl apply -f -
   ```
 
 ### Pipeline Resource
 
-- Create a Pipeline resource for the git repository, replace with the correct github url for your repository
-  Use the `tkn` CLI to create `git` resource input the github repo url for `url` and branch for `revision`
-  ```
-  tkn resource create
-  ```
-  Here is the an example of the cli
+- The `tkn` CLI creates a pipeline resource for a Git repository. Use `git` as resource type, replace the URL with the correct GitHub one for your repository, and set the desired branch for `revision`:
   ```
   tkn resource create
   ? Enter a name for a pipeline resource : nodejs-typescript-git
@@ -495,44 +470,46 @@ pipeline with your development cluster.
   ? Enter a value for revision :  master
   New git resource "nodejs-typescript-git" has been created
   ```
-- Create a Pipeline resource for the docker image registry, you can use the internal registry in OpenShift or use an external registry like IBM Container Registry (credentials need setup)
-  Use the `tkn` CLI to create `image` resource
-  ```
-  tkn resource create
-  ```
-  Select `image` for type.
+- To create a Pipeline resource for the docker image registry, you can use the internal registry in OpenShift or use an external registry like IBM Container Registry (credentials need setup).
+  - With the `tkn` CLI, create an `image` resource:
+    ```
+    tkn resource create
+    ```
+  - Select `image` for type.
 
-  Enter the corresponding `url` for container registry, use the new-namespace} in the url
+    - Enter the corresponding `url` for the container registry, and replace `{new-namespace}` with your namespace.
 
-  For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}/node-typescript:latest`
+    - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}/node-typescript:latest`.
 
-  For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}/node-typescript:latest`
+    - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}/node-typescript:latest`.
 
-  For external registry like IBM Container registry based on region use `us.icr.io/{namespace}/node-typescript:latest` use an existing namespace in your IBM Cloud
-  ```
-  tkn resource create
-  ? Enter a name for a pipeline resource : nodejs-typescript-image
-  ? Select a resource type to create : image
-  ? Enter a value for url :  docker-registry.default.svc:5000/dev/node-typescript:latest
-  ? Enter a value for digest :
-  New image resource "nodejs-typescript-image" has been created
-  ```
-- Select the pipeline, to show the available pipeline run
+    - For an external registry like IBM Container Registry based on region use `us.icr.io/{namespace}/node-typescript:latest`, replacing `{namespace}` with an existing namespace in your IBM Cloud.
+    ```
+    tkn resource create
+    ? Enter a name for a pipeline resource : nodejs-typescript-image
+    ? Select a resource type to create : image
+    ? Enter a value for url :  docker-registry.default.svc:5000/dev/node-typescript:latest
+    ? Enter a value for digest :
+    New image resource "nodejs-typescript-image" has been created
+    ```
+
+- List the available pipelines:
   ```
   tkn pipeline ls
   NAME              AGE              LAST RUN   STARTED   DURATION   STATUS
   igc-java-gradle   33 minutes ago   ---        ---       ---        ---
   igc-nodejs        33 minutes ago   ---        ---       ---        ---
   ```
-  In this case use `igc-java-gradle` for java or `igc-nodejs` for nodejs.
-- Run the Pipeline using the `git` and `image` Pipeline resources.
-  Set the following environment variable for convienience:
+  In this case we can use `igc-java-gradle` for java or `igc-nodejs` for nodejs.
+
+- Start the pipeline using the `git` and `image` pipeline resources.
+  Set the following environment variables for convienience:
   ```
   export PIPELINE=igc-nodejs
   export GIT=nodejs-typescript-git
   export IMAGE=nodejs-typescript-image
   ```
-  Then run the `tkn pipeline start` with the input arguments using the service account `pipeline`
+  Then run `tkn pipeline start` with the input arguments using the service account `pipeline`:
   ```
   tkn pipeline start \
   ${PIPELINE} \
@@ -547,53 +524,52 @@ pipeline with your development cluster.
 
 - Create a Webhook in the Tekton Dashboard
 
-
-    - Click **Webhook** on the menu
-    - Click **Add Webhook** and enter the information for the webhook
-    - Name: **insert name**
-    - Repository UR: **template git repo url**
-    - Access Token: Create github access token with permission minimum write:repo_hook
-    - Namespace: **insert namespace**
-    - Pipeline: select **igc-java-gradle** or **igc-nodejs**
-    - Service Account: **pipeline**
+  - Click **Webhook** on the menu.
+  - Click **Add Webhook** and enter the information for the webhook.
+    - Name: **insert name**.
+    - Repository URL: **template git repo URL**.
+    - Access Token: Create GitHub access token with permission minimum write:repo_hook.
+    - Namespace: **insert namespace**.
+    - Pipeline: select **igc-java-gradle** or **igc-nodejs**.
+    - Service Account: **pipeline**.
     - Docker Registry:
-        - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}`
-        - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}`
-        - For external registry like IBM Container registry based on region use `us.icr.io/{namespace}` use an existing namespace in your IBM Cloud. Make sure to configure docker credentials in the Tekton Dashboard using your IAM API Key and `iamapikey` for username in your namespace.
+      - For OCP 3 internal registry use `docker-registry.default.svc:5000/{new-namespace}`.
+      - For OCP 4 or CRC internal registry use `image-registry.openshift-image-registry.svc:5000/{new-namespace}`.
+      - For an external registry like IBM Container Registry based on region use `us.icr.io/{namespace}` replacing `{namespace}` with an existing namespace from your IBM Cloud. Make sure to configure docker credentials in the Tekton Dashboard using your IAM API Key and `iamapikey` for the your namespace username.
 
-- Check that Webhook is created on the Github repository (Settings-Webhooks)
+- Check that the webhook is created in the GitHub repository (Settings - Webhooks).
 
-- Make a change to the git repo and push the change to remote git repository or click on **Pipelines**
-and manually kick of a pipeline build
+- Make a commit to the git repo and push the commit to the remote git repository or click on **Pipelines**
+and manually trigger a pipeline build.
 
 </Tab>
 <Tab label="Manual steps for Jenkins on OpenShift">
 
-### 1. Provision Jenkins ephemeral
+### 1. Provision Jenkins Ephemeral
 
-Jenkins ephemeral provides a kubernetes native version of Jenkins that dynamically provisions build agents on-demand.
-It's _ephemeral_ meaning it doesn't allocate any persistent storage in the cluster.
+Jenkins Ephemeral provides a Kubernetes native version of Jenkins that dynamically provisions build agents on-demand.
+It's _ephemeral_ in the sense that it doesn't allocate any persistent storage in the cluster.
 
-1. Set the project/namespace
+1. Set the project/namespace:
 
-```shell script
+```bash
 oc project {NAMESPACE}
 ```
 
 where:
-- `{NAMESPACE}` is the development namespace where the pipelines will run
+- `{NAMESPACE}` is the development namespace where the pipelines will run.
 
-2. Run the following command to provision the Jenkins instance in your namespace
+2. Run the following command to provision the Jenkins instance in your namespace:
 
-```shell script
+```bash
 oc new-app jenkins-ephemeral
 ```
 
-3. Open the OpenShift console as described in the login steps above
+3. Open the OpenShift console as described in the login steps above.
 
-4. Select `Workloads -> Pods` from the left-hand menu
+4. Select `Workloads -> Pods` from the left-hand menu.
 
-5. At the top of the page select your project/namespace from the drop-down list to see the Jenkins instance running
+5. At the top of the page select your project/namespace from the drop-down list to see the Jenkins instance running.
 
 ### 2. Give the `jenkins` service account `privileged` access
 
@@ -605,7 +581,7 @@ With the Jenkins build engine, all the build processes run as the `jenkins` serv
 container to run as root on OpenShift we will need to give the `privileged` security context constraint (scc) to
 `jenkins` service account with the following command:
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc adm policy add-scc-to-user privileged -z jenkins
 ```
@@ -644,7 +620,7 @@ where:
 
 2. After logging into the cluster, create the secret by running the following:
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc create -f gitsecret.yaml
 ```
@@ -686,12 +662,12 @@ spec:
 
 where:
  - `Name` is in the name of your pipeline
- - `Git-Repo-URL` is the https url to the git repository
+ - `Git-Repo-URL` is the https URL to the git repository
  - `{NAMESPACE}` is the development namespace where the pipelines will run
 
 2. Assuming you are still logged into the cluster, create the buildconfig resource in the cluster
 
-```shell script
+```bash
 oc project {NAMESPACE}
 oc create -f buildconfig.yaml
 ```
@@ -720,7 +696,7 @@ where:
  - `{Name}` is the name used in the previous step for the build config
  - `{NAMESPACE}` is the development namespace where the pipelines will run
 
-The webhook url will have a structure similar to:
+The webhook URL will have a structure similar to:
 
 `http://{openshift_api_host:port}/oapi/v1/namespaces/{namespace}/buildconfigs/{name}/webhooks/{secret}/generic`
 
@@ -730,7 +706,7 @@ In this case `{secret}` will be `my-secret-value`
 
 3. Select `Settings` then `Webhooks`. Press `Add webhook`
 
-4. Paste the webhook url from the previous step into the `Payload url`
+4. Paste the webhook URL from the previous step into the `Payload url`
 
 5. Set the content-type to `application/json` and leave the rest of the values as the defaults
 
@@ -782,7 +758,7 @@ dealt with.
 
 2. Apply the pipeline updates using the CLI command
 
-```shell script
+```bash
 igc enable
 ```
 
@@ -803,22 +779,22 @@ dealt with.
 
 2. Download the `index.yaml` file containing the available pipeline versions
 
-    ```shell script
+    ```bash
     curl -O https://ibm-garage-cloud.github.io/garage-pipelines/index.yaml
     ```
 
-3. Look through the `index.yaml` file to identify the url for the desired pipeline branch and version
+3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version
 
 4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball
 
-    ```shell script
+    ```bash
     curl -O ${PIPELINE_URL}
     ```
 
 5. Extract the tar-ball into your repository directory. You will be prompted to overwrite files. Overwrite as
 appropriate
 
-    ```shell script
+    ```bash
     tar xzf ${PIPELINE_FILE}
     ```
 
