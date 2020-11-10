@@ -30,7 +30,7 @@ const Content = () => (
 const links = {
     firstCol: [
         {
-            href: '/contribute',
+            href: '/contributing',
             linkText: 'Contribute',
         },
         { href: 'https://www.ibm.com/privacy', linkText: 'Privacy' },

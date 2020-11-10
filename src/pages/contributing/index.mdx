@@ -50,7 +50,7 @@ Have questions? Found a bug? Learn where to go and what to do by visiting the [S
 
 ## Contributing
 
-## Requirements
+### Requirements
 
 Set up your SSH Key GitHub account and install node.js 11 or higher.
 
@@ -62,7 +62,7 @@ Set up your SSH Key GitHub account and install node.js 11 or higher.
 ### Make a pull request
 
 **Note:** Before you make a pull request,
-[search](https://github.com/IBM/carbon-components/issues) the issues to see if a
+[search](https://github.com/ibm-gsi-ecosystem/ibm-gsi-cloudnative-journey/issues) the issues to see if a
 similar issue has already been submitted. If a similar issue has been submitted,
 assign yourself or ask to be assigned to the issue by posting a comment. If the
 issue does not exist, create a new issue.
@@ -70,42 +70,91 @@ issue does not exist, create a new issue.
 When you're at a good stopping place and you're ready for feedback from other
 contributors and maintainers, **push your commits to your fork**:
 
-#### Commit tip
+#### Commit message format
 
-> **Writing commit messages**
->
-> - `<type>` indicates the type of commit that's being made. This can be:
->   `feat`, `fix`, `perf`, `docs`, `chore`, `style`, `refactor`
-> - `<scope>` The scope could be anything specifying place of the commit change
->   or the thing(s) that changed.
->
-> **Commit message format:**
+Each commit message should clearly describe the changes that are being made. During the
+development process as many small changes are made, a single one-liner is sufficient for
+the commit message.
 
-```
-<type>(<scope>): <subject>
-<BLANK LINE>
-<body>
-<BLANK LINE>
-<footer>
-```
+With larger changes or when the changes in the branch are squashed into a single commit,
+the following commit message format is preferred.
 
-_Do not submit pull requests from the `master` branch of your fork._
-
-```
-git checkout -b { YOUR_BRANCH_NAME }
-git add .
-git commit -m "fix(table): IE11 positioning error" -m "Fixes #34"
-```
+_Writing commit messages_
 
 - [Close a commit via commit message](https://help.github.com/articles/closing-issues-via-commit-messages/)
+- `<type>` indicates the type of commit that’s being made. This can be: `feat`, `fix`, `perf`, `docs`, `chore`, `style`, `refactor`.
+- `<scope>` the scope could be anything specifying place of the commit change or the thing(s) that changed.
+- `<subject>` the subject should be a short overview of the change.
+- `<body>` the body should be a detailed description of the change(s). This can be prose or a bulleted listing.
+- `<issue reference>` the issue reference should be a reference to the issue number under which this change is being 
+made. The issue reference should be in the format of `{git org}/{git repo}#{issue number}`
 
-```
-git push origin { YOUR_BRANCH_NAME }
-```
 
-In your browser, navigate to
-[IBM/carbon-components](https://github.com/IBM/carbon-components) and click the
-button that reads `Compare & pull request`
+_Commit message format:_
+    
+  ```bash
+     <BLANK LINE>
+     <body>
+     <BLANK LINE>
+     <issue reference>
+  ```
+                                                                                                                                                                                                                                                                                 ```
+
+#### Create a draft pull request when the branch is first pushed to the fork
+
+GitHub recently introduced `draft` pull requests that allow a pull request to be recorded but
+marked as not yet ready for review. Git provides a url to open a pull request the first time a branch
+is first pushed to the remote, which gives an excellent and easy opportunity to create the draft.
+
+**Note**: Be sure to link the pull request with the issue
+
+Creating a draft pull request early has the following benefits:
+
+1. Clicking the link provided by Git sets up the source and target repos/branches for you so you don't
+need to hunt around
+2. Having the draft pull request gives insight for everyone else where the work is being done
+
+#### Push changes to your fork frequently during development
+
+As you are making changes, push them frequently to the fork. This ensures that your code is backed up
+somewhere and allows everyone else to see what activity is happening. It also means that if you get
+pulled into some other work, the latest version of your changes are available for others to possibly
+pick up where you left off.
+
+#### Pull in the latest changes from master frequently and rebase your branch
+
+It is good to make sure you are always working off of the latest code from the upstream. With the 
+changes in a separate branch, it is easy to bring in upstream changes with the following steps:
+
+1. Checkout master in the local clone
+
+  ```shell script
+  git checkout master
+  ```
+
+2. Pull in the changes from the `upstream` repository
+
+  ```shell script
+  git pull
+  ```
+
+3. Check out your branch
+
+  ```shell script
+  git checkout {branch}
+  ```
+
+4. Rebase your branch on master
+
+  ```shell script
+  git rebase master
+  ```
+
+5. Force push the changes
+
+  ```shell script
+  git push --force-with-lease
+  ```
 
 > **Is it a Breaking Change?**
 

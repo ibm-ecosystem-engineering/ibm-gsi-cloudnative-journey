@@ -151,9 +151,24 @@ Execute the following steps in the same order on the gitpod terminal:
    ```bash
       cd /workspace/bin
       curl -sL https://ibm.biz/idt-installer | bash
-      wget https://downloads-openshift-console.appdev-cloudnative-ocp4-3b1fc50af0b2002f0241bdf5d2432efd-0000.eu-gb.containers.appdomain.cloud/amd64/linux/oc.tar
-      tar -xvf oc.tar
    ```
+      
+  Navigate to the OpenShift Console page.
+  Click on QuestionMark(?) icon and select Command Line Tools.
+
+  ![ocinstall](./images/gitpod_ocinstall.png)
+
+  Go to "Download oc for Linux for x86_64" under oc and copy the download link.
+  Download it using wget command.
+  Eg:  wget https://downloads-openshift-console.appdev-cloud-native-ocp-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/amd64/linux/oc.tar 
+  Untar the oc installer in /workspace/bin folder: 
+  
+  ```bash
+     cd /workspace/bin
+     wget <oc_installer_download_link>
+     tar -xvf oc.tar
+  ```
+   
 
 - Install `igc` by running the following commands on terminal:
   
