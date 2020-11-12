@@ -728,24 +728,24 @@ TBD
 
 ### `enable`
 
-Adds DevOps artifacts to a Git repo that the <Globals name="env" /> uses to deploy the app. The command displays a
-list of available pipelines and applies the one you select to your code repo. The DevOps files added to your repo
- include (but are not limited to):
+Adds DevOps artifacts to a Git repository that the <Globals name="env" /> uses to deploy the app. The command displays a
+list of available pipelines and applies the one you select to your repository. 
 
-- Helm chart
-- Jenkinsfile
+This command DOES NOT require the user to be logged into an IBM Cloud account nor the cluster through the terminal. It DOES
+require that the terminal's current directory is the one for your local copy of the Git repository.
 
-This command DOES NOT require that the terminal is already logged in to an IBM Cloud account nor the cluster. It DOES
-require that the terminal's current directory is the repository directory for your local copy of the Git repo.
+The command will add several files to the local repo which you need to commit and push them to the server repo. These include (but are not limited to):
 
-The command will add files to the local repo. You should commit these new files and push them to the server repo.
-Then run `igc pipeline` to connect your repo to a pipeline in the environment.
+- Helm chart.
+- `Jenkinsfile`.
+
+Once these are pushed, run `igc pipeline` to connect your repo to a pipeline in the environment.
 
 **Command flags**
-- `--repo`: the set of pipelines to choose from; the default is https://github.com/ibm-garage-cloud/garage-pipelines
-- `-p`: the name of the pipeline that should be installed; if not provided then you will be prompted
-- `-b`: the branch from which the pipeline should be installed; the default is `stable`
-- `r`: the version number of the pipeline that should be installed; the default is `latest`
+- `--repo`: the set of pipelines to choose from; the default is https://github.com/ibm-garage-cloud/garage-pipelines.
+- `-p`: the name of the pipeline to be installed. If not provided, you will be prompted for it.
+- `-b`: the branch from which the pipeline will be installed. The default is `stable`.
+- `r`: the version number of the pipeline to be installed. The default is `latest`.
 
 **Usage**
 
@@ -756,7 +756,7 @@ Then run `igc pipeline` to connect your repo to a pipeline in the environment.
 changes or stash them temporarily with `git stash`. It is particularly important that any changes to the pipeline be
 dealt with.
 
-2. Apply the pipeline updates using the CLI command
+2. Apply the pipeline updates using the following CLI command:
 
 ```bash
 igc enable
@@ -764,46 +764,45 @@ igc enable
 
 3. Review the changes using `git diff` and revert any application-specific changes that should remain (e.g.
 customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml`, customizations
-to the templates in the `helm chart`)
+to the templates in the Helm chart).
 
-4. Commit the changes when you are happy with them
+4. Commit the changes when you are happy with them.
 
 </Tab>
 <Tab label="Manual steps">
 
-The follow provides the manual steps equivalent to the `igc enable` command:
+The following manual steps are equivalent to the `igc enable` command:
 
 1. Before updating the pipelines, make sure you have a clean repository with no unstaged changes. Either commit any
 changes or stash them temporarily with `git stash`. It is particularly important that any changes to the pipeline be
 dealt with.
 
-2. Download the `index.yaml` file containing the available pipeline versions
+2. Download the `index.yaml` file containing the available pipeline versions:
 
     ```bash
     curl -O https://ibm-garage-cloud.github.io/garage-pipelines/index.yaml
     ```
 
-3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version
+3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version.
 
-4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball
+4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball:
 
     ```bash
     curl -O ${PIPELINE_URL}
     ```
 
 5. Extract the tar-ball into your repository directory. You will be prompted to overwrite files. Overwrite as
-appropriate
+appropriate:
 
     ```bash
     tar xzf ${PIPELINE_FILE}
     ```
 
-6. Review the changes using `git diff` and revert any application-specific changes that should remain (e.g.
-customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml`, customizations
-to the templates in the `helm chart`)
+6. Review the changes using `git diff` and revert any application-specific changes that should remain like
+customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml` or customizations
+to the templates in the helm chart.
 
-7. Commit the changes when you are happy with them
+7. Commit the changes when you are happy with them.
 
 </Tab>
 </Tabs>
-
