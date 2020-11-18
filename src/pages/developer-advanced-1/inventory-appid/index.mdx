@@ -10,7 +10,7 @@ Securing Inventory App with App ID
 
 </PageDescription>
 
-To secure the application we are using the capabilities available within the IBMCloud platform to enable integration with AppId.With Openshift 3.11,
+To secure the application we are using the capabilities available within the IBM Cloud platform to enable integration with AppId.With Openshift 3.11,
 a simple annotation was used on the ingress to enable Appid.In Openshift 4.x,Red Hat OpenShift on IBM Cloud annotations (ingress.bluemix.net/[annotation]) 
 and NGINX annotations (nginx.ingress.kubernetes.io/[annotation_name]) are not supported for the router or the Ingress resource. With Openshift 4.x,AppId 
 integration is enabled with SDKs.
@@ -40,39 +40,59 @@ The following prerequisites are required for AppId integration:
 
 - NPM version 4 or higher.
 - Node version 6 or higher.
-- Set your redirect URI in the App ID service dashboard:
-    - In the AppID instance, go to Manage Authentication and select the Authentication Settings tab.
-    - Under "Add web redirect URLs", type the URL which you want to be redirected.
-    - Click on the Circle Plus symbol in the end to add your URL. 
-
-    ![AppId Redirect URI](images/AppidInt04.png)    
-  
 
 
+### Enable Appid in the solution
 
-## Nodejs SDK 
-
-- Installation: 
-    -   By using the command line, change to the directory that contains your Node.js app.
-    -   Install the AppID service.
+#### Installation
+-   By using the command line, change to the directory that contains your Node.js app.
+-   Install the AppID service.
     ```bash
     npm install --save ibmcloud-appid
     ```
+-  Obtain your credentials by navigating to the <b>Applications</b> tab of the AppId dashboard as mentioned in [Prerequisites](#prerequisites).
 
-- Add the following <i>require</i> definitions to your <i>server.js</i>:
+- Obtain the application as mentioned in [AppId Redirect Url Config](#AppId_redirect_url_config).
+
+#### Update the configuration values in the configuration files
+-  Put these credentials in <i>server/config/mappings.json</i> to be referred by application:
+   ```bash
+    {
+    "client_id": "<clientId_value>",
+    "secret": "<secret_value>",
+    "APPID_CONFIG": "{\"tenantId_value>\",\"oauthServerUrl\":\"<oauthServer_URL>\"}",
+    ""application_url":"<openahift_appln_route_url>"
+    }
+    ```
+
+- Add the following parameters in `values.yaml` along with its values:
+
+   ```bash
+    appidBinding: "appid-config"
+    clientId: "<clientId_value>"
+    secret: "<secret_value>"
+    ```
+  
+
+#### Adding the dependencies
+- Add the following <i>require</i> definitions to your `server/server.js`:
+
     ```bash
     const express = require('express');
     const session = require('express-session')
     const passport = require('passport');
     const WebAppStrategy = require("ibmcloud-appid").WebAppStrategy;
     const CALLBACK_URL = "/ibm/cloud/appid/callback";
+    const appidConfig = require("./config/mappings.json");
     ```
 
-- Set up your express app to use express-session middleware.
+#### Activate the appid integration
+- In <i>server.js</i>,set up your express app to use express-session middleware.
+
     ```bash
     const app = express();
     app.use(session({
-            secret: "123456",
+            secret: appidConfig.secret,
             resave: true,
             saveUninitialized: true
         }));
@@ -80,20 +100,19 @@ The following prerequisites are required for AppId integration:
     app.use(passport.session());
     ```
 
--  Obtain your credentials by navigating to the <b>Applications</b> tab of the AppId dashboard as mentioned in [Prerequisites](#prerequisites).
-
--  Initialize the SDK using the information obtained in the previous steps.
+- In the same file,initialize the SDK using the information obtained in the previous steps.
    ```bash
+    var appidcfg=JSON.parse(appidConfig.APPID_CONFIG);
     passport.use(new WebAppStrategy({
-    tenantId: "{tenant-id}",
-    clientId: "{client-id}",
-    secret: "{secret}",
-    oauthServerUrl: "{oauth-server-url}",
-    redirectUri: "{app-url}" + CALLBACK_URL
+    tenantId: appidcfg.tenantId,
+    clientId: appidConfig.client_id,
+    secret: appidConfig.secret,
+    oauthServerUrl: appidcfg.oauthServerUrl,
+    redirectUri: appidConfig.application_url+CALLBACK_URL
     }));
     ```
 
--   Configure passport with serialization and deserialization. This configuration step is required for authenticated session persistence across HTTP requests. For more information, see the [passport docs](http://www.passportjs.org/docs/)
+-   In the same file,configure passport with serialization and deserialization. This configuration step is required for authenticated session persistence across HTTP requests. For more information, see the [passport docs](http://www.passportjs.org/docs/)
     ```bash
     passport.serializeUser(function(user, cb) {
     cb(null, user);
@@ -109,7 +128,21 @@ The following prerequisites are required for AppId integration:
     app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME ));
     ```    
 
-## AppId redirect url config
+#### Adding environment variables to `deployment.yaml`
+- Open the `deployment.yaml` file and add environment variables that use those values to the top of the existing `env` block:
+  ```bash
+    - name: APPID-CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.appidBinding | quote }}
+                  key: binding
+            - name: CLIENT_ID
+              value: {{ .Values.clientId | quote }}
+            - name: SECRET
+              value: {{ .Values.secret | quote }}
+    ``` 
+
+### AppId redirect url config
 
 - Get the ingress for the UI component by running `igc ingress -n dev-{initials}`.
 
@@ -126,15 +159,15 @@ the following form:
     
     e.g. `https://inventory-manangement-ui-dev.sms-test-oc-cluster.us-east.containers.appdomain.cloud/ibm/cloud/appid/callback`
 
-## Add users to AppId
+### Add users to AppId
 
 - Open the AppId instance to `Cloud Directory` -> `Users`
 
     ![AppId cloud directory users](images/appid-cloud-directory-users.png)
 
-- Add yourself as a user with an email address, name, and password
+- Add yourself as a user with an email address, name, and password#
 
-## Access the UI
+### Access the UI
 
 - Open a browser to the UI Application URL
 
