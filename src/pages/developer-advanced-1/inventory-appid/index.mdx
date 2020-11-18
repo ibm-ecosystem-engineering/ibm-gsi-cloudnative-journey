@@ -46,9 +46,11 @@ The following prerequisites are required for AppId integration:
 
 #### Installation
 -   By using the command line, change to the directory that contains your Node.js app.
--   Install the AppID service.
+-   Install the AppID service and other dependencies.
     ```bash
     npm install --save ibmcloud-appid
+    npm install --save passport
+    npm install --save express-session
     ```
 -  Obtain your credentials by navigating to the <b>Applications</b> tab of the AppId dashboard as mentioned in [Prerequisites](#prerequisites).
 
@@ -61,7 +63,7 @@ The following prerequisites are required for AppId integration:
     "client_id": "<clientId_value>",
     "secret": "<secret_value>",
     "APPID_CONFIG": "{\"tenantId_value>\",\"oauthServerUrl\":\"<oauthServer_URL>\"}",
-    ""application_url":"<openahift_appln_route_url>"
+    "application_url":"<openshift_appln_route_url>"
     }
     ```
 
