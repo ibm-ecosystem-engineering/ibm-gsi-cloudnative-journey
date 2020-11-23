@@ -374,7 +374,7 @@ if [[ ${EXISTING_SECRETS} -eq 0 ]]; then
     PULL_SECRETS=$(kubectl get secrets -n "${NAMESPACE}" -o jsonpath='{ range .items[*] }{ "{\"name\": \""}{ .metadata.name }{ "\"}\n" }{ end }' | grep icr | grep -v "${NAMESPACE}" | paste -sd "," -)
     kubectl patch -n "${NAMESPACE}" serviceaccount/${SERVICE_ACCOUNT} -p "{\"imagePullSecrets\": [${PULL_SECRETS}]}"
 else
-    echo "*** Pull secrets already applied to service account/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
+    echo "*** Pull secrets already applied to serviceaccount/${SERVICE_ACCOUNT} in the ${NAMESPACE} namespace"
 fi
 ```
 </Tab>
@@ -539,7 +539,7 @@ pipeline in your development cluster:
 
 - Check that the webhook is created in the GitHub repository (Settings - Webhooks).
 
-- Make a commit to the git repo and push the commit to the remote git repository or click on **Pipelines**
+- Make a commit to the git repo and push it to the remote git repository, or click on **Pipelines**
 and manually trigger a pipeline build.
 
 </Tab>
@@ -575,11 +575,11 @@ oc new-app jenkins-ephemeral
 
 All of the <Globals name="shortName"/> pipelines use `buildah` to build and push the container image to the registry.
 Unfortunately, the `buildah` container must run as root. By default, OpenShift does not allow containers to run as the
-root user and special permission is required for the pipeline to run.
+root user and special permissions are required for the pipeline to run.
 
-With the Jenkins build engine, all the build processes run as the `jenkins` service account. In order for the pipeline
-container to run as root on OpenShift we will need to give the `privileged` security context constraint (scc) to
-`jenkins` service account with the following command:
+With the Jenkins build engine, all the build processes run as the `jenkins` service account. For the pipeline
+container to run as root on OpenShift we need to assign the `privileged` security context constraint (scc) to
+the `jenkins` service account with the following command:
 
 ```bash
 oc project {NAMESPACE}
@@ -587,17 +587,17 @@ oc adm policy add-scc-to-user privileged -z jenkins
 ```
 
 where:
- - `{NAMESPACE}` should be the name you claimed in the box note prefixed to `-dev` (e.g. user01-dev)
+ - `{NAMESPACE}` should be the name you claimed in the box note prefixed to `-dev` (e.g. user01-dev).
 
-### 3. Create a secret with git credentials
+### 3. Create a secret with Git credentials
 
-In order for Jenkins to have access to the git repository, particularly if it is a private repository, a Kubernetes
-secret needs to be added that contains the git credentials.
+For Jenkins to have access to the Git repository, particularly if it is a private repository, a Kubernetes
+secret containing the git credentials needs to be added.
 
-1. Create a personal access token (if you don't already have one) using the prereq instructions -
+1. Create a personal access token (if you don't already have one) using the prerequisites instructions:
 https://cloudnativetoolkit.dev/getting-started/prereqs#configure-github-personal-access-token
 
-2. Copy the following into a file called `gitsecret.yaml` and update the {Git-Username}, and {Git-PAT}
+2. Copy the following into a file called `gitsecret.yaml` and update {Git-Username}, and {Git-PAT}:
 
 ```yaml
 apiVersion: v1
@@ -626,15 +626,15 @@ oc create -f gitsecret.yaml
 ```
 
 where:
- - `{NAMESPACE}` is the development namespace where the pipelines will run
+ - `{NAMESPACE}` is the development namespace where the pipelines will run.
 
 ### 3. Create the build config
 
 On OpenShift 4.3, Jenkins is built into the OpenShift console and the build pipelines can be managed using Kubernetes
-custom resources. The following steps will create one by hand to create the build pipeline for the new application.
+custom resources. The following steps will manually create the build pipeline for the new application.
 
-1. Copy the following into a file called `buildconfig.yaml` and update the {Name}, {Secret}, {Git-Repo-URL},
-and {Namespace}
+1. Copy the following into a file called `buildconfig.yaml` and update {Name}, {Secret}, {Git-Repo-URL},
+and {Namespace}:
 
 ```yaml
 apiVersion: v1
@@ -661,11 +661,11 @@ spec:
 ```
 
 where:
- - `Name` is in the name of your pipeline
- - `Git-Repo-URL` is the https URL to the git repository
- - `{NAMESPACE}` is the development namespace where the pipelines will run
+ - `Name` is the name of your pipeline.
+ - `Git-Repo-URL` is the HTTPS URL to the Git repository.
+ - `{NAMESPACE}` is the development namespace where the pipelines will run.
 
-2. Assuming you are still logged into the cluster, create the buildconfig resource in the cluster
+2. Assuming you are still logged into the cluster, create the `buildconfig` resource:
 
 ```bash
 oc project {NAMESPACE}
@@ -673,19 +673,19 @@ oc create -f buildconfig.yaml
 ```
 
 where:
- - `{NAMESPACE}` is the development namespace where the pipelines will run
+ - `{NAMESPACE}` is the development namespace where the pipelines will run.
 
 ### 4. View the pipeline in the OpenShift console
 
-1. Open the OpenShift console for the cluster
-2. Select Builds -> Build Config
-3. Select your project/namespace (i.e. `{NAMESPACE}`) from the top
-4. The build pipeline that was created in the previous step should appear
-5. Manually trigger the pipeline by selecting `Start Build` the menu button on the right side of the row
+1. Open the cluster's OpenShift console.
+2. Select Builds -> Build Config.
+3. Select your project/namespace (i.e. `{NAMESPACE}`) from the top.
+4. The build pipeline that was created in the previous step should appear.
+5. Manually trigger the pipeline by selecting `Start Build` the menu button on the right side of the row.
 
 ### 5. Create the webhook
 
-1. Run the following to get the webhook details from the build config
+1. Run the following commands to get the webhook details from the build config:
 
 ```
 oc project {NAMESPACE}
@@ -693,30 +693,30 @@ oc describe bc {Name}
 ```
 
 where:
- - `{Name}` is the name used in the previous step for the build config
- - `{NAMESPACE}` is the development namespace where the pipelines will run
+ - `{Name}` is the name used in the previous step for the build config.
+ - `{NAMESPACE}` is the development namespace where the pipelines will run.
 
 The webhook URL will have a structure similar to:
 
 `http://{openshift_api_host:port}/oapi/v1/namespaces/{namespace}/buildconfigs/{name}/webhooks/{secret}/generic`
 
-In this case `{secret}` will be `my-secret-value`
+In this case `{secret}` will be `my-secret-value`.
 
-2. Open a browser to the GitHub repo deployed in the previous step in the build config
+2. Open a browser to the GitHub repository deployed in the previous step from the build configuration.
 
-3. Select `Settings` then `Webhooks`. Press `Add webhook`
+3. Select `Settings`, then `Webhooks` and press `Add webhook`.
 
-4. Paste the webhook URL from the previous step into the `Payload url`
+4. Paste the webhook URL from the previous step into `Payload url`.
 
-5. Set the content-type to `application/json` and leave the rest of the values as the defaults
+5. Set the content-type to `application/json` and leave the rest of the values with the defaults.
 
-6. Press `Add webhook` to create the webhook
+6. Press `Add webhook` to create the webhook.
 
-7. Press the button to test the webhook to ensure that everything was done properly
+7. Press the button to test the webhook to ensure that everything was done properly.
 
-8. Go back to your project code and push a change to one of the files
+8. Go back to your project code and push a change to one of the files.
 
-9. Go to the Build pipeline page in the OpenShift console to see that the build was triggered
+9. Go to the Build pipeline page in the OpenShift console to check that the build was triggered.
 
 </Tab>
 <Tab label="Manual steps for Jenkins on Kubernetes">
@@ -726,26 +726,26 @@ TBD
 </Tab>
 </Tabs>
 
-## enable
+### `enable`
 
-Adds DevOps artifacts to a Git repo that the <Globals name="env" /> uses to deploy the app. The command displays a
-list of available pipelines and applies the one you select to your code repo. The DevOps files added to your repo
- include (but are not limited to):
+Adds DevOps artifacts to a Git repository that the <Globals name="env" /> uses to deploy the app. The command displays a
+list of available pipelines and applies the one you select to your repository. 
 
-- Helm chart
-- Jenkinsfile
+This command DOES NOT require the user to be logged into an IBM Cloud account nor the cluster through the terminal. It DOES
+require that the terminal's current directory is the one for your local copy of the Git repository.
 
-This command DOES NOT require that the terminal is already logged in to an IBM Cloud account nor the cluster. It DOES
-require that the terminal's current directory is the repository directory for your local copy of the Git repo.
+The command will add several files to the local repo which you need to commit and push them to the server repo. These include (but are not limited to):
 
-The command will add files to the local repo. You should commit these new files and push them to the server repo.
-Then run `igc pipeline` to connect your repo to a pipeline in the environment.
+- Helm chart.
+- `Jenkinsfile`.
+
+Once these are pushed, run `igc pipeline` to connect your repo to a pipeline in the environment.
 
 **Command flags**
-- `--repo`: the set of pipelines to choose from; the default is https://github.com/ibm-garage-cloud/garage-pipelines
-- `-p`: the name of the pipeline that should be installed; if not provided then you will be prompted
-- `-b`: the branch from which the pipeline should be installed; the default is `stable`
-- `r`: the version number of the pipeline that should be installed; the default is `latest`
+- `--repo`: the set of pipelines to choose from; the default is https://github.com/ibm-garage-cloud/garage-pipelines.
+- `-p`: the name of the pipeline to be installed. If not provided, you will be prompted for it.
+- `-b`: the branch from which the pipeline will be installed. The default is `stable`.
+- `r`: the version number of the pipeline to be installed. The default is `latest`.
 
 **Usage**
 
@@ -756,7 +756,7 @@ Then run `igc pipeline` to connect your repo to a pipeline in the environment.
 changes or stash them temporarily with `git stash`. It is particularly important that any changes to the pipeline be
 dealt with.
 
-2. Apply the pipeline updates using the CLI command
+2. Apply the pipeline updates using the following CLI command:
 
 ```bash
 igc enable
@@ -764,46 +764,45 @@ igc enable
 
 3. Review the changes using `git diff` and revert any application-specific changes that should remain (e.g.
 customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml`, customizations
-to the templates in the `helm chart`)
+to the templates in the Helm chart).
 
-4. Commit the changes when you are happy with them
+4. Commit the changes when you are happy with them.
 
 </Tab>
 <Tab label="Manual steps">
 
-The follow provides the manual steps equivalent to the `igc enable` command:
+The following manual steps are equivalent to the `igc enable` command:
 
 1. Before updating the pipelines, make sure you have a clean repository with no unstaged changes. Either commit any
 changes or stash them temporarily with `git stash`. It is particularly important that any changes to the pipeline be
 dealt with.
 
-2. Download the `index.yaml` file containing the available pipeline versions
+2. Download the `index.yaml` file containing the available pipeline versions:
 
     ```bash
     curl -O https://ibm-garage-cloud.github.io/garage-pipelines/index.yaml
     ```
 
-3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version
+3. Look through the `index.yaml` file to identify the URL for the desired pipeline branch and version.
 
-4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball
+4. With the PIPELINE_URL from the previous step, run the following to download the pipeline tar-ball:
 
     ```bash
     curl -O ${PIPELINE_URL}
     ```
 
 5. Extract the tar-ball into your repository directory. You will be prompted to overwrite files. Overwrite as
-appropriate
+appropriate:
 
     ```bash
     tar xzf ${PIPELINE_FILE}
     ```
 
-6. Review the changes using `git diff` and revert any application-specific changes that should remain (e.g.
-customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml`, customizations
-to the templates in the `helm chart`)
+6. Review the changes using `git diff` and revert any application-specific changes that should remain like
+customization to the Jenkins pipeline in the `Jenkinsfile`, specific values added to `values.yaml` or customizations
+to the templates in the helm chart.
 
-7. Commit the changes when you are happy with them
+7. Commit changes once you are happy with them.
 
 </Tab>
 </Tabs>
-
