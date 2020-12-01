@@ -6,7 +6,7 @@ import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
 <PageDescription>
 
-The <Globals name="env" /> tools are integrated with the OpenShift console
+The <Globals name="env" /> tools are integrated with the OpenShift console.
 
 </PageDescription>
 
@@ -25,17 +25,14 @@ When the <Globals name="shortName" /> was configured for your development
 
 ### Opening the Dashboard
 
-- Open a terminal
-- Make sure you are logged into your Development cluster in a terminal.
-- To do so, navigate to your cluster in the _IBM Cloud Console_, click on the **Access** tab and
-follow the instructions to login from the command line
+- Open a terminal.
+- Make sure you are logged into your Development cluster in the terminal. To do so, navigate to your cluster in the _IBM Cloud Console_, click on the **Access** tab and
+follow the instructions to login from the command line.
 
-- You can open the Dashboard from the enviornment you are configured with, use the [IGC CLI](/getting-started/cli#dashboard).
+- To open the Dashboard from the environment you are configured with, use the [IGC CLI](/getting-started/cli#dashboard).
     ```
     igc dashboard
     ```
-
-- This will open the Dashboard
 
 ### Access the tools URLs
 
@@ -44,7 +41,7 @@ follow the instructions to login from the command line
     igc endpoints -n tools
     ```
 
-- This will return the ingress URLs for all of the tools installed in the Developer Tools cluster.
+- This will return the ingress URLs for all of the tools installed in the Developer Tools cluster. You can then select the URL to open the tools' dashboard directly:
     ```bash
    ? Endpoints in the 'tools' namespace. Select an endpoint to launch the default browser or 'Exit'.
 
@@ -58,26 +55,24 @@ follow the instructions to login from the command line
      Answer:
     ```
 
--  You can then select the URL to open the tools' dashboard directly.
-
 ### Credentials
 
-In the future, the tools in the Dashboard will be linked using a single sign-on (SSO) service.
-In the meantime, the CLI includes a command to list the tools' logins.
+In the future, the Dashboard tools will be linked using a single sign-on (SSO) service.
+Meantime, the CLI includes a command to list the tools' credentials.
 
-- To list the logins for all of the installed tools, use the [Developer Tools CLI](../getting-started/cli) to run the following command:
+- To list the credentials for all of the installed tools, use the [Developer Tools CLI](../getting-started/cli) to run the following command:
     ```bash
     igc credentials
     ```
-- The command lists the `userid` and `password` for each tool installed. You can use these credentials to log into each of the installed tools.
+- The command lists the `userid` and `password` for each tool installed. You can use these credentials to log in to each one of the installed tools.
 - More of the tools in <Globals name="ocp" /> will be integrated into the
- OpenShift console login process
+ OpenShift console login process.
 
 ### Developer Dashboard
 
-The Developer Dashboard is one of the tools running in your <Globals name="env" />. It is designed to help you navigate to the installed tools and give you a simple way to perform common developer tasks, such as:
-- **Dashboard**: Navigate to the tools installed in the cluster
-- **Activation**: Links to education to help you learn cloud-native development and deployment using IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud
-- **<Globals name="templates" />**: Links to templates that will help accelerate your project
+The Developer Dashboard is one of the tools running in your <Globals name="env" />. It is designed to help you navigate to the installed tools while providing a simple way to perform common developer tasks, such as:
+- **Dashboard**: Navigate to the tools installed in the cluster.
+- **Activation**: Links to educational resources to help you learn cloud-native development and deployment using IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud.
+- **<Globals name="templates" />**: Links to templates that will help accelerate your project.
 
 ![Developer Dashboard](/images/developer-dashboard.png)
