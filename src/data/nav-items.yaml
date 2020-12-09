@@ -112,8 +112,6 @@
       path: /developer-advanced-1/contract-testing-overview/
     - title: Inventory Contract Testing
       path: /developer-advanced-1/inventory-contract-testing
-    - title: Inventory Mobile App
-      path: /developer-advanced-1/inventory-mobile-app/  
     - title: Inventory Application Summary
       path: /developer-advanced-1/inventoryappln-summary/
     - title: Advanced Monitoring
@@ -136,7 +134,7 @@
     - title: DevSecOps With Trivy
       path: /developer-advanced-2/devsecops-trivy
     - title: Operator Overview
-      path: /developer-advanced-2/operator-overview/
+      path: /developer-advanced-2/operator-overview
     - title: Operator Development
       path: /developer-advanced-2/operator-lab/lab  
     - title: Application Modernization
