@@ -134,7 +134,7 @@
     - title: DevSecOps With Trivy
       path: /developer-advanced-2/devsecops-trivy
     - title: Operator Overview
-      path: /developer-advanced-2/operator-overview
+      path: /developer-advanced-2/operator-overview/
     - title: Operator Development
       path: /developer-advanced-2/operator-lab/lab  
     - title: Application Modernization
