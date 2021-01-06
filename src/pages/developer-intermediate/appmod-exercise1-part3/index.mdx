@@ -237,6 +237,12 @@ The db2 service provisioned in the IBM cloud shall be used as the database. Acce
         updateTrigger="mbean" readOnly="true" type="JKS" location="${shared.config.dir}/lib/global/<<jks certification generated>>.jks">
      </keyStore>
      ```
+   
+    - configure the ssl connection to true in the server.xml as part of the tag "<properties.db2.jcc ...." as sslConnection="true". Please find the reference as below
+
+     ```bash
+       <properties.db2.jcc password="????" user="????" beginTranForResultSetScrollingAPIs="false" beginTranForVendorAPIs="false" connectionSharing="1" databaseName="????" enableClientInformation="false" enableMultithreadedAccessDetection="false" errorDetectionModel="ExceptionMapping" jmsOnePhaseOptimization="false" name="PlantsByWebSphereDataSourceNONJTA" nonTransactionalDataSource="false" portNumber="????" preTestSQLString="SELECT CURRENT SQLID FROM SYSIBM.SYSDUMMY1" propagateClientIdentityUsingTrustedContext="false" reauthentication="false" retrieveMessagesFromServerOnGetMessage="true" serverName="????" traceLevel="-1" unbindClientRerouteListFromJndi="false" useTransactionRedirect="false" validateNewConnection="false" validateNewConnectionRetryCount="100" validateNewConnectionRetryInterval="3" sslConnection="true"/>
+     ```
 
 - Push the change to Git (server.xml and db2jcc_license_cu.jar)
     ```bash
