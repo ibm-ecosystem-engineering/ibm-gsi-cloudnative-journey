@@ -267,6 +267,44 @@ The db2 service provisioned in the IBM cloud shall be used as the database. Acce
         </application>
     </server>
     ```
+
+- **Optional Step** to use SSL Certification to connect to database. If SSL connection is not required, skip this step.
+
+    - download the SSL Certificate for the db2 database.
+      **Note:** In case if the db2 is provisioned on the IBM Cloud environment, follow the steps to download the certificate.
+      In the IBM Cloud Console -> Go to Resource List -> access the provisioned db2 environment -> On the Manage tab(left nav), click on the open console -> On the Administration Tab (left nav), go to the Connections Tab (on the Top Menu) ->  now click the 'download SSL Certificate' button to download the certificate.
+    
+      ![ssl_certificate_download](images/db2_ssl_certificate_download.png)
+    
+    - Copy the downloaded certificate to the src/main/liberty/lib folder  of application source
+
+    - ensure keytool is installed in your environment to generate jks format certificate for ssl connection using the downloaded certificate. when executing the command you need to provide password and same will be used for the application deployment
+
+      ```keytool
+      <<syntax>> 
+      keytool -import -file <<downloaded db2 certificate>> -alias <<alias name>> -keystore <<name in jks format>>
+      
+      <<sample>>
+      keytool -import -file DigiCertGlobalRootCA.crt -alias db2connect-CA -keystore db2TrustStore.jks
+      ```
+
+    - configure the certificate in the 'server.xml' to used by the application for the database access. You need to use the jks certificate  and password used generated as part of the key tool command 
+     ```bash 
+     <sslDefault sslRef="defaultSSLSettings" />
+     <ssl clientAuthenticationSupported="false" id="defaultSSLSettings"
+        keyStoreRef="defaultKeyStore" pollingRate="5s" updateTrigger="polled"
+        trustStoreRef="defaultKeyStore" />
+        <keyStore id="defaultKeyStore" password="????" fileBased="true"
+        updateTrigger="mbean" readOnly="true" type="JKS" location="${shared.config.dir}/lib/global/<<jks certification generated>>.jks">
+     </keyStore>
+     ```
+
+    - configure the ssl connection to true in the server.xml as part of the tag "<properties.db2.jcc ...." as sslConnection="true". Please find the reference as below
+
+     ```bash
+        <properties.db2.jcc  password="????" user="????" databaseName="????"  name="OrderDS" portNumber="????" serverName="????" sslConnection="true"/>
+     ```
+
 - Push the change to Git (Application Source Change, server.xml and db2 jars)
     ```bash
     git add .
