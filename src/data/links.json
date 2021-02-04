@@ -6,9 +6,9 @@
   ],
   "kubernetes" : [
     {"title":"Kubernetes", "subtitle": "Deploy applications across a cluster of hosts","author":"KataCoda","href":"https://www.katacoda.com/courses/kubernetes/launch-single-node-cluster","color":"dark"},
-    {"title":"Creating a Cluster", "subtitle":"Single Node Mini kube cluster","author":"Link","language":"30min","href":"https://www.katacoda.com/courses/kubernetes/creating-kubernetes-yaml-definitions","color":"blue"},
-    {"title":"Deploy Containers Kubectl", "subtitle":"Kubectl to create and launch Deployments","author":"Link","language":"15min","href":"https://www.katacoda.com/courses/kubernetes/kubectl-run-containers","color":"blue"},
-    {"title":"Deploy Containers YAML", "subtitle":"YAML to create and launch Deployments","author":"Link","language":"15min","href":"https://www.katacoda.com/courses/kubernetes/creating-kubernetes-yaml-definitions","color":"blue"},
+    {"title":"Creating a Cluster", "subtitle":"Single Node Minikube cluster","author":"Link","language":"30min","href":"https://www.katacoda.com/courses/kubernetes/creating-kubernetes-yaml-definitions","color":"blue"},
+    {"title":"Deploy Containers with kubectl", "subtitle":"Use kubectl to create and launch Deployments","author":"Link","language":"15min","href":"https://www.katacoda.com/courses/kubernetes/kubectl-run-containers","color":"blue"},
+    {"title":"Deploy Containers using YAML", "subtitle":"Use YAML to create and launch Deployments","author":"Link","language":"15min","href":"https://www.katacoda.com/courses/kubernetes/creating-kubernetes-yaml-definitions","color":"blue"},
     {"title":"Intro to Networking", "subtitle":"Learn about core Kubernetes Networking capabilities","author":"Link","language":"30min","href":"https://www.katacoda.com/courses/kubernetes/networking-introduction","color":"blue"},
     {"title":"Health Checks", "subtitle":"Learn how Kubernetes checks containers health","author":"Link","language":"20min","href":"https://www.katacoda.com/courses/kubernetes/liveness-readiness-healthchecks","color":"blue"}
   ],
