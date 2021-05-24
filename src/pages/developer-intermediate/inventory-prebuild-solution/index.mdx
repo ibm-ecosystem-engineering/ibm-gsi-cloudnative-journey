@@ -25,7 +25,7 @@ named `inventory-management-svc-solution`
     oc sync dev-{your initials} --dev
     ```
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
@@ -35,7 +35,7 @@ named `inventory-management-svc-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-java-gradle-v1-2-0`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
 
 ### Inventory BFF
 
@@ -46,7 +46,7 @@ named `inventory-management-bff-solution`
 
 - Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
@@ -56,7 +56,7 @@ named `inventory-management-bff-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
 
 - Get the backend service name this value by executing the command `oc get svc -n dev-{initials}.
     ```
@@ -86,8 +86,7 @@ named `inventory-management-ui-solution`
 
 - Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
-
+- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
     ```
     oc pipeline --tekton
     ```
@@ -96,7 +95,7 @@ named `inventory-management-ui-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#9.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
 
 - Get the bff service name this value by executing the command `oc get svc -n dev-{initials}.
     ```
