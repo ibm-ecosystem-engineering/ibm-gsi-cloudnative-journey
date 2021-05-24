@@ -54,15 +54,33 @@ The following prerequisites are required for AppId integration:
     ```
 -  Obtain your credentials by navigating to the <b>Applications</b> tab of the AppId dashboard as mentioned in [Prerequisites](#prerequisites).
 
-- Obtain the application as mentioned in [AppId Redirect Url Config](#appid-redirect-url-config).
+-  Obtain the application as mentioned in [AppId Redirect Url Config](#appid-redirect-url-config).
+
+#### Create binding secret for appid in your namespace
+- Login to the IBM Cloud cluster where your sandbox-team-one ocp cluster resides.
+  ibmcloud login -u [username] -p [password]
+- Login to your ocp cluster using the oc cli.
+
+   ![Openshift cli login Page](images/ocp-cli-login.png)
+
+    - Click on "Copy Login Command". It will redirect to a new page.
+    - Click the display token link. Copy the "Log in with this token" command & login 
+      to oc cli.
+      Ex- oc login --token=sha256~bfGcq7l6H3JHd9GwbNRaSsJ7cDAiLK5EPF4tbPQ-WfY --server=https://c108-e.eu-gb.containers.cloud.ibm.com:31718
+
+- Navigate to your namespace where you are running the inventory solution pipeline and create the binding secret for He the Appid instance on the cloud account
+  ```bash 
+     oc project [proj_name]
+     ibmcloud oc cluster service bind --cluster sandbox-team-one 
+     --namespace [YOUR-NAMESPACE] --service sandbox-team-one-appid
+  ```
+
 
 #### Update the configuration values in the configuration files
 -  Put these credentials in <i>server/config/mappings.json</i> to be referred by application:
    ```bash
     {
-    "client_id": "<clientId_value>",
-    "secret": "<secret_value>",
-    "APPID_CONFIG": "{\"tenantId_value>\",\"oauthServerUrl\":\"<oauthServer_URL>\"}",
+    "APPID_CONFIG": ""{\"tenantId\":\"<tenantId_value>\",\"oauthServerUrl\":\"<oauthServer_URL>\",\"clientId\": \"<ClientID_value>\", \"secret\": \"<secret_value>\"}",
     "application_url":"<openshift_appln_route_url>"
     }
     ```
@@ -70,9 +88,8 @@ The following prerequisites are required for AppId integration:
 - Add the following parameters in `values.yaml` along with its values:
 
    ```bash
-    appidBinding: "appid-config"
-    clientId: "<clientId_value>"
-    secret: "<secret_value>"
+    appidBinding: "binding-sandbox-team-one-appid"
+    
     ```
   
 
@@ -133,16 +150,17 @@ The following prerequisites are required for AppId integration:
 #### Adding environment variables to `deployment.yaml`
 - Open the `deployment.yaml` file and add environment variables that use those values to the top of the existing `env` block:
   ```bash
-    - name: APPID-CONFIG
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.appidBinding | quote }}
-                  key: binding
-            - name: CLIENT_ID
-              value: {{ .Values.clientId | quote }}
-            - name: SECRET
-              value: {{ .Values.secret | quote }}
-    ``` 
+    - name: APPID_CONFIG
+      valueFrom:
+         secretKeyRef:
+            name: {{ .Values.appidBinding | quote }}
+            key: binding
+    - name: APP_URI
+      valueFrom:
+        configMapKeyRef:
+          name: appid-ui
+          key: route
+  ``` 
 
 ### AppId redirect url config
 
