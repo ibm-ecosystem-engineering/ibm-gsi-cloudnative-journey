@@ -47,15 +47,15 @@ Here's the [hill statement](https://www.ibm.com/garage/method/practices/think/pr
 
 PlantsByWebSphere is a simple legacy monolith that runs in WebSphere Application Server with a backend database (DB2). The diagram below shows a typical customer environment with IBM HTTP Server and WebSphere Application Server Network Deployment (WebSphere ND) running on traditional IT along with the application database.
 
-  ![twasarch](/images/twas-arch.jpg)
+  ![twasarch](/images/twas-arch.png)
 
 The target for the runtime modernization is shown below with the containerized application running on Liberty on OpenShift Container Platform and the application database remaining on traditional IT.
 
-  ![twasarch](/images/kube-arch.jpg)
+  ![twasarch](/images/kube-arch.png)
 
 For the purposes of this lab exercise, you will run a simulation of the WebSphere ND environment on your laptop using a Docker container that contains PlantsByWebSphere, WebSphere Application Server, and a data collector. You will then use IBM Cloud Transformation Advisor--part of the Cloud Pak for Applications installed in your team's <Globals name="env" />--to analyze the WebSphere ND environment and create the artifacts you need to run the same PlantsByWebSphere application on Liberty in a Docker container on your laptop.
 
-  ![labarch](images/lab-arch.jpg)
+  ![labarch](images/lab-arch.png)
 
 ## Technical Requirements
 
@@ -205,17 +205,17 @@ In order to simulate a real traditional WebSphere ND customer environment on you
 
 - Navigate to `Applications --> Application Types --> WebSphere enterprise applications` and verify that you see `HelloWorld` and `PlantsByWebsphere8`
 
-    ![apps](images/twas-apps.jpg)
+    ![apps](images/twas-apps.png)
 
 - Navigate to `Resources --> JDBC --> DataSources` and verify that you see `PlantsByWebSphereDataSource` and `PlantsByWebSphereDataSourceNONJTA`. These are the two DataSources that will be detected by the data collector.
 
-    ![apps](images/twas-ds.jpg)
+    ![apps](images/twas-ds.png)
 
 - Log out of the Administrative Console
 
 - Access PlantsByWebSphere using http://localhost:9080/PlantsByWebSphere
 
-    ![apps](images/twas-pbw.jpg)
+    ![apps](images/twas-pbw.png)
 
 #### Download Datacollector From Transformation Advisor
 - Access the Transformation Advisor Page to Download the data collector. The TA access link can be referred as part of the Cloud-Native Toolkit menu, in the open shift dashboard.
@@ -272,7 +272,7 @@ Now that you have validated that the PlantsByWebSphere application is running in
 
 - After a few minutes, you will either see a "Thank you for uploading your data. You can proceed to the application UI for doing further analysis." message or an error related to "unable to upload the data" which will occur if the data collector can't access the Transformation Advisor UI which is running in Red Hat OpenShift.
 
-    ![apps](images/ta-upload.jpg)
+    ![apps](images/ta-upload.png)
 
 - Verify that the results zip file has been created
 
@@ -377,7 +377,7 @@ Take a moment to review the reports. Make sure the Transformation Advisor UI is 
 
 Note that at the top of each report, the command line parameters are shown. This helps to validate that your settings in `customCmd.properties` have been detected.
 
-![pbw](images/ta-params.jpg)
+![pbw](images/ta-params.png)
 
 Review each of the reports:
 
@@ -387,7 +387,7 @@ Review each of the reports:
 
     This is a useful first step to determining whether this application will run on Liberty.
 
-    ![pbw](images/ta-tech.jpg)
+    ![pbw](images/ta-tech.png)
 
 - **Inventory Report**
 
@@ -395,7 +395,7 @@ Review each of the reports:
 
     This helps give an idea of the size of the monolith and identify the number of EJBs and web services.
 
-    ![pbw](images/ta-inventory.jpg)
+    ![pbw](images/ta-inventory.png)
 
     - Shows the application structure
 
@@ -407,7 +407,7 @@ Review each of the reports:
 
     This shows which packages are in each JAR, which is especially useful if the client doesn't know which Java packages to scan. If you find this part of the report lists client code in packages that the scanner ignored such as `org` and `net`, you will need to update the `customCmd.properties` file to include these packages and re-run the scan.
 
-    ![pbw](images/ta-inventory3.jpg)
+    ![pbw](images/ta-inventory3.png)
 
 - **Analysis Report**
 
@@ -611,7 +611,7 @@ Now that we are ready for the application deployment on the Openshift cluster, w
 
     - You will be able to landup in the home page of the applicatio
 
-    ![PlantsByLiberty](images/twas-pbw.jpg)
+    ![PlantsByLiberty](images/twas-pbw.png)
 
 
 

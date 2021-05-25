@@ -3,7 +3,7 @@ import { HomepageBanner, HomepageCallout } from 'gatsby-theme-carbon';
 import HomepageTemplate from 'gatsby-theme-carbon/src/templates/Homepage';
 import { calloutLink } from './Homepage.module.scss';
 
-import Carbon from '../../images/cloudnative3.jpg';
+import Carbon from '../../images/cloudnative3.png';
 
 const BannerText = () => <h1>Cloud-Native Learning Journey </h1>;
 
