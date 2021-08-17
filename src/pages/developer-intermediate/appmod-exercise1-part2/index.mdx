@@ -115,7 +115,7 @@ Take a moment to review the reports. Make sure the Transformation Advisor UI is 
 
 Note that at the top of each report, the command line parameters are shown. This helps to validate that your settings in `customCmd.properties` have been detected.
 
-![pbw](images/ta-params.jpg)
+![pbw](images/ta-params.png)
 
 Review each of the reports:
 
@@ -125,7 +125,7 @@ Review each of the reports:
 
     This is a useful first step to determining whether this application will run on Liberty.
 
-    ![pbw](images/ta-tech.jpg)
+    ![pbw](images/ta-tech.png)
 
 - **Inventory Report**
 
@@ -133,7 +133,7 @@ Review each of the reports:
 
     This helps give an idea of the size of the monolith and identify the number of EJBs and web services.
 
-    ![pbw](images/ta-inventory.jpg)
+    ![pbw](images/ta-inventory.png)
 
     - Shows the application structure
 
@@ -145,7 +145,7 @@ Review each of the reports:
 
     This shows which packages are in each JAR, which is especially useful if the client doesn't know which Java packages to scan. If you find this part of the report lists client code in packages that the scanner ignored such as `org` and `net`, you will need to update the `customCmd.properties` file to include these packages and re-run the scan.
 
-    ![pbw](images/ta-inventory3.jpg)
+    ![pbw](images/ta-inventory3.png)
 
 - **Analysis Report**
 

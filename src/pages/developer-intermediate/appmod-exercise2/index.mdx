@@ -51,15 +51,15 @@ The original and target architectures for this exercise are the same as they wer
 
 Customer Order Services is a simple legacy monolith that runs in WebSphere Application Server with a backend database (DB2). The diagram below shows a typical customer environment with IBM HTTP Server and WebSphere Application Server Network Deployment (WebSphere ND) running on Traditional IT along with the application database.
 
-  ![twasarch](/images/twas-arch.jpg)
+  ![twasarch](/images/twas-arch.png)
 
 The target for the runtime modernization is shown below with the containerized application running on Liberty on OpenShift Container Platform and the application database remaining on traditional IT.
 
-  ![twasarch](/images/kube-arch.jpg)
+  ![twasarch](/images/kube-arch.png)
 
 For the purposes of this lab exercise, you have been provided the data collector result data from IBM Cloud Transformation Advisor. You will load that into the Transformation Advisor and then analyze it. You will use the WebSphere Migration Toolkit in Eclipse to modify application code until you can run the application without error in a local Liberty environment installed on your laptop.
 
-  ![labarch](images/lab-arch.jpg)
+  ![labarch](images/lab-arch.png)
 
 ## Technical Requirements
 
@@ -112,7 +112,7 @@ In this section, you will upload the data collector results to the Transformatio
 
 - Use the [<Globals name="dashboard" />](/getting-started/dashboard) to open the Transformation Advisor dashboard
 
-    ![apps](images/ta-dashboard.jpg)
+    ![apps](images/ta-dashboard.png)
 
     - The browser may display the message "Authentication endpoint is broken at the moment."  To solve the problem, open the URL in a new incognito browser tab.
 
@@ -126,7 +126,7 @@ In AppMod Exercise 1, you cloned the https://github.com/ibm-cloud-architecture/i
 
     After a few moments, the UI will display the Results page.
 
-    ![apps](images/ta1.jpg)
+    ![apps](images/ta1.png)
 
 - Click on the `CustomerOrderServicesApp.ear` and review the detailed results
 
@@ -153,7 +153,7 @@ Create a Liberty server in Eclipse named Lab5
 
         - Select IBM > Liberty Server as the server type
 
-            ![import](images/server.jpg)
+            ![import](images/server.png)
 
         - Press Next
 
@@ -163,7 +163,7 @@ Create a Liberty server in Eclipse named Lab5
 
         - Select a JDK 8 for the JRE
 
-            ![import](images/serverInstallFromArchive.jpg)
+            ![import](images/serverInstallFromArchive.png)
 
         - Press Next
 
@@ -175,7 +175,7 @@ Create a Liberty server in Eclipse named Lab5
 
         - Select Install a new runtime environment from an archive, and specify the `{wlp.zip}` file you downloaded earlier
 
-        ![import](images/serverDestinationPath.jpg)
+        ![import](images/serverDestinationPath.png)
 
         - (Or, if you have not downloaded the Liberty zip yet, you can: Select Download and install a new runtme environment from ibm.com, and select WAS Liberty with Java EE 8 Full Platform)
 
@@ -185,7 +185,7 @@ Create a Liberty server in Eclipse named Lab5
 
         - Select the Java EE 8 Full Platform Bundle
 
-            ![import](images/serverBundle.jpg)
+            ![import](images/serverBundle.png)
 
         - Press Next
 
@@ -195,7 +195,7 @@ Create a Liberty server in Eclipse named Lab5
 
         - Change the server name to `Lab5`
 
-            ![import](images/server2.jpg)
+            ![import](images/server2.png)
 
         - Press Finish
 
@@ -230,7 +230,7 @@ Clone the Customer Order Services application and import it into Eclipse.
 
             Eclipse finds four projects and will import them.
 
-            ![import](images/import1.jpg)
+            ![import](images/import1.png)
 
         - Press Finish
 
@@ -245,7 +245,7 @@ Clone the Customer Order Services application and import it into Eclipse.
 
 When you create a Liberty development environment, you might need to fix installation paths and development tool versions that differ from the original development environment. When you imported the project to Eclipse, any errors were highlighted with red error marks.
 
-![import](images/eclipse1.jpg)
+![import](images/eclipse1.png)
 
 - To view the problems in your workspace, select Window > Show View > Other, select General > Problems, and press Open
 
@@ -261,7 +261,7 @@ Errors are shown for each of the projects that are related to the build path. In
 
     - Select Liberty Runtime
 
-    ![libraries](images/targetruntime.jpg)
+    ![libraries](images/targetruntime.png)
 
     - Press Apply and Close
 
@@ -277,7 +277,7 @@ After updating the target runtime, clean and rebuild the entire workspace.
 
 - Look at the Problems view again
 
-    ![libraries](images/problems1.jpg)
+    ![libraries](images/problems1.png)
 
 You resolved several problems, but a few problems still exist. In this case, you want to fix the Xpath is invalid error.
 
@@ -289,7 +289,7 @@ You resolved several problems, but a few problems still exist. In this case, you
 
     - In the list of validators, in the XSL Validator, clear the Manual and Build options
 
-    ![validation](images/validation.jpg)
+    ![validation](images/validation.png)
 
     - Press Apply and Close
 
@@ -312,7 +312,7 @@ In this task, you configure the WAMT Software Analyzer.
 
 - On the Rules tab for the new configuration, select the rule set WebSphere Application Server Version Migration and press Set
 
-    ![wink](images/analyzer1.jpg)
+    ![wink](images/analyzer1.png)
 
 - In the Rule set configuration dialog, select these settings:
 
@@ -323,7 +323,7 @@ In this task, you configure the WAMT Software Analyzer.
     - Source Java version:          **IBM Java 6**
     - Target Java version:          **IBM Java 8**
 
-    ![wink](images/analyzer2.jpg)
+    ![wink](images/analyzer2.png)
 
     - Press OK
 
@@ -337,7 +337,7 @@ Now that we've configured a new analysis, run it.
 
     When the analyzer finishes running, the Software Analyzer Results tab opens in the main Eclipse window.
 
-    ![wink](images/analysis1b.jpg)
+    ![wink](images/analysis1b.png)
 
   <InlineNotification kind="info">
   Note: The boxes in the Software Analyzer Results will sometimes not resize correctly. In order to fix this, simply click on another one of the results tabs and then go back to your desired tab and the results box will resize.
@@ -373,21 +373,21 @@ Review each of the categories to determine whether code or configuration changes
 
     - Behavior change in JPA cascade strategy (1 result)
 
-  ![javacode](images/javacode1.jpg)
+  ![javacode](images/javacode1.png)
 
   Let's start with the result in the JAX RS 1.1 section regarding system-provided third-party APIs. View the information about the rule that flagged each error or warning by clicking Help > Show Contextual Help.
 
-  ![winkresult](images/winkresult1.jpg)
+  ![winkresult](images/winkresult1.png)
 
   To understand more about the problem, click it and read the Help information.
 
   Tip: If you need more information, click the detailed help link:
 
-  ![help](images/help1.jpg)
+  ![help](images/help1.png)
 
 - When you understand what the problem is, click the detailed help and review the information.
 
-  ![winkhelp](images/winkhelp.jpg)
+  ![winkhelp](images/winkhelp.png)
 
   The information doesn't contain enough details to determine what the problem is. Click the link in the last sentence to open an IBM Knowledge Center page for WebSphere.
 
@@ -405,7 +405,7 @@ Review each of the categories to determine whether code or configuration changes
 
 - Examime the results related to the behavior change for lookups on Enterprise JavaBeans.
 
-  ![jpa](images/ejb3a.jpg)
+  ![jpa](images/ejb3a.png)
 
 - Review the Detailed Help describing the issue.
 
@@ -425,7 +425,7 @@ Review each of the categories to determine whether code or configuration changes
 
 - Examine the last part of the Java Code Review:
 
-  ![jpa](images/jpa.jpg)
+  ![jpa](images/jpa.png)
 
   As you can see in the details, the change in the JPA cascade strategy is not expected to affect most applications. You can mitigate the cascade strategy by reverting to the previous behavior. In the persistence.xml file, set the openjpa.Compatibility property.
 
@@ -435,7 +435,7 @@ Review each of the categories to determine whether code or configuration changes
 
 - Click the file that is related to the error. Change to the `source` view. Notice that you're using the WebSphere Application Server traditional namespaces for the EJB binding:
 
-  ![ejb](images/ejb.jpg)
+  ![ejb](images/ejb.png)
 
   You need to change the EJB binding as follows:
 
@@ -443,13 +443,13 @@ Review each of the categories to determine whether code or configuration changes
   java:app/CustomerOrderServices/ProductSearchServiceImpl!org.pwte.example.service.ProductSearchService
   ```
 
-  ![ejb](images/ejb2.jpg)
+  ![ejb](images/ejb2.png)
 
 - Save and close the file.
 
 - Rerun the Software Analysis and ensure that the severe results have been addressed and no longer show in the analysis results.
 
-  ![ejb](images/analysis2b.jpg)
+  ![ejb](images/analysis2b.png)
 
 
 ### Run the application on Liberty
@@ -562,7 +562,7 @@ In AppMod Exercise 1 you cloned the https://github.com/ibm-cloud-architecture/ic
 
 - Note that the server contained error messages at startup time due to missing older features.
 
-  ![failure](images/failure1.jpg)
+  ![failure](images/failure1.png)
 
 - Install the required features.
 
@@ -578,7 +578,7 @@ In AppMod Exercise 1 you cloned the https://github.com/ibm-cloud-architecture/ic
 
 - Find the links for the two web applications that are deployed to WebSphere Liberty. One application is a test project that you can ignore. The other application is the Customer Order Services application, which is accessible at http://localhost:9080/CustomerOrderServicesWeb/. Click that link or copy the link and paste it in a web browser.
 
-  ![failure](images/links.jpg)
+  ![failure](images/links.png)
 
 - You are prompted to log in because you added security for the application in the server.xml file.
 
@@ -586,29 +586,29 @@ In AppMod Exercise 1 you cloned the https://github.com/ibm-cloud-architecture/ic
 
   After you log in to the application, the catalog is displayed (it may take a few seconds to display)
 
-  ![failure](images/app1.jpg)
+  ![failure](images/app1.png)
 
 - However, if you look at the Console tab for WebSphere Liberty in Eclipse, errors are shown. Carefully review the errors. A problem exists with the data that is returned from the database.
 
-  ![failure](images/jpa-error.jpg)
+  ![failure](images/jpa-error.png)
 
 - The problem happens in the loadCustomer method in CustomerOrderServicesImpl.java. Look at that method. The method is trying to return an AbstractCustomer from the database:
 
-  ![failure](images/class.jpg)
+  ![failure](images/class.png)
 
   The problem is in the AbstractCustomer class. As its name suggests, it's an abstract class, so it won't be instantiated. Look for the classes that extend the abstract class. Those classes are BusinessCustomer and ResidentialCustomer. If you remember the SQL error in the WebSphere Liberty Console log, it was about a value, Y, being returned as an integer. In the Java classes, you can see that some Boolean attributes that get values of Y and N are being returned as integers, causing the SQL exception.
 
   The reason for this behavior is that the OpenJPA driver treats Booleans differently based on its version. In this case, the OpenJPA driver version that you're using in WebSphere Liberty does not automatically convert Y or N database values into Booleans. As a result, you need to store them as strings and check those strings to return a Boolean value:
 
-  ![bizCust](images/businessCustomer.jpg)
+  ![bizCust](images/businessCustomer.png)
 
-  ![resCust](images/residentialCustomer.jpg)
+  ![resCust](images/residentialCustomer.png)
 
   Save all the changes, export the EAR project to the WebSphere Liberty folder, and restart the server.
 
 - Confirm that no errors are shown for the Customer Order Services application, either in the browser or on the Console tab for WebSphere Liberty in Eclipse.
 
-  ![noerrors](images/noerrors.jpg)
+  ![noerrors](images/noerrors.png)
 
 - Stop the WebSphere Liberty server.
 
