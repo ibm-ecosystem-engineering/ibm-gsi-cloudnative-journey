@@ -13,12 +13,12 @@ Cloud : https://cloud.ibm.com/
 Account : <Id> - GSI Labs - <SI>
 Location: <TBD>
 Sandbox Team : n..
-GitHub Organization : https://github.com/<si-name>-sandbox-team-n..
+GitHub Organization : https://github.com/<si-name>-workshop-team-n..
 Resource Group : sandbox-team-n..
 
 
 Note: Verify your cluster resources (with resource group selected), the following
-sandbox-n..-ocp43 [ Redhat Openshift Cluster 4.X]
+workshop-n..-ocp46 [ Redhat Openshift Cluster 4.X]
  
 The enablement has been crafted to be used as self-paced material or within a managed Journey. Support is being offered through a Slack Channel. Read the introduction and agenda to get more detail of what you will learn. 
  

@@ -20,19 +20,19 @@ title: RunBook
 Set up a new slack channel (**SI-Name**-cloudnative) and add all participants
 
 ### 6. IBM Cloud Setup:
-- Create resource group **sandbox-team-n..** under the SI Account to be used for the worksop
+- Create resource group **workshop-team-n..** under the SI Account to be used for the worksop
 
-- Create access groups **SANDBOX-TEAM-N..-ADMIN** and **SANDBOX-TEAM-N..-USER** and make all users part of the SANDBOX-TEAM-ONE-USER group.
+- Create access groups **WORKSHOP-TEAM-N..-ADMIN** and **WORKSHOP-TEAM-N..-USER** and make all users part of the WORKSHOP-TEAM-ONE-USER group.
 
 - Run these scripts to create access groups from iteration-zero repository
 ```bash
-./acp-admin.sh SANDBOX-TEAM-ONE-ADMIN sandbox-team-one
-./acp-user.sh SANDBOX-TEAM-ONE-USER sandbox-team-one us-east
+./acp-admin.sh WORKSHOP-TEAM-ONE-ADMIN workshop-team-one
+./acp-user.sh WORKSHOP-TEAM-ONE-USER workshop-team-one us-east
 ```
-- Board all users by adding them to access group SANDBOX-TEAM-N..-USER 
+- Board all users by adding them to access group WORKSHOP-TEAM-N..-USER 
 
 ### 7. Cluster Setup:
-- Setup a redhat openshift cluster (sandbox-ocp43-n..) in London datacenter with 3 worker nodes (16 cores x 32 GB)
+- Setup a redhat openshift cluster (workshop-ocp46-n..) in London datacenter with 3 worker nodes (16 cores x 32 GB)
 
 ### 8. Cloud-Native Toolkit Setup:
 a) Install Cloud-Native toolkit onto the OCP Cluster (Follow instructions outlined in https://cloudnativetoolkit.dev/admin/installation-existing)
@@ -48,7 +48,7 @@ igc tool-config --name sysdig --url https://us-east.monitoring.cloud.ibm.com/api
 igc tool-config --name logdna --url https://app.us-east.logging.cloud.ibm.com/ext/ibm-sso/38d0b85d06
 igc tool-config --name ir --url https://cloud.ibm.com/kubernetes/registry/main/start
 igc tool-config --name github --url https://github.com/ibm-workshop-team-one
-igc tool-config --name codeready --url https://codeready-codeready.workshop-ocp43-one-3b1fc50af0b2002f0241bdf5d2432efd-0000.sjc03.containers.appdomain.cloud/dashboard/
+igc tool-config --name codeready --url https://codeready-codeready.workshop-ocp46-one-3b1fc50af0b2002f0241bdf5d2432efd-0000.sjc03.containers.appdomain.cloud/dashboard/
 ```
 
 c) Customize redhat openshit to include shortcuts to all tools
@@ -57,10 +57,10 @@ d) Finish the sysdig dashboard setip
 
 ### 10. Smoke test 
 Test access control.
-Add personal id to SANDBOX-ONE-USER access group.
+Add personal id to WORKSHOP-ONE-USER access group.
 Log into IBM Cloud as the personal id and run the following test cases:
 
-- Check only the resources assigned to sandbox: 1 cluster and 2 services under sandbox-team-one resource group should be visible.
+- Check only the resources assigned to sandbox: 1 cluster and 2 services under workshop-team-one resource group should be visible.
 - Try creating a service. You should get an access denied error.
 - Go to Billing->Usage: You should be able to view, but should not be able to change anything.
 - Try creating a resource group/access group. It should get permission errors.

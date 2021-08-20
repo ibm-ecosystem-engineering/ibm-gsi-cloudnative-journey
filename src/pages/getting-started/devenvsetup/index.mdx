@@ -221,7 +221,7 @@ The following tools are required:
     ```bash
     $ curl -sL https://ibm.biz/idt-installer | bash
     ```
-    - Note: if you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/iam?topic=iam-federated_id) to log in to the CLI. You can also use this API key for [installing the Developer Tools environment](/admin/installation-ibm-cloud).
+    - Note: if you log in to the web UI using SSO, you'll need to [create an API key](https://cloud.ibm.com/docs/account?topic=account-userapikey&interface=ui#create_user_key) to log in to the CLI. You can also use this API key for installing the Developer Tools environment.
 
 - [OpenShift OC CLI](https://mirror.openshift.com/pub/openshift-v4/clients/oc/): required for Red Hat OpenShift management and development, select 4.3.18 or later version.
     - Place `oc` and `kubectl` in your Terminal `PATH`:
@@ -242,14 +242,14 @@ The following tools are required:
      Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
     </InlineNotification>
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop): required for running common tools and [Developer Tools Image](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/guides/tools-image).
+- [Docker Desktop](https://www.docker.com/products/docker-desktop): required for running common tools and Developer Tools Image.
     - Installed and running on your local machine.
 
-- [Node](https://nodejs.org/en/): required for running the [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli).
+- [Node](https://nodejs.org/en/): required for running the [IBM Garage for Cloud CLI](https://cloudnativetoolkit.dev/reference/cli).
     - Installed on your local machine.
     - Recommended: `v12.x LTS`.
 
-- [IBM Garage for Cloud CLI](https://ibm-garage-cloud.github.io/ibm-garage-developer-guide/getting-started/cli): used to help make working with the development tools as easy as possible.
+- [IBM Garage for Cloud CLI](https://cloudnativetoolkit.dev/reference/cli): used to help make working with the development tools as easy as possible.
     ```bash 
     $ npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
     ```
@@ -270,7 +270,7 @@ The following tools are required:
 
 </Tab>
 
-<Tab label="Cloud Ready Workspaces">
+<Tab label="Code Ready Workspaces">
 
 ## CodeReady Workspace
 CodeReady Workspaces (CRW) is a developer workspace server and cloud IDE. Workspaces are defined as the project's code files and all of their required dependencies to edit, build, run, and debug it. Each workspace has its private and full-featured IDE hosted within it. This IDE is accessible through a single-page web application you can run in your web browser.
@@ -374,12 +374,12 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
 
 - Use the `ibmcloud` command to log in to the cloud account. Replace the user_id, password and team name with the sandbox ones:
     ```bash
-    $ ibmcloud login -u <user_id> -p <password> -g <sandbox-team> -r us-south
+    $ ibmcloud login -u <user_id> -p <password> -g <workshop-team> -r us-south
     ```
 
 - Select the account number you have been assigned to:
     ```bash
-    $ ibmcloud login -u email@company.com -p XXX -g sandbox-team-one -r us-south
+    $ ibmcloud login -u email@company.com -p XXX -g workshop-team-one -r us-south
     API endpoint: https://cloud.ibm.com
     Authenticating...
     OK
@@ -389,7 +389,7 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
     Enter a number> 1
     Targeted account GSI Labs
 
-    Targeted resource group sandbox-team-one
+    Targeted resource group workshop-team-one
 
     Targeted region us-south
 
@@ -397,7 +397,7 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
     Region:            us-south
     User:              email@company.com
     Account:           GSI Labs
-    Resource group:    sandbox-team-one
+    Resource group:    workshop-team-one
     CF API endpoint:
     Org:
     Space:
