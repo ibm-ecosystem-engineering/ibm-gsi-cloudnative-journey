@@ -57,7 +57,7 @@ The following prerequisites are required for AppId integration:
 -  Obtain the application as mentioned in [AppId Redirect Url Config](#appid-redirect-url-config).
 
 #### Create binding secret for appid in your namespace
-- Login to the IBM Cloud cluster where your sandbox-team-one ocp cluster resides.
+- Login to the IBM Cloud cluster where your workshop-team-one ocp cluster resides.
   ibmcloud login -u [username] -p [password]
 - Login to your ocp cluster using the oc cli.
 
@@ -71,8 +71,8 @@ The following prerequisites are required for AppId integration:
 - Navigate to your namespace where you are running the inventory solution pipeline and create the binding secret for He the Appid instance on the cloud account
   ```bash 
      oc project [proj_name]
-     ibmcloud oc cluster service bind --cluster sandbox-team-one 
-     --namespace [YOUR-NAMESPACE] --service sandbox-team-one-appid
+     ibmcloud oc cluster service bind --cluster workshop-team-one 
+     --namespace [YOUR-NAMESPACE] --service workshop-team-one-appid
   ```
 
 
@@ -88,7 +88,7 @@ The following prerequisites are required for AppId integration:
 - Add the following parameters in `values.yaml` along with its values:
 
    ```bash
-    appidBinding: "binding-sandbox-team-one-appid"
+    appidBinding: "binding-workshop-team-one-appid"
     
     ```
   

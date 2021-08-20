@@ -189,13 +189,21 @@ engines, please see [Continuous Integration with Jenkins Guide](/guides/continuo
     ? scan-image: Enable the pipeline to scan the image for vulnerabilities?(Y/n)
     ```
 
-8. To skip the scan, you have type "n" (No).Otherwise, type "y" (Yes) for performing Vulnerability Scanning on the image.
+9. The pipeline also prompts for linting the dockerfile
+   ```shell
+   ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? (Y/n)
+   ```
 
-9. After the pipeline has been created,the command will set up a webhook from the Git host to the pipeline event listener.
+9. To skip the scan, you have type "n" (No).Otherwise, type "y" (Yes) for performing Vulnerability Scanning on the image.
+   Similarly, for skipping the linting of dockerfile,you have type "n" (No).Otherwise, type "y" (Yes) for performing Dockerfile lint.
+
+
+
+10. After the pipeline has been created,the command will set up a webhook from the Git host to the pipeline event listener.
 
     **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository. 
 
-10. When the command is completed it will present options for next steps. You can use the Tekton cli commands to inspect the pipeline run that has been created and tail the log and/or navigate to the provided url to see the pipeline running from the OpenShift console.
+11. When the command is completed it will present options for next steps. You can use the Tekton cli commands to inspect the pipeline run that has been created and tail the log and/or navigate to the provided url to see the pipeline running from the OpenShift console.
 
 ### 6. View your application pipeline
 
@@ -268,7 +276,7 @@ You will see your application dev ops pipeline now starting to build and once co
 </Tab>
 <Tab label="Kubernetes">
 
-1. Run the command `oc dashboard` in your terminal to open your [<Globals name="dashboard" />](/getting-started-day-1/dashboard)
+1. Run the command `oc dashboard` in your terminal to open your dashboard.
 2. Select the Jenkins tool to open the Jenkins dashboard
 3. Run the command `kubectl credentials` in your terminal to get the list of logins for the tools
 4. Use the Jenkins userid and password to log into the Jenkins dashboard
@@ -289,8 +297,10 @@ Wait for the pipeline stages to start building. Once the stages have completed, 
 Once the pipeline has completed successfully, the app will be deployed into the namespace used when
 registering the pipeline. To validate the app is running follow these steps:
 
-**Note:** Be sure the namespace context is set correctly before running the following commands -
-[set the namespace context](#7.-set-the-namespace-context)
+**Note:** Be sure the namespace context is set correctly by running the following command
+```bash
+oc project 
+```
 
 - Retrieve the app ingress endpoint using commands below in your terminal.
 
@@ -431,7 +441,7 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
 </Tab>
 
 
-<Tab label="Cloud Ready Workspaces">
+<Tab label="Code Ready Workspaces">
 
   ![CRW Open Link](./images/crwopenlink.png)
 
