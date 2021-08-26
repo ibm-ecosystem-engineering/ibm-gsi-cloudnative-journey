@@ -83,7 +83,25 @@ If you are starting from the solution, use the following steps to enable the Clo
 
 - Log into cloud.ibm.com and open the Cloudant service from the resource list
 
-- Click on service credentials and expand the listed credentials
+- Click on service credentials Tab.
+
+- In service credentials, click on "New credential" button.
+
+- Select the role "Manager"
+
+  ![Manager Service Credentials](./images/Cloudant-Service-Credentials.png)
+
+- Navigate to your namespace where you are running the inventory solution pipeline and create the binding secret for  the Cloudant instance on the cloud account
+  ```bash 
+     oc project [proj_name]
+     ibmcloud oc cluster service bind --cluster workshop-team-one 
+     --namespace [YOUR-NAMESPACE] --service workshop-cldn-one
+  ```
+
+- The application needs a user with "manager" iam_role whereas the binding secret creates a user with "writer" iam_role resulting in "access denied" issues.
+
+- Hence, the "binding" key in binding secret you just created needs to be replaced with the values of "manager" role user you created in Service Credentials on cloud.ibm.com.
+
 
 - Copy the json contents from the credentials into `mappings.json` under the `CLOUDANT_CONFIG` object (note that CLOUDANT_CONFIG value must be a string type not a json type, so you must use escaping characters for this value)
     ```json path=src/main/resources/mappings.json
