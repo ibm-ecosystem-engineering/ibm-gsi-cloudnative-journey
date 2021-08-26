@@ -43,7 +43,7 @@ it into your development cluster.
   <AnchorLink to="#6.-view-your-application-pipeline">6. View your application pipeline</AnchorLink>
   <AnchorLink to="#7.-access-the-running-app">7. Access the running app</AnchorLink>
   <AnchorLink to="#8.-locate-the-app-in-the-web-console">8. Locate the app in the Web Console</AnchorLink>
-  <AnchorLink to="#9.-clone-your-code-to-your-local-machine">9. Clone your code</AnchorLink>
+  <AnchorLink to="#9.-clone-your-code-to-your-cloud-shell">9. Clone your code</AnchorLink>
   <AnchorLink to="#10.-run-the-application-locally">10. Run the application locally</AnchorLink>
   <AnchorLink to="#11.-test-the-webhook">11. Test the webhook</AnchorLink>
 </AnchorLinks>
@@ -100,16 +100,16 @@ The following tools are included in the shell installer:
 - Make sure you have done your cloud shell setup before proceeding to next steps.
 - Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
 
-- Log in to OpenShift Cluster from the cloud console:
+- Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
     ![OpenShift](./images/openshiftcluster.png)
 
-- Access the OpenShift console by clicking on the button:
+- Access the OpenShift console from within that console by clicking on the button.
     ![OpenShift Console](./images/openshiftconsole.png)
 
-- Get the OpenShift login command, which includes a token:
+- In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
     ![OpenShift Login](./images/LoginCommand.png)
 
-- Run the login command in the terminal:
+- click on Display Token, copy the Login with this token oc login command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
     $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
     Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
@@ -242,7 +242,7 @@ engines, please see [Continuous Integration with Jenkins Guide](/guides/continuo
     ? scan-image: Enable the pipeline to scan the image for vulnerabilities?(Y/n)
     ```
 
-9. The pipeline also prompts for linting the dockerfile
+8. The pipeline also prompts for linting the dockerfile
    ```shell
    ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? (Y/n)
    ```
@@ -423,9 +423,9 @@ Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
 
 
-### 9. Clone your code to your local machine
+### 9. Clone your code to your cloud shell
 
-- Next, clone the Github repo to your local machine.
+- Next, clone the Github repo to your cloud shell.
 - Click on **Clone or download**
 - Copy the clone _HTTPS link_, and use the `git clone` command to clone it to your terminal.
     ```shell script
