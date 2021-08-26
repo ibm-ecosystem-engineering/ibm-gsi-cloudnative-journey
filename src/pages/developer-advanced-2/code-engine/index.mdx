@@ -51,10 +51,11 @@ Follow the below steps to create a project in the Code Engine.
 As a first step to deploy the an application configure the Image Registry access. Registry access is important as it the Repo used by the Code Engine both for creating the Application Image from the Source Repository and Deploying the Application Image on the Containers. By default, Code engine register server is pointed to the Docker repo server. We can use the IBM Registry Server as the Image Registry as well using the APIKEYS.  The below is the steps to configure the Registry access to the Code Engine.
 
 - Navigate to the **Registry access** Section in the left nav.
-- Click on the **Add registry access** button on top of the registry access list table
-- Now navigate to the add registry access page
+- Click on the **Create** button on top of the registry access list table
+- Now navigate to the create registry access page.
+- There are two options for registry source. First is from Dockerhub and second is from Custom.
 - Provide a Registry name. This should be unique in the project.  Ex: ibm-registry-us
-- Next provide the Registry server details. By default, this will be loaded for the docker registry server as https://index.docker.io/v1/. If you want to use the IBM Registry Server, provide the ibm registry server details. For instance, if IBM Registry US is it can be "us.icr.io/"
+- Next provide the Registry server details, in case you have selected the Registry source as custom. In case if you want to use the IBM Registry Server, provide the ibm registry server details. For instance, if IBM Registry US is it can be "us.icr.io/"
 - If Docker registry is used, the username and password details to be provide. In case of the ibm registry, it can be accessed through the APIKEYS. The apikey is provided as part of the password section, while username is automatically configured as "iamapikey"
 - Provide the Email details as part of the E-mail
 - Now click on the **Add** button to create the registry access
@@ -81,8 +82,9 @@ The first and second option stated above are simply straight forward, but the de
 - Click on the **Create application** button on top of the applications list table
 - Now Navigate to the Create Application Page
 - Provide Name to you application. This is a unqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
-- Now Select the **Container Image** option to deploy your application directly from the Image Registry
-- Provide the image registry from the Application to Deployed. The format is "registry/namespace/repository:tag". The tag is optional, if not specified, the latest would be applied. ex: us.icr.io/appdev-cloud-native/ce-springboot. Ensure the registry has already configured as part of the Registry access discused earlier.
+- select the 'choose the code to run' option either as Container image
+- Now Select the **configure Image** option to deploy your application directly from the Image Registry
+- Configure the image registry by providing the registry server, registry access, namespace, repository and tag for the image registry from the Application to Deployed. Ensure the registry has already configured as part of the Registry access discused earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
 ![CodeEngine Application Deployment Image Reference](/images/ce-appdeploy-imgreference.png)
   

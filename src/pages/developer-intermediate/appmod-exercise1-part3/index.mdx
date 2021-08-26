@@ -33,11 +33,9 @@ Transformation Advisor creates some accelerators to speed up the process of migr
 
 - You will Navigate to the Migration Bundle Page of the Transformation Advisor
 
-![pbw](images/ta-migration-repo.png)
+![pbw](images/ta-migration-repo1.png)
 
 - Select the Build type as binary
-
-- Ensure "Don't use" is selected for the "Use Accelerator for Teams Collection"
 
 - Select Manual upload for "application Dependencies"
 
@@ -45,13 +43,14 @@ Transformation Advisor creates some accelerators to speed up the process of migr
 
 - The migration files section show the below bundle
 
-    ![pbw](images/ta-bindle.png)
+    ![pbw](images/ta-bindle1.png)
 
     The migration plan shows the files that Transformation Advisor has generated:
     - **server.xml** - Transformation Advisor extracts most of the configuration from traditional WebSphere and generates a server.xml for Liberty to use
     - **Dockerfile** - Used to create the Docker image, which includes the application and configuration for Liberty
-    - **Operator resources** - Used in Red Hat OpenShift to deploy the application using the [Open Liberty operator](https://operatorhub.io/operator/open-liberty)
+    - **Application CR** - Used in Red Hat OpenShift to deploy the application using the [Open Liberty operator](https://operatorhub.io/operator/open-liberty)
     - **pom.xml** - Used for Maven builds, particularly useful if the application does not already employ build scripts
+    - **jvm options** - any changes to jvm for migrartion to be configured
 
 - We will push the Transformation generated files along with the Application binary and Db2-jcc.jar file to the git repo. 
 
@@ -509,19 +508,31 @@ Now that we are ready for the application deployment on the Openshift cluster, w
     Git credentials have already been stored for user: {user name}
     Project git repo: {your git repor}
     ? Provide the git branch that should be used: master
-    Creating service account: pipeline
-    Creating Git PipelineResource
-    Creating Image PipelineResource
+    Retrieving available template pipelines from tools
+    Pipeline templates filtered based on detected runtime: openjdk/maven
     ? Select the Pipeline to use in the PipelineRun: ibm-java-maven
-    ? Would you like to enable the pipeline to scan the image for vulnerabilities? No
+    ? scan-image: Enable the pipeline to scan the image for vulnerabilities? No
+    ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? No
+    
     Copying tasks from tools
-    Copied Pipeline from tools/ibm-java-maven to {Openshift Project Name /Application Name}
-    Creating TriggerTemplate for pipeline: {Application Name}
-    Creating TriggerBinding for pipeline: {Application Name}
-    Creating TriggerEventListener for pipeline: {Application Name}
-    Creating Route for pipeline: {Application Name}
-    Creating PipelineRun for pipeline: {Application Name}
-    Creating webhook for repo: {github repo}
+    Copied Pipeline from tools/ibm-java-maven to {name-space/project}
+    Creating TriggerTemplate for pipeline: {project}
+    Creating TriggerBinding for pipeline: {project}
+    Pipeline templates filtered based on detected runtime: openjdk/maven
+    Creating/updating TriggerEventListener for pipeline: tekton
+    Creating new event listener
+    Waiting for event listener rollout: 
+    Creating/updating Route for pipeline: tekton
+    Creating PipelineRun for pipeline: 
+    Creating Github webhook for repo: {your-git-repo}
+    Pipeline run started: 
+
+    Next steps:
+    Tekton cli:
+        View PipelineRun info - tkn pr describe 
+        View PipelineRun logs - tkn pr logs -f 
+    OpenShift console:
+        View PipelineRun - 
 
     ```
 
@@ -529,7 +540,7 @@ Now that we are ready for the application deployment on the Openshift cluster, w
 
     - Navigate to the Developer Console -> Navigate to the 'Pipelines' in the left Nav -> Select your project space from the drop down option -> select your application link -> Select the 'Pipeline Runs' and again the application link.
 
-![tekton-pipeline-runs](images/ta_pipelineruns_scan_no.png)
+![tekton-pipeline-runs](images/ta_pipelineruns_scan_no1.png)
 
 - Once the pipeline is executed successfully, the application can be tested. To get the routes of the application first navigate to the 
 
