@@ -98,7 +98,7 @@ The following tools are included in the shell installer:
 ### 1. Log into your Development Cluster from the command line
 
 - Make sure you have done your cloud shell setup before proceeding to next steps.
-- Log in to the development cluster's CLI (Kubernetes or Red Hat OpenShift)
+
 
 - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
     ![OpenShift](./images/openshiftcluster.png)
@@ -109,7 +109,7 @@ The following tools are included in the shell installer:
 - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
     ![OpenShift Login](./images/LoginCommand.png)
 
-- click on Display Token, copy the Login with this token oc login command  will log you in. Run the login command in the cloud shell terminal:
+- click on Display Token, copy the Login with the token. oc login command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
     $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
     Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
@@ -120,7 +120,7 @@ The following tools are included in the shell installer:
     ```
   
 
-You should now be able to access the OpenShift console:
+You can also access OpenShift console using this command:
 
 ```shell
 oc console
