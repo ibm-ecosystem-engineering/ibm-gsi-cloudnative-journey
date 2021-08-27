@@ -75,12 +75,12 @@ The following tools are included in the shell installer:
 - JSON cli (jq)
 - IBM Garage Cloud CLI (igc)
 
-1. Set up the shell environment by running:
+a. Set up the shell environment by running:
     ```shell
     curl -sL shell.cloudnativetoolkit.dev | sh - && . ~/.bashrc
     ```
 
-2. If successful, you should see something like the following:
+b. If successful, you should see something like the following:
     ```shell
     Downloading scripts: https://github.com/ibm-garage-cloud/cloud-shell-commands/releases/download/0.3.5/assets.tar.gz
     ** Installing argocd cli
@@ -90,7 +90,7 @@ The following tools are included in the shell installer:
     ** Installing Cloud-Native Toolkit cli
     ```
 
-3. You can check the shell was installed correctly by checking the `oc` version:
+c. You can check the shell was installed correctly by checking the `oc` version:
     ```shell
     oc sync --version
     ```
