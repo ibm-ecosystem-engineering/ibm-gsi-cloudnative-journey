@@ -25,7 +25,7 @@
     "gatsby-plugin-offline": "^3.10.2",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^2.11.1",
-    "gatsby-theme-carbon": "^1.29.2",
+    "gatsby-theme-carbon": "^2.1.4",
     "gatsby-transformer-json": "^2.11.0",
     "lodash": "latest",
     "prismjs": "^1.23.0",
