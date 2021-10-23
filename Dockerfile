@@ -1,9 +1,10 @@
 FROM node:13-alpine as build
 
+RUN apk --update add autoconf automake libtool gcc make g++ zlib-dev
 WORKDIR /app
 ADD . ./
-RUN npm install
-RUN node_modules/.bin/gatsby build
+RUN npm ci
+RUN npm run build
 
 FROM alpine
 
