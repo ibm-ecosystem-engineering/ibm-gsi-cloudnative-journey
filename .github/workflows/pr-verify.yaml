@@ -23,4 +23,4 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Build
-        run: npm run build
+        run: yarn build
