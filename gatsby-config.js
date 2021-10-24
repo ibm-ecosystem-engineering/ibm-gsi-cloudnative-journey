@@ -7,18 +7,6 @@ module.exports = {
   pathPrefix: "/ibm-gsi-cloudnative-journey",
   plugins: [
     {
-      resolve: 'gatsby-plugin-sharp',
-      options: {
-        defaults: {},
-        failOnError: true,
-        base64Width: 20,
-        forceBase64Format: 'png', 
-        useMozJpeg: process.env.GATSBY_JPEG_ENCODER === 'MOZJPEG',
-        stripMetadata: true,
-        defaultQuality: 50,
-    },
-},
-    {
       resolve: 'gatsby-theme-carbon',
       options: {
         isSearchEnabled: true,
