@@ -1,11 +1,11 @@
-name: Publish
+name: Verify PR
 
 on:
-  push:
+  pull_request:
     branches: [ main ]
 
 jobs:
-  publish:
+  verify:
 
     runs-on: ubuntu-latest
 
@@ -24,9 +24,3 @@ jobs:
         run: yarn
       - name: Build
         run: yarn build
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          
