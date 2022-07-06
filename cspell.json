@@ -1,0 +1,105 @@
+// cSpell Settings
+{
+    // Version of the setting file.  Always 0.1
+    "version": "0.1",
+    // language - current active spelling language
+    "language": "en_US",
+    "languageSettings": [
+        {
+            // use with Markdown files
+            "languageId": "markdown",
+            // Exclude code.
+            "ignoreRegExpList": [
+                "/^\\s*```[\\s\\S]*?^\\s*```/gm"
+            ]
+        }
+    ],
+    // words - list of words to be always considered correct
+    "words": [
+        "Kubernetes",
+        "kubectl",
+        "Kube",
+        "mkdir",
+        "sbin",
+        "ibmcloud",
+        "cloudnativetoolkit",
+        "tekton",
+        "argocd",
+        "microservice",
+        "gitops",
+        "gogs",
+        "DTECLOUD",
+        "kubeadmin",
+        "runtimes",
+        "projectx",
+        "SonarQube",
+        "Websphere",
+        "microservice",
+        "microservices",
+        "bootcamp",
+        "codeready",
+        "SREs",
+        "Postgres",
+        "Keycloak",
+        "Trivy",
+        "Sysdig",
+        "SonaType",
+        "InteliJ",
+        "Drawio",
+        "CLI",
+        "CLIs",
+        "Bitnami",
+        "SDLC",
+        "Knative",
+        "Tekton",
+        "OpenShift",
+        "Skaffold",
+        "servlet",
+        "javax",
+        "javadoc",
+        "javadocs",
+        "jenkinsfile",
+        "Cloudant",
+        "Artifactory",
+        "Kustomize",
+        "Dockerhub",
+        "Dockerfiles",
+        "prereqs",
+        "Quarkus",
+        "unstaged",
+        "Buildah",
+        "GitLab",
+        "namespace",
+        "LogDNA",
+        "Hadolint",
+        "aquasec",
+        "datacenter",
+        "Grafana",
+        "userdemo",
+        "projectdemo",
+        "ROKS",
+        "Portieris",
+        "buildah",
+        "skopeo",
+        "toolkit's",
+        "mynamespace",
+        "autoplay",
+        "allowfullscreen",
+        "mgmt",
+        "Repos",
+        "kustomization", 
+        "Paks",
+        "Weaveworks", 
+        "CNCF", 
+        "clusterroles", 
+        "clusterrolebindings",
+        "machinesets",
+        "CICD"
+    ],
+    // flagWords - list of words to be always considered incorrect
+    // This is useful for offensive words and common spelling errors.
+    // For example "hte" should be "the"
+    "flagWords": [
+        "hte"
+    ]
+}

@@ -1,0 +1,26 @@
+
+{% import "partials/language.html" as lang with context %}
+
+<!-- Footer -->
+<footer class="md-footer">
+
+    <!-- Further information -->
+    <div class="md-footer-meta md-typeset">
+        <div class="md-footer-meta__inner md-grid">
+            <div class="md-footer-column">
+                <div class="md-footer-text"><a href="https://cloudnativetoolkit.dev/contribute/contribute/">Contribute</a> to the Cloud-Native Toolkit</div>
+                <div class="md-footer-text">Site licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div>
+            </div>
+            <div class="md-footer-column">
+                <div class="md-footer-text">Have questions? open an issue on <a href="https://github.com/cloud-native-toolkit/planning/issues/new/choose">GitHub</a>.</div>
+
+                <!-- Copyright and theme information -->
+                {% if config.copyright %}
+                <div class="md-footer-text">
+                    {{ config.copyright }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</footer>

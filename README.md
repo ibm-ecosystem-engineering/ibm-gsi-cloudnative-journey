@@ -24,14 +24,6 @@ npm install
 This will install all the dependencies necessary to run the environment in development mode
 and to build and publish the content.
 
-Most notably, this project depends on the following:
-(documented in `package.json`):
-
-```bash
-npm install -g gatsby
-npm install -g gh-pages
-```
-
 ### Write content
 
 The content of the Learning Journey is authored through a hybrid of Markdown and
@@ -42,7 +34,7 @@ provide for a richer and more interactive set of components in the published gui
 To render the content within your local development environment, run the following:
 
 ```
-npm run build
+npm run dev:build
 npm run dev
 ```
 
