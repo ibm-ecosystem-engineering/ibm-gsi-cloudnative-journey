@@ -40,7 +40,7 @@ Features of IBM Cloud Shell include:
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-   ![Invoke Cloud Shell](./images/invokecloudshell.png)
+   ![Invoke Cloud Shell](../images/devenvsetup/invokecloudshell.png)
 
 ### Cloud Shell setup
     
@@ -107,7 +107,7 @@ Gitpod is available as an extension in Chrome and Firefox:
 You can also access Gitpod by prefixing your GitHub/GitLab/BitBucket repository URL with "https://gitpod.io/#".
 
 Both options will display a Gitpod button to access the Gitpod workspace of that code repository.
-![Gitpod](./images/gitpod.png)
+![Gitpod](../images/devenvsetup/gitpod.png)
 
 ### Gitpod Setup:
 
@@ -140,7 +140,7 @@ Execute the following steps in the same order on the Gitpod terminal:
    Navigate to the OpenShift Console page.
   Click on QuestionMark(?) icon and select Command Line Tools.
 
-  ![ocinstall](./images/gitpod_ocinstall.png)
+  ![ocinstall](../images/devenvsetup/gitpod_ocinstall.png)
 
   Go to "Download oc for Linux for x86_64" under oc and copy the download link.
   Download it using wget command.
@@ -296,25 +296,25 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
 
 - Navigate to the default Code Ready Workspace link  on your browser as shown in the picture below.
 
-  ![CRW](./images/CRW_HomePage.png)
+  ![CRW](../images/devenvsetup/CRW_HomePage.png)
 
 - You can create the workspace by selecting one of the template stacks. Alternatively, you can navigate to the Workspace and click on the "Add Workspace" button.
 
-  ![Adding Workspace](./images/AddWorkspace.png)
+  ![Adding Workspace](../images/devenvsetup/AddWorkspace.png)
 
 - Provide the workspace as part of the Name field. In the Projects section click on the "Remove" button to remove the project template thus creating an empty project.
 
-  ![Creating Project with Empty Template](./images/CreatingNewWorkspace.png)
+  ![Creating Project with Empty Template](../images/devenvsetup/CreatingNewWorkspace.png)
 
 - Click on the "Create and Open" button to create and load the workspace. This may take a few minutes as the Container and plug-ins related to the stack has to be created and deployed.
 
 - Once the workspace is loaded, you can see the Visual Studio Code editor:
 
-  ![CRWWorkspace](./images/CRWScreen.png)
+  ![CRWWorkspace](../images/devenvsetup/CRWScreen.png)
 
 - Go to the "Terminal" menu and select "Open Terminal in specific container".
 
-  ![Open Terminal](./images/OpeningTerminal.png)
+  ![Open Terminal](../images/devenvsetup/OpeningTerminal.png)
 
 - Select the "Developer Container".
 
@@ -407,13 +407,13 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
 ## Log in to OpenShift Cluster
 
 - Log in to OpenShift Cluster from the cloud console:
-    ![OpenShift](./images/openshiftcluster.png)
+    ![OpenShift](../images/devenvsetup/openshiftcluster.png)
 
 - Access the OpenShift console by clicking on the button:
-    ![OpenShift Console](./images/openshiftconsole.png)
+    ![OpenShift Console](../images/devenvsetup/openshiftconsole.png)
 
 - Get the OpenShift login command, which includes a token:
-    ![OpenShift Login](./images/LoginCommand.png)
+    ![OpenShift Login](../images/devenvsetup/LoginCommand.png)
 
 - Run the login command in the terminal:
     ```bash

@@ -116,3 +116,8 @@ nav:
       - OpenShift Console:  getting-started/console.md
   - What's New?:
       - What's New?: whatsnew.md
+  - Developer Intermediate:
+      - Agenda: developer-intermediate/agenda.md
+      - Deploy First App: developer-intermediate/deploy-app.md
+      - Artifact Management: developer-intermediate/artifact-management.md
+      - Code Analysis: developer-intermediate/code-analysis.md

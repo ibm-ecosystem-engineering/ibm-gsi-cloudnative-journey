@@ -2,11 +2,6 @@
 title: Validate Sandbox
 ---
 
-<PageDescription>
-
-The following steps will guide you on how to get access to the IBM Cloud Enterprise Sandbox
-
-</PageDescription>
 
 Congratulations on becoming part of the IBM Cloud-Native Learning Journey! You should have received a welcome email that provides details of the IBM Cloud Sandbox you've been assigned to and points to this welcome page. By participating in this Cloud-Native Learning Journey, you get access to:
 

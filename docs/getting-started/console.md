@@ -2,13 +2,6 @@
 title: Openshift Console
 ---
 
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
-
-<PageDescription>
-
-The <Globals name="env" /> tools are integrated with the OpenShift console.
-
-</PageDescription>
 
 With the release of **<Globals name="ocp" />** it is now even easier for
  developers to integrate the DevSecOps tools into the OpenShift console. The
@@ -21,7 +14,7 @@ When the <Globals name="shortName" /> was configured for your development
  cluster. The administrator can now configure a set of short cut links to
   common tools you often use as a developer.
 
-![OpenShift Links](/images/openshift-console-tools.png)
+![OpenShift Links](../images/console/openshift-console-tools.png)
 
 ### Opening the Dashboard
 
@@ -75,4 +68,4 @@ The Developer Dashboard is one of the tools running in your <Globals name="env" 
 - **Activation**: Links to educational resources to help you learn cloud-native development and deployment using IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud.
 - **<Globals name="templates" />**: Links to templates that will help accelerate your project.
 
-![Developer Dashboard](/images/developer-dashboard.png)
+![Developer Dashboard](../images/console/developer-dashboard.png)

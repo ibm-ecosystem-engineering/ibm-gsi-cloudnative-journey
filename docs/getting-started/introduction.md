@@ -31,7 +31,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
     href="/developer-foundation"
     >
 
-![](./images/developer-foundation.png)
+![](../images/introduction/developer-foundation.png)
 
 </ArticleCard>
 </Column>
@@ -44,7 +44,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
     href="/developer-intermediate"
     >
 
-![](./images/developer-intermediate.png)
+![](../images/introduction/developer-intermediate.png)
 
 </ArticleCard>
 </Column>
@@ -58,7 +58,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
     href="/developer-advanced-1"
     >
 
-![](./images/developer-advanced.png)
+![](../images/introduction/developer-advanced.png)
 
 </ArticleCard>
 </Column>

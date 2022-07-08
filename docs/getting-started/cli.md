@@ -1,13 +1,7 @@
 ---
 title: Developer Tools CLI
 ---
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
 
-<PageDescription>
-
-The <Globals name="shortName" /> Command Line Interface (CLI)
-
-</PageDescription>
 
 The <Globals name="longName" /> includes the IBM Garage for Cloud (IGC) Command Line Interface (CLI).
 The [<Globals name="igccli" />](https://github.com/ibm-garage-cloud/ibm-garage-cloud-cli) provides a set of helpful
