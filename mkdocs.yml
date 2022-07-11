@@ -121,3 +121,12 @@ nav:
       - Deploy First App: developer-intermediate/deploy-app.md
       - Artifact Management: developer-intermediate/artifact-management.md
       - Code Analysis: developer-intermediate/code-analysis.md
+      - Continuous Delivery: developer-intermediate/continuous-delivery.md
+      - DevSecOps Overview: developer-intermediate/content-overview.md
+      - Continuous Integration: developer-intermediate/continuous-integration.md
+      - Image Registry: developer-intermediate/image-registry.md
+      - Log Management: developer-intermediate/log-management.md
+      - Monitoring: developer-intermediate/monitoring.md
+
+
+      
