@@ -2,13 +2,9 @@
 title: Inventory Application
 ---
 
-<PageDescription>
+**Develop and deploy an example microservices application**
 
-Develop and deploy an example microservices application
-
-</PageDescription>
-
-Develop an example application with a three-tier microservices architecture and deploy it in IBM Cloud Kubernetes Service or Red Hat OpenShift on IBM Cloud using the <Globals name="longName" /> <Globals name="env" /> including its <Globals name="templates" />.
+Develop an example application with a three-tier microservices architecture and deploy it in IBM Cloud Kubernetes Service or Red Hat OpenShift on IBM Cloud using the IBM Garage Cloud-Native Toolkit Developer Environment including its Code Patterns.
 
 ## Business Need
 
@@ -41,13 +37,13 @@ The Micro App's user interface will look like this [wireframe](https://www.ibm.c
 The Micro App should adhere to the following technical requirements:
 
 - Microservices
-  - Stateless
-  - REST APIs
-  - Polyglot
+    - Stateless
+    - REST APIs
+    - Polyglot
 - DevOps with CI/CD (continuous integration and continuous delivery)
-  - Monitoring and logging
-  - Code analysis
-  - App security
+    - Monitoring and logging
+    - Code analysis
+    - App security
 - Deployed to Red Hat OpenShift on IBM Cloud or IBM Cloud Kubernetes Service
 - Follow the [Carbon Design System](https://www.carbondesignsystem.com/) user experience
 
