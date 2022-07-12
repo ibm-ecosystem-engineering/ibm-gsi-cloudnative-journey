@@ -127,6 +127,7 @@ nav:
       - Image Registry: developer-intermediate/image-registry.md
       - Log Management: developer-intermediate/log-management.md
       - Monitoring: developer-intermediate/monitoring.md
+      - Inventory Application: developer-intermediate/inventory-application.md
+      - Inventory Service: developer-intermediate/inventory-service.md
 
 
-      
