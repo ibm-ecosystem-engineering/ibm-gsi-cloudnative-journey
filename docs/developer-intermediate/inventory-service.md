@@ -2,6 +2,8 @@
 title: Inventory Service
 ---
 
+<!--- cSpell:ignore invokecloudshell openshiftcluster viewapp crwexposeservice crwopenlink crwopenapp gradlew -->
+
 **Develop and deploy the backend component of the inventory application**
 
 ## Setup
@@ -76,7 +78,7 @@ Create the initial project and register it with a pipeline for automated builds.
   You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3.-open-the-developer-dashboard).
 
 !!! warning
-    If you are developing on a shared education cluster, place the repository in the **Git Organisation** listed in your notification email and remember to add your initials as a suffix to the app name.
+    If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
 
   In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
   `{your initials}` with your actual initials.
