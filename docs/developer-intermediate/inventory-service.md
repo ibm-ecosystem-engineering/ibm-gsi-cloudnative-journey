@@ -92,7 +92,7 @@ Create the initial project and register it with a pipeline for automated builds.
 - Go into the repository directory cloned and execute the following
 
   ```
-  oc sync dev-{your initials} --dev
+  oc sync dev-{your initials} --tekton
   ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
@@ -103,22 +103,34 @@ Create the initial project and register it with a pipeline for automated builds.
 
   replacing `{your initials}` with your actual initials
 
-- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select igc-java-gradle-v1-2-0
+- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
 
   ```bash
   $ oc pipeline --tekton
-  Creating pipeline on openshift cluster in dev-ab namespace
-  Getting git parameters
-  Git credentials have already been stored for user: abalasu1
-    Project git repo: https://github.com/ibm-workshop-team-one/inventory-svc-ab.git
-  ? Provide the git branch that should be used: master
-  Creating service account: pipeline
-  Creating Git PipelineResource
-  Creating Image PipelineResource
-  ? Select the Pipeline to use in the PipelineRun: igc-java-gradle-v1-2-0
-  Copying tasks from tools
-  Copied Pipeline from tools/igc-java-gradle-v1-2-0 to dev-ab/inventory-svc-ab
-  Creating PipelineRun for pipeline: inventory-svc-ab
+  Creating pipeline on openshift cluster in dev-ar namespace
+  Retrieving git parameters
+    Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+  ? Provide the git username: aminerachyd
+  ? Provide the git password or personal access token: [hidden]
+    Branch: main
+  Retrieving available template pipelines from tools
+  Pipeline templates filtered based on detected runtime: openjdk/gradle
+  ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
+  ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
+  ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
+  ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
+  Copying tasks from tools....
+  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
+  Creating TriggerTemplate for pipeline: inventory-management-svc-ar
+  Creating TriggerBinding for pipeline: inventory-management-svc-ar
+  Creating/updating TriggerEventListener for pipeline: tekton
+    Waiting for event listener rollout: dev-ar/el-tekton
+    Creating/updating Route for pipeline: tekton
+    Creating PipelineRun for pipeline: inventory-management-svc-ar
+    Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+    Warning: Webhook already exists for this trigger in this repository.
+
+    Pipeline run started: inventory-management-svc-ar-181f77c24a4
   ```
 
 - [Open the pipeline](/developer-intermediate/deploy-app#view-your-application-pipeline) to see it running
@@ -133,7 +145,7 @@ Create the initial project and register it with a pipeline for automated builds.
   ./gradlew bootRun
   ```
 
-  When the execution output says "Server started", the app is running.
+  When the execution output says `Server started`, the app is running.
 
 - Access the running service. This service runs on port 9080.
 
@@ -163,7 +175,7 @@ Create the initial project and register it with a pipeline for automated builds.
       ![CRW Open App](../images/inventory-service/crwopenapp.png)
 
 === "Desktop/Laptop" 
-    - Open a browser to `http://localhost:9080/swagger-ui.html`
+    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html){:target='blank'}
 ---
 
 This will display the Swagger UI page that provides a user interface to exercise the APIs.
@@ -181,7 +193,7 @@ We will start by creating the initial application component.
 - Create a class named `Application` in the `com.ibm.inventory_management.app` package.
 
 - Add the `@SpringBootApplication` and `@ComponentScan` annotation to the class. The `@ComponentScan`
-  annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_garage.*`, and `com.ibm.health`
+  annotation should include `com.ibm.inventory_management.*`, `com.ibm.cloud_native_toolkit.*`, and `com.ibm.health`
   packages.
 
   ```java title="src/main/java/com/ibm/inventory_management/app/Application.java"
@@ -198,8 +210,11 @@ We will start by creating the initial application component.
   import org.springframework.context.annotation.ComponentScan;
   import org.springframework.core.env.Environment;
 
+  import springfox.documentation.swagger2.annotations.EnableSwagger2
+
   @SpringBootApplication
-  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
+  @EnableSwagger2
+  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_native_toolkit.*", "com.ibm.health"})
   public class Application extends SpringBootServletInitializer {
       @Autowired
       Environment environment;
@@ -494,7 +509,7 @@ should be placed in a component that is given a `@Service` annotation.
   import java.io.Serializable;
 
   public class StockItem implements Serializable {
-  private String name;
+    private String name;
 
     public String getName() {
        return name;
@@ -679,12 +694,12 @@ should be placed in a component that is given a `@Service` annotation.
 
 - Replace the `api()` method in the SwaggerDocket class to restrict the swagger page to only show the `/stock-items` API
 
-  ```java title="src/main/java/com/ibm/cloud_garage/swagger/SwaggerDocket.java"
+  ```java title="src/main/java/com/ibm/cloud_native_toolkit/swagger/SwaggerDocket.java"
   @Bean
   public Docket api() {
     return new Docket(DocumentationType.SWAGGER_2)
             .select()
-            .apis(buildApiRequestHandler())
+            .apis(buildApiRequestHandler()::test)
             .paths(PathSelectors.regex(".*stock-item.*"))
             .build()
             .apiInfo(buildApiInfo());
