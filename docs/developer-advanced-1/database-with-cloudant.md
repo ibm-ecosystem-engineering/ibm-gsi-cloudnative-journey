@@ -178,7 +178,34 @@ If you are starting from the solution, use the following steps to enable the Clo
   }
   ```
 
+#### Update the StockItem controller
 
+  ```java title="src/main/java/com/ibm/inventory_management/controllers/StockItemController.java"
+  package com.ibm.inventory_management.controllers;
+
+  import java.util.List;
+
+  import org.springframework.web.bind.annotation.GetMapping;
+  import org.springframework.web.bind.annotation.RestController;
+
+  import com.ibm.inventory_management.models.StockItem;
+  import com.ibm.inventory_management.services.StockItemApi;
+
+  @RestController
+  public class StockItemController {
+
+    private final StockItemApi service;
+
+    public StockItemController(StockItemApi service) {
+      this.service = service;
+    }
+
+    @GetMapping(path = "/stock-items", produces = "application/json")
+    public List<StockItem> listStockItems() throws Exception {
+      return this.service.listStockItems();
+    }
+  }
+  ```
 
 #### Update the configuration values in the `values.yaml` helm chart
 
@@ -474,4 +501,6 @@ existing `env` block
 
    ![ResultScreen](../images/database-with-cloudant/ResultScreen.png)
 
-Prebuilt solution for this can be found here: [Inventory Management Service Cloudant solution template](https://github.com/ibm-gsi-ecosystem/inventory-management-svc-soln-advanced)
+Prebuilt solution for this can be found here: [Inventory Management Service Cloudant solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-cloudant)
+!!! note
+    You will need to setup your own Cloudant database and create your `mappings.json` file as mentioned before
