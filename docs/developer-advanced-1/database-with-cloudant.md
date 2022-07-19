@@ -24,7 +24,7 @@ title: Database with Cloudant
     ```bash
     {
       docs: [
-        '{{repeat(1, 50)}}',
+        '{{repeat(1, 100)}}',
         {
           id: '{{objectId()}}',
           manufacturer: '{{company().toUpperCase()}}',
@@ -226,7 +226,7 @@ yourself, use the following directions.
 #### Update the gradle config to include cloudant dependencies
 
 - Add `build-cloudant.gradle` to the gradle folder
-  ```gradle
+  ```groovy
     dependencies {
     compile group: 'com.cloudant', name: 'cloudant-client', version: '2.17.0'
     compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
@@ -503,4 +503,4 @@ existing `env` block
 
 Prebuilt solution for this can be found here: [Inventory Management Service Cloudant solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-cloudant)
 !!! note
-    You will need to setup your own Cloudant database and create your `mappings.json` file as mentioned before
+    You will need to setup your own Cloudant database, create your `mappings.json` file and update your `values.yaml` Helm file as mentioned before
