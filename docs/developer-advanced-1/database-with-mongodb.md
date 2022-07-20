@@ -302,6 +302,8 @@ If you are starting from the solution, use the following steps to enable the Clo
   ./gradlew build
   ./gradlew bootrun
   ```
+!!! tip
+    If you are using MongoDB on **OpenShift**, you can use the `oc port-forward` command to access your database instance through `localhost`
 
 
 === "Cloud Shell"
