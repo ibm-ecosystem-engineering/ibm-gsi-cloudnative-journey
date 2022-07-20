@@ -2,6 +2,8 @@
 title: Database with MongoDB
 ---
 
+<!--- cSpell:ignore mongodbibmcloud servicecreds mongodbopenshift mongodbopenshiftsecret gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp dataload -->
+
 **Add a MongoDB integration to your backend service**
 
 ### Create a MongoDB instance
@@ -19,7 +21,7 @@ title: Database with MongoDB
 
     - After your instance has provisioned, create a **Service Credential** to have access to your MongoDB instance.
     ![Service credentials](../images/database-with-mongodb/servicecreds.png)
-      The service credential should contain informations to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
+      The service credential should contain information to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
       Decode the certificate, and create an OpenShift secret holding these values :
       ```bash
       oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
@@ -258,7 +260,7 @@ If you are starting from the solution, use the following steps to enable the Clo
  }
  ```
 
- - Create a `StockItemRepository.java` interface to interact with the database, put it in a `respositories` directory.
+ - Create a `StockItemRepository.java` interface to interact with the database, put it in a `repositories` directory.
  ```java title="src/main/java/com/ibm/inventory_management/repositories/StockItemRepository.java"
  package com.ibm.inventory_management.repositories;
 

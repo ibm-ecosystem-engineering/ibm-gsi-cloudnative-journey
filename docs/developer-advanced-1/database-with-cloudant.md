@@ -2,6 +2,8 @@
 title: Database with Cloudant
 ---
 
+<!--- cSpell:ignore dataload cloudantcredentials apikey classname gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp -->
+
 **Add a Cloudant integration to your backend service**
 
 - While logged into the IBM Cloud account use the resource list to find your pre installed Cloudant database instance name after your development cluster.
@@ -312,7 +314,7 @@ build.gradle file
 
 - Implement logic to load the configuration from the secret binding or local file
 
-- Add CloudantMapping and CloudantConfigFactory files to the config diectory:
+- Add CloudantMapping and CloudantConfigFactory files to the config directory:
 
   ```java title="src/main/java/com/ibm/inventory_management/config/CloudantMapping.java"
   package com.ibm.inventory_management.config;
