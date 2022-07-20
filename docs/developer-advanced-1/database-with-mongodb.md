@@ -7,6 +7,9 @@ title: Database with MongoDB
 ### Create a MongoDB instance
 
 === "On IBM Cloud"
+    !!! warning
+        The IBM Cloud service enforces SSL certificates usage to access the instance, however this is not covered in this tutorial, you can find the documentation for it [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app).
+
     Provision a MongoDB instance using the **Databases for MongoDB** service on IBM Cloud.
 
     - Log into the IBM Cloud console and look for the Databases for MongoDB service.
@@ -19,7 +22,7 @@ title: Database with MongoDB
       The service credential should contain informations to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
       Decode the certificate, and create an OpenShift secret holding these values :
       ```bash
-      oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
+      oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
       ```
       You can also do this from the OpenShift console :
     ![MongoDB IBM Cloud secret](../images/database-with-mongodb/secret-creation-openshift.png)
@@ -55,7 +58,7 @@ title: Database with MongoDB
     - The Helm chart creates a secret holding MongoDB passwords, for consistency of this tutorial we will be creating another secret holding the same information, formatted in another way.  
       Run the following command :
       ```bash
-      $ oc create secret generic --from-literal=MONGODB_HOST=mongodb:27017 --from-literal=MONGODB_USER=myuser --from-literal=MONGODB_PASSWORD=mypassword --from-literal=MONGODB_DATABASE=inventory-db mongodb-access
+      $ oc create secret generic --from-literal=MONGODB_HOST=mongodb --from-literal=MONGODB_PORT=27017 --from-literal=MONGODB_USER=myuser --from-literal=MONGODB_PASSWORD=mypassword --from-literal=MONGODB_DATABASE=inventory-db mongodb-access
       ```
       You should see the created secret `mongodb-access` on your OpenShift console :
     ![MongoDB access secret](../images/database-with-mongodb/mongodbopenshiftsecret.png)
@@ -65,7 +68,7 @@ title: Database with MongoDB
 
       Login to your OpenShift cluster and create a secret using the following command:
       ```bash
-      $ oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_DATABASE=<DATABASE> mongodb-access
+      $ oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_DATABASE=<DATABASE> mongodb-access
       ```
       Fill out the placeholders `<HOST>`, `<USER>`, `<PASSWORD>` and `<DATABASE>` with your own MongoDB instance's credentials.
 
@@ -113,16 +116,54 @@ If you are starting from the solution, use the following steps to enable the Clo
  spring:
    data:
     mongodb:
-      username: "${MONGO_USERNAME:<USERNAME>}"
-      password: "${MONGO_PASSWORD:<PASSWORD>}"
-      database: "${MONGO_DATABASE:<DATABASE>}"
-      authentication-database: "${MONGO_DATABASE:<DATABASE>}"
-      port: "${MONGO_PORT:<PORT>}"
-      host: "${MONGO_HOST:<HOST>}"
+      username: "${MONGODB_USERNAME:<USERNAME>}"
+      password: "${MONGODB_PASSWORD:<PASSWORD>}"
+      database: "${MONGODB_DATABASE:<DATABASE>}"
+      authentication-database: "${MONGODB_DATABASE:<DATABASE>}"
+      port: "${MONGODB_PORT:<PORT>}"
+      host: "${MONGODB_HOST:<HOST>}"
    autoconfigure:
     exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
  ```
    Replace the placeholders with your database instance values.
+
+**Update the configuration values in the Helm chart**
+
+ - Open the `values.yaml` file and add the following value : 
+
+ ```yaml title="chart/base/values.yaml"
+ mongodbAccess=mongodb-access
+ ```
+ - Open the `deployment.yaml` file and add the following environment variables :
+
+ ```yaml title="chart/base/templates/deployment.yaml"
+ env:
+   - name: MONGODB_USERNAME
+     valueFrom:
+       secretKeyRef:
+         name: {{ .Values.mongodbAccess | quote }}
+         key: MONGODB_USERNAME
+   - name: MONGODB_PASSWORD
+     valueFrom:
+       secretKeyRef:
+         name: {{ .Values.mongodbAccess | quote }}
+         key: MONGODB_PASSWORD
+   - name: MONGODB_DATABASE
+     valueFrom:
+       secretKeyRef:
+         name: {{ .Values.mongodbAccess | quote }}
+         key: MONGODB_DATABASE
+   - name: MONGODB_PORT
+     valueFrom:
+       secretKeyRef:
+         name: {{ .Values.mongodbAccess | quote }}
+         key: MONGODB_PORT
+   - name: MONGODB_HOST
+     valueFrom:
+       secretKeyRef:
+         name: {{ .Values.mongodbAccess | quote }}
+         key: MONGODB_HOST
+ ```
 
 **Update project files**
 
