@@ -117,6 +117,23 @@ nav:
       - OpenShift Console:  getting-started/console.md
   - What's New?:
       - What's New?: whatsnew.md
+  - Developer Foundation:
+      - Sandbox: developer-foundation/checksetup.md
+      - Agenda: developer-foundation/agenda.md
+      - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
+      - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md      
+      - Containers Overview: developer-foundation/containers.md
+      - Kubernetes 'overview': developer-foundation/k8s-overview/read.md
+      - Openshift 'overview': developer-foundation/openshift.md
+      - Core Concepts: developer-foundation/k8s-core-concepts.md
+      - Configuration: developer-foundation/k8s-configuration.md
+      - Multi-Container Pods: developer-foundation/k8s-multi-container-pods.md
+      - Observability: developer-foundation/k8s-observability/k8s-observability.md
+      - Pod Design: developer-foundation/k8s-pod-design.md
+      - Services & Networking: developer-foundation/k8s-services-networking.md
+      - State Persistence: developer-foundation/k8s-state-persistence.md
+      - Troubleshoot: developer-foundation/k8s-troubleshooting.md
+      - Garage Method: developer-foundation/garage-development.md
   - Developer Intermediate:
       - Agenda: developer-intermediate/agenda.md
       - Deploy First App: developer-intermediate/deploy-app.md

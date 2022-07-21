@@ -1,0 +1,253 @@
+---
+title: Core Concepts
+description: Core Concepts of Kubernetes
+---
+
+<AnchorLinks>
+  <AnchorLink>Kubernetes API Primitives</AnchorLink>
+  <AnchorLink>Creating Pods</AnchorLink>
+  <AnchorLink>Namespaces</AnchorLink>
+</AnchorLinks>
+
+
+# Kubernetes API Primitives
+
+Kubernetes API primitive, also known as Kubernetes objects, are the basic building blocks of any application running in Kubernetes
+
+Examples:
+- Pod
+- Node
+- Service
+- ServiceAccount
+
+Two primary members
+- Spec, desired state
+- Status, current state
+
+## Resources
+
+**OpenShift**
+- [Pods](https://docs.openshift.com/container-platform/4.3/nodes/pods/nodes-pods-using.html)
+- [Nodes](https://docs.openshift.com/container-platform/4.3/nodes/nodes/nodes-nodes-viewing.html)
+
+**IKS**
+- [Objects](https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/)
+- [Kube Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/)
+
+
+## References
+
+<Tabs>
+
+<Tab label="OpenShift">
+
+**Prints all API Resources**
+  ```
+  oc api-resources
+  ```
+**Prints all API Resources with their verbs.**
+  ```
+  oc api-resources -o wide
+  ```
+**Prints all API Resources names only**
+  ```
+  oc api-resources -o name
+  ```
+  **Prints each of the available nodes, projects, services, deployments, and pods ** 
+  ```
+  oc get nodes,ns,po,deploy,svc
+  ```
+**Prints the node's description**
+  ```
+  oc describe node 
+  ```
+</Tab>
+
+<Tab label="IKS">
+
+** Getting API Resources **
+```
+kubectl api-resources
+```
+** Viewing Resources **
+```
+kubectl api-resources -o wide
+```
+** Viewing Resources **
+```
+kubectl api-resources -o name
+```
+** Getting a list of specific objects **
+```
+kubectl get nodes,ns,po,deploy,svc
+```
+** Describing the resources **
+```
+kubectl describe node --all
+```
+</Tab>
+
+</Tabs>
+
+# Creating Pods
+A Pod is the basic execution unit of a Kubernetes application–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster.
+
+A Pod encapsulates an application’s container (or, in some cases, multiple containers), storage resources, a unique network IP, and options that govern how the container(s) should run. A Pod represents a unit of deployment: a single instance of an application in Kubernetes, which might consist of either a single container or a small number of containers that are tightly coupled and that share resources.
+
+## Resources
+
+**OpenShift**
+- [About Pods](https://docs.openshift.com/container-platform/4.3/nodes/pods/nodes-pods-using.html)
+- [Cluster Configuration for Pods](https://docs.openshift.com/container-platform/4.3/nodes/pods/nodes-pods-configuring.html)
+- [Pod Autoscaling](https://docs.openshift.com/container-platform/4.3/nodes/pods/nodes-pods-autoscaling.html)
+
+**IKS**
+- [Pod Overview](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/)
+- [Pod Lifecycle](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/)
+- [Pod Usage](https://kubernetes.io/docs/concepts/workloads/pods/pod/)
+
+## References
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox
+    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+```
+
+<Tabs>
+<Tab label="OpenShift">
+
+** Get Current Pods in Project **
+```
+oc get pods
+``` 
+** Get Pod's Description **
+``` 
+oc describe pod <pod-name>
+```
+** Get Pods with their IP and node location **
+```
+oc get pods -o wide
+```
+** Get Pods Stats **
+```
+oc adm top pods
+```
+</Tab>
+
+<Tab label="IKS">
+
+** Get Current Pods in Project **
+```
+kubectl get pods
+``` 
+** Get Pod's Description **
+``` 
+kubectl describe pod <pod-name>
+```
+** Delete a Pod **
+```
+kubectl delete pod <pod-name>
+```
+** Edit a Pod **
+```
+kubectl edit pod <pod-name>
+```
+</Tab>
+
+</Tabs>
+
+# Projects/Namespaces
+
+Namespaces are intended for use in environments with many users spread across multiple teams, or projects.
+
+Namespaces provide a scope for names. Names of resources need to be unique within a namespace, but not across namespaces.
+
+Namespaces are a way to divide cluster resources between multiple users (via resource quota).
+
+It is not necessary to use multiple namespaces just to separate slightly different resources, such as different versions of the same software: use labels to distinguish resources within the same namespace. In practice namespaces are used to deploy different versions based on stages of the CICD pipeline (dev, test, stage, prod)
+
+## Resources
+
+**OpenShift**
+- [Working With Projects](https://docs.openshift.com/container-platform/4.3/applications/projects/working-with-projects.html)
+- [Creating Projects](https://docs.openshift.com/container-platform/4.3/cli_reference/openshift_cli/getting-started-cli.html#creating-a-project)
+- [Configure Project Creation](https://docs.openshift.com/container-platform/4.3/applications/projects/configuring-project-creation.html)
+
+**IKS**
+- [Namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/)
+
+## References:
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: foo
+```
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: bar
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox
+    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+```
+
+<Tabs>
+
+<Tab label="OpenShift">
+
+**Create a new Project** 
+
+```
+oc new-project my-project
+```
+
+**Viewing Current Project**
+
+```
+oc project
+```
+
+**Viewing Project Status**
+
+```
+oc status
+```
+
+</Tab>
+
+<Tab label="IKS">
+
+**Getting all namespaces in cluster** 
+```
+kubectl get namespaces
+```
+
+**Create a new namespace called bar**
+``` 
+kubectl create ns bar
+```
+**Setting Namespace in Context**
+``` 
+kubectl set-context --current --namespace=bar
+```
+</Tab>
+
+</Tabs>

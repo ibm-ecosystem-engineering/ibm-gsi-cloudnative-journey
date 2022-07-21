@@ -1,0 +1,558 @@
+---
+title: Pod Design
+---
+
+<AnchorLinks>
+  <AnchorLink>Labels, Selectors, and Annotations</AnchorLink>
+  <AnchorLink>Deployments</AnchorLink>
+  <AnchorLink>Deployments rolling updates and rollback</AnchorLink>
+  <AnchorLink>Jobs and CronJobs</AnchorLink>
+  <AnchorLink>Activities</AnchorLink>
+</AnchorLinks>
+
+# Labels, Selectors, and Annotations
+
+Labels are key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects. Labels can be attached to objects at creation time and subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given object.
+
+You can use Kubernetes annotations to attach arbitrary non-identifying metadata to objects. Clients such as tools and libraries can retrieve this metadata.
+
+You can use either labels or annotations to attach metadata to Kubernetes objects. Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects. The metadata in an annotation can be small or large, structured or unstructured, and can include characters not permitted by labels.
+
+## Resources
+
+**OpenShift**
+- [CLI Label Commands](https://docs.openshift.com/enterprise/3.0/cli_reference/basic_cli_operations.html#application-modification-cli-operations)
+
+**IKS**
+- [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)
+- [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
+
+
+## References
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+  labels:
+    app: foo
+    tier: frontend
+    env: dev
+  annotations:
+    imageregistry: "https://hub.docker.com/"
+    gitrepo: "https://github.com/csantanapr/knative"
+spec:
+  containers:
+  - name: app
+    image: bitnami/nginx
+```
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: app
+      image: busybox
+  nodeSelector:
+    disk: ssd
+```
+
+<Tabs>
+<Tab label="OpenShift">
+
+** Change Labels on Objects **
+```
+oc label <objectname>
+```
+ **Getting Pods based on their labels.**
+```
+  oc get pods --show-labels
+```
+```
+  oc get pods -L tier,env
+```
+```
+  oc get pods -l app
+```
+```
+  oc get pods -l tier=frontend
+```
+```
+  oc get pods -l 'env=dev,tier=frontend'
+```
+```
+  oc get pods -l 'env in (dev, test)'
+```
+```
+  oc get pods -l 'tier!=backend'
+```
+```
+  oc get pods -l 'env,env notin (prod)'
+  ```
+
+</Tab>
+
+<Tab label="IKS">
+
+  **Create the Pod**
+  ```
+  kubectl create -f pod.yaml
+  ```
+  **Update label in the YAML file and reapply it.**
+  ```
+  kubectl apply -f pod.yaml
+  ```
+  **You can edit the labels as well.**
+  ```
+  kubectl edit pod myapp-pod
+  ```
+  **Getting Pods based on their labels.**
+  ```
+  kubectl get pods --show-labels
+  ```
+  ```
+  kubectl get pods -L tier,env
+  ```
+  ```
+  kubectl get pods -l app
+  ```
+  ```
+  kubectl get pods -l tier=frontend
+  ```
+  ```
+  kubectl get pods -l 'env=dev,tier=frontend'
+  ```
+  ```
+  kubectl get pods -l 'env in (dev, test)'
+  ```
+  ```
+  kubectl get pods -l 'tier!=backend'
+  ```
+  ```
+  kubectl get pods -l 'env,env notin (prod)'
+  ```
+  **Delete the Pod.**
+  ```
+  kubectl delete pod myapp-pod
+  ```
+
+</Tab>
+
+</Tabs>
+
+# Deployments
+
+A Deployment provides declarative updates for Pods and ReplicaSets.
+
+You describe a desired state in a Deployment, and the Deployment Controller changes the actual state to the desired state at a controlled rate. You can define Deployments to create new ReplicaSets, or to remove existing Deployments and adopt all their resources with new Deployments.
+
+The following are typical use cases for Deployments:
+- Create a Deployment to rollout a ReplicaSet. The ReplicaSet creates Pods in the background. Check the status of the rollout to see if it succeeds or not.
+- Declare the new state of the Pods by updating the PodTemplateSpec of the Deployment. A new ReplicaSet is created and the Deployment manages moving the Pods from the old ReplicaSet to the new one at a controlled rate. Each new ReplicaSet updates the revision of the Deployment.
+- Rollback to an earlier Deployment revision if the current state of the Deployment is not stable. Each rollback updates the revision of the Deployment.
+- Scale up the Deployment to facilitate more load.
+- Pause the Deployment to apply multiple fixes to its PodTemplateSpec and then resume it to start a new rollout.
+- Use the status of the Deployment as an indicator that a rollout has stuck.
+- Clean up older ReplicaSets that you don’t need anymore.
+
+
+## Resources
+
+**OpenShift**
+
+- [Deployments](https://docs.openshift.com/container-platform/4.3/applications/deployments/what-deployments-are.html)
+- [Managing Deployment Processes](https://docs.openshift.com/container-platform/4.3/applications/deployments/managing-deployment-processes.html)
+- [DeploymentConfig Strategies](https://docs.openshift.com/container-platform/4.3/applications/deployments/deployment-strategies.html)
+- [Route Based Deployment Strategies](https://docs.openshift.com/container-platform/4.3/applications/deployments/route-based-deployment-strategies.html)
+
+**IKS**
+
+- [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+- [Scaling Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#scaling-a-deployment)
+
+## References
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: bitnami/nginx:1.16.0
+        ports:
+        - containerPort: 8080
+```
+
+<Tabs>
+<Tab label="OpenShift">
+
+** Creates a Deployment **
+```
+oc apply -f <deploymentYAML>
+```
+** Gets Deployments **
+```
+oc get deploy my-deployment
+```
+** Gets the deployments description **
+```
+oc describe deployment my-deployment
+```
+** Edit the deployment **
+```
+oc edit deployment my-deployment
+```
+** Scale the deployment **
+```
+oc scale deployment/my-deployment --replicas=4
+```
+** Delete the deployment **
+```
+oc delete my-deployment
+```
+</Tab>
+
+<Tab label="IKS">
+
+** Creates a Deployment **
+```
+kubectl apply -f <deploymentYAML>
+```
+
+** Get the deployment **
+```
+kubectl get deployment my-deployment
+```
+** Describe the deployment **
+```
+kubectl describe deployment my-deployment
+```
+** Edit the deployment **
+```
+kubectl edit deployent my-deployment
+```
+** Scale the deployment **
+```
+kubectl scale deployment/my-deployment --replicas=4
+```
+** Delete the deployment **
+```
+kubectl delete my-deployment
+```
+
+</Tab>
+
+</Tabs>
+
+
+# Deployments rolling updates and rollback
+
+**Updating a Deployment**
+A Deployment’s rollout is triggered if and only if the Deployment’s Pod template (that is, .spec.template) is changed, for example if the labels or container images of the template are updated. Other updates, such as scaling the Deployment, do not trigger a rollout.
+
+Each time a new Deployment is observed by the Deployment controller, a ReplicaSet is created to bring up the desired Pods. If the Deployment is updated, the existing ReplicaSet that controls Pods whose labels match .spec.selector but whose template does not match .spec.template are scaled down. Eventually, the new ReplicaSet is scaled to .spec.replicas and all old ReplicaSets is scaled to 0.
+
+**Label selector updates**
+It is generally discouraged to make label selector updates and it is suggested to plan your selectors up front. In any case, if you need to perform a label selector update, exercise great caution and make sure you have grasped all of the implications.
+
+
+**Rolling Back a Deployment**
+Sometimes, you may want to rollback a Deployment; for example, when the Deployment is not stable, such as crash looping. By default, all of the Deployment’s rollout history is kept in the system so that you can rollback anytime you want (you can change that by modifying revision history limit).
+
+A Deployment’s revision is created when a Deployment’s rollout is triggered. This means that the new revision is created if and only if the Deployment’s Pod template (.spec.template) is changed, for example if you update the labels or container images of the template. Other updates, such as scaling the Deployment, do not create a Deployment revision, so that you can facilitate simultaneous manual- or auto-scaling. This means that when you roll back to an earlier revision, only the Deployment’s Pod template part is rolled back.
+
+## Resources
+
+**OpenShift**
+
+- [Rollouts](https://docs.openshift.com/container-platform/4.3/applications/deployments/what-deployments-are.html#delpoymentconfigs-specific-features_what-deployments-are)
+- [Rolling Back](https://docs.openshift.com/container-platform/4.3/applications/deployments/managing-deployment-processes.html#deployments-rolling-back_deployment-operations)
+
+**IKS**
+
+- [Updating a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment)
+- [Rolling Back a Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#rolling-back-a-deployment)
+
+
+## References
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: bitnami/nginx:1.16.0
+        ports:
+        - containerPort: 8080
+```
+
+<Tabs>
+<Tab label="OpenShift">
+
+** Get Deployments **
+```
+oc get deployments
+```
+** Sets new image for Deployment **
+```
+oc set image deployment/my-deployment nginx=nginx:1.16.1 --record
+```
+** Get ReplicaSets **
+```
+oc get rs
+```
+** Get Deployment Description **
+```
+oc describe deployment my-deployment
+```
+** Check the status of the rollout **
+```
+oc rollout status my-deployment
+```
+** Get Rollout History **
+```
+oc rollout history deployment my-deployment
+```
+** Undo Rollout **
+```
+oc rollback my-deployment
+```
+
+</Tab>
+
+<Tab label="IKS">
+
+** Get Deployments **
+```
+kubectl get deployments
+```
+** Sets new image for Deployment **
+```
+kubectl set image deployment/my-deployment nginx=nginx:1.16.1 --record
+```
+** Get ReplicaSets **
+```
+kubectl get rs
+```
+** Get Deployment Description **
+```
+kubectl describe deployment my-deployment
+```
+** Check the status of the rollout **
+```
+oc rollout status my-deployment
+```
+** Get Rollout History **
+```
+kubectl rollout history deployment my-deployment
+```
+** Undo Rollout **
+```
+kubectl rollout undo deployment my-deployment
+```
+
+</Tab>
+
+</Tabs>
+
+# Jobs and CronJobs
+
+**Jobs**
+A Job creates one or more Pods and ensures that a specified number of them successfully terminate. As pods successfully complete, the Job tracks the successful completions. When a specified number of successful completions is reached, the task (ie, Job) is complete. Deleting a Job will clean up the Pods it created.
+
+
+**CronJobs**
+One CronJob object is like one line of a crontab (cron table) file. It runs a job periodically on a given schedule, written in Cron format.
+
+All CronJob schedule: times are based on the timezone of the master where the job is initiated.
+
+## Resources
+
+**OpenShift**
+- [Jobs](https://docs.openshift.com/container-platform/4.3/nodes/jobs/nodes-nodes-jobs.html)
+- [CronJobs](https://docs.openshift.com/container-platform/4.3/nodes/jobs/nodes-nodes-jobs.html#nodes-nodes-jobs-creating-cron_nodes-nodes-jobs)
+
+**IKS**
+- [Jobs to Completion](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/)
+- [Cron Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
+- [Automated Tasks with Cron](https://kubernetes.io/docs/tasks/job/automated-tasks-with-cron-jobs/)
+
+## References
+
+It computes π to 2000 places and prints it out
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi
+spec:
+  template:
+    spec:
+      containers:
+      - name: pi
+        image: perl
+        command: ["perl",  "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
+```
+
+Running in parallel
+```yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: pi
+spec:
+  parallelism: 2
+  completions: 3
+  template:
+    spec:
+      containers:
+        - name: pi
+          image: perl
+          command: ["perl", "-Mbignum=bpi", "-wle", "print bpi(2000)"]
+      restartPolicy: Never
+  backoffLimit: 4
+```
+
+```yaml
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: hello
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello
+            image: busybox
+            args:
+            - /bin/sh
+            - -c
+            - date; echo Hello from the Kubernetes cluster
+          restartPolicy: OnFailure
+```
+
+<Tabs>
+<Tab label="OpenShift">
+
+** Gets Jobs **
+```
+oc get jobs
+```
+** Gets Job Description **
+```
+oc describe job pi
+```
+** Gets Pods from the Job **
+```
+oc get pods
+```
+** Deletes Job **
+```
+oc delete job pi
+```
+
+** Gets CronJob **
+```
+oc get cronjobs
+```
+** Describes CronJob **
+```
+oc describe cronjobs pi
+```
+** Gets Pods from CronJob **
+```
+oc get pods
+```
+** Deletes CronJob **
+```
+oc delete cronjobs pi
+```
+
+</Tab>
+
+<Tab label="IKS">
+
+** Gets Jobs **
+```
+kubectl get jobs
+```
+** Gets Job Description **
+```
+kubectl describe job pi
+```
+** Gets Pods from the Job **
+```
+kubectl get pods
+```
+** Deletes Job **
+```
+kubectl delete job pi
+```
+
+** Gets CronJob **
+```
+kubectl get cronjobs
+```
+** Describes CronJob **
+```
+kubectl describe cronjobs pi
+```
+** Gets Pods from CronJob **
+```
+kubectl get pods
+```
+** Deletes CronJob **
+```
+kubectl delete cronjobs pi
+```
+
+</Tab>
+
+</Tabs>
+
+## Activities
+
+| Task                            | Description         | Link        |
+| --------------------------------| ------------------  |:----------- |
+| *** Try It Yourself ***                         |         |         |
+| Rolling Updates Lab | Create a Rolling Update for your application.  | [Rolling Updates](../activities/labs/lab6) |
+| Cron Jobs Lab | Using Tekton to test new versions of applications. | [Crons Jobs](../activities/labs/lab7) |
+
