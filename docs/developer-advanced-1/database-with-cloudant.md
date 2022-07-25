@@ -28,7 +28,7 @@ title: Database with Cloudant
       docs: [
         '{{repeat(1, 100)}}',
         {
-          id: '{{objectId()}}',
+          _id: '{{objectId()}}',
           manufacturer: '{{company().toUpperCase()}}',
           name:  '{{lorem(3, "words")}}',
           price: '{{floating(10, 1000, 2, "0.00")}}',
@@ -114,97 +114,271 @@ If you are starting from the solution, use the following steps to enable the Clo
     1. Remove the `@Primary` annotation.
     2. Change the classname from StockItemService to StockItemMockService
 
-- Open `src/main/java/com/ibm/inventory_management/services/StockItemService.java` and add the following code to the file. The file should look like the following
+- Open `src/main/java/com/ibm/inventory_management/services/StockItemApi.java` and add the following code to the file. The file should look like the following
+  ```java title="src/main/java/com/ibm/inventory_management/services/StockItemApi.java"
+  package com.ibm.inventory_management.services;
+  
+  import java.util.List;
+  
+  import com.ibm.inventory_management.models.StockItem;
+  
+  public interface StockItemApi {
+    List<StockItem> listStockItems() throws Exception;
+  
+    void addStockItem(String name, Double price, Integer stock, String manufacturer) throws Exception;
+  
+    void updateStockItem(String id, String name, Double price, Integer stock, String manufacturer) throws Exception;
+  
+    void deleteStockItem(String id) throws Exception;
+  }
+  ```
+
+#### Update the StockItemService implementation
 
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
   package com.ibm.inventory_management.services;
+  
   import java.io.IOException;
   import java.util.List;
   import javax.annotation.PostConstruct;
   import java.net.URL;
   import java.net.MalformedURLException;
+  import java.util.UUID;
+  
   import com.cloudant.client.api.CloudantClient;
   import com.cloudant.client.api.ClientBuilder;
   import com.cloudant.client.api.Database;
   import org.springframework.context.annotation.Primary;
-  import org.springframework.context.annotation.Profile;
   import org.springframework.context.annotation.Bean;
   import org.springframework.context.annotation.Lazy;
   import org.springframework.stereotype.Service;
   import com.ibm.inventory_management.config.CloudantConfig;
   import com.ibm.inventory_management.models.StockItem;
+  
   @Service
   @Primary
   public class StockItemService implements StockItemApi {
-  @Bean
-  public static CloudantClient buildCloudant(CloudantConfig config) throws CloudServicesException {
+    @Bean
+    public static CloudantClient buildCloudant(CloudantConfig config) throws CloudServicesException {
       System.out.println("Config: " + config);
       URL url = null;
+  
       try {
-          url = new URL(config.getUrl());
+        url = new URL(config.getUrl());
       } catch (MalformedURLException e) {
-          throw new CloudServicesException("Invalid service URL specified", e);
+        throw new CloudServicesException("Invalid service URL specified", e);
       }
-     return ClientBuilder
-              .url(url)
-              .iamApiKey(config.getApikey())
-              //.username(config.getUsername())
-              //.password(config.getPassword())
-              .build();
-  }
-  private CloudantConfig config;
-  private CloudantClient client;
-  private Database db = null;
-  public StockItemService(CloudantConfig config, @Lazy CloudantClient client) {
+  
+      return ClientBuilder
+          .url(url)
+          .iamApiKey(config.getApiKey())
+          // .username(config.getUsername())
+          // .iamApiKey(config.getPassword())
+          .build();
+    }
+  
+    private CloudantConfig config;
+    private CloudantClient client;
+    private Database db = null;
+  
+    public StockItemService(CloudantConfig config, @Lazy CloudantClient client) {
       this.config = config;
       this.client = client;
-  }
-  @PostConstruct
-  public void init() {
+    }
+  
+    @PostConstruct
+    public void init() {
       db = client.database(config.getDatabaseName(), true);
-  }
-  @Override
-  public List<StockItem> listStockItems() throws Exception {
-
+    }
+  
+    @Override
+    public List<StockItem> listStockItems() throws Exception {
+  
       try {
-          return db.getAllDocsRequestBuilder()
-                  .includeDocs(true)
-                  .build()
-                  .getResponse()
-                  .getDocsAs(StockItem.class);
-
+        return db.getAllDocsRequestBuilder()
+            .includeDocs(true)
+            .build()
+            .getResponse()
+            .getDocsAs(StockItem.class);
+  
       } catch (IOException e) {
-          throw new Exception("", e);
+        throw new Exception("", e);
       }
-  }
+    }
+  
+    @Override
+    public void addStockItem(String name, Double price, Integer stock, String manufacturer) throws Exception {
+      try {
+        db.save(new StockItem(UUID.randomUUID().toString())
+                .withName(name)
+                .withPrice(price)
+                .withStock(stock)
+                .withManufacturer(manufacturer)
+        );
+      } catch (Exception e) {
+        throw new Exception("",e);
+      }
+    }
+  
+    @Override
+    public void updateStockItem(String id, String name, Double price, Integer stock, String manufacturer) throws Exception {
+      try {
+        StockItem itemToUpdate = db.find(StockItem.class,id);
+  
+        itemToUpdate.setName(name !=null ? name : itemToUpdate.getName());
+        itemToUpdate.setManufacturer(manufacturer != null ? manufacturer : itemToUpdate.getManufacturer());
+        itemToUpdate.setPrice(price != null ? price : itemToUpdate.getPrice());
+        itemToUpdate.setStock(stock != null ? stock : itemToUpdate.getStock());
+  
+        db.update(itemToUpdate);
+      } catch (Exception e ){
+        throw new Exception("", e);
+      }
+    }
+  
+    @Override
+    public void deleteStockItem(String id) throws Exception {
+      try {
+        db.remove(db.find(StockItem.class,id));
+      } catch (Exception e){
+        throw new Exception("",e);
+      }
+    }
   }
   ```
+
+#### Update the StockItem model
+
+  ```java title="src/main/java/com/ibm/inventory_management/models/StockItem.java"
+  package com.ibm.inventory_management.models;
+  
+  import java.io.Serializable;
+  
+  public class StockItem implements Serializable {
+    private String name;
+    private String _id = null;
+  
+    private String _rev = null;
+    private int stock = 0;
+    private double price = 0.0;
+    private String manufacturer = "";
+  
+    public StockItem() {
+      super();
+    }
+  
+    public StockItem(String id) {
+      this._id = id;
+    }
+  
+    public String getName() {
+      return name;
+    }
+  
+    public void setName(String name) {
+      this.name = name;
+    }
+  
+    public StockItem withName(String name) {
+      this.setName(name);
+      return this;
+    }
+  
+    public String getId() {
+      return _id;
+    }
+  
+    public void setId(String id) {
+      this._id = id;
+    }
+  
+    public StockItem withId(String id) {
+      this.setId(id);
+      return this;
+    }
+  
+  
+    public int getStock() {
+      return stock;
+    }
+  
+    public void setStock(int stock) {
+      this.stock = stock;
+    }
+  
+    public StockItem withStock(int stock) {
+      this.setStock(stock);
+      return this;
+    }
+  
+    public double getPrice() {
+      return price;
+    }
+  
+    public void setPrice(double price) {
+      this.price = price;
+    }
+  
+    public StockItem withPrice(double price) {
+      this.setPrice(price);
+      return this;
+    }
+  
+    public String getManufacturer() {
+      return manufacturer;
+    }
+  
+    public void setManufacturer(String manufacturer) {
+      this.manufacturer = manufacturer;
+    }
+  
+    public StockItem withManufacturer(String manufacturer) {
+      this.setManufacturer(manufacturer);
+      return this;
+    }
+  }
+  ```
+
 
 #### Update the StockItem controller
 
   ```java title="src/main/java/com/ibm/inventory_management/controllers/StockItemController.java"
   package com.ibm.inventory_management.controllers;
-
+  
   import java.util.List;
-
-  import org.springframework.web.bind.annotation.GetMapping;
-  import org.springframework.web.bind.annotation.RestController;
-
+  
+  import org.springframework.web.bind.annotation.*;
+  
   import com.ibm.inventory_management.models.StockItem;
   import com.ibm.inventory_management.services.StockItemApi;
-
+  
   @RestController
   public class StockItemController {
-
+  
     private final StockItemApi service;
-
+  
     public StockItemController(StockItemApi service) {
       this.service = service;
     }
-
+  
     @GetMapping(path = "/stock-items", produces = "application/json")
-    public List<StockItem> listStockItems() throws Exception {
+    public List<StockItem> listStockItems() throws Exception{
       return this.service.listStockItems();
+    }
+  
+    @PostMapping(path = "/stock-item")
+    public void addStockItem(@RequestParam String name, @RequestParam String manufacturer, @RequestParam Double price, @RequestParam Integer stock) throws Exception{
+      this.service.addStockItem(name,price,stock,manufacturer);
+    }
+  
+    @PutMapping(path = "/stock-item/{id}")
+    public void updateStockItem(@PathVariable("id") String id, @RequestParam(required=false) String name, @RequestParam(required=false) String manufacturer, @RequestParam(required=false) Double price, @RequestParam(required=false) Integer stock) throws Exception{
+      this.service.updateStockItem(id,name, price, stock, manufacturer);
+    }
+  
+    @DeleteMapping(path = "/stock-item/{id}")
+    public void deleteStockItem(@PathVariable("id") String id) throws Exception{
+      this.service.deleteStockItem(id);
     }
   }
   ```
