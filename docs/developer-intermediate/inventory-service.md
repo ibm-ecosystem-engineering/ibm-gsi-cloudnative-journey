@@ -251,10 +251,10 @@ We will start by creating the initial application component.
 
 - Commit and push the changes to Git.
 
-  ```base
-     git add .
-     git commit -m "Adds Application and Removes default Application class"
-     git push
+  ```bash
+  git add .
+  git commit -m "Adds Application and Removes default Application class"
+  git push
   ```
 
 ### Add StockItem controller
@@ -416,10 +416,10 @@ for the REST service.
 ---
 - Commit and push the changes to Git.
 
-  ```base
-     git add .
-     git commit -m "Adds StockItemController"
-     git push
+  ```bash
+  git add .
+  git commit -m "Adds StockItemController"
+  git push
   ```
 
 ### Add a service for providing results
@@ -760,3 +760,154 @@ should be placed in a component that is given a `@Service` annotation.
   ```
 
 - The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the route of your service
+
+## Complete CRUD operations
+### Add POST, PUT and DELETE routes
+- Update the `StockItemApi.java` interface to support the other CRUD operations
+  ```java title="src/main/java/com/ibm/inventory_management/services/StockItemApi.java"
+     package com.ibm.inventory_management.services;
+
+     import java.util.List;
+
+     import com.ibm.inventory_management.models.StockItem;
+
+     public interface StockItemApi {
+       List<StockItem> listStockItems();
+
+       void updateStockItem(String id);
+
+       void addStockItem(String id);
+
+       void deleteStockItem(String id);
+     }
+  ```
+- Update the `StockItemService.java` class to implement the methods of the interface
+  ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
+  package com.ibm.inventory_management.services;
+  
+  import static java.util.Arrays.asList;
+  
+  import java.util.ArrayList;
+  import java.util.List;
+  import java.util.stream.Collectors;
+  
+  import org.springframework.stereotype.Service;
+  
+  import com.ibm.inventory_management.models.StockItem;
+  
+  @Service
+  public class StockItemService implements StockItemApi {
+      static int id = 0;
+      static List<StockItem> stockItems = new ArrayList<>(asList(
+              new StockItem(++id+"")
+                      .withName("Item 1")
+                      .withStock(100)
+                      .withPrice(10.5)
+                      .withManufacturer("Sony"),
+              new StockItem(++id+"")
+                      .withName("Item 2")
+                      .withStock(150)
+                      .withPrice(100.5)
+                      .withManufacturer("Insignia"),
+              new StockItem(++id+"")
+                      .withName("Item 3")
+                      .withStock(10)
+                      .withPrice(1000.0)
+                      .withManufacturer("Panasonic")
+      ));
+  
+      @Override
+      public List<StockItem> listStockItems() {
+        return this.stockItems;
+      }
+  
+      @Override
+      public void addStockItem(String name, String manufacturer, double price, int stock) {
+          this.stockItems.add(new StockItem(++id+"")
+                  .withName(name)
+                  .withStock(stock)
+                  .withPrice(price)
+                  .withManufacturer(manufacturer)
+          );
+      }
+  
+      @Override
+      public void updateStockItem(String id, String name, String manufacturer, double price, int stock) {
+         StockItem itemToUpdate = this.stockItems.stream().filter(stockItem -> stockItem.getId().equals(id)).findFirst().orElse(null);
+  
+         if(itemToUpdate == null) {
+             System.out.println("Item not found");
+             return;
+         }
+  
+         itemToUpdate.setName(name !=null ? name : itemToUpdate.getName());
+         itemToUpdate.setManufacturer(manufacturer != null ? manufacturer : itemToUpdate.getManufacturer());
+         itemToUpdate.setPrice(Double.valueOf(price) != null ? price : itemToUpdate.getPrice());
+         itemToUpdate.setStock(Integer.valueOf(stock) != null ? stock : itemToUpdate.getStock());
+      }
+  
+      @Override
+      public void deleteStockItem(String id) {
+          this.stockItems = this.stockItems.stream().filter((stockItem)-> !stockItem.getId().equals(id)).collect(Collectors.toList());
+      }
+  }
+  ```
+- Update the `StockItemController.java` class to provide the additional routes
+  ```java title="src/main/java/com/ibm/inventory_management/services/StockItemController.java"
+  package com.ibm.inventory_management.controllers;
+  
+  import java.util.List;
+  
+  import org.springframework.web.bind.annotation.*;
+  
+  import com.ibm.inventory_management.models.StockItem;
+  import com.ibm.inventory_management.services.StockItemApi;
+  
+  @RestController
+  public class StockItemController {
+  
+    private final StockItemApi service;
+  
+    public StockItemController(StockItemApi service) {
+      this.service = service;
+    }
+  
+    @GetMapping(path = "/stock-items", produces = "application/json")
+    public List<StockItem> listStockItems() {
+      return this.service.listStockItems();
+    }
+  
+    @PostMapping(path = "/stock-item")
+    public void addStockItem(@RequestParam String name, @RequestParam String manufacturer, @RequestParam float price, @RequestParam int stock) {
+      this.service.addStockItem(name,manufacturer,price,stock);
+    }
+  
+    @PutMapping(path = "/stock-item/{id}")
+    public void updateStockItem(@PathVariable("id") String id, @RequestParam String name, @RequestParam String manufacturer, @RequestParam float price, @RequestParam int stock) {
+      this.service.updateStockItem(id,name,manufacturer,price,stock);
+    }
+  
+    @DeleteMapping(path = "/stock-item/{id}")
+    public void deleteStockItem(@PathVariable("id") String id){
+      this.service.deleteStockItem(id);
+    }
+  }
+  ```
+### Verify the changes locally and push the changes
+
+- Start the application
+
+  ```bash
+  ./gradlew bootRun
+  ```
+
+  You should see new routes on the Swagger UI.
+  ![Swagger UI](../images/inventory-service/swaggerui.png)
+
+- Commit and push the changes to Git to trigger build pipeline on your OpenShift cluster.
+
+  ```bash
+  git add .
+  git commit -m "Added CRUD operations"
+  git push
+  ```
