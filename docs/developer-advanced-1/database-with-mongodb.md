@@ -8,27 +8,6 @@ title: Database with MongoDB
 
 ### Create a MongoDB instance
 
-=== "On IBM Cloud"
-    !!! warning
-        The IBM Cloud service enforces SSL certificates usage to access the instance, however this is not covered in this tutorial, you can find the documentation for it [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app).
-
-    Provision a MongoDB instance using the **Databases for MongoDB** service on IBM Cloud.
-
-    - Log into the IBM Cloud console and look for the Databases for MongoDB service.
-
-    - Configure it to your needs and create the instance.  
-    ![Databases for MongoDB](../images/database-with-mongodb/mongodbibmcloud.png)
-
-    - After your instance has provisioned, create a **Service Credential** to have access to your MongoDB instance.
-    ![Service credentials](../images/database-with-mongodb/servicecreds.png)
-      The service credential should contain information to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
-      Decode the certificate, and create an OpenShift secret holding these values :
-      ```bash
-      oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
-      ```
-      You can also do this from the OpenShift console :
-    ![MongoDB IBM Cloud secret](../images/database-with-mongodb/secret-creation-openshift.png)
-
 === "On OpenShift"
     Install your self managed MongoDB instance using **Helm Charts**.
 
@@ -65,6 +44,27 @@ title: Database with MongoDB
       You should see the created secret `mongodb-access` on your OpenShift console :
     ![MongoDB access secret](../images/database-with-mongodb/mongodbopenshiftsecret.png)
 
+=== "On IBM Cloud"
+    !!! warning
+        The IBM Cloud service enforces SSL certificates usage to access the instance, however this is not covered in this tutorial, you can find the documentation for it [here](https://cloud.ibm.com/docs/databases-for-mongodb?topic=databases-for-mongodb-mongodb-external-app).
+
+    Provision a MongoDB instance using the **Databases for MongoDB** service on IBM Cloud.
+
+    - Log into the IBM Cloud console and look for the Databases for MongoDB service.
+
+    - Configure it to your needs and create the instance.  
+    ![Databases for MongoDB](../images/database-with-mongodb/mongodbibmcloud.png)
+
+    - After your instance has provisioned, create a **Service Credential** to have access to your MongoDB instance.
+    ![Service credentials](../images/database-with-mongodb/servicecreds.png)
+      The service credential should contain information to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
+      Decode the certificate, and create an OpenShift secret holding these values :
+      ```bash
+      oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
+      ```
+      You can also do this from the OpenShift console :
+    ![MongoDB IBM Cloud secret](../images/database-with-mongodb/secret-creation-openshift.png)
+
 === "BYO MongoDB"
       Create your own MongoDB instance on any other cloud platform and bring the login credentials.
 
@@ -80,7 +80,7 @@ title: Database with MongoDB
  - Replace the default template with following template. This will enable a 100 records of test data to be created to represent a products database. Click on the *Generate* button.
  ```bash
  [
-    '{{repeat(1, 100)}}',
+    '{{repeat(100)}}',
     {
       _id: '{{objectId()}}',
       manufacturer: '{{company().toUpperCase()}}',
@@ -268,18 +268,40 @@ If you are starting from the solution, use the following steps to enable the Clo
  import org.springframework.data.mongodb.repository.MongoRepository;
  import org.springframework.stereotype.Repository;
 
+ import java.util.Optional;
+
  @Repository
  public interface StockItemRepository extends MongoRepository<StockItem, String> {
+     Optional<StockItem> findById(String id);
+ }
+ ```
+ - Update the `StockItemApi.java` interface to have CRUD operations.
+ ```java title="src/main/java/com/ibm/inventory_management/services/StockItemApi.java"
+ package com.ibm.inventory_management.services;
+
+ import java.util.List;
+
+ import com.ibm.inventory_management.models.StockItem;
+
+ public interface StockItemApi {
+   List<StockItem> listStockItems() throws Exception;
+
+   void addStockItem(String name, Double price, Integer stock, String manufacturer) throws Exception;
+
+   void updateStockItem(String id, String name, Double price, Integer stock, String manufacturer) throws Exception;
+
+   void deleteStockItem(String id) throws Exception;
  }
  ```
 
- - Update the `StockItemService.java` to use the repository.
+ - Update the `StockItemService.java` to implement the interface and use the repository.
  ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
  package com.ibm.inventory_management.services;
 
  import java.util.List;
 
  import com.ibm.inventory_management.repositories.StockItemRepository;
+ import org.bson.types.ObjectId;
  import org.springframework.beans.factory.annotation.Autowired;
  import org.springframework.stereotype.Service;
 
@@ -292,6 +314,46 @@ If you are starting from the solution, use the following steps to enable the Clo
        @Override
        public List<StockItem> listStockItems() {
              return stockItemRepository.findAll();
+       }
+
+       @Override
+       public void addStockItem(String name, Double price, Integer stock, String manufacturer) throws Exception {
+             try {
+                   stockItemRepository.save(
+                           new StockItem(ObjectId.get().toString())
+                                   .withName(name)
+                                   .withManufacturer(manufacturer)
+                                   .withStock(stock)
+                                   .withPrice(price)
+                   );
+             } catch (Exception e) {
+                   throw new Exception("",e);
+             }
+       }
+
+       @Override
+       public void updateStockItem(String id, String name, Double price, Integer stock, String manufacturer) throws Exception {
+             try {
+                   StockItem itemToUpdate = stockItemRepository.findById(id).get();
+
+                   itemToUpdate.setName(name !=null ? name : itemToUpdate.getName());
+                   itemToUpdate.setManufacturer(manufacturer != null ? manufacturer : itemToUpdate.getManufacturer());
+                   itemToUpdate.setPrice(price != null ? price : itemToUpdate.getPrice());
+                   itemToUpdate.setStock(stock != null ? stock : itemToUpdate.getStock());
+
+                   stockItemRepository.save(itemToUpdate);
+             } catch (Exception e) {
+                   throw new Exception("",e);
+             }
+       }
+
+       @Override
+       public void deleteStockItem(String id) throws Exception {
+             try {
+                  stockItemRepository.deleteById(id);
+             } catch (Exception e){
+                  throw new Exception("",e);
+             }
        }
  }
  ```

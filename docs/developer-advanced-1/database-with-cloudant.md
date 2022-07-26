@@ -26,7 +26,7 @@ title: Database with Cloudant
     ```bash
     {
       docs: [
-        '{{repeat(1, 100)}}',
+        '{{repeat(100)}}',
         {
           _id: '{{objectId()}}',
           manufacturer: '{{company().toUpperCase()}}',
