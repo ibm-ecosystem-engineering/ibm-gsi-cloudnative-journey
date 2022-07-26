@@ -146,6 +146,7 @@ nav:
       - Log Management: developer-intermediate/log-management.md
       - Monitoring: developer-intermediate/monitoring.md
       - Inventory Application: developer-intermediate/inventory-application.md
+      - Inventory Prebuilt solution: developer-intermediate/inventory-prebuilt-solution.md
       - Inventory Service: developer-intermediate/inventory-service.md
   - "Developer Advanced - 1":
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
