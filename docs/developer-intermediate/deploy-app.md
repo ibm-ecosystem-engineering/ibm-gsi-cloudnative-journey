@@ -33,7 +33,7 @@ it into your development cluster.
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-   ![Invoke Cloud Shell](../images/deploy-app/invokecloudshell.png)
+   ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
 
 We have provided a simplified installer that will install tools and configure the shell environment. The
 installer will first check if the required tool is available in the path. If not, the missing tool(s) will be
@@ -78,13 +78,13 @@ c. You can check the shell was installed correctly by checking the `oc` version:
 
 
 - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-    ![OpenShift](../images/deploy-app/openshiftcluster.png)
+    ![OpenShift](../images/common/openshiftcluster.png)
 
 - Access the OpenShift console from within that console by clicking on the button.
-    ![OpenShift Console](../images/deploy-app/openshiftconsole.png)
+    ![OpenShift Console](../images/common/openshiftconsole.png)
 
 - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
-    ![OpenShift Login](../images/deploy-app/LoginCommand.png)
+    ![OpenShift Login](../images/common/LoginCommand.png)
 
 - click on Display Token, copy the Login with the token. oc login command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
@@ -253,7 +253,7 @@ The steps to view your registered pipeline will vary based on type of pipeline (
 
     **OR**
 
-    ![IBM Cloud console](../images/deploy-app/openshiftconsole.png)
+    ![IBM Cloud console](../images/common/openshiftconsole.png)
 
 2. From menu on the left switch to the **Developer** mode
 
@@ -295,7 +295,7 @@ You will see your application dev ops pipeline now starting to build and once co
 
     **OR**
 
-    ![IBM Cloud console](../images/deploy-app/openshiftconsole.png)
+    ![IBM Cloud console](../images/common/openshiftconsole.png)
 
 2. From the left-hand menu, select `Builds` -> `Build Configs`
 

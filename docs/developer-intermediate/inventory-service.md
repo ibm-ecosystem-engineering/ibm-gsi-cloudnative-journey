@@ -14,7 +14,7 @@ title: Inventory Service
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-  ![Invoke Cloud Shell](../images/inventory-service/invokecloudshell.png)
+  ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
 
 We have provided a simplified installer that will install tools and configure the shell environment. The installer will first check if the required tool is available in the path. If not, the missing tool(s) will be installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the `.bashrc` or `.zshrc` file to include that directory.
 
@@ -33,32 +33,40 @@ The following tools are included in the shell installer:
 ---
 
 1. Set up the shell environment by running:
+  ```shell
+  curl -sL shell.cloudnativetoolkit.dev | sh -
+  ```
+  - **Note**: If successful, you should see something like the following:
    ```shell
-   curl -sL shell.cloudnativetoolkit.dev | sh - && . ~/.bashrc
-   ```
-2. If successful, you should see something like the following:
-   ```shell
-   Downloading scripts: https://github.com/ibm-garage-cloud/cloud-shell-commands/releases/download/0.3.5/assets.tar.gz
+   Downloading scripts: https://github.com/cloud-native-toolkit/cloud-shell-commands/releases/download/0.6.1/assets.tar.gz
    ** Installing argocd cli
    ** Installing tkn cli
    ** Installing kube-ps1
    ** Installing icc
    ** Installing Cloud-Native Toolkit cli
    ```
+2. The installer updates PATH in the `.zshrc` or `.bashrc` file. You will need to source the file to apply the update to the current shell environment:
+  ```shell
+  if [[ "${SHELL}" =~ zsh ]]; then
+    source ~/.zshrc
+  else
+    source ~/.bashrc
+  fi
+  ```
 3. You can check the shell was installed correctly by checking the `oc` version:
    ```shell
    oc sync --version
    ```
 
     - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-      ![OpenShift](../images/inventory-service/openshiftcluster.png)
+      ![OpenShift](../images/common/openshiftcluster.png)
 
     - Access the OpenShift console from within that console by clicking on the button.
-      ![OpenShift Console](../images/inventory-service/openshiftconsole.png)
+      ![OpenShift Console](../images/common/openshiftconsole.png)
 
     - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
 
-      ![OpenShift Login](../images/inventory-service/LoginCommand.png)
+      ![OpenShift Login](../images/common/LoginCommand.png)
 
     - click on Display Token, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
 
