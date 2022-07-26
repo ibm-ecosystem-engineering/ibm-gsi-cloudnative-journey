@@ -2,6 +2,7 @@
 title: Pod Design
 ---
 
+
 <AnchorLinks>
   <AnchorLink>Labels, Selectors, and Annotations</AnchorLink>
   <AnchorLink>Deployments</AnchorLink>
@@ -10,7 +11,7 @@ title: Pod Design
   <AnchorLink>Activities</AnchorLink>
 </AnchorLinks>
 
-# Labels, Selectors, and Annotations
+## Labels, Selectors, and Annotations
 
 Labels are key/value pairs that are attached to objects, such as pods. Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects. Labels can be attached to objects at creation time and subsequently added and modified at any time. Each object can have a set of key/value labels defined. Each Key must be unique for a given object.
 
@@ -146,7 +147,7 @@ oc label <objectname>
 
 </Tabs>
 
-# Deployments
+## Deployments
 
 A Deployment provides declarative updates for Pods and ReplicaSets.
 
@@ -264,7 +265,7 @@ kubectl delete my-deployment
 </Tabs>
 
 
-# Deployments rolling updates and rollback
+## Deployments rolling updates and rollback
 
 **Updating a Deployment**
 A Deployment’s rollout is triggered if and only if the Deployment’s Pod template (that is, .spec.template) is changed, for example if the labels or container images of the template are updated. Other updates, such as scaling the Deployment, do not trigger a rollout.
@@ -388,7 +389,7 @@ kubectl rollout undo deployment my-deployment
 
 </Tabs>
 
-# Jobs and CronJobs
+## Jobs and CronJobs
 
 **Jobs**
 A Job creates one or more Pods and ensures that a specified number of them successfully terminate. As pods successfully complete, the Job tracks the successful completions. When a specified number of successful completions is reached, the task (ie, Job) is complete. Deleting a Job will clean up the Pods it created.

@@ -2,6 +2,7 @@
 title: Observability
 ---
 
+
 <AnchorLinks>
   <AnchorLink>Liveness and Readiness Probes</AnchorLink>
   <AnchorLink>Container Logging</AnchorLink>
@@ -9,7 +10,7 @@ title: Observability
   <AnchorLink>Activities</AnchorLink>
 </AnchorLinks>
 
-# Liveness and Readiness Probes
+## Liveness and Readiness Probes
 
 A Probe is a diagnostic performed periodically by the kubelet on a Container. To perform a diagnostic, the kubelet calls a Handler implemented by the Container. There are three types of handlers:
 
@@ -77,7 +78,7 @@ spec:
       periodSeconds: 10
 ```
 
-# Container Logging
+## Container Logging
 
 Application and systems logs can help you understand what is happening inside your cluster. The logs are particularly useful for debugging problems and monitoring cluster activity.
 
@@ -138,7 +139,7 @@ stern . -n default
 
 </Tabs>
 
-# Monitoring Applications
+## Monitoring Applications
 
 To scale an application and provide a reliable service, you need to understand how the application behaves when it is deployed. You can examine application performance in a Kubernetes cluster by examining the containers, pods, services, and the characteristics of the overall cluster. Kubernetes provides detailed information about an application’s resource usage at each of these levels. This information allows you to evaluate your application’s performance and where bottlenecks can be removed to improve overall performance.
 

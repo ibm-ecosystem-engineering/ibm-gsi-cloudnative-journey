@@ -2,13 +2,7 @@
 title: State Persistence
 ---
 
-<AnchorLinks>
-  <AnchorLink>Volumes</AnchorLink>
-  <AnchorLink>PersistentVolumes and PersistentVolumeClaims</AnchorLink>
-  <AnchorLink>Activities</AnchorLink>
-</AnchorLinks>
-
-# Volumes
+## Volumes
 
 On-disk files in a Container are ephemeral, which presents some problems for non-trivial applications when running in Containers. First, when a Container crashes, kubelet will restart it, but the files will be lost - the Container starts with a clean state. Second, when running Containers together in a Pod it is often necessary to share files between those Containers. The Kubernetes Volume abstraction solves both of these problems.
 
@@ -17,7 +11,7 @@ Docker also has a concept of volumes, though it is somewhat looser and less mana
 A Kubernetes volume, on the other hand, has an explicit lifetime - the same as the Pod that encloses it. Consequently, a volume outlives any Containers that run within the Pod, and data is preserved across Container restarts. Of course, when a Pod ceases to exist, the volume will cease to exist, too. Perhaps more importantly than this, Kubernetes supports many types of volumes, and a Pod can use any number of them simultaneously.
 
 
-## Resources
+# Resources
 
 **OpenShift**
 - [Volume Lifecycle](https://docs.openshift.com/container-platform/4.3/storage/understanding-persistent-storage.html#lifecycle-volume-claim_understanding-persistent-storage)
@@ -26,7 +20,7 @@ A Kubernetes volume, on the other hand, has an explicit lifetime - the same as t
 - [Volumes](https://kubernetes.io/docs/concepts/storage/volumes/)
 
 
-## References
+# References
 
 
 ```yaml
@@ -68,7 +62,7 @@ spec:
       type: Directory
 ```
 
-# PersistentVolumes and PersistentVolumeClaims
+## PersistentVolumes and PersistentVolumeClaims
 
 Managing storage is a distinct problem from managing compute instances. The PersistentVolume subsystem provides an API for users and administrators that abstracts details of how storage is provided from how it is consumed.
 
@@ -84,7 +78,7 @@ PersistentVolumes binds are exclusive, and since PersistentVolumeClaims are name
 
 
 
-## Resources
+# Resources
 **OpenShift**
 - [Persistent Storage](https://docs.openshift.com/container-platform/4.3/storage/understanding-persistent-storage.html)
 - [Persistent Volume Types](https://docs.openshift.com/container-platform/4.3/storage/understanding-persistent-storage.html#types-of-persistent-volumes_understanding-persistent-storage)
@@ -95,7 +89,7 @@ PersistentVolumes binds are exclusive, and since PersistentVolumeClaims are name
 - [Writing Portable Configurations](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#writing-portable-configuration)
 - [Configuring Persistent Volume Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-persistent-volume-storage/)
 
-## References
+# References
 
 ```yaml
 kind: PersistentVolume

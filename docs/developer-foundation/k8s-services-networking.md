@@ -2,13 +2,8 @@
 title: Services & Networking
 ---
 
-<AnchorLinks>
-  <AnchorLink>Services</AnchorLink>
-  <AnchorLink>Ingress</AnchorLink>
-  <AnchorLink>Activities</AnchorLink>
-</AnchorLinks>
 
-# Services
+## Services
 
 An abstract way to expose an application running on a set of Pods as a network service.
 
@@ -23,13 +18,13 @@ If you’re able to use Kubernetes APIs for service discovery in your applicatio
 For non-native applications, Kubernetes offers ways to place a network port or load balancer in between your application and the backend Pods.
 
 
-## Resources
+# Resources
 
 **IKS & OpenShift**
 - [Services](https://kubernetes.io/docs/concepts/services-networking/service/)
 - [Exposing Services](https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/)
 
-## References
+# References
 
 ```yaml
 apiVersion: apps/v1
@@ -124,14 +119,14 @@ Routes can insecured or secured on creation using certificates.
 
 The new route inherits the name from the service unless you specify one using the --name option.
 
-## Resources
+# Resources
 
 **OpenShift**
 - [Routes](https://docs.openshift.com/online/pro/dev_guide/routes.html)
 - [Route Configuration](https://docs.openshift.com/container-platform/4.3/networking/routes/route-configuration.html)
 - [Secured Routes](https://docs.openshift.com/container-platform/4.3/networking/routes/secured-routes.html)
 
-## References
+# References
 
 ** Route Creation **
 ```
@@ -182,7 +177,7 @@ oc get route <route-name> -o yaml
 </Tab>
 </Tabs>
 
-# Ingress
+## Ingress
 
 An API object that manages external access to the services in a cluster, typically HTTP.
 
@@ -190,7 +185,7 @@ Ingress can provide load balancing, SSL termination and name-based virtual hosti
 
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.
 
-## Resources
+# Resources
 
 **OpenShift**
 - [Ingress Operator](https://docs.openshift.com/container-platform/4.3/networking/ingress-operator.html)
@@ -201,7 +196,7 @@ Ingress exposes HTTP and HTTPS routes from outside the cluster to services withi
 - [Ingress Controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/)
 - [Minikube Ingress](https://kubernetes.io/docs/tasks/access-application-cluster/ingress-minikube/)
 
-## References
+# References
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1 # for versions before 1.14 use extensions/v1beta1

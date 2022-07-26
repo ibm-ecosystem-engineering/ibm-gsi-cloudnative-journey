@@ -123,7 +123,7 @@ nav:
       - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
       - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md      
       - Containers Overview: developer-foundation/containers.md
-      - Kubernetes 'overview': developer-foundation/k8s-overview/read.md
+      - Kubernetes 'overview': developer-foundation/k8s-overview.md
       - Openshift 'overview': developer-foundation/openshift.md
       - Core Concepts: developer-foundation/k8s-core-concepts.md
       - Configuration: developer-foundation/k8s-configuration.md

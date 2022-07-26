@@ -2,6 +2,7 @@
 title: Configuration
 ---
 
+
 <AnchorLinks>
   <AnchorLink>Container Configuration</AnchorLink>
   <AnchorLink>Resource Requirements</AnchorLink>
@@ -12,7 +13,7 @@ title: Configuration
   <AnchorLink>Activities</AnchorLink>
 </AnchorLinks>
 
-# Container Configuration
+## Container Configuration
 
 **Command and Argument**
 
@@ -132,7 +133,7 @@ spec:
       args: ["$(MY_NODE_NAME) $(MY_POD_NAME) $(MY_POD_IP)"]
 ```
 
-# Resource Requirements
+## Resource Requirements
 
 When you specify a Pod, you can optionally specify how much CPU and memory (RAM) each Container needs. When Containers have resource requests specified, the scheduler can make better decisions about which nodes to place Pods on.
 
@@ -197,7 +198,7 @@ spec:
     type: Container
 ```
 
-# ConfigMaps
+## ConfigMaps
 
 ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable.
 
@@ -285,7 +286,7 @@ spec:
   restartPolicy: Never
 ```
 
-# Secrets
+## Secrets
 
 Kubernetes secret objects let you store and manage sensitive information, such as passwords, OAuth tokens, and ssh keys. Putting this information in a secret is safer and more flexible than putting it verbatim in a Pod definition or in a container image.
 
@@ -406,7 +407,7 @@ kubectl describe secrets/db-user-pass
 
 </Tabs>
 
-# SecurityContexts
+## SecurityContexts
 
 A security context defines privilege and access control settings for a Pod or Container.
 
@@ -520,7 +521,7 @@ cat: can't open '/message/message.txt': Permission denied
 
 </Tabs>
 
-# Service Accounts
+## Service Accounts
 
 A service account provides an identity for processes that run in a Pod.
 

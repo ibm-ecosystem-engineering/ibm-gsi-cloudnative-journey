@@ -1,7 +1,7 @@
 ---
 title: Core Concepts
-description: Core Concepts of Kubernetes
 ---
+
 
 <AnchorLinks>
   <AnchorLink>Kubernetes API Primitives</AnchorLink>
@@ -10,7 +10,7 @@ description: Core Concepts of Kubernetes
 </AnchorLinks>
 
 
-# Kubernetes API Primitives
+## Kubernetes API Primitives
 
 Kubernetes API primitive, also known as Kubernetes objects, are the basic building blocks of any application running in Kubernetes
 
@@ -89,7 +89,7 @@ kubectl describe node --all
 
 </Tabs>
 
-# Creating Pods
+## Creating Pods
 A Pod is the basic execution unit of a Kubernetes application–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster.
 
 A Pod encapsulates an application’s container (or, in some cases, multiple containers), storage resources, a unique network IP, and options that govern how the container(s) should run. A Pod represents a unit of deployment: a single instance of an application in Kubernetes, which might consist of either a single container or a small number of containers that are tightly coupled and that share resources.
@@ -165,7 +165,7 @@ kubectl edit pod <pod-name>
 
 </Tabs>
 
-# Projects/Namespaces
+## Projects/Namespaces
 
 Namespaces are intended for use in environments with many users spread across multiple teams, or projects.
 
