@@ -148,6 +148,7 @@ nav:
       - Inventory Application: developer-intermediate/inventory-application.md
       - Inventory Prebuilt solution: developer-intermediate/inventory-prebuilt-solution.md
       - Inventory Service: developer-intermediate/inventory-service.md
+      - Inventory BFF: developer-intermediate/inventory-bff.md
   - "Developer Advanced - 1":
       - CD for Inventory App: developer-advanced-1/inventory-cd.md
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
