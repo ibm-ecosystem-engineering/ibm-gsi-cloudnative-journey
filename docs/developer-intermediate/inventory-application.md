@@ -1,9 +1,3 @@
----
-title: Inventory Application
----
-
-<!--- cSpell:ignore wireframe -->
-
 **Develop and deploy an example microservices application**
 
 Develop an example application with a three-tier microservices architecture and deploy it in IBM Cloud Kubernetes Service or Red Hat OpenShift on IBM Cloud using the IBM Garage Cloud-Native Toolkit Developer Environment including its Code Patterns.

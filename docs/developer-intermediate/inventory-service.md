@@ -1,9 +1,3 @@
----
-title: Inventory Service
----
-
-<!--- cSpell:ignore invokecloudshell openshiftconsole openshiftcluster viewapp crwexposeservice crwopenlink crwopenapp gradlew -->
-
 **Develop and deploy the backend component of the inventory application**
 
 ## Setup

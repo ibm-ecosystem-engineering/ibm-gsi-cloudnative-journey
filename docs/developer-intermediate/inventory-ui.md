@@ -1,7 +1,3 @@
----
-title: Inventory UI
----
-
 **Develop and deploy the UI component of the inventory application**
 
 ## Setup
@@ -144,7 +140,7 @@ npm run start:dev
 `components` folder. Rename the file and the class inside to `StockItemList`.
 
 
-```javascript path=client/src/components/StockItemList.jsx
+```javascript title="client/src/components/StockItemList.jsx"
 import React, { Component } from "react";
 import {
   StructuredListWrapper,
@@ -173,7 +169,7 @@ export default StockItemList;
     - Update the `menuTitle` to "Inventory Management"
     - Remove all the values from `menuItems`
 
-```javascript path=client/src/components/UIShell.jsx
+```javascript title="client/src/components/UIShell.jsx"
 class UIShell extends Component {
   header = "Big Blue Widgets";
   menuTitle = "Inventory Management";
@@ -192,7 +188,7 @@ class UIShell extends Component {
     **Note:** The label value needs to match the one used on `UIShell`
     - Update the Use `Stock Items` as the default pattern name when none is given
 
-```javascript path=client/src/components/UIShellBody.jsx
+```javascript title="client/src/components/UIShellBody.jsx"
 import React, {Component} from "react";
 import "../pattern-components/patterns.scss";
 
@@ -248,7 +244,7 @@ the data for our application.
 
 - The result of these changes should look like the following:
 
-```javascript path=client/src/components/StockItemList.jsx
+```javascript title="client/src/components/StockItemList.jsx"
 class StockItemList extends Component {
     title = 'Stock Items';
     subtitle = 'This is the current inventory of items';
@@ -318,7 +314,7 @@ component. For this first pass the service component will just return mock data.
 StockItem service component will have a single asynchronous function called `listStockItems()`
 that returns a list of StockItems.
 
-```javascript path=client/src/services/stock-item-mock.service.js
+```javascript title="client/src/services/stock-item-mock.service.js"
 export class StockItemMockService {
   async listStockItems() {
     return [];
@@ -329,7 +325,7 @@ export class StockItemMockService {
 - Implement the service by copying the data array from `StockItemList` and returning it in the function. You can add a call
 to `timer()` to simulate wait time
 
-```javascript path=client/src/services/stock-item-mock.service.js
+```javascript title="client/src/services/stock-item-mock.service.js"
 import timer from '../util/timer';
 
 export class StockItemMockService {
@@ -369,7 +365,7 @@ export class StockItemMockService {
 
 - Update the components to pass the service in the properties
 
-```javascript path=client/src/App.test.jsx
+```javascript title="client/src/App.test.jsx"
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -388,7 +384,7 @@ describe('App', () => {
 });
 ```
 
-```javascript path=client/src/App.jsx
+```javascript title="client/src/App.jsx"
 import React, { Component } from "react";
 import UIShell from "./components/UIShell";
 import "./App.scss";
@@ -411,7 +407,7 @@ class App extends Component {
 }
 ```
 
-```javascript path=client/src/components/UIShell.jsx
+```javascript title="client/src/components/UIShell.jsx"
 ...
 
 class UIShell extends Component {
@@ -445,7 +441,7 @@ class UIShell extends Component {
 export default UIShell;
 ```
 
-```javascript path=client/src/components/UIShellBody.jsx
+```javascript title="client/src/components/UIShellBody.jsx"
 ...
 
 class UIShellBody extends Component {
@@ -470,7 +466,7 @@ export default UIShellBody;
 
 - Update `StockItemList` to use the provided service
 
-```javascript path=src/components/StockItemList.jsx
+```javascript title="src/components/StockItemList.jsx"
 ...
 
 class StockItemList extends Component {
@@ -501,7 +497,7 @@ export default StockItemList;
 ```
 - Update the render UI function in  `StockItemList` to display the values in UI
 
-```javascript path=client/src/components/StockItemList.jsx
+```javascript title="client/src/components/StockItemList.jsx"
 renderRow = (row, id) => {
     return (
       <StructuredListRow key={id} onClick={() => this.onRowClick(id)}>
@@ -535,7 +531,7 @@ renderRow = (row, id) => {
   };
 ```
 
-```javascript path=client/src/components/StockItemList.jsx
+```javascript title="client/src/components/StockItemList.jsx"
 
   render() {
     const data = this.state.data;
@@ -603,7 +599,7 @@ npm i -D @types/superagent
 
 - Create a service implementation in the `services` directory called `stock-item.service.js`
 
-```javascript path=client/src/services/stock-item.service.js
+```javascript title="client/src/services/stock-item.service.js"
 export class StockItemService {
   async listStockItems() {
     return [];
@@ -613,7 +609,7 @@ export class StockItemService {
 
 - Add an implementation of `listStockItems()` that calls the BFF through the `/api` proxy
 
-```javascript path=client/src/services/stock-item.service.js
+```javascript title="client/src/services/stock-item.service.js"
 import * as superagent from 'superagent';
 
 export class StockItemService {
@@ -638,7 +634,7 @@ server, the proxy is configured in `server/routers/api.js`. By default, the valu
 
 - Update `App.jsx` to use the new service instead of the mock service.
 
-```javascript path=client/src/App.jsx
+```javascript title="client/src/App.jsx"
 import React, { Component } from "react";
 import UIShell from "./components/UIShell";
 import "./App.scss";
@@ -667,7 +663,7 @@ export default App;
 Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
 application which is that same as the name of the repository.)
 
-```yaml path=chart/base/values.yaml
+```yaml title="chart/base/values.yaml"
 ...
 
 connectsTo: inventory-management-bff-{your initials}
@@ -679,7 +675,7 @@ connectsTo: inventory-management-bff-{your initials}
 The value of this environment variable should come from the `connectsTo` value we defined. You can add
 `| quote` to wrap the value in quotes in case the value is not formatted correctly.
 
-```yaml path=chart/base/templates/deployment.yaml
+```yaml title="chart/base/templates/deployment.yaml"
   ...
   env:
     - name: INGRESS_HOST
