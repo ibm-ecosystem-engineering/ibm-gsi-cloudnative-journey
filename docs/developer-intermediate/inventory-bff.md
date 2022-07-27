@@ -101,8 +101,7 @@ To get the initial BFF project created and registered with a pipeline for automa
 
     !!! warning
         If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
-        - In order to prevent naming collisions, name the repository `inventory-management-bff-{your initials}` replacing
-        `{your initials}` with your actual initials.
+        - In order to prevent naming collisions, name the repository `inventory-management-bff-{your initials}` replacing `{your initials}` with your actual initials.
 
 - Clone the new repository to your machine.
 
