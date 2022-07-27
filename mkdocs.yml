@@ -149,7 +149,9 @@ nav:
       - Inventory Prebuilt solution: developer-intermediate/inventory-prebuilt-solution.md
       - Inventory Service: developer-intermediate/inventory-service.md
   - "Developer Advanced - 1":
+      - CD for Inventory App: developer-advanced-1/inventory-cd.md
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
       - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
+      - Authentication with AppID: developer-advanced-1/inventory-appid.md
 
 
