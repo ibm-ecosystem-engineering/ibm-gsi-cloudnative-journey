@@ -87,6 +87,7 @@ plugins:
         'learning/foundational': 'https://cloudnative101.dev'
         'learning/ace-pipeline': 'adopting/use-cases/ace-pipeline/ace-pipeline.md'
         'contributing': 'contribute/contribute.md'
+        'continuous-delivery': 'guides/continuous-delivery.md'
 
 
 markdown_extensions:
