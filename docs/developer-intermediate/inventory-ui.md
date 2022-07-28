@@ -101,7 +101,7 @@ Get the initial project created and register the pipeline for automated builds. 
 
   - Run the application locally:
     ```shell
-    npm run start:dev
+    yarn start:dev
     ```
 
 - Go into the repository directory cloned and execute the following:
@@ -121,582 +121,474 @@ Get the initial project created and register the pipeline for automated builds. 
 
 ### Create the initial components
 
-The React <Globals name="template" /> comes with a set UI components that implement 12 common UI Design Patterns. In the
-initial UI, all of the components are included to create an interactive example of how they work.
-The first step of building an application with the React <Globals name="template" /> is to remove those components
-from the menu and to create new components built from the pattern components.
+Based on the requirements of this first use case, we will create a `StockItemList` component to list stock items.
 
-Based on the requirements of this first use case, we will create a StockItemList component based on
-the TableList pattern.
+- Open a terminal and start the application in development mode to see the initial UI and the changes as we make them:
 
-- Open a terminal and start the application in development mode to see the initial UI and the changes as we make them
+    ```shell
+    yarn start:dev
+    ```
 
-```
-npm run start:dev
-```
-- Access the running service. This service runs on port 3000.
+- Access the running service. This service runs by default on port `3000`.
 
-- Make a copy of the `TableList` pattern component from the `pattern-component` directory into the
-`components` folder. Rename the file and the class inside to `StockItemList`.
+- Create the `StockItemList` React component that uses a `StructuredList` from the [Carbon React Components](https://react.carbondesignsystem.com) portfolio:
+    ```javascript title="src/content/StockItemList.jsx"
+    import React from "react";
+    import {
+        StructuredListWrapper, StructuredListHead, StructuredListRow,
+        StructuredListCell, StructuredListBody
+    } from '@carbon/react';
 
+    const DEFAULT_ITEMS = [
+        {
+            name: 'Item 1',
+            stock: 10,
+            unitPrice: 51.2,
+            manufacturer: 'Sony'
+        },
+        {
+            name: 'Item 2',
+            stock: 50,
+            unitPrice: 10,
+            manufacturer: 'LG'
+        },
+    ]
 
-```javascript title="client/src/components/StockItemList.jsx"
-import React, { Component } from "react";
-import {
-  StructuredListWrapper,
-  StructuredListRow,
-  StructuredListCell,
-  StructuredListHead,
-  StructuredListBody,
-  StructuredListInput,
-  Icon
-} from "carbon-components-react";
-import { iconCheckmarkSolid } from "carbon-icons";
+    export default function StockItemList() {
+        const items = DEFAULT_ITEMS;
 
-import Header from "../pattern-components/Header";
-import "../pattern-components/patterns.scss";
+        return (
+            <div className="stock-items-list">
+                <h2>Stock Items</h2>
+                <StructuredListWrapper>
+                    <StructuredListHead>
+                        <StructuredListRow head>
+                            <StructuredListCell head>Name</StructuredListCell>
+                            <StructuredListCell head>Stock</StructuredListCell>
+                            <StructuredListCell head>Unit Price</StructuredListCell>
+                            <StructuredListCell head>Manufacturer</StructuredListCell>
+                        </StructuredListRow>
+                    </StructuredListHead>
+                    <StructuredListBody>
+                        {items.map(item => (
+                            <StructuredListRow>
+                                <StructuredListCell noWrap>{item.name}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.stock}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.unitPrice}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.manufacturer}</StructuredListCell>
+                            </StructuredListRow>
+                        ))}
+                    </StructuredListBody>
+                </StructuredListWrapper>
+            </div>
+        );
+    }
+    ```
 
-class StockItemList extends Component {
-  ...
-}
-
-export default StockItemList;
-```
-
-- Update UIShell.jsx
-
-    - Update the `header` variable to whatever name you want. "Big Blue Widgets" is used in the example
-    - Update the `menuTitle` to "Inventory Management"
-    - Remove all the values from `menuItems`
-
-```javascript title="client/src/components/UIShell.jsx"
-class UIShell extends Component {
-  header = "Big Blue Widgets";
-  menuTitle = "Inventory Management";
-  menuItems = [
-    "Stock Items",
-  ];
-
-  ...
-}
-```
-
-- Update UIShellBody.jsx
-
-    - Remove all of the pattern values from the `components` map and add one entry for Stock Item List. The value on the
-    left is the label that is displayed and the value on the right is the class that should be loaded (e.g. `"Stock Items": StockItemList`).
-    **Note:** The label value needs to match the one used on `UIShell`
-    - Update the Use `Stock Items` as the default pattern name when none is given
-
-```javascript title="client/src/components/UIShellBody.jsx"
-import React, {Component} from "react";
-import "../pattern-components/patterns.scss";
-
-import StockItemList from "./StockItemList";
-
-class UIShellBody extends Component {
-  components = {
-    "Stock Items": StockItemList
-  };
-  defaultComponent = "Stock Items";
-
-  render() {
-    const PatternName = this.components[
-      this.props.patternName || this.defaultComponent
-    ];
-    return (
-      <div className="pattern-container">
-        <PatternName showDescription={true} />
-      </div>
-    );
-  }
-}
-export default UIShellBody;
-```
-
-- With the application running in the first terminal, open a second terminal in the repository directory
-and push the changes we've made to the repository
-
-```bash
-git add .
-git commit -m "Initial shell components"
-git push
-```
-
-
-- Return to the [pipeline to see it running](/developer-intermediate/deploy-app#view-your-application-pipeline)
-
-- Refresh the browser from earlier (or follow the steps from before to use `oc endpoints` to open the browser). The changes we just made should be reflected in the UI.
-
-#### Update StockItemList contents
-
-Now that we've created the initial components, we can start to customize the StockItemList to match
-the data for our application.
-
-- Start the application in development mode (if not already running) with `npm run start:dev`
-
-- Update the `title` and `subtitle` with values for our Stock Items view.
-
-- Update the `columns` and `data` fields with the list of columns and sample data to match the UI. Set the `formatters` to `{}` for now.
-
-    The value in the `columns` array maps to one of the attributes in our data values
-    (e.g. `name` refers to the name attribute)
-
-- The result of these changes should look like the following:
-
-```javascript title="client/src/components/StockItemList.jsx"
-class StockItemList extends Component {
-    title = 'Stock Items';
-    subtitle = 'This is the current inventory of items';
-
-    columns = [
-      "name",
-      "description",
-      "stock",
-      "unitPrice",
-      "picture",
-      "manufacturer",
-    ];
-    formatters = {};
-    data = [
-      {
-        "name": "Item 1",
-        "description": "The first item",
-        "stock": 10,
-        "unitPrice": 100.0,
-        "picture": "test",
-        "manufacturer": "unknown",
-      },
-      {
-        "name": "Item 2",
-        "description": "The second item",
-        "stock": 15,
-        "unitPrice": 120.5,
-        "picture": "test1",
-        "manufacturer": "Apple",
-      },
-      {
-        "name": "Item 3",
-        "description": "The third item",
-        "stock": 20,
-        "unitPrice": 75.5,
-        "picture": "test1",
-        "manufacturer": "Sony",
-      }
-    ];
-
-    ...
-}
-```
-
-- View the new data in your local UI: `http://localhost:3000/`
-
-- Push the changes we've made to the repository
-
-```bash
-git add .
-git commit -m "Updates the StockItemsList view"
-git push
-```
-
-- Look at the Jenkins pipeline and the deployed app
-
-#### Add a service component to get mock Stock Items
-
-So far, we've built a UI that displays a hard-coded set of data in a table. Eventually, we want to
-display dynamic data provided from a database in the table. As a first step towards that goal, we
-need to separate the UI logic from the logic that retrieves the data. We will do that with a service
-component. For this first pass the service component will just return mock data.
-
-- Create a directory called `services` under the client/src folder
-
-- Create a file named `stock-item-mock.service.js` in the service directory. Our
-StockItem service component will have a single asynchronous function called `listStockItems()`
-that returns a list of StockItems.
-
-```javascript title="client/src/services/stock-item-mock.service.js"
-export class StockItemMockService {
-  async listStockItems() {
-    return [];
-  }
-}
-```
-
-- Implement the service by copying the data array from `StockItemList` and returning it in the function. You can add a call
-to `timer()` to simulate wait time
-
-```javascript title="client/src/services/stock-item-mock.service.js"
-import timer from '../util/timer';
-
-export class StockItemMockService {
-  async listStockItems() {
-    // wait 1 second before returning data
-    await timer(1000);
-
-    return [
-      {
-        "name": "Item 1",
-        "description": "The first item",
-        "stock": 10,
-        "unitPrice": 100.0,
-        "picture": "test",
-        "manufacturer": "unknown",
-      },
-      {
-        "name": "Item 2",
-        "description": "The second item",
-        "stock": 15,
-        "unitPrice": 120.5,
-        "picture": "test1",
-        "manufacturer": "Apple",
-      },
-      {
-        "name": "Item 3",
-        "description": "The third item",
-        "stock": 20,
-        "unitPrice": 75.5,
-        "picture": "test1",
-        "manufacturer": "Sony",
-      }
-    ];
-  }
-}
-```
-
-- Update the components to pass the service in the properties
-
-```javascript title="client/src/App.test.jsx"
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {StockItemMockService} from "./services/stock-item-mock.service";
-
-describe('App', () => {
-  test('canary verifies test infrastructure', () => {
-     expect(true).toEqual(true);
-  });
-
-  test('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App stockService={new StockItemMockService()}/>, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-});
-```
-
-```javascript title="client/src/App.jsx"
-import React, { Component } from "react";
-import UIShell from "./components/UIShell";
-import "./App.scss";
-import {StockItemMockService} from "./services/stock-item-mock.service";
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.stockService = props.stockService || new StockItemMockService();
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <UIShell stockService={this.stockService}/>
-      </div>
-    );
-  }
-}
-```
-
-```javascript title="client/src/components/UIShell.jsx"
-...
-
-class UIShell extends Component {
-  ...
-
-  render() {
-    return (
-      <div>
-        <Header aria-label="IBM Platform Name">
-          <SkipToContent />
-          <HeaderName href="#" prefix="IBM">
-            {this.header}
-          </HeaderName>
-        </Header>
-        <SideNav aria-label="Side navigation">
+- Now that we have our component to list stock items, let's add it to out app by editing the `src/content/UIShell/UIShell.jsx` file:
+    -  Add our new component to the bottom of the imports setion:
+      ```javascript title="src/content/UIShell/UIShell.jsx"
+      ...
+      import StockItemList from "../StockItemList";
+      ...
+      ```
+    -  Add a menu to our left navigation panel to link to a new `/inventory/items` route that we'll use to list stock items:
+      ```javascript title="src/content/UIShell/UIShell.jsx"
+      ...
+      <SideNav aria-label="Side navigation" expanded={isSideNavExpanded}>
           <SideNavItems>
-            <SideNavMenu
-              defaultExpanded
-              icon={<Fade20 />}
-              title={this.menuTitle}
-            >
-              {this.renderSideNavItems()}
-            </SideNavMenu>
+              <SideNavMenuItem element={Link} to='/'
+                  isActive={this.state.activeItem === '/'}
+                  onClick={() => { this.setState({ activeItem: '/' }) }}>
+                  Overview
+              </SideNavMenuItem>
+              <SideNavMenu renderIcon={Fade} title="Inventory" defaultExpanded>
+                  <SideNavMenuItem element={Link} to='/inventory/items'
+                      isActive={this.state.activeItem === '/inventory/items'}
+                      onClick={() => { this.setState({ activeItem: '/inventory/items' }) }}>
+                      Items
+                  </SideNavMenuItem>
+              </SideNavMenu>
+              <SideNavMenu renderIcon={Fade} title="Management">
+                  <SideNavMenuItem href="#">
+                      Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="#">
+                      Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="#">
+                      Link
+                  </SideNavMenuItem>
+              </SideNavMenu>
+              <SideNavMenu
+                  renderIcon={Fade}
+                  title="Docs">
+                  <SideNavMenuItem href="#">
+                      Link
+                  </SideNavMenuItem>
+                  <SideNavMenuItem href="#">
+                      Link
+                  </SideNavMenuItem>
+              </SideNavMenu>
           </SideNavItems>
-        </SideNav>
-        <Content id="main-content"><UIShellBody patternName={this.state.patternName} stockService={this.props.stockService} /></Content>
-      </div>
-    );
-  }
-}
-export default UIShell;
-```
+      </SideNav>
+      ...
+      ```
+      - Add a new route for the `/inventory/items` route:
+      ```javascript title="src/content/UIShell/UIShell.jsx"
+      ...
+      <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/inventory/items" element={<StockItemList />} />
+          <Route path="*" element={<NotFound />} />
+      </Routes>
+      ...
+      ```
 
-```javascript title="client/src/components/UIShellBody.jsx"
-...
+- Open the application to check that you can now navigate to the ***Stock Items*** view:
+    ![Stock Items view](../images/inventory-ui/ui-init-components.png)
 
-class UIShellBody extends Component {
-  components = {
-    "Stock Items": StockItemList
-  };
-  defaultComponent = "Stock Items";
+- With the application running in the first terminal, open a second terminal in the repository directory and push the changes we've just made:
+    ```bash
+    git add .
+    git commit -m "Initial shell components"
+    git push
+    ```
 
-  render() {
-    const PatternName = this.components[
-      this.props.patternName || this.defaultComponent
-    ];
-    return (
-      <div className="pattern-container">
-        <PatternName showDescription={true} stockService={this.props.stockService} />
-      </div>
-    );
-  }
-}
-export default UIShellBody;
-```
+- On the openshift console, open the pipeline to see it running. To get the console URL run:
+    ```shell
+    oc whoami --show-console
+    ```
 
-- Update `StockItemList` to use the provided service
+### Add a service component to get mock Stock Items
 
-```javascript title="src/components/StockItemList.jsx"
-...
+Now that we've created the initial components, we can start to customize the `StockItemList` to match the data for our application. So far, we've built a UI that displays a hard-coded set of data in a table. Eventually, we want to display dynamic data provided from a database in the table. As a first step towards that goal, we need to separate the UI logic from the logic that retrieves the data. We will do that with a service component. For this first pass the service component will just return mock data.
 
-class StockItemList extends Component {
-  ...
+- Create a `src/services`:
+    ```sh
+    mkdir src/services
+    ```
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-      selectedRow: 0,
-    };
-  }
+- Create a file named `stock-item-mock.service.js` in the service directory, implementing the service by copying the data array from `StockItemList` and returning it in the function. You can add a `setTimeout()` 1s timeout to simulate loading:
+    ```javascript title="src/services/stock-item-mock.service.js"
+    export class StockItemMockService {
+        async listStockItems() {
+            return new Promise(resolve => {
+                // Wait 1 second before returning data
+                setTimeout(() => {
+                    resolve([
+                        {
+                            id: 1,
+                            name: 'Item 1',
+                            stock: 10,
+                            unitPrice: 51.2,
+                            manufacturer: 'Sony'
+                        },
+                        {
+                            id: 2,
+                            name: 'Item 2',
+                            stock: 50,
+                            unitPrice: 10,
+                            manufacturer: 'LG'
+                        },
+                    ]);
+                }, 1000)
+            });
+        }
+    }
+    ```
 
-  async componentDidMount() {
+- Update the components to pass the service in the properties:
 
-    this.setState({
-      data: await this.props.stockService.listStockItems()
-    });
-  }
+    ```javascript title="src/App.test.jsx"
+    import { render, screen } from '@testing-library/react';
+    import App from './App';
+    import {StockItemMockService} from "./services/stock-item-mock.service";
 
-  onRowClick = id => {
-    this.setState({ selectedRow: id });
-  };
-
-  ...
-}
-export default StockItemList;
-```
-- Update the render UI function in  `StockItemList` to display the values in UI
-
-```javascript title="client/src/components/StockItemList.jsx"
-renderRow = (row, id) => {
-    return (
-      <StructuredListRow key={id} onClick={() => this.onRowClick(id)}>
-        <div>
-          <StructuredListInput
-            id={`row-${id}`}
-            value="row-0"
-            title="row-0"
-            name="row-0"
-            //defaultChecked={this.state.selectedRow === id}
-            checked={this.state.selectedRow === id}
-          />
-          <StructuredListCell>
-            <Icon
-              className="bx--structured-list-svg"
-              icon={iconCheckmarkSolid}
-            />
-          </StructuredListCell>
-        </div>
-        {this.columns.map(col => {
-          const format = this.formatters[col] || function(val) { return val; };
-
-          return (
-            <StructuredListCell key={col} className="simple-list-row">
-              {format(row[col])}
-            </StructuredListCell>
-          );
-        })}
-      </StructuredListRow>
-    );
-  };
-```
-
-```javascript title="client/src/components/StockItemList.jsx"
-
-  render() {
-    const data = this.state.data;
-
-    return (
-      <div className="bx--grid pattern-container">
-        <Header
-          title={this.title}
-          subtitle={this.subtitle}
-        />
-        <div className="bx--row">
-          <div className="bx--col-xs-12">
-            <StructuredListWrapper selection border>
-              <StructuredListHead>
-                <StructuredListRow head>
-                  <StructuredListCell head />
-                  {this.columns.map(key => {
-                    return (
-                      <StructuredListCell head key={key}>
-                        {key.charAt(0).toUpperCase() +
-                          key.slice(1).replace(/([A-Z])/g, " $1")}
-                      </StructuredListCell>
-                    );
-                  })}
-                </StructuredListRow>
-              </StructuredListHead>
-
-              <StructuredListBody>
-                {data.map((row, i) => {
-                  return this.renderRow(row, i);
-                })}
-              </StructuredListBody>
-            </StructuredListWrapper>
-          </div>
-        </div>
-      </div>
-    );
-  }
-```
-
-- View the new data in your local UI: `http://localhost:3000/`
-
-- Push the changes we've made to the repository
-
-```bash
-git add .
-git commit -m "Adds a mock service"
-git push
-```
-
-- Look at the Jenkins pipeline and the deployed app
-
-#### Add a service that calls the BFF
-
-Now that we have a mock service that injects data, we can build an implementation of the service
-that calls our BFF. For the service, we will use a package called `superagent` to make the calls
-to the BFF.
-
-- With npm, install the `superagent` and `@types/superagent` dependencies
-
-```bash
-npm i -s superagent
-npm i -D @types/superagent
-```
-
-- Create a service implementation in the `services` directory called `stock-item.service.js`
-
-```javascript title="client/src/services/stock-item.service.js"
-export class StockItemService {
-  async listStockItems() {
-    return [];
-  }
-}
-```
-
-- Add an implementation of `listStockItems()` that calls the BFF through the `/api` proxy
-
-```javascript title="client/src/services/stock-item.service.js"
-import * as superagent from 'superagent';
-
-export class StockItemService {
-  constructor(baseUrl) {
-    this.baseUrl = baseUrl || '/api';
-  }
-
-  async listStockItems() {
-    return superagent
-      .get(this.baseUrl + '/stock-items')
-      .set('accept', 'application/json')
-      .then(res => {
-        console.log('Got response: ', res);
-        return res.body || [];
+    describe('App', () => {
+      test('canary verifies test infrastructure', () => {
+        expect(true).toEqual(true);
       });
-  }
-}
-```
 
-**Note:** In dev mode, the proxy is configured in `client/package.json`. When running with the express
-server, the proxy is configured in `server/routers/api.js`. By default, the value points to `localhost:3001`.
+      test('renders text', () => {
+        Object.defineProperty(window, "matchMedia", {
+          writable: true,
+          value: jest.fn().mockImplementation(query => ({
+            matches: false,
+            media: query,
+            onchange: null,
+            addListener: jest.fn(), // Deprecated
+            removeListener: jest.fn(), // Deprecated
+            addEventListener: jest.fn(),
+            removeEventListener: jest.fn(),
+            dispatchEvent: jest.fn(),
+          }))
+        });
+        render(<App stockService={new StockItemMockService()}/>);
+        const linkElement = screen.getByText(/Design & build with Carbon/i);
+        expect(linkElement).toBeInTheDocument();
+      });
 
-- Update `App.jsx` to use the new service instead of the mock service.
+    });
+    ```
 
-```javascript title="client/src/App.jsx"
-import React, { Component } from "react";
-import UIShell from "./components/UIShell";
-import "./App.scss";
+    ```javascript title="src/App.jsx"
+    import React, { Component } from 'react';
+    import UIShell from './content/UIShell/UIShell';
+    import './App.scss';
+    import { StockItemMockService } from "./services/stock-item-mock.service";
 
-import {StockItemService} from "./services/stock-item.service";
+    class App extends Component {
+      constructor(props) {
+        super(props);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+        this.stockService = props.stockService || new StockItemMockService();
+      }
 
-    this.stockService = props.stockService || new StockItemService();
-  }
+      render() {
+        return (
+          <div className="app">
+            <UIShell stockService={this.stockService} />
+          </div>
+        );
+      }
+    }
 
-  render() {
-    return (
-      <div className="App">
-        <UIShell stockService={this.stockService}/>
-      </div>
+    export default App;
+    ```
+
+    ```javascript title="src/content/UIShell/UIShell.jsx"
+    ...
+    <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/inventory/items" element={<StockItemList stockService={this.props.stockService} />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+    ...
+    ```
+
+- Update `StockItemList.jsx` to use the provided service:
+
+    ```javascript title="src/content/StockItemList.jsx"
+    import React from 'react';
+    import { useQuery } from '@tanstack/react-query';
+    import {
+        StructuredListWrapper, StructuredListHead, StructuredListRow,
+        StructuredListCell, StructuredListBody, StructuredListSkeleton
+    } from '@carbon/react';
+
+    export default function StockItemList(props) {
+        const { isLoading, error, data } = useQuery(['stock-items'], props.stockService.listStockItems);
+
+        return (
+            <div className='stock-items-list'>
+                <h2>Stock Items</h2>
+                {isLoading ?
+                    <StructuredListSkeleton />
+                    : error ?
+                        'Error retrieving stock items'
+                    :
+                    <StructuredListWrapper>
+                    <StructuredListHead>
+                        <StructuredListRow head>
+                            <StructuredListCell head>Name</StructuredListCell>
+                            <StructuredListCell head>Stock</StructuredListCell>
+                            <StructuredListCell head>Unit Price</StructuredListCell>
+                            <StructuredListCell head>Manufacturer</StructuredListCell>
+                        </StructuredListRow>
+                    </StructuredListHead>
+                    <StructuredListBody>
+                        {data.map(item => (
+                            <StructuredListRow key={item.id}>
+                                <StructuredListCell noWrap>{item.name}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.stock}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.unitPrice}</StructuredListCell>
+                                <StructuredListCell noWrap>{item.manufacturer}</StructuredListCell>
+                            </StructuredListRow>
+                        ))}
+                    </StructuredListBody>
+                </StructuredListWrapper>}
+            </div>
+        );
+    }
+    ```
+
+- Open the app in your browser, if the app isn't started run:
+
+    ```shell
+    yarn start:dev
+    ```
+
+- Push the changes we've made to the repository:
+
+    ```bash
+    git add .
+    git commit -m "Adds a mock service"
+    git push
+    ```
+
+- On the openshift console, open the pipeline to see it running. To get the console URL run:
+    ```shell
+    oc whoami --show-console
+    ```
+
+### Add a service that calls the BFF
+
+Now that we have a mock service that injects data, we can build an implementation of the service that calls our BFF. For the service, we will use `axios` to make GraphQL calls to the BFF through an HTTP proxy exposed by the server, using `http-proxy-middleware`.
+
+- Install `axios` and `http-proxy-middleware`:
+    ```bash
+    yarn add http-proxy-middleware axios
+    ```
+
+- Update the server to proxy BFF requests (configured in `API_HOST` environment variable) to `/api` endpoint:
+    ```javascript title="server/server.js"
+    const express = require('express');
+    const path = require('path');
+    const { createProxyMiddleware } = require('http-proxy-middleware');
+
+    const app = express();
+
+    app.use(express.static(path.join(__dirname, '../build')));
+
+    app.use(
+    '/api',
+    createProxyMiddleware({
+        target: process.env.API_HOST,
+        changeOrigin: true,
+        pathRewrite: {
+        '^/api': '/'
+        },
+    })
     );
-  }
-}
-export default App;
-```
 
-- Modify `connectsTo` property to the values.yaml file of the Helm chart. The value of the property should match the
-Kubernetes service of the microservice. (For <Globals name="template" /> projects, the service name is the same as the name of the
-application which is that same as the name of the repository.)
+    app.get('/health', function (req, res) {
+    res.json({ status: 'UP' });
+    });
 
-```yaml title="chart/base/values.yaml"
-...
+    app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../build', 'index.html'));
+    });
 
-connectsTo: inventory-management-bff-{your initials}
+    const port = process.env.PORT ?? 3000;
+    app.listen(port, function () {
+    console.info(`Server listening on http://localhost:${port}`);
+    });
+    ```
 
-...
-```
+- Add a `src/setupProxy.js` file to setup the proxy for local development:
+    ```javascript title="src/setupProxy.js"
+    const { createProxyMiddleware } = require('http-proxy-middleware');
 
-- Add a new environment variable named `API_HOST` to the list of existing environment variables in deployment.yaml.
-The value of this environment variable should come from the `connectsTo` value we defined. You can add
-`| quote` to wrap the value in quotes in case the value is not formatted correctly.
+    module.exports = function(app) {
+    app.use(
+        '/api',
+        createProxyMiddleware({
+        target: process.env.API_HOST,
+        changeOrigin: true,
+        pathRewrite: {
+            '^/api': '/'
+        },
+        })
+    );
+    };
+    ```
 
-```yaml title="chart/base/templates/deployment.yaml"
-  ...
-  env:
-    - name: INGRESS_HOST
-      value: ""
-    - name: PROTOCOLS
-      value: ""
-    - name: LOG_LEVEL
-      value: {{ .Values.logLevel | quote }}
-    - name: API_HOST
-      value: {{ printf "%s:80" .Values.connectsTo | quote }
-  ...
-```
+- Create a service implementation in the `services` directory called `stock-item.service.js` implementing `listStockItems()` that calls the BFF through the `/api` proxy:
+    ```javascript title="src/services/stock-item.service.js"
+    import axios from "axios";
 
-- Push the changes we've made to the repository
+    export class StockItemService {
+        constructor(baseUrl) {
+            this.baseUrl = baseUrl || '/api';
+        }
 
-```bash
-git add .
-git commit -m "Updates the StockItemsList view"
-git push
-```
+        async listStockItems() {
+            return axios({
+                url: '/api/graphql',
+                method: "POST",
+                data: {
+                    query: `
+                    {
+                        stockItems {
+                            id
+                            manufacturer
+                            name
+                            picture
+                            stock
+                            unitPrice
+                        }
+                    }
+                    `
+                }
+            }).then(response => response.data.data.stockItems);
+        }
+    }
+    ```
+
+- Update `App.jsx` to use the new service instead of the mock service:
+    ```javascript title="src/App.jsx"
+    import React, { Component } from 'react';
+    import UIShell from './content/UIShell/UIShell';
+    import './App.scss';
+    import { StockItemService } from "./services/stock-item.service";
+
+    class App extends Component {
+    constructor(props) {
+        super(props);
+
+        this.stockService = props.stockService || new StockItemService();
+    }
+
+    render() {
+        return (
+        <div className="app">
+            <UIShell stockService={this.stockService} />
+        </div>
+        );
+    }
+    }
+
+    export default App;
+    ```
+
+- Open the application to check that your app is now retrieving data from BFF GraphQL endpoint:
+    ![GraphQL data view](../images/inventory-ui/ui-graphql-data.png)
+
+- Modify `connectsTo` property to the `values.yaml` file of the Helm chart. The value of the property should match the Kubernetes service of the microservice. (For template projects, the service name is the same as the name of the application which is that same as the name of the repository):
+    ```yaml title="chart/base/values.yaml"
+    ...
+    connectsTo: inventory-management-bff-{your initials}
+    ...
+    ```
+
+- Add a new environment variable named `API_HOST` to the list of existing environment variables in deployment.yaml. The value of this environment variable should come from the `connectsTo` value we defined. You can add `| quote` to wrap the value in quotes in case the value is not formatted correctly:
+    ```yaml title="chart/base/templates/deployment.yaml"
+    ...
+    env:
+        - name: INGRESS_HOST
+        value: ""
+        - name: PROTOCOLS
+        value: ""
+        - name: LOG_LEVEL
+        value: {{ .Values.logLevel | quote }}
+        - name: API_HOST
+        value: {{ printf "%s:80" .Values.connectsTo | quote }
+    ...
+    ```
+
+- Push the changes we've made to the repository:
+    ```bash
+    git add .
+    git commit -m "Updates the StockItemsList view"
+    git push
+    ```
+
+- On the openshift console, open the pipeline to see it running. To get the console URL run:
+    ```shell
+    oc whoami --show-console
+    ```
 
 ## Summary
 
-You have now completed the Micro App Guide demonstrating the Inventory solution.
+Congrats! You have now completed the Micro App Guide demonstrating the Inventory solution.
