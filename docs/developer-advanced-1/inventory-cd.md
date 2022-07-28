@@ -2,19 +2,14 @@
 title: CD for Inventory App 
 ---
 
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+**Extending the Inventory Micro  app to include Continuous Delivery to Test.**
 
-<PageDescription>
-
-Extending the Inventory Micro  app to include Continuous Delivery to Test. 
-
-</PageDescription>
 
 ## Guide
 
-This Micro App guidance continues to build upon the microserivces that were built in the Inventory Micro App guide. Make sure you have complete [Inventory App](/developer-intermediate/inventory-app) or deployed the working [Inventory Solution](/developer-intermediate/inventory-app#deploy-the-inventory-app-solution).
+This Micro App guidance continues to build upon the microserivces that were built in the Inventory Micro App guide. Make sure you have complete [Inventory Application](/developer-intermediate/inventory-application) or deployed the working [Inventory Solution](/developer-intermediate/inventory-prebuilt-solution/#deploy-the-inventory-app-solution).
 
-- we implemented the three tiers in the Inventory Mico App and deployed the app to the `dev` namespace/project.
+- We implemented the three tiers in the Inventory Mico App and deployed the app to the `dev` namespace/project.
 - We will take that app and make these additions.
 
 - Deploy the app to the `test` namespace/project using CD techniques and ArgoCD
@@ -23,7 +18,7 @@ This Micro App guidance continues to build upon the microserivces that were buil
 ## Using CD to deploy to Test
 
 ArgoCD is a tool that provides continuous delivery for projects and applications. If you haven't already, be sure to read
-through the [Continuous Delivery with ArgoCD guide](/guides/continuous-delivery).
+through the [Continuous Delivery with ArgoCD guide](/continuous-delivery).
 
 For this exercise, we are going to use ArgoCD to push the Inventory app from `dev` to `test` (and possibly `staging` as well). If you have already completed the Inventory Micro App , then it can be used for the ArgoCD process (although perhaps with some minor pipeline updates). If you haven't completed the exercise, you can start from the [solution repositories](/developer-intermediate/inventory-app#deploy-the-inventory-app-solution) to perform the ArgoCD steps.
 
@@ -32,7 +27,7 @@ For this exercise, we are going to use ArgoCD to push the Inventory app from `de
 
 Let's get started with using Argo CD.
 
-- Create a new repo from the [ArgoCD <Globals name="template" />](https://github.com/IBM/template-argocd-gitops/generate)
+- Create a new repo from the [ArgoCD Code Pattern](https://github.com/IBM/template-argocd-gitops/generate)
 
 - Clone the project to your machine
 
@@ -54,9 +49,8 @@ Now that the repository has been created, we need to tell ArgoCD where it is.
 
 - Get the ArgoCD login information from the `oc credentials` cli command
 
-    <InlineNotification>
-        Note: You need to be logged into the cluster on the command-line for the CLI to access the cluster information.
-    </InlineNotification>
+!!! note
+    You need to be logged into the cluster on the command-line for the CLI to access the cluster information.
 
 - Log into ArgoCD (use `oc credentials` to obtain your credentials and login to argo)
 
@@ -102,7 +96,7 @@ To create a project, do the following:
 
 ### Configure the GitOps repo for Inventory Management service
 
-- Copy the `app-artifactory` folder and give it a name that matches the Inventory Management service component
+- Clone the GitOps repository you created earlier, copy the folder `templates/app-helm` to the root of the repository and give it a name that matches the Inventory Management service component
 (e.g. `inventory-management-svc-{initials}`)
 
 - Update `inventory-management-svc-{initials}/Chart.yaml` and update the name to match the directory name
@@ -123,14 +117,14 @@ To create a project, do the following:
 - The url of the Artifactory helm repository can be taken from the below step.
 
 
-- In the Artifactory Setup screen, in Set Me Up Section, select the tool as "Generic" and repository as "generic-local".Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL. 
+- In the Artifactory Setup screen, in Set Me Up Section, select the tool as "Generic" and repository as "generic-local". Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL. 
           ![ArtifactoryURLSetup config](../images/inventory-cd/artifactoryurlsetup.png)
 
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
 for the cluster
 
 - In `inventory-management-svc-{initials}/values.yaml` replace `<app-chart-name>` with the directory name. Replace `ingressSubdomain` with the value from the previous step. Update `tlsSecretName` with the value from the previous step. The result should look something like the following
-    ```yaml path=inventory-management-svc-{initials}/values.yaml
+    ```yaml title="inventory-management-svc-{initials}/values.yaml"
     global:
       ingressSubdomain: sms-test.us-south.containers.appdomain.cloud
       tlsSecretName: sms-test-cluster
@@ -162,7 +156,7 @@ connecting the config within the Git repo to the cluster and namespace.
     - `application name` - `test-inventory-management-svc`
     - `project` - `inventory-management`
     - `sync-policy` - `Automatic`
-    - `repository url` - The Git url where the configuration is stored
+    - `repository url` - The url of the GitOps repository you created earlier
     - `revision` - `test`
     - `path` - `inventory-management-svc-{initials}`
     - `destination cluster` - The cluster url for the deployment
@@ -187,7 +181,7 @@ watch ArgoCD apply the change.
     ```
 
 - Update `inventory-management-svc-{initials}/values.yaml` to increase the replica count
-    ```yaml path=inventory-management-svc-{initials}/values.yaml
+    ```yaml title="inventory-management-svc-{initials}/values.yaml"
     global:
       ingressSubdomain: sms-test.us-south.containers.appdomain.cloud
       tlsSecretName: sms-test-cluster
@@ -209,21 +203,6 @@ watch ArgoCD apply the change.
 - Log into the ArgoCD UI and look at the state of the application. It should say `Synchronizing`.
 If you don't want to wait you can manually by pressing the `Synchronize` button.
 
-### Patch The Helm Repository URL
-
-Patch Helm repository URL to `argocd-cm` configmap in `tools` namespace.
-
-
-- Log into the cluster on the command-line.
-
-- Change the directory to the root of the ArgoCD <Globals name="template" /> repo that was cloned previously.
-
-- Execute the below `addhelmrepository.sh` file with paramter of Helm repository url.
-
-    ```bash
-    ./config/addhelmrepository.sh {HELM REPO URL}
-    ``` 
-
 ### Hook the CI pipeline to the CD pipeline
 
 The last stage in the CI pipeline updates the version number in the `requirements.yaml` to the version of the helm chart
@@ -234,31 +213,29 @@ to connect to the git repo to push updates.
 The [IGC CLI](/getting-started/cli) has a command that provides a helper to make the creating of a kubernetes secret
 with git credentials very easy.
 
-- Log into the cluster on the command-line.
+- Log into the cluster on the command-line and select your dev project.
 
-- Change the directory to the root of the ArgoCD <Globals name="template" /> repo that was cloned previously.
-
-- Run `igc git-secret gitops-repo -n dev-{initials}` to create the secret. This command will prompt for the username,
-personal access token, and the branch to put in the secret.
+- Run `igc gitops <GITOPS_REPO_URL>`. This command will prompt for the username,
+personal access token, and the branch to use.
 
 ### What just happened?
 
--  The `git-secret` command creates a secret in a kubernetes namespace containing the url, username, password, and branch information for a git repo. In the command above, we provided `gitops-cd-secret` for the secret name. (If that value is left off the secret name defaults to `{git org}.{git repo}`.). It creates a secret `git-credentials` and configmap `gitops-repo` You can verify the secret was created by running:
+-  The `igc gitops` command creates a secret `git-credentials` and a configmap named `gitops-repo` in the OpenShift project. These contain the url, username, password, and branch information for the GitOps repository. You can verify the secret was created by running:
    
     ```bash
-    oc get configmap/gitops-repo -n dev-{initials}-o yaml
+    oc get configmap/gitops-repo -n dev-{initials} -o yaml
+    oc get secret/git-credentials -n dev-{initials} -o yaml
     ``` 
 
-**Note:**
-- For the secret to be available to the CI pipeline, the secret needs to be created in the same namespace
-where the pipeline is running (e.g. `dev-{initials}`).
-- The value provided for `branch` is the one the pipeline will use to when committing changes to trigger
-the CD pipeline. `test` is the recommended value for the branch field.
-
-- Trigger the pipeline for the Inventory Management service to build by making a change
-to the Inventory Management Service code and push the changes to Git.
+!!! note
+    - For the secret to be available to the CI pipeline, the secret needs to be created in the same namespace
+    where the pipeline is running (e.g. `dev-{initials}`).
+    - The value provided for `branch` is the one the pipeline will use to when committing changes to trigger
+    the CD pipeline. `test` is the recommended value for the branch field.
+    
+    - Trigger the pipeline for the Inventory Management service to build by making a change to the Inventory Management Service code and push the changes to Git.
 
 ### Repeat for BFF and UI components
 
-Starting from [Configure the GitOps repo for Inventory Management service](#Configure-the-gitops-repo-for-inventory-management-service),
+Starting from [Configure the GitOps repo for Inventory Management service](#configure-the-gitops-repo-for-inventory-management-service),
 the steps need to be repeated for each application within the project.
