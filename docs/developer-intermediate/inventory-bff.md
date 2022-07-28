@@ -1,7 +1,3 @@
----
-title: Inventory BFF
----
-
 **Develop and deploy the BFF component of the inventory application**
 
 The Inventory BFF's role in the architecture is to act as an orchestrator between the core business services and the specific digital channel it is focused on supporting. This class article will give you more detail about the [Backend For Frontend architectural pattern](https://samnewman.io/patterns/architectural/bff/) and the benefits.
@@ -101,8 +97,7 @@ To get the initial BFF project created and registered with a pipeline for automa
 
     !!! warning
         If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
-        - In order to prevent naming collisions, name the repository `inventory-management-bff-{your initials}` replacing
-        `{your initials}` with your actual initials.
+        - In order to prevent naming collisions, name the repository `inventory-management-bff-{your initials}` replacing `{your initials}` with your actual initials.
 
 - Clone the new repository to your machine.
 

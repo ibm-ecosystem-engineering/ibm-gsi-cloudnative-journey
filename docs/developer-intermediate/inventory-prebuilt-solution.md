@@ -1,7 +1,3 @@
----
-title: Inventory - Prebuild Solution
----
-
 ### Prebuilt Solution
 
 If you want to skip the guide and just get the components running, see [Deploy the Inventory App solution](#deploy-the-inventory-app-solution).
