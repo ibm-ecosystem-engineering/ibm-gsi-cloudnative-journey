@@ -407,13 +407,13 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
 ## Log in to OpenShift Cluster
 
 - Log in to OpenShift Cluster from the cloud console:
-    ![OpenShift](../images/devenvsetup/openshiftcluster.png)
+    ![OpenShift](../images/common/openshiftcluster.png)
 
 - Access the OpenShift console by clicking on the button:
-    ![OpenShift Console](../images/devenvsetup/openshiftconsole.png)
+    ![OpenShift Console](../images/common/openshiftconsole.png)
 
 - Get the OpenShift login command, which includes a token:
-    ![OpenShift Login](../images/devenvsetup/LoginCommand.png)
+    ![OpenShift Login](../images/common/LoginCommand.png)
 
 - Run the login command in the terminal:
     ```bash
