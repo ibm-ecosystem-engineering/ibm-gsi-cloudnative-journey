@@ -255,10 +255,7 @@ Based on the requirements of this first use case, we will create a `StockItemLis
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ### Add a service component to get mock Stock Items
 
@@ -427,10 +424,7 @@ Now that we've created the initial components, we can start to customize the `St
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ### Add a service that calls the BFF
 
@@ -584,10 +578,7 @@ Now that we have a mock service that injects data, we can build an implementatio
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ## Summary
 

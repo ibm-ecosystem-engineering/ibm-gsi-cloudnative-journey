@@ -18,7 +18,7 @@ named `inventory-management-svc-solution`
 - Go into the repository directory cloned and execute the following
 
     ```
-    oc sync dev-{your initials} --dev
+    oc sync dev-{your initials} --tekton
     ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
@@ -31,16 +31,16 @@ named `inventory-management-svc-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
 ### Inventory BFF
 
-- Create a new project from the [Inventory Management BFF solution template](https://github.com/ibm-gsi-ecosystem/inventory-management-bff-solution/generate)
+- Create a new project from the [Inventory Management BFF solution template](https://github.com/ibm-ecosystem-lab/inventory-bff-prebuild/generate)
 named `inventory-management-bff-solution`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
+- Go into the repository directory cloned and execute `oc sync --tekton` command. if you are not executed previously. 
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
@@ -52,7 +52,7 @@ named `inventory-management-bff-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
 - Get the backend service name this value by executing the command `oc get svc -n dev-{initials}.
     ```
@@ -75,12 +75,12 @@ service of the microservice: `connectsTo: inventory-svc-ar`
 
 ### Inventory UI
 
-- Create a new project from the [Inventory Management UI solution template](https://github.com/ibm-gsi-ecosystem/inventory-management-ui-solution/generate)
+- Create a new project from the [Inventory Management UI solution template](https://github.com/ibm-ecosystem-lab/inventory-ui-prebuild/generate)
 named `inventory-management-ui-solution`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute `oc sync` command. if you are not executed previously. 
+- Go into the repository directory cloned and execute `oc sync --tekton` command. if you are not executed previously. 
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
     ```
@@ -91,7 +91,7 @@ named `inventory-management-ui-solution`
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
-- Open the [pipeline to see it running](/developer-intermediate/deploy-app#6.-view-your-application-pipeline)
+- Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 - Get the bff service name this value by executing the command `oc get svc -n dev-{initials}.
     ```

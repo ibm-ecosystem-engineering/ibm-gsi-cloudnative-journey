@@ -222,10 +222,7 @@ by a component and provide a good way to load the modules that will be injected 
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ## Update the controller to call a service
 
@@ -448,10 +445,7 @@ into javascript and to put the business logic in a separate service component.
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ## Add a GraphQL implementation of Stock Items
 
@@ -553,10 +547,7 @@ for GraphQL.
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
 ## Create a service implementation that calls the microservice
 
@@ -699,7 +690,4 @@ The config class separates how the config is loaded from how it is used. In this
     git push
     ```
 
-- On the openshift console, open the pipeline to see it running. To get the console URL run:
-    ```shell
-    oc whoami --show-console
-    ```
+- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
