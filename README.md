@@ -1,6 +1,4 @@
-# IBM Cloud Ecosystem
-
-## Cloud-Native Learning Journey
+# Cloud-Native Learning Journey
 
 This developer enablement will enable technical teams to understand how to use the tools to manage the full
 lifecycle of Cloud-Native development with IBM Kubernetes Service or managed Red Hat OpenShift on IBM Cloud.
@@ -8,6 +6,44 @@ lifecycle of Cloud-Native development with IBM Kubernetes Service or managed Red
 The rendered Learning Journey can be viewed here - [Cloud-Native Enablement](https://ibm-gsi-ecosystem.github.io/ibm-gsi-cloudnative-journey/)
 
 To update and manage the Learning Journey follow these steps.
+
+## Development guide
+
+### Page titles
+
+Page titles and other metadata are provided via meta blocks at the top of the page.
+
+### Info boxes (Admonitions)
+
+Information boxes are implemented as [admonitions](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#usage). For example:
+
+```
+!!! note "Phasellus posuere in sem ut cursus"
+
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
+    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
+    massa, nec semper lorem quam in massa.
+```
+
+### Content tabs
+
+[Content tabs](https://squidfunk.github.io/mkdocs-material/reference/content-tabs/#usage) are defined using `====` with indented content on the following lines. For example:
+
+```
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
+```
+
+## Development
 
 ### Clone the repository
 
@@ -54,16 +90,7 @@ The result of the `deploy` can be viewed here - https://ibm-gsi-ecosystem.github
 **Note:** There is a time delay between when the deploy process completes and when the
 content is available on the published site.
 
-### Gatsby and Carbon
-
-Get started using with the Gatsby Carbon theme which includes all configuration you might need to build a
-beautiful site inspired by the [Carbon Design System](https://www.carbondesignsystem.com).
-
 ## Resources
 
-- [Getting Started](https://gatsby-theme-carbon.now.sh/getting-started)
-- [Guides](https://gatsby-theme-carbon.now.sh/guides/configuration)
-- [Components](https://gatsby-theme-carbon.now.sh/components/markdown)
-- [Demo](https://gatsby-theme-carbon.now.sh/demo)
-- [Gallery](https://gatsby-theme-carbon.now.sh/gallery)
-- [Contributions](https://gatsby-theme-carbon.now.sh/contributions)
+- [Getting Started](https://www.mkdocs.org/getting-started/)
+- [Theme Reference](https://squidfunk.github.io/mkdocs-material/reference/)
