@@ -9,9 +9,20 @@ To update and manage the Learning Journey follow these steps.
 
 ## Development guide
 
-### Page titles
+### Page titles and other metadata
 
-Page titles and other metadata are provided via meta blocks at the top of the page.
+[Page titles and other metadata](https://squidfunk.github.io/mkdocs-material/reference/#usage) are provided via meta blocks at the top of the page.
+
+```
+---
+title: What is Cloud-Native?
+description: This is a description
+---
+```
+
+### Content headings
+
+In most all cases, titles/headings within the page content should use h1-h5 headings (e.g. `#` - `#####`) instead of just using bold text. Using headings allows the table of contents to be generated correctly.
 
 ### Info boxes (Admonitions)
 
@@ -24,6 +35,10 @@ Information boxes are implemented as [admonitions](https://squidfunk.github.io/m
     nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
     massa, nec semper lorem quam in massa.
 ```
+
+Many admonition types are [supported](https://squidfunk.github.io/mkdocs-material/reference/admonitions/#supported-types)
+
+e.g. `note`, `abstract`, `info`, `tip`, `success`, `question`, `warning`, `danger`, `bug`, `quote`
 
 ### Content tabs
 
@@ -41,6 +56,49 @@ Information boxes are implemented as [admonitions](https://squidfunk.github.io/m
     1. Sed sagittis eleifend rutrum
     2. Donec vitae suscipit est
     3. Nulla tempor lobortis orci
+```
+
+### Grids
+
+[Grids](https://squidfunk.github.io/mkdocs-material/reference/grids/#usage) and grid cards are defined using html with `grid cards` classes and dashes (`-`) for each card.
+
+```
+<div class="grid cards" markdown>
+
+-   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
+
+    ---
+
+    Install [`mkdocs-material`](#) with [`pip`](#) and get up
+    and running in minutes
+
+    [:octicons-arrow-right-24: Getting started](#)
+
+-   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
+
+    ---
+
+    Focus on your content and generate a responsive and searchable static site
+
+    [:octicons-arrow-right-24: Reference](#)
+
+-   :material-format-font:{ .lg .middle } __Made to measure__
+
+    ---
+
+    Change the colors, fonts, language, icons, logo and more with a few lines
+
+    [:octicons-arrow-right-24: Customization](#)
+
+-   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
+
+    ---
+
+    Material for MkDocs is licensed under MIT and available on [GitHub]
+
+    [:octicons-arrow-right-24: License](#)
+
+</div>
 ```
 
 ## Development
