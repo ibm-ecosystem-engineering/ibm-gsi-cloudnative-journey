@@ -30,22 +30,22 @@ it:
 -   The flexibility of each microservice adds to the agility and
     continuous improvement of cloud-native applications.
 
-**CNCF Cloud-Native Definition**
+!!! info "CNCF Cloud-Native Definition"
 
-Cloud-native technologies empower organizations to build and run
-scalable applications in modern, dynamic environments such as public,
-private, and hybrid clouds. Containers, service meshes, microservices,
-immutable infrastructure, and declarative APIs exemplify this approach.
+    Cloud-native technologies empower organizations to build and run
+    scalable applications in modern, dynamic environments such as public,
+    private, and hybrid clouds. Containers, service meshes, microservices,
+    immutable infrastructure, and declarative APIs exemplify this approach.
 
-These techniques enable loosely coupled systems that are resilient,
-manageable, and observable. Combined with robust automation, they allow
-engineers to make high-impact changes frequently and predictably with
-minimal toil.
+    These techniques enable loosely coupled systems that are resilient,
+    manageable, and observable. Combined with robust automation, they allow
+    engineers to make high-impact changes frequently and predictably with
+    minimal toil.
 
-The Cloud-Native Computing Foundation seeks to drive adoption of this
-paradigm by fostering and sustaining an ecosystem of open source,
-vendor-neutral projects. We democratize state-of-the-art patterns to
-make these innovations accessible for everyone.
+    The Cloud-Native Computing Foundation seeks to drive adoption of this
+    paradigm by fostering and sustaining an ecosystem of open source,
+    vendor-neutral projects. We democratize state-of-the-art patterns to
+    make these innovations accessible for everyone.
 
 ## Why Cloud-Native?
 
@@ -100,7 +100,7 @@ as follows.
 
 -   Cultural Change.
 
-**Disposable Infrastructure**
+### Disposable Infrastructure
 
 While creating applications on the cloud, you need several cloud resources
 as part of it. We often hear how easy it is to create all these
@@ -133,7 +133,7 @@ Automation allows you to:
 Now you should know what we are talking about. Disposable infrastructure is
 nothing but `Infrastructure as Code`.
 
-***Infrastructure as Code***
+### Infrastructure as Code
 
 Here, you develop the code for automation exactly as same as you do
 for the rest of the application using agile methodologies.
@@ -149,7 +149,7 @@ for the rest of the application using agile methodologies.
 Thus, disposable infrastructure lays the groundwork for scalability and
 elasticity.
 
-**Isolation**
+### Isolation
 
 In traditional or legacy monolithic applications when you fix a bug or an 
 error, the entire application needs to be redeployed.
@@ -169,7 +169,7 @@ achieve this we need isolation to avoid a problem in a single
 component affecting the entire system. This also helps you to introduce
 changes the application quickly and with confidence.
 
-**Scalability**
+### Scalability
 
 Simply deploying your application to the cloud does not make it
 cloud-native. To be cloud-native it needs to use the full benefits
@@ -186,7 +186,7 @@ architected so it supports multiple regions and active-active
 deployments. This helps you to increase the availability and avoids
 single-point failures.
 
-**Disposable architecture**
+### Disposable architecture
 
 Leveraging the disposable infrastructure and scaling isolated components
 is important for cloud-native applications. Disposable architecture is
@@ -211,7 +211,7 @@ the breakthrough. This helps you to minimize waste allowing you to use
 your resources on controlled experiments efficiently and get good value
 out of it in the end.
 
-**Value-added cloud services**
+### Value-added cloud services
 
 When you are defining an application, there are many things you need to
 care about. Every service will be associated with many things like
@@ -230,7 +230,7 @@ long-termed decisions. You can use a different service if you find
 it more suitable for your component and hook that up with your
 application based on the requirements.
 
-**Polyglot cloud**
+### Polyglot cloud
 
 Most of you are familiar with polyglot programming. For your
 application, based on the component, you can choose the programming
@@ -248,7 +248,7 @@ it suits well for any of your application components. So, you can run
 different components of your cloud-native system on different cloud
 providers based on your requirements.
 
-**Self-sufficient, full-stack teams**
+### Self-sufficient, full-stack teams
 
 In a traditional setup, many organizations have teams based on skill sets
 like backend, user interface, database, operations, etc. Such a
@@ -265,7 +265,7 @@ it. So, the team can continuously deliver advancements to the components
 at their own pace. Also, they are completely responsible for delivering
 these safely.
 
-**Cultural Change**
+### Cultural Change
 
 Cloud-native is a different way of thinking. We need to first make up our
 minds, not just the systems, to utilize the full benefits of the cloud.
