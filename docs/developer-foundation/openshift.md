@@ -3,15 +3,6 @@ title: Openshift Overview
 ---
 
 
-<AnchorLinks>
-  <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>Red Hat OpenShift overview</AnchorLink>
-  <AnchorLink>What is OpenShift?</AnchorLink>
-  <AnchorLink>Red Hat OpenShift on IBM Cloud</AnchorLink>
-  <AnchorLink>Kubernetes and OpenShift: What's the Difference?</AnchorLink>
-  <AnchorLink>References</AnchorLink>
-</AnchorLinks>
-
 ## Introduction
 
 Red Hat OpenShift Container Platform (OpenShift) is a container application platform that provides developers and IT organizations with a cloud application platform for deploying new applications on secure, scalable resources with minimal configuration and management overhead.

@@ -1,15 +1,9 @@
 ---
 title: DevSecOps Overview
+description: An Overview of what DevSecOps is, and how it can help you
+ speed up Cloud-Native solution delivery
 ---
 
-
-
-<PageDescription>
-
-An Overview of what DevSecOps is, and how it can help you
- speed up Cloud-Native solution delivery
-
-</PageDescription>
 
 One of the patterns emerging with development teams is the ability to use [CNCF Tools](https://landscape.cncf.io/) as part of a more open multicloud CI/CD strategy. This approach is aligning around the Kubernetes platform. The IBM Cloud supports both upstream Kubernetes for advanced cutting edge workloads and Red Hat OpenShift, the proven mutlicloud distribution of Kubernetes that can install on IBM Cloud, Azure, AWS, VMWare and on Premise and many more places. This approach removes cloud vendor lock in around CI/CD tools and enables development teams to be more flexible with the target cloud they focus on deploying and developing in.
 

@@ -2,9 +2,6 @@
 title: Artifact Management
 ---
 
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
-
-
 In IBM Garage Method, one of the Develop practices is to [automate continuous delivery through a delivery pipeline](https://www.ibm.com/garage/method/practices/deliver/practice_delivery_pipeline/), in part by using an artifact repository for storing output of the build stage. The <Globals name="env" /> uses Artifactory as an artifact repository manager, which it uses to host its Helm repository.
 
 ## What is Artifactory

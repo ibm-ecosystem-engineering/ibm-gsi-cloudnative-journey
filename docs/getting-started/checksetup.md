@@ -9,13 +9,11 @@ Congratulations on becoming part of the IBM Cloud-Native Learning Journey! You s
 - A RedHat OpenShift managed service cluster with the IBM Garage Cloud-Native Toolkit and IBM Cloud Pak for Applications pre-installed.
 - The development environment pre-configured in a pay-as-you-go IBM Cloud account which you will use to perform your learning tasks.
 
-<InlineNotification kind="warning">
 
-**Warning:** If you haven't received the welcome email, it might be due to you
-  not having been given access to the IBM Cloud account yet. Please contact your
-  Business Development Executive or your Lab Leader to validate your invite.
+!!! warning
 
-</InlineNotification>
+    **Warning:** If you haven't received the welcome email, it might be due to you not having been given access to the IBM Cloud account yet. Please contact your Business Development Executive or your Lab Leader to validate your invite.
+
 
 ## Notification
 
@@ -48,11 +46,11 @@ To set your IBM ID in GitHub:
 - If it is not, then add your IBMid email and verify it.
 - If you are correctly verified and associated, you will receive a second email inviting you to your team's GitHub organization.
 
-<InlineNotification kind="warning">
 
-**Warning:** If you don't associate your business email with your public GitHub account, you will not receive a Git Organization invitation and you will have issues completing the learning activities. IBM is not mixing personal email addresses with the business email that has been associated with your **Cloud Sandbox**.
+!!! warning
 
-</InlineNotification>
+    **Warning:** If you don't associate your business email with your public GitHub account, you will not receive a Git Organization invitation and you will have issues completing the learning activities. IBM is not mixing personal email addresses with the business email that has been associated with your **Cloud Sandbox**.
+
 
 ## Sandbox
 
@@ -70,11 +68,10 @@ You will be given access to your team's GitHub organization and you will be expe
 
 ## Validating your IBM Cloud access
 
-<InlineNotification>
+!!! note
 
-**Note**: If you have any issue with the following steps, please raise an issue on the **#gsi-labs-external** [Slack Channel](https://gsicsi.slack.com/archives/CSRDJD5HA). All issues should be reported there.
+    **Note**: If you have any issue with the following steps, please raise an issue on the **#gsi-labs-external** [Slack Channel](https://gsicsi.slack.com/archives/CSRDJD5HA). All issues should be reported there.
 
-</InlineNotification>
 
 Follow the following steps to check you can access your team's Developer Tools environment.
 
@@ -104,14 +101,15 @@ Explore the IKS resources and set up the CLI:
 - Remove the `ocp` tags and add the `iks` tag.
 - Repeat the same steps for your team's Kubernetes cluster and services.
 
-<InlineNotification kind="success">
 
-You have completed this task if you have:
-- Managed to access your IBM Cloud account.
-- Viewed your team's Red Hat OpenShift cluster.
-- Accessed the cluster from the command line.
+!!! success
 
-</InlineNotification>
+    You have completed this task if you have:
+    - Managed to access your IBM Cloud account.
+    - Viewed your team's Red Hat OpenShift cluster.
+    - Accessed the cluster from the command line.
+
+
 
 ## Etiquette
 

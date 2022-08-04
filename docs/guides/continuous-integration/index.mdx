@@ -1,14 +1,7 @@
 ---
 title: Continuous Integration with Jenkins
+description: Use Jenkins to automate your continuous integration process
 ---
-
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
-
-<PageDescription>
-
-Use Jenkins to automate your continuous integration process
-
-</PageDescription>
 
 In IBM Garage Method, one of the Develop practices is [continuous integration](https://www.ibm.com/garage/method/practices/code/practice_continuous_integration/). The <Globals name="env" /> uses a Jenkins pipeline to automate continuous integration.
 

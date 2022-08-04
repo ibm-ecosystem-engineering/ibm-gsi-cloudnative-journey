@@ -1,12 +1,9 @@
 ---
 title: Image Registry
+description: The CI/CD pipeline stores container images in an image registry
+
 ---
 
-<PageDescription>
-
-The CI/CD pipeline stores container images in an image registry
-
-</PageDescription>
 
 In IBM Garage Method, one of the Develop practices is to [automate continuous delivery through a delivery pipeline](https://www.ibm.com/garage/method/practices/deliver/practice_delivery_pipeline/), in part by using an artifact repository for storing output of the build stage. When hosted in IBM Cloud, the <Globals name="env" /> uses the IBM Cloud Container Registry for storing container images.
 

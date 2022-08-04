@@ -156,9 +156,7 @@ Execute the following steps in the same order on the Gitpod terminal:
 - Install `igc` by running the following commands on terminal:
   
   ```bash
-     git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
-     export PATH=~/cloud-shell-commands:$PATH
-     source ./cloud-shell-commands/install.sh
+     npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
   ```
 
 - A successful output will look like the following:
@@ -237,10 +235,11 @@ The following tools are required:
     $ cp oc /usr/local/bin/oc
     ```
 
-    <InlineNotification >
+    
+    !!! note
 
-     Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
-    </InlineNotification>
+        Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
+    
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop): required for running common tools and Developer Tools Image.
     - Installed and running on your local machine.
@@ -320,9 +319,7 @@ Ensure you provide your user name, email, first name, and last name. If SSO is n
 
 - Install `igc` by running the following commands on the newly opened terminal:
     ```bash
-    $ git clone https://github.com/ibm-garage-cloud/cloud-shell-commands.git
-    $ export PATH=~/cloud-shell-commands:$PATH
-    $ source ./cloud-shell-commands/install.sh
+    npm i -g @ibmgaragecloud/cloud-native-toolkit-cli
     ```
 - Successful installation will look something like this:
     ```bash

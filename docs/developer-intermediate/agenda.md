@@ -2,16 +2,12 @@
 title: Agenda
 ---
 
+!!! note
 
-<InlineNotification>
+    Before you proceed, make sure you have an **IBM Cloud Enterprise Sandbox** invite.
+    It enables you to access an IBM Cloud account with the [Predefined DevSecOps Tools](/developer-intermediate/content-overview) already installed and ready for you to use. (The environment is locked down to prevent the creation of any new services outside of the scope of the learning journey)
 
-Before you proceed, make sure you have an **IBM Cloud Enterprise Sandbox** invite
-. It enables you to access an IBM Cloud account with the [Predefined DevSecOps
- Tools](/developer-intermediate/content-overview) already installed and ready for you to
-  use. (The environment is locked down to prevent the creation of any
-   new services outside of the scope of the learning journey)
 
-</InlineNotification>
 
 This set of learning tasks focuses on how to use Red Hat OpenShift Developer
  Experience to develop and deploy a set of basic cloud-native applications
@@ -27,14 +23,9 @@ This learning tasks assumes that you have:
 
 The learning tasks help you understand the Developer Experience with IBM Cloud and working with an IBM RedHat OpenShift or IBM Kubernetes managed cluster. These are the getting started and initial setup tasks that help you start a project.
 
-<InlineNotification>
-
-**Note**: Support is provided in the `#<slack-channel>` you were provided
- with in your IBM Cloud Enterprise Sandbox invite. This channel will also be
-  used to share any common issues found. It can be used to provide feedback
-   on the content you have just completed
-
-</InlineNotification>
+!!! note 
+    Support is provided in the `#<slack-channel>` you were provided
+    with in your IBM Cloud Enterprise Sandbox invite. This channel will also be used to share any common issues found. It can be used to provide feedback on the content you have just completed
 
 <Tabs>
 
@@ -280,15 +271,15 @@ Please complete these tasks before attending the first session. This will help y
 
 </Tabs>
 
-<InlineNotification kind="success">
+!!! success
 
-You have sucessfully completed the **Developer Intermediate** material
-- You have become familar with IBM Cloud and Red Hat OpenShift
-- You have deployed your first application with OpenShift 4.3
-- You have understood how monitor, access logs
-- Understand where your artifacts are being managed
+    You have sucessfully completed the **Developer Intermediate** material
+    - You have become familar with IBM Cloud and Red Hat OpenShift
+    - You have deployed your first application with OpenShift 4.3
+    - You have understood how monitor, access logs
+    - Understand where your artifacts are being managed
 
-</InlineNotification>
+
 
 ### Review Learning Tasks
 

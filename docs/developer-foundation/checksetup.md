@@ -1,12 +1,7 @@
 ---
 title:  Developer Foundation Sandbox
+description: The following steps will guide you on how to get access to the IBM Cloud Enterprise Sandbox
 ---
-
-<PageDescription>
-
-The following steps will guide you on how to get access to the IBM Cloud Enterprise Sandbox
-
-</PageDescription>
 
 Congratulations on becoming part of the IBM Cloud-Native Learning Journey! You should have received a welcome email that provides details of the IBM Cloud Sandbox you've been assigned to and points to this welcome page. By participating in this Cloud-Native Learning Journey, you get access to:
 
@@ -14,13 +9,13 @@ Congratulations on becoming part of the IBM Cloud-Native Learning Journey! You s
 - A RedHat OpenShift managed service cluster with the IBM Garage Cloud-Native Toolkit and IBM Cloud Pak for Applications pre-installed.
 - The development environment pre-configured in a pay-as-you-go IBM Cloud account which you will use to perform your learning tasks.
 
-<InlineNotification kind="warning">
 
-**Warning:** If you haven't received the welcome email, it might be due to you
-  not having been given access to the IBM Cloud account yet. Please contact your
-  Business Development Executive or your Lab Leader to validate your invite.
+!!! warning
 
-</InlineNotification>
+    If you haven't received the welcome email, it might be due to you
+    not having been given access to the IBM Cloud account yet. Please contact your
+    Business Development Executive or your Lab Leader to validate your invite.
+
 
 ## Notification
 
@@ -56,13 +51,13 @@ It's intended for Developer Foundation Hands-on Labs and gives access to the fol
 
 ##  IBM Cloud Openshift Containers and Kubernetes Containers
 
-<InlineNotification>
+
 
 **Note**: If you have any issue with the following steps, please raise an issue on the **#gsi-labs-external** [Slack Channel](https://gsicsi.slack.com/archives/CSRDJD5HA). All issues should be reported there.
 
-</InlineNotification>
+!!! note
 
-Follow these steps to check you can access your team's Developer Tools environment.
+    Follow these steps to check you can access your team's Developer Tools environment.
 
 Log in and view the resources:
 
@@ -90,14 +85,14 @@ Explore the IKS resources and set up the CLI:
 - Remove the `ocp` tags and add the `iks` tag.
 - Repeat the same steps for your team's Kubernetes cluster and services.
 
-<InlineNotification kind="success">
+
+!!! success
 
 You have completed this task if you have:
 - Managed to access your IBM Cloud account.
 - Viewed your team's Red Hat OpenShift cluster.
 - Accessed the cluster from the command line.
 
-</InlineNotification>
 
 ## Katacoda
 

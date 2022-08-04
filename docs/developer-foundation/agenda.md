@@ -4,13 +4,9 @@ description: Developer Foundation Agenda
 ---
 import ActivationPage from 'gatsby-theme-carbon/src/templates/ActivationPage';
 
-<PageDescription>
-
-Learning tasks for developers to understand the concepts, technologies, and methodologies for Cloud-Native development.
-
-</PageDescription>
 
 Credits: This material heavily draws from [Cloud-Native bootcamp](https://cloudnative101.dev/).
+!!! note
 
 Before you jump straight into Cloud-Native development using this crafted enablement journey, you must understand the related basic concepts, technologies used and methodologies applied for Cloud-Native development.
 
@@ -58,9 +54,10 @@ Developer Foundation is broken into three areas:
 
 </Row>
 
-<InlineNotification>
+!!! note
+
 Developer Foundation uses Katacode service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
-</InlineNotification>
+
 
 ## Concepts
 ### Topics Covered

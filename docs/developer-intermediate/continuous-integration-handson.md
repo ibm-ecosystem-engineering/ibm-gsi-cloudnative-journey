@@ -3,16 +3,6 @@ title: Tekton Lab
 description: Lab for continuous integration using tekton
 ---
 
-<AnchorLinks>
-  <AnchorLink>Pre-requisites</AnchorLink>
-  <AnchorLink>SetUp</AnchorLink>
-  <AnchorLink>Create Target Namespace</AnchorLink>
-  <AnchorLink>Pipeline Resources</AnchorLink>
-  <AnchorLink>Tasks</AnchorLink>
-  <AnchorLink>Pipelines</AnchorLink>
-  <AnchorLink>Deploy Application</AnchorLink>
-</AnchorLinks>
-
 ## Pre-requisites
 
 Make sure your environment is properly setup.
