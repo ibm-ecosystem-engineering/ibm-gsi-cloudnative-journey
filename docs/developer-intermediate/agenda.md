@@ -56,17 +56,17 @@ Please complete these tasks before attending the first session. This will help y
 | --------------------------------| ------------------  |:----------- |---------|----------------|
 | Welcome Message | Introductions & Logistics | | 15 mins | |
 | **Introduction to Cloud-Native Development** | | | | |
-| What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](/developer-foundation/cloud-native-overview) | 15 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/02c3f5c2dc09fd0e9097b7282ebae5fd" target="_blank" >Link</a> |
-| Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](/developer-foundation/cloud-native-app-dev) | 15 min |
+| What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](/developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
+| Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](/developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
 | **Container Concepts** | | | |
-| Containers | Containers Overview |  [Containers](/developer-foundation/containers) | 15 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/66a3685292f0ab4dcd30a4b380a6656e" target="_blank" >Link</a> |
+| Containers | Containers Overview |  [Containers](/developer-foundation/containers) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghgynUJFfxuqI4Bi?e=NZufxb" target="_blank" >Link</a> |
 | Hands On Lab | Deploying Containers |  <a href="https://www.katacoda.com/courses/docker/deploying-first-container" target="_newwindow"> Deploy a Redis Container </a> <br/> <a href="https://www.katacoda.com/courses/docker/create-nginx-static-web-server" target="_newwindow"> Deploy a Nginx Container </a> | 15 mins | |
 | **Break** | | | 5 mins |
 | **OpenShift Overview** | | | |
-| OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2f5c4ba277bf93784497bea130fd18ae" target="_blank" >Link</a> |
+| OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgghDUQOfj7YeeX3o?e=HTpaRL" target="_blank" >Link</a> |
 | Hands On Lab | Deploying applications on OpenShift |  <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> <br/> <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | 15 min | |
 | **DevSecOps** | | | |
-| Continous Integration | Overview of Continous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/8044e1c50e356bb2483049d95555d57f" target="_blank" >Link</a> |
+| Continous Integration | Overview of Continous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
 | Continous Delivery | Overview of Continous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min | |
 |Deploy your first app|
 | **Q & A** | | | 10 mins |
