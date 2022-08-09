@@ -2,13 +2,6 @@
 title: Continuous Integration (CI)
 ---
 
-<AnchorLinks>
-  <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>What is continuous integration ?</AnchorLink>
-  <AnchorLink>Continuous Integration</AnchorLink>
-  <AnchorLink>References</AnchorLink>
-</AnchorLinks>
-
 ## Introduction
 
 Continuous Integration, Delivery, and Deployment are important devOps practices and we often hear a lot about them. These processes are valuable and ensures that the software is up to date timely.

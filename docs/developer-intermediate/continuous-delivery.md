@@ -2,15 +2,6 @@
 title: Continuous Delivery (CD)
 ---
 
-<AnchorLinks>
-  <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>What is continuous delivery</AnchorLink>
-  <AnchorLink>ArgoCD</AnchorLink>
-  <AnchorLink>Continuous Delivery</AnchorLink>
-  <AnchorLink>Continuous Deployment</AnchorLink>
-  <AnchorLink>References</AnchorLink>
-</AnchorLinks>
-
 ## Introduction
 
 Continuous Integration, Delivery, and Deployment are important devOps practices and we often hear a lot about them. These processes are valuable and ensures that the software is up to date timely.

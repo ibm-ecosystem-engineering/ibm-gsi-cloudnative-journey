@@ -3,13 +3,6 @@ title: Core Concepts
 ---
 
 
-<AnchorLinks>
-  <AnchorLink>Kubernetes API Primitives</AnchorLink>
-  <AnchorLink>Creating Pods</AnchorLink>
-  <AnchorLink>Namespaces</AnchorLink>
-</AnchorLinks>
-
-
 ## Kubernetes API Primitives
 
 Kubernetes API primitive, also known as Kubernetes objects, are the basic building blocks of any application running in Kubernetes

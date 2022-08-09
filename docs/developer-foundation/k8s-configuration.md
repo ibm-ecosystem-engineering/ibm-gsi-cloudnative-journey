@@ -3,16 +3,6 @@ title: Configuration
 ---
 
 
-<AnchorLinks>
-  <AnchorLink>Container Configuration</AnchorLink>
-  <AnchorLink>Resource Requirements</AnchorLink>
-  <AnchorLink>ConfigMaps</AnchorLink>
-  <AnchorLink>Secrets</AnchorLink>
-  <AnchorLink>SecurityContexts</AnchorLink>
-  <AnchorLink>Service Accounts</AnchorLink>
-  <AnchorLink>Activities</AnchorLink>
-</AnchorLinks>
-
 ## Container Configuration
 
 **Command and Argument**

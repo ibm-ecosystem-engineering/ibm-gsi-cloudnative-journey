@@ -1,12 +1,8 @@
 ---
 title: Log Management
+description: Use LogDNA to manage your running application's logs
 ---
 
-<PageDescription>
-
-Use LogDNA to manage your running application's logs
-
-</PageDescription>
 
 In IBM Garage Method, one of the Operate practices is to [automate application monitoring](https://www.ibm.com/garage/method/practices/manage/practice_automated_monitoring/), including logging. Imagine your application isn't working right in production even though the environment is fine. What information would you want in your logs to help you figure out what's wrong with your application? Build logging messages for that information into your application.
 

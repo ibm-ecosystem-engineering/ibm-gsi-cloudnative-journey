@@ -146,11 +146,12 @@ nav:
       - Image Registry: developer-intermediate/image-registry.md
       - Log Management: developer-intermediate/log-management.md
       - Monitoring: developer-intermediate/monitoring.md
-      - Inventory App - Intro: developer-intermediate/inventory-application.md
-      - Inventory App - Solution: developer-intermediate/inventory-prebuilt-solution.md
-      - Inventory App - Service: developer-intermediate/inventory-service.md
-      - Inventory App - BFF: developer-intermediate/inventory-bff.md
-      - Inventory App - UI: developer-intermediate/inventory-ui.md
+      - Inventory App:
+        - Intro: developer-intermediate/inventory-application.md
+        - Solution: developer-intermediate/inventory-prebuilt-solution.md
+        - Service: developer-intermediate/inventory-service.md
+        - BFF: developer-intermediate/inventory-bff.md
+        - UI: developer-intermediate/inventory-ui.md
   - "Developer Advanced - 1":
       - CD for Inventory App: developer-advanced-1/inventory-cd.md
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md

@@ -27,6 +27,8 @@ it into your development cluster.
 <iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/GOPWObjFTsI" type="video/m4v" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 ## Create an application
 
+
+
 ### 0. Setup your cloud shell for development
 
 - Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
@@ -104,12 +106,12 @@ oc console
 ```
 
 
- <InlineNotification kind="info">
+ 
+ !!! info
 
-  **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
-  The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
+     **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
+     The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
 
-</InlineNotification>
 
 ### 2. Create the development namespace
 
@@ -122,7 +124,7 @@ namespace into the development namespace/project. This enables the pipelines to 
 project.
 
 ```shell
-oc sync ${DEV_NAMESPACE}
+oc sync ${DEV_NAMESPACE} --tekton
 ```
 
 ### 3. Open the Developer Dashboard
@@ -143,16 +145,17 @@ section that allows you to select a set of preconfigured [Starter Kits](/resourc
 
 - From the Developer Dashboard, click on **<Globals name="templates" />** tab
 
-    <InlineNotification kind="warning">
+   
+    !!! warning
 
-    **Warning:** If you are developing on a shared education cluster, you need to make it easy to identify
-    your app. Please suffix the app name with your initials `{app name}-{your initials}` (e.g.
-    `stockbffnode-mjp`) and use the **Git Organization** for the shared environment.
+        **Warning:** If you are developing on a shared education cluster, you need to make it easy to identify
+        your app. Please suffix the app name with your initials `{app name}-{your initials}` (e.g.
+        `stockbffnode-mjp`) and use the **Git Organization** for the shared environment.
 
-    **Warning:** Your browser needs to be logged in to your GitHub account for a template to work. If the link from the
-    tile displays the GitHub 404 page, log in and reload the page.
+        **Warning:** Your browser needs to be logged in to your GitHub account for a template to work. If the link from the
+        tile displays the GitHub 404 page, log in and reload the page.
 
-    </InlineNotification>
+    
 
 - Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application, select the **Typescript Microservice**. This also works well in the Cloud Shell.
 
@@ -175,18 +178,17 @@ process.
 
 - The new repository will be created in your selected organization.
 
-## Create the DevOps pipeline
-
 ### 5. Register the application in a DevOps Pipeline
 
-<InlineNotification kind="info">
 
-We will be using the `pipeline` command of the IBM Garage Cloud cli to register the DevOps pipeline. The pipeline 
-command gives an option for both `Jenkins` and `Tekton`. For more information about working with the different build 
-engines, please see [Continuous Integration with Jenkins Guide](/guides/continuous-integration) and
-[Continuous Integration with Tekton Guide](/guides/continuous-integration)
+!!! info
 
-</InlineNotification>
+    We will be using the `pipeline` command of the IBM Garage Cloud cli to register the DevOps pipeline. The pipeline 
+    command gives an option for both `Jenkins` and `Tekton`. For more information about working with the different build 
+    engines, please see [Continuous Integration with Jenkins Guide](/guides/continuous-integration) and
+    [Continuous Integration with Tekton Guide](/guides/continuous-integration)
+
+
 
 
 1. Open a browser to the Git repository created in the previous step.
@@ -390,11 +392,12 @@ below will walk through locating the installed application within the Web Consol
 </Tab>
 </Tabs>
 
-<InlineNotification kind="success">
 
-**Success:** You now have your application running inside your development cluster and being delivered using a Tekton based CI pipeline. This is the beginning of the developer journey with IBM Cloud.
+!!! success
 
-</InlineNotification>
+    **Success:** You now have your application running inside your development cluster and being delivered using a Tekton based CI pipeline. This is the beginning of the developer journey with IBM Cloud.
+
+
 
 Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.

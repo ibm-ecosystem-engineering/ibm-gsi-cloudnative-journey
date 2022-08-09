@@ -3,15 +3,6 @@ title: ArgoCD Lab
 description: Lab for continuous delivery using ArgoCD
 ---
 
-<AnchorLinks>
-  <AnchorLink>Pre-requisites</AnchorLink>
-  <AnchorLink>ArgoCD Installation</AnchorLink>
-  <AnchorLink>Deploying the app</AnchorLink>
-  <AnchorLink>Verifying the deployment</AnchorLink>
-  <AnchorLink>Using the ArgoCD CLI</AnchorLink>
-  <AnchorLink>References</AnchorLink>
-</AnchorLinks>
-
 <Tabs>
 <Tab label="OpenShift">
 

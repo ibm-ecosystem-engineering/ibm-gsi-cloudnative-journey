@@ -2,8 +2,6 @@
 title: Tools Guides Overview
 ---
 
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
-
 ## Overview
 
 The <Globals name="env" /> contains a number of popular and proven open source tools for developing cloud-native applications and deploying them to Kubernetes and Red Hat OpenShift. This section will help you understand what each tool does and how it helps you prepare you application code for production delivery.

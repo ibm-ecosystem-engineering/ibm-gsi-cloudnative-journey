@@ -2,25 +2,7 @@
 title: Containers
 ---
 
-
-<AnchorLinks>
-  <AnchorLink>Introduction</AnchorLink>
-  <AnchorLink>Containers</AnchorLink>
-  <AnchorLink>Why containers ?</AnchorLink>
-  <AnchorLink>Different Container Standards</AnchorLink>
-  <AnchorLink>Benefits</AnchorLink>
-  <AnchorLink>Docker</AnchorLink>
-    <AnchorLinks small>
-      <AnchorLink>Docker Image</AnchorLink>
-      <AnchorLink>Docker Container</AnchorLink>
-      <AnchorLink>Docker Engine</AnchorLink>
-      <AnchorLink>Docker Registry</AnchorLink>
-      <AnchorLink>Docker Commands</AnchorLink>
-    </AnchorLinks>
-  <AnchorLink>References</AnchorLink>
-</AnchorLinks>
-
-## Introduction
+##### Introduction
 
 You wanted to run your application on different computing environments. It may be your laptop, test environment, staging environment or production environment.
 
@@ -30,7 +12,7 @@ What if some underlying software changes ? What if the security policies are dif
 
 To solve this problems, we need Containers.
 
-## Containers
+##### Containers
 
 Containers are a standard way to package an application and all its dependencies so that it can be moved between environments and run without change. They work by hiding the differences between applications inside the container so that everything outside the container can be standardized.
 
@@ -38,7 +20,7 @@ For example, Docker created standard way to create images for Linux Containers.
 
 <iframe width="1206" height="678" src="https://www.youtube.com/embed/0qotVMX-J5s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Why containers ?
+##### Why containers ?
 
 - We can run them anywhere.
 - They are lightweight .
@@ -46,7 +28,7 @@ For example, Docker created standard way to create images for Linux Containers.
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/muTkqVewJMI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Different Container Standards
+##### Different Container Standards
 
 There are many different container standards available today. Some of them are as follows.
 
@@ -62,7 +44,7 @@ Among them, Docker was one of the most popular mainstream container software too
 
 A Linux Foundation project developing a governed container standard. Docker and Rocket are OCI-compliant. But, Garden is not.
 
-## Benefits
+##### Benefits
 
 - Lightweight
 - Scalable
@@ -75,7 +57,7 @@ To know more about Containerization, we have couple of guides. Feel free to chec
 - [Containerization: A Complete Guide](https://www.ibm.com/cloud/learn/containerization).
 - [Containers: A Complete Guide](https://www.ibm.com/cloud/learn/containers).
 
-## Docker
+##### Docker
 
 Docker is one of the most popular Containerization platforms which allows you to develop, deploy, and run application inside containers.
 
@@ -86,7 +68,7 @@ Docker is one of the most popular Containerization platforms which allows you to
 
 An installation of Docker includes an engine. This comes with a daemon, REST APIs, and CLI. Users can use CLI to interact with the docker using commands. These commands are sent to the daemon which listens for the Docker Rest APIs which in turn manages images and containers. The engine runs a container by retrieving its image from the local system or registry. A running container starts one or more processes in the Linux kernel.
 
-### Docker Image
+###### Docker Image
 
 A read-only snapshot of a container that is stored in Docker Hub or in private repository. You use an image as a template for building containers.
 
@@ -103,7 +85,7 @@ If you want to try building docker images, try this course on [Katacoda](https:/
 
 - [Building Container Images](https://www.katacoda.com/courses/docker/2) -  Estimated Time: 10 minutes.
 
-### Docker Container
+###### Docker Container
 
 The standard unit where the application service is located or transported. It packages up all code and its dependencies so that the application runs quickly and reliably from one computing environment to another.
 
@@ -111,17 +93,17 @@ If you want to try deploying a docker container, try this course on [Katacoda](h
 
 - [Deploying Your First Docker Container](https://www.katacoda.com/courses/docker/deploying-first-container) -  Estimated Time: 10 minutes.
 
-### Docker Engine
+###### Docker Engine
 
 Docker Engine is a program that creates, ships, and runs application containers. The engine runs on any physical or virtual machine or server locally, in private or public cloud. The client communicates with the engine to run commands.
 
-### Docker Registry
+###### Docker Registry
 
 The registry stores, distributes, and shares container images. It is available in software as a service (SaaS) or in an enterprise to deploy anywhere you that you choose.
 
 **Docker Hub** is a popular registry. It is a registry which allows you to download docker images which are built by different communities. You can also store your own images there. You can check out various images available on docker hub [here](https://hub.docker.com/search?q=&type=image).
 
-### Docker Commands
+###### Docker Commands
 
 Below are some commands we use often on Docker.
 
@@ -161,14 +143,14 @@ docker images
 
 If you are interested, check this [course](https://www.ibm.com/cloud/garage/content/course/containers-and-docker/0) out on Containers and Docker.
 
-## Activities
+##### Activities
 
 <ActivationPage content="containers" tileColor="bx--article-card--ibm">
 </ActivationPage>
 
 Once you have completed these tasks, you should have a base understanding of containers and how to use Docker.
 
-## References
+##### References
 
 - [Docker resources](https://www.docker.com/resources)
 - [Docker tutorial](https://docs.docker.com/get-started/)

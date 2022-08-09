@@ -2,11 +2,6 @@
     title: Troubleshoot   
 ---
 
-<AnchorLinks>
-  <AnchorLink>Debugging Applications</AnchorLink>
-  <AnchorLink>Activities</AnchorLink>
-</AnchorLinks>
-
 # Debugging Applications
 Kubernetes provides tools to help troubleshoot and debug problems with applications.
 
