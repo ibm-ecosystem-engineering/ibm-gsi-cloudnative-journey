@@ -30,57 +30,54 @@ Two primary members
 
 ## References
 
-<Tabs>
+=== "Openshift"
 
-<Tab label="OpenShift">
+    **Prints all API Resources**
+    ```
+    oc api-resources
+    ```
+    **Prints all API Resources with their verbs.**
+    ```
+    oc api-resources -o wide
+    ```
+    **Prints all API Resources names only**
+    ```
+    oc api-resources -o name
+    ```
+    **Prints each of the available nodes, projects, services, deployments, and pods ** 
+    ```
+    oc get nodes,ns,po,deploy,svc
+    ```
+    **Prints the node's description**
+    ```
+    oc describe node 
+    ```
 
-**Prints all API Resources**
-  ```
-  oc api-resources
-  ```
-**Prints all API Resources with their verbs.**
-  ```
-  oc api-resources -o wide
-  ```
-**Prints all API Resources names only**
-  ```
-  oc api-resources -o name
-  ```
-  **Prints each of the available nodes, projects, services, deployments, and pods ** 
-  ```
-  oc get nodes,ns,po,deploy,svc
-  ```
-**Prints the node's description**
-  ```
-  oc describe node 
-  ```
-</Tab>
 
-<Tab label="IKS">
 
-** Getting API Resources **
-```
-kubectl api-resources
-```
-** Viewing Resources **
-```
-kubectl api-resources -o wide
-```
-** Viewing Resources **
-```
-kubectl api-resources -o name
-```
-** Getting a list of specific objects **
-```
-kubectl get nodes,ns,po,deploy,svc
-```
-** Describing the resources **
-```
-kubectl describe node --all
-```
-</Tab>
+=== "IKS"
 
-</Tabs>
+    ** Getting API Resources **
+    ```
+    kubectl api-resources
+    ```
+    ** Viewing Resources **
+    ```
+    kubectl api-resources -o wide
+    ```
+    ** Viewing Resources **
+   ```
+   kubectl api-resources -o name
+   ```
+   ** Getting a list of specific objects **
+   ```
+   kubectl get nodes,ns,po,deploy,svc
+   ```
+   ** Describing the resources **
+   ```
+   kubectl describe node --all
+   ```
+
 
 ## Creating Pods
 A Pod is the basic execution unit of a Kubernetes application–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster.
@@ -115,48 +112,45 @@ spec:
     command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Get Current Pods in Project **
-```
-oc get pods
-``` 
-** Get Pod's Description **
-``` 
-oc describe pod <pod-name>
-```
-** Get Pods with their IP and node location **
-```
-oc get pods -o wide
-```
-** Get Pods Stats **
-```
-oc adm top pods
-```
-</Tab>
+=== "Openshift"
+    ** Get Current Pods in Project **
+    ```
+    oc get pods
+    ``` 
+    ** Get Pod's Description **
+    ``` 
+    oc describe pod <pod-name>
+    ```
+    ** Get Pods with their IP and node location **
+    ```
+    oc get pods -o wide
+    ```
+    ** Get Pods Stats **
+    ```
+    oc adm top pods
+    ```
 
-<Tab label="IKS">
 
-** Get Current Pods in Project **
-```
-kubectl get pods
-``` 
-** Get Pod's Description **
-``` 
-kubectl describe pod <pod-name>
-```
-** Delete a Pod **
-```
-kubectl delete pod <pod-name>
-```
-** Edit a Pod **
-```
-kubectl edit pod <pod-name>
-```
-</Tab>
+=== "IKS"
 
-</Tabs>
+    ** Get Current Pods in Project **
+    ```
+    kubectl get pods
+    ``` 
+    ** Get Pod's Description **
+    ``` 
+    kubectl describe pod <pod-name>
+    ```
+    ** Delete a Pod **
+    ```
+    kubectl delete pod <pod-name>
+    ```
+    ** Edit a Pod **
+    ```
+    kubectl edit pod <pod-name>
+    ```
+
 
 ## Projects/Namespaces
 
@@ -202,45 +196,39 @@ spec:
     command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
 ```
 
-<Tabs>
 
-<Tab label="OpenShift">
+=== "Openshift"
 
-**Create a new Project** 
+    **Create a new Project** 
 
-```
-oc new-project my-project
-```
+    ```
+    oc new-project my-project
+    ```
 
-**Viewing Current Project**
+    **Viewing Current Project**
 
-```
-oc project
-```
+    ```
+    oc project
+    ```
 
-**Viewing Project Status**
+    **Viewing Project Status**
 
-```
-oc status
-```
+    ```
+    oc status
+    ```
 
-</Tab>
+=== "IKS"
 
-<Tab label="IKS">
+    **Getting all namespaces in cluster** 
+    ```
+    kubectl get namespaces
+    ```
 
-**Getting all namespaces in cluster** 
-```
-kubectl get namespaces
-```
-
-**Create a new namespace called bar**
-``` 
-kubectl create ns bar
-```
-**Setting Namespace in Context**
-``` 
-kubectl set-context --current --namespace=bar
-```
-</Tab>
-
-</Tabs>
+    **Create a new namespace called bar**
+    ``` 
+    kubectl create ns bar
+    ```
+    **Setting Namespace in Context**
+    ``` 
+    kubectl set-context --current --namespace=bar
+    ```

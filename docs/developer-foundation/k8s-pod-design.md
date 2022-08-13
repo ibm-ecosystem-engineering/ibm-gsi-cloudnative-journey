@@ -55,88 +55,85 @@ spec:
     disk: ssd
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Change Labels on Objects **
-```
-oc label <objectname>
-```
- **Getting Pods based on their labels.**
-```
-  oc get pods --show-labels
-```
-```
-  oc get pods -L tier,env
-```
-```
-  oc get pods -l app
-```
-```
-  oc get pods -l tier=frontend
-```
-```
-  oc get pods -l 'env=dev,tier=frontend'
-```
-```
-  oc get pods -l 'env in (dev, test)'
-```
-```
-  oc get pods -l 'tier!=backend'
-```
-```
-  oc get pods -l 'env,env notin (prod)'
-  ```
+=== "OpenShift"
 
-</Tab>
+    ** Change Labels on Objects **
+    ```
+    oc label <objectname>
+    ```
+    **Getting Pods based on their labels.**
+    ```
+    oc get pods --show-labels
+    ```
+    ```
+    oc get pods -L tier,env
+    ```
+    ```
+    oc get pods -l app
+    ```
+    ```
+    oc get pods -l tier=frontend
+    ```
+    ```
+    oc get pods -l 'env=dev,tier=frontend'
+    ```
+    ```
+    oc get pods -l 'env in (dev, test)'
+    ```
+    ```
+    oc get pods -l 'tier!=backend'
+    ```
+    ```
+    oc get pods -l 'env,env notin (prod)'
+    ```
 
-<Tab label="IKS">
 
-  **Create the Pod**
-  ```
-  kubectl create -f pod.yaml
-  ```
-  **Update label in the YAML file and reapply it.**
-  ```
-  kubectl apply -f pod.yaml
-  ```
-  **You can edit the labels as well.**
-  ```
-  kubectl edit pod myapp-pod
-  ```
-  **Getting Pods based on their labels.**
-  ```
-  kubectl get pods --show-labels
-  ```
-  ```
-  kubectl get pods -L tier,env
-  ```
-  ```
-  kubectl get pods -l app
-  ```
-  ```
-  kubectl get pods -l tier=frontend
-  ```
-  ```
-  kubectl get pods -l 'env=dev,tier=frontend'
-  ```
-  ```
-  kubectl get pods -l 'env in (dev, test)'
-  ```
-  ```
-  kubectl get pods -l 'tier!=backend'
-  ```
-  ```
-  kubectl get pods -l 'env,env notin (prod)'
-  ```
-  **Delete the Pod.**
-  ```
-  kubectl delete pod myapp-pod
-  ```
+=== "IKS"
 
-</Tab>
+    **Create the Pod**
+    ```
+    kubectl create -f pod.yaml
+    ```
+    **Update label in the YAML file and reapply it.**
+    ```
+    kubectl apply -f pod.yaml
+    ```
+    **You can edit the labels as well.**
+    ```
+    kubectl edit pod myapp-pod
+    ```
+    **Getting Pods based on their labels.**
+    ```
+    kubectl get pods --show-labels
+    ```
+    ```
+    kubectl get pods -L tier,env
+    ```
+    ```
+    kubectl get pods -l app
+    ```
+    ```
+    kubectl get pods -l tier=frontend
+    ```
+    ```
+    kubectl get pods -l 'env=dev,tier=frontend'
+    ```
+    ```
+    kubectl get pods -l 'env in (dev, test)'
+    ```
+    ```
+    kubectl get pods -l 'tier!=backend'
+    ```
+    ```
+    kubectl get pods -l 'env,env notin (prod)'
+    ```
+    **Delete the Pod.**
+    ```
+    kubectl delete pod myapp-pod
+    ```
 
-</Tabs>
+
 
 ## Deployments
 
@@ -194,66 +191,64 @@ spec:
         - containerPort: 8080
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Creates a Deployment **
-```
-oc apply -f <deploymentYAML>
-```
-** Gets Deployments **
-```
-oc get deploy my-deployment
-```
-** Gets the deployments description **
-```
-oc describe deployment my-deployment
-```
-** Edit the deployment **
-```
-oc edit deployment my-deployment
-```
-** Scale the deployment **
-```
-oc scale deployment/my-deployment --replicas=4
-```
-** Delete the deployment **
-```
-oc delete my-deployment
-```
-</Tab>
+=== "OpenShift"
 
-<Tab label="IKS">
+    ** Creates a Deployment **
+    ```
+    oc apply -f <deploymentYAML>
+    ```
+    ** Gets Deployments **
+    ```
+    oc get deploy my-deployment
+    ```
+    ** Gets the deployments description **
+    ```
+    oc describe deployment my-deployment
+    ```
+    ** Edit the deployment **
+    ```
+    oc edit deployment my-deployment
+    ```
+    ** Scale the deployment **
+    ```
+    oc scale deployment/my-deployment --replicas=4
+    ```
+    ** Delete the deployment **
+    ```
+    oc delete my-deployment
+    ```
 
-** Creates a Deployment **
-```
-kubectl apply -f <deploymentYAML>
-```
 
-** Get the deployment **
-```
-kubectl get deployment my-deployment
-```
-** Describe the deployment **
-```
-kubectl describe deployment my-deployment
-```
-** Edit the deployment **
-```
-kubectl edit deployent my-deployment
-```
-** Scale the deployment **
-```
-kubectl scale deployment/my-deployment --replicas=4
-```
-** Delete the deployment **
-```
-kubectl delete my-deployment
-```
 
-</Tab>
+=== "IKS"
 
-</Tabs>
+    ** Creates a Deployment **
+    ```
+    kubectl apply -f <deploymentYAML>
+    ```
+
+    ** Get the deployment **
+    ```
+    kubectl get deployment my-deployment
+    ```
+    ** Describe the deployment **
+    ```
+    kubectl describe deployment my-deployment
+    ```
+    ** Edit the deployment **
+    ```
+    kubectl edit deployent my-deployment
+    ```
+    ** Scale the deployment **
+    ```
+    kubectl scale deployment/my-deployment --replicas=4
+    ```
+    ** Delete the deployment **
+    ```
+    kubectl delete my-deployment
+    ```
+
 
 
 ## Deployments rolling updates and rollback
@@ -311,74 +306,69 @@ spec:
         - containerPort: 8080
 ```
 
-<Tabs>
-<Tab label="OpenShift">
+=== "OpenShift"
 
-** Get Deployments **
-```
-oc get deployments
-```
-** Sets new image for Deployment **
-```
-oc set image deployment/my-deployment nginx=nginx:1.16.1 --record
-```
-** Get ReplicaSets **
-```
-oc get rs
-```
-** Get Deployment Description **
-```
-oc describe deployment my-deployment
-```
-** Check the status of the rollout **
-```
-oc rollout status my-deployment
-```
-** Get Rollout History **
-```
-oc rollout history deployment my-deployment
-```
-** Undo Rollout **
-```
-oc rollback my-deployment
-```
+    ** Get Deployments **
+    ```
+    oc get deployments
+    ```
+    ** Sets new image for Deployment **
+    ```
+    oc set image deployment/my-deployment nginx=nginx:1.16.1 --record
+    ```
+    ** Get ReplicaSets **
+    ```
+    oc get rs
+    ```
+    ** Get Deployment Description **
+    ```
+    oc describe deployment my-deployment
+    ```
+    ** Check the status of the rollout **
+    ```
+    oc rollout status my-deployment
+    ```
+    ** Get Rollout History **
+    ```
+    oc rollout history deployment my-deployment
+    ```
+    ** Undo Rollout **
+    ```
+    oc rollback my-deployment
+    ```
 
-</Tab>
 
-<Tab label="IKS">
+=== "IKS"
 
-** Get Deployments **
-```
-kubectl get deployments
-```
-** Sets new image for Deployment **
-```
-kubectl set image deployment/my-deployment nginx=nginx:1.16.1 --record
-```
-** Get ReplicaSets **
-```
-kubectl get rs
-```
-** Get Deployment Description **
-```
-kubectl describe deployment my-deployment
-```
-** Check the status of the rollout **
-```
-oc rollout status my-deployment
-```
-** Get Rollout History **
-```
-kubectl rollout history deployment my-deployment
-```
-** Undo Rollout **
-```
-kubectl rollout undo deployment my-deployment
-```
+    ** Get Deployments **
+    ```
+    kubectl get deployments
+    ```
+    ** Sets new image for Deployment **
+    ```
+    kubectl set image deployment/my-deployment nginx=nginx:1.16.1 --record
+    ```
+    ** Get ReplicaSets **
+    ```
+    kubectl get rs
+    ```
+    ** Get Deployment Description **
+    ```
+    kubectl describe deployment my-deployment
+    ```
+    ** Check the status of the rollout **
+    ```
+    oc rollout status my-deployment
+    ```
+    ** Get Rollout History **
+    ```
+    kubectl rollout history deployment my-deployment
+    ```
+    ** Undo Rollout **
+    ```
+    kubectl rollout undo deployment my-deployment
+    ```
 
-</Tab>
-
-</Tabs>
 
 ## Jobs and CronJobs
 
@@ -461,84 +451,80 @@ spec:
           restartPolicy: OnFailure
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Gets Jobs **
-```
-oc get jobs
-```
-** Gets Job Description **
-```
-oc describe job pi
-```
-** Gets Pods from the Job **
-```
-oc get pods
-```
-** Deletes Job **
-```
-oc delete job pi
-```
+=== "OpenShift"
 
-** Gets CronJob **
-```
-oc get cronjobs
-```
-** Describes CronJob **
-```
-oc describe cronjobs pi
-```
-** Gets Pods from CronJob **
-```
-oc get pods
-```
-** Deletes CronJob **
-```
-oc delete cronjobs pi
-```
+    ** Gets Jobs **
+    ```
+    oc get jobs
+    ```
+    ** Gets Job Description **
+    ```
+    oc describe job pi
+    ```
+    ** Gets Pods from the Job **
+    ```
+    oc get pods
+    ```
+    ** Deletes Job **
+    ```
+    oc delete job pi
+    ```
 
-</Tab>
+    ** Gets CronJob **
+    ```
+    oc get cronjobs
+    ```
+    ** Describes CronJob **
+    ```
+    oc describe cronjobs pi
+    ```
+    ** Gets Pods from CronJob **
+    ```
+    oc get pods
+    ```
+    ** Deletes CronJob **
+    ```
+    oc delete cronjobs pi
+    ```
 
-<Tab label="IKS">
 
-** Gets Jobs **
-```
-kubectl get jobs
-```
-** Gets Job Description **
-```
-kubectl describe job pi
-```
-** Gets Pods from the Job **
-```
-kubectl get pods
-```
-** Deletes Job **
-```
-kubectl delete job pi
-```
 
-** Gets CronJob **
-```
-kubectl get cronjobs
-```
-** Describes CronJob **
-```
-kubectl describe cronjobs pi
-```
-** Gets Pods from CronJob **
-```
-kubectl get pods
-```
-** Deletes CronJob **
-```
-kubectl delete cronjobs pi
-```
+=== "IKS"
 
-</Tab>
+    ** Gets Jobs **
+    ```
+    kubectl get jobs
+    ```
+    ** Gets Job Description **
+    ```
+    kubectl describe job pi
+    ```
+    ** Gets Pods from the Job **
+    ```
+    kubectl get pods
+    ```
+    ** Deletes Job **
+    ```
+    kubectl delete job pi
+    ```
 
-</Tabs>
+    ** Gets CronJob **
+    ```
+    kubectl get cronjobs
+    ```
+    ** Describes CronJob **
+    ```
+    kubectl describe cronjobs pi
+    ```
+    ** Gets Pods from CronJob **
+    ```
+    kubectl get pods
+    ```
+    ** Deletes CronJob **
+    ```
+    kubectl delete cronjobs pi
+    ```
 
 ## Activities
 

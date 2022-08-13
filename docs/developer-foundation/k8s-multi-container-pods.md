@@ -65,43 +65,39 @@ spec:
     stdin: true
     tty: true
 ```
-<Tabs>
-<Tab label="OpenShift">
 
-** Attach Pods Together **  
-```
-oc attach -it my-pod -c sidecard
-```
-```
-ps ax
-```
-```
-kill -HUP 7
-```
-```
-ps ax
-```
-</Tab>
+=== "Openshift"
 
-<Tab label="IKS">
+    ** Attach Pods Together **  
+    ```
+    oc attach -it my-pod -c sidecard
+    ```
+    ```
+    ps ax
+    ```
+    ```
+    kill -HUP 7
+    ```
+    ```
+    ps ax
+    ```
 
-** Attach Pods Together **
-```
-kubectl attach -it my-pod -c sidecard
-```
-```
-ps ax
-```
-```
-kill -HUP 7
-```
-```
-ps ax
-```
+=== "IKS"
 
-</Tab>
+    ** Attach Pods Together **
+    ```
+    kubectl attach -it my-pod -c sidecard
+    ```
+    ```
+    ps ax
+    ```
+    ```
+    kill -HUP 7
+    ```
+    ```
+    ps ax
+    ```
 
-</Tabs>
 
 ## Activities
 

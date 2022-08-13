@@ -349,53 +349,52 @@ spec:
         secretName: mysecret-config
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Create files needed for rest of example.**
-```
-echo -n 'admin' > ./username.txt
-echo -n '1f2d1e2e67df' > ./password.txt
-```
 
-** Creating Secret from files. **
-```
-oc create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
-```
-** Getting Secret **
-```
-oc get secrets
-```
-** Gets the Secret's Description. **
-```
-oc describe secrets/db-user-pass
-```
+=== "Openshift"
 
-</Tab>
+    ** Create files needed for rest of example.**
+    ```
+    echo -n 'admin' > ./username.txt
+    echo -n '1f2d1e2e67df' > ./password.txt
+    ```
 
-<Tab label="IKS">
+    ** Creating Secret from files. **
+    ```
+    oc create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+    ```
+    ** Getting Secret **
+    ```
+    oc get secrets
+    ```
+    ** Gets the Secret's Description. **
+    ```
+    oc describe secrets/db-user-pass
+    ```
 
-** Create files needed for rest of example. **
-```
-echo -n 'admin' > ./username.txt
-echo -n '1f2d1e2e67df' > ./password.txt
-```
-** Creates the Secret from the files **
-```
-kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
-```
-** Gets the Secret **
-```
-kubectl get secrets
-```
-** Gets the Secret's Description. **
-```
-kubectl describe secrets/db-user-pass
-```
 
-</Tab>
 
-</Tabs>
+=== "IKS"
+
+    ** Create files needed for rest of example. **
+    ```
+    echo -n 'admin' > ./username.txt
+    echo -n '1f2d1e2e67df' > ./password.txt
+    ```
+    ** Creates the Secret from the files **
+    ```
+    kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+    ```
+    ** Gets the Secret **
+    ```
+    kubectl get secrets
+    ```
+    ** Gets the Secret's Description. **
+    ```
+    kubectl describe secrets/db-user-pass
+    ```
+
+
 
 ## SecurityContexts
 
@@ -483,33 +482,31 @@ spec:
 ```
 ** Run to see the errors **
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Get Pod Logs **
-```
-oc logs my-securitycontext-pod
-```
-** Should return **
-```
-cat: can't open '/message/message.txt': Permission denied
-```
-</Tab>
+=== "Openshift"
 
-<Tab label="IKS">
+    ** Get Pod Logs **
+    ```
+    oc logs my-securitycontext-pod
+    ```
+    ** Should return **
+    ```
+    cat: can't open '/message/message.txt': Permission denied
+    ```
 
-** Get Pod Logs **
-```
-kubectl logs my-securitycontext-pod
-```
 
-** Should return **
-```
-cat: can't open '/message/message.txt': Permission denied
-```
-</Tab>
+=== "IKS"
 
-</Tabs>
+    ** Get Pod Logs **
+    ```
+    kubectl logs my-securitycontext-pod
+    ```
+
+    ** Should return **
+    ```
+    cat: can't open '/message/message.txt': Permission denied
+    ```
+
 
 ## Service Accounts
 
@@ -566,34 +563,30 @@ metadata:
 type: kubernetes.io/service-account-token
 ```
 
-<Tabs>
-<Tab label="OpenShift">
 
-** Creating a ServiceAccount**
-```
-oc create sa <service_account_name>
-```
-** View ServiceAccount Details **
-```
-oc describe sa <service_account_name>
-```
+=== "Openshift"
 
-</Tab>
+    ** Creating a ServiceAccount**
+    ```
+    oc create sa <service_account_name>
+    ```
+    ** View ServiceAccount Details **
+    ```
+    oc describe sa <service_account_name>
+    ```
 
-<Tab label="IKS">
 
-** Create a ServiceAccount **
-```
-kubectl create sa <service_account_name>
-```
-** View ServiceAccount Details **
-```
-kubectl describe sa <service_account_name>
-```
+=== "IKS"
 
-</Tab>
+    ** Create a ServiceAccount **
+    ```
+    kubectl create sa <service_account_name>
+    ```
+    ** View ServiceAccount Details **
+    ```
+    kubectl describe sa <service_account_name>
+    ```
 
-</Tabs>
 
 ## Activities
 

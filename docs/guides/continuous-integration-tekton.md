@@ -69,31 +69,26 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
   help configure the tools and `secrets` and `configMap` to make working with
    IBM Cloud so much easier.
 
-<Tabs>
 
-<Tab label="OpenShift 4.x">
+=== "OpenShift 4.x"
 
-### Install on OpenShift 4.x
+    ### Install on OpenShift 4.x
 
-- If you have installed the IBM Garage for Cloud Developer Tools into your
- cluster this will automatically install the operator for you.
+    - If you have installed the IBM Garage for Cloud Developer Tools into your cluster this will automatically install the operator for you.
 
-- Install Tekton on OpenShift 4 including CodeReady Containers (CRC)
+    - Install Tekton on OpenShift 4 including CodeReady Containers (CRC)
     - Install via operator hub Administrator perspective view, click
-     **Operator Hub** search for `OpenShift Pipelines` and install operator
+      **Operator Hub** search for `OpenShift Pipelines` and install operator
 
-</Tab>
 
-<Tab label="Kubernetes">
+=== "Kubernetes"
 
-### Install Tekton on IBM Kubernetes Managed Service
-- Install Tekton via Knative add-on (can be found in the **Add On** tab in
- the Kubernetes managed service dashboard)
-, it includes
- Tekton support by default and the Webhook extension.
-- Install [Tekton Dashboard](https://github.com/tektoncd/dashboard#install-dashboard) follow the instructions in the `README.md`
-- Add Ingress endpoint for the **Tekton Dashboard** add a host name that uses
- the IKS cluster subdomain
+    ### Install Tekton on IBM Kubernetes Managed Service
+    - Install Tekton via Knative add-on (can be found in the **Add On** tab in the Kubernetes managed service dashboard)
+    , it includes
+    Tekton support by default and the Webhook extension.
+    - Install [Tekton Dashboard](https://github.com/tektoncd/dashboard#install-dashboard) follow the instructions in the `README.md`
+    - Add Ingress endpoint for the **Tekton Dashboard** add a host name that uses the IKS cluster subdomain
     ```yaml
       apiVersion: extensions/v1beta1
       kind: Ingress
@@ -108,12 +103,8 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
             - backend:
                 serviceName: tekton-dashboard
                 servicePort: 9097
-    ```
-- Install [Tekton Webhook Extension](https://github.com/tektoncd/experimental/tree/master/webhooks-extension#install-webhook-extension)
-
-</Tab>
-
-</Tabs>
+     ```
+     - Install [Tekton Webhook Extension](https://github.com/tektoncd/experimental/tree/master/webhooks-extension#install-webhook-extension)
 
 ### Setup Tekton
 
@@ -161,45 +152,38 @@ To validate your pipeline have been correctly configured, and has triggered a
  use the following **Tekton** dashboards or `tkn` CLI to validate it ran
   correctly without errors.
 
-<Tabs>
-<Tab label="OpenShift 4.x">
 
-- Review you **Pipeline** in the OpenShift 4.x Console
+=== "OpenShift 4.x"
+
+    - Review you **Pipeline** in the OpenShift 4.x Console
     ![Pipelinerun](/images/pipeline.png)
 
-- Review your **Tasks**
+    - Review your **Tasks**
     ![Tasks](/images/tasks.png)
 
-- Review your **Steps**
+    - Review your **Steps**
     ![Steps](/images/steps.png)
 
-</Tab>
-<Tab label="Opensource Tekton Dashboard">
+=== "Opensource Tekton Dashboard"
 
-If you are running Tekton with IBM Cloud Pak for Applications or Knative with
- Kubernetes managed service your dashboard view will look similar to below.
+    If you are running Tekton with IBM Cloud Pak for Applications or Knative with Kubernetes managed service your dashboard view will look similar to below.
 
-- Review your **Pipeline**
+    - Review your **Pipeline**
     ![PipelineRun](/images/pipeline-os.png)
 
-</Tab>
 
-<Tab label="Tekton CLI">
+=== "Tekton CLI"
 
-If you are running **Tekton** with IBM Cloud Pak for Applications or Knative
- with Kubernetes managed service your dashboard view will look similar to below.
+    If you are running **Tekton** with IBM Cloud Pak for Applications or Knative with Kubernetes managed service your dashboard view will look similar to below.
 
-- Review your **Pipeline**
+    - Review your **Pipeline**
     ```bash
     tkn pipelinerun list
     ```
-- Review **Pipeline** details
+    - Review **Pipeline** details
     ```bash
     tkn pipelinerun describe {pipeline-name}
     ```
-
-</Tab>
-</Tabs>
 
 ### Running Application
 
@@ -223,11 +207,6 @@ Once the **Tekton** pipeline has successfully completed you can validate your
 Once you become familiar with deploying code into OpenShift using **Tekton
 **, read up about how you can manage code deployment with `Continuous
  Delivery` with `ArgoCD` and `Artifactory`
-
-<AnchorLinks>
-  <AnchorLink to="../../developer-intermediate/artifact-management">Artifact Management with Artifactory</AnchorLink>
-  <AnchorLink to="../../guides/continuous-delivery">Continuous Delivery with ArgoCD</AnchorLink>
-</AnchorLinks>
 
 
 

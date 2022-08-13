@@ -108,36 +108,33 @@ spec:
     image: busybox
     command: ['sh','-c','i=0; while true; do echo "$i: $(date)"; i=$((i+1)); sleep 5; done']
 ```
-<Tabs>
-<Tab label="OpenShift">
 
-** Get Logs **
-```
-oc logs
-```
-** Use Stern to View Logs **
-```
-brew install stern
-stern . -n default
-```
+=== "OpenShift"
 
-</Tab>
+    ** Get Logs **
+    ```
+    oc logs
+    ```
+    ** Use Stern to View Logs **
+    ```
+    brew install stern
+    stern . -n default
+    ```
 
-<Tab label="IKS">
 
-** Get Logs **
-```
-kubectl logs
-```
-** Use Stern to View Logs **
-```
-brew install stern
-stern . -n default
-```
+=== "IKS"
 
-</Tab>
+    ** Get Logs **
+    ```
+    kubectl logs
+    ```
+    ** Use Stern to View Logs **
+    ```
+    brew install stern
+    stern . -n default
+    ```
 
-</Tabs>
+
 
 ## Monitoring Applications
 
@@ -193,42 +190,39 @@ spec:
     image: radial/busyboxplus:curl
     command: [/bin/sh, -c, 'until curl localhost:8080/ConsumeCPU -d "millicores=200&durationSec=3600"; do sleep 5; done && sleep 3700']
 ```
-<Tabs>
-<Tab label="OpenShift">
 
-```
-  oc get projects
-  oc api-resources -o wide
-  oc api-resources -o name
+=== "OpenShift"
 
-  oc get nodes,ns,po,deploy,svc
+    ```
+    oc get projects
+    oc api-resources -o wide
+    oc api-resources -o name
 
-  oc describe node --all
-  ```
+    oc get nodes,ns,po,deploy,svc
 
-</Tab>
+    oc describe node --all
+    ```
 
-<Tab label="IKS">
 
-** Verify Metrics is enabled**
-```
-kubectl get --raw /apis/metrics.k8s.io/
-```
 
-** Get Node Description **
-```
-kubectl describe node
-```
+=== "IKS"
+    ** Verify Metrics is enabled**
+    ```
+    kubectl get --raw /apis/metrics.k8s.io/
+    ```
 
-** Check Resource Useage **
-```
-kubectl top pods
-kubectl top nodes
-```
+    ** Get Node Description **
+    ```
+    kubectl describe node
+    ```
 
-</Tab>
+    ** Check Resource Useage **
+    ```
+    kubectl top pods
+    kubectl top nodes
+    ```
 
-</Tabs>
+
 
 ## Activities
 

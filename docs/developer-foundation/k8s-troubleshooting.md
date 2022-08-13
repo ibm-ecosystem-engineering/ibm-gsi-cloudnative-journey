@@ -18,119 +18,114 @@ Usually is getting familiar with how primitives objects interact with each other
 - [Debugging Replication Controllers](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-pod-replication-controller/)
 
 ## References
-<Tabs>
-<Tab label="OpenShift">
 
-** Broken setup to debug**
-```
-curl -sL https://gist.githubusercontent.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091/raw/1e2a0cca964c7b54ce3df2fc3fbf33a232511877/debugk8s.64 | base64 -d | oc apply -f -
-```
+=== "OpenShift"
 
-** Expose the service using port-forward **
-```
-oc port-forward service/my-service 8080:80 -n debug
-```
-** Try to access the service **
-```
-curl http://localhost:8080
-```
+    ** Broken setup to debug**
+    ```
+    curl -sL https://gist.githubusercontent.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091/raw/1e2a0cca964c7b54ce3df2fc3fbf33a232511877/debugk8s.64 | base64 -d | oc apply -f -
+    ```
 
-** Try Out these Commands to Debug **
-```
-oc get pods --all-namespaces
-```
-```
-oc get deployments
-```
-```
-oc describe pod
-```
-```
-oc explain Pod.spec.containers.resources.requests
-```
-```
-oc explain Pod.spec.containers.livenessProbe
-```
-```
-oc edit deployment
-```
-```
-oc logs
-```
-```
-oc get service
-```
-```
-oc get ep
-```
-```
-oc describe service
-```
-```
-oc get pods --show-labels
-```
-```
-oc get deployment --show-labels
-```
+    ** Expose the service using port-forward **
+    ```
+    oc port-forward service/my-service 8080:80 -n debug
+    ```
+    ** Try to access the service **
+    ```
+    curl http://localhost:8080
+    ```
 
-</Tab>
+    ** Try Out these Commands to Debug **
+    ```
+    oc get pods --all-namespaces
+    ```
+    ```
+    oc get deployments
+    ```
+    ```
+    oc describe pod
+    ```
+    ```
+    oc explain Pod.spec.containers.resources.requests
+    ```
+    ```
+    oc explain Pod.spec.containers.livenessProbe
+    ```
+    ```
+    oc edit deployment
+    ```
+    ```
+    oc logs
+    ```
+    ```
+    oc get service
+    ```
+    ```
+    oc get ep
+    ```
+    ```
+    oc describe service
+    ```
+    ```
+    oc get pods --show-labels
+    ```
+    ```
+    oc get deployment --show-labels
+    ```
 
-<Tab label="IKS">
+=== "IKS"
 
-** Broken setup to debug**
-```
-curl -s https://gist.githubusercontent.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091/raw/a92550dd499ebefc205fa2cd5c18123409186712/debugk8s.64 | base64 -d | kubectl apply -f -
-```
+    ** Broken setup to debug**
+    ```
+     curl -s https://gist.githubusercontent.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091/raw/a92550dd499ebefc205fa2cd5c18123409186712/debugk8s.64 | base64 -d | kubectl apply -f -
+    ```
 
-** Expose the service using port-forward **
-```
-kubectl port-forward service/my-service 8080:80 -n debug
-```
-** Try to access the service **
-```
-curl http://localhost:8080
-```
+    ** Expose the service using port-forward **
+    ```
+     kubectl port-forward service/my-service 8080:80 -n debug
+    ```
+    ** Try to access the service **
+     ```
+      curl http://localhost:8080
+     ```
 
-** Try Out these Commands to Debug **
-```
-kubectl get pods --all-namespaces
-```
-```
-kubectl get deployments
-```
-```
-kubectl describe pod
-```
-```
-kubectl explain Pod.spec.containers.resources.requests
-```
-```
-kubectl explain Pod.spec.containers.livenessProbe
-```
-```
-kubectl edit deployment
-```
-```
-kubectl logs
-```
-```
-kubectl get service
-```
-```
-kubectl get ep
-```
-```
-kubectl describe service
-```
-```
-kubectl get pods --show-labels
-```
-```
-kubectl get deployment --show-labels
-```
-</Tab>
-
-</Tabs>
+    ** Try Out these Commands to Debug **
+    ```
+    kubectl get pods --all-namespaces
+    ```
+    ```
+    kubectl get deployments
+    ```
+    ```
+    kubectl describe pod
+    ```
+     ```
+    kubectl explain Pod.spec.containers.resources.requests
+    ```
+    ```
+    kubectl explain Pod.spec.containers.livenessProbe
+    ```
+    ```
+    kubectl edit deployment
+    ```
+    ```
+    kubectl logs
+    ```
+    ```
+    kubectl get service
+    ```
+    ```
+    kubectl get ep
+    ```
+    ```
+    kubectl describe service
+    ```
+    ```
+    kubectl get pods --show-labels
+    ```
+    ```
+    kubectl get deployment --show-labels
+    ```
 
 ### Solution
 - https://gist.github.com/csantanapr/e823b1bfab24186a26ae4f9ec1ff6091#file-debugk8s-yaml

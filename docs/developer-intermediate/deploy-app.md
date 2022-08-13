@@ -109,8 +109,8 @@ oc console
  
  !!! info
 
-     **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
-     The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
+      **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
+      The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
 
 
 ### 2. Create the development namespace
@@ -148,11 +148,11 @@ section that allows you to select a set of preconfigured [Starter Kits](/resourc
    
     !!! warning
 
-        **Warning:** If you are developing on a shared education cluster, you need to make it easy to identify
+        -  If you are developing on a shared education cluster, you need to make it easy to identify
         your app. Please suffix the app name with your initials `{app name}-{your initials}` (e.g.
         `stockbffnode-mjp`) and use the **Git Organization** for the shared environment.
 
-        **Warning:** Your browser needs to be logged in to your GitHub account for a template to work. If the link from the
+        - Your browser needs to be logged in to your GitHub account for a template to work. If the link from the
         tile displays the GitHub 404 page, log in and reload the page.
 
     
@@ -241,88 +241,76 @@ process.
 
 The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container platform version.
 
-<Accordion>
-<AccordionItem title="Tekton">
+!!! Tekton
 
-<Tabs>
-<Tab label="OpenShift 4.x">
+    === "OpenShift 4.x"
 
-1. Open the OpenShift Web Console
+        1. Open the OpenShift Web Console
 
-    ```shell script
-    oc console
-    ```
+         ```shell script
+            oc console
+         ```
 
-    **OR**
+         **OR**
 
-    ![IBM Cloud console](../images/common/openshiftconsole.png)
+         ![IBM Cloud console](../images/common/openshiftconsole.png)
 
-2. From menu on the left switch to the **Developer** mode
+         2. From menu on the left switch to the **Developer** mode
 
-3. Select _dev_ project that was used for the application pipeline registration
+         3. Select _dev_ project that was used for the application pipeline registration
 
-4. In the left menu, select *Pipelines*
+         4. In the left menu, select *Pipelines*
 
-You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
+         You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
 
-![OpenShift](../images/deploy-app/tektonpipeline.png)
+         ![OpenShift](../images/deploy-app/tektonpipeline.png)
+        
 
-</Tab>
-<Tab label="Kubernetes">
+    === "Kubernetes"
 
-1. Open the Developer Dashboard
+        1. Open the Developer Dashboard
 
-    ```shell script
-    kubectl dashboard
-    ```
+        ```shell script
+        kubectl dashboard
+        ```
 
-2. Select the `Tekton` tile to launch the Tekton UI
+        2. Select the `Tekton` tile to launch the Tekton UI
 
-3. Select your development project
+        3. Select your development project
 
-</Tab>
-</Tabs>
 
-</AccordionItem>
-<AccordionItem title="Jenkins">
+!!! Jenkins
 
-<Tabs>
-<Tab label="OpenShift 4.x">
+    === "OpenShift 4.x"
 
-1. Open the OpenShift Web Console
+        1. Open the OpenShift Web Console
 
-    ```shell script
-    oc console
-    ```
+        ```shell script
+        oc console
+        ```
 
-    **OR**
+       **OR**
 
-    ![IBM Cloud console](../images/common/openshiftconsole.png)
+       ![IBM Cloud console](../images/common/openshiftconsole.png)
 
-2. From the left-hand menu, select `Builds` -> `Build Configs`
+       2. From the left-hand menu, select `Builds` -> `Build Configs`
 
-3. Select your project from the drop-down menu at the top
+       3. Select your project from the drop-down menu at the top
 
-4. The registered pipeline should appear in the list
+       4. The registered pipeline should appear in the list
+        
+    === "Kubernetes"
 
-</Tab>
-<Tab label="Kubernetes">
+        1. Run the command `oc dashboard` in your terminal to open your dashboard.
+        2. Select the Jenkins tool to open the Jenkins dashboard
+        3. Run the command `kubectl credentials` in your terminal to get the list of logins for the tools
+        4. Use the Jenkins userid and password to log into the Jenkins dashboard
 
-1. Run the command `oc dashboard` in your terminal to open your dashboard.
-2. Select the Jenkins tool to open the Jenkins dashboard
-3. Run the command `kubectl credentials` in your terminal to get the list of logins for the tools
-4. Use the Jenkins userid and password to log into the Jenkins dashboard
+        Wait for the pipeline stages to start building. Once the stages have completed, you will see a view similar to the one below.
 
-Wait for the pipeline stages to start building. Once the stages have completed, you will see a view similar to the one below.
+        ![Jenkins Pipeline](../images/deploy-app/pipeline.png)
 
-![Jenkins Pipeline](../images/deploy-app/pipeline.png)
 
-</Tab>
-</Tabs>
-
-</AccordionItem>
-
-</Accordion>
 
 ### 7. Access the running app
 
@@ -351,46 +339,43 @@ image is stored in the [Image Registry](/developer-intermediate/image-registry).
 same namespace/project within the development cluster where the pipeline ran and validated for its health. The steps
 below will walk through locating the installed application within the Web Console.
 
-<Tabs>
-<Tab label="OpenShift 4.x">
 
-- Open the **OpenShift web console**
-  ```shell script
-    oc console
-    ```
-- Change to the **Developer** view
-- Click on **Topology** menu
-- Click on your application deployment in the topology view
-- Click on the **Overview** tab
-- Increase the number of running pods to 2 pods
-- Click on the **Resources** tab to view the list of pods
-- Click on **View Logs** link to view the logs from each pod
-- You can see the running state of your application
+=== "OpenShift 4.x"
 
-![Pods on OpenShift](../images/deploy-app/topology.png)
+    - Open the **OpenShift web console**
+      ```shell script
+       oc console
+       ```
+    - Change to the **Developer** view
+    - Click on **Topology** menu
+    - Click on your application deployment in the topology view
+    - Click on the **Overview** tab
+    - Increase the number of running pods to 2 pods
+    - Click on the **Resources** tab to view the list of pods
+    - Click on **View Logs** link to view the logs from each pod
+    - You can see the running state of your application
 
-</Tab>
+    ![Pods on OpenShift](../images/deploy-app/topology.png)
 
-<Tab label="Kubernetes">
+=== "Kubernetes"
 
-- Open the **Kubernetes Dashboard**
-```shell script
-    kubectl console
-```
-- Change to the namespace from `default` to either `dev` or the namespace you used to deploy your app
-- Click on **Deployments**
-- You should see the deployment of your application
-- Click on your application , and the corresponding **Replica Set**
-- Try scaling the application, click on **Scale** in the header, change number of pods to 2 and click **OK**
-- Click on one of the `pod` instances
-- Click on **Logs**
-- You can see the running state of your application
-- Navigate around the console to understand where your deployment, service and pods are running
+    - Open the **Kubernetes Dashboard**
+      ```shell script
+       kubectl console
+      ```
+    - Change to the namespace from `default` to either `dev` or the namespace you used to deploy your app
+    - Click on **Deployments**
+    - You should see the deployment of your application
+    - Click on your application , and the corresponding **Replica Set**
+    - Try scaling the application, click on **Scale** in the header, change number of pods to 2 and click **OK**
+    - Click on one of the `pod` instances
+    - Click on **Logs**
+    - You can see the running state of your application
+    - Navigate around the console to understand where your deployment, service and pods are running
 
-![Pods on IKS](../images/deploy-app/podsiks.png)
+    ![Pods on IKS](../images/deploy-app/podsiks.png)
 
-</Tab>
-</Tabs>
+
 
 
 !!! success
@@ -449,55 +434,49 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
     npm run start
     ```
 
-<Tabs>
 
-<Tab label="Cloud Shell">
 
- - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+=== "Cloud Shell"
+
+    - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
 
     ![View App](../images/deploy-app/viewapp.png)
 
-</Tab>
 
-<Tab label="Gitpod">
+=== "Gitpod"
 
- - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
 
     ![View App](../images/deploy-app/gitpod01.png)
 
-- Selecting "Open Preview" opens a window inside gitpod workspace tab.
+    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
 
      ![OpenPreview](../images/deploy-app/gitpod02.png)
 
-- Selecting "Open Browser" opens a new browser tab for accessing the URL.
-
-</Tab>
+    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
 
-<Tab label="Code Ready Workspaces">
 
-  ![CRW Open Link](../images/deploy-app/crwopenlink.png)
+=== "Code Ready Workspaces"
 
-
-- Click on open link
+    ![CRW Open Link](../images/deploy-app/crwopenlink.png)
 
 
-  ![CRW Open App](../images/deploy-app/crwopenapp.png)
+    - Click on open link
 
 
-- To view this application in new tab click top right corner arrow icon
+    ![CRW Open App](../images/deploy-app/crwopenapp.png)
 
-</Tab>
 
-<Tab label="Desktop/Laptop">
-- Open a browser to `http://localhost:3000/api-docs/`
-</Tab>
+    - To view this application in new tab click top right corner arrow icon
 
-</Tabs>
+=== "Desktop/Laptop"
+    - Open a browser to `http://localhost:3000/api-docs/`
 
-- You can try out the sample API that is provided with this **Code Pattern**
 
-- You can now add new features and function from inside the Cloud Shell and experiment with your code before you push any changes back to git.
+    - You can try out the sample API that is provided with this **Code Pattern**
+
+    - You can now add new features and function from inside the Cloud Shell and experiment with your code before you push any changes back to git.
 
 
 ### 11. Test the webhook

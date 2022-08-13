@@ -62,8 +62,7 @@ Developer Foundation uses Katacode service extensively for hands-on labs. Kataco
 ## Concepts
 ### Topics Covered
 
-<Tabs>
-<Tab label="Self Paced">
+### Self Paced
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
@@ -72,14 +71,12 @@ Developer Foundation uses Katacode service extensively for hands-on labs. Kataco
 | Continuous Integration | CI overview. | [CI](/developer-intermediate/continuous-integration/) |
 | Continuous Delivery | CD overview. | [CD](/developer-intermediate/continuous-delivery/) |
 
-</Tab>
-</Tabs>
+
 
 ## Technologies
 ### Topics Covered
 
-<Tabs>
-<Tab label="Self Paced">
+=== "Self Paced"
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
@@ -92,13 +89,11 @@ Developer Foundation uses Katacode service extensively for hands-on labs. Kataco
 | State Persistence| Covering Volumes and Persistence Volumes. | [State Persistence](/developer-foundation/k8s-state-persistence/) |
 | Troubleshooting | Ways to troubleshoot your kubernetes. | [Troubleshooting](/developer-foundation/k8s-troubleshooting/) |
 
-</Tab>
-</Tabs>
+
 
 ### Activities
 
-<Tabs>
-<Tab label="Self Paced">
+=== "Self Paced"
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
@@ -112,20 +107,18 @@ Developer Foundation uses Katacode service extensively for hands-on labs. Kataco
 | Setting up Persistent Volumes | Covers the topics in the [State Persistence](/developer-foundation/k8s-state-persistence/) page. | [Setting up Persistent Volumes](/developer-foundation/activities/labs/lab10) |
 | Debugging | Covers the topics in the [ Troubleshooting](/developer-foundation/k8s-troubleshooting/) page.  | [Debugging](/developer-foundation/activities/labs/lab5) |
 
-</Tab>
-</Tabs>
+
 
 ### Solutions
 
-<Tabs>
-<Tab label="Self Paced">
+
+=== "Self Paced"
 
 | Topics                          | Link        |
 | --------------------------------| ------------|
 | Solutions | [Solutions for Exercises](/developer-foundation/activities/labs/solutions) |
 
-</Tab>
-</Tabs>
+
 
 ## Optional Extra Credits
 ### Kubernetes
@@ -140,15 +133,13 @@ Use the following links to get a deep understanding of Cloud-Native Deployment:
 ## Method
 ### Topics Covered
 
-<Tabs>
-<Tab label="Self Paced">
+
+=== "Self Paced"
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
 | IBM Garage Method | Garage Method overview. | [Garage Method](/developer-foundation/garage-development/) |
 
-</Tab>
-</Tabs>
 
 ## Resources
 - [Kubernetes Basics presentation](/slides/03-Kubernetes-Basics.pdf).

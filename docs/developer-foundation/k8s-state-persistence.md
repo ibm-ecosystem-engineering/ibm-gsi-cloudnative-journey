@@ -139,39 +139,32 @@ spec:
       claimName: my-pvc
 ```
 
-<Tabs>
+  === "OpenShift"
 
-  <Tab label="OpenShift">
+      **Getting the Persistent Volumes in Project** 
+      ```
+      oc get pv 
+      ```
+      **Getting the Persistent Volume Claims ** 
+      ```
+      oc get pvc
+      ```
+      **Getting a specific Persistent Volume** 
+      ```
+      oc get pv <pv-claim>
+      ```
 
-  **Getting the Persistent Volumes in Project** 
-  ```
-    oc get pv 
-  ```
-  **Getting the Persistent Volume Claims ** 
-  ```
-    oc get pvc
-  ```
-  **Getting a specific Persistent Volume** 
-  ```
-    oc get pv <pv-claim>
-  ```
+  === "IKS"
 
-  </Tab>
+      **Getting the PersistentVolume ** 
+      ```
+      kubectl get pv
+      ```
+      **Getting the PersistentVolumeClaims ** 
+      ```
+      kubectl get pvc
+      ```
 
-  <Tab label="IKS">
-
-  **Getting the PersistentVolume ** 
-  ```
-    kubectl get pv
-  ```
-  **Getting the PersistentVolumeClaims ** 
-  ```
-    kubectl get pvc
-  ```
-
-  </Tab>
-
-</Tabs>
 
 ## Activities
 

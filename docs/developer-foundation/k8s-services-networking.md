@@ -64,50 +64,46 @@ spec:
       port: 80
       targetPort: http
 ```
-<Tabs>
-<Tab label="OpenShift">
 
-** Get Service **
-```
-oc get svc
-```
-** Get Service Description **
-```
-oc describe svc my-service
-```
-** Expose a service **
-```
-oc expose service <service_name>
-```
-** Get Route for the Service **
-```  
-oc get route
-```
+=== "OpenShift"
 
-</Tab>
+    ** Get Service **
+    ```
+     oc get svc
+    ```
+    ** Get Service Description **
+    ```
+    oc describe svc my-service
+    ```
+    ** Expose a service **
+    ```
+    oc expose service <service_name>
+    ```
+    ** Get Route for the Service **
+    ```  
+    oc get route
+    ```
 
-<Tab label="IKS">
 
-** Get Service **
-```
-kubectl get svc
-```
-** Get Service Description **
-```
-kubectl describe svc my-service
-```
-** Get Service Endpoints **
-```
-kubectl get ep my-service
-```
-** Expose a Deployment via a Service **
-```
-kubectl expose deployment my-deployment --port 80 --target-port=http --selector app=nginx --name my-service-2 --type NodePort
-```
+=== "IKS"
 
-</Tab>
+    ** Get Service **
+    ```
+    kubectl get svc
+    ```
+    ** Get Service Description **
+    ```
+    kubectl describe svc my-service
+    ```
+    ** Get Service Endpoints **
+    ```
+    kubectl get ep my-service
+    ```
+    ** Expose a Deployment via a Service **
+    ```
+     kubectl expose deployment my-deployment --port 80 --target-port=http --selector app=nginx --name my-service-2 --type NodePort
+    ```
 
-</Tabs>
 
 # Routes
 
@@ -154,28 +150,27 @@ spec:
 ```
 
 ### Commands
-<Tabs>
-<Tab label="OpenShift">
 
-** Create Route from YAML **
-```
-oc apply -f route.yaml
-```
-** Get Route **
-```
-oc get route
-```
-** Describe Route **
-```
-oc get route <route-name>
-```
-** Get Route YAML **
-```
-oc get route <route-name> -o yaml
-```
+=== "OpenShift"
 
-</Tab>
-</Tabs>
+    ** Create Route from YAML **
+    ```
+    oc apply -f route.yaml
+    ```
+    ** Get Route **
+    ```
+    oc get route
+    ```
+    ** Describe Route **
+    ```
+    oc get route <route-name>
+    ```
+    ** Get Route YAML **
+    ```
+    oc get route <route-name> -o yaml
+    ```
+
+
 
 ## Ingress
 
@@ -213,57 +208,55 @@ spec:
           serviceName: web
           servicePort: 8080
 ```
-<Tabs>
-<Tab label="OpenShift">
 
-** View Ingress Status **
-```
-oc describe clusteroperators/ingress
-```
-** Describe default Ingress Controller **
-```
-oc describe --namespace=openshift-ingress-operator ingresscontroller/default
-```
+=== "Openshift"
 
-</Tab>
+    ** View Ingress Status **
+    ```
+     oc describe clusteroperators/ingress
+    ```
+    ** Describe default Ingress Controller **
+    ```
+     oc describe --namespace=openshift-ingress-operator ingresscontroller/default
+    ```
 
-<Tab label="IKS">
 
-```
-minikube addons enable ingress
-```
-```
-kubectl get pods -n kube-system | grep ingress
-```
-```
-kubectl run web --image=bitnami/nginx --port=8080
-```
-```
-kubectl expose deployment web --target-port=8080 --type=NodePort
-```
-```
-kubectl get svc web
-```
-```
-minikube service --url web
-```
 
-```
-stern ingress -n kube-system
-```
-```
-kubectl get ingress
-```
-```
-kubcetl describe ingress example-ingress
-```
-```
-curl hello-world.info --resolve hello-world.info:80:<ADDRESS>
-```
+=== "IKS"
 
-</Tab>
+    ```
+    minikube addons enable ingress
+    ```
+    ```
+    kubectl get pods -n kube-system | grep ingress
+    ```
+    ```
+    kubectl run web --image=bitnami/nginx --port=8080
+    ```
+    ```
+    kubectl expose deployment web --target-port=8080 --type=NodePort
+    ```
+    ```
+    kubectl get svc web
+    ```
+    ```
+    minikube service --url web
+    ```
 
-</Tabs>
+    ```
+    stern ingress -n kube-system
+    ```
+    ```
+    kubectl get ingress
+    ```
+    ```
+    kubcetl describe ingress example-ingress
+    ```
+    ```
+    curl hello-world.info --resolve hello-world.info:80:<ADDRESS>
+    ```
+
+
 
 ## Activities
 
