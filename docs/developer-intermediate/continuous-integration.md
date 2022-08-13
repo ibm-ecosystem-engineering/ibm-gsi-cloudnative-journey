@@ -38,11 +38,11 @@ Let us go through these steps in detail.
 
 ![ci process](../images/continuous-integration/ci_process.png)
 
-**Development**
+###Development
 
 During the development, developers initially work in their local environments. They define code for new features or make changes to the existing feature. They make all this changes or additions in their local workspaces which are integrated with an Integrated Development Environment runtime. They may use build tools installed physically in their own workstation or they may use the ones existing on cloud (Web IDEs) based on their convenience. Once the code is defined, they do unit testing. Along with it they also do performance checks, data validations etc. They also test the software locally and validate the code changes using tests. If everything is fine, they push the changes to the source code management. Then a code review will be performed and if everything seems correct, then these changes will be merged into the main stream of the SCM system.
 
-**Source Control**
+###Source Control
 
 Continuous Integration starts with source control system. Source Control systems helps us to store all the code in a single place. This source code can be accessed by multiple developers. It is easy to pull the changes, change them and push them back into the source control system. These can be viewed by other developers too.
 
@@ -54,7 +54,7 @@ Source Control system is the place where you can store pretty much everything re
 
 Whenever a code push is made by the developer to the source control system, it should be validated by the automated build server. It is always a good practice to keep the check-ins small. If you do large check-ins, it is hard to identify any error or bugs if they occur.
 
-**CI Server**
+###CI Server
 
 CI Server is used to automate the builds. There are many CI server software available today like Jenkins, Tavis CI, Bamboo etc.
 
@@ -62,7 +62,7 @@ The source control repository is monitored by the CI server. The CI server is in
 
 CI server builds the software. They also inform about the failures and successes. They build artifacts which will be later used to deploy the application.
 
-**Testing**
+###Testing
 
 Whenever a build is done on the CI server, it undergoes many tests to make sure the quality of the software is high. Various tests are performed as part of this process. Some of the important ones are as follows.
 
@@ -71,11 +71,11 @@ Whenever a build is done on the CI server, it undergoes many tests to make sure 
 - Acceptance tests - An acceptance test tests whether a specific functionality works as described in the specification. These tests are written in the perspective of the user and it validates if the created feature is same as the requested one.
 - Smoke tests - Smoke tests test if your software is working in a production environment. It tests the basic functionality and makes sure the most important parts of your software work properly.
 
-**Automation**
+###Automation
 
 Automation is a very important. When doing CI, the build process is all automated. It also uses automated tests to make sure that software is properly working after new code changes.
 
-**Teamwork**
+###Teamwork
 
 All the code changes are compiled. To reduce the bugs, we use automation testing as part of CI. Also, if the executable is tested on an environment which resembles your production environment, it makes your life easier.
 

@@ -15,7 +15,7 @@ There are two patterns from this approach:
 This model enables agile Cloud-Native development teams to execute quickly while also conforming to the enterprise standards required for CI/CD. This pattern also enable the reduction of costs of managing expensive centralized multi-tenant CI services and enables development teams to use a percentage of their development cluster to support CI activities. This approach with Tekton enables the centralized operations teams to impose specific pipeline tasks that need to be supported by development teams without the complex
 
 
-### Overview
+## Overview
 
 This short video introduces the Cloud-Native concepts of CI/CD DevOps with <Globals name="ocp" />:
 <iframe width="80%" height="500" src="https://www.youtube.com/embed/GOPWObjFTsI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -42,7 +42,7 @@ Typically a **Cloud System Admin** installs and sets up a new <Globals name="env
 
 The installation is performed using [Terraform](https://cloud.ibm.com/docs/terraform), driven by scripts with a [modular configuration](https://github.com/ibm-garage-cloud/garage-terraform-modules) so unneeded tools can be easily disabled or new tools added. The combination of tools selected are proven in the industry to deliver real value for modern cloud-native development.
 
-### Environment components
+## Environment components
 
 After installation, the <Globals name="env" /> consists of a set of CNCF tools installed into your nominated kubernetes cluster.
 
@@ -52,7 +52,7 @@ This diagram illustrates the <Globals name="env" />:
 
 The diagram shows the components in the environment: the cluster, the deployment target environments, the cloud services, and the tools.
 
-#### Development cluster
+### Development cluster
 
 The heart of the <Globals key="env" /> is a cluster:
 
@@ -72,7 +72,7 @@ The following IBM Cloud services are created and bound to the cluster:
 | Cloud Object Storage      | [Cloud Object Storage Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage) | Storage service commonly used for binary content |
 | PostreSQL                 | [PostgreSQL](https://www.ibm.com/cloud/learn/postgresql) (used by SonarQube) | SQL Database used for structure data persistence |
 
-#### Continuous delivery tools
+### Continuous delivery tools
 
 The following best-of-breed open source software tools are installed in the cluster's *tools* namespace:
 

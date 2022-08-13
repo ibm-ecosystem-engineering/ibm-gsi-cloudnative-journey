@@ -152,7 +152,7 @@ nav:
         - Service: developer-intermediate/inventory-service.md
         - BFF: developer-intermediate/inventory-bff.md
         - UI: developer-intermediate/inventory-ui.md
-  - "Developer Advanced - 1":
+  - Developer Advanced - 1:
       - CD for Inventory App: developer-advanced-1/inventory-cd.md
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
       - Database with MongoDB: developer-advanced-1/database-with-mongodb.md

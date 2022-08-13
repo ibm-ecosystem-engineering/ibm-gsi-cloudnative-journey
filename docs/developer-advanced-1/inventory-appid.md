@@ -39,9 +39,9 @@ The following prerequisites are required for AppID integration:
     To install `yarn` run the command `npm install -g yarn`
 
 
-### Enable Appid in the solution
+## Enable Appid in the solution
 
-#### Installation
+### Installation
 -   By using the command line, change to the directory that contains your Node.js app.
 -   Install the AppID service and other dependencies.
 
@@ -53,7 +53,7 @@ The following prerequisites are required for AppID integration:
 
 -  Obtain the application as mentioned in [AppID Redirect Url Config](#appid-redirect-url-config).
 
-#### Create binding secret for appid in your namespace
+### Create binding secret for appid in your namespace
 - Login to the IBM Cloud cluster where your workshop-team-one ocp cluster resides.
   ```bash
   ibmcloud login -u [username] -p [password]
@@ -79,7 +79,7 @@ The following prerequisites are required for AppID integration:
     Save the binding name, you will use it later
 
 
-#### Update the configuration values in the configuration files
+### Update the configuration values in the configuration files
 - Put these credentials in *server/config/mappings.json* to be referred by application:
    ```json title="server/config/mappings.json"
    {
@@ -93,7 +93,7 @@ The following prerequisites are required for AppID integration:
    appidBinding: <BINDING_NAME>
    ```
 
-#### Adding the dependencies
+### Adding the dependencies
 - Add the following *require* definitions to your `server/server.js`:
     ```bash title="server/server.js"
     const express = require('express');
@@ -104,7 +104,7 @@ The following prerequisites are required for AppID integration:
     const appidConfig = require("./config/mappings.json");
     ```
 
-#### Activate the appid integration
+### Activate the appid integration
 - In *server.js*, set up your express app to use express-session middleware.
    ```javascript title="server/server.js"
    const app = express();
@@ -152,7 +152,7 @@ The following prerequisites are required for AppID integration:
     app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME ));
     ```
 
-#### Adding environment variables to `deployment.yaml`
+### Adding environment variables to `deployment.yaml`
 - Open the `deployment.yaml` file and add environment variables that use those values to the top of the existing `env` block:
   ```yaml title="chart/base/templates/deployment.yaml"
   - name: APPID_CONFIG

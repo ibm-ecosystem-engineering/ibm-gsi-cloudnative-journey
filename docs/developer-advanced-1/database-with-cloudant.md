@@ -4,7 +4,7 @@ title: Database with Cloudant
 
 <!--- cSpell:ignore dataload cloudantcredentials apikey classname gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp -->
 
-**Add a Cloudant integration to your backend service**
+## Add a Cloudant integration to your backend service
 
 - While logged into the IBM Cloud account use the resource list to find your pre installed Cloudant database instance name after your development cluster.
 
@@ -61,11 +61,11 @@ You can get the credentials from the Cloudant credentials view in the IBM Cloud 
 - If you click on a row of data, you will see the raw NoSQL form of the data record.
 - This completes the setup of the database and populating it with data.
 
-### Enable database in the solution
+## Enable database in the solution
 
 If you are starting from the solution, use the following steps to enable the Cloudant database
 
-#### Set up local development
+### Set up local development
 
 - Open the mappings.json file under src/main/resources and add a `DATABASE_NAME` value with the value `inventory-{namespace}` where `namespace` is the namespace where the pipeline is running (e.g. dev-{initials})
     ```json title="src/main/resources/mappings.json"
@@ -104,7 +104,7 @@ If you are starting from the solution, use the following steps to enable the Clo
     }
     ```
 
-#### Activate the Cloudant service implementation
+### Activate the Cloudant service implementation
 
 - Create a new file `src/main/java/com/ibm/inventory_management/services/StockItemMockService.java`.
 
@@ -133,7 +133,7 @@ If you are starting from the solution, use the following steps to enable the Clo
   }
   ```
 
-#### Update the StockItemService implementation
+### Update the StockItemService implementation
 
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
   package com.ibm.inventory_management.services;
@@ -247,7 +247,7 @@ If you are starting from the solution, use the following steps to enable the Clo
   }
   ```
 
-#### Update the StockItem model
+### Update the StockItem model
 
   ```java title="src/main/java/com/ibm/inventory_management/models/StockItem.java"
   package com.ibm.inventory_management.models;
@@ -340,7 +340,7 @@ If you are starting from the solution, use the following steps to enable the Clo
   ```
 
 
-#### Update the StockItem controller
+### Update the StockItem controller
 
   ```java title="src/main/java/com/ibm/inventory_management/controllers/StockItemController.java"
   package com.ibm.inventory_management.controllers;
@@ -383,7 +383,7 @@ If you are starting from the solution, use the following steps to enable the Clo
   }
   ```
 
-#### Update the configuration values in the `values.yaml` helm chart
+### Update the configuration values in the `values.yaml` helm chart
 
 - Open the `values.yaml` file and add the values `cloudantBinding` and `databaseName`
     ```yaml title="chart/base/values.yaml"
@@ -399,7 +399,7 @@ If you are starting from the solution, use the following steps to enable the Clo
 If you are following the instructions from MicroApp part 1 and want to enable the Cloudant database
 yourself, use the following directions.
 
-#### Update the gradle config to include cloudant dependencies
+### Update the gradle config to include cloudant dependencies
 
 - Add `build-cloudant.gradle` to the gradle folder
   ```groovy
@@ -420,7 +420,7 @@ build.gradle file
 
 - Run `./gradlew init` to validate the changes and load the libraries 
 
-#### Configuration values
+### Configuration values
 
 - Add CloudantConfig to hold the `url`, `username`, `password`, `apikey` and `databaseName` values:
 
@@ -562,7 +562,7 @@ build.gradle file
   }
   ```
 
-#### Service Implementation
+### Service Implementation
 
 - Add a CloudantApi component to create the CloudantClient instance from the configuration.
 

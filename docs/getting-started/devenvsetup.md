@@ -18,8 +18,6 @@ Once you have fulfilled these setup requirements you will be ready to
 
 
 === "Cloud Shell"
-
-
     ## Introduction to Cloud Shell
 
     IBM Cloud Shell is a free service that gives you complete control of your cloud resources, applications, and infrastructure, from any web browser. It's instantly accessible from your free IBM Cloud account--no other installation is needed.
@@ -31,8 +29,6 @@ Once you have fulfilled these setup requirements you will be ready to
     - File upload/download: use this feature to import files to IBM Cloud Shell or pull-down data to your local machine.
 
     - Multiple sessions: use up to five shell sessions at a time to maximize your productivity. Mirror workflows on your local machine, or view logs on one session while editing a file in another.
-
-
 
     ### Accessing the Cloud Shell
 
@@ -81,8 +77,6 @@ Once you have fulfilled these setup requirements you will be ready to
     oc sync --version
     ```
 
-
-
 === "Gitpod"
 
     ## Gitpod
@@ -96,9 +90,9 @@ Once you have fulfilled these setup requirements you will be ready to
     - Git integration: allows pull requests and code reviews to be easily managed from the IDE.
 
 
-    ### Gitpod Access:
+    ### Gitpod Access
 
-   Gitpod is available as an extension in Chrome and Firefox:
+    Gitpod is available as an extension in Chrome and Firefox:
     - Chrome: https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki.
 
     - Firefox: https://addons.mozilla.org/en-US/firefox/addon/gitpod/.
@@ -108,7 +102,7 @@ Once you have fulfilled these setup requirements you will be ready to
     Both options will display a Gitpod button to access the Gitpod workspace of that code repository.
     ![Gitpod](../images/devenvsetup/gitpod.png)
 
-    ### Gitpod Setup:
+    ### Gitpod Setup
 
     Execute the following steps in the same order on the Gitpod terminal:
 
@@ -206,9 +200,9 @@ Once you have fulfilled these setup requirements you will be ready to
 
 === "Desktop/Laptop"
 
-    ## Tools installation
+    ## Tools installation on Desktop/Laptop
 
-   The following tools are required:
+    The following tools are required:
 
     - [Git Client](https://git-scm.com/): needs to be installed in your development operating system, it comes as standard for Mac OS.
 
@@ -232,9 +226,6 @@ Once you have fulfilled these setup requirements you will be ready to
     $ cp kubectl /usr/local/bin/kubectl
     $ cp oc /usr/local/bin/oc
     ```
-
-    
-    
     - [Docker Desktop](https://www.docker.com/products/docker-desktop): required for running common tools and Developer Tools Image.
     - Installed and running on your local machine.
 
@@ -259,7 +250,6 @@ Once you have fulfilled these setup requirements you will be ready to
 
     - [JDK 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) (_optional_): installed on your local machine.
     - Used for SpringBoot content.
-
 
 === "Code Ready Workspaces"
 
@@ -355,20 +345,15 @@ Once you have fulfilled these setup requirements you will be ready to
     1.0.1
     ```
 
-!!! note
 
-    Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
+## Log in to IBM Cloud
 
-
-
-    ## Log in to IBM Cloud
-
-    - Use the `ibmcloud` command to log in to the cloud account. Replace the user_id, password and team name with the sandbox ones:
+  - Use the `ibmcloud` command to log in to the cloud account. Replace the user_id, password and team name with the sandbox ones:
     ```bash
     $ ibmcloud login -u <user_id> -p <password> -g <workshop-team> -r us-south
     ```
 
-    - Select the account number you have been assigned to:
+  - Select the account number you have been assigned to:
     ```bash
     $ ibmcloud login -u email@company.com -p XXX -g workshop-team-one -r us-south
     API endpoint: https://cloud.ibm.com
@@ -392,12 +377,11 @@ Once you have fulfilled these setup requirements you will be ready to
     CF API endpoint:
     Org:
     Space:
-
     ```
 
-   ## Log in to OpenShift Cluster
+    ## Log in to OpenShift Cluster
 
-   - Log in to OpenShift Cluster from the cloud console:
+    - Log in to OpenShift Cluster from the cloud console:
     ![OpenShift](../images/common/openshiftcluster.png)
 
    - Access the OpenShift console by clicking on the button:
@@ -416,7 +400,12 @@ Once you have fulfilled these setup requirements you will be ready to
     Using project "dev-ab".
     ```
 
-### Configure git
+
+!!! note
+
+    Depending on your macOS security settings you may need to allow access to `oc` and `kubectl`, go to `System Preferences`=>`Security & Privacy` and press `Allow Anyway`.
+
+## Configure git
 
 - Execute the following commands replacing the email and short name:
 

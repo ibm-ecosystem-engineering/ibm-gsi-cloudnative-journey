@@ -4,7 +4,7 @@ title: Database with MongoDB
 
 <!--- cSpell:ignore mongodbibmcloud servicecreds mongodbopenshift mongodbopenshiftsecret gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp dataload -->
 
-**Add a MongoDB integration to your backend service**
+## Add a MongoDB integration to your backend service
 
 ### Create a MongoDB instance
 
@@ -74,7 +74,7 @@ title: Database with MongoDB
       ```
       Fill out the placeholders `<HOST>`, `<USER>`, `<PASSWORD>` and `<DATABASE>` with your own MongoDB instance's credentials.
 
-#### Fill in the database with mock data
+### Fill in the database with mock data
  - To help create test JSON data we are going to supply a template to the JSON Generator tool, this helps when creating dummy data for testing. Navigate to the following link [https://www.json-generator.com/](https://www.json-generator.com/).
 
  - Replace the default template with following template. This will enable a 100 records of test data to be created to represent a products database. Click on the *Generate* button.

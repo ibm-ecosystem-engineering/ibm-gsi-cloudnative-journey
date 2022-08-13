@@ -2,7 +2,7 @@
 title: Deploy First Application
 ---
 
-import Globals from 'gatsby-theme-carbon/src/templates/Globals';
+<!--- cSpell:ignore dataload cloudantcredentials apikey classname gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp -->
 
 
 ## Overview
@@ -99,18 +99,17 @@ c. You can check the shell was installed correctly by checking the `oc` version:
     ```
   
 
-You can also access OpenShift console using this command:
+You can also access OpenShift console using above command:
 
 ```shell
 oc console
 ```
-
-
  
- !!! info
+!!! info
 
-      **NOTE**: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#code-ready-workspace) before logging in to the cluster.
-      The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
+    NOTE: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#codeready-workspace) before logging in to the cluster.
+     The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
+
 
 
 ### 2. Create the development namespace
@@ -174,7 +173,7 @@ process.
 
   Press **Create repository from template**
 
-  ![Template](/images/template.png)
+  ![Template](../images/common/template.png)
 
 - The new repository will be created in your selected organization.
 
@@ -289,15 +288,15 @@ The steps to view your registered pipeline will vary based on type of pipeline (
         oc console
         ```
 
-       **OR**
+        **OR**
 
-       ![IBM Cloud console](../images/common/openshiftconsole.png)
+        ![IBM Cloud console](../images/common/openshiftconsole.png)
 
-       2. From the left-hand menu, select `Builds` -> `Build Configs`
+        2. From the left-hand menu, select `Builds` -> `Build Configs`
 
-       3. Select your project from the drop-down menu at the top
+        3. Select your project from the drop-down menu at the top
 
-       4. The registered pipeline should appear in the list
+        4. The registered pipeline should appear in the list
         
     === "Kubernetes"
 

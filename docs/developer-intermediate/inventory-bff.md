@@ -10,7 +10,7 @@ The Inventory solution will use [GraphQL](https://graphql.org/) for its BFF laye
 
 ## Setup
 
-### [Optionnal]: Access cloud shell 
+### [Optional]: Access cloud shell 
 
 If you don't plan to use your workstation to run this lab, you can use IBM Cloud Shell:
 
