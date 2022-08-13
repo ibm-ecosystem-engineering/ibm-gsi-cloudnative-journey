@@ -1,6 +1,7 @@
 ---
 title: Agenda
 ---
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 !!! note
 
@@ -56,8 +57,8 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgghDUQOfj7YeeX3o?e=HTpaRL" target="_blank" >Link</a> |
     | Hands On Lab | Deploying applications on OpenShift |  <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> <br/> <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | 15 min | |
     | **DevSecOps** | | | |
-    | Continous Integration | Overview of Continous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
-    | Continous Delivery | Overview of Continous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min | |
+    | Continuous Integration | Overview of Continuous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
+    | Continuous Delivery | Overview of Continuous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min | |
     |Deploy your first app|
     | **Q & A** | | | 10 mins |
 
@@ -70,8 +71,8 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
     | <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
     | [Cloud Native Development](/developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
-    | [Continous Integration](/developer-intermediate/continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
-    | [Continous Delivery](/developer-intermediate/continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
+    | [Continuous Integration](/developer-intermediate/continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
+    | [Continuous Delivery](/developer-intermediate/continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
 
 
 
@@ -155,8 +156,8 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min |
     | Hands On Lab | Deploying applications on OpenShift |  <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> <br/> <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | 15 min |
     | **DevSecOps** | | | |
-    | Continous Integration | Overview of Continous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min |
-    | Continous Delivery | Overview of Continous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min |
+    | Continuous Integration | Overview of Continuous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min |
+    | Continuous Delivery | Overview of Continuous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min |
     | **Learn how to develop and deploy apps with enterprise DevSecOps** | | | |
     | DevSecOps | DevSecOps Overview | [DevSecOps](/developer-intermediate/content-overview) | 20 min |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/getting-started/devenvsetup) | 10 mins |
@@ -166,7 +167,7 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](/developer-intermediate/artifact-management) | 10 min |
     | Monitoring | Sysdig Monitoring | [Monitoring](/developer-intermediate/monitoring) | 15 min |
     | Logging | Logging with LogDNA | [Logging](/developer-intermediate/log-management) | 10 min |
-    | **Apply all we have learnt so far to develop a set of miceroservices and deploy them on OpenShift** | | | |
+    | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/getting-started/devenvsetup) | 10 mins |
     | Inventory Application | Objective of the exercise | [Objective](/developer-intermediate/inventory-app) | 15 mins |
     | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/developer-intermediate/inventory-svc) | 30 mins |
@@ -205,8 +206,8 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min |
     | Hands On Lab | Deploying applications on OpenShift |  <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> <br/> <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | 15 min |
     | **DevSecOps** | | | |
-    | Continous Integration | Overview of Continous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min |
-    | Continous Delivery | Overview of Continous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min |
+    | Continuous Integration | Overview of Continuous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min |
+    | Continuous Delivery | Overview of Continuous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min |
     | **Break** | | | 10 mins |
     | **Learn how to develop and deploy apps with enterprise DevSecOps** | | | |
     | DevSecOps | DevSecOps Overview | [DevSecOps](/developer-intermediate/content-overview) | 20 min |
@@ -218,7 +219,7 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Monitoring | Sysdig Monitoring | [Monitoring](/developer-intermediate/monitoring) | 15 min |
     | Logging | Logging with LogDNA | [Logging](/developer-intermediate/log-management) | 10 min |
     | **Lunch** | | | 30 mins |
-    | **Apply all we have learnt so far to develop a set of miceroservices and deploy them on OpenShift** | | | |
+    | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/getting-started/devenvsetup) | 10 mins |
     | Inventory Application | Objective of the exercise | [Objective](/developer-intermediate/inventory-app) | 15 mins |
     | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/developer-intermediate/inventory-svc) | 30 mins |
@@ -235,8 +236,8 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
 
 !!! success
 
-    You have sucessfully completed the **Developer Intermediate** material
-    - You have become familar with IBM Cloud and Red Hat OpenShift
+    You have successfully completed the **Developer Intermediate** material
+    - You have become familiar with IBM Cloud and Red Hat OpenShift
     - You have deployed your first application with OpenShift 4.3
     - You have understood how monitor, access logs
     - Understand where your artifacts are being managed

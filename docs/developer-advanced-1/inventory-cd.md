@@ -1,13 +1,14 @@
 ---
 title: CD for Inventory App 
 ---
+<!--- cSpell:ignore artifactoryurlsetup ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 **Extending the Inventory Micro  app to include Continuous Delivery to Test.**
 
 
 ## Guide
 
-This Micro App guidance continues to build upon the microserivces that were built in the Inventory Micro App guide. Make sure you have complete [Inventory Application](/developer-intermediate/inventory-application) or deployed the working [Inventory Solution](/developer-intermediate/inventory-prebuilt-solution/#deploy-the-inventory-app-solution).
+This Micro App guidance continues to build upon the micro-services that were built in the Inventory Micro App guide. Make sure you have complete [Inventory Application](/developer-intermediate/inventory-application) or deployed the working [Inventory Solution](/developer-intermediate/inventory-prebuilt-solution/#deploy-the-inventory-app-solution).
 
 - We implemented the three tiers in the Inventory Mico App and deployed the app to the `dev` namespace/project.
 - We will take that app and make these additions.

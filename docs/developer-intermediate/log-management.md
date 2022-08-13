@@ -2,7 +2,7 @@
 title: Log Management
 description: Use LogDNA to manage your running application's logs
 ---
-
+<!--- cSpell:ignore ICPA allapps openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 In IBM Garage Method, one of the Operate practices is to [automate application monitoring](https://www.ibm.com/garage/method/practices/manage/practice_automated_monitoring/), including logging. Imagine your application isn't working right in production even though the environment is fine. What information would you want in your logs to help you figure out what's wrong with your application? Build logging messages for that information into your application.
 
@@ -56,10 +56,7 @@ The **LogDNA** service is already created, bound and configured to listen to log
 ### Learn more
 
 Learn more about using LogDNA:
-<AnchorLinks>
-  <AnchorLink to="https://docs.logdna.com/docs/filters">More information on using LogDNA log filtering</AnchorLink>
-  <AnchorLink to="https://docs.logdna.com/docs/time">Understand how to jump to a specific timeframe</AnchorLink>
-</AnchorLinks>
+
 
 ## Conclusion
 

@@ -1,6 +1,7 @@
 ---
 title: Overview
 ---
+<!--- cSpell:ignore ICPA openshiftconsole mkdocs fontawesome Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 ## Cloud-Native Learning Journey
 
@@ -20,44 +21,51 @@ This Learning Journey focuses on the **Cloud Enterprise Sandbox**, which provide
 The Learning Journey agenda is broken into **Foundation**, **Intermediate** and **Advanced** developer techniques, and then extends with **Application Modernization** and **Application Integration**.
 
 With the **Cloud-Native Journey** you can choose how you want to use the **Cloud Enterprise Sandbox**. You can use the self-paced agenda or work with the Cloud Ecosystem Team to have a remote workshop model. The self-paced model will enable longer-term learning with the **Cloud Enterprise Sandbox**.
+<Row>
+
+<Column colLg={4} colMd={4} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    title="Developer Foundation"
+    subTitle="Start your cloud-native journey by learning the concepts, technologies & methodologies."
+    href="/developer-foundation"
+    >
+
+![](./images/developer-foundation.png)
+
+</ArticleCard>
+</Column>
+
+<Column colLg={4} colMd={4} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    title="Developer Intermediate"
+    subTitle="Learn how to develop and deliver cloud-native applications with an Enterpeise SDLC."
+    href="/developer-intermediate"
+    >
+
+![](./images/developer-intermediate.png)
+
+</ArticleCard>
+</Column>
+
+
+<Column colLg={4} colMd={4} noGutterMdLeft>
+<ArticleCard
+    color="dark"
+    title="Developer Advanced"
+    subTitle="Learn advanced microservices techniques to develop and deliver cloud-native applications."
+    href="/developer-advanced-1"
+    >
+
+![](./images/developer-advanced.png)
+
+</ArticleCard>
+</Column>
+
+</Row>
 
 
 
-<div class="grid cards" markdown>
-
--   :material-clock-fast:{ .lg .middle } __Set up in 5 minutes__
-
-    ---
-
-    Install [`mkdocs-material`](#) with [`pip`](#) and get up
-    and running in minutes
-
-    [:octicons-arrow-right-24: Getting started](#)
-
--   :fontawesome-brands-markdown:{ .lg .middle } __It's just Markdown__
-
-    ---
-
-    Focus on your content and generate a responsive and searchable static site
-
-    [:octicons-arrow-right-24: Reference](#)
-
--   :material-format-font:{ .lg .middle } __Made to measure__
-
-    ---
-
-    Change the colors, fonts, language, icons, logo and more with a few lines
-
-    [:octicons-arrow-right-24: Customization](#)
-
--   :material-scale-balance:{ .lg .middle } __Open Source, MIT__
-
-    ---
-
-    Material for MkDocs is licensed under MIT and available on [GitHub]
-
-    [:octicons-arrow-right-24: License](#)
-
-</div>
 
 Before you start the Cloud-Native Learning Journey, make sure you have set up the necessary prerequisites, validated your sandbox environment, and have chosen the method you plan to use for your application development.

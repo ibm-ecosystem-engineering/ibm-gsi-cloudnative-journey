@@ -2,7 +2,7 @@
 title: Agenda
 description: Developer Foundation Agenda
 ---
-import ActivationPage from 'gatsby-theme-carbon/src/templates/ActivationPage';
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 
 Credits: This material heavily draws from [Cloud-Native bootcamp](https://cloudnative101.dev/).
@@ -56,7 +56,7 @@ Developer Foundation is broken into three areas:
 
 !!! note
 
-Developer Foundation uses Katacode service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
+Developer Foundation uses Katacoda service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
 
 
 ## Concepts
@@ -81,7 +81,7 @@ Developer Foundation uses Katacode service extensively for hands-on labs. Kataco
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
 | Core Concepts | Covers Kubernetes objects and namespaces. | [Core Concepts](/developer-foundation/k8s-core-concepts/) |
-| Configuration | Coveres ConfigMaps, Resource Quotas, Secrets, and Service Accounts. | [Configuration](/developer-foundation/k8s-configuration/) |
+| Configuration | Covers ConfigMaps, Resource Quotas, Secrets, and Service Accounts. | [Configuration](/developer-foundation/k8s-configuration/) |
 | Multi-Container Pods | Use Cases for multi container pods. | [Multi-Container Pods](/developer-foundation/k8s-multi-container-pods/) |
 | Observability | Covers probes and logging for containers. | [Observability](/developer-foundation/k8s-observability/) |
 | Pod Design | Covers Labels, Selectors, Deployments, and Jobs. | [Pod Design](/developer-foundation/k8s-pod-design/) |

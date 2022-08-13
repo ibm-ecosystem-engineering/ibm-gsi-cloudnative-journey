@@ -3,6 +3,8 @@ title: Continuous Integration with Jenkins
 description: Use Jenkins to automate your continuous integration process
 ---
 
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
+
 In IBM Garage Method, one of the Develop practices is [continuous integration](https://www.ibm.com/garage/method/practices/code/practice_continuous_integration/). The <Globals name="env" /> uses a Jenkins pipeline to automate continuous integration.
 
 ## What is continuous integration
@@ -85,7 +87,3 @@ This is good if you have various squads, teams, pairs or students working in the
 In addition to continuous integration, the <Globals name="env" /> also supports continuous delivery
 using Artifactory and ArgoCD:
 
-<AnchorLinks small>
-  <AnchorLink to="../../developer-intermediate/artifact-management">Artifact Management with Artifactory</AnchorLink>
-  <AnchorLink to="../../developer-advanced/gitops">Continuous Delivery with ArgoCD</AnchorLink>
-</AnchorLinks>

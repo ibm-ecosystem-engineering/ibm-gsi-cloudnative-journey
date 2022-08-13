@@ -1,6 +1,7 @@
 ---
 title: Kubernetes Overview
 ---
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 ## Introduction
 
@@ -37,7 +38,7 @@ A different kind of dependency are configurations.  ConfigMaps are used by Kuber
 
 ### Resource Profiles
 
-Resource Profiles are definitions for the compute resources required for a container.  Resources are categorized in two ways, compressible and incompressible.  Compressible resources include resources that can be throttled such as CPU or network bandwidth. Incompressible represents resouces that can't be throttled such as memory where there is no other way to release the allocated resource other than killing the container.  The difference between compressible and incompressible is very important when it comes to planning the deployment of pods and containers since the resource allocation can be affected by the limits of each.
+Resource Profiles are definitions for the compute resources required for a container.  Resources are categorized in two ways, compressible and incompressible.  Compressible resources include resources that can be throttled such as CPU or network bandwidth. Incompressible represents resources that can't be throttled such as memory where there is no other way to release the allocated resource other than killing the container.  The difference between compressible and incompressible is very important when it comes to planning the deployment of pods and containers since the resource allocation can be affected by the limits of each.
 
 Every application needs to have a specified minimum and maximum amount of resources that are needed.  The minimum amount is called "requests" and the maximum is the "limits".  The scheduler uses the requests to determine the assignment of pods to nodes ensuring that the node will have enough capacity to accommodate the pod and all of it's containers required resources.  An example of defined resource limits is below:
 
@@ -122,7 +123,7 @@ A Readiness Probe is very similar to a Liveness probe, but the resulting action 
 
 ## Managed Lifecycle Pattern
 
-The Managed Lifecycle pattern describes how containers need to adapt their lifecycles based on the events that are communicated from a managing platform such as Kubernetes.  Containers do not have control of their own lifecycles.  It's the managing platforms that allow them to live or die, get traffic or have none, etc.  This pattern covers how the different events can affect those lifecycle decisions.
+The Managed Lifecycle pattern describes how containers need to adapt their lifecycle based on the events that are communicated from a managing platform such as Kubernetes.  Containers do not have control of their own lifecycle.  It's the managing platforms that allow them to live or die, get traffic or have none, etc.  This pattern covers how the different events can affect those lifecycle decisions.
 
 ### SIGTERM
 

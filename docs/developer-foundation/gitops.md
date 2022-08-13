@@ -2,7 +2,7 @@
 title: GitOps & ArgoCD Overview
 description: GitOps & ArgoCD Overview
 ---
-
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 
 ### What is GitOps?
@@ -18,7 +18,7 @@ configuration so that teams can benefit from the same assurance as they do for t
 
 ### CI/CD integration
 
-For the full end-to-end build and delivery process, both the CI and CD pipelines are required. For this to work, a Git repo is used to convey the configuration values. Within the <Globals name="env" />, we have used certain naming conventions to streamline and simplify the untegration between the various components.
+For the full end-to-end build and delivery process, both the CI and CD pipelines are required. For this to work, a Git repo is used to convey the configuration values. Within the <Globals name="env" />, we have used certain naming conventions to streamline and simplify the integration between the various components.
 
 ![Argo CD config](images/CI_CD-pipelines.png)
 
@@ -58,14 +58,14 @@ Argo CD synchronizes the application state with the desired state defined in Git
 
 ## Activities
 
-These activites give you a chance to walkthrough building CD pipelines using ArgoCD.
+These activities give you a chance to walk-through building CD pipelines using ArgoCD.
 
 These tasks assume that you have:
  - Reviewed the Continuous Deployment concept page.
 
 | Task                            | Description         | Link        | Time    |
 | --------------------------------| ------------------  |:----------- |---------|
-| *** Walkthroughs ***                         |         |         |     |
+| *** Walk-through ***                         |         |         |     |
 | GitOps | Introduction to GitOps with OpenShift | [Learn OpenShift](https://learn.openshift.com/introduction/gitops-introduction/) | 20 min |
 | GitOps Multi-cluster | Multi-cluster GitOps with OpenShift | [Learn OpenShift](https://learn.openshift.com/introduction/gitops-multicluster/) | 20 min |
 | *** Try It Yourself ***                         |         |         |     |

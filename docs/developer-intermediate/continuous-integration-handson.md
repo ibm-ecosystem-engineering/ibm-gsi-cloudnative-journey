@@ -2,6 +2,7 @@
 title: Tekton Lab
 description: Lab for continuous integration using tekton
 ---
+<!--- cSpell:ignore ICPA yamls openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 ## Pre-requisites
 
@@ -286,7 +287,7 @@ Follow the instructions [here](/getting-started/devenvsetup)
             resourceRef:
               name: source
     ```
-    - **generateName** - since the TaskRun can be run many times, in order to have unqiue name across the TaskRun ( helpful when checking the TaskRun history) we use this generateName instead of name. When Kubernetes sees generateName it will generate unquie set of characters and suffix the same to build-app-, similar to how pod names are generated
+    - **generateName** - since the TaskRun can be run many times, in order to have unique name across the TaskRun ( helpful when checking the TaskRun history) we use this generateName instead of name. When Kubernetes sees generateName it will generate unique set of characters and suffix the same to build-app-, similar to how pod names are generated
     - **taskRef** - this is used to refer to the Task by its name that will be run as part of this TaskRun. In this example we use build-app Task.
     - As described in the earlier section that the Task inputs and outputs could be overridden via TaskRun.
     - In this example we make the Task Run `spec > inputs > resources > source` to refer to pipeline resource `source` via the `resourceRef`.
@@ -330,7 +331,7 @@ Follow the instructions [here](/getting-started/devenvsetup)
 
     - Create a Task to build a container image and push to the registry
     - This task will be later used by the pipeline.
-    - Download the task file [task-buildah.yaml](/yamls/tekton-lab/task-buildah.yaml) to build the image, push the image to the registy:
+    - Download the task file [task-buildah.yaml](/yamls/tekton-lab/task-buildah.yaml) to build the image, push the image to the registry:
     - Create the `buildah` Task using the file and the command:
     ```
     oc apply -f task-buildah.yaml -n $NAMESPACE
@@ -951,7 +952,7 @@ Follow the instructions [here](/getting-started/devenvsetup)
             resourceRef:
               name: source
     ```
-    - **generateName** - since the TaskRun can be run many times, in order to have unqiue name across the TaskRun ( helpful when checking the TaskRun history) we use this generateName instead of name. When Kubernetes sees generateName it will generate unquie set of characters and suffix the same to build-app-, similar to how pod names are generated
+    - **generateName** - since the TaskRun can be run many times, in order to have unique name across the TaskRun ( helpful when checking the TaskRun history) we use this generateName instead of name. When Kubernetes sees generateName it will generate unique set of characters and suffix the same to build-app-, similar to how pod names are generated
     - **taskRef** - this is used to refer to the Task by its name that will be run as part of this TaskRun. In this example we use build-app Task.
     - As described in the earlier section that the Task inputs and outputs could be overridden via TaskRun.
     - In this example we make the Task Run `spec > inputs > resources > source` to refer to pipeline resource `source` via the `resourceRef`.
@@ -995,7 +996,7 @@ Follow the instructions [here](/getting-started/devenvsetup)
 
     - Create a Task to build a container image and push to the registry
     - This task will be later used by the pipeline.
-    - Download the task file [task-buildah.yaml](/yamls/tekton-lab/task-buildah.yaml) to build the image, push the image to the registy:
+    - Download the task file [task-buildah.yaml](/yamls/tekton-lab/task-buildah.yaml) to build the image, push the image to the registry:
     - Create the `buildah` Task using the file and the command:
     ```bash
     kubectl apply -f task-buildah.yaml -n $NAMESPACE

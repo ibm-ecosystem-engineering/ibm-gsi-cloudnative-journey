@@ -1,3 +1,4 @@
+<!--- cSpell:ignore templatized ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 **Develop and deploy the BFF component of the inventory application**
 
 The Inventory BFF's role in the architecture is to act as an orchestrator between the core business services and the specific digital channel it is focused on supporting. This class article will give you more detail about the [Backend For Frontend architectural pattern](https://samnewman.io/patterns/architectural/bff/) and the benefits.
@@ -125,7 +126,7 @@ To get the initial BFF project created and registered with a pipeline for automa
 The controller provides the REST interface for our BFF. The template uses the `typescript-rest`
 package to simplify the tasks required to create a controller.
 
-Since we will be developping this microservice following the [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) approach, we are first going to create the test for our `stock-items` controller.
+Since we will be developing this microservice following the [Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development) approach, we are first going to create the test for our `stock-items` controller.
 
 - Start the tests by running the following command in a new terminal that you will keep running while running the lab:
     ```bash
@@ -569,7 +570,7 @@ for GraphQL.
     });
     ```
 
-The config class separates how the config is loaded from how it is used. In this case the config is simply retrieved from an environment variable but in more complex cases the value(s) can be retrived from external data sources.
+The config class separates how the config is loaded from how it is used. In this case the config is simply retrieved from an environment variable but in more complex cases the value(s) can be retrieved from external data sources.
 
 - Add the `stock-item-service.config` to an `index.ts` file of the `config` directory:
     ```typescript title="src/config/index.ts"
@@ -681,7 +682,7 @@ The config class separates how the config is loaded from how it is used. In this
     !!! info
       `deployment.yaml` is a templatized Kubernetes yaml file that describes the deployment of our component.
       The deployment will create one or more pods based on the pod template defined in the deployment.
-      Each pod that starts will have the envionment variables that we have defined in the `env` section available for the container image to reference.
+      Each pod that starts will have the environment variables that we have defined in the `env` section available for the container image to reference.
 
 - Commit and push the changes to git:
     ```bash

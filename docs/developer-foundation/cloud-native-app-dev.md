@@ -3,6 +3,7 @@ title: Cloud-Native Application Development
 description: Cloud-Native Application Development
 ---
 
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 ## Introduction
 
@@ -40,7 +41,7 @@ Usually, you can implement them in your applications in two ways.
 
 To implement these capabilities, you can import the language libraries into your application which will automatically get you most of these capabilities with out defining any extra code. This is easy to do and is well suitable if you have few languages in your applications.
 
-But if your application is a polyglot with many different languages, it is difficult to manage all the libraries. In such cases, you can use sidecar which is implemented as separate service including things like Health end point monitoring health of the application, configuration watching changes in the configs and reloading the application when required, registrator for service discovery, envoy proxy to handle resiliency and metrics etc.
+But if your application is a polyglot with many different languages, it is difficult to manage all the libraries. In such cases, you can use sidecar which is implemented as separate service including things like Health end point monitoring health of the application, configuration watching changes in the configs and reloading the application when required, registered for service discovery, envoy proxy to handle resiliency and metrics etc.
 
 ## Application Lifecycle
 
@@ -108,7 +109,7 @@ One way to achieve this is containerization. Among the different container optio
 
 **Resource Allocation and Scheduling**
 
-Your applications must include dynamic scheduling. This helps you to figure out where the application must run and this decisions are automatically taken for you by the scheduler. This scheduler collects all the informations of resources for different system and chooses the right place to run the application. Operator can override the decisions of the scheduler if he wants to.
+Your applications must include dynamic scheduling. This helps you to figure out where the application must run and this decisions are automatically taken for you by the scheduler. This scheduler collects all the information of resources for different system and chooses the right place to run the application. Operator can override the decisions of the scheduler if he wants to.
 
 **Environment isolation**
 

@@ -3,7 +3,7 @@ title: DevSecOps Overview
 description: An Overview of what DevSecOps is, and how it can help you
  speed up Cloud-Native solution delivery
 ---
-
+<!--- cSpell:ignore ICPA mutlicloud openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 One of the patterns emerging with development teams is the ability to use [CNCF Tools](https://landscape.cncf.io/) as part of a more open multicloud CI/CD strategy. This approach is aligning around the Kubernetes platform. The IBM Cloud supports both upstream Kubernetes for advanced cutting edge workloads and Red Hat OpenShift, the proven mutlicloud distribution of Kubernetes that can install on IBM Cloud, Azure, AWS, VMWare and on Premise and many more places. This approach removes cloud vendor lock in around CI/CD tools and enables development teams to be more flexible with the target cloud they focus on deploying and developing in.
 
@@ -70,7 +70,7 @@ The following IBM Cloud services are created and bound to the cluster:
 | AppID                     | [AppID Application Authentication](https://cloud.ibm.com/docs/services/appid?topic=appid-service-access-management) | Secure your apps, APIs and Kubernetes Ingress end points |
 | Cloudant                  | [Cloudant NoSQL Database](https://www.ibm.com/cloud/cloudant) | NoSQL Database commonly used for data persistence |
 | Cloud Object Storage      | [Cloud Object Storage Storage](https://cloud.ibm.com/docs/cloud-object-storage?topic=cloud-object-storage-getting-started-cloud-object-storage) | Storage service commonly used for binary content |
-| PostreSQL                 | [PostgreSQL](https://www.ibm.com/cloud/learn/postgresql) (used by SonarQube) | SQL Database used for structure data persistence |
+| PostgreSQL                 | [PostgreSQL](https://www.ibm.com/cloud/learn/postgresql) (used by SonarQube) | SQL Database used for structure data persistence |
 
 ### Continuous delivery tools
 
