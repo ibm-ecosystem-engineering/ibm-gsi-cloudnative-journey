@@ -40,7 +40,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
 <ArticleCard
     color="dark"
     title="Developer Intermediate"
-    subTitle="Learn how to develop and deliver cloud-native applications with an Enterpeise SDLC."
+    subTitle="Learn how to develop and deliver cloud-native applications with an Enterprise SDLC."
     href="/developer-intermediate"
     >
 
