@@ -1,10 +1,10 @@
-site_name: Cloud Native Toolkit
+site_name: GSI Cloud-Native Learning Journey
 site_description: >-
-  The Cloud-Native Toolkit is an open-source collection of assets that enable application development and support teams to deliver business value quickly using Red Hat OpenShift or Kubernetes
-site_url: https://cloudnativetoolkit.dev
-site_author: Cloud-Native Toolkit development team
+  This Learning Journey, optimized for IBM Cloud developers and operators, enables them to deliver cloud-native solutions with Red Hat OpenShift in hybrid cloud environments.
+site_url: https://ibm-ecosystem-lab.github.io/ibm-gsi-cloudnative-journey/
+site_author: GSI Labs
 repo_name: ""
-repo_url: https://github.com/cloud-native-toolkit/developer-guide
+repo_url: https://github.com/ibm-ecosystem-lab/ibm-gsi-cloudnative-journey
 docs_dir: docs
 site_dir: public
 edit_uri: edit/main/docs
@@ -103,14 +103,28 @@ markdown_extensions:
   #- pymdownx.tabbed:
       #alternate_style: true
   - pymdownx.details
-  - md_in_html
 extra_css:
   - css/extra.css
   - css/toolkit-code.css
 extra:
+  analytics:
+    provider: google
+    property: UA-155887541-1
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
   generator: false
-copyright: Copyright © 2021 Cloud-Native Toolkit
-google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io/ibm-gsi-cloudnative-journey']
+copyright: Copyright © 2022 GSI Labs
 nav:
   - Introduction:
       - Overview: getting-started/introduction.md
@@ -155,7 +169,7 @@ nav:
         - Service: developer-intermediate/inventory-service.md
         - BFF: developer-intermediate/inventory-bff.md
         - UI: developer-intermediate/inventory-ui.md
-  - Developer Advanced - 1:
+  - Developer Advanced:
       - CD for Inventory App: developer-advanced-1/inventory-cd.md
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
       - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
