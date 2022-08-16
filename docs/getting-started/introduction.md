@@ -21,51 +21,25 @@ This Learning Journey focuses on the **Cloud Enterprise Sandbox**, which provide
 The Learning Journey agenda is broken into **Foundation**, **Intermediate** and **Advanced** developer techniques, and then extends with **Application Modernization** and **Application Integration**.
 
 With the **Cloud-Native Journey** you can choose how you want to use the **Cloud Enterprise Sandbox**. You can use the self-paced agenda or work with the Cloud Ecosystem Team to have a remote workshop model. The self-paced model will enable longer-term learning with the **Cloud Enterprise Sandbox**.
-<Row>
 
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Developer Foundation"
-    subTitle="Start your cloud-native journey by learning the concepts, technologies & methodologies."
-    href="/developer-foundation"
-    >
+<div class="grid cards" markdown>
 
-![](./images/developer-foundation.png) #html image tag
+-   :Developer Foundation:{ .lg .middle } __Developer Foundation__
+    Start your cloud-native journey by learning the concepts, technologies & methodologies.
+    <img src="../images/introduction/developer-foundation.png" alt="developer-foundation" width="500" height="600">
+    ---
 
-</ArticleCard>
-</Column>
+-   :Developer Intermediate:{ .lg .middle } __Developer Intermediate__
+    Learn how to develop and deliver cloud-native applications with an Enterprise SDLC
+    <img src="../images/introduction/developer-intermediate.png" alt="developer-intermediate" width="500" height="600">
+    ---
 
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Developer Intermediate"
-    subTitle="Learn how to develop and deliver cloud-native applications with an Enterprise SDLC."
-    href="/developer-intermediate"
-    >
-
-![](./images/developer-intermediate.png)
-
-</ArticleCard>
-</Column>
-
-
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Developer Advanced"
-    subTitle="Learn advanced microservices techniques to develop and deliver cloud-native applications."
-    href="/developer-advanced-1"
-    >
-
-![](./images/developer-advanced.png)
-
-</ArticleCard>
-</Column>
-
-</Row>
-
-
+-   :Developer Advanced:{ .lg .middle } __Developer Advanced__
+    Learn advanced microservices techniques to develop and deliver cloud-native applications.
+    <img src="../images/introduction/developer-advanced.png" alt="developer-advanced" width="500" height="600">
+    ---
+</div>
+ 
 
 
 Before you start the Cloud-Native Learning Journey, make sure you have set up the necessary prerequisites, validated your sandbox environment, and have chosen the method you plan to use for your application development.
