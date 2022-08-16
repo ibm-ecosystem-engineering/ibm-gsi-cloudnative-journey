@@ -31,7 +31,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
     href="/developer-foundation"
     >
 
-![](./images/developer-foundation.png)
+![](./images/developer-foundation.png) #html image tag
 
 </ArticleCard>
 </Column>
