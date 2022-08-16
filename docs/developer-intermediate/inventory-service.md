@@ -96,7 +96,7 @@ Create the initial project and register it with a pipeline for automated builds.
 - Go into the repository directory cloned and execute the following
 
   ```
-  oc sync dev-{your initials} --tekton
+  oc sync dev-{your initials} 
   ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)

@@ -143,7 +143,7 @@ With Tetkon enabled and your default `Tasks` and `Pipelines` installed into
 - Connect to the pipeline. (See the [IGC CLI](/getting-started/cli) for details about how the `pipeline` command works.)
 
     ```bash
-    igc pipeline -n dev-{initials} --tekton
+    igc pipeline -n dev-{initials} 
     ```
 
 ### Verify the pipeline

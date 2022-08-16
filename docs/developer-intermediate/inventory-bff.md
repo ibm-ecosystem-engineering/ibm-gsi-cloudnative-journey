@@ -107,7 +107,7 @@ To get the initial BFF project created and registered with a pipeline for automa
 - Go into the repository directory cloned and execute the following:
 
     ```
-    oc sync dev-{your initials} --tekton
+    oc sync dev-{your initials}
     ```
 
 - Register the pipeline:

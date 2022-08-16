@@ -20,7 +20,7 @@ named `inventory-management-svc-solution`
 - Go into the repository directory cloned and execute the following
 
     ```
-    oc sync dev-{your initials} --tekton
+    oc sync dev-{your initials} 
     ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
@@ -42,7 +42,7 @@ named `inventory-management-bff-solution`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute `oc sync --tekton` command. if you are not executed previously. 
+- Go into the repository directory cloned and execute `oc sync ` command. if you are not executed previously. 
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
@@ -82,7 +82,7 @@ named `inventory-management-ui-solution`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute `oc sync --tekton` command. if you are not executed previously. 
+- Go into the repository directory cloned and execute `oc sync ` command. if you are not executed previously. 
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
     ```

@@ -123,7 +123,7 @@ namespace into the development namespace/project. This enables the pipelines to 
 project.
 
 ```shell
-oc sync ${DEV_NAMESPACE} --tekton
+oc sync ${DEV_NAMESPACE} 
 ```
 
 ### 3. Open the Developer Dashboard
@@ -197,12 +197,12 @@ process.
 3. Start the process to create a pipeline.
 
     ```shell
-    oc pipeline ${GIT_URL}
+    oc pipeline ${GIT_URL} --tekton
     ```
    
     For example:
     ```shell
-    oc pipeline https://github.com/gct-showcase/inventory-svc
+    oc pipeline https://github.com/gct-showcase/inventory-svc --tekton
     ```
 
 4. For the deployment of your first app with OpenShift select **Tekton** as the CI engine.

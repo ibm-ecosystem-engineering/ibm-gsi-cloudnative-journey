@@ -109,7 +109,7 @@ Get the initial project created and register the pipeline for automated builds. 
 - Go into the repository directory cloned and execute the following:
 
     ```
-    oc sync dev-{your initials} --tekton
+    oc sync dev-{your initials} 
     ```
 
 - Register the pipeline:
