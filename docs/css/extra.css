@@ -135,3 +135,34 @@ width: 8rem;
 .md-typeset h1, .md-typeset h2 {
     font-weight: 500;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    font-size: 1.6em;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    height: 100%;
+    font-family: IBM Plex Sans VF,Helvetica Neue,Arial,sans-serif;
+  }
+  
+
+  .card {
+    padding: 10px 10px;
+  }
+  
+  .card div {
+    font-size: large;
+  }
+  

@@ -1,7 +1,7 @@
 site_name: GSI Labs Enterprise Sandbox
 site_description: >-
   This Learning Journey enables cloud operators and developers to deliver cloud-native solutions with Red Hat OpenShift in hybrid cloud environments.
-site_url: https://ibm-ecosystem-lab.github.io
+site_url: https://ibm-ecosystem-lab.github.io/ibm-gsi-cloudnative-journey
 site_author: GSI Labs
 repo_name: ""
 repo_url: https://github.com/ibm-ecosystem-lab/ibm-gsi-cloudnative-journey
@@ -81,7 +81,7 @@ nav:
       #- What's New?: whatsnew.md
   - Developer Foundation:
       - Sandbox: developer-foundation/checksetup.md
-      - Agenda: developer-foundation/agenda.md
+      - Agenda: developer-foundation/index.md
       - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
       - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md      
       - Containers Overview: developer-foundation/containers.md
