@@ -11,20 +11,37 @@ jobs:
 
     env:
       NODE_VERSION: 12.x
+      TITLE: Cloud-Native Toolkit
+      ANALYTICS_ID: ""
 
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ env.NODE_VERSION }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-      - name: Install dependencies
-        run: npm ci
-      - name: Build
-        run: npm run build
+      - name: generate site
+        uses: ./.github/actions/
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.TOKEN }}
           publish_dir: ./public
-          
+
+  release:
+    needs:
+      - publish
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+
+      # Drafts your next Release notes as Pull Requests are merged into "main"
+      - name: Create release
+        id: create-release
+        uses: release-drafter/release-drafter@v5
+        with:
+          # (Optional) specify config name to use, relative to .github/. Default: release-drafter.yml
+          config-name: release-drafter.yaml
+          publish: true
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

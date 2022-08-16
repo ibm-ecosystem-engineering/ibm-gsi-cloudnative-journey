@@ -1,0 +1,122 @@
+site_name: GSI Labs Enterprise Sandbox
+site_description: >-
+  This Learning Journey enables cloud operators and developers to deliver cloud-native solutions with Red Hat OpenShift in hybrid cloud environments.
+site_url: https://ibm-ecosystem-lab.github.io
+site_author: GSI Labs
+repo_name: ""
+repo_url: https://github.com/ibm-ecosystem-lab/ibm-gsi-cloudnative-journey
+docs_dir: docs
+site_dir: public
+edit_uri: edit/main/docs
+theme:
+  name: material
+  logo: images/cloudnativetoolkit.png
+  favicon: images/cloudnativetoolkit.png
+  palette:
+    scheme: default
+    primary: black
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  language: en
+  custom_dir: overrides
+  features:
+    #      - navigation.tabs
+    - navigation.instant
+    - navigation.tracking
+#      - navigation.tabs.sticky
+#      - navigation.top
+use_directory_urls: true
+plugins:
+  - search:
+      lang: en
+  - minify:
+      minify_html: true
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tabbed
+  #- pymdownx.tabbed:
+      #alternate_style: true
+  - pymdownx.details
+extra_css:
+  - css/extra.css
+  - css/toolkit-code.css
+extra:
+  analytics:
+    provider: google
+    property: UA-155887541-1
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
+  generator: false
+google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io']
+copyright: Copyright © 2022 GSI Labs
+nav:
+  - Introduction:
+      - Overview: getting-started/introduction.md
+      - Prerequisites:  getting-started/prereqs.md
+      - Validate Sandbox:  getting-started/checksetup.md
+      - Developer Tools Setup:  getting-started/devenvsetup.md
+      - Developer Tools CLI:  getting-started/cli.md
+      - OpenShift Console:  getting-started/console.md
+  #- What's New?:
+      #- What's New?: whatsnew.md
+  - Developer Foundation:
+      - Sandbox: developer-foundation/checksetup.md
+      - Agenda: developer-foundation/agenda.md
+      - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
+      - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md      
+      - Containers Overview: developer-foundation/containers.md
+      - Kubernetes 'overview': developer-foundation/k8s-overview.md
+      - Openshift 'overview': developer-foundation/openshift.md
+      - Core Concepts: developer-foundation/k8s-core-concepts.md
+      - Configuration: developer-foundation/k8s-configuration.md
+      - Multi-Container Pods: developer-foundation/k8s-multi-container-pods.md
+      - Observability: developer-foundation/k8s-observability/k8s-observability.md
+      - Pod Design: developer-foundation/k8s-pod-design.md
+      - Services & Networking: developer-foundation/k8s-services-networking.md
+      - State Persistence: developer-foundation/k8s-state-persistence.md
+      - Troubleshoot: developer-foundation/k8s-troubleshooting.md
+      - Garage Method: developer-foundation/garage-development.md
+  - Developer Intermediate:
+      - Agenda: developer-intermediate/agenda.md
+      - Deploy First App: developer-intermediate/deploy-app.md
+      - Artifact Management: developer-intermediate/artifact-management.md
+      - Code Analysis: developer-intermediate/code-analysis.md
+      - Continuous Delivery: developer-intermediate/continuous-delivery.md
+      - DevSecOps Overview: developer-intermediate/content-overview.md
+      - Continuous Integration: developer-intermediate/continuous-integration.md
+      - Image Registry: developer-intermediate/image-registry.md
+      - Log Management: developer-intermediate/log-management.md
+      - Monitoring: developer-intermediate/monitoring.md
+      - Inventory App:
+        - Intro: developer-intermediate/inventory-application.md
+        - Solution: developer-intermediate/inventory-prebuilt-solution.md
+        - Service: developer-intermediate/inventory-service.md
+        - BFF: developer-intermediate/inventory-bff.md
+        - UI: developer-intermediate/inventory-ui.md
+  - Developer Advanced:
+      - CD for Inventory App: developer-advanced-1/inventory-cd.md
+      - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
+      - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
+      - Authentication with AppID: developer-advanced-1/inventory-appid.md
+
+
