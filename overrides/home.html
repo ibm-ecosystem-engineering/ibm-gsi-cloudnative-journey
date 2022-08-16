@@ -3,45 +3,82 @@
 
 <link rel="stylesheet" href="{{ 'assets/stylesheets/home.css' | url }}" />
 
+<!-- Tabs -->
+{% block tabs %}{% endblock %}
+
 <!-- Content -->
 {% block content %}
 
-<script>
-
-  $l = $('.left')
-  $r = $('.right')
-
-  $l.mouseenter(function() {
-    $('.container').addClass('left-is-hovered');
-  }).mouseleave(function() {
-    $('.container').removeClass('left-is-hovered');
-  });
-
-  $r.mouseenter(function() {
-    $('.container').addClass('right-is-hovered');
-  }).mouseleave(function() {
-    $('.container').removeClass('right-is-hovered');
-  });
-
-</script>
-
 <link rel="stylesheet" href="{{ 'assets/stylesheets/home.css' | url }}" />
+  <!-- Hero for landing page -->
+  <section class="home mdx-container">
+    <div class="md-grid md-typeset">
+      <div class="mdx-hero">
 
-<div class="container">
-  <div class="one-half left">
-    <h1>Cloud-Native Operator</h1>
-    <a href="#" class="cta">Learn It</a>
-    <a href="#" class="cta">Do It</a>
-
-  </div>
-  <div class="one-half right">
-    <h1>Cloud-Native Developer</h1>
-    <a href="#" class="cta">Learn It</a>
-    <a href="#" class="cta">Do It</a>
-  </div>
-</div>
-
-
+        <section>
+          <div class=home-hero>
+            <div class=home-hero-text>
+              <h1>Cloud-Native Learning Journey</h1>
+            </div>
+            <div class=home-hero-image>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class=home-getting-started>
+            <div class="row">
+              <div class="column">
+                <h3>Getting started</h3>
+                <div class="description">This learning journey enables developers and operators to deliver 
+                  cloud-native solutions with Red Hat OpenShift in hybrid-cloud environments.</div>
+              </div>
+            </div>
+            <div class='row'>
+              <div class='column'>
+                <a href="/developer-foundation/agenda/">
+                  <div class="card">
+                    <div>
+                      <img src="images/developer-foundation.png" width="100%" />
+                    </div>
+                    <div>
+                      <h4>Developer foundation</h4>
+                      <div>Start your cloud-native journey by learning the concepts, technologies and methodologies.</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class='column'>
+                <a href="/developer-intermediate/agenda/">
+                  <div class="card">
+                    <div>
+                      <img src="images/developer-intermediate.png" width="100%" />
+                    </div>
+                    <div>
+                      <h4>Developer intermediate</h4>
+                      <div>Learn how to develop and deliver a cloud-native application with an Enterprise SDLC.</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class='column'>
+                <a href="/developer-advanced/agenda/">
+                  <div class="card">
+                    <div>
+                      <img src="images/developer-advanced.png" width="100%" />
+                    </div>
+                    <div>
+                      <h4>Developer advanced</h4>
+                      <div>Learn advanced microservices techniques to develop and deliver cloud-native applications.</div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
 {% endblock %}
 
 <!-- Application footer -->

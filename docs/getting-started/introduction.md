@@ -12,6 +12,7 @@ IBM Cloud and Red Hat aim to help developers and architects realize the value of
 This learning journey has been designed to take developers through a step by step process to build strong skills in both the programming models IBM is aligned towards and the underlying platform, Red Hat OpenShift, a multi/hybrid cloud Kubernetes environment that provides developers extreme flexibility to build solutions.
 
 This Learning Journey targets the following [personas](https://www.ibm.com/garage/method/practices/think/practice_personas/):
+
 - **The Cloud-Native Developer**.
 - **The DevSecOps Engineer**.
 - **The Ops Engineer and the SRE ([Site Reliability Engineer](https://en.wikipedia.org/wiki/Site_Reliability_Engineering))**.
