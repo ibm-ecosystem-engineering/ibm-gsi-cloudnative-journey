@@ -1,0 +1,51 @@
+
+{% extends "main.html" %}
+
+<link rel="stylesheet" href="{{ 'assets/stylesheets/home.css' | url }}" />
+
+<!-- Content -->
+{% block content %}
+
+<script>
+
+  $l = $('.left')
+  $r = $('.right')
+
+  $l.mouseenter(function() {
+    $('.container').addClass('left-is-hovered');
+  }).mouseleave(function() {
+    $('.container').removeClass('left-is-hovered');
+  });
+
+  $r.mouseenter(function() {
+    $('.container').addClass('right-is-hovered');
+  }).mouseleave(function() {
+    $('.container').removeClass('right-is-hovered');
+  });
+
+</script>
+
+<link rel="stylesheet" href="{{ 'assets/stylesheets/home.css' | url }}" />
+
+<div class="container">
+  <div class="one-half left">
+    <h1>Cloud-Native Operator</h1>
+    <a href="#" class="cta">Learn It</a>
+    <a href="#" class="cta">Do It</a>
+
+  </div>
+  <div class="one-half right">
+    <h1>Cloud-Native Developer</h1>
+    <a href="#" class="cta">Learn It</a>
+    <a href="#" class="cta">Do It</a>
+  </div>
+</div>
+
+
+{% endblock %}
+
+<!-- Application footer -->
+{% block footer %}
+{{ super() }}
+{% endblock %}
+
