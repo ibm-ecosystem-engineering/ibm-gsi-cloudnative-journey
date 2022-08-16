@@ -67,6 +67,7 @@ extra:
           note: >- 
             Thanks for your feedback!
   generator: false
+google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io']
 copyright: Copyright © 2022 GSI Labs
 nav:
   - Introduction:
