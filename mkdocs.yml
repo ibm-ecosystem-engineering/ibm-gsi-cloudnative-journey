@@ -93,6 +93,7 @@ plugins:
 markdown_extensions:
   - attr_list
   - admonition
+  - md_in_html
   - toc:
       permalink: true
       toc_depth: 3
@@ -102,13 +103,14 @@ markdown_extensions:
   #- pymdownx.tabbed:
       #alternate_style: true
   - pymdownx.details
+  - md_in_html
 extra_css:
   - css/extra.css
   - css/toolkit-code.css
 extra:
   generator: false
 copyright: Copyright © 2021 Cloud-Native Toolkit
-google_analytics: ['UA-153689700-1', 'cloudnativetoolkit.dev']
+google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io/ibm-gsi-cloudnative-journey']
 nav:
   - Introduction:
       - Overview: getting-started/introduction.md
