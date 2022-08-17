@@ -110,9 +110,7 @@ c. You can check the shell was installed correctly by checking the `oc` version:
 
     Using project "dev-ab".
     ```
-!!! Tekton
 
-    === "Github Auth"
      
   
 
