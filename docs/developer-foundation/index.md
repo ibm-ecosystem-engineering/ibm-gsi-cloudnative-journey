@@ -8,61 +8,59 @@ description: Developer Foundation Agenda
 Credits: This material heavily draws from [Cloud-Native bootcamp](https://cloudnative101.dev/).
 !!! note
 
-Before you jump straight into Cloud-Native development using this crafted enablement journey, you must understand the related basic concepts, technologies used and methodologies applied for Cloud-Native development.
+    Before you jump straight into Cloud-Native development using this crafted enablement journey, you must understand the related basic concepts, technologies used and methodologies applied for Cloud-Native development.
 
 Developer Foundation is broken into three areas:
-<Row>
 
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Concepts"
-    subTitle="Principles of Cloud, Cloud-Native development & deployment"
-    href="/developer-foundation#concepts"
-    >
-
-![](../images/agenda/sysadmins.png)
-
-</ArticleCard>
-</Column>
-
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Technology"
-    subTitle="Basics of Containers, Kubernetes/Openshift"
-    href="/developer-foundation#technologies"
-    >
-
-![](../images/agenda/code2.png)
-
-</ArticleCard>
-</Column>
-
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Methodology"
-    subTitle="IBM Garage Method"
-    href="developer-foundation#method"
-    >
-
-![](../images/agenda/code1.png)
-
-</ArticleCard>
-</Column>
-
-</Row>
+<div class='row' style="padding: 0 0; margin: 0 0;">
+    <div class='column'>
+        <a href="#concepts">
+            <div class="card">
+            <div>
+                <img src="../images/agenda/sysadmins.png" width="100%" />
+            </div>
+            <div>
+                <h4>Concepts</h4>
+                <div>Principles of Cloud, Cloud-Native development and deployment</div>
+            </div>
+            </div>
+        </a>
+    </div>
+    <div class='column'>
+        <a href="#technologies">
+            <div class="card">
+            <div>
+                <img src="../images/agenda/code2.png" width="100%" />
+            </div>
+            <div>
+                <h4>Technology</h4>
+                <div>Basics of Containers, Kubernetes/Openshift</div>
+            </div>
+            </div>
+        </a>
+    </div>
+    <div class='column'>
+        <a href="#method">
+            <div class="card">
+            <div>
+                <img src="../images/agenda/code1.png" width="100%" />
+            </div>
+            <div>
+                <h4>Methodology</h4>
+                <div>IBM Garage Method</div>
+            </div>
+            </div>
+        </a>
+    </div>
+</div>
 
 !!! note
 
-Developer Foundation uses Katacoda service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
+    Developer Foundation uses Katacoda service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
 
 
 ## Concepts
 ### Topics Covered
-
-### Self Paced
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
@@ -76,8 +74,6 @@ Developer Foundation uses Katacoda service extensively for hands-on labs. Kataco
 ## Technologies
 ### Topics Covered
 
-=== "Self Paced"
-
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |
 | Core Concepts | Covers Kubernetes objects and namespaces. | [Core Concepts](/developer-foundation/k8s-core-concepts/) |
@@ -88,37 +84,6 @@ Developer Foundation uses Katacoda service extensively for hands-on labs. Kataco
 | Services & Networking | Covers Services and Ingresses.  | [Services and Networking](/developer-foundation/k8s-services-networking/) |
 | State Persistence| Covering Volumes and Persistence Volumes. | [State Persistence](/developer-foundation/k8s-state-persistence/) |
 | Troubleshooting | Ways to troubleshoot your kubernetes. | [Troubleshooting](/developer-foundation/k8s-troubleshooting/) |
-
-
-
-### Activities
-
-=== "Self Paced"
-
-| Topics                          | Description         | Link        |
-| --------------------------------| ------------------  |:----------- |
-| Pod Creation | Covers the topics in the [Core Concepts](/developer-foundation/k8s-core-concepts/) page. | [Pod Creation](/developer-foundation/activities/labs/lab1) |
-| Pod Configuration | Covers the topics in the [Configuration](/developer-foundation/k8s-configuration/) page. | [Pod Configuration](/developer-foundation/activities/labs/lab2) |
-| Multiple Containers | Covers the topics in the [Multi-Container Pods](/developer-foundation/k8s-multi-container-pods/) page. | [Multiple Containers](/developer-foundation/activities/labs/lab3) |
-| Probes | Covers the topics in the [Observability](/developer-foundation/k8s-observability/) page. | [Probes](/developer-foundation/activities/labs/lab4) |
-| Rolling Updates Lab | Covers the topics in the [Pod Design](/developer-foundation/k8s-pod-design/) page.  | [Rolling Updates](/developer-foundation/activities/labs/lab6) |
-| Cron Jobs Lab | Covers the topics in the [Pod Design Jobs](/developer-foundation/k8s-pod-design#jobs-and-cronjobs) section. | [Crons Jobs](/developer-foundation/activities/labs/lab7) |
-| Creating Services | Covers the topics in the [Services](/developer-foundation/k8s-services-networking/) page. | [Setting up Services](/developer-foundation/activities/labs/lab8) |
-| Setting up Persistent Volumes | Covers the topics in the [State Persistence](/developer-foundation/k8s-state-persistence/) page. | [Setting up Persistent Volumes](/developer-foundation/activities/labs/lab10) |
-| Debugging | Covers the topics in the [ Troubleshooting](/developer-foundation/k8s-troubleshooting/) page.  | [Debugging](/developer-foundation/activities/labs/lab5) |
-
-
-
-### Solutions
-
-
-=== "Self Paced"
-
-| Topics                          | Link        |
-| --------------------------------| ------------|
-| Solutions | [Solutions for Exercises](/developer-foundation/activities/labs/solutions) |
-
-
 
 ## Optional Extra Credits
 ### Kubernetes
@@ -132,9 +97,6 @@ Use the following links to get a deep understanding of Cloud-Native Deployment:
 
 ## Method
 ### Topics Covered
-
-
-=== "Self Paced"
 
 | Topics                          | Description         | Link        |
 | --------------------------------| ------------------  |:----------- |

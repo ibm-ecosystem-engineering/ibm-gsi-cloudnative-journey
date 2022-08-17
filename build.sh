@@ -3,5 +3,5 @@
 set -e
 
 cspell "docs/**/*.md"
-mkdocs build
+mkdocs build 
 linkchecker -r 3 -f linkcheckerrc public
