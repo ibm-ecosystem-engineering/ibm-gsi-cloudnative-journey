@@ -2,6 +2,7 @@
 checkextern=1
 ignore=
   ^https://ibm-ecosystem-lab.github.io/
+  ^https://github.com/ibm-ecosystem-lab/
   ^https://github.com/cloud-native-toolkit/developer-guide/edit
   xml.gz$
   ^https://ccp-ui.csplab.intranet.ibm.com
