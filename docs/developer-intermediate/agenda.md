@@ -59,7 +59,7 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | **DevSecOps** | | | |
     | Continuous Integration | Overview of Continuous Integration | [CI](/developer-intermediate/continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
     | Continuous Delivery | Overview of Continuous Delivery | [CD](/developer-intermediate/continuous-delivery) | 15 min | |
-    |Deploy your first app|
+    |Deploy your first app|The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](/developer-intermediate/deploy-app)|
     | **Q & A** | | | 10 mins |
 
     ### Homework
