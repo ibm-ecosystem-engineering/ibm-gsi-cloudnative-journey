@@ -2,262 +2,262 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-advanced-1/database-with-cloudant/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-advanced-1/database-with-mongodb/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-advanced-1/inventory-appid/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-advanced-1/inventory-cd/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/agenda/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/checksetup/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/cloud-native-app-dev/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/cloud-native-overview/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/containers/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/garage-development/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/gitops/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-configuration/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-core-concepts/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-multi-container-pods/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-overview/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-pod-design/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-services-networking/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-state-persistence/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-troubleshooting/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/openshift/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-observability/k8s-observability/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-observability/logs/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-foundation/k8s-overview/k8s-overview/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/agenda/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/artifact-management/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/code-analysis/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/content-overview/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/continuous-delivery-handson/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/continuous-delivery/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/continuous-integration-handson/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/continuous-integration/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/deploy-app/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/image-registry/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/inventory-application/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/inventory-bff/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/inventory-prebuilt-solution/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/inventory-service/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/inventory-ui/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/log-management/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/developer-intermediate/monitoring/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/checksetup/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/cli/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/console/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/devenvsetup/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/introduction/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/getting-started/prereqs/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/guides/continuous-delivery/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/guides/continuous-integration-tekton/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/guides/continuous-integration/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/guides/contract-testing/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://ibm-ecosystem-lab.github.io/guides/overview/</loc>
-         <lastmod>2022-08-16</lastmod>
+         <lastmod>2022-08-19</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
