@@ -16,16 +16,6 @@ When the <Globals name="shortName" /> was configured for your development
 
 ![OpenShift Links](../images/console/openshift-console-tools.png)
 
-### Opening the Dashboard
-
-- Open a terminal.
-- Make sure you are logged into your Development cluster in the terminal. To do so, navigate to your cluster in the _IBM Cloud Console_, click on the **Access** tab and
-follow the instructions to login from the command line.
-
-- To open the Dashboard from the environment you are configured with, use the [IGC CLI](/getting-started/cli#dashboard).
-    ```
-    igc dashboard
-    ```
 
 ### Access the tools URLs
 
