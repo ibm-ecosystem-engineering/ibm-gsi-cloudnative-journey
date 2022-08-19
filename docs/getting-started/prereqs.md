@@ -5,22 +5,22 @@ title: Prerequisites
 
 ## Create accounts
 
-You will need to set up the following accounts to use the **Cloud Enterprise
- Sandbox environment**
+You will need to set up the following accounts to use the **OpenShift environment**
 
 - [GitHub account](http://github.com) (public, not Enterprise): create it if
  you don't have one yet. If you haven't logged in for a while, check that
   you can do so. Make sure to set your enterprise email address as
-   the primary address for the account. The **Cloud Enterprise Sandbox** administrators will send an invitation to your enterprise email address.
+   the primary address for the account. The **OpenShift Environment** administrators will send an invitation to your enterprise email address.
 
-- [IBM Cloud Account](https://cloud.ibm.com): Create one if needed and make sure you can log in. 
+- If are running this learning journey on  [IBM Cloud](https://cloud.ibm.com): Create one if needed and make sure you can log in. 
+- If you are running this journey on AWS and Azure you will login with your GitHub credentials.
 
 ### Configure Github Primary Email address
 
 - Setup your primary email address to match your enterprise one. Follow these [instructions](https://help.github.com/en/github/setting-up-and-managing-your-github-user-account/changing-your-primary-email-address).
 
 ### Configure Github Personal Access Token
-For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton)) to connect to and use your GitHub repo, it will need a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) with `public_repo` and `write:repo_hook` scopes. The Personal Access Token only needs to be generated once because it is associated with the GitHub account and can be used to access any organizations and repositories that the account can access.
+For your CI pipeline ( [Tekton](/guides/continuous-integration-tekton)) to connect to and use your GitHub repo, it will need a [GitHub personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) with `public_repo` and `write:repo_hook` scopes. The Personal Access Token only needs to be generated once because it is associated with the GitHub account and can be used to access any organizations and repositories that the account can access.
 
 
 - Navigate to [Developer Settings](https://github.com/settings/tokens) and generate a new token. Name it something like "CI pipeline".
@@ -31,4 +31,4 @@ For your CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guide
   it in your password manager or somewhere safe that you can access later on.
   
 Once you have created these accounts you can validate you can access your
-**Cloud Enterprise Sandbox** cloud-native development environment.
+**OpenShift** cloud-native development environment.

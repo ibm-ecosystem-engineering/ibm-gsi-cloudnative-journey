@@ -68,19 +68,15 @@ extra:
             Thanks for your feedback!
   generator: false
 google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io']
-copyright: Copyright © 2022 GSI Labs
+copyright: Copyright © 2022 IBM
 nav:
   - Introduction:
       - Overview: getting-started/introduction.md
       - Prerequisites:  getting-started/prereqs.md
-      - Validate Sandbox:  getting-started/checksetup.md
+      - Validate Environment:  getting-started/checksetup.md
       - Developer Tools Setup:  getting-started/devenvsetup.md
       - Developer Tools CLI:  getting-started/cli.md
-      - OpenShift Console:  getting-started/console.md
-  #- What's New?:
-      #- What's New?: whatsnew.md
   - Developer Foundation:
-      - Sandbox: developer-foundation/checksetup.md
       - Agenda: developer-foundation/agenda.md
       - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
       - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md
