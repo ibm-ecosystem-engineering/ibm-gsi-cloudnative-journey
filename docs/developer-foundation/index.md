@@ -8,9 +8,9 @@ Before you jump straight into Cloud-Native development using this crafted enable
 
 Developer Foundation is broken into three areas:
 
-- [Principles of Cloud, Cloud-Native development & deployment](developer-foundation#concepts)
-- [Basics of Containers, Kubernetes/Openshift](developer-foundation#technologies)
-- [IBM Garage Method]("developer-foundation#method")
+- [Principles of Cloud, Cloud-Native development & deployment](#concepts)
+- [Basics of Containers, Kubernetes/Openshift](#technologies)
+- [IBM Garage Method]("#method")
 
 ## Concepts
 ### Topics Covered
