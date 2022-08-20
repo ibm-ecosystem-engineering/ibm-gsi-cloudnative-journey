@@ -252,16 +252,32 @@ To edit your code in GitHub follow the tests below.
 4. Edit the code and change the `status:` text to something like below.
 ```javascript
 @GET
-async healthCheck(): Promise<{status: string;}> {
+async healthCheck(): Promise<{status: string,message: string;}> {
     return {
-        status: 'Hi I am UP from TechZone Automation'
+        status: 'UP',
+        message : "App is up and running with TechZone Automation"
     };
 }
 ```
-5. Save your changes. 
-6. Click on the Source Control icon on the left it will say `1 pending changes`
-7. Click on the `+` icon to stage the change
-8. Click on the tick icon at the top to push the changes, remember to add a commit message
+5. Save your changes.
+6. Now update the test that validates this API open up `test/controllers/health.controller.spec.ts` and update the `expect` to match the value that is now being returned in the API.
+```javascript
+ describe('Given /health', () => {
+    test('should return 200 status', () => {
+      return request(app).get('/health').expect(200);
+    });
+
+    test('should return {status: "UP:}', () => {
+      return request(app).get('/health').expect({
+        status: 'UP',
+        message : "App is up and running with TechZone Automation"
+      });
+    });
+  });
+```
+6. Click on the Source Control icon on the left it will say `21 pending changes`
+7. Click on the `+` icon to stage the changes
+8. Click on the tick icon at the top to push the changes, remember to add a commit message something like `Update Health API and Test with message value`
 9. Navigate back to the OpenShift console and click on **Pipeline** view you will see the tekton pipeline has kicked off again based on your code change. This will make it run through the build and deploy cycle.
 
 #### Local Development
