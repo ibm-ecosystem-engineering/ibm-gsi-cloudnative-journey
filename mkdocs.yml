@@ -95,14 +95,20 @@ nav:
   - Developer Intermediate:
       - Agenda: developer-intermediate/agenda.md
       - Deploy First App: developer-intermediate/deploy-app.md
-      - Artifact Management: developer-intermediate/artifact-management.md
-      - Code Analysis: developer-intermediate/code-analysis.md
       - Continuous Delivery: developer-intermediate/continuous-delivery.md
       - DevSecOps Overview: developer-intermediate/content-overview.md
       - Continuous Integration: developer-intermediate/continuous-integration.md
-      - Image Registry: developer-intermediate/image-registry.md
-      - Log Management: developer-intermediate/log-management.md
-      - Monitoring: developer-intermediate/monitoring.md
+      - Artifact Management: developer-intermediate/artifact-management.md
+      - Code Analysis: developer-intermediate/code-analysis.md
+      - Image Registry:
+        - IBM Cloud: developer-intermediate/image-registry.md
+        - OpenShift: developer-intermediate/ocp-registry.md
+      - Log Management:
+        - IBM Cloud: developer-intermediate/log-management.md
+        - OpenShift: developer-intermediate/log-management.md
+      - Monitoring:
+        - IBM Cloud: developer-intermediate/monitoring.md
+        - OpenShift: developer-intermediate/ocp-monitoring.md
       - Inventory App:
         - Intro: developer-intermediate/inventory-application.md
         - Solution: developer-intermediate/inventory-prebuilt-solution.md

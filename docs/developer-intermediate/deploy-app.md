@@ -35,7 +35,7 @@ To be able to run CLI commands to drive common operations on the cluster you wil
 - You should see the version number printed
 
 !!! Info
-You will now be able to quickly create [**Tekton**](https://mediacenter.ibm.com/id/1_wph9sgmt) pipelines within OpenShift. Watch this short video for more information on how Tekton is replacing Jenkins in the enterprise CI space.
+    You will now be able to quickly create [**Tekton**](https://mediacenter.ibm.com/id/1_wph9sgmt) pipelines within OpenShift. Watch this short video for more information on how Tekton is replacing Jenkins in the enterprise CI space.
 
 ### 2. Create the development namespace
 
@@ -239,7 +239,7 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
 Within GitHub it is possible to open a full Visual Studio code web editor and make changes to you code.  
 
 !!! Info
-The limitation is that you cannot do local testing for the learning journey it will be OK to make edits and lets the Tekton pipeline do the validation of the code.  
+    The limitation is that you cannot do local testing for the learning journey it will be OK to make edits and lets the Tekton pipeline do the validation of the code.  
 
 
 #### Editing Code in GitHub

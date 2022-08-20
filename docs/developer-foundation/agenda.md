@@ -4,60 +4,13 @@ description: Developer Foundation Agenda
 ---
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-
-Credits: This material heavily draws from [Cloud-Native bootcamp](https://cloudnative101.dev/).
-!!! note
-
 Before you jump straight into Cloud-Native development using this crafted enablement journey, you must understand the related basic concepts, technologies used and methodologies applied for Cloud-Native development.
 
 Developer Foundation is broken into three areas:
-<Row>
 
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Concepts"
-    subTitle="Principles of Cloud, Cloud-Native development & deployment"
-    href="/developer-foundation#concepts"
-    >
-
-![](../images/agenda/sysadmins.png)
-
-</ArticleCard>
-</Column>
-
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Technology"
-    subTitle="Basics of Containers, Kubernetes/Openshift"
-    href="/developer-foundation#technologies"
-    >
-
-![](../images/agenda/code2.png)
-
-</ArticleCard>
-</Column>
-
-<Column colLg={4} colMd={4} noGutterMdLeft>
-<ArticleCard
-    color="dark"
-    title="Methodology"
-    subTitle="IBM Garage Method"
-    href="developer-foundation#method"
-    >
-
-![](../images/agenda/code1.png)
-
-</ArticleCard>
-</Column>
-
-</Row>
-
-!!! note
-
-Developer Foundation uses Katacoda service extensively for hands-on labs. Katacoda is an interactive learning and training platform for software developers. Each student is given access to a new environment without the need to install all the required components by themselves.
-
+- [Principles of Cloud, Cloud-Native development & deployment](developer-foundation#concepts)
+- [Basics of Containers, Kubernetes/Openshift](developer-foundation#technologies)
+- [IBM Garage Method]("developer-foundation#method")
 
 ## Concepts
 ### Topics Covered
@@ -70,7 +23,6 @@ Developer Foundation uses Katacoda service extensively for hands-on labs. Kataco
 | Cloud-Native Application Development  | Basics of Cloud-Native application development. | [Cloud-Native application. development](/developer-foundation/cloud-native-app-dev/) |
 | Continuous Integration | CI overview. | [CI](/developer-intermediate/continuous-integration/) |
 | Continuous Delivery | CD overview. | [CD](/developer-intermediate/continuous-delivery/) |
-
 
 
 ## Technologies
@@ -89,8 +41,6 @@ Developer Foundation uses Katacoda service extensively for hands-on labs. Kataco
 | State Persistence| Covering Volumes and Persistence Volumes. | [State Persistence](/developer-foundation/k8s-state-persistence/) |
 | Troubleshooting | Ways to troubleshoot your kubernetes. | [Troubleshooting](/developer-foundation/k8s-troubleshooting/) |
 
-
-
 ### Activities
 
 === "Self Paced"
@@ -107,10 +57,7 @@ Developer Foundation uses Katacoda service extensively for hands-on labs. Kataco
 | Setting up Persistent Volumes | Covers the topics in the [State Persistence](/developer-foundation/k8s-state-persistence/) page. | [Setting up Persistent Volumes](/developer-foundation/activities/labs/lab10) |
 | Debugging | Covers the topics in the [ Troubleshooting](/developer-foundation/k8s-troubleshooting/) page.  | [Debugging](/developer-foundation/activities/labs/lab5) |
 
-
-
 ### Solutions
-
 
 === "Self Paced"
 
