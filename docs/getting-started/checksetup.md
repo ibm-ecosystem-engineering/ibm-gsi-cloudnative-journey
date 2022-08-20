@@ -1,5 +1,5 @@
 ---
-title: Validate Sandbox
+title: Validate Environment
 ---
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
@@ -10,30 +10,28 @@ Congratulations on becoming part of the IBM Cloud-Native Learning Journey! You s
 - The development environment pre-configured in a pay-as-you-go IBM Cloud account which you will use to perform your learning tasks.
 
 
-!!! warning
-
-    **Warning:** If you haven't received the welcome email, it might be due to you not having been given access to the IBM Cloud account yet. Please contact your Business Development Executive or your Lab Leader to validate your invite.
-
 
 ## Notification
 
 The welcome email gives you information on how to access the development environment for your team.
 
-**IBM Cloud Sandbox Registration Details**
+**OpenShift Development Environment Details**
 
+- **Platform**: AWS, Azure or IBM Cloud
 - **Account**: this is the IBM Cloud account with a configured sandbox development environment that will enable you to complete the learning agenda.
-- **Team**: this is the name of your development team.
+- **Workshop Team**: this is the name of your development team.
 - **GitHub Organization**: this is the GitHub organization that will be used for storing your code during your learning activities.
-- **Resource Group**: this is the IBM Cloud resource group where the development cluster and cloud resources have been provisioned.
-- Example of the key information in your email:
-    ```
-    Cloud               : https://cloud.ibm.com/
-    Account             : 1924691 - GSI Labs - IBM
-    Location            : London (eu-gb)
-    Sandbox Team        : Cloud-Native Squad
-    GitHub Organization : https://github.com/gsi-enablement-one
-    Resource Group      : gsi-cloudnative-squad
-    ```
+- **Resource Group**: For IBM Cloud users this will be the resource group where the development cluster and cloud resources have been provisioned.
+
+Example of the key information in your email:
+
+```
+  Registration Details
+  Cloud Platform: AWS  
+  Openshift Cluster URL :  https://console-openshift-console---------.openshiftapps.com/
+  Workshop Team : <number>
+  GitHub Organization : https://github.com/cnw-team-<number>
+```
 
 You must associate your email address with your public GitHub account or make sure you have a public account that is using an email address that matches the one you linked to your sandbox environment.
 
@@ -49,22 +47,15 @@ To set your IBM ID in GitHub:
 
 !!! warning
 
-    **Warning:** If you don't associate your business email with your public GitHub account, you will not receive a Git Organization invitation and you will have issues completing the learning activities. IBM is not mixing personal email addresses with the business email that has been associated with your **Cloud Sandbox**.
+    **Warning:** If you don't associate your business email with your public GitHub account, you will not receive a Git Organization invitation and you will have issues completing the learning activities. IBM is not mixing personal email addresses with the business email that has been associated with your **OpenShift Environment**.
 
+## Environment
 
-## Sandbox
+The OpenShift Environment is designed to make it easy for you to develop and deploy cloud-native applications. It includes an OpenShift cluster with open-source developer tools installed to provide a end to end Software Delivery Life Cycle (SDLC). This combination supports the development of cloud-native microservices architecture applications and CI/CD continuous deployment of these.
 
-The Cloud-Native Sandbox is designed to make it easy for you to develop and deploy cloud-native applications. It includes an OpenShift cluster with cloud services bound and open-source developer tools installed. This combination supports the development of cloud-native microservices architecture applications and CI/CD continuous deployment of these.
+The OpenShift Environment has been configured for a multi-tenant development team on the AWS, Azure or IBM Cloud platforms. Each development team can contain up to **200+** developers. 
 
-The IBM Cloud Enterprise Sandbox has been configured exactly how IBM recommends by setting up a multi-tenant development team on the IBM Cloud.
-
-Each development team can contain up to **200+** developers. Each team has been configured in [IAM](https://cloud.ibm.com/docs/iam) with its access group and a corresponding resource group that contains the resources for your team's sandbox environment. As a member of your team's access group, you will have access to the resources in your team's Developer Tools environment. You are restricted from creating new cloud resources or deleting existing ones.
-
-The following diagram shows how access has been configured. Imagine you are the Green user: there will be some other users from your team accessing the same development cluster so all of you will be sharing the same cloud resources. The Sandbox administrators will be monitoring these to early identify and fix any issues.
-
-![Workshop Teams](/workshop-teams.png)
-
-You will be given access to your team's GitHub organization and you will be expected to create all of your application source code into this organization. This is how real-world development projects work by enabling you to collaborate with your fellow team members while preventing you from creating duplicate project names.
+You will be given access to your team's GitHub organization, and you will be expected to create all of your application source code into this organization. This is how real-world development projects work by enabling you to collaborate with your fellow team members while preventing you from creating duplicate project names.
 
 ## Validating your IBM Cloud access
 
@@ -73,43 +64,37 @@ You will be given access to your team's GitHub organization and you will be expe
     **Note**: If you have any issue with the following steps, please raise an issue on the **#gsi-labs-external** [Slack Channel](https://gsicsi.slack.com/archives/CSRDJD5HA). All issues should be reported there.
 
 
-Follow the following steps to check you can access your team's Developer Tools environment.
+Follow the following steps to check you can access your team's development cluster environment.
 
 Log in and view the resources:
 
-- Log in to the [IBM Cloud](https://cloud.ibm.com).
-- The IBM Cloud Sandbox registration welcome email will include your account information, team, GitHub organization, and resource group.
+### AWS and Azure
+- For AWS and Azure open the Cluster link in your registration email and authenticate with GitHub credentials, you will get direct access to the cluster.
+
+### IBM Cloud
+- For IBM Cloud Log in to the [IBM Cloud](https://cloud.ibm.com) console.
+- The registration welcome email will include your account information, team, GitHub organization, and resource group.
 - In the IBM Cloud console, switch to the account specified in the email.
 - Navigate to the *Resource List*.
 - In the Group filter, select your team's resource group.
 - Click on **Expand All** (top right) to show all its resources.
-- Under Cluster, you should see the cluster named `workshop-ocp46-{team}` where `{team}` is the name of your team. Some clusters may have a different number if there is more than one of that type.
+- Under Cluster, you should see the cluster named `workshopX-cluster`  is the name of your team. Some clusters may have a different number if there is more than one of that type.
 
-Explore the Red Hat OpenShift resources and set up the CLI:
+### Web Terminal
 
-- In the Tags filter, enter both `ocp` to see just the Red Hat OpenShift cluster and services.
-![Resource List](devtoolsservices.png)
-- Click on each cloud service instance name and check that you can open each one's dashboard.
-- Click on the Red Hat OpenShift cluster names to open their dashboards.
-- Switch to the **Access** tab.
-- Follow the instructions to install the CLI, then access the cluster from the CLI and validate that you are successfully connected.
-- Press the *OpenShift web console* button and verify that you can open the Red Hat OpenShift console.
-
-Explore the IKS resources and set up the CLI:
-
-- Return to the **Resource List**.
-- Remove the `ocp` tags and add the `iks` tag.
-- Repeat the same steps for your team's Kubernetes cluster and services.
-
+To be able to run CLI commands to drive common operations on the cluster you will first need to validate you can access your web terminal. 
+To validate your terminal click on the `>_` icon in the header of the OpenShift Console. You should see a terminal open at the bottom of the console screen. 
+ - Validate that you can run `oc` commands, run the following command
+  ```bash
+  oc sync --version
+  ```
+ - You should see the version number printed
 
 !!! success
 
     You have completed this task if you have:
-    - Managed to access your IBM Cloud account.
     - Viewed your team's Red Hat OpenShift cluster.
-    - Accessed the cluster from the command line.
-
-
+    - Accessed the cluster terminal view
 
 ## Etiquette
 
@@ -125,10 +110,10 @@ Please remember that you are sharing a development cluster with other colleagues
 - Do not delete anything in the cluster that is not yours.
     - Especially secrets and configMaps--deleting these will mess up how the environment works for you and your colleagues, and more importantly, will cause unnecessary repair work for the [master builders](https://www.youtube.com/watch?v=Um-PlX6oPBQ).
     - Do not delete other people's pipelines or deployed apps.
-- Do not create anything that can cause unnecessary stress to or load on your team's cluster, its environment, or the IBM Cloud Sandbox account.
+- Do not create anything that can cause unnecessary stress to or load on your team's cluster
 
 Remember:
 - Part of what you will learn is how to be team members working on multiple microservices in the same development cluster with other developers
-- "[My app runs on my computer](https://donthitsave.com/comic/2016/07/15/it-works-on-my-computer)" is necessary but not sufficient, it needs to run in the OpenShift or IKS clusters as well.
-- IBM Cloud is like one big Lego set of software and services.
+- "[My app runs on my computer](https://donthitsave.com/comic/2016/07/15/it-works-on-my-computer)" is necessary but not sufficient, it needs to run in the OpenShift clusters as well.
+- OpenShift is like one big Lego set of software and services.
     - After this course, you will be on the way to become a master builder. It's a lot of fun!

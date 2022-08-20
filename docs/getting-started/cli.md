@@ -4,68 +4,44 @@
 
 ## Invoking the CLI
 
-When the [CLI is installed](../learning/dev-setup.md#install-the-cloud-native-toolkit-command-line-interface-cli), it adds an executable named `igc` to the PATH. Running `igc --help` will list
+When the [CLI is installed](https://develop.cloudnativetoolkit.dev/learning/dev-setup/#install-the-cloud-native-toolkit-command-line-interface-cli), it adds an executable named `igc` to the PATH. Running `igc --help` will list
 the available commands. The output text will be similar to the following:
 
-```text
-$ igc --help
-IBM Garage Cloud Native Toolkit CLI (https://cloudnativetoolkit.dev)
+!!!Info
+As of v0.5.1, the Toolkit CLI will now install the commands as [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/){: target="_blank" .external } to the `kubectl` and `oc` CLIs.
+For example, all the following are equivalent:
 
-Usage: igc <command> [args]
-
-Commands:
-  igc console                  Launch the IKS or OpenShift admin console
-  igc create-webhook           Create a git webhook for a given Jenkins pipeline
-  igc credentials              Lists the urls and credentials for the tools
-                               deployed to the cluster
-  igc dashboard                Open the Developer Dashboard in the default
-                               browser
-  igc enable                   Enable the current repository with pipeline logic
-  igc endpoints                List the current ingress hosts for deployed apps
-                               in a namespace
-                                         [aliases: ingress, endpoint, ingresses]
-  igc git-secret [name]        Create a kubernetes secret that contains the url,
-                               username, and personal access token for a git
-                               repo
-  igc git [remote]             Launches a browser to the git repo url specified
-                               by the remote. If not provided remote defaults to
-                               origin
-  igc gitops                   Registers the git repository in the kubernetes
-                               cluster as the gitops repository for the given
-                               namespace
-  igc sync [namespace]         Create a namespace (if it does not exist) and
-                               prepare it with the necessary configuration
-                                                   [aliases: project, namespace]
-  igc pull-secret [namespace]  Copy pull secrets into the provided project from
-                               the template namespace
-  igc pipeline [gitUrl]        Register a pipeline for the current code
-                               repository
-  igc tool-config [name]       Create the config map and secret for a tool
-                               configured in the environment
-  igc vlan                     Print out the vlan values
-  igc yq <command>             lightweight yaml command-line processor that
-                               addresses deficiencies with the existing `yq`
-                               command
-
-Options:
-  --version  Show version number                                       [boolean]
-  --help     Show help                                                 [boolean]
+```shell
+igc pipeline
+kubectl pipeline
+oc pipeline
 ```
 
-!!!Info
-    As of v0.5.1, the Toolkit CLI will now install the commands as [plugins](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/){: target="_blank" .external } to the `kubectl` and `oc` CLIs.
-    For example, all of the following are equivalent:
+Lets look at what plugins have been installed into the `oc` CLI in the Web Terminal
 
-    ```shell
-    igc pipeline
-    kubectl pipeline
-    oc pipeline
-    ```
+```text
+$ oc plugin list
+
+/usr/local/bin/kubectl-console
+/usr/local/bin/kubectl-credentials
+/usr/local/bin/kubectl-dashboard
+/usr/local/bin/kubectl-enable
+/usr/local/bin/kubectl-endpoints
+/usr/local/bin/kubectl-git
+/usr/local/bin/kubectl-gitops
+/usr/local/bin/kubectl-gitsecret
+/usr/local/bin/kubectl-igc
+/usr/local/bin/kubectl-pipeline
+/usr/local/bin/kubectl-sync
+/usr/local/bin/kubectl-toolconfig
+
+```
+
 
 ### Prerequisite tools
 
-Some of the commands provided by the Toolkit CLI orchestrate interactions between other CLIs. To get
-started please install the [prerequisite tools](../learning/dev-setup.md){: target=_blank}, in particular:
+Some commands provided by the Toolkit CLI orchestrate interactions between other CLIs. To get
+started please install the prerequisite tools, these are already installed in the Web Terminal, in particular:
 
 - The Kubernetes CLI
 - The Red Hat OpenShift CLI
@@ -75,13 +51,15 @@ started please install the [prerequisite tools](../learning/dev-setup.md){: targ
 
 ### dashboard
 
-Opens the [Developer Dashboard](dashboard.md) in the default browser. If a default browser has not been
-configured, then the URL to the Dashboard will be printed out.
+Opens the [Developer Dashboard](https://develop.cloudnativetoolkit.dev/reference/dashboard/) in the default browser. If a default browser has not been configured, then the URL to the Dashboard will be printed out.
 
 The dashboard displays the Cloud-Native Toolkit tools configured within the cluster along with links to
 activation content and links to Starter Kits to start a project quickly.
 
 This command requires that the login context for the cluster has already been established.
+
+!!!Warning
+This command will only work from a desktop command interface
 
 #### Command flags
 
@@ -93,7 +71,7 @@ This command requires that the login context for the cluster has already been es
     The command is used in the following way:
 
     ```shell
-    igc dashboard
+    oc dashboard
     ```
 
 === "OpenShift"
@@ -121,10 +99,13 @@ available to the dashboard and `credentials` command
 
 ### console
 
-Opens the *IKS or OpenShift admin console* in the default browser. If a default browser has not been
+Opens the *OpenShift admin console* in the default browser. If a default browser has not been
 configured, then the URL to the console will be printed out.
 
 This command requires that the login context for the cluster has already been established.
+
+!!!Warning
+This command will only work from a desktop command interface
 
 #### Usage
 
@@ -132,7 +113,7 @@ This command requires that the login context for the cluster has already been es
     The command is used in the following way:
 
     ```shell
-    igc console
+    oc console
     ```
 === "OpenShift"
     The following commands would have the same result on OpenShift:
@@ -163,19 +144,22 @@ available to the dashboard and `credentials` command
 Opens the Git repo in the default browser for the current working directory. If a default browser has not been
 configured, then the URL to the repo will be printed out.
 
+!!!Warning
+This command will only work from a desktop command interface
+
 #### Usage
 
 === "CLI"
     The command is used in the following way:
 
     ```shell
-    igc git
+    oc git
     ```
 
     If you have multiple remotes and would like to open one other than `origin`:
 
     ```shell
-    igc git origin-fork
+    oc git origin-fork
     ```
 
 === "Manual"
@@ -194,7 +178,7 @@ available to the dashboard and `credentials` command
 
 ### credentials
 
-Lists the endpoints, user names, and passwords for the tools configured in the environment. This is the easiest way to
+Lists the endpoints, usernames, and passwords for the tools configured in the environment. This is the easiest way to
 get the login credentials for each of the installed tools. Ideally all of the tools would be accessible via SSO at which
 point this command will be obsolete.
 
@@ -203,7 +187,7 @@ The command works by reading information available in the cluster. When each too
 number of different ways within the environment:
 
 - Provide configuration information to the pipelines
-- Populate the tiles on the [Developer Dashboard](dashboard.md){: target=_blank}
+- Populate the tiles on the [Developer Dashboard](https://develop.cloudnativetoolkit.dev/reference/dashboard/){: target=_blank}
 - Populate the results of the `credentials` command
 
 This command requires that the login context for the cluster has already been established.
@@ -218,7 +202,7 @@ This command requires that the login context for the cluster has already been es
     The command is used in the following way:
 
     ```shell
-    igc credentials
+    oc credentials
     ```
 
     The credential output is JSON format like this
@@ -277,7 +261,7 @@ provided
     The command is used in the following way:
 
     ```shell
-    igc endpoints
+    oc endpoints
     ```
 
 === "OpenShift"
@@ -341,14 +325,14 @@ Options:
     Create a `dev` namespace for development
 
     ```shell
-    igc sync -p myapp-dev
+    oc sync  dev-myapp
     ```
 
 === "OpenShift"
     Create a `dev` namespace for development
 
     ```shell
-    oc sync -p myapp-dev
+    oc sync dev-myapp
     ```
 
 === "Kubernetes"
@@ -421,7 +405,7 @@ Options:
     Copy the pull secret from `default` namespace into `myapp-test` namespace and add to serviceAccount `default`
 
     ```shell
-    igc pull-secret myapp-test -t default -z default
+    oc pull-secret myapp-test -t default -z default
     ```
 
 === "Manual pull secret setup"
@@ -899,13 +883,13 @@ list of available pipelines and applies the one you select to your code repo. Th
  include (but are not limited to):
 
 - Helm chart
-- Jenkinsfile
+- Container file
 
 This command DOES NOT require that the terminal is already logged in to an IBM Cloud account nor the cluster. It DOES
 require that the terminal's current directory is the repository directory for your local copy of the Git repo.
 
 The command will add files to the local repo. You should commit these new files and push them to the server repo.
-Then run `igc pipeline` to connect your repo to a pipeline in the environment.
+Then run `oc pipeline` to connect your repo to a pipeline in the environment.
 
 #### Command flags
 
@@ -924,7 +908,7 @@ Then run `igc pipeline` to connect your repo to a pipeline in the environment.
     2. Apply the pipeline updates using the CLI command
 
         ```shell
-        igc enable
+        oc enable
         ```
 
     3. Review the changes using `git diff` and revert any application-specific changes that should remain (e.g.
@@ -990,7 +974,7 @@ replaced/updated it won't be updated unless the `--replace` argument is passed.
     The following gives an example of using the `git-secret` command to set up the config map and secret in the `dev` namespace
 
     ```shell
-    igc git-secret -n dev
+    oc git-secret -n dev
     ```
 
 === "Manual"
@@ -1097,7 +1081,7 @@ credentials so that it will be displayed in the dashboard.
     dashboard's endpoint and credentials
 
     ```shell
-    igc tool-config my-tool \
+    oc tool-config my-tool \
       --url https://mytool-dashboard.mycluster.us-east.containers.appdomain.cloud \
       --username admin \
       --password password
@@ -1113,34 +1097,3 @@ credentials so that it will be displayed in the dashboard.
       --set username=admin \
       --set password=password
     ```
-
-### vlan
-
-Lists the VLANs for a particular IBM Cloud region. This information is useful for preparing Terraform cluster creation
-steps. The command reads all the data centers in the region and allows you to select the appropriate data center for
-the vlan.
-
-This command requires that the terminal is already logged in to the cloud region. It does NOT need to be logged in to a cluster.
-
-#### Usage
-
-=== "CLI"
-    List a pair of public/private VLANs for a new environment to use
-
-    ```shell
-    igc vlan
-    ```
-
-=== "Manual steps"
-
-    1. List the zones for the region
-
-        ```shell
-        ibmcloud ks zones --region-only --provider classic
-        ```
-
-    2. Select the desired zone from the listing provided by the previous command and run the following to list the vlans for that zone
-
-        ```shell
-        ibmcloud ks vlans --zone ${zone}
-        ```

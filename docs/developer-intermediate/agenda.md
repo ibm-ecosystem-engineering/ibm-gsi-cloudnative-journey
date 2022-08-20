@@ -5,10 +5,8 @@ title: Agenda
 
 !!! note
 
-    Before you proceed, make sure you have an **IBM Cloud Enterprise Sandbox** invite.
-    It enables you to access an IBM Cloud account with the [Predefined DevSecOps Tools](/developer-intermediate/content-overview) already installed and ready for you to use. (The environment is locked down to prevent the creation of any new services outside of the scope of the learning journey)
-
-
+    Before you proceed, make sure you have an **Cloud-Native Learning Journey** invite.
+    It enables you to access OpenShift on AWS, Azure or IBM Cloud account with the [Predefined DevSecOps Tools](/ibm-gsi-cloudnative-journey/developer-intermediate/content-overview) already installed and ready for you to use. (The environment is locked down to prevent the creation of any new services outside of the scope of the learning journey)
 
 This set of learning tasks focuses on how to use Red Hat OpenShift Developer
  Experience to develop and deploy a set of basic cloud-native applications
@@ -17,19 +15,18 @@ This set of learning tasks focuses on how to use Red Hat OpenShift Developer
 
 This learning tasks assumes that you have:
  - You have completed the tasks before the workshop
- - You have received an IBM Cloud Enterprise Sandbox invite email
+ - You have received an Learning-Journey invite email
  - Have watched the 30 min Introduction Video showing the end to end experience
 
 ### Learning Tasks
 
-The learning tasks help you understand the Developer Experience with IBM Cloud and working with an IBM RedHat OpenShift or IBM Kubernetes managed cluster. These are the getting started and initial setup tasks that help you start a project.
+The learning tasks help you understand the Developer Experience with IBM RedHat OpenShift managed cluster. These are the getting started and initial setup tasks that help you start a project.
 
 !!! note 
     Support is provided in the `#<slack-channel>` you were provided
-    with in your IBM Cloud Enterprise Sandbox invite. This channel will also be used to share any common issues found. It can be used to provide feedback on the content you have just completed
+    with in your Learning-Journey invite. This channel will also be used to share any common issues found. It can be used to provide feedback on the content you have just completed
 
-
-=== "Over the Web"
+=== "Agenda"
 
     ## Before the Workshop
 
@@ -40,6 +37,9 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Welcome Message | Welcome to Cloud-Native Workshop  | [Introduction](/ibm-gsi-cloudnative-journey/getting-started/introduction) | 5 mins |
     | Prerequisites | Install the prerequisite tools  | [Setup Prerequisites](/ibm-gsi-cloudnative-journey/getting-started/prereqs) | 10 mins |
     | Sandbox Access | Validate access to your Development Cluster |  [Validate](/ibm-gsi-cloudnative-journey/getting-started/checksetup) | 10 min |
+    | Welcome Message | Welcome to Cloud-Native Workshop  | [Introduction](/ibm-gsi-cloudnative-journey/getting-started/introduction) | 5 mins |
+    | Prerequisites | Install the prerequisite tools  | [Setup Prerequisites](/ibm-gsi-cloudnative-journey/getting-started/prereqs) | 10 mins |
+    | Dev Env Access | Validate access to your Development Cluster |  [Validate](/ibm-gsi-cloudnative-journey/getting-started/checksetup) | 10 min |
     | Software Delivery Lifecycle | Overview of the Tools you will be using with the Sandbox |  <a href="https://www.youtube.com/watch?v=LcWboN1T7Zk" target="_newwindow">Video</a>| 30 min |
 
     ## Day 1 (2.5 Hours)
@@ -56,6 +56,10 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | **OpenShift Overview** | | | |
     | OpenShift | OpenShift Overview |  [OpenShift Overview](/ibm-gsi-cloudnative-journey/developer-foundation/openshift)  | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgghDUQOfj7YeeX3o?e=HTpaRL" target="_blank" >Link</a> |
     | Hands On Lab | Deploying applications on OpenShift |  <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> <br/> <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | 15 min | |
+    | Containers | Containers Overview |  [Containers](/developer-foundation/containers) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghgynUJFfxuqI4Bi?e=NZufxb" target="_blank" >Link</a> |
+    | **Break** | | | 5 mins |
+    | **OpenShift Overview** | | | |
+    | OpenShift | OpenShift Overview |  [OpenShift Overview](/developer-foundation/openshift)  | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgghDUQOfj7YeeX3o?e=HTpaRL" target="_blank" >Link</a> |
     | **DevSecOps** | | | |
     | Continuous Integration | Overview of Continuous Integration | [CI](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
     | Continuous Delivery | Overview of Continuous Delivery | [CD](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-delivery) | 15 min | |
@@ -73,7 +77,11 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | [Cloud Native Development](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
     | [Continuous Integration](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
-
+    | <a href="https://developers.redhat.com/courses/foundations/deploy-images" target="_newwindow">Deploy a container in OpenShift</a> | Learn how to work with Container images within OpenShift | | 10 mins | |
+    | <a href="https://developers.redhat.com/courses/foundations/getting-started" target="_newwindow">Understanding OpenShift </a> | Understanding the OpenShift Web Console and viewing perspectives, Understanding how to login to OpenShift using the oc command line tool, How to build applications from a container image using OpenShift Web Console, How to access public URLs by working with OpenShift Routes | | 5-10 mins | |
+    | <a href="https://developers.redhat.com/courses/spring-boot/spring-rest-services" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
+    | [Continuous Integration](https://developers.redhat.com/courses/gitops/getting-started-openshift-pipelines)| Continuous Integration Hands on Exercise| | 60 mins | |
+    | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins |
 
 
     ## Day 2 (2.5 Hours)
@@ -82,15 +90,15 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Recap | Recap of things learned in Day 1 | | 10 mins | |
     | **Learn how to develop and deploy apps with enterprise DevSecOps** | | | | |
     | DevSecOps | DevSecOps Overview | [DevSecOps](/ibm-gsi-cloudnative-journey/developer-intermediate/content-overview) | 20 mins | |
-    | Preparing for the Hands-On Labs | Setting up the Development  Tools | [Dev. Tools Setup](/getting-started/devenvsetup) | 10 mins | |
-    | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](/ibm-gsi-cloudnative-journey/ibm-gsi-cloudnative-journey/developer-intermediate/deploy-app) | 25 mins | |
+    | Preparing for the Hands-On Labs | Setting up the Development  Tools | [Dev. Tools Setup](/ibm-gsi-cloudnative-journey/getting-started/devenvsetup) | 10 mins | |
+    | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](/ibm-gsi-cloudnative-journey/developer-intermediate/deploy-app) | 25 mins | |
     | **Break** | | | 5 mins | |
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](/ibm-gsi-cloudnative-journey/developer-intermediate/code-analysis) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/9ffe4934f586cf73b92b0f381cacb4a5" target="_blank" >Link</a> |
     | Image Registry | Container Registry | [Image Registry](/ibm-gsi-cloudnative-journey/developer-intermediate/image-registry) | 10 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](/ibm-gsi-cloudnative-journey/developer-intermediate/artifact-management) | 10 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/bd7634595e924254d26c22672f88552a" target="_blank" >Link</a> |
     | Monitoring | Sysdig Monitoring | [Monitoring](/ibm-gsi-cloudnative-journey/developer-intermediate/monitoring) | 5 mins | |
     | Logging | Logging with LogDNA | [Logging](/ibm-gsi-cloudnative-journey/developer-intermediate/log-management) | 5 mins | |
-    | Image Signing | Signing Container Images |  | 25 min | |
+    | Code Engine | Overview | [Code Engine](/ibm-gsi-cloudnative-journey/developer-advanced-1/code-engine/) | 20 mins |
     | **Q & A** | | | 10 mins | |
 
     ### Homework
@@ -103,6 +111,7 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | [Image Registry](/ibm-gsi-cloudnative-journey/developer-intermediate/image-registry#give-it-a-try)| Accessing the image of your first app deployment| | 15 mins | |
     | [Monitoring](/ibm-gsi-cloudnative-journey/developer-intermediate/monitoring#give-it-a-try)| Sysdig Handson| | 15mins | |
     | [Logging](/ibm-gsi-cloudnative-journey/developer-intermediate/log-management#give-it-a-try)| LogDNA handson | | 15mins | |
+    
 
     ## Day 3 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
@@ -110,25 +119,25 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Recap | Recap of things learned in Day 1 & 2 | | 10 mins | |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/ibm-gsi-cloudnative-journey/getting-started/devenvsetup) | 10 mins | |
-    | Inventory Application | Objective of the exercise | [Objective](/developer-intermediate/inventory-app) | 15 mins | |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-svc) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
+    | Inventory Application | Objective of the exercise | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 15 mins | |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-service) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
     | Inventory UI | Creating the UI microservice | [Inventory UI](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-ui) | 25 mins | |
     | AppID | Authentication with AppID |[AppID](/ibm-gsi-cloudnative-journey/developer-advanced-1/inventory-appid) |10 mins | |
     | **Q & A** | | | 10 mins | |
-    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | 60 mins | |
+    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 60 mins | |
 
     ### Homework
 
     | Assignment                      | Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | [Dev. Tools Setup](/ibm-gsi-cloudnative-journey/getting-started/devenvsetup) | Setting up the Development Tools | | 10 mins | |
-    | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | Objective of the exercise | |15 mins | |
-    | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-svc) | Creating the Inventory Service with Java | | 30 mins | |
+    | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | Objective of the exercise | |15 mins | |
+    | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-service) | Creating the Inventory Service with Java | | 30 mins | |
     | [Inventory BFF](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-bff) | Creating the Inventory BFF with GraphQL | | 25 mins | |
     | [Inventory UI](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-ui) | Creating the UI microservice | | 25 mins | |
-    | [Inventory Backend with Cloudant](/ibm-gsi-cloudnative-journey/developer-advanced-1/inventory-cloudant)| Cloudant Database integration | | 30 mins | |
+    | [Inventory Backend with Cloudant](/ibm-gsi-cloudnative-journey/developer-advanced-1/database-with-cloudant)| Cloudant Database integration | | 30 mins | |
     | [Inventory UI with Appid](/ibm-gsi-cloudnative-journey/developer-advanced-1/inventory-appid) | Protecting Inventory UI with Appid integration | | 30 mins | |
 
 === "Self Paced"
@@ -169,15 +178,14 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | Logging | Logging with LogDNA | [Logging](/ibm-gsi-cloudnative-journey/developer-intermediate/log-management) | 10 min |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/ibm-gsi-cloudnative-journey/getting-started/devenvsetup) | 10 mins |
-    | Inventory Application | Objective of the exercise | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | 15 mins |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-svc) | 30 mins |
+    | Inventory Application | Objective of the exercise | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 15 mins |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-service) | 30 mins |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/inventoryapp.txt" target="_blank" >Link</a> |
     | Inventory UI | Creating the UI microservice | [Inventory UI](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-ui) | 25 mins |
     | AppID | Authentication with AppID |[AppID](/ibm-gsi-cloudnative-journey/developer-advanced-1/inventory-appid) |10 mins | |
     | CD Demo | CD Demo using ArgoCD |  | 15 mins |
-    | Image Signing | Signing Container Images |  | 25 min | |
-    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | 60 mins |
-    | Code Engine | Overview | [Code Engine](/ibm-gsi-cloudnative-journey/developer-advanced/code-engine/) | 20 mins | 
+    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 60 mins |
+    | Code Engine | Overview | [Code Engine](/ibm-gsi-cloudnative-journey/developer-advanced-1/code-engine/) | 20 mins | 
 
 
 === "In Person"
@@ -221,16 +229,17 @@ The learning tasks help you understand the Developer Experience with IBM Cloud a
     | **Lunch** | | | 30 mins |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](/ibm-gsi-cloudnative-journey/getting-started/devenvsetup) | 10 mins |
-    | Inventory Application | Objective of the exercise | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | 15 mins |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-svc) | 30 mins |
+    | Inventory Application | Objective of the exercise | [Objective](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 15 mins |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-service) | 30 mins |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/inventoryapp.txt" target="_blank" >Link</a> |
     | Inventory UI | Creating the UI microservice | [Inventory UI](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-ui) | 25 mins |
     | AppID | Authentication with AppID |[AppID](/ibm-gsi-cloudnative-journey/developer-advanced/inventory-appid) |10 mins | |
     | CD Demo | CD Demo using ArgoCD |  | 15 mins |
     | Image Signing | Signing Container Images |  | 25 min | |
-    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-app) | 60 mins |
+    | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](/ibm-gsi-cloudnative-journey/developer-intermediate/inventory-application) | 60 mins |
     | **Break** | | | 10 mins |
-    | Code Engine | Overview | [Code Engine](/ibm-gsi-cloudnative-journey/developer-advanced/code-engine/) | 20 mins | 
+    | Code Engine | Overview | [Code Engine](/ibm-gsi-cloudnative-journey/developer-advanced-1/code-engine/) | 20 mins | 
+
 
 
 
