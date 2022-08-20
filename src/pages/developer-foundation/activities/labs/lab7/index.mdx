@@ -12,7 +12,7 @@ Your commander has a simple data process that is run periodically to check statu
 
 ## Solution
 
- - Create the cronjob executing the below command and use the below yaml defination.
+ - Create the cronjob executing the below command and use the below yaml definition.
 
  ```shell script
   oc apply -f Downloads/FoundationHandsOn/cronjob.yaml -n {DEV_NAMESPACE}
