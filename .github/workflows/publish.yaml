@@ -24,7 +24,6 @@ jobs:
         with:
           personal_token: ${{ secrets.TOKEN }}
           publish_dir: ./public
-          cname: learning-journey.cloudnativetoolkit.dev
 
   release:
     needs:
