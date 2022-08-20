@@ -2,7 +2,7 @@
 title: Code Engine
 IBM Code Engine
 ---
-
+<!--- cSpell:ignore appdeploy popout appdev sourcecode strategyconfig sourceconfig imgregistry imgreference iamapikey APIKEYS ceproject ceprojects ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 ## Introduction
 IBM Code Engine is a fully managed, serverless platform that runs the containerized workloads. These workloads includes web apps, microservices, event-driven functions, or batch jobs. Code Engine can also help to build the container images/code-engine from the source code. Code Engine is designed to focus on the application to solve the business problem with no barrier on the infrastructure.
 
@@ -30,7 +30,7 @@ Follow the below steps to create a project in the Code Engine.
 - Access the Project that is created from the projects listed as part **Projects**  tab.
 - The navigation will land on the Overview section of the project.  This will display the details of the project such as Summary Section, Resource Allocation and Recently updated details.
 - Summary section will include details of number of applications deployed, number of jobs deployed, number of builds configured and submitted, number of registry access
-- Current Resouce Allocation section provides details as total instances, total cpu utilization and total memory utilization by all the applications
+- Current Resource Allocation section provides details as total instances, total cpu utilization and total memory utilization by all the applications
 - Recently updated section provides information about the recently updated applications and jobs
 - The section will get refreshed as the applications, jobs get deployed to the project
 
@@ -63,7 +63,7 @@ As a first step to deploy the an application configure the Image Registry access
 Deploying on an application in the Code Engine can be done multiple choices.  It can deployed using the 
 1. Container images/code-engine from the Image Repository
 1. Source from the public git repo 
-1. Source from the private/enteprise git repo. 
+1. Source from the private/enterprise git repo. 
 
 The first and second option stated above are simply straight forward, but the deployment from private or enterprise repo will need SSH Keys and Code Engine CLI for Secured Deployment.
 
@@ -72,7 +72,7 @@ The first and second option stated above are simply straight forward, but the de
 - Navigate to the **Applications** Section in the left nav.
 - Click on the **Create application** button on top of the applications list table
 - Now Navigate to the Create Application Page
-- Provide Name to you application. This is a unqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
+- Provide Name to you application. This is a uniqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
 - select the 'choose the code to run' option either as Container image
 - Now Select the **configure Image** option to deploy your application directly from the Image Registry
 - Configure the image registry by providing the registry server, registry access, namespace, repository and tag for the image registry from the Application to Deployed. Ensure the registry has already configured as part of the Registry access discused earlier.
@@ -106,7 +106,7 @@ The first and second option stated above are simply straight forward, but the de
 - Navigate to the **Applications** Section in the left nav.
 - Click on the **Create application** button on top of the applications list table
 - Now Navigate to the Create Application Page
-- Provide Name to you application. This is a unqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
+- Provide Name to you application. This is a unique name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
 - Now provide the source code repository (public git repo) of the application. Ex: https://github.com/{user}/repo. Alternatively this can be provided on the **Specify build details** 
 - Now click the **Specify build details** . There will be a three step process to configure the source build configuration.
 
@@ -158,7 +158,7 @@ Deploying Applications from a private git or enterprise git is not as straight f
 
 **Note : **  Do not create your SSH key file with a secure passphrase as this action causes your build command to fail.
 
-Deploying Application from a Private/Entperise git repo is a four step activities
+Deploying Application from a Private/Enterprise git repo is a four step activities
 
 1. Creating a Git repository access secret with the CLI
 - Assuming the SSH key is generated without any passphrase and this SSH key is configured as part of the git account
@@ -206,7 +206,7 @@ The build configuration for the Code Engine can be created using code engine (ce
     
   -- sample reference as below
  ```bash
-    ibmcloud ce bd create --name <<Your build name>> --image <<Image Repo Path>> --source <<Private Git Repositry>> --registry-secret <<Registry access name created>> --git-repo-secret <<git repo secret created in previous step>>
+    ibmcloud ce bd create --name <<Your build name>> --image <<Image Repo Path>> --source <<Private Git Repository>> --registry-secret <<Registry access name created>> --git-repo-secret <<git repo secret created in previous step>>
  ```
 
 3. Submit Build images/code-engine from the private Source repo 
@@ -235,7 +235,7 @@ Once the build submit is succeeded in the previous step, the application will be
 - Now Navigate to the Create Application Page
 - Provide Name to you application. This is a unqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
 - Now Select the **Container Image** option to deploy your application directly from the Image Registry
-- Provide the image registry from the Application to Deployed. The format is "registry/namespace/repository:tag". The tag is optional, if not specified, the latest would be applied. ex: us.icr.io/appdev-cloud-native/ce-springboot. Ensure the registry has already configured as part of the Registry access discused earlier.
+- Provide the image registry from the Application to Deployed. The format is "registry/namespace/repository:tag". The tag is optional, if not specified, the latest would be applied. ex: us.icr.io/appdev-cloud-native/ce-springboot. Ensure the registry has already configured as part of the Registry access discussed earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
 ![CodeEngine Application Deployment Image Reference](../images/code-engine/ce-appdeploy-imgreference.png)
 
