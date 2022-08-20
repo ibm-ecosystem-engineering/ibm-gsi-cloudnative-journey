@@ -73,13 +73,13 @@ google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io']
 copyright: Copyright © 2022 IBM
 nav:
   - Introduction:
-      - Overview: getting-started/introduction.md
+      - Overview: getting-started/index.md
       - Prerequisites:  getting-started/prereqs.md
       - Validate Environment:  getting-started/checksetup.md
       - Developer Tools Setup:  getting-started/devenvsetup.md
       - Developer Tools CLI:  getting-started/cli.md
   - Developer Foundation:
-      - Agenda: developer-foundation/agenda.md
+      - Agenda: developer-foundation/index.md
       - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
       - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md
       - Containers Overview: developer-foundation/containers.md
@@ -95,7 +95,7 @@ nav:
       - Troubleshoot: developer-foundation/k8s-troubleshooting.md
       - Garage Method: developer-foundation/garage-development.md
   - Developer Intermediate:
-      - Agenda: developer-intermediate/agenda.md
+      - Agenda: developer-intermediate/index.md
       - Deploy First App: developer-intermediate/deploy-app.md
       - Continuous Delivery: developer-intermediate/continuous-delivery.md
       - DevSecOps Overview: developer-intermediate/content-overview.md
