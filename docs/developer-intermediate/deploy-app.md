@@ -7,110 +7,35 @@ title: Deploy First Application
 
 ## Overview
 
-The <Globals name="env" /> supports end-to-end development and deployment of an application. The instructions below
+The OpenShift development environment  supports end-to-end development and deployment of an application. The instructions below
 will show you how to do it.
 
-You can create a new app using one of the [Starter Kits](/resources/codepatterns-overview). These have been
+You can create a new app using one of the [Starter Kits](https://develop.cloudnativetoolkit.dev/reference/starter-kit/starter-kit/). These have been
 created to include all the key components, configuration, and frameworks to get you started on creating the code you
-need for your solutions. The approach for getting started is exactly the same for an environment based on
-**Kubernetes** or **Red Hat OpenShift**.
-
-**Note:** The instructions provided below lean heavily on the use of the <Globals name="igccli"/> to both show how the
-CLI works in context and to streamline the process (the reason for creating the CLI in the first place). However, the
-use of the CLI is in no way required to use the <Globals name="shortName"/>. If you would prefer to work through these
-instructions without the use of the CLI, we have provided the equivalent manual steps for each command on
-the [Cloud-Native Toolkit CLI](https://cloudnativetoolkit.dev/getting-started/cli) page.
+need for your solutions. 
 
 This video demonstrates how to work through the steps to create an application and use a deployment pipeline to install
 it into your development cluster.
 
-<iframe width="100%" height="500" src="https://www.youtube-nocookie.com/embed/GOPWObjFTsI" type="video/m4v" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/czYQfvPTa7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Create an application
 
+The following steps will help you deplpy your first application in your own namespace inside your OpenShift development environment. 
+
+### 1. Open the Web Terminal
 
 
-### 0. Setup your cloud shell for development
+To be able to run CLI commands to drive common operations on the cluster you will first need to open your  web terminal.
+- Click on your web terminal `>_` icon in the header of the OpenShift Console. You should see a terminal open at the bottom of the console screen. With a banner saying `TechZone Automation` 
+- Check you can run `oc` commands, run the following command
+  ```bash
+  oc sync --version
+  ```
+- You should see the version number printed
 
-- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
-
-- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
-
-   ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
-
-We have provided a simplified installer that will install tools and configure the shell environment. The
-installer will first check if the required tool is available in the path. If not, the missing tool(s) will be
-installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the
-`.bashrc` or `.zshrc` file to include that directory.
-
-The following tools are included in the shell installer:
-
-- IBM Cloud cli (ibmcloud)
-- ArgoCD cli (argocd)
-- Tekton cli (tkn)
-- IBM Cloud fast switching (icc)
-- kube-ps1 prompt
-- OpenShift cli (oc)
-- Kubernetes cli (kubectl)
-- JSON cli (jq)
-- IBM Garage Cloud CLI (igc)
-
-a. Set up the shell environment by running:
-    ```shell
-    curl -sL shell.cloudnativetoolkit.dev | sh - && . ~/.bashrc
-    ```
-
-b. If successful, you should see something like the following:
-    ```shell
-    Downloading scripts: https://github.com/ibm-garage-cloud/cloud-shell-commands/releases/download/0.3.5/assets.tar.gz
-    ** Installing argocd cli
-    ** Installing tkn cli
-    ** Installing kube-ps1
-    ** Installing icc
-    ** Installing Cloud-Native Toolkit cli
-    ```
-
-c. You can check the shell was installed correctly by checking the `oc` version:
-    ```shell
-    oc sync --version
-    ```
-
-### 1. Log into your Development Cluster from the command line
-
-- Make sure you have done your cloud shell setup before proceeding to next steps.
-
-
-- Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-    ![OpenShift](../images/common/openshiftcluster.png)
-
-- Access the OpenShift console from within that console by clicking on the button.
-    ![OpenShift Console](../images/common/openshiftconsole.png)
-
-- In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
-    ![OpenShift Login](../images/common/LoginCommand.png)
-
-- click on Display Token, copy the Login with the token. oc login command  will log you in. Run the login command in the cloud shell terminal:
-    ```bash
-    $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
-    Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
-
-    You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
-
-    Using project "dev-ab".
-    ```
-  
-
-You can also access OpenShift console using above command:
-
-```shell
-oc console
-```
- 
-!!! info
-
-    NOTE: If your workshop is on Code Ready Workspaces, follow the steps in [Code Ready Workspaces Setup](/getting-started/devenvsetup#codeready-workspace) before logging in to the cluster.
-     The remaining steps assume this step has already been performed. If you stop and then come back later it is a good idea to re-run this step again before proceeding
-
-
+!!! Info
+You will now be able to quickly create [**Tekton**](https://mediacenter.ibm.com/id/1_wph9sgmt) pipelines within OpenShift. Watch this short video for more information on how Tekton is replacing Jenkins in the enterprise CI space.
 
 ### 2. Create the development namespace
 
@@ -123,13 +48,13 @@ namespace into the development namespace/project. This enables the pipelines to 
 project.
 
 ```shell
-oc sync ${DEV_NAMESPACE} 
+oc sync dev-{your intials} 
 ```
 
 ### 3. Open the Developer Dashboard
 
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
-section that allows you to select a set of preconfigured [Starter Kits](/resources/codepatterns-overview) that make seeding your development project very easy.
+section that allows you to select a set of preconfigured [Starter Kits](https://develop.cloudnativetoolkit.dev/reference/starter-kit/starter-kit/) that make seeding your development project very easy.
 
 - If you are logged into the OpenShift console, you can select the tools menu and select **Developer Dashboard**
 
@@ -139,6 +64,7 @@ section that allows you to select a set of preconfigured [Starter Kits](/resourc
   ```
   oc dashboard
   ```
+
 
 ### 4. Create your app in Git
 
@@ -154,7 +80,6 @@ section that allows you to select a set of preconfigured [Starter Kits](/resourc
         - Your browser needs to be logged in to your GitHub account for a template to work. If the link from the
         tile displays the GitHub 404 page, log in and reload the page.
 
-    
 
 - Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application, select the **Typescript Microservice**. This also works well in the Cloud Shell.
 
@@ -177,24 +102,22 @@ process.
 
 - The new repository will be created in your selected organization.
 
-### 5. Register the application in a DevOps Pipeline
+### 5. Register the application in a OpenShift Pipeline
 
 
 !!! info
 
-    We will be using the `pipeline` command of the IBM Garage Cloud cli to register the DevOps pipeline. The pipeline 
-    command gives an option for both `Jenkins` and `Tekton`. For more information about working with the different build 
-    engines, please see [Continuous Integration with Jenkins Guide](/guides/continuous-integration) and
-    [Continuous Integration with Tekton Guide](/guides/continuous-integration)
-
-
+    We will be using the `pipeline` command and specifically the `tekton` technology to setup the CI pipeline. The pipeline 
+    command gives an option for both `Jenkins` and `Tekton` make sure you select `Telton`. For more information about working with the different build 
+    engines, please see [Continuous Integration with Jenkins Guide](../../guides/continuous-integration) and
+    [Continuous Integration with Tekton Guide](../../guides/continuous-integration)
 
 
 1. Open a browser to the Git repository created in the previous step.
 
 2. Copy the url to the Git repository. For GitHub this is done by pressing the `Code` button and copying the url provided in the `Clone` section.
 
-3. Start the process to create a pipeline.
+3. Start the process to create a pipeline from your Web Terminal 
 
     ```shell
     oc pipeline ${GIT_URL} --tekton
@@ -202,10 +125,10 @@ process.
    
     For example:
     ```shell
-    oc pipeline https://github.com/gct-showcase/inventory-svc --tekton
+    oc pipeline https://github.com/gct-showcase/inventory-svc-mjp --tekton
     ```
 
-4. For the deployment of your first app with OpenShift select **Tekton** as the CI engine.
+4. For the deployment of your first app with OpenShift we have selected **Tekton** as the CI engine.
 
 5. The first time a pipeline is registered in the namespace, the CLI will ask for a username and **Password**/**Personal Access Token** for the Git repository that will be stored in a secret named `git-credentials`.
 
@@ -228,8 +151,6 @@ process.
 9. To skip the scan, you have type "n" (No).Otherwise, type "y" (Yes) for performing Vulnerability Scanning on the image.
    Similarly, for skipping the linting of dockerfile,you have type "n" (No).Otherwise, type "y" (Yes) for performing Dockerfile lint.
 
-
-
 10. After the pipeline has been created,the command will set up a webhook from the Git host to the pipeline event listener.
 
     **Note:** if the webhook registration step fails, it is likely because the Git credentials are incorrect or do not have enough permission in the repository. 
@@ -240,76 +161,11 @@ process.
 
 The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container platform version.
 
-!!! Tekton
 
-    === "OpenShift 4.x"
-
-        1. Open the OpenShift Web Console
-
-         ```shell script
-            oc console
-         ```
-
-         **OR**
-
-         ![IBM Cloud console](../images/common/openshiftconsole.png)
-
-         2. From menu on the left switch to the **Developer** mode
-
-         3. Select _dev_ project that was used for the application pipeline registration
-
-         4. In the left menu, select *Pipelines*
-
-         You will see your application dev ops pipeline now starting to build and once completed will look like the image below.
-
-         ![OpenShift](../images/deploy-app/tektonpipeline.png)
-        
-
-    === "Kubernetes"
-
-        1. Open the Developer Dashboard
-
-        ```shell script
-        kubectl dashboard
-        ```
-
-        2. Select the `Tekton` tile to launch the Tekton UI
-
-        3. Select your development project
-
-
-!!! Jenkins
-
-    === "OpenShift 4.x"
-
-        1. Open the OpenShift Web Console
-
-        ```shell script
-        oc console
-        ```
-
-        **OR**
-
-        ![IBM Cloud console](../images/common/openshiftconsole.png)
-
-        2. From the left-hand menu, select `Builds` -> `Build Configs`
-
-        3. Select your project from the drop-down menu at the top
-
-        4. The registered pipeline should appear in the list
-        
-    === "Kubernetes"
-
-        1. Run the command `oc dashboard` in your terminal to open your dashboard.
-        2. Select the Jenkins tool to open the Jenkins dashboard
-        3. Run the command `kubectl credentials` in your terminal to get the list of logins for the tools
-        4. Use the Jenkins userid and password to log into the Jenkins dashboard
-
-        Wait for the pipeline stages to start building. Once the stages have completed, you will see a view similar to the one below.
-
-        ![Jenkins Pipeline](../images/deploy-app/pipeline.png)
-
-
+1. From the OpenShift Web Console select the Pipelines menu in the Developer view
+2. You will see your microservice now running an OpenShift pipeline using Tekton Tasks
+ 
+ ![OpenShift](../images/deploy-app/tektonpipeline.png)
 
 ### 7. Access the running app
 
@@ -334,84 +190,29 @@ open that URL in a web browser. Validate the application is working as expected.
 ### 8. Locate the app in the web console
 
 The build pipeline is configured to build the source code from the Git repository into a container image. This
-image is stored in the [Image Registry](/developer-intermediate/image-registry). After that, the image is deployed into the
+image is stored in the [Image Registry](../..//developer-intermediate/image-registry). After that, the image is deployed into the
 same namespace/project within the development cluster where the pipeline ran and validated for its health. The steps
 below will walk through locating the installed application within the Web Console.
 
 
-=== "OpenShift 4.x"
+- Open the **OpenShift web console**
+- Change to the **Developer** view
+- Click on **Topology** menu
+- Click on your application deployment in the topology view
+- Click on the **Overview** tab
+- Increase the number of running pods to 2 pods
+- Click on the **Resources** tab to view the list of pods
+- Click on **View Logs** link to view the logs from each pod
+- You can see the running state of your application
 
-    - Open the **OpenShift web console**
-      ```shell script
-       oc console
-       ```
-    - Change to the **Developer** view
-    - Click on **Topology** menu
-    - Click on your application deployment in the topology view
-    - Click on the **Overview** tab
-    - Increase the number of running pods to 2 pods
-    - Click on the **Resources** tab to view the list of pods
-    - Click on **View Logs** link to view the logs from each pod
-    - You can see the running state of your application
-
-    ![Pods on OpenShift](../images/deploy-app/topology.png)
-
-=== "Kubernetes"
-
-    - Open the **Kubernetes Dashboard**
-      ```shell script
-       kubectl console
-      ```
-    - Change to the namespace from `default` to either `dev` or the namespace you used to deploy your app
-    - Click on **Deployments**
-    - You should see the deployment of your application
-    - Click on your application , and the corresponding **Replica Set**
-    - Try scaling the application, click on **Scale** in the header, change number of pods to 2 and click **OK**
-    - Click on one of the `pod` instances
-    - Click on **Logs**
-    - You can see the running state of your application
-    - Navigate around the console to understand where your deployment, service and pods are running
-
-    ![Pods on IKS](../images/deploy-app/podsiks.png)
-
-
-
+![Pods on OpenShift](../images/deploy-app/topology.png)
 
 !!! success
 
     **Success:** You now have your application running inside your development cluster and being delivered using a Tekton based CI pipeline. This is the beginning of the developer journey with IBM Cloud.
 
-
-
 Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
-
-
-### 9. Clone your code to your cloud shell
-
-- Next, clone the Github repo to your cloud shell.
-- Click on **Clone or download**
-- Copy the clone _HTTPS link_, and use the `git clone` command to clone it to your terminal.
-    ```shell script
-    git clone https://github.com/gsi-ecosystem-demo/stockbffnode-mjp.git
-    ```
-- You will be required to enter your **GitHub User ID** and use your **Git Hub Personal Access Token** as your password. This will complete the clone of your git repository.
-
-- Change into the cloned directory
-    ```shell script
-    cd stockbffnode
-    ```
-- You must rename the app to match your git repo or to a unique name for your solution. When applications move into a _test_ environment, they need to have unique names.
-- Edit `package.json` and edit the `name:` field and change it from its template name to your chosen name.
-- In case of a java gradle application(Spring Boot Microservice), edit the `settings.gradle` file. Edit the `rootProject.name` field and change it from its template name to your chosen name.
-- Save the edits
-- Push the changes back to your repository
-    ```bash
-    git add .
-    git commit -m "Update application name"
-    git push
-    ```
-- You will be required to enter your **GitHub User ID** and use your **Git Hub Personal Access Token** as your password. This will push your changes back to the repository.
 
 
 ### 10. Run the application locally
@@ -433,52 +234,40 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
     npm run start
     ```
 
+### 11. Make a change to your code
+
+Within GitHub it is possible to open a full Visual Studio code web editor and make changes to you code.  
+
+!!! Info
+The limitation is that you cannot do local testing for the learning journey it will be OK to make edits and lets the Tekton pipeline do the validation of the code.  
 
 
-=== "Cloud Shell"
+#### Editing Code in GitHub
 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
+To edit your code in GitHub follow the tests below.
 
-    ![View App](../images/deploy-app/viewapp.png)
+1. Open your GitHub repository where your code was created from the template.
+2. Using your computer keyboard type the `.` key, this will open the repo into the visual editor.
+3. All the Starter Kits have a health API endpoint within them. Navigate to the code for the health endpoint. For Go its in `routes/Health.go` and for Node Typescript it is in `src/controllers/health.controller.ts` file.
+4. Edit the code and change the `status:` text to something like below.
+```javascript
+@GET
+async healthCheck(): Promise<{status: string;}> {
+    return {
+        status: 'Hi I am UP from TechZone Automation'
+    };
+}
+```
+5. Save your changes. 
+6. Click on the Source Control icon on the left it will say `1 pending changes`
+7. Click on the `+` icon to stage the change
+8. Click on the tick icon at the top to push the changes, remember to add a commit message
+9. Navigate back to the OpenShift console and click on **Pipeline** view you will see the tekton pipeline has kicked off again based on your code change. This will make it run through the build and deploy cycle.
 
+#### Local Development
 
-=== "Gitpod"
+You can update your code locally using `git` command line.
 
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-
-    ![View App](../images/deploy-app/gitpod01.png)
-
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
-
-     ![OpenPreview](../images/deploy-app/gitpod02.png)
-
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-
-
-
-=== "Code Ready Workspaces"
-
-    ![CRW Open Link](../images/deploy-app/crwopenlink.png)
-
-
-    - Click on open link
-
-
-    ![CRW Open App](../images/deploy-app/crwopenapp.png)
-
-
-    - To view this application in new tab click top right corner arrow icon
-
-=== "Desktop/Laptop"
-    - Open a browser to `http://localhost:3000/api-docs/`
-
-
-    - You can try out the sample API that is provided with this **Code Pattern**
-
-    - You can now add new features and function from inside the Cloud Shell and experiment with your code before you push any changes back to git.
-
-
-### 11. Test the webhook
 -  Go to your cloned git project and navigate to <i>chart/base</i> directory.
     ```
       cd stockbffnode
@@ -494,4 +283,5 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
     ```
 - As soon as you push your code changes successfully, the webhook will trigger a new pipeline run for your project in your namespace in OCP.
   
+!!! Warning
   **Note:** if the webhook registration step fails, the git push will not trigger the pipeline.
