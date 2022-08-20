@@ -56,7 +56,7 @@ With the **Cloud-Native Journey** you can choose how you want to use the **Cloud
     color="dark"
     title="Developer Advanced"
     subTitle="Learn advanced microservices techniques to develop and deliver cloud-native applications."
-    href="/developer-advanced"
+    href="/developer-advanced-1"
     >
 
 ![](./images/developer-advanced.png)
