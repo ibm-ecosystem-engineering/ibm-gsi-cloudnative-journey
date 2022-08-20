@@ -28,22 +28,67 @@ it into your development cluster.
 ## Create an application
 
 
+
+### 0. Setup your cloud shell for development
+
+- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
+
+- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
+
+   ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
+
+We have provided a simplified installer that will install tools and configure the shell environment. The
+installer will first check if the required tool is available in the path. If not, the missing tool(s) will be
+installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the
+`.bashrc` or `.zshrc` file to include that directory.
+
+The following tools are included in the shell installer:
+
+- IBM Cloud cli (ibmcloud)
+- ArgoCD cli (argocd)
+- Tekton cli (tkn)
+- IBM Cloud fast switching (icc)
+- kube-ps1 prompt
+- OpenShift cli (oc)
+- Kubernetes cli (kubectl)
+- JSON cli (jq)
+- IBM Garage Cloud CLI (igc)
+
+a. Set up the shell environment by running:
+    ```shell
+    curl -sL shell.cloudnativetoolkit.dev | sh - && . ~/.bashrc
+    ```
+
+b. If successful, you should see something like the following:
+    ```shell
+    Downloading scripts: https://github.com/ibm-garage-cloud/cloud-shell-commands/releases/download/0.3.5/assets.tar.gz
+    ** Installing argocd cli
+    ** Installing tkn cli
+    ** Installing kube-ps1
+    ** Installing icc
+    ** Installing Cloud-Native Toolkit cli
+    ```
+
+c. You can check the shell was installed correctly by checking the `oc` version:
+    ```shell
+    oc sync --version
+    ```
+
 ### 1. Log into your Development Cluster from the command line
 
-=== "IBM Cloud"
-    - Make sure you have done your cloud shell setup before proceeding to next steps.
+- Make sure you have done your cloud shell setup before proceeding to next steps.
 
 
-    - Log in to OpenShift Cluster from the openshift console.Go to Resource List and click on the cluster:
+- Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
     ![OpenShift](../images/common/openshiftcluster.png)
 
-    - Access the OpenShift console from within that console by clicking on the button.
+- Access the OpenShift console from within that console by clicking on the button.
     ![OpenShift Console](../images/common/openshiftconsole.png)
 
-    - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
+- In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
     ![OpenShift Login](../images/common/LoginCommand.png)
 
-    - click on Display Token, copy the Login with the token. oc login command  will log you in. Run the login command in the cloud shell terminal:
+- click on Display Token, copy the Login with the token. oc login command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
     $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
     Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
@@ -52,8 +97,6 @@ it into your development cluster.
 
     Using project "dev-ab".
     ```
-
-     
   
 
 You can also access OpenShift console using above command:
@@ -83,15 +126,7 @@ project.
 oc sync ${DEV_NAMESPACE} 
 ```
 
-### 3. Grant required access to the service account of the namespace
-
-Openshift Image registry is being used for storing docker images.Hence,permission needs to be given to the service account of the namespace to be able to pull images from registry.
-
-```shell
-oc policy add-role-to-group system:image-puller system:serviceaccounts:${DEV_NAMESPACE} 
-```
-
-### 4. Open the Developer Dashboard
+### 3. Open the Developer Dashboard
 
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
 section that allows you to select a set of preconfigured [Starter Kits](/resources/codepatterns-overview) that make seeding your development project very easy.
@@ -105,7 +140,7 @@ section that allows you to select a set of preconfigured [Starter Kits](/resourc
   oc dashboard
   ```
 
-### 5. Create your app in Git
+### 4. Create your app in Git
 
 - From the Developer Dashboard, click on **<Globals name="templates" />** tab
 
@@ -142,7 +177,7 @@ process.
 
 - The new repository will be created in your selected organization.
 
-### 6. Register the application in a DevOps Pipeline
+### 5. Register the application in a DevOps Pipeline
 
 
 !!! info
@@ -201,7 +236,7 @@ process.
 
 11. When the command is completed it will present options for next steps. You can use the Tekton cli commands to inspect the pipeline run that has been created and tail the log and/or navigate to the provided url to see the pipeline running from the OpenShift console.
 
-### 7. View your application pipeline
+### 6. View your application pipeline
 
 The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container platform version.
 
@@ -276,7 +311,7 @@ The steps to view your registered pipeline will vary based on type of pipeline (
 
 
 
-### 8. Access the running app
+### 7. Access the running app
 
 Once the pipeline has completed successfully, the app will be deployed into the namespace used when
 registering the pipeline. To validate the app is running follow these steps:
@@ -296,7 +331,7 @@ oc project
 open that URL in a web browser. Validate the application is working as expected.
 
 
-### 9. Locate the app in the web console
+### 8. Locate the app in the web console
 
 The build pipeline is configured to build the source code from the Git repository into a container image. This
 image is stored in the [Image Registry](/developer-intermediate/image-registry). After that, the image is deployed into the
@@ -352,7 +387,7 @@ Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
 
 
-### 10. Clone your code to your web-terminal
+### 9. Clone your code to your cloud shell
 
 - Next, clone the Github repo to your cloud shell.
 - Click on **Clone or download**
@@ -379,7 +414,7 @@ Having reached this point, we recommend you repeat the process a few more
 - You will be required to enter your **GitHub User ID** and use your **Git Hub Personal Access Token** as your password. This will push your changes back to the repository.
 
 
-### 11. Run the application locally
+### 10. Run the application locally
 
 Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
 You may be required to install a specific runtime like **Java**, **Node** or **Go**.
@@ -443,7 +478,7 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
     - You can now add new features and function from inside the Cloud Shell and experiment with your code before you push any changes back to git.
 
 
-### 12. Test the webhook
+### 11. Test the webhook
 -  Go to your cloned git project and navigate to <i>chart/base</i> directory.
     ```
       cd stockbffnode
