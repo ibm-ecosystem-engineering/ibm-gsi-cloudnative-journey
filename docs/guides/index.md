@@ -9,7 +9,7 @@ The <Globals name="env" /> contains a number of popular and proven open source t
 
 ## Tools Configurations
 
-The tools have been installed and configured in the cluster that is the foundation of your <Globals name="env" />. This is a popular approach that Red Hat and other vendors are following. There are some advantages and disadvantages. The upside is that you can get started quickly and you are only incurring the cost of the managed cluster. The downside is that you need to monitor them and manage them. The cool thing is that IBM Cloud has an amazing [monitoring solution](../../developer-intermediate/monitoring) that can be configure to alert you of issues. More about that in the Guides.
+The tools have been installed and configured in the cluster that is the foundation of your <Globals name="env" />. This is a popular approach that Red Hat and other vendors are following. There are some advantages and disadvantages. The upside is that you can get started quickly and you are only incurring the cost of the managed cluster. The downside is that you need to monitor them and manage them. The cool thing is that IBM Cloud has an amazing [monitoring solution](../developer-intermediate/monitoring) that can be configure to alert you of issues. More about that in the Guides.
 
 Note: As the industry moves to full lifecycle operators this will be the case.
 
@@ -19,7 +19,7 @@ The tools are installed into a **tools** namespace and have a number of _ConfigM
 
 ### Guides
 
-The Guides explain how to create and deploy applications using CI pipeline ([Jenkins](../continuous-integration), [Tekton](../continuous-integration-tekton), etc.). They help explain how to:
-- Integrate code analysis into your applications with [SonarQube](../../developer-intermediate/code-analysis)
-- Move applications into test, staging, and production using continuous deployment techniques with [Artifactory](../../developer-intermediate/artifact-management) and [ArgoCD](../continuous-delivery)
+The Guides explain how to create and deploy applications using CI pipeline ([Jenkins](continuous-integration), [Tekton](continuous-integration-tekton), etc.). They help explain how to:
+- Integrate code analysis into your applications with [SonarQube](../developer-intermediate/code-analysis)
+- Move applications into test, staging, and production using continuous deployment techniques with [Artifactory](../developer-intermediate/artifact-management) and [ArgoCD](continuous-delivery)
 - And much more
