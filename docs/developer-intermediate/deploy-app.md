@@ -20,7 +20,7 @@ it into your development cluster.
 
 ## Create an application
 
-The following steps will help you deplpy your first application in your own namespace inside your OpenShift development environment. 
+The following steps will help you deploy your first application in your own namespace inside your OpenShift development environment. 
 
 ### 1. Open the Web Terminal
 
@@ -112,7 +112,7 @@ process.
 !!! info
 
     We will be using the `pipeline` command and specifically the `tekton` technology to setup the CI pipeline. The pipeline 
-    command gives an option for both `Jenkins` and `Tekton` make sure you select `Telton`. For more information about working with the different build 
+    command gives an option for both `Jenkins` and `Tekton` make sure you select `Tekton`. For more information about working with the different build 
     engines, please see [Continuous Integration with Jenkins Guide](../../guides/continuous-integration) and
     [Continuous Integration with Tekton Guide](../../guides/continuous-integration)
 
