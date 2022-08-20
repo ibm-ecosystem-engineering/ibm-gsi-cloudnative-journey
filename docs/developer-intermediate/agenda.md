@@ -10,7 +10,7 @@ title: Agenda
 
 This set of learning tasks focuses on how to use Red Hat OpenShift Developer
  Experience to develop and deploy a set of basic cloud-native applications
- . If covers the use of common tools designed to help the developer
+ . It covers the use of common tools designed to help the developer
   monitor, log and debug their applications.
 
 This learning tasks assumes that you have:
@@ -44,8 +44,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | Welcome Message | Introductions & Logistics | | 15 mins | |
     | **Introduction to Cloud-Native Development** | | | | |
-    | What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
-    | Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
+    | What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](../../developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
+    | Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](../../developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
     | **Container Concepts** | | | |
     | Containers | Containers Overview |  [Containers](../../developer-foundation/containers) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghgynUJFfxuqI4Bi?e=NZufxb" target="_blank" >Link</a> |
     | **Break** | | | 5 mins |
@@ -97,7 +97,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Image Registry](../../developer-intermediate/image-registry#give-it-a-try)| Accessing the image of your first app deployment| | 15 mins | |
     | [Monitoring](../../developer-intermediate/monitoring#give-it-a-try)| Sysdig Hands on Lab| | 15mins | |
     | [Logging](../../developer-intermediate/log-management#give-it-a-try)| LogDNA hands on Lab | | 15mins | |
-    
+
     ## Day 3 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
@@ -118,10 +118,10 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Assignment                      | Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | [Dev. Tools Setup](../../getting-started/devenvsetup) | Setting up the Development Tools | | 10 mins | |
-    | [Objective](../../developer-intermediate/inventory-app) | Objective of the exercise | |15 mins | |
-    | [Inventory Backend](../../developer-intermediate/inventory-svc) | Creating the Inventory Service with Java | | 30 mins | |
-    | [Inventory BFF](../../developer-intermediate/inventory-bff) | Creating the Inventory BFF with GraphQL | | 25 mins | |
-    | [Inventory UI](../../developer-intermediate/inventory-ui) | Creating the UI microservice | | 25 mins | |
+    | [Objective](..//inventory-app) | Objective of the exercise | |15 mins | |
+    | [Inventory Backend](../inventory-svc) | Creating the Inventory Service with Java | | 30 mins | |
+    | [Inventory BFF](../inventory-bff) | Creating the Inventory BFF with GraphQL | | 25 mins | |
+    | [Inventory UI](../inventory-ui) | Creating the UI microservice | | 25 mins | |
     | [Inventory Backend with Cloudant](../../developer-advanced-1/inventory-cloudant)| Cloudant Database integration | | 30 mins | |
     | [Inventory UI with Appid](../../developer-advanced-1/inventory-appid) | Protecting Inventory UI with Appid integration | | 30 mins | |
 
