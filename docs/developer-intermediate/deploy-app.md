@@ -4,7 +4,6 @@ title: Deploy First Application
 
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-
 ## Overview
 
 The OpenShift development environment  supports end-to-end development and deployment of an application. The instructions below
@@ -24,7 +23,6 @@ it into your development cluster.
 The following steps will help you deplpy your first application in your own namespace inside your OpenShift development environment. 
 
 ### 1. Open the Web Terminal
-
 
 To be able to run CLI commands to drive common operations on the cluster you will first need to open your  web terminal.
 - Click on your web terminal `>_` icon in the header of the OpenShift Console. You should see a terminal open at the bottom of the console screen. With a banner saying `TechZone Automation` 
@@ -51,7 +49,15 @@ project.
 oc sync dev-{your intials} 
 ```
 
-### 3. Open the Developer Dashboard
+### 3. Grant required access to the service account of the namespace
+
+Openshift Image registry is being used for storing docker images.Hence,permission needs to be given to the service account of the namespace to be able to pull images from registry.
+
+```shell
+oc policy add-role-to-group system:image-puller system:serviceaccounts:${DEV_NAMESPACE} 
+```
+
+### 4. Open the Developer Dashboard
 
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
 section that allows you to select a set of preconfigured [Starter Kits](https://develop.cloudnativetoolkit.dev/reference/starter-kit/starter-kit/) that make seeding your development project very easy.
@@ -64,7 +70,6 @@ section that allows you to select a set of preconfigured [Starter Kits](https://
   ```
   oc dashboard
   ```
-
 
 ### 4. Create your app in Git
 
@@ -103,7 +108,6 @@ process.
 - The new repository will be created in your selected organization.
 
 ### 5. Register the application in a OpenShift Pipeline
-
 
 !!! info
 
@@ -157,7 +161,7 @@ process.
 
 11. When the command is completed it will present options for next steps. You can use the Tekton cli commands to inspect the pipeline run that has been created and tail the log and/or navigate to the provided url to see the pipeline running from the OpenShift console.
 
-### 6. View your application pipeline
+### 7. View your application pipeline
 
 The steps to view your registered pipeline will vary based on type of pipeline (`Jenkins` or `Tekton`) and container platform version.
 
@@ -167,7 +171,7 @@ The steps to view your registered pipeline will vary based on type of pipeline (
  
  ![OpenShift](../images/deploy-app/tektonpipeline.png)
 
-### 7. Access the running app
+### 8. Access the running app
 
 Once the pipeline has completed successfully, the app will be deployed into the namespace used when
 registering the pipeline. To validate the app is running follow these steps:
@@ -187,7 +191,7 @@ oc project
 open that URL in a web browser. Validate the application is working as expected.
 
 
-### 8. Locate the app in the web console
+### 9. Locate the app in the web console
 
 The build pipeline is configured to build the source code from the Git repository into a container image. This
 image is stored in the [Image Registry](../..//developer-intermediate/image-registry). After that, the image is deployed into the
@@ -214,7 +218,6 @@ below will walk through locating the installed application within the Web Consol
 Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
 
-
 ### 10. Run the application locally
 
 Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
@@ -240,7 +243,6 @@ Within GitHub it is possible to open a full Visual Studio code web editor and ma
 
 !!! Info
     The limitation is that you cannot do local testing for the learning journey it will be OK to make edits and lets the Tekton pipeline do the validation of the code.  
-
 
 #### Editing Code in GitHub
 

@@ -120,5 +120,6 @@ nav:
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
       - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
       - Authentication with AppID: developer-advanced-1/inventory-appid.md
+      - Code Engine: developer-advanced-1/code-engine.md
 
 

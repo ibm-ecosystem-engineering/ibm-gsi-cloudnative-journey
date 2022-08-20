@@ -6,7 +6,7 @@ title: Agenda
 !!! note
 
     Before you proceed, make sure you have an **Cloud-Native Learning Journey** invite.
-    It enables you to access OpenShift on AWS, Azure or IBM Cloud account with the [Predefined DevSecOps Tools](/developer-intermediate/content-overview) already installed and ready for you to use. (The environment is locked down to prevent the creation of any new services outside of the scope of the learning journey)
+    It enables you to access OpenShift on AWS, Azure or IBM Cloud account with the [Predefined DevSecOps Tools](content-overview) already installed and ready for you to use. (The environment is locked down to prevent the creation of any new services outside of the scope of the learning journey)
 
 This set of learning tasks focuses on how to use Red Hat OpenShift Developer
  Experience to develop and deploy a set of basic cloud-native applications
@@ -23,7 +23,7 @@ This learning tasks assumes that you have:
 The learning tasks help you understand the Developer Experience with IBM RedHat OpenShift managed cluster. These are the getting started and initial setup tasks that help you start a project.
 
 !!! note 
-    Support is provided in the `#<discord-channel-procided>` you were provided
+    Support is provided in the `#<discord-channel-provided>` you were provided
     with in your Learning-Journey invite. This channel will also be used to share any common issues found. It can be used to provide feedback on the content you have just completed
 
 === "Agenda"
@@ -44,8 +44,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | Welcome Message | Introductions & Logistics | | 15 mins | |
     | **Introduction to Cloud-Native Development** | | | | |
-    | What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](/developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
-    | Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](/developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
+    | What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
+    | Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
     | **Container Concepts** | | | |
     | Containers | Containers Overview |  [Containers](../../developer-foundation/containers) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghgynUJFfxuqI4Bi?e=NZufxb" target="_blank" >Link</a> |
     | **Break** | | | 5 mins |
@@ -61,12 +61,14 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
 
     | Assignment                      |   Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | <a href="https://developers.redhat.com/courses/foundations/deploy-images" target="_newwindow">Deploy a container in OpenShift</a> | Learn how to work with Container images within OpenShift | | 10 mins | |
-    | <a href="https://developers.redhat.com/courses/foundations/getting-started" target="_newwindow">Understanding OpenShift </a> | Understanding the OpenShift Web Console and viewing perspectives, Understanding how to login to OpenShift using the oc command line tool, How to build applications from a container image using OpenShift Web Console, How to access public URLs by working with OpenShift Routes | | 5-10 mins | |
-    | <a href="https://developers.redhat.com/courses/spring-boot/spring-rest-services" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
-    | [Continuous Integration](https://developers.redhat.com/courses/gitops/getting-started-openshift-pipelines)| Continuous Integration Hands on Exercise| | 60 mins | |
+    | <a href="https://www.katacoda.com/courses/docker/ deploying-first-container" target="_newwindow"> Deploy a Redis Container </a> | Learn how to work with Docker Images by creating an instance of a Redis container. | | 10 mins | |
+    | <a href="https://www.katacoda.com/courses/docker/create-nginx-static-web-server" target="_newwindow"> Deploy a Nginx Container </a> | Learn how to create a Docker Image for running a static HTML website using Nginx. | | 5-10 mins | |
+    | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
+    | <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
+    | [Cloud Native Development](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
+    | [Continuous Integration](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
+    | [Continuous Delivery](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins | |
-
 
     ## Day 2 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
@@ -95,7 +97,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Image Registry](../../developer-intermediate/image-registry#give-it-a-try)| Accessing the image of your first app deployment| | 15 mins | |
     | [Monitoring](../../developer-intermediate/monitoring#give-it-a-try)| Sysdig Hands on Lab| | 15mins | |
     | [Logging](../../developer-intermediate/log-management#give-it-a-try)| LogDNA hands on Lab | | 15mins | |
-
+    
     ## Day 3 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
@@ -131,8 +133,6 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     - You have deployed your first application with OpenShift 4.10
     - You have understood how monitor, access logs
     - Understand where your artifacts are being managed
-
-
 
 ### Review Learning Tasks
 
