@@ -33,7 +33,7 @@ For example, Docker created standard way to create images for Linux Containers.
 
 There are many different container standards available today. Some of them are as follows.
 
-**Docker** - The most common standard, made Linux containers usable by the masses.
+**Container** - The most common standard, made Linux containers usable by the masses.
 
 **Rocket (rkt)** - An emerging container standard from CoreOS, the company that developed etcd.
 
