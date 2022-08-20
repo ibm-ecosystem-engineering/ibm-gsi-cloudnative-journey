@@ -58,7 +58,7 @@ Argo CD synchronizes the application state with the desired state defined in Git
 
 ## Activities
 
-These activities give you a chance to walk-through building CD pipelines using ArgoCD.
+These activities give you a chance to walk through building CD pipelines using ArgoCD.
 
 These tasks assume that you have:
  - Reviewed the Continuous Deployment concept page.
