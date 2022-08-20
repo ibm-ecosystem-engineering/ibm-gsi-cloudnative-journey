@@ -2,7 +2,7 @@
 title: Code Engine
 IBM Code Engine
 ---
-<!--- cSpell:ignore appdeploy popout appdev sourcecode strategyconfig sourceconfig imgregistry imgreference iamapikey APIKEYS ceproject ceprojects ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
+<!--- cSpell:ignore appdeploy appbuild popout appdev sourcecode strategyconfig sourceconfig imgregistry imgreference iamapikey APIKEYS ceproject ceprojects ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 ## Introduction
 IBM Code Engine is a fully managed, serverless platform that runs the containerized workloads. These workloads includes web apps, microservices, event-driven functions, or batch jobs. Code Engine can also help to build the container images/code-engine from the source code. Code Engine is designed to focus on the application to solve the business problem with no barrier on the infrastructure.
 
@@ -72,10 +72,10 @@ The first and second option stated above are simply straight forward, but the de
 - Navigate to the **Applications** Section in the left nav.
 - Click on the **Create application** button on top of the applications list table
 - Now Navigate to the Create Application Page
-- Provide Name to you application. This is a uniqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
+- Provide Name to you application. This is a unique name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
 - select the 'choose the code to run' option either as Container image
 - Now Select the **configure Image** option to deploy your application directly from the Image Registry
-- Configure the image registry by providing the registry server, registry access, namespace, repository and tag for the image registry from the Application to Deployed. Ensure the registry has already configured as part of the Registry access discused earlier.
+- Configure the image registry by providing the registry server, registry access, namespace, repository and tag for the image registry from the Application to Deployed. Ensure the registry has already configured as part of the Registry access discussed earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
 ![CodeEngine Application Deployment Image Reference](../images/code-engine/ce-appdeploy-imgreference.png)
   
@@ -233,7 +233,7 @@ Once the build submit is succeeded in the previous step, the application will be
 - Navigate to the **Applications** Section in the left nav.
 - Click on the **Create application** button on top of the applications list table
 - Now Navigate to the Create Application Page
-- Provide Name to you application. This is a unqiue name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
+- Provide Name to you application. This is a unique name within the project. An application name must consist of lower case alphanumeric characters, '-' and must start and end with an alphanumeric character
 - Now Select the **Container Image** option to deploy your application directly from the Image Registry
 - Provide the image registry from the Application to Deployed. The format is "registry/namespace/repository:tag". The tag is optional, if not specified, the latest would be applied. ex: us.icr.io/appdev-cloud-native/ce-springboot. Ensure the registry has already configured as part of the Registry access discussed earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
