@@ -28,64 +28,6 @@ it into your development cluster.
 ## Create an application
 
 
-
-### 0. Setup your web terminal for development
-
-- Open the openshift console in your browser and log in if needed.
-
-- Invoke Web terminal by clicking on the button at the top, right-hand corner which comes before the question mark icon of the browser window.
-
-   ![Invoke Cloud Shell WebTerminal icon image needed](../images/common/invokecloudshell.png)
-
-We have provided a simplified installer that will install tools and configure the shell environment. The
-installer will first check if the required tool is available in the path. If not, the missing tool(s) will be
-installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the
-`.bashrc` or `.zshrc` file to include that directory.
-
-The following tools are included in the shell installer:
-
-- IBM Cloud cli (ibmcloud)
-- ArgoCD cli (argocd)
-- Tekton cli (tkn)
-- IBM Cloud fast switching (icc)
-- kube-ps1 prompt
-- OpenShift cli (oc)
-- Kubernetes cli (kubectl)
-- JSON cli (jq)
-- IBM Garage Cloud CLI (igc)
-
-a. Set up the shell environment by running:
-    ```shell
-    mkdir bin
-    curl -sL https://raw.githubusercontent.com/cloud-native-toolkit/ibm-garage-cloud-cli/main/install.sh | DEST_DIR=~/bin sh
-    export PATH=“$HOME/bin:$PATH”
-    ```
-
-b. If successful, you should see something like the following:
-    ```shell
-    Installing version v1.37.5 of Cloud-Native Toolkit cli for linux into /home/user/bin
-    ######################################################################## 100.0%
-    Installing igc cli as plugins to kubectl/oc clis
-    Installed plugins in /home/user/bin:
-    kubectl-igc
-    kubectl-console
-    kubectl-credentials
-    kubectl-dashboard
-    kubectl-enable
-    kubectl-endpoints
-    kubectl-git
-    kubectl-gitops
-    kubectl-gitsecret
-    kubectl-pipeline
-    kubectl-sync
-    kubectl-toolconfig
-    ```
-
-c. You can check the shell was installed correctly by checking the `oc` version:
-    ```shell
-    oc sync --version
-    ```
-
 ### 1. Log into your Development Cluster from the command line
 
 === "IBM Cloud"
