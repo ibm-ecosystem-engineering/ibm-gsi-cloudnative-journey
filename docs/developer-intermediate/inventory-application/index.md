@@ -1,8 +1,8 @@
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-**Develop and deploy an example microservices application**
+**Develop and deploy an example microservices application within OpenShift**
 
-Develop an example application with a three-tier microservices architecture and deploy it in IBM Cloud Kubernetes Service or Red Hat OpenShift on IBM Cloud using the IBM Garage Cloud-Native Toolkit Developer Environment including its Code Patterns.
+Develop an example application with a three-tier microservices architecture and deploy it into a Red Hat OpenShift on AWS, Azure or IBM Cloud. This OpenShift development environment has be pre-configured with a sample [SDLC](https://cio-wiki.org/wiki/Software_Development_Life_Cycle_(SDLC))(Software Delivery Life Cycle) using the [Cloud-Native Toolkit](https://develop.cloudnativetoolkit.dev/).
 
 ## Business Need
 
@@ -20,31 +20,33 @@ An [MVP](https://www.ibm.com/garage/method/practices/think/practice_minimum_viab
 
 ## Architecture
 
-We will build the Micro App using a three-tier microservices architecture. Each tier encapsulates a clean separation of concerns. Each app component will be modelled using _microservices_ and use a number of [polyglot](https://searchsoftwarequality.techtarget.com/definition/polyglot-programming) programming languages and frameworks. Data will be stored in IBM Cloudant and the Micro App will be secured using IBM App ID.
+We will build an application that is made up of microservices in three-tier architecture. Each tier encapsulates a clean separation of concerns. Each app microservice component will be modelled using _microservices_ and use a number of [polyglot](https://searchsoftwarequality.techtarget.com/definition/polyglot-programming) programming languages and frameworks. Data will be stored in a NoSQL Database.
 
 ![Architecture](images/architecture.png)
 
 ### User interface
 
-The Micro App's user interface will look like this [wireframe](https://www.ibm.com/garage/method/practices/think/practice_wireframes/):
+The user experience for the application has been designed by the design team and this drives the requirements for the development team this is a representation of the final user experience [wireframe](https://www.ibm.com/garage/method/practices/think/practice_wireframes/):
 
 ![UI Design](images/inventory-ui-design.png)
 
 ### Technical Requirements
 
-The Micro App should adhere to the following technical requirements:
+The Micro services should adhere to the following technical requirements:
 
 - Microservices
     - Stateless
     - REST APIs
     - Polyglot
-- DevOps with CI/CD (continuous integration and continuous delivery)
+- DevOps with CI/CD (continuous integration and continuous delivery) 
+    - Use in cluster CI technology to be efficient and secure
+    - Use latest GitOps best practices
     - Monitoring and logging
     - Code analysis
     - App security
-- Deployed to Red Hat OpenShift on IBM Cloud or IBM Cloud Kubernetes Service
+- Deployed to Red Hat OpenShift cluster which is based on Kubernetes opensource technology
 - Follow the [Carbon Design System](https://www.carbondesignsystem.com/) user experience
 
 ## Guide
 
-You will approach creating the Micro App bottom up, meaning you will start by creating the backend microservice that manages integration with the data persistence and then build out the digital channel using a backend for frontend pattern. Finally, you will add a web UI to the solution.
+You will approach creating the microservices bottom up, meaning you will start by creating the backend microservice that manages integration with the data persistence and then build out the digital channel using a backend for frontend pattern. Finally, you will add a web UI to the solution.

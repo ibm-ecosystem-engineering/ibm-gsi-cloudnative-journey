@@ -103,14 +103,14 @@ nav:
       - Artifact Management: developer-intermediate/artifact-management/index.md
       - Code Analysis: developer-intermediate/code-analysis/index.md
       - Image Registry:
-        - IBM Cloud: developer-intermediate/image-registry/index.md
         - OpenShift: developer-intermediate/ocp-registry/index.md
+        - IBM Cloud: developer-intermediate/image-registry/index.md
       - Log Management:
-        - IBM Cloud: developer-intermediate/log-management/index.md
         - OpenShift: developer-intermediate/log-management/index.md
+        - IBM Cloud: developer-intermediate/log-management/index.md
       - Monitoring:
-        - IBM Cloud: developer-intermediate/monitoring/index.md
         - OpenShift: developer-intermediate/ocp-monitoring/index.md
+        - IBM Cloud: developer-intermediate/monitoring/index.md
       - Inventory App:
         - Intro: developer-intermediate/inventory-application/index.md
         - Solution: developer-intermediate/inventory-prebuilt-solution/index.md
@@ -123,5 +123,3 @@ nav:
       - Database with MongoDB: developer-advanced-1/database-with-mongodb/index.md
       - Authentication with AppID: developer-advanced-1/inventory-appid/index.md
       - Code Engine: developer-advanced-1/code-engine/index.md
-
-
