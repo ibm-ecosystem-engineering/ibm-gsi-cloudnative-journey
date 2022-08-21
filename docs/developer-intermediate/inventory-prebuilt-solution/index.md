@@ -2,18 +2,18 @@
 
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-If you want to skip the guide and just get the components running, see [Deploy the Inventory App solution](#deploy-the-inventory-app-solution).
 
+!!! Info
+    If you want to skip the step by step guide to how you build out each microservice you can go strait to the completed solution and get it running, see [Deploy the Inventory App solution](#deploy-the-inventory-app-solution). I would advise coming back and working through the steps, you will learn more about how these types of solutions are created and delivered.
 
 ## Deploy the Inventory App solution
 
-If you were unable to get everything working, you can deploy the Inventory App solution. 
-
+In some cases with self pace hands on labs you may not get everything working. Cloud-Native development is a sort of skill and takes time to hone the craft. If you were unable to get everything working, you can deploy the Inventory App solution using the steps detailed below. 
 
 ### Inventory Service
 
 - Create a new project from the [Inventory Management Service solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-intermediate/generate)
-named `inventory-management-svc-solution`
+named `inv-man-svc-sol-{initials}`
 
 - Clone the repository to your local machine
 
@@ -26,7 +26,7 @@ named `inventory-management-svc-solution`
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
     ```
-    oc pipeline --tekton
+    oc pipeline <git repo url> --tekton
     ```
 
    replacing `{your initials}` with your actual initials
