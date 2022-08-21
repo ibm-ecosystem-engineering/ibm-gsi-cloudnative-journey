@@ -12,15 +12,15 @@ title: Kubernetes Lab 1 - Pod Creation
         
          <div id="slideshowNavigator" style="font-size:15px; text-align: center; border-right: 1px solid gray;">
             <div style="padding: 10px 0 10px 0px; width:70px">
-                <img src="images/goal.png"/>
+                <img src="../images/activities/lab1/goal.png"/>
                 Problem
             </div>
             <div style="padding: 10px 0 10px 0px;  width:80px; ">
-                <img src="images/learn.png"/>
+                <img src="../images/activities/lab1/learn.png"/>
                <p> What you'll learn</p>
             </div>
             <div style="padding: 10px 0 10px 0px;  width:55px">
-                <img src="images/faq.png"/>
+                <img src="../images/activities/lab1/faq.png"/>
                 Solution
             </div>
           

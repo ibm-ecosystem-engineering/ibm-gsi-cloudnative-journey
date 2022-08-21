@@ -12,19 +12,19 @@ title: Kubernetes Lab 3 - Manage Multiple Containers
         <div class="bx--col-sm-2 bx--col-md-2 bx--col-lg-2">
          <div id="slideshowNavigator" style="font-size:15px; text-align: center; border-right: 1px solid gray;">
             <div style="padding: 10px 0 10px 0px; width:70px">
-                <img src="images/goal.png"/>
+                <img src="../images/activities/goal.png"/>
                 Problem
             </div>
             <div style="padding: 10px 0 10px 0px;  width:80px; ">
-                <img src="images/learn.png"/>
+                <img src="../images/activities/learn.png"/>
                <p> What you'll learn</p>
             </div>
             <div style="padding: 10px 0 10px 0px;  width:55px">
-                <img src="images/faq.png"/>
+                <img src="../images/activities/faq.png"/>
                 Solution
             </div>
              <div style="padding: 50px 0 0px 0px; width:55px">
-                <img src="images/explore.png"/>
+                <img src="../images/activities/explore.png"/>
                 Explore
             </div>
         </div>

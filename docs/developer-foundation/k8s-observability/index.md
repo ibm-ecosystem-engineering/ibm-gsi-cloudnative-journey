@@ -41,12 +41,12 @@ metadata:
   name: my-pod
 spec:
   containers:
-  - name: app
-    image: busybox
-    command: ['sh', '-c', "echo Hello, Kubernetes! && sleep 3600"]
-    livenessProbe:
-      exec:
-        command: ['echo','alive']
+    - name: app
+      image: busybox
+      command: ['sh', '-c', "echo Hello, Kubernetes! && sleep 3600"]
+      livenessProbe:
+        exec:
+          command: ['echo','alive']
 ```
 
 ```yaml
@@ -57,19 +57,19 @@ metadata:
 spec:
   shareProcessNamespace: true
   containers:
-  - name: app
-    image: bitnami/nginx
-    ports:
-    - containerPort: 8080
-    livenessProbe:
-      tcpSocket:
-        port: 8080
-      initialDelaySeconds: 10
-    readinessProbe:
-      httpGet:
-        path: /
-        port: 8080
-      periodSeconds: 10
+    - name: app
+      image: bitnami/nginx
+      ports:
+        - containerPort: 8080
+      livenessProbe:
+        tcpSocket:
+          port: 8080
+        initialDelaySeconds: 10
+      readinessProbe:
+        httpGet:
+          path: /
+          port: 8080
+        periodSeconds: 10
 ```
 
 ## Container Logging
@@ -98,9 +98,9 @@ metadata:
   name: counter
 spec:
   containers:
-  - name: count
-    image: busybox
-    command: ['sh','-c','i=0; while true; do echo "$i: $(date)"; i=$((i+1)); sleep 5; done']
+    - name: count
+      image: busybox
+      command: ['sh','-c','i=0; while true; do echo "$i: $(date)"; i=$((i+1)); sleep 5; done']
 ```
 
 === "OpenShift"
@@ -156,15 +156,15 @@ metadata:
   name: 500m
 spec:
   containers:
-  - name: app
-    image: gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4
-    resources:
-      requests:
-        cpu: 700m
-        memory: 128Mi
-  - name: busybox-sidecar
-    image: radial/busyboxplus:curl
-    command: [/bin/sh, -c, 'until curl localhost:8080/ConsumeCPU -d "millicores=500&durationSec=3600"; do sleep 5; done && sleep 3700']
+    - name: app
+      image: gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4
+      resources:
+        requests:
+          cpu: 700m
+          memory: 128Mi
+    - name: busybox-sidecar
+      image: radial/busyboxplus:curl
+      command: [/bin/sh, -c, 'until curl localhost:8080/ConsumeCPU -d "millicores=500&durationSec=3600"; do sleep 5; done && sleep 3700']
 ```
 
 ```yaml
@@ -174,15 +174,15 @@ metadata:
   name: 200m
 spec:
   containers:
-  - name: app
-    image: gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4
-    resources:
-      requests:
-        cpu: 300m
-        memory: 64Mi
-  - name: busybox-sidecar
-    image: radial/busyboxplus:curl
-    command: [/bin/sh, -c, 'until curl localhost:8080/ConsumeCPU -d "millicores=200&durationSec=3600"; do sleep 5; done && sleep 3700']
+    - name: app
+      image: gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4
+      resources:
+        requests:
+          cpu: 300m
+          memory: 64Mi
+    - name: busybox-sidecar
+      image: radial/busyboxplus:curl
+      command: [/bin/sh, -c, 'until curl localhost:8080/ConsumeCPU -d "millicores=200&durationSec=3600"; do sleep 5; done && sleep 3700']
 ```
 
 === "OpenShift"
@@ -200,10 +200,10 @@ spec:
 
 
 === "IKS"
-    ** Verify Metrics is enabled**
-    ```
-    kubectl get --raw /apis/metrics.k8s.io/
-    ```
+** Verify Metrics is enabled**
+```
+kubectl get --raw /apis/metrics.k8s.io/
+```
 
     ** Get Node Description **
     ```
@@ -220,7 +220,7 @@ spec:
 
 ## Activities
 
-| Task                            | Description         | Link        |
-| --------------------------------| ------------------  |:----------- |
-| *** Try It Yourself ***                         |         |         |
-| Probes | Create some Health & Startup Probes to find what's causing an issue.  | [Probes](../activities/labs/lab4) |
+| Task                            | Description         | Link                               |
+| --------------------------------| ------------------  |:-----------------------------------|
+| *** Try It Yourself ***                         |         |                                    |
+| Probes | Create some Health & Startup Probes to find what's causing an issue.  | [Probes](../activities/labs/lab4/) |
