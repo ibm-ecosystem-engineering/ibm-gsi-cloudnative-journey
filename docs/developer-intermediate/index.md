@@ -82,9 +82,9 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Preparing for the Hands-On Labs | Setting up the Development  Tools | [Dev. Tools Setup](../getting-started/devenvsetup) | 10 mins | |
     | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Break** | | | 5 mins | |
-    | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/9ffe4934f586cf73b92b0f381cacb4a5" target="_blank" >Link</a> |
-    | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
-    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/bd7634595e924254d26c22672f88552a" target="_blank" >Link</a> |
+    | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins |  |
+    | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins |  |
+    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min |  |
     | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 5 mins | |
     | Logging | Logging with LogDNA | [Logging](log-management/) | 5 mins | |
     | Image Signing | Signing Container Images |  [Signing](https://develop.cloudnativetoolkit.dev/reference/tools/container-image-security-enforcement/) | 25 min | |
@@ -108,9 +108,9 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup/) | 10 mins | |
     | Inventory Application | Objective of the exercise | [Objective](inventory-application/) | 15 mins | |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 30 mins |  |
     | **Break** | | | 5 mins | |
-    | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
+    | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins |  |
     | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui/) | 25 mins | |
     | AppID | Authentication with AppID |[AppID](../developer-advanced-1/inventory-appid/) |10 mins | |
     | **Q & A** | | | 10 mins | |
