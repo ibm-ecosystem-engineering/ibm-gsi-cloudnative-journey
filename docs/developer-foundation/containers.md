@@ -35,6 +35,10 @@ There are many different container standards available today. Some of them are a
 
 **Docker** - The most common standard, made Linux containers usable by the masses.
 
+**Podman** - Podman is a rising star in a new container landscape and it is on a more secure architecture.
+
+**Podman** - Colima is becoming a popular open alternative to Docker for Desktop, Colima means Containers in Lima. Since Lima is aka Linux on Mac.
+
 **Rocket (rkt)** - An emerging container standard from CoreOS, the company that developed etcd.
 
 **Garden** - The format Cloud Foundry builds using buildpacks.
