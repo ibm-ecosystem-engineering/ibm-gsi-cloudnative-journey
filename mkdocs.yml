@@ -101,14 +101,14 @@ nav:
       - Artifact Management: developer-intermediate/artifact-management.md
       - Code Analysis: developer-intermediate/code-analysis.md
       - Image Registry:
-        - IBM Cloud: developer-intermediate/image-registry.md
         - OpenShift: developer-intermediate/ocp-registry.md
+        - IBM Cloud: developer-intermediate/image-registry.md
       - Log Management:
-        - IBM Cloud: developer-intermediate/log-management.md
         - OpenShift: developer-intermediate/log-management.md
+        - IBM Cloud: developer-intermediate/log-management.md
       - Monitoring:
-        - IBM Cloud: developer-intermediate/monitoring.md
         - OpenShift: developer-intermediate/ocp-monitoring.md
+        - IBM Cloud: developer-intermediate/monitoring.md
       - Inventory App:
         - Intro: developer-intermediate/inventory-application.md
         - Solution: developer-intermediate/inventory-prebuilt-solution.md
@@ -120,5 +120,3 @@ nav:
       - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
       - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
       - Authentication with AppID: developer-advanced-1/inventory-appid.md
-
-
