@@ -19,12 +19,12 @@
   <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">my-pod</span>
 <span class=nt>spec</span><span class=p>:</span>
   <span class=nt>containers</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox</span>
-    <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;sh&#39;</span><span class="p p-Indicator">,</span> <span class=s>&#39;-c&#39;</span><span class="p p-Indicator">,</span> <span class=s>&quot;echo</span><span class=nv> </span><span class=s>Hello,</span><span class=nv> </span><span class=s>Kubernetes!</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3600&quot;</span><span class="p p-Indicator">]</span>
-    <span class=nt>livenessProbe</span><span class=p>:</span>
-      <span class=nt>exec</span><span class=p>:</span>
-        <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;echo&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;alive&#39;</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox</span>
+      <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;sh&#39;</span><span class="p p-Indicator">,</span> <span class=s>&#39;-c&#39;</span><span class="p p-Indicator">,</span> <span class=s>&quot;echo</span><span class=nv> </span><span class=s>Hello,</span><span class=nv> </span><span class=s>Kubernetes!</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3600&quot;</span><span class="p p-Indicator">]</span>
+      <span class=nt>livenessProbe</span><span class=p>:</span>
+        <span class=nt>exec</span><span class=p>:</span>
+          <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;echo&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;alive&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div> <div class=highlight><pre><span></span><code><span class=nt>apiVersion</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class=nt>kind</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class=nt>metadata</span><span class=p>:</span>
@@ -32,28 +32,28 @@
 <span class=nt>spec</span><span class=p>:</span>
   <span class=nt>shareProcessNamespace</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
   <span class=nt>containers</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">bitnami/nginx</span>
-    <span class=nt>ports</span><span class=p>:</span>
-    <span class="p p-Indicator">-</span> <span class=nt>containerPort</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
-    <span class=nt>livenessProbe</span><span class=p>:</span>
-      <span class=nt>tcpSocket</span><span class=p>:</span>
-        <span class=nt>port</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
-      <span class=nt>initialDelaySeconds</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
-    <span class=nt>readinessProbe</span><span class=p>:</span>
-      <span class=nt>httpGet</span><span class=p>:</span>
-        <span class=nt>path</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
-        <span class=nt>port</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
-      <span class=nt>periodSeconds</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">bitnami/nginx</span>
+      <span class=nt>ports</span><span class=p>:</span>
+        <span class="p p-Indicator">-</span> <span class=nt>containerPort</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+      <span class=nt>livenessProbe</span><span class=p>:</span>
+        <span class=nt>tcpSocket</span><span class=p>:</span>
+          <span class=nt>port</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+        <span class=nt>initialDelaySeconds</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
+      <span class=nt>readinessProbe</span><span class=p>:</span>
+        <span class=nt>httpGet</span><span class=p>:</span>
+          <span class=nt>path</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">/</span>
+          <span class=nt>port</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">8080</span>
+        <span class=nt>periodSeconds</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">10</span>
 </code></pre></div> <h2 id=container-logging>Container Logging<a class=headerlink href=#container-logging title="Permanent link">&para;</a></h2> <p>Application and systems logs can help you understand what is happening inside your cluster. The logs are particularly useful for debugging problems and monitoring cluster activity.</p> <p>Kubernetes provides no native storage solution for log data, but you can integrate many existing logging solutions into your Kubernetes cluster.</p> <h2 id=resources_1>Resources<a class=headerlink href=#resources_1 title="Permanent link">&para;</a></h2> <p><strong>OpenShift</strong> - <a href=https://docs.openshift.com/container-platform/4.3/cli_reference/openshift_cli/developer-cli-commands.html#logs>Logs Command</a> - <a href=https://docs.openshift.com/container-platform/4.3/logging/cluster-logging.html>Cluster Logging</a> - <a href=https://docs.openshift.com/container-platform/4.3/logging/config/cluster-logging-collector.html>Logging Collector</a></p> <p><strong>IKS</strong> - <a href=https://kubernetes.io/docs/concepts/cluster-administration/logging/ >Logging</a></p> <h2 id=references_1>References<a class=headerlink href=#references_1 title="Permanent link">&para;</a></h2> <div class=highlight><pre><span></span><code><span class=nt>apiVersion</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class=nt>kind</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class=nt>metadata</span><span class=p>:</span>
   <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">counter</span>
 <span class=nt>spec</span><span class=p>:</span>
   <span class=nt>containers</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">count</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox</span>
-    <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;i=0;</span><span class=nv> </span><span class=s>while</span><span class=nv> </span><span class=s>true;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>echo</span><span class=nv> </span><span class=s>&quot;$i:</span><span class=nv> </span><span class=s>$(date)&quot;;</span><span class=nv> </span><span class=s>i=$((i+1));</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done&#39;</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">count</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox</span>
+      <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=s>&#39;sh&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;-c&#39;</span><span class="p p-Indicator">,</span><span class=s>&#39;i=0;</span><span class=nv> </span><span class=s>while</span><span class=nv> </span><span class=s>true;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>echo</span><span class=nv> </span><span class=s>&quot;$i:</span><span class=nv> </span><span class=s>$(date)&quot;;</span><span class=nv> </span><span class=s>i=$((i+1));</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div> <div class=tabbed-set data-tabs=1:2><input checked=checked id=__tabbed_1_1 name=__tabbed_1 type=radio><label for=__tabbed_1_1>OpenShift</label><div class=tabbed-content> <p><strong> Get Logs </strong> <div class=highlight><pre><span></span><code>oc logs
 </code></pre></div> <strong> Use Stern to View Logs </strong> <div class=highlight><pre><span></span><code>brew install stern
 stern . -n default
@@ -66,30 +66,30 @@ stern . -n default
   <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">500m</span>
 <span class=nt>spec</span><span class=p>:</span>
   <span class=nt>containers</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4</span>
-    <span class=nt>resources</span><span class=p>:</span>
-      <span class=nt>requests</span><span class=p>:</span>
-        <span class=nt>cpu</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">700m</span>
-        <span class=nt>memory</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">128Mi</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox-sidecar</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">radial/busyboxplus:curl</span>
-    <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=nv>/bin/sh</span><span class="p p-Indicator">,</span> <span class=nv>-c</span><span class="p p-Indicator">,</span> <span class=s>&#39;until</span><span class=nv> </span><span class=s>curl</span><span class=nv> </span><span class=s>localhost:8080/ConsumeCPU</span><span class=nv> </span><span class=s>-d</span><span class=nv> </span><span class=s>&quot;millicores=500&amp;durationSec=3600&quot;;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3700&#39;</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4</span>
+      <span class=nt>resources</span><span class=p>:</span>
+        <span class=nt>requests</span><span class=p>:</span>
+          <span class=nt>cpu</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">700m</span>
+          <span class=nt>memory</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">128Mi</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox-sidecar</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">radial/busyboxplus:curl</span>
+      <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=nv>/bin/sh</span><span class="p p-Indicator">,</span> <span class=nv>-c</span><span class="p p-Indicator">,</span> <span class=s>&#39;until</span><span class=nv> </span><span class=s>curl</span><span class=nv> </span><span class=s>localhost:8080/ConsumeCPU</span><span class=nv> </span><span class=s>-d</span><span class=nv> </span><span class=s>&quot;millicores=500&amp;durationSec=3600&quot;;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3700&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div> <div class=highlight><pre><span></span><code><span class=nt>apiVersion</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class=nt>kind</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class=nt>metadata</span><span class=p>:</span>
   <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">200m</span>
 <span class=nt>spec</span><span class=p>:</span>
   <span class=nt>containers</span><span class=p>:</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4</span>
-    <span class=nt>resources</span><span class=p>:</span>
-      <span class=nt>requests</span><span class=p>:</span>
-        <span class=nt>cpu</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">300m</span>
-        <span class=nt>memory</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">64Mi</span>
-  <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox-sidecar</span>
-    <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">radial/busyboxplus:curl</span>
-    <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=nv>/bin/sh</span><span class="p p-Indicator">,</span> <span class=nv>-c</span><span class="p p-Indicator">,</span> <span class=s>&#39;until</span><span class=nv> </span><span class=s>curl</span><span class=nv> </span><span class=s>localhost:8080/ConsumeCPU</span><span class=nv> </span><span class=s>-d</span><span class=nv> </span><span class=s>&quot;millicores=200&amp;durationSec=3600&quot;;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3700&#39;</span><span class="p p-Indicator">]</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">app</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">gcr.io/kubernetes-e2e-test-images/resource-consumer:1.4</span>
+      <span class=nt>resources</span><span class=p>:</span>
+        <span class=nt>requests</span><span class=p>:</span>
+          <span class=nt>cpu</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">300m</span>
+          <span class=nt>memory</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">64Mi</span>
+    <span class="p p-Indicator">-</span> <span class=nt>name</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">busybox-sidecar</span>
+      <span class=nt>image</span><span class=p>:</span> <span class="l l-Scalar l-Scalar-Plain">radial/busyboxplus:curl</span>
+      <span class=nt>command</span><span class=p>:</span> <span class="p p-Indicator">[</span><span class=nv>/bin/sh</span><span class="p p-Indicator">,</span> <span class=nv>-c</span><span class="p p-Indicator">,</span> <span class=s>&#39;until</span><span class=nv> </span><span class=s>curl</span><span class=nv> </span><span class=s>localhost:8080/ConsumeCPU</span><span class=nv> </span><span class=s>-d</span><span class=nv> </span><span class=s>&quot;millicores=200&amp;durationSec=3600&quot;;</span><span class=nv> </span><span class=s>do</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>5;</span><span class=nv> </span><span class=s>done</span><span class=nv> </span><span class=s>&amp;&amp;</span><span class=nv> </span><span class=s>sleep</span><span class=nv> </span><span class=s>3700&#39;</span><span class="p p-Indicator">]</span>
 </code></pre></div> <div class=tabbed-set data-tabs=2:2><input checked=checked id=__tabbed_2_1 name=__tabbed_2 type=radio><label for=__tabbed_2_1>OpenShift</label><div class=tabbed-content> <div class=highlight><pre><span></span><code>oc get projects
 oc api-resources -o wide
 oc api-resources -o name
@@ -97,8 +97,15 @@ oc api-resources -o name
 oc get nodes,ns,po,deploy,svc
 
 oc describe node --all
-</code></pre></div> </div> <input id=__tabbed_2_2 name=__tabbed_2 type=radio><label for=__tabbed_2_2>IKS</label><div class=tabbed-content> <p><strong> Verify Metrics is enabled</strong> <div class=highlight><pre><span></span><code>kubectl get --raw /apis/metrics.k8s.io/
-</code></pre></div></p> <p><strong> Get Node Description </strong> <div class=highlight><pre><span></span><code>kubectl describe node
-</code></pre></div></p> <p><strong> Check Resource Usage </strong> <div class=highlight><pre><span></span><code>kubectl top pods
+</code></pre></div> </div> <input id=__tabbed_2_2 name=__tabbed_2 type=radio><label for=__tabbed_2_2>IKS</label><div class=tabbed-content></div> </div> <p><strong> Verify Metrics is enabled</strong> <div class=highlight><pre><span></span><code>kubectl get --raw /apis/metrics.k8s.io/
+</code></pre></div></p> <div class=highlight><pre><span></span><code>** Get Node Description **
+```
+kubectl describe node
+```
+
+** Check Resource Usage **
+```
+kubectl top pods
 kubectl top nodes
-</code></pre></div></p> </div> </div> <h2 id=activities>Activities<a class=headerlink href=#activities title="Permanent link">&para;</a></h2> <table> <thead> <tr> <th>Task</th> <th>Description</th> <th align=left>Link</th> </tr> </thead> <tbody> <tr> <td><strong><em> Try It Yourself </em></strong></td> <td></td> <td align=left></td> </tr> <tr> <td>Probes</td> <td>Create some Health &amp; Startup Probes to find what's causing an issue.</td> <td align=left><a href=../activities/labs/lab4>Probes</a></td> </tr> </tbody> </table> </article> </div> </div> </main> <!-- Footer --> <footer class=md-footer> <!-- Further information --> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-column> <div class=md-footer-text><a href=https://develop.cloudnativetoolkit.dev/contribute/contribute/ >Contribute</a> to the Cloud-Native Toolkit</div> <div class=md-footer-text>Site licensed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a></div> </div> <div class=md-footer-column> <div class=md-footer-text>Have questions? open an issue on <a href=https://github.com/cloud-native-toolkit/planning/issues/new/choose>GitHub</a>.</div> <!-- Copyright and theme information --> <div class=md-footer-text> Copyright © 2022 IBM </div> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script> <script src=../../assets/javascripts/bundle.76f349be.min.js></script> <script src=../../javascripts/extra.js></script> </body> </html>
+```
+</code></pre></div> <h2 id=activities>Activities<a class=headerlink href=#activities title="Permanent link">&para;</a></h2> <table> <thead> <tr> <th>Task</th> <th>Description</th> <th align=left>Link</th> </tr> </thead> <tbody> <tr> <td><strong><em> Try It Yourself </em></strong></td> <td></td> <td align=left></td> </tr> <tr> <td>Probes</td> <td>Create some Health &amp; Startup Probes to find what's causing an issue.</td> <td align=left><a href=../activities/labs/lab4/ >Probes</a></td> </tr> </tbody> </table> </article> </div> </div> </main> <!-- Footer --> <footer class=md-footer> <!-- Further information --> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-footer-column> <div class=md-footer-text><a href=https://develop.cloudnativetoolkit.dev/contribute/contribute/ >Contribute</a> to the Cloud-Native Toolkit</div> <div class=md-footer-text>Site licensed under <a href=https://creativecommons.org/licenses/by-nc-sa/4.0/ >CC BY-NC-SA 4.0</a></div> </div> <div class=md-footer-column> <div class=md-footer-text>Have questions? open an issue on <a href=https://github.com/cloud-native-toolkit/planning/issues/new/choose>GitHub</a>.</div> <!-- Copyright and theme information --> <div class=md-footer-text> Copyright © 2022 IBM </div> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../..", "features": ["navigation.instant", "navigation.tracking"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script> <script src=../../assets/javascripts/bundle.76f349be.min.js></script> <script src=../../javascripts/extra.js></script> </body> </html>
