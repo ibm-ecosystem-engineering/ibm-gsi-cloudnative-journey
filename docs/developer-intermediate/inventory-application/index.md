@@ -44,7 +44,7 @@ The Micro services should adhere to the following technical requirements:
     - Monitoring and logging
     - Code analysis
     - App security
-- Deployed to Red Hat OpenShift cluster which is based on Kubernetes opensource technology
+- Deployed to Red Hat OpenShift cluster which is based on Kubernetes open source technology
 - Follow the [Carbon Design System](https://www.carbondesignsystem.com/) user experience
 
 ## Guide
