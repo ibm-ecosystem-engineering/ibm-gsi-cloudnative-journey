@@ -2,7 +2,7 @@
 checkextern=1
 ignore=
   ^https://learning-journey.cloudnativetoolkit.dev
-  ^https://github.com/cloud-native-toolkit/developer-guide/edit
+  ^https://github.com/ibm-ecosystem-lab/ibm-gsi-cloudnative-journey/edit
   xml.gz$
   ^https://ccp-ui.csplab.intranet.ibm.com
   ^https://ccp-ui.apps.labprod.ocp.csplab.local

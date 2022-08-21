@@ -88,7 +88,7 @@ nav:
       - Core Concepts: developer-foundation/k8s-core-concepts/index.md
       - Configuration: developer-foundation/k8s-configuration/index.md
       - Multi-Container Pods: developer-foundation/k8s-multi-container-pods/index.md
-      - Observability: developer-foundation/k8s-observability/k8s-observability/index.md
+      - Observability: developer-foundation/k8s-observability/index.md
       - Pod Design: developer-foundation/k8s-pod-design/index.md
       - Services & Networking: developer-foundation/k8s-services-networking/index.md
       - State Persistence: developer-foundation/k8s-state-persistence/index.md

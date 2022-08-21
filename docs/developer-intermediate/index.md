@@ -34,7 +34,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
 
     | Task                            | Description         | Link        | Time    | Presentations  |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | Welcome Message | Welcome to Cloud-Native Workshop  | [Introduction](../getting-started/introduction) | 5 mins |
+    | Welcome Message | Welcome to Cloud-Native Workshop  | [Introduction](../getting-started) | 5 mins |
     | Prerequisites | Install the prerequisite tools  | [Setup Prerequisites](../getting-started/prereqs) | 10 mins |
     | Dev Env Access | Validate access to your Development Cluster |  [Validate](../getting-started/checksetup) | 10 min |
     | Software Delivery Lifecycle | Overview of the Tools you will be using with the OpenShift Environment |  <a href="https://www.youtube.com/watch?v=LcWboN1T7Zk" target="_newwindow">Video</a>| 30 min |
