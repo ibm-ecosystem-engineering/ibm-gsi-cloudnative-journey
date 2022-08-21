@@ -18,7 +18,7 @@ Developer Foundation is broken into three areas:
      | Topics                          | Description         | Link        |
      | --------------------------------| ------------------  |:----------- |
      | What is Cloud-Native? | Cloud-Native overview. | [Cloud-Native](../../developer-foundation/cloud-native-overview/) |
-     | Cloud-Native Application Development  | Basics of Cloud-Native application development. | [Cloud-Native application. development](../../developer-foundation/cloud-native-app-dev/) |
+     | Cloud-Native Application Development  | Basics of Cloud-Native application development. | [Cloud-Native application development](../../developer-foundation/cloud-native-app-dev/) |
      | Continuous Integration | CI overview. | [CI](../../developer-intermediate/continuous-integration/) |
      | Continuous Delivery | CD overview. | [CD](../../developer-intermediate/continuous-delivery/) |
 
@@ -51,7 +51,7 @@ Developer Foundation is broken into three areas:
     | Probes | Covers the topics in the [Observability](../../developer-foundation/k8s-observability/) page. | [Probes](../../developer-foundation/activities/labs/lab4) |
     | Rolling Updates Lab | Covers the topics in the [Pod Design](../../developer-foundation/k8s-pod-design/) page.  | [Rolling Updates](../../developer-foundation/activities/labs/lab6) |
     | Cron Jobs Lab | Covers the topics in the [Pod Design Jobs](../../developer-foundation/k8s-pod-design#jobs-and-cronjobs) section. | [Crons Jobs](../../developer-foundation/activities/labs/lab7) |
-    | Creating Services | Covers the topics in the [Services](./k8s-services-networking/) page. | [Setting up Services](../../developer-foundation/activities/labs/lab8) |
+    | Creating Services | Covers the topics in the [Services](../../developer-foundation/k8s-services-networking/) page. | [Setting up Services](../../developer-foundation/activities/labs/lab8) |
     | Setting up Persistent Volumes | Covers the topics in the [State Persistence](../../developer-foundation/k8s-state-persistence/) page. | [Setting up Persistent Volumes](../../developer-foundation/activities/labs/lab10) |
     | Debugging | Covers the topics in the [ Troubleshooting](../../developer-foundation/k8s-troubleshooting/) page.  | [Debugging](../../developer-foundation/activities/labs/lab5) |
 
@@ -67,13 +67,11 @@ Developer Foundation is broken into three areas:
 
 ## Optional Extra Credits
 ### Kubernetes
-<ActivationPage content="kubernetes" tileColor="bx--article-card--ibm">
-</ActivationPage>
+
 
 ### Deployment Best practices
 Use the following links to get a deep understanding of Cloud-Native Deployment:
-<ActivationPage content="cndp">
-</ActivationPage>
+
 
 ## Method
 ### Topics Covered

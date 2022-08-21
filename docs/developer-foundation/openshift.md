@@ -42,21 +42,12 @@ Quickly set up a CI/CD with Jenkins or deploy a variety of apps in a guided expe
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/cTPFwXsM2po" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### RedHat Interactive Learning 
-
-To help understand OpenShift in more detail work through these **KataKoda** self paced learning modules offered by
-RedHat 
-
-<ActivationPage content="openshift" tileColor="bx--article-card--redhat">
-</ActivationPage>
 
 ### Advanced Topics
 
 The following topics are not required to move onto the **IBM Sandbox** self paced learning but will help 
 you understand more about how the base platform works.
 
-<ActivationPage content="openshift_adv" tileColor="bx--article-card--redhat">
-</ActivationPage>
 
 
 ## References
