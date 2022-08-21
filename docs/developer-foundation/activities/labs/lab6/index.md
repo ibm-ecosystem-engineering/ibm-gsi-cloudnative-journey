@@ -12,7 +12,7 @@ After you have updated the image using a rolling update, check on the status of 
 
 ### Setup environment
 
-- Execute the command to create the deployment using below definition.
+- Execute the command to create the deployement using below definition.
 
  ```shell script
   oc apply -f jedi-deployment.yaml -n {DEV_NAMESPACE}
@@ -56,7 +56,7 @@ spec:
    oc get pods -w
    ```
 
-- Get a list of previous deployment revisions.
+- Get a list of previous deployement revisions.
 
   ```
    oc rollout history deployment/jedi-deployment

@@ -19,7 +19,7 @@ Here are some tips to help you solve the Hyper Drive:
 
 ### Setup environment
 
-- Execute the command to create the Deployment, Namespace, Service below definition.
+- Execute the command to create the Deployement, Namespace, Service below definition.
 
  ```shell script
   oc apply -f https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/lab-setup/lab-5-debug-k8s-setup.yaml
@@ -44,12 +44,12 @@ In the description you will see the following is wrong:
   - The Probe is TCP instead of HTTP Get.
   - The Service Port is 80 instead of 8080.
 
-- To fix problem, can't do oc edit on deployment, need to delete and recreate the deployment. So export deployment and do the necessary  changes and recreate it.
+- To fix problem, can't do oc edit on deployement, need to delete and recreate the deployment. So export deployement and do the necessary  changes and recreate it.
 
  ```
   oc get deployment <deployment name> -n {DEV_NAMESPACE} -o yaml --export > hyper-drive.yml
   ```
-- Delete the existing deployment.
+- Delete the existing deployement.
 
  ```
   oc delete deployment <deployment name> -n {DEV_NAMESPACE}
@@ -60,7 +60,7 @@ In the description you will see the following is wrong:
  ```
   oc apply -f hyper-drive.yml -n {DEV_NAMESPACE}
   ```
-- Verify the deployment.
+- Verify the deployement.
 
  ```
   oc get deployment <deployment name> -n {DEV_NAMESPACE}

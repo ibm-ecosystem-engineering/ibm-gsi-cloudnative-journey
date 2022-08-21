@@ -19,9 +19,9 @@ Applications run as containers, which are isolated partitions inside a single op
 
 <iframe width="1206" height="678" src="https://www.youtube.com/embed/KTN_QBuDplo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Red Hat OpenShift on IBM Cloud
+## Red Hat OpenShift 
 
-With Red Hat OpenShift on IBM Cloud, OpenShift developers have a fast and secure way to containerize and deploy enterprise workloads in Kubernetes clusters. OpenShift clusters build on Kubernetes container orchestration that offers consistency and flexibility in operations. Because IBM manages OpenShift Container Platform (OCP), you'll have more time to focus on your core tasks.
+With Red Hat OpenShift, OpenShift developers have a fast and secure way to containerize and deploy enterprise workloads in Kubernetes clusters. OpenShift clusters build on Kubernetes container orchestration that offers consistency and flexibility in operations. Because IBM manages OpenShift Container Platform (OCP), you'll have more time to focus on your core tasks.
 
 ### Features
 
@@ -37,30 +37,17 @@ Deploy and scale workloads across the globe in all IBM Cloud multizone regions. 
 **Integrated OpenShift catalog**
 Quickly set up a CI/CD with Jenkins or deploy a variety of apps in a guided experience that's fully integrated into your OpenShift cluster.
 
-**Innovation with Cloud Paks and the complete IBM Cloud platform**
-Easily integrate AI with Watson APIs to extend the power of your apps. Access the IBM middleware in IBM Cloud Paks from within the scalable public cloud. You also get built-in services for monitoring, logging, load-balancing, storage, and security to help you manage an app’s lifecycle.
-
-<iframe width="640" height="480" src="https://www.youtube.com/embed/l4Vrj7mkxhQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Kubernetes and OpenShift: What's the Difference?
 
 <iframe width="640" height="480" src="https://www.youtube.com/embed/cTPFwXsM2po" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-### RedHat Interactive Learning 
-
-To help understand OpenShift in more detail work through these **KataKoda** self paced learning modules offered by
-RedHat 
-
-<ActivationPage content="openshift" tileColor="bx--article-card--redhat">
-</ActivationPage>
 
 ### Advanced Topics
 
 The following topics are not required to move onto the **IBM Sandbox** self paced learning but will help 
 you understand more about how the base platform works.
 
-<ActivationPage content="openshift_adv" tileColor="bx--article-card--redhat">
-</ActivationPage>
 
 
 ## References

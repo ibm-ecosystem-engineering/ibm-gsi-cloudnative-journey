@@ -24,12 +24,12 @@ We have a `jedi-deployment` and `yoda-deployment` that need to communicate with 
 
 ### Setup environment:
 
- - Execute the command to create the deployments  using below definition.
+ - Execute the command to create the deployements  using below definition.
 
  ```shell script
   kubectl apply -f https://gist.githubusercontent.com/csantanapr/87df4292e94441617707dae5de488cf4/raw/cb515f7bae77a3f0e76fdc7f6aa0f4e89cc5fec7/lab-8-service-setup.yaml
   ```
- - Create two services **jedi-svc** & **yoda-svc** using below yam definition.
+ - Create two sevices **jedi-svc** & **yoda-svc** using below yam definition.
 
     ```yaml
     apiVersion: v1
