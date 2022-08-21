@@ -61,7 +61,7 @@ interactions defined by the `pact`. At the end of the test, if all the interacti
 a file containing the pact definition is generated.
 
 The following diagram gives an overview of the consumer interactions:
-![Pact consumer interactions](./PactFramework-consumer.png)
+![Pact consumer interactions](../../images/contract-testing/PactFramework-consumer.png)
 
 An example pact test on a Typescript consumer using the jest testing framework is provided below. It has
 been broken into several parts.
@@ -174,7 +174,7 @@ tests are completed. For example, if a provider interacts with a Cloudant databa
 test provider at a new database instance for the tests.
 
 The following diagram shows the interactions for the pact provider:
-![Pact provider interactions](./PactFramework-provider.png)
+![Pact provider interactions](../../images/contract-testing/PactFramework-provider.png)
 
 ## Pact Broker
 

@@ -160,17 +160,17 @@ To validate your pipeline have been correctly configured, and has triggered a
     ![Pipelinerun](../../images/deploy-app/pipeline.png)
 
     - Review your **Tasks**
-    ![Tasks](../../images/tasks.png)
+    ![Tasks](images/tasks.png)
 
     - Review your **Steps**
-    ![Steps](/images/steps.png)
+    ![Steps](images/steps.png)
 
 === "Opensource Tekton Dashboard"
 
     If you are running Tekton with IBM Cloud Pak for Applications or Knative with Kubernetes managed service your dashboard view will look similar to below.
 
     - Review your **Pipeline**
-    ![PipelineRun](/images/pipeline-os.png)
+    ![PipelineRun](images/pipeline-os.png)
 
 
 === "Tekton CLI"
@@ -192,7 +192,7 @@ Once the **Tekton** pipeline has successfully completed you can validate your
  app has been successfully deployed.
 
 - Open the OpenShift Console and select the {new-namespace} project and click on **Workloads**
-    ![OpenShift](/images/openshiftconsole.png)
+    ![OpenShift](images/openshiftconsole.png)
 
 - Get the hostname for the application from ingress
     ```bash
