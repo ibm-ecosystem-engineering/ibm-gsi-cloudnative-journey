@@ -19,8 +19,8 @@ Developer Foundation is broken into three areas:
      | --------------------------------| ------------------  |:----------- |
      | What is Cloud-Native? | Cloud-Native overview. | [Cloud-Native](cloud-native-overview/) |
      | Cloud-Native Application Development  | Basics of Cloud-Native application development. | [Cloud-Native application development](cloud-native-app-dev/) |
-     | Continuous Integration | CI overview. | [CI](../../developer-intermediate/continuous-integration/) |
-     | Continuous Delivery | CD overview. | [CD](../../developer-intermediate/continuous-delivery/) |
+     | Continuous Integration | CI overview. | [CI](../developer-intermediate/continuous-integration/) |
+     | Continuous Delivery | CD overview. | [CD](../developer-intermediate/continuous-delivery/) |
 
 
 ## Technologies
