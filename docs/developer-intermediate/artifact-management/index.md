@@ -26,11 +26,11 @@ Note that you do not need a very large team to start reaping benefits from an ar
 
 ## Artifact management in the Pipeline
 
-The <Globals name="env" /> will eventually be extended to store a number of artifact types in Artifactory. Thus far, the CI and CD pipelines exchange two types of artifacts: Docker images and Helm charts. The CI pipeline ([Jenkins](/developer-intermediate/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) builds these artifacts and ArgoCD deploys them. To store and share the artifacts, the pipeline uses two repositories:
-- **Docker images**: The [Developer Tools Image Registry](/developer-intermediate/image-registry)
+The <Globals name="env" /> will eventually be extended to store a number of artifact types in Artifactory. Thus far, the CI and CD pipelines exchange two types of artifacts: Docker images and Helm charts. The CI pipeline ([Jenkins](../continuous-integration/), [Tekton](../../guides/continuous-integration-tekton/), etc.) builds these artifacts and ArgoCD deploys them. To store and share the artifacts, the pipeline uses two repositories:
+- **Docker images**: The [Developer Tools Image Registry](../image-registry/)
 - **Helm charts**: A Helm repository in Artifactory
 
-The [<Globals name="templates" />](/resources/codepatterns-overview) have also been configured to store their Helm charts in Artifactory.
+The [<Globals name="templates" />](../../resources/codepatterns-overview) have also been configured to store their Helm charts in Artifactory.
 
 Artifactory is part of the <Globals name="env" />'s complete CI/CD solution:
 
@@ -53,13 +53,13 @@ Browse the Helm repository.
 The artifacts in the cluster's branch follow the [Helm chart repository](https://helm.sh/docs/chart_repository/) structure:
 - **index.yaml**: Helm's index of all of the charts in the repository
 - **charts**: The `tgz` files named for the application they deploy
-      ![Artifact Repository Browser](../images/artifact-management/Artifactory01.png)
+      ![Artifact Repository Browser](images/Artifactory01.png)
 
 Browse the artifacts to see how a Helm repository is organized.
 - Select the `index.yaml` file and View it to see its contents
-      ![Helm Repository Index](../images/artifact-management/ArtifactoryIndexyaml.png)
+      ![Helm Repository Index](images/ArtifactoryIndexyaml.png)
 - Expand a chart's branch to see that the `tgz` file contains the chart directory structure
-      ![Helm Chart Structure](../images/artifact-management/artifactoryuntar.png)
+      ![Helm Chart Structure](images/artifactoryuntar.png)
 
 Notice that each chart has its own URL in Artifactory, and index lists the URL for a chart.
 

@@ -3,7 +3,7 @@ title: Code Analysis
 ---
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-In IBM Garage Method, one of the Develop practices is to [automate tests for continuous delivery](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/), in part by using [static source code analysis tools](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/tool_lint). [SonarQube](https://www.sonarqube.org/) automates performing static code analysis and enables it to be added to a continuous integration pipeline. The <Globals name="env" />'s CI pipeline ([Jenkins](/guides/continuous-integration), [Tekton](/guides/continuous-integration-tekton), etc.) includes a SonarQube stage. Simply by building your app using the pipeline, your code gets analyzed, and the SonarQube UI displays the findings.
+In IBM Garage Method, one of the Develop practices is to [automate tests for continuous delivery](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/), in part by using [static source code analysis tools](https://www.ibm.com/garage/method/practices/code/practice_automated_testing/tool_lint). [SonarQube](https://www.sonarqube.org/) automates performing static code analysis and enables it to be added to a continuous integration pipeline. The <Globals name="env" />'s CI pipeline ([Jenkins](../../guides/continuous-integration), [Tekton](../../guides/continuous-integration-tekton), etc.) includes a SonarQube stage. Simply by building your app using the pipeline, your code gets analyzed, and the SonarQube UI displays the findings.
 
 ## What is code analysis
 
@@ -81,7 +81,7 @@ Follow these directions to see code analysis in action:
 
 Deploy the <Globals name="template" /> named Spring Boot Microservice.
 
-- Follow the directions in [Deploying an App](/developer-intermediate/deploy-app)
+- Follow the directions in [Deploying an App](../deploy-app)
     - Deploy the Spring Boot Microservice template
     - Name the new repo something like `sonar-java`
     - Be sure to run the CI pipeline (using the version igc-java-gradle-v1-x-0) for your project, and confirm that it runs the Sonar scan in test stage
@@ -96,7 +96,7 @@ Examine SonarQube's analysis report for your app
 
     You should see your project in the list, such as `bwoolf1.sonar-java`.
 
-    ![Sonar Project](../images/code-analysis/sonar-project.png)
+    ![Sonar Project](images/sonar-project.png)
 
     The project summary shows several characteristics measured in the app:
     - The quality gate passed
@@ -125,14 +125,14 @@ Use the SonarQube dashboard to explore the issues that it found in your project.
 
     The Issues page, filtered for bugs, shows two issues. Both concern "synchronized" methods.
 
-    ![Sonar Bugs](../images/code-analysis/SonarQube-bugs.png)
+    ![Sonar Bugs](images/SonarQube-bugs.png)
 
 - In the Issues list, click on either issue to see where the issues appeared in the code
 
     The Issues detail shows the source code file for the Java class.
     The issue descriptions are embedded after the `mark` and `reset` method signatures.
 
-    ![Sonar Bugs in Code](../images/code-analysis/SonarQube-bugs-code.png)
+    ![Sonar Bugs in Code](images/SonarQube-bugs-code.png)
 
 - In either issue, press the **Why is this an issue?** button.
 
@@ -174,7 +174,7 @@ Besides the bugs, SonarQube also found issues that are hotspots and code smells.
 
     The issue warns to "Make sure that command line arguments are used safely here."
 
-    ![Sonar Hotspot](../images/code-analysis/SonarQube-hotspot.png)
+    ![Sonar Hotspot](images/SonarQube-hotspot.png)
 
     SonarQube considers any class that has a `public static void main(String[] args)` method to be a potential vulnerability.
     As the rule explains, "Command line arguments can be dangerous just like any other user input. They should never be used without being first validated and sanitized." This method passes them through unchecked, which is risky.
@@ -193,7 +193,7 @@ Besides the bugs, SonarQube also found issues that are hotspots and code smells.
 
 As we saw earlier, SonarQube found two bugs in our Java app. Let's do something about that.
 
-![Sonar Project](../images/code-analysis/sonar-project.png)
+![Sonar Project](images/sonar-project.png)
 
 ### Add a quality gate to SonarQube
 
@@ -203,7 +203,7 @@ Let's create a new quality gate that checks for bugs.
 
 - Open the SonarQube dashboard through OpenShift console shortcut as shown below:
 
-![OpenShiftConsoleToolsShortcut](../images/code-analysis/ToolsShortCut.png)
+![OpenShiftConsoleToolsShortcut](images/ToolsShortCut.png)
 
 - To create and install a new quality gate, first log in to SonarQube
 
@@ -221,7 +221,7 @@ Run the pipeline again to scan the code again.
 
 - After the Sonar Scan stage completes, go back to the SonarQube dashboard and take a look at your project
 
-![Sonar Project Failed](../images/code-analysis/sonar-project-failed.png)
+![Sonar Project Failed](images/sonar-project-failed.png)
 
 Good news, the quality gate is working and SonarQube fails the project now!
 
@@ -243,7 +243,7 @@ public synchronized void reset() throws IOException {
 
 - Check the project in SonarQube and see that it now has 0 bugs and has now passed
 
-![Sonar Project Passed](../images/code-analysis/sonar-project-passed.png)
+![Sonar Project Passed](images/sonar-project-passed.png)
 
 **Extra credit**: The code still has 17 code smells. Go fix those!
 

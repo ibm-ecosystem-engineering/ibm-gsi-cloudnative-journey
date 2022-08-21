@@ -73,7 +73,7 @@ A way to combat this issue in Kubernetes is through the use of Deployments.  The
 
 A Rolling Deployment ensures that there is no downtime during the update process.  Kubernetes creates a new ReplicaSet for the new version of the service to be rolled out.  From there Kubernetes creates set of pods of the new version while leaving the old pods running.  Once the new pods are all up and running they will replace the old pods and become the primary pods users access.
 
-![Rolling Deployment](../images/k8s-overview/rolling-deploy.png)
+![Rolling Deployment](images/rolling-deploy.png)
 
 The upside to this approach is that there is no downtime and the deployment is handled by kubernetes through a deployment like the one below. The downside is with two sets of pods running at one time there is a higher usage of resources that may lead to performance issues for users.
 
@@ -81,13 +81,13 @@ The upside to this approach is that there is no downtime and the deployment is h
 
 A Fixed Deployment uses the Recreate strategy which sets the maxUnavailable setting to the number of declared replicas.  This in effect starts the versions of the pods as the old versions are being killed.  The starting and stopping of containers does create a little bit of downtime for customers while the starting and stopping is taking place, but the positive side is the users will only have to handle one version at a time.
 
-![Fixed Deployment](../images/k8s-overview/fixed-deploy.png)
+![Fixed Deployment](images/fixed-deploy.png)
 
 ### Blue-Green Release
 
 A Blue-Green Release involves a manual process of creating a second deployment of pods with the newest version of the application running as well as keeping the old version of pods running in the cluster.  Once the new pods are up and running properly the administrator shifts the traffic over to the new pods. Below is a diagram showing both versions up and running with the traffic going to the newer (green) pods.
 
-![Blue-Green](../images/k8s-overview/blue-green.png)
+![Blue-Green](images/blue-green.png)
 
 The downfall to this approach is the use of resources with two separate groups of pods running at the same time which could cause performance issues or complications. However, the advantage of this approach is users only experience one version at a time and it's easy to quickly switch back to the old version with no downtime if an issue arises with the newer version.
 
@@ -96,7 +96,7 @@ The downfall to this approach is the use of resources with two separate groups o
 
 A Canary Release involves only standing up one pod of the new application code and shifting only a limited amount of new users traffic to that pod.  This approach reduces the number of people exposed to the new service allowing the administrator to see how the new version is performing.  Once the team feels comfortable with the performance of the new service then more pods can be stood up to replace the old pods.  An advantage to this approach is no downtime with any of the services as the new service is being scaled.
 
-![Canary Release](../images/k8s-overview/canary-release.png)
+![Canary Release](images/canary-release.png)
 
 ## Health Probe Pattern
 

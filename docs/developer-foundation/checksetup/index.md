@@ -73,7 +73,7 @@ Log in and view the resources:
 Explore the Red Hat OpenShift resources and set up the CLI:
 
 - In the Tags filter, enter both `ocp` to see just the Red Hat OpenShift cluster and services.
-![Resource List](../images/checksetup/devtoolsservices.png)
+![Resource List](images/devtoolsservices.png)
 - Click on each cloud service instance name and check that you can open each one's dashboard.
 - Click on the Red Hat OpenShift cluster names to open their dashboards.
 - Switch to the **Access** tab.
