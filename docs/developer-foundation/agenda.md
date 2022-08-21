@@ -86,5 +86,4 @@ Use the following links to get a deep understanding of Cloud-Native Deployment:
 | IBM Garage Method | Garage Method overview. | [Garage Method](../../developer-foundation/garage-development/) |
 
 
-## Resources
-- [Kubernetes Basics presentation](/slides/03-Kubernetes-Basics.pdf).
+

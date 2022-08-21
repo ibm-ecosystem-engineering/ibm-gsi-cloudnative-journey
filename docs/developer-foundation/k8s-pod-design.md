@@ -533,5 +533,5 @@ spec:
 | --------------------------------| ------------------  |:----------- |
 | *** Try It Yourself ***                         |         |         |
 | Rolling Updates Lab | Create a Rolling Update for your application.  | [Rolling Updates](../activities/labs/lab6) |
-| Cron Jobs Lab | Using Tekton to test new versions of applications. | [Crons Jobs](../activities/labs/lab7) |
+| Cron Jobs Lab | Using Tekton to test new versions of applications. | [Cron Jobs](../activities/labs/lab7) |
 

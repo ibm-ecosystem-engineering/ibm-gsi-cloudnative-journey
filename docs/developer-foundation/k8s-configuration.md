@@ -25,14 +25,14 @@ When you create a Pod, you can set environment variables for the containers that
 
 A Pod can use environment variables to expose information about itself to Containers running in the Pod. Environment variables can expose Pod fields and Container fields
 
-## Resources
+### Resources
 
 **IKS & OpenShift**
 - [Container Commands](https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/)
 - [Environment Variables](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/)
 - [Pod Exposing](https://kubernetes.io/docs/concepts/services-networking/connect-applications-service/#exposing-pods-to-the-cluster)
 
-## References
+### References
 
 ```yaml
 apiVersion: v1
@@ -129,13 +129,13 @@ When you specify a Pod, you can optionally specify how much CPU and memory (RAM)
 
 CPU and memory are each a resource type. A resource type has a base unit. CPU is specified in units of cores, and memory is specified in units of bytes.
 
-## Resources
+### Resources
 
 **IKS & OpenShift**
 - [Compute Resources](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container)
 - [Memory Management](https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/memory-default-namespace/)
 
-## References
+### References
 
 ```yaml
 apiVersion: v1
@@ -197,7 +197,7 @@ You can data from a ConfigMap in 3 different ways.
 - As a set of environment variables from all keys
 - As a set of files, each key represented by a file on mounted volume
 
-## Resources
+### Resources
 
 **OpenShift**
 - [Mapping Volumes](https://docs.openshift.com/container-platform/4.3/nodes/containers/nodes-containers-projected-volumes.html)
@@ -205,7 +205,7 @@ You can data from a ConfigMap in 3 different ways.
 **IKS**
 - [ConfigMaps](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
 
-## References
+### References
 
 ```yaml
 apiVersion: v1
@@ -283,7 +283,7 @@ Kubernetes secret objects let you store and manage sensitive information, such a
 A Secret is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such information might otherwise be put in a Pod specification or in an image; putting it in a Secret object allows for more control over how it is used, and reduces the risk of accidental exposure.
 
 
-## Resources
+### Resources
 
 **OpenShift**
 - [Secrets](https://docs.openshift.com/container-platform/4.3/nodes/containers/nodes-containers-projected-volumes.html)
@@ -293,7 +293,7 @@ A Secret is an object that contains a small amount of sensitive data such as a p
 - [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/)
 - [Secret Distribution](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/)
 
-## References
+### References
 
 ```yaml
 apiVersion: v1
@@ -402,7 +402,7 @@ A security context defines privilege and access control settings for a Pod or Co
 
 To specify security settings for a Pod, include the securityContext field in the Pod specification. The securityContext field is a PodSecurityContext object. The security settings that you specify for a Pod apply to all Containers in the Pod.
 
-## Resources
+### Resources
 
 **OpenShift**
 - [Managing Security Contexts](https://docs.openshift.com/container-platform/4.3/authentication/managing-security-context-constraints.html)
@@ -412,7 +412,7 @@ To specify security settings for a Pod, include the securityContext field in the
 - [Security Contexts](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
 
 
-## References
+### References
 
 Setup minikube VM with users
 ```
@@ -518,7 +518,7 @@ User accounts are for humans. Service accounts are for processes, which run in p
 
 User accounts are intended to be global. Names must be unique across all namespaces of a cluster, future user resource will not be namespaced. Service accounts are namespaced.
 
-## Resources
+### Resources
 
 **OpenShift**
 
@@ -530,7 +530,7 @@ User accounts are intended to be global. Names must be unique across all namespa
 - [Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/)
 - [Service Account Configuration](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)
 
-## References
+### References
 
 ```yaml
 apiVersion: v1
