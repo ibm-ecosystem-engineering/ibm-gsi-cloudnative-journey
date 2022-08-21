@@ -68,7 +68,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/" target="_newwindow"> Update an application </a> | Learn how to perform a rolling update of an application | | 10 mins | |
     | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
     | <a href="https://developers.redhat.com/learn/openshift/deploy-spring-application-openshift" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
-    | [Cloud Native Development](../developer-foundstion/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
+    | [Cloud Native Development](../developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
     | [Continuous Integration](continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins | |
