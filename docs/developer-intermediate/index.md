@@ -61,8 +61,11 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
 
     | Assignment                      |   Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | <a href="https://www.katacoda.com/courses/docker/deploying-first-container" target="_newwindow"> Deploy a Redis Container </a> | Learn how to work with Docker Images by creating an instance of a Redis container. | | 10 mins | |
-    | <a href="https://www.katacoda.com/courses/docker/create-nginx-static-web-server" target="_newwindow"> Deploy a Nginx Container </a> | Learn how to create a Docker Image for running a static HTML website using Nginx. | | 5-10 mins | |
+    | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-interactive/" target="_newwindow"> Deploy a simple nginx container </a> | Learn how to create a Docker Image for running a static HTML website using Nginx. | | 10 mins | |
+    | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/explore/explore-intro/" target="_newwindow"> Explore a deployed container </a> | Explore the elements of a deployed application | | 5-10 mins | |
+    | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/" target="_newwindow"> Expose an application publicly </a> | Learn how to expose an application outside of the cluster | | 10 mins | |
+    | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/scale/scale-intro/" target="_newwindow"> Scale an application </a> | Learn how to create multiple instances of an application to meet demand | | 10 mins | |
+    | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/" target="_newwindow"> Update an application </a> | Learn how to perform a rolling update of an application | | 10 mins | |
     | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
     | <a href="https://developers.redhat.com/learn/openshift/deploy-spring-application-openshift" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
     | [Cloud Native Development](cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
@@ -103,12 +106,12 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | Recap | Recap of things learned in Day 1 & 2 | | 10 mins | |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
-    | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup) | 10 mins | |
-    | Inventory Application | Objective of the exercise | [Objective](inventory-app) | 15 mins | |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-svc/) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
+    | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup/) | 10 mins | |
+    | Inventory Application | Objective of the exercise | [Objective](inventory-app/) | 15 mins | |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
     | **Break** | | | 5 mins | |
-    | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
-    | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui) | 25 mins | |
+    | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
+    | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui/) | 25 mins | |
     | AppID | Authentication with AppID |[AppID](../developer-advanced-1/inventory-appid/) |10 mins | |
     | **Q & A** | | | 10 mins | |
     | **Optional: inventory-app) | 60 mins | |
@@ -117,13 +120,13 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
 
     | Assignment                      | Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | [Dev. Tools Setup](../getting-started/devenvsetup) | Setting up the Development Tools | | 10 mins | |
-    | [Objective](..//inventory-app) | Objective of the exercise | |15 mins | |
-    | [Inventory Backend](inventory-svc) | Creating the Inventory Service with Java | | 30 mins | |
-    | [Inventory BFF](inventory-bff) | Creating the Inventory BFF with GraphQL | | 25 mins | |
-    | [Inventory UI](inventory-ui) | Creating the UI microservice | | 25 mins | |
-    | [Inventory Backend with Cloudant](../developer-advanced-1/database-with-cloudant)| Cloudant Database integration | | 30 mins | |
-    | [Inventory UI with Appid](../developer-advanced-1/inventory-appid) | Protecting Inventory UI with Appid integration | | 30 mins | |
+    | [Dev. Tools Setup](../getting-started/devenvsetup/) | Setting up the Development Tools | | 10 mins | |
+    | [Objective](inventory-app/) | Objective of the exercise | |15 mins | |
+    | [Inventory Backend](inventory-service/) | Creating the Inventory Service with Java | | 30 mins | |
+    | [Inventory BFF](inventory-bff/) | Creating the Inventory BFF with GraphQL | | 25 mins | |
+    | [Inventory UI](inventory-ui/) | Creating the UI microservice | | 25 mins | |
+    | [Inventory Backend with Cloudant](../developer-advanced-1/database-with-cloudant/)| Cloudant Database integration | | 30 mins | |
+    | [Inventory UI with Appid](../developer-advanced-1/inventory-appid/) | Protecting Inventory UI with Appid integration | | 30 mins | |
 
 
 !!! success
