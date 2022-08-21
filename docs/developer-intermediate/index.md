@@ -61,13 +61,13 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
 
     | Assignment                      |   Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | <a href="https://www.katacoda.com/courses/docker/ deploying-first-container" target="_newwindow"> Deploy a Redis Container </a> | Learn how to work with Docker Images by creating an instance of a Redis container. | | 10 mins | |
+    | <a href="https://www.katacoda.com/courses/docker/deploying-first-container" target="_newwindow"> Deploy a Redis Container </a> | Learn how to work with Docker Images by creating an instance of a Redis container. | | 10 mins | |
     | <a href="https://www.katacoda.com/courses/docker/create-nginx-static-web-server" target="_newwindow"> Deploy a Nginx Container </a> | Learn how to create a Docker Image for running a static HTML website using Nginx. | | 5-10 mins | |
     | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
-    | <a href="https://learn.openshift.com/middleware/courses/middleware-spring-boot/spring-getting-started" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
-    | [Cloud Native Development](/ibm-gsi-cloudnative-journey/developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
-    | [Continuous Integration](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
-    | [Continuous Delivery](/ibm-gsi-cloudnative-journey/developer-intermediate/continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
+    | <a href="https://developers.redhat.com/learn/openshift/deploy-spring-application-openshift" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
+    | [Cloud Native Development](cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
+    | [Continuous Integration](continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
+    | [Continuous Delivery](continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins | |
 
     ## Day 2 (2.5 Hours)
@@ -77,13 +77,13 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Learn how to develop and deploy apps with enterprise DevSecOps** | | | | |
     | DevSecOps | DevSecOps Overview | [DevSecOps](content-overview) | 20 mins | |
     | Preparing for the Hands-On Labs | Setting up the Development  Tools | [Dev. Tools Setup](../getting-started/devenvsetup) | 10 mins | |
-    | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](../developer-intermediate/deploy-app) | 25 mins | |
+    | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Break** | | | 5 mins | |
-    | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/9ffe4934f586cf73b92b0f381cacb4a5" target="_blank" >Link</a> |
-    | Image Registry | Container Registry | [Image Registry](image-registry) | 10 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
-    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](developer-intermediate/artifact-management) | 10 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/bd7634595e924254d26c22672f88552a" target="_blank" >Link</a> |
-    | Monitoring | Sysdig Monitoring | [Monitoring](monitoring) | 5 mins | |
-    | Logging | Logging with LogDNA | [Logging](log-management) | 5 mins | |
+    | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/9ffe4934f586cf73b92b0f381cacb4a5" target="_blank" >Link</a> |
+    | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
+    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/bd7634595e924254d26c22672f88552a" target="_blank" >Link</a> |
+    | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 5 mins | |
+    | Logging | Logging with LogDNA | [Logging](log-management/) | 5 mins | |
     | Image Signing | Signing Container Images |  [Signing](https://develop.cloudnativetoolkit.dev/reference/tools/container-image-security-enforcement/) | 25 min | |
     | **Q & A** | | | 10 mins | |
 
@@ -105,11 +105,11 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup) | 10 mins | |
     | Inventory Application | Objective of the exercise | [Objective](inventory-app) | 15 mins | |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](/developer-intermediate/inventory-svc) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-svc/) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
     | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui) | 25 mins | |
-    | AppID | Authentication with AppID |[AppID](inventory-appid) |10 mins | |
+    | AppID | Authentication with AppID |[AppID](../developer-advanced-1/inventory-appid/) |10 mins | |
     | **Q & A** | | | 10 mins | |
     | **Optional: inventory-app) | 60 mins | |
 
