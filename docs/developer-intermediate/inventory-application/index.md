@@ -22,13 +22,13 @@ An [MVP](https://www.ibm.com/garage/method/practices/think/practice_minimum_viab
 
 We will build the Micro App using a three-tier microservices architecture. Each tier encapsulates a clean separation of concerns. Each app component will be modelled using _microservices_ and use a number of [polyglot](https://searchsoftwarequality.techtarget.com/definition/polyglot-programming) programming languages and frameworks. Data will be stored in IBM Cloudant and the Micro App will be secured using IBM App ID.
 
-![Architecture](../images/inventory-application/architecture.png)
+![Architecture](images/architecture.png)
 
 ### User interface
 
 The Micro App's user interface will look like this [wireframe](https://www.ibm.com/garage/method/practices/think/practice_wireframes/):
 
-![UI Design](../images/inventory-application/inventory-ui-design.png)
+![UI Design](images/inventory-ui-design.png)
 
 ### Technical Requirements
 

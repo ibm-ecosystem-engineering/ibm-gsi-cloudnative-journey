@@ -16,7 +16,7 @@ In IBM Garage Method, one of the Develop practices is to [automate continuous de
 
 In this standard Docker diagram, the acme.com domain is effectively an IBM Cloud region and the Docker private registry is the instance of IBM Cloud Container Registry in that region.
 
-![Docker Registry](../images/image-registry/docker-registry.png)
+![Docker Registry](images/docker-registry.png)
 
 The diagram shows these components and their relationships:
 - **Developer** builds the image; ideally it is automated as part of a CI pipeline
@@ -93,7 +93,7 @@ You can also see that the first two items in the list are not two separate image
 
 The registry in the IBM Cloud console shows the same images:
 
-![Registry Console](../images/image-registry/registry-console.png)
+![Registry Console](images/registry-console.png)
 
 It shows more clearly that each image has two tags, rather than being two different images.
 
@@ -131,7 +131,7 @@ Let's take a look at using the registry.
     - The registry is the IBM Cloud Container Registry for your region
 
 - In the registry, search for the image named for your project
-    ![Registry Console Images](../images/image-registry/console-image-list.png)
+    ![Registry Console Images](images/console-image-list.png)
 
 - In the CLI, run the corresponding command
     ```bash
@@ -141,14 +141,14 @@ Let's take a look at using the registry.
     ```
 
 - Back in the console, click on the image to see its details
-    ![Registry Console Image Details](../images/image-registry/console-image-details.png)
+    ![Registry Console Image Details](images/console-image-details.png)
 
 - Under **Security Status**, click on **5 issues** to see the issues that Vulnerability Advisor found in this image
     - What it found were configuration issues
-        ![Registry Console Image Issues Overview](../images/image-registry/console-image-issues-overview.png)
+        ![Registry Console Image Issues Overview](images/console-image-issues-overview.png)
 
     - Scroll down to see the list of configuration issues
-        ![Registry Console Image Issues Config](../images/image-registry/console-image-issues-config.png)
+        ![Registry Console Image Issues Config](images/console-image-issues-config.png)
 
 ## Conclusion
 

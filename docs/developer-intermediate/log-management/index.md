@@ -5,7 +5,7 @@ description: Use LogDNA to manage your running application's logs
 <!--- cSpell:ignore ICPA allapps openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 !!! Warning
-*Note* Only study this section if you are development on an OpenShift Development environment that is managed on IBM Cloud. If you are on AWS or Azure go to the [OpenShift Monitoring](./ocp-log-management.md) content
+*Note* Only study this section if you are development on an OpenShift Development environment that is managed on IBM Cloud. If you are on AWS or Azure go to the [OpenShift Monitoring](../ocp-log-management/) content
 
 In IBM Garage Method, one of the Operate practices is to [automate application monitoring](https://www.ibm.com/garage/method/practices/manage/practice_automated_monitoring/), including logging. Imagine your application isn't working right in production even though the environment is fine. What information would you want in your logs to help you figure out what's wrong with your application? Build logging messages for that information into your application.
 
@@ -27,18 +27,18 @@ explains how to open the web UI
 - In the IBM Cloud dashboard, navigate to **Observability** > **Logging**
 - Find the logging instance named after your environment's cluster, such as `showcase-dev-iks-logdna`. To help find it,
 you can filter by your resource group.
-    ![LogDNA Logging Instance](../images/log-management/logdna-logging-instance.png)
+    ![LogDNA Logging Instance](../../images/log-management/logdna-logging-instance.png)
 - In the logging instance, press the **View LogDNA** button to open the LogDNA web UI
 
 ## Give it a try
 
-Before you begin to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
+Before you begin to look at your application logs, make sure you have [deployed an app](../deploy-app/) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
 
 The **LogDNA** service is already created, bound and configured to listen to logs from your development cluster.
 
 - Open the LogDNA instance that is named the same as your development cluster
 - Click on **All Apps** and enter the name of your app, or, to narrow the app selection, use the suffix that you used to create it
-![AllAps](../images/log-management/allapps.png)
+![AllAps](../../images/log-management/allapps.png)
 - Select the app you want to monitor
 
 - You will now see just the logs for your app
@@ -52,7 +52,7 @@ The **LogDNA** service is already created, bound and configured to listen to log
 
 - You will see the errors appearing in **LogDNA** triggered by your application
 
-![Error](../images/log-management/errorcondition.png)
+![Error](../../images/log-management/errorcondition.png)
 
 - Try scaling your pods for the app and calling the API again. Watch the logs and see where the API call is being routed and which pod is triggering the error
 

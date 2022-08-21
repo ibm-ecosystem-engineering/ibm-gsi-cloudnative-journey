@@ -81,23 +81,23 @@ description: Lab for continuous delivery using ArgoCD
 
     - You will now see the available apps.
 
-   ![sampleapp create](./images/sampleapp_create.png)
+   ![sampleapp create](images/sampleapp_create.png)
 
     - Initially, the app will be out of sync. It is yet to be deployed. You need to sync it for deploying.
 
     To sync the application, click `SYNC` and then `SYNCHRONIZE`.
 
-    ![out of sync](./images/out_of_sync.png)
+    ![out of sync](images/out_of_sync.png)
 
     - Wait till the app is deployed.
 
-    ![synched app](./images/synched_app.png)
+    ![synched app](images/synched_app.png)
 
     - Once the app is deployed, click on it to see the details.
 
-    ![sample app deployed](./images/sample_app_deployed.png)
+    ![sample app deployed](images/sample_app_deployed.png)
 
-    ![sample app full deployment](./images/sample_app_full_deployment.png)
+    ![sample app full deployment](images/sample_app_full_deployment.png)
 
     ## Verifying the deployment
 
@@ -248,7 +248,7 @@ description: Lab for continuous delivery using ArgoCD
     argocd-server-b54756f69-jncc9
     ```
 
-    ![ArgoCD Login](./images/argocd_login.png)
+    ![ArgoCD Login](images/argocd_login.png)
 
     - Now go back to the ArgoCD home and click on `NEW APP`.
     - Add the below details:
@@ -259,33 +259,33 @@ description: Lab for continuous delivery using ArgoCD
     - Revision: `HEAD`
     - Path: `kubernetes`
 
-    ![app details one](./images/app_argo_1.png)
+    ![app details one](images/app_argo_1.png)
 
     - Cluster - Select the default one `https://kubernetes.default.svc` to deploy in-cluster
     - Namespace - `default`
     - Click Create to finish
 
-    ![app details two](./images/app_argo_2.png)
+    ![app details two](images/app_argo_2.png)
 
     - You will now see the available apps.
 
-    ![sampleapp create](./images/sampleapp_create.png)
+    ![sampleapp create](images/sampleapp_create.png)
 
     - Initially, the app will be out of sync. It is yet to be deployed. You need to sync it for deploying.
 
     To sync the application, click `SYNC` and then `SYNCHRONIZE`.
 
-    ![out of sync](./images/out_of_sync.png)
+    ![out of sync](images/out_of_sync.png)
 
     - Wait till the app is deployed.
 
-    ![synched app](./images/synched_app.png)
+    ![synched app](images/synched_app.png)
 
     - Once the app is deployed, click on it to see the details.
 
-    ![sample app deployed](./images/sample_app_deployed.png)
+    ![sample app deployed](images/sample_app_deployed.png)
 
-    ![sample app full deployment](./images/sample_app_full_deployment.png)
+    ![sample app full deployment](images/sample_app_full_deployment.png)
 
     ## Verifying the deployment
 

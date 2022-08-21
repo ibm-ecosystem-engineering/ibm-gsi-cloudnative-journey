@@ -10,7 +10,7 @@
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-  ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
+  ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
 
 We have provided a simplified installer that will install tools and configure the shell environment. The installer will first check if the required tool is available in the path. If not, the missing tool(s) will be installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the `.bashrc` or `.zshrc` file to include that directory.
 
@@ -55,14 +55,14 @@ The following tools are included in the shell installer:
    ```
 
     - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-      ![OpenShift](../images/common/openshiftcluster.png)
+      ![OpenShift](../../images/common/openshiftcluster.png)
 
     - Access the OpenShift console from within that console by clicking on the button.
-      ![OpenShift Console](../images/common/openshiftconsole.png)
+      ![OpenShift Console](../../images/common/openshiftconsole.png)
 
     - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
 
-      ![OpenShift Login](../images/common/LoginCommand.png)
+      ![OpenShift Login](../../images/common/LoginCommand.png)
 
     - click on Display Token, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
 
@@ -156,27 +156,27 @@ Create the initial project and register it with a pipeline for automated builds.
 === "Cloud Shell" 
     - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
-      ![View App](../images/inventory-service/viewapp.png)
+      ![View App](../../images/inventory-service/viewapp.png)
 === "Gitpod" 
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
     
     - Selecting "Open Preview" opens a window inside gitpod workspace tab.
     
-      ![OpenPreview](../images/inventory-service/gitpod02.png)
+      ![OpenPreview](../../images/inventory-service/gitpod02.png)
     
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
 === "Code Ready Workspaces" 
     - Click on yes
-      ![CRW Open Link](../images/inventory-service/crwexposeservice.png)
+      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
     
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
     
     - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../images/inventory-service/crwopenapp.png)
+      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
 
 === "Desktop/Laptop" 
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html){:target='blank'}
@@ -397,24 +397,24 @@ for the REST service.
 === "Cloud Shell"
     - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
-      ![View App](../images/inventory-service/viewapp.png)
+      ![View App](../../images/inventory-service/viewapp.png)
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
     - Selecting "Open Preview" opens a window inside gitpod workspace tab.
     
-      ![OpenPreview](../images/inventory-service/gitpod02.png)
+      ![OpenPreview](../../images/inventory-service/gitpod02.png)
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 === "Code Ready Workspaces"
     - Click on yes
-      ![CRW Open Link](../images/inventory-service/crwexposeservice.png)
+      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
     
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
     
     - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../images/inventory-service/crwopenapp.png)
+      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
 === "Desktop/Laptop"
     - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should see the stock item entry in the list
 ---
@@ -721,31 +721,31 @@ should be placed in a component that is given a `@Service` annotation.
 === "Cloud Shell"
     - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
     
-      ![View App](../images/inventory-service/viewapp.png)
+      ![View App](../../images/inventory-service/viewapp.png)
 
 
 === "Gitpod"
 
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
     
     - Selecting "Open Preview" opens a window inside gitpod workspace tab.
     
-      ![OpenPreview](../images/inventory-service/gitpod02.png)
+      ![OpenPreview](../../images/inventory-service/gitpod02.png)
     
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
 === "Code Ready Workspaces"
 
     - Click on yes
-      ![CRW Open Link](../images/inventory-service/crwexposeservice.png)
+      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
     
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
     
     - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../images/inventory-service/crwopenapp.png)
+      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
 
 === "Desktop/Laptop"
     - Open a browser to `http://localhost:9080/swagger-ui.html`
@@ -906,7 +906,7 @@ should be placed in a component that is given a `@Service` annotation.
   ```
 
   You should see new routes on the Swagger UI.
-  ![Swagger UI](../images/inventory-service/swaggerui.png)
+  ![Swagger UI](../../images/inventory-service/swaggerui.png)
 
 - Commit and push the changes to Git to trigger build pipeline on your OpenShift cluster.
 

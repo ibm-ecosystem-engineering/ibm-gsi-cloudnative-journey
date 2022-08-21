@@ -20,7 +20,7 @@ Open the Sysdig web UI for your environment's cluster
 - [Step 4: Launch the web UI](https://cloud.ibm.com/docs/monitoring?topic=monitoring-getting-started#getting-started-step5) explains how to open the web UI
     - In the IBM Cloud dashboard, navigate to **Observability** > **Monitoring**
     - Find the monitoring instance named after your environment's cluster, such as `showcase-dev-iks-sysdig`
-    ![Sysdig Monitoring Instance](../images/monitoring/sysdig-monitoring-instance.png)
+    ![Sysdig Monitoring Instance](../../images/monitoring/sysdig-monitoring-instance.png)
     - In the monitoring instance, press the **View Sysdig** button to open the Sysdig web UI
 
 ### Explore your application
@@ -47,7 +47,7 @@ of the Getting started tutorial gives some instructions on monitoring, managing,
 
 ## Give it a try
 
-Before you begin to monitor your application instances, make sure that you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. This _Give it a Try_ uses [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
+Before you begin to monitor your application instances, make sure that you have [deployed an app](../deploy-app/) into your development cluster. This _Give it a Try_ uses [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
 
 The **SysDig** service is already created, bound and configured to listen to monitoring metrics and events for your development cluster. You can see this in the HTTP overview.
 
@@ -68,7 +68,7 @@ Take a look at the metrics for your app.
 
     The Overview by Container dashboard shows metrics for the containers in your app. You will now see just the metrics for your app. You can view at different levels--from pod to namespace to node to cluster--giving you a fine grain access to your monitoring requirements.
 
-    ![Metrics View](../images/monitoring/appview.png)
+    ![Metrics View](../../images/monitoring/appview.png)
 
 ## Conclusion
 

@@ -103,7 +103,7 @@ process.
 
   Press **Create repository from template**
 
-  ![Template](../images/common/template.png)
+  ![Template](images/template.png)
 
 - The new repository will be created in your selected organization.
 

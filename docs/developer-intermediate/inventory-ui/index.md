@@ -12,7 +12,7 @@ If you don't plan to use your workstation to run this lab, you can use IBM Cloud
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-   ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
+   ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
 
 ### Setup your shell environment
 
@@ -63,15 +63,15 @@ The following tools are included in the shell installer:
 
 - Log in to OpenShift Cluster from the cloud console. Go to Resource listStockItems and click on the cluster:
 
-    ![OpenShift](../images/common/openshiftcluster.png)
+    ![OpenShift](../../images/common/openshiftcluster.png)
 
 - Access the OpenShift console from within that console by clicking on the button.
 
-    ![OpenShift Console](../images/common/openshiftconsole.png)
+    ![OpenShift Console](../../images/common/openshiftconsole.png)
 
 - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
 
-    ![OpenShift Login](../images/common/LoginCommand.png)
+    ![OpenShift Login](../../images/common/LoginCommand.png)
 
 - click on **_Display Token_**, copy the Login with the token. `oc login` command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
@@ -248,7 +248,7 @@ Based on the requirements of this first use case, we will create a `StockItemLis
       ```
 
 - Open the application to check that you can now navigate to the ***Stock Items*** view:
-    ![Stock Items view](../images/inventory-ui/ui-init-components.png)
+    ![Stock Items view](../../images/inventory-ui/ui-init-components.png)
 
 - With the application running in the first terminal, open a second terminal in the repository directory and push the changes we've just made:
     ```bash
@@ -549,7 +549,7 @@ Now that we have a mock service that injects data, we can build an implementatio
     ```
 
 - Open the application to check that your app is now retrieving data from BFF GraphQL endpoint:
-    ![GraphQL data view](../images/inventory-ui/ui-graphql-data.png)
+    ![GraphQL data view](../../images/inventory-ui/ui-graphql-data.png)
 
 - Modify `connectsTo` property to the `values.yaml` file of the Helm chart. The value of the property should match the Kubernetes service of the microservice. (For template projects, the service name is the same as the name of the application which is that same as the name of the repository):
     ```yaml title="chart/base/values.yaml"

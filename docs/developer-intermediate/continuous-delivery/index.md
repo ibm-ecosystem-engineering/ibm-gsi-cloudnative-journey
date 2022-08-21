@@ -11,7 +11,7 @@ Continuous Integration, Delivery, and Deployment are important devOps practices 
 - **Continuous Delivery** comes after Continuous Integration. It prepares the code for release. It automates the steps that are needed to deploy a build.
 - **Continuous Deployment** is the final step which succeeds Continuous Delivery. It automatically deploys the code whenever a code change is done. Entire process of deployment is automated.
 
-![cicd](../images/continuous-delivery/cicd.png)
+![cicd](images/cicd.png)
  
 
 ## What is continuous delivery
@@ -38,7 +38,7 @@ Check these guides out if you want to know more about Argo - [Argo CD - Declarat
 
 Continuous Delivery is the next step for Continuous Integration. The artifacts produced in the Continuous Integration stage will be deployed on a production like environment. It is more about making sure that the software is ready to be released and it can be deployed to production like environment at any time.
 
-![cd process](../images/continuous-delivery/cd_process.png)
+![cd process](images/cd_process.png)
 
 Developer initially write code to implement a feature or make a change, compile it, and runs all the required tests. If it is running fine and working well, the next thing is to decide the release to the customer. Before doing the release, there are so many things one should take care of. We need to make sure all the configurations are done properly. Respective configuration files should be replaced correctly in the corresponding environments. Also, backups of the previous version of the software should be taken just in case to use them if the system breaks. There may be need to stop some of the services. For example, if your release involves updating the database, you need to stop some of the services which use that database. Also, when this process is done, we need to turn on the maintenance page because we don't want our users to panic seeing this site can't be reached. After doing all this, we test the software and if the tests are all working, we can restart the service we stopped previously.
 
@@ -50,7 +50,7 @@ To make lives easier and not to miss any of the steps, automated deployment is n
 
 Continuous Deployment is the final step. In this stage, every change goes through the pipeline and if it passes all the tests, the code will be deployed into the production automatically. Every step should be automated in this process and the release quality depends mostly on the test suite as everything is automated.
 
-![cd deploy](../images/continuous-delivery/cdply_process.png)
+![cd deploy](images/cdply_process.png)
 
 All the steps that apply in Continuous Delivery also applies here. You may do some things manually in case of Continuous Delivery but in Continuous Deployment, everything is automated. So, basically every piece of code that is pushed in to the SCM system gets automatically deployed in production like environment if the build is successful. The rationale behind the process is that you are going to deploy the code to production sooner or later anyway.
 

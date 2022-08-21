@@ -3,7 +3,7 @@
 
 The Inventory BFF's role in the architecture is to act as an orchestrator between the core business services and the specific digital channel it is focused on supporting. This class article will give you more detail about the [Backend For Frontend architectural pattern](https://samnewman.io/patterns/architectural/bff/) and the benefits.
 
-| ![BFF Overview](../images/inventory-bff/bff-overview.jpeg) |
+| ![BFF Overview](images/bff-overview.jpeg) |
 |:--:|
 | *Backend For Frontend pattern Overview - [source](https://samnewman.io/patterns/architectural/bff/)* |
 
@@ -19,7 +19,7 @@ If you don't plan to use your workstation to run this lab, you can use IBM Cloud
 
 - Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
 
-   ![Invoke Cloud Shell](../images/common/invokecloudshell.png)
+   ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
 
 ### Setup your shell environment
 
@@ -70,15 +70,15 @@ The following tools are included in the shell installer:
 
 - Log in to OpenShift Cluster from the cloud console. Go to Resource listStockItems and click on the cluster:
 
-    ![OpenShift](../images/common/openshiftcluster.png)
+    ![OpenShift](../../images/common/openshiftcluster.png)
 
 - Access the OpenShift console from within that console by clicking on the button.
 
-    ![OpenShift Console](../images/common/openshiftconsole.png)
+    ![OpenShift Console](../../images/common/openshiftconsole.png)
 
 - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
 
-    ![OpenShift Login](../images/common/LoginCommand.png)
+    ![OpenShift Login](../../images/common/LoginCommand.png)
 
 - click on **_Display Token_**, copy the Login with the token. `oc login` command  will log you in. Run the login command in the cloud shell terminal:
     ```bash
@@ -200,16 +200,16 @@ by a component and provide a good way to load the modules that will be injected 
 === "Cloud Shell" 
     - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
 
-    ![View App](../images/inventory-service/viewapp.png)
+    ![View App](../../images/inventory-service/viewapp.png)
 
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
 
 === "Code Ready Workspaces"
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
 
 === "Desktop/Laptop" 
     - Open a browser to `http://localhost:3000/api-docs` to see the swagger page
@@ -223,7 +223,7 @@ by a component and provide a good way to load the modules that will be injected 
     git push
     ```
 
-- On the openshift console, open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
+- On the openshift console, open the [pipeline to see it running](../deploy-app/#6-view-your-application-pipeline).
 
 ## Update the controller to call a service
 
@@ -423,16 +423,16 @@ into javascript and to put the business logic in a separate service component.
 === "Cloud Shell" 
     - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
 
-    ![View App](../images/inventory-service/viewapp.png)
+    ![View App](../../images/inventory-service/viewapp.png)
 
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
 
 === "Code Ready Workspaces"
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
 
 === "Desktop/Laptop" 
     - Open a browser to `http://localhost:3000/api-docs` to see the swagger page
@@ -526,16 +526,16 @@ for GraphQL.
 === "Cloud Shell" 
     - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
 
-    ![View App](../images/inventory-service/viewapp.png)
+    ![View App](../../images/inventory-service/viewapp.png)
 
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../images/inventory-service/gitpod01.png)
+      ![View App](../../images/inventory-service/gitpod01.png)
 
 === "Code Ready Workspaces"
     - Click on open link
-      ![CRW Open Link](../images/inventory-service/crwopenlink.png)
+      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
 
 === "Desktop/Laptop" 
     - Open GraphQL Playground: `http://localhost:3000/graphql`

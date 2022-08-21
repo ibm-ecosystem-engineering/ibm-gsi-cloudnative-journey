@@ -23,18 +23,18 @@ explains how to open the web UI
 - In the IBM Cloud dashboard, navigate to **Observability** > **Logging**
 - Find the logging instance named after your environment's cluster, such as `showcase-dev-iks-logdna`. To help find it,
 you can filter by your resource group.
-    ![LogDNA Logging Instance](../images/log-management/logdna-logging-instance.png)
+    ![LogDNA Logging Instance](../../images/log-management/logdna-logging-instance.png)
 - In the logging instance, press the **View LogDNA** button to open the LogDNA web UI
 
 ## Give it a try
 
-Before you begin to look at your application logs, make sure you have [deployed an app](/developer-intermediate/deploy-app) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
+Before you begin to look at your application logs, make sure you have [deployed an app](../deploy-app/) into your development cluster. Each of the template apps has a logging framework included, this _Give it a Try_ will use [template-node-typescript](https://github.com/IBM/template-node-typescript) as an example.
 
 The **LogDNA** service is already created, bound and configured to listen to logs from your development cluster.
 
 - Open the LogDNA instance that is named the same as your development cluster
 - Click on **All Apps** and enter the name of your app, or, to narrow the app selection, use the suffix that you used to create it
-![AllAps](../images/log-management/allapps.png)
+![AllAps](../../images/log-management/allapps.png)
 - Select the app you want to monitor
 
 - You will now see just the logs for your app
@@ -48,7 +48,7 @@ The **LogDNA** service is already created, bound and configured to listen to log
 
 - You will see the errors appearing in **LogDNA** triggered by your application
 
-![Error](../images/log-management/errorcondition.png)
+![Error](../../images/log-management/errorcondition.png)
 
 - Try scaling your pods for the app and calling the API again. Watch the logs and see where the API call is being routed and which pod is triggering the error
 
