@@ -297,7 +297,7 @@ service mesh. And later comes the rest of them like networking,
 distributed database, messaging, container runtime, and software
 distribution based on your requirements.
 
-![CNCF\_TrailMap\_latest.png](../images/cloud-native-overview/CNCF_TrailMap_latest.png)
+![CNCF\_TrailMap\_latest.png](images/CNCF_TrailMap_latest.png)
 
 -   You cannot build cloud-native applications without containerization.
     This helps your application to run in any computing

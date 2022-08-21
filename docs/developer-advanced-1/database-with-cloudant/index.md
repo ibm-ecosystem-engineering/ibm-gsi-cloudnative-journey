@@ -13,7 +13,7 @@ title: Database with Cloudant
 - Click on the Service Credentials on the left-hand menu.
 
 - You will see the credentials for the database which will be something like this:
-![Service Credentials](../images/database-with-cloudant/cloudantcredentials.png)
+![Service Credentials](images/cloudantcredentials.png)
 
 - Open a terminal window folder/directory called `data`
     ```bash
@@ -56,7 +56,7 @@ You can get the credentials from the Cloudant credentials view in the IBM Cloud 
 - Click on the Left icon that looks like a Database and you will see the `inventory-<namespace>` database created.
 - Click on the `inventory` database, then click **Table** view.
 - You can see the rows of data
-    ![Database](../images/database-with-cloudant/database.png)
+    ![Database](images/database.png)
 
 - If you click on a row of data, you will see the raw NoSQL form of the data record.
 - This completes the setup of the database and populating it with data.
@@ -82,7 +82,7 @@ If you are starting from the solution, use the following steps to enable the Clo
 
 - Select the role "Manager"
 
-  ![Manager Service Credentials](../images/database-with-cloudant/Cloudant-Service-Credentials.png)
+  ![Manager Service Credentials](images/Cloudant-Service-Credentials.png)
 
 - Navigate to your namespace where you are running the inventory solution pipeline and create the binding secret for  the Cloudant instance on the cloud account
   ```bash 
@@ -649,23 +649,23 @@ existing `env` block
 === "Cloud Shell" 
     - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
-      ![View App](../images/database-with-cloudant/viewapp.png)
+      ![View App](images/viewapp.png)
 === "Gitpod" 
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
 
-      ![View App](../images/database-with-cloudant/gitpod01.png)
+      ![View App](images/gitpod01.png)
 
     - Selecting "Open Preview" opens a window inside gitpod workspace tab.
 
-      ![OpenPreview](../images/database-with-cloudant/cloudantgitpodscreen.png)
+      ![OpenPreview](images/cloudantgitpodscreen.png)
 
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 === "Cloud Ready Workspaces"
     - Click on open link 
-      ![CRW Open Link](../images/database-with-cloudant/crwopenlink.png)
+      ![CRW Open Link](images/crwopenlink.png)
 
     - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../images/database-with-cloudant/crwopenapp.png)
+      ![CRW Open App](images/crwopenapp.png)
 === "Desktop/Laptop" 
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
 ---
@@ -675,7 +675,7 @@ existing `env` block
 -  You should be able to see all the data you pushed to the database
    through ./dataload.sh
 
-   ![ResultScreen](../images/database-with-cloudant/ResultScreen.png)
+   ![ResultScreen](images/ResultScreen.png)
 
 Prebuilt solution for this can be found here: [Inventory Management Service Cloudant solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-cloudant)
 !!! note

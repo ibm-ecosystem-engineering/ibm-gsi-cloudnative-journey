@@ -4,7 +4,7 @@ IBM Code Engine
 ---
 <!--- cSpell:ignore appdeploy springboot appbuild popout appdev sourcecode strategyconfig sourceconfig imgregistry imgreference iamapikey APIKEYS ceproject ceprojects ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 ## Introduction
-IBM Code Engine is a fully managed, serverless platform that runs the containerized workloads. These workloads includes web apps, microservices, event-driven functions, or batch jobs. Code Engine can also help to build the container images/code-engine from the source code. Code Engine is designed to focus on the application to solve the business problem with no barrier on the infrastructure.
+IBM Code Engine is a fully managed, serverless platform that runs the containerized workloads. These workloads includes web apps, microservices, event-driven functions, or batch jobs. Code Engine can also help to build the container images from the source code. Code Engine is designed to focus on the application to solve the business problem with no barrier on the infrastructure.
 
 ## Setting up the project in the Code Engine
 
@@ -19,11 +19,11 @@ Follow the below steps to create a project in the Code Engine.
 - Choose the resource group under which the project to be deployed. Also specify the tags under which the project be identified
 - The click on the **Create** Button to create the project
 
-![CodeEngine Project](../images/code-engine/code-engine/ceproject.png)
+![CodeEngine Project](images/ceproject.png)
 
 - After few minutes you will notice the project is created and listed as part of the **Projects** tab in the Code Engine
 
-![CodeEngine Project List](../images/code-engine/ceprojects-list.png)
+![CodeEngine Project List](images/ceprojects-list.png)
 
 ## Configuring and Deploying Applications in the Code Engine
 
@@ -34,7 +34,7 @@ Follow the below steps to create a project in the Code Engine.
 - Recently updated section provides information about the recently updated applications and jobs
 - The section will get refreshed as the applications, jobs get deployed to the project
 
-![CodeEngine Project OverView](../images/code-engine/ceprojects-overview.png)
+![CodeEngine Project OverView](images/ceprojects-overview.png)
 
 
 ### Configuring the Registry Access
@@ -51,23 +51,23 @@ As a first step to deploy the an application configure the Image Registry access
 - Provide the Email details as part of the E-mail
 - Now click on the **Add** button to create the registry access
 
-![CodeEngine Access Registry](../images/code-engine/ce-access-registry.png)
+![CodeEngine Access Registry](images/ce-access-registry.png)
 
 - Now the registry access is created and listed as part of the **Registry access** tab in the Code Engine
 
-![CodeEngine Project List](../images/code-engine/ce-registry-list.png)
+![CodeEngine Project List](images/ce-registry-list.png)
 
 
 ### Deploying Applications in the Code Engine
 
 Deploying on an application in the Code Engine can be done multiple choices.  It can deployed using the 
-1. Container images/code-engine from the Image Repository
+1. Container images from the Image Repository
 1. Source from the public git repo 
 1. Source from the private/enterprise git repo. 
 
 The first and second option stated above are simply straight forward, but the deployment from private or enterprise repo will need SSH Keys and Code Engine CLI for Secured Deployment.
 
-#### Deploying Application from the Container images/code-engine
+#### Deploying Application from the Container images
 
 - Navigate to the **Applications** Section in the left nav.
 - Click on the **Create application** button on top of the applications list table
@@ -77,7 +77,7 @@ The first and second option stated above are simply straight forward, but the de
 - Now Select the **configure Image** option to deploy your application directly from the Image Registry
 - Configure the image registry by providing the registry server, registry access, namespace, repository and tag for the image registry from the Application to Deployed. Ensure the registry has already configured as part of the Registry access discussed earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
-![CodeEngine Application Deployment Image Reference](../images/code-engine/ce-appdeploy-imgreference.png)
+![CodeEngine Application Deployment Image Reference](images/ce-appdeploy-imgreference.png)
   
   - Here select the Image Registry name already configured as part of the **Registry access**. Alternatively Registry Access can be added here as well by clicking the button **Add registry**
   - Select the namespace where the application image repo exists.
@@ -87,7 +87,7 @@ The first and second option stated above are simply straight forward, but the de
   - If the Image reference needs to be changed, Click on the **Edit image details** link
 
 - Now configure the Runtime settings, by expanding the **Runtime settings**
-![CodeEngine Application Deployment Runtime](../images/code-engine/ce-appdeploy-runtime.png)
+![CodeEngine Application Deployment Runtime](images/ce-appdeploy-runtime.png)
 
   - Provide Memory configuration for the application as part of Memory (MiB) in the **Instance** section. By default 1024MB is provided
   - Provide CPU cores for the application as part of CPU (vCPU) in the **Instance** section. By default 0.1vCPU core is provided
@@ -97,7 +97,7 @@ The first and second option stated above are simply straight forward, but the de
 
 - Environment Variables can be configured in the **Environment Variables** section. Basically it is a name, value pair that is used in the application.
 - Now click on the  **Create** button on the right side to create the application
-![CodeEngine Application Deployment Image Registry](../images/code-engine/ce-appdeploy-imgregistry.png)
+![CodeEngine Application Deployment Image Registry](images/ce-appdeploy-imgregistry.png)
 
 - After few minutes the application will be deployed and be listed as part of the Application List.
 
@@ -116,7 +116,7 @@ The first and second option stated above are simply straight forward, but the de
   - Provide the context directory (optional), if the source directory is different from the root directory.
   - Then click on the **Next button** to provide the Strategy configuration
 
-![CodeEngine Application Deployment Config Source Repo](../images/code-engine/ce-appdeploy-sourceconfig.png)
+![CodeEngine Application Deployment Config Source Repo](images/ce-appdeploy-sourceconfig.png)
 
 - The second step is to configure the *Strategy* Configuration.
   - If Dockerfile is the strategy, provide the Dockerfile name to be used for the build. Default is 'Dockerfile'
@@ -124,7 +124,7 @@ The first and second option stated above are simply straight forward, but the de
   - Select one of the Build Resources to be used for the build execution
   - Then click on the **Next button** to proceed for the output section
 
-![CodeEngine Application Deployment Config Strategy Repo](../images/code-engine/ce-appdeploy-strategyconfig.png)
+![CodeEngine Application Deployment Config Strategy Repo](images/ce-appdeploy-strategyconfig.png)
     
 - The final step is to Configure the image registry
   - Here select the Image Registry name already configured as part of the **Registry access**. Alternatively Registry Access can be added here as well by clicking the button **Add registry**
@@ -134,10 +134,10 @@ The first and second option stated above are simply straight forward, but the de
   - Click Done to specify the Image for the deployed. The same now will appear as part of the **Image Reference**
   - If the Image reference needs to be changed, Click on the **Edit image details** link
 
-![CodeEngine Application Deployment Image Reference](../images/code-engine/ce-appdeploy-imgreference.png)
+![CodeEngine Application Deployment Image Reference](images/ce-appdeploy-imgreference.png)
 
 - Now configure the Runtime settings, by expanding the **Runtime settings**
-![CodeEngine Application Deployment Runtime](../images/code-engine/ce-appdeploy-runtime.png)
+![CodeEngine Application Deployment Runtime](images/ce-appdeploy-runtime.png)
 
   - Provide Memory configuration for the application as part of Memory (MiB) in the **Instance** section. By default 1024MB is provided
   - Provide CPU cores for the application as part of CPU (vCPU) in the **Instance** section. By default 0.1vCPU core is provided
@@ -147,7 +147,7 @@ The first and second option stated above are simply straight forward, but the de
 
 - Environment Variables can be configured in the **Environment Variables** section. Basically it is a name, value pair that is used in the application.
 - Now click on the  **Create** button on the right side to create the application
-![CodeEngine Application Deployment Source Repo](/images/code-engine/ce-appdeploy-sourcecode.png)
+![CodeEngine Application Deployment Source Repo](/images/ce-appdeploy-sourcecode.png)
 
 - After few minutes the application will be deployed and be listed as part of the Application List.
 
@@ -191,7 +191,7 @@ Deploying Application from a Private/Enterprise git repo is a four step activiti
     ibmcloud ce repo list 
  ```
 
-2. Create images/code-engine from the private repo
+2. Create images from the private repo
 
 The build configuration for the Code Engine can be created using code engine (ce) cli. The create the build image from the private repo using the secret access, the below cli to be used
 - ```bash
@@ -209,7 +209,7 @@ The build configuration for the Code Engine can be created using code engine (ce
     ibmcloud ce bd create --name <<Your build name>> --image <<Image Repo Path>> --source <<Private Git Repository>> --registry-secret <<Registry access name created>> --git-repo-secret <<git repo secret created in previous step>>
  ```
 
-3. Submit Build images/code-engine from the private Source repo 
+3. Submit Build images from the private Source repo 
 
 Once the build is created, the next step is to submit build to create the application image from the source repo. This can be done both in User interface oo CLI. Let see, how this can be done from the User interface.
 
@@ -219,15 +219,15 @@ Once the build is created, the next step is to submit build to create the applic
 - Access the image builds that is created.
 - Now you will be able to view the configuration as part of the **Source**, **Strategy**, **Output** tabs configured in the previous step.
 - The build is configured from the previous step. Now Click on the **Submit build** button to build the application image from the repo. 
-![CodeEngine Application Build submit](../images/code-engine/ce-appbuild-submit.png)
+![CodeEngine Application Build submit](images/ce-appbuild-submit.png)
 - It will take few mins to complete the build and generate-push the application image to the image repository. The status and history of the build will be shown part of the build runs table. 
-![CodeEngine Application Build Runs-History](../images/code-engine/ce-appbuild-runs.png)
+![CodeEngine Application Build Runs-History](images/ce-appbuild-runs.png)
 - Once the build is completed, the status will be shown as "succeeded"
 
 
 4. Deploying the Application from the Image Registry
 
-Once the build submit is succeeded in the previous step, the application will be available in the Image registry configured earlier. Now the application has be deployed from the Image registry following Deploying Application from the Container images/code-engine
+Once the build submit is succeeded in the previous step, the application will be available in the Image registry configured earlier. Now the application has be deployed from the Image registry following Deploying Application from the Container images
 
 
 - Navigate to the **Applications** Section in the left nav.
@@ -237,7 +237,7 @@ Once the build submit is succeeded in the previous step, the application will be
 - Now Select the **Container Image** option to deploy your application directly from the Image Registry
 - Provide the image registry from the Application to Deployed. The format is "registry/namespace/repository:tag". The tag is optional, if not specified, the latest would be applied. ex: us.icr.io/appdev-cloud-native/ce-springboot. Ensure the registry has already configured as part of the Registry access discussed earlier.
 - The above can be configured by clicking the button **Specify image reference**. 
-![CodeEngine Application Deployment Image Reference](../images/code-engine/ce-appdeploy-imgreference.png)
+![CodeEngine Application Deployment Image Reference](images/ce-appdeploy-imgreference.png)
 
   - Here select the Image Registry name already configured as part of the **Registry access**. Alternatively Registry Access can be added here as well by clicking the button **Add registry**
   - Select the namespace where the application image repo exists.
@@ -247,7 +247,7 @@ Once the build submit is succeeded in the previous step, the application will be
   - If the Image reference needs to be changed, Click on the **Edit image details** link
 
 - Now configure the Runtime settings, by expanding the **Runtime settings**
-![CodeEngine Application Deployment Runtime](../images/code-engine/ce-appdeploy-runtime.png)
+![CodeEngine Application Deployment Runtime](images/ce-appdeploy-runtime.png)
   - Provide Memory configuration for the application as part of Memory (MiB) in the **Instance** section. By default 1024MB is provided
   - Provide CPU cores for the application as part of CPU (vCPU) in the **Instance** section. By default 0.1vCPU core is provided
   - Provide the timeout for request in seconds as part of Timeout (seconds) in the **Requests** section. By default 300 seconds is considered.
@@ -256,7 +256,7 @@ Once the build submit is succeeded in the previous step, the application will be
 
 - Environment Variables can be configured in the **Environment Variables** section. Basically it is a name, value pair that is used in the application.
 - Now click on the  **Create** button on the right side to create the application
-![CodeEngine Application Deployment Image Registry](../images/code-engine/ce-appdeploy-imgregistry.png)
+![CodeEngine Application Deployment Image Registry](images/ce-appdeploy-imgregistry.png)
 
 - After few minutes the application will be deployed and be listed as part of the Application List.
 

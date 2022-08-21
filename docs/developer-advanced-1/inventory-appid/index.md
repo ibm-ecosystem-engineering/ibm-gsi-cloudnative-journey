@@ -16,7 +16,7 @@ The following prerequisites are required for AppID integration:
 - An instance of the App ID service:
   In IBM Cloud Dashboard, go to "Services" and select the AppID instance.
   
-  ![AppID Service](../images/inventory-appid/AppIdIntegration01.png)
+  ![AppID Service](images/AppIdIntegration01.png)
 
 - A set of service credentials:
     - In AppID instance, go to "Application". 
@@ -25,12 +25,12 @@ The following prerequisites are required for AppID integration:
     - Select the type as Regular web application.
     - Click on Save to create the service credentials for your application.
    
-    ![AppID Credentials Creation](../images/inventory-appid/AppIdInt02a.png)
+    ![AppID Credentials Creation](images/AppIdInt02a.png)
 
     - After saving, your application credentials will get created.Click on the down Arrow at 
     the left end of your application name and get the credentials.
     
-    ![AppID Credentials Creation](../images/inventory-appid/AppidInt03.png)
+    ![AppID Credentials Creation](images/AppidInt03.png)
     
 
 - `yarn` version 1.22.19 or higher.
@@ -61,7 +61,7 @@ The following prerequisites are required for AppID integration:
   ```
 - Login to your ocp cluster using the oc cli.
 
-  ![Openshift cli login Page](../images/inventory-appid/ocp-cli-login.png)  
+  ![Openshift cli login Page](images/ocp-cli-login.png)  
 
   - Click on "Copy Login Command". It will redirect to a new page.  
 
@@ -171,7 +171,7 @@ The following prerequisites are required for AppID integration:
 
 - Open the AppID instance to the `Manage Authentication` -> `Authentication Settings` view
 
-    ![AppID authentication settings](../images/inventory-appid/appid-authentication-settings.png)
+    ![AppID authentication settings](images/appid-authentication-settings.png)
 
 - Add the redirect url for the application to the web redirect URLs. The redirect url will have
 the following form:
@@ -184,7 +184,7 @@ the following form:
 
 - Open the AppID instance to `Cloud Directory` -> `Users`
 
-    ![AppID cloud directory users](../images/inventory-appid/appid-cloud-directory-users.png)
+    ![AppID cloud directory users](images/appid-cloud-directory-users.png)
 
 - Add yourself as a user with an email address, name, and password#
 
@@ -203,6 +203,6 @@ the following form:
 
 - You should be met with the AppID login screen. (This screen can be customized from the AppID service console but for now we are showing the default screen.)
 
-     ![AppID Login Page](../images/inventory-appid/AppidLogin.png)
+     ![AppID Login Page](images/AppidLogin.png)
 
 - Provide the email address and password you configured in the previous steps. You should be granted access to the UI.

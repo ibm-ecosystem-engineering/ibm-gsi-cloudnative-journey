@@ -89,4 +89,4 @@ Use the following links to get a deep understanding of Cloud-Native Deployment:
 
 
 ## Resources
-- [Kubernetes Basics presentation](../slides/03-Kubernetes-Basics.pdf).
+- [Kubernetes Basics presentation](slides/03-Kubernetes-Basics.pdf).

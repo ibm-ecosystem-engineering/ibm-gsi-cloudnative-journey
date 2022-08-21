@@ -68,7 +68,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | <a href="https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/" target="_newwindow"> Update an application </a> | Learn how to perform a rolling update of an application | | 10 mins | |
     | <a href="https://learn.openshift.com/introduction/getting-started/" target="_newwindow"> OpenShift - Getting Started </a> | Learn how to use the OpenShift Container Platform to build and deploy an application with a data backend and a web frontend. | | 10-15 mins | |
     | <a href="https://developers.redhat.com/learn/openshift/deploy-spring-application-openshift" target="_newwindow"> Deploy a Spring-Boot Application </a> | Learn more about developing applications using Spring Boot using Red Hat Runtimes. | | 15 mins | |
-    | [Cloud Native Development](cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
+    | [Cloud Native Development](../developer-foundstion/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
     | [Continuous Integration](continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins | |
@@ -107,7 +107,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Recap | Recap of things learned in Day 1 & 2 | | 10 mins | |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup/) | 10 mins | |
-    | Inventory Application | Objective of the exercise | [Objective](inventory-app/) | 15 mins | |
+    | Inventory Application | Objective of the exercise | [Objective](inventory-application/) | 15 mins | |
     | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 30 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/4ade29ea1f4d20de1009f29ca3ff65c9" target="_blank" >Link</a> |
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
@@ -121,7 +121,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Assignment                      | Description         |             | Time    | |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
     | [Dev. Tools Setup](../getting-started/devenvsetup/) | Setting up the Development Tools | | 10 mins | |
-    | [Objective](inventory-app/) | Objective of the exercise | |15 mins | |
+    | [Objective](inventory-application/) | Objective of the exercise | |15 mins | |
     | [Inventory Backend](inventory-service/) | Creating the Inventory Service with Java | | 30 mins | |
     | [Inventory BFF](inventory-bff/) | Creating the Inventory BFF with GraphQL | | 25 mins | |
     | [Inventory UI](inventory-ui/) | Creating the UI microservice | | 25 mins | |

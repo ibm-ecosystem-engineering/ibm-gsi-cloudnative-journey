@@ -32,14 +32,14 @@ The naming components are:
 The derived names are:
 - GitHub application path: `github.com/{git org}/{app repo}`
 - CI Pipeline name: `{git org}.{app repo}`
-- Docker image's path: `{region}.icr.io/{git org}/{app repo}:{tag}` in the [Image Registry](/guides/image-registry)
-- Helm chart's path: `generic-local/{git org}/{app repo}-{tag}-{chart version}.tgz` in the [Helm Repository](/guides/artifact-management)
+- Docker image's path: `{region}.icr.io/{git org}/{app repo}:{tag}` in the [Image Registry](../../guides/image-registry/)
+- Helm chart's path: `generic-local/{git org}/{app repo}-{tag}-{chart version}.tgz` in the [Helm Repository](../../guides/artifact-management/)
 - Dependencies filename: `{app repo}/requirements.yaml` in the GitOps repo
 - CD Pipeline name: `{app repo}`
 
 ## Resources
 
-- Presentation: [Understanding GitOps](/slides/05-Understanding-GitOps.pdf)
+- Presentation: [Understanding GitOps](../slides/05-Understanding-GitOps.pdf)
 
 ## What is Argo CD
 

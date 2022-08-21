@@ -57,7 +57,7 @@ Now that the repository has been created, we need to tell ArgoCD where it is.
 
 - Click on the gear icon on the left menu to access the Settings options
 
-    ![ArgoCD config](../images/inventory-cd/argocd-config.png)
+    ![ArgoCD config](images/argocd-config.png)
 
 - Select the `Repositories` option
 
@@ -76,7 +76,7 @@ To create a project, do the following:
 
 - Click on the gear icon on the left menu to access the Settings options
 
-    ![ArgoCD config](../images/inventory-cd/argocd-config.png)
+    ![ArgoCD config](images/argocd-config.png)
 
 - Select the `Projects` option
 
@@ -119,7 +119,7 @@ To create a project, do the following:
 
 
 - In the Artifactory Setup screen, in Set Me Up Section, select the tool as "Generic" and repository as "generic-local". Copy the deploy URL from the Set Me Up dialog box. That is the Artifactory helm repository URL. 
-          ![ArtifactoryURLSetup config](../images/inventory-cd/artifactoryurlsetup.png)
+          ![ArtifactoryURLSetup config](images/artifactoryurlsetup.png)
 
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
 for the cluster
