@@ -1,7 +1,7 @@
 site_name: TechZone Automation - Cloud-Native Learning Journey
 site_description: >-
   This Learning Journey enables cloud operators and developers to deliver cloud-native solutions with Red Hat OpenShift in hybrid cloud environments.
-site_url: https://ibm-ecosystem-lab.github.io
+site_url: https://learning-journey.cloudnativetoolkit.dev
 site_author: Ecosystem Engineering
 repo_name: ""
 repo_url: https://github.com/ibm-ecosystem-lab/ibm-gsi-cloudnative-journey
@@ -46,6 +46,8 @@ markdown_extensions:
   #- pymdownx.tabbed:
       #alternate_style: true
   - pymdownx.details
+extra_javascript:
+  - javascripts/extra.js
 extra_css:
   - css/extra.css
   - css/toolkit-code.css
@@ -71,55 +73,55 @@ google_analytics: ['UA-155887541-1', 'ibm-ecosystem-lab.github.io']
 copyright: Copyright © 2022 IBM
 nav:
   - Introduction:
-      - Overview: getting-started/introduction.md
-      - Prerequisites:  getting-started/prereqs.md
-      - Validate Environment:  getting-started/checksetup.md
-      - Developer Tools Setup:  getting-started/devenvsetup.md
-      - Developer Tools CLI:  getting-started/cli.md
+      - Overview: getting-started/index.md
+      - Prerequisites:  getting-started/prereqs/index.md
+      - Validate Environment:  getting-started/checksetup/index.md
+      - Developer Tools Setup:  getting-started/devenvsetup/index.md
+      - Developer Tools CLI:  getting-started/cli/index.md
   - Developer Foundation:
-      - Agenda: developer-foundation/agenda.md
-      - What is Cloud-Native?: developer-foundation/cloud-native-overview.md
-      - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev.md
-      - Containers Overview: developer-foundation/containers.md
-      - Kubernetes 'overview': developer-foundation/k8s-overview.md
-      - Openshift 'overview': developer-foundation/openshift.md
-      - Core Concepts: developer-foundation/k8s-core-concepts.md
-      - Configuration: developer-foundation/k8s-configuration.md
-      - Multi-Container Pods: developer-foundation/k8s-multi-container-pods.md
-      - Observability: developer-foundation/k8s-observability/k8s-observability.md
-      - Pod Design: developer-foundation/k8s-pod-design.md
-      - Services & Networking: developer-foundation/k8s-services-networking.md
-      - State Persistence: developer-foundation/k8s-state-persistence.md
-      - Troubleshoot: developer-foundation/k8s-troubleshooting.md
-      - Garage Method: developer-foundation/garage-development.md
+      - Agenda: developer-foundation/index.md
+      - What is Cloud-Native?: developer-foundation/cloud-native-overview/index.md
+      - Cloud-Native App Dev: developer-foundation/cloud-native-app-dev/index.md
+      - Containers Overview: developer-foundation/containers/index.md
+      - Kubernetes 'overview': developer-foundation/k8s-overview/index.md
+      - Openshift 'overview': developer-foundation/openshift/index.md
+      - Core Concepts: developer-foundation/k8s-core-concepts/index.md
+      - Configuration: developer-foundation/k8s-configuration/index.md
+      - Multi-Container Pods: developer-foundation/k8s-multi-container-pods/index.md
+      - Observability: developer-foundation/k8s-observability/index.md
+      - Pod Design: developer-foundation/k8s-pod-design/index.md
+      - Services & Networking: developer-foundation/k8s-services-networking/index.md
+      - State Persistence: developer-foundation/k8s-state-persistence/index.md
+      - Troubleshoot: developer-foundation/k8s-troubleshooting/index.md
+      - Garage Method: developer-foundation/garage-development/index.md
   - Developer Intermediate:
-      - Agenda: developer-intermediate/agenda.md
-      - Deploy First App: developer-intermediate/deploy-app.md
-      - Continuous Delivery: developer-intermediate/continuous-delivery.md
-      - DevSecOps Overview: developer-intermediate/content-overview.md
-      - Continuous Integration: developer-intermediate/continuous-integration.md
-      - Artifact Management: developer-intermediate/artifact-management.md
-      - Code Analysis: developer-intermediate/code-analysis.md
+      - Agenda: developer-intermediate/index.md
+      - Deploy First App: developer-intermediate/deploy-app/index.md
+      - Continuous Delivery: developer-intermediate/continuous-delivery/index.md
+      - DevSecOps Overview: developer-intermediate/content-overview/index.md
+      - Continuous Integration: developer-intermediate/continuous-integration/index.md
+      - Artifact Management: developer-intermediate/artifact-management/index.md
+      - Code Analysis: developer-intermediate/code-analysis/index.md
       - Image Registry:
-        - IBM Cloud: developer-intermediate/image-registry.md
-        - OpenShift: developer-intermediate/ocp-registry.md
+        - IBM Cloud: developer-intermediate/image-registry/index.md
+        - OpenShift: developer-intermediate/ocp-registry/index.md
       - Log Management:
-        - IBM Cloud: developer-intermediate/log-management.md
-        - OpenShift: developer-intermediate/log-management.md
+        - IBM Cloud: developer-intermediate/log-management/index.md
+        - OpenShift: developer-intermediate/log-management/index.md
       - Monitoring:
-        - IBM Cloud: developer-intermediate/monitoring.md
-        - OpenShift: developer-intermediate/ocp-monitoring.md
+        - IBM Cloud: developer-intermediate/monitoring/index.md
+        - OpenShift: developer-intermediate/ocp-monitoring/index.md
       - Inventory App:
-        - Intro: developer-intermediate/inventory-application.md
-        - Solution: developer-intermediate/inventory-prebuilt-solution.md
-        - Service: developer-intermediate/inventory-service.md
-        - BFF: developer-intermediate/inventory-bff.md
-        - UI: developer-intermediate/inventory-ui.md
+        - Intro: developer-intermediate/inventory-application/index.md
+        - Solution: developer-intermediate/inventory-prebuilt-solution/index.md
+        - Service: developer-intermediate/inventory-service/index.md
+        - BFF: developer-intermediate/inventory-bff/index.md
+        - UI: developer-intermediate/inventory-ui/index.md
   - Developer Advanced:
-      - CD for Inventory App: developer-advanced-1/inventory-cd.md
-      - Database with Cloudant: developer-advanced-1/database-with-cloudant.md
-      - Database with MongoDB: developer-advanced-1/database-with-mongodb.md
-      - Authentication with AppID: developer-advanced-1/inventory-appid.md
-      - Code Engine: developer-advanced-1/code-engine.md
+      - CD for Inventory App: developer-advanced-1/inventory-cd/index.md
+      - Database with Cloudant: developer-advanced-1/database-with-cloudant/index.md
+      - Database with MongoDB: developer-advanced-1/database-with-mongodb/index.md
+      - Authentication with AppID: developer-advanced-1/inventory-appid/index.md
+      - Code Engine: developer-advanced-1/code-engine/index.md
 
 

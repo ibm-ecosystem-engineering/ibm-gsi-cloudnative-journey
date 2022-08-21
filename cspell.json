@@ -94,7 +94,20 @@
         "clusterroles", 
         "clusterrolebindings",
         "machinesets",
-        "CICD"
+        "CICD",
+        "maxconn",
+        "ibmcase",
+        "xwing",
+        "jsonpath",
+        "busyboxplus",
+        "healthz",
+        "bitnami",
+        "localdisk",
+        "myapp",
+        "minikube",
+        "Katacoda",
+        "throughs",
+        "devenvsetup"
     ],
     // flagWords - list of words to be always considered incorrect
     // This is useful for offensive words and common spelling errors.
