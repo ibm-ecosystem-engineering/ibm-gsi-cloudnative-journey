@@ -35,14 +35,14 @@ title: Database with MongoDB
     $ helm install mongodb bitnami/mongodb -f mongodb.values.yaml
     ```
     - Head over to your OpenShift console on the Topology perspective, you should the database created on your project.  
-    ![MongoDB deployment on OpenShift](images/database-with-mongodb/mongodbopenshift.png)
+    ![MongoDB deployment on OpenShift](../../images/database-with-mongodb/mongodbopenshift.png)
     - The Helm chart creates a secret holding MongoDB passwords, for consistency of this tutorial we will be creating another secret holding the same information, formatted in another way.  
       Run the following command :
       ```bash
       $ oc create secret generic --from-literal=MONGODB_HOST=mongodb --from-literal=MONGODB_PORT=27017 --from-literal=MONGODB_USER=myuser --from-literal=MONGODB_PASSWORD=mypassword --from-literal=MONGODB_DATABASE=inventory-db mongodb-access
       ```
       You should see the created secret `mongodb-access` on your OpenShift console :
-    ![MongoDB access secret](images/database-with-mongodb/mongodbopenshiftsecret.png)
+    ![MongoDB access secret](../../images/database-with-mongodb/mongodbopenshiftsecret.png)
 
 === "On IBM Cloud"
     !!! warning
@@ -53,17 +53,17 @@ title: Database with MongoDB
     - Log into the IBM Cloud console and look for the Databases for MongoDB service.
 
     - Configure it to your needs and create the instance.  
-    ![Databases for MongoDB](images/database-with-mongodb/mongodbibmcloud.png)
+    ![Databases for MongoDB](../../images/database-with-mongodb/mongodbibmcloud.png)
 
     - After your instance has provisioned, create a **Service Credential** to have access to your MongoDB instance.
-    ![Service credentials](images/database-with-mongodb/servicecreds.png)
+    ![Service credentials](../../images/database-with-mongodb/servicecreds.png)
       The service credential should contain information to login to the instance. We will look for the database, the hostname, the username, the password and a base64 encoded certificate.  
       Decode the certificate, and create an OpenShift secret holding these values :
       ```bash
       oc create secret generic --from-literal=MONGODB_HOST=<HOST> --from-literal=MONGODB_PORT=<PORT> --from-literal=MONGODB_USER=<USER> --from-literal=MONGODB_DATABASE=<DATABASE> --from-literal=MONGODB_PASSWORD=<PASSWORD> --from-literal=MONGODB_CERT=<DECODED_CERT> mongodb-access
       ```
       You can also do this from the OpenShift console :
-    ![MongoDB IBM Cloud secret](images/database-with-mongodb/secret-creation-openshift.png)
+    ![MongoDB IBM Cloud secret](../../images/database-with-mongodb/secret-creation-openshift.png)
 
 === "BYO MongoDB"
       Create your own MongoDB instance on any other cloud platform and bring the login credentials.
@@ -371,23 +371,23 @@ If you are starting from the solution, use the following steps to enable the Clo
 === "Cloud Shell"
     - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
 
-      ![View App](images/database-with-cloudant/viewapp.png)
+      ![View App](../../images/database-with-cloudant/viewapp.png)
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
 
-      ![View App](images/database-with-cloudant/gitpod01.png)
+      ![View App](../../images/database-with-cloudant/gitpod01.png)
 
     - Selecting "Open Preview" opens a window inside gitpod workspace tab.
 
-      ![OpenPreview](images/database-with-cloudant/cloudantgitpodscreen.png)
+      ![OpenPreview](../../images/database-with-cloudant/cloudantgitpodscreen.png)
 
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 === "Cloud Ready Workspaces"
     - Click on open link
-      ![CRW Open Link](images/database-with-cloudant/crwopenlink.png)
+      ![CRW Open Link](../../images/database-with-cloudant/crwopenlink.png)
 
     - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](images/database-with-cloudant/crwopenapp.png)
+      ![CRW Open App](../../images/database-with-cloudant/crwopenapp.png)
 === "Desktop/Laptop"
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
 ---
@@ -397,7 +397,7 @@ If you are starting from the solution, use the following steps to enable the Clo
 -  You should be able to see all the data you pushed to the database
    through ./dataload.sh
 
-   ![ResultScreen](images/database-with-cloudant/ResultScreen.png)
+   ![ResultScreen](../../images/database-with-cloudant/ResultScreen.png)
 
 Prebuilt solution for this can be found here: [Inventory Management Service MongoDB solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-mongodb)
 !!! note

@@ -30,7 +30,7 @@ GitOps takes advantage of several Git features:
 
 For the full end-to-end build and delivery process, both the CI and CD pipelines are required. For this to work, a Git repo is used to convey the configuration values. Within the Developer Environment, we have used certain naming conventions to streamline and simplify the integration between the various components.
 
-![Argo CD config](../images/continuous-delivery/CI_CD-pipelines.png)
+![Argo CD config](../../images/continuous-delivery/CI_CD-pipelines.png)
 
 The naming components are:  
 
@@ -133,7 +133,7 @@ Now that the repository has been created, we need to tell Argo CD where it is.
 
 1. Click on the gear icon on the left menu to access the Settings options
 
-    ![Argo CD config](../images/continuous-delivery/argocd-config.png)
+    ![Argo CD config](../../images/continuous-delivery/argocd-config.png)
 
 1. Select the `Repositories` option
 
@@ -152,7 +152,7 @@ To create a project:
 
 1. Click on the gear icon on the left menu to access the Settings options
 
-    ![Argo CD config](../images/continuous-delivery/argocd-config.png)
+    ![Argo CD config](../../images/continuous-delivery/argocd-config.png)
 
 1. Select the Projects option
 

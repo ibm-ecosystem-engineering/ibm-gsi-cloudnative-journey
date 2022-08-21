@@ -119,11 +119,11 @@ To be able to run CLI commands to drive common operations on the cluster you wil
 
 - Access the OpenShift console by clicking on the button:
 
-    ![OpenShift Console](../images/common/openshiftconsole.png)
+    ![OpenShift Console](../../images/common/openshiftconsole.png)
 
 - Get the OpenShift login command, which includes a token:
 
-   ![OpenShift Login](../images/common/LoginCommand.png)
+   ![OpenShift Login](../../images/common/LoginCommand.png)
 
 - Run the login command in the terminal:
    ```bash

@@ -48,7 +48,7 @@ After installation, the <Globals name="env" /> consists of a set of CNCF tools i
 
 This diagram illustrates the <Globals name="env" />:
 
-![Provisioned CNCF Tools](../images/content-overview/cncf-tools-environment.png)
+![Provisioned CNCF Tools](../../images/content-overview/cncf-tools-environment.png)
 
 The diagram shows the components in the environment: the cluster, the deployment target environments, the cloud services, and the tools.
 

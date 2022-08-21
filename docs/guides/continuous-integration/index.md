@@ -65,7 +65,7 @@ supporting the stage is not installed. These stages represent a typical producti
 
 ## Registering Pipelines
 
-The [<Globals name="templates" />](/resources/codepatterns-overview) are a good place to start to see how `Jenkinsfile` and `Dockerfile` should be configured for use in a Jenkins CI pipeline. To register your git repo, use the [IGC CLI](/getting-started/cli). This command automates a number of manual steps you would have to do with Jenkins, including: managing secrets, webhooks, and pipeline registration in the Jenkins tools.
+The [<Globals name="templates" />](../../resources/codepatterns-overview) are a good place to start to see how `Jenkinsfile` and `Dockerfile` should be configured for use in a Jenkins CI pipeline. To register your git repo, use the [IGC CLI](../../getting-started/cli/). This command automates a number of manual steps you would have to do with Jenkins, including: managing secrets, webhooks, and pipeline registration in the Jenkins tools.
 
 ```bash
 igc pipeline

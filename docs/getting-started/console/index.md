@@ -14,7 +14,7 @@ When the <Globals name="shortName" /> was configured for your development
  cluster. The administrator can now configure a set of short cut links to
   common tools you often use as a developer.
 
-![OpenShift Links](../images/console/openshift-console-tools.png)
+![OpenShift Links](../../images/console/openshift-console-tools.png)
 
 
 ### Access the tools URLs
@@ -58,4 +58,4 @@ The Developer Dashboard is one of the tools running in your <Globals name="env" 
 - **Activation**: Links to educational resources to help you learn cloud-native development and deployment using IBM Cloud Kubernetes Service and Red Hat OpenShift on IBM Cloud.
 - **<Globals name="templates" />**: Links to templates that will help accelerate your project.
 
-![Developer Dashboard](../images/console/developer-dashboard.png)
+![Developer Dashboard](../../images/console/developer-dashboard.png)

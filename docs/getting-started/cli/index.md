@@ -750,7 +750,7 @@ oc pipeline --tekton "https://github.com/my-org/my-repo" -p scan-image=false -p 
         In order for Jenkins to have access to the git repository, particularly if it is a private repository, a Kubernetes
         secret needs to be added that contains the git credentials.
 
-        1. Create a personal access token (if you don't already have one) using the [prereq instructions](../learning/dev-setup.md#git-pat){: target=_blank}
+        1. Create a personal access token (if you don't already have one) using the [prereq instructions](../devenvsetup/#git-pat){: target=_blank}
 
         2. Copy the following into a file called `gitsecret.yaml` and update the {Git-Username}, and {Git-PAT}
 

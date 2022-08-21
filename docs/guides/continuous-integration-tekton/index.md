@@ -157,10 +157,10 @@ To validate your pipeline have been correctly configured, and has triggered a
 === "OpenShift 4.x"
 
     - Review you **Pipeline** in the OpenShift 4.x Console
-    ![Pipelinerun](/images/pipeline.png)
+    ![Pipelinerun](../../images/deploy-app/pipeline.png)
 
     - Review your **Tasks**
-    ![Tasks](/images/tasks.png)
+    ![Tasks](../../images/tasks.png)
 
     - Review your **Steps**
     ![Steps](/images/steps.png)

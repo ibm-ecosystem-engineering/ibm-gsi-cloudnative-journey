@@ -26,7 +26,7 @@ For your CI pipeline ( [Tekton](/guides/continuous-integration-tekton)) to conne
 - Navigate to [Developer Settings](https://github.com/settings/tokens) and generate a new token. Name it something like "CI pipeline".
 - Select the `public_repo` scope to enable Git clone.
 - Select the `write:repo_hook` scope so the pipeline can create a webhook
-![Pipeline OAuth scopes](pipeline-scopes.png).
+![Pipeline OAuth scopes](../../images/prereqs/pipeline-scopes.png).
 - The GitHub UI will not display this token again, so make sure to save
   it in your password manager or somewhere safe that you can access later on.
   

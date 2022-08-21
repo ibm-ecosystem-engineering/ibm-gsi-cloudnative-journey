@@ -103,7 +103,7 @@ process.
 
   Press **Create repository from template**
 
-  ![Template](images/template.png)
+  ![Template](../../images/deploy-app/template.png)
 
 - The new repository will be created in your selected organization.
 
@@ -169,7 +169,7 @@ The steps to view your registered pipeline will vary based on type of pipeline (
 1. From the OpenShift Web Console select the Pipelines menu in the Developer view
 2. You will see your microservice now running an OpenShift pipeline using Tekton Tasks
  
- ![OpenShift](../images/deploy-app/tektonpipeline.png)
+ ![OpenShift](../../images/deploy-app/tektonpipeline.png)
 
 ### 8. Access the running app
 
@@ -209,7 +209,7 @@ below will walk through locating the installed application within the Web Consol
 - Click on **View Logs** link to view the logs from each pod
 - You can see the running state of your application
 
-![Pods on OpenShift](../images/deploy-app/topology.png)
+![Pods on OpenShift](../../images/deploy-app/topology.png)
 
 !!! success
 

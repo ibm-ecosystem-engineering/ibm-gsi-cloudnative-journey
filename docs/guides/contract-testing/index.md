@@ -187,7 +187,7 @@ with minimal dependencies between the systems.
 Additionally, the Pact Broker provides a place to define webhooks to trigger the provider build
 process when the pact definition changes and a way record and visualize the results of the
 verification process. The high-level interaction is shown below:
-![Pact broker interactions](./PactFramework-pactbroker.png)
+![Pact broker interactions](../../images/contract-testing/PactFramework-pactbroker.png)
 
 ## <Globals name="templates" />
 
@@ -198,6 +198,6 @@ been configured within the cluster.
 
 - You can review you pact contracts using the **Pact** Dashboard.app
 
-- Use the [<Globals name="dashboard" />](/getting-started/dashboard) to open the **Pact** dashboard
+- Use the [<Globals name="dashboard" />](../../getting-started/dashboard) to open the **Pact** dashboard
 
 
