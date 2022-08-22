@@ -383,7 +383,8 @@ into javascript and to put the business logic in a separate service component.
     ```
 
 - Update the controller to inject the service and use it:
-    ```typescript title="src/import { Inject } from 'typescript-ioc';
+    ```typescript title="src/controllers/stock-items.controller.ts"
+    import { Inject } from 'typescript-ioc';
     import { GET, Path } from 'typescript-rest';
     import { HttpError } from 'typescript-rest/dist/server/model/errors';
 
