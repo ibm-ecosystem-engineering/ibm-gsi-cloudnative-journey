@@ -34,7 +34,8 @@ plugins:
       minify_html: true
   - redirects:
       redirect_maps:
-        'getting-started/introduction': 'getting-started'
+        'getting-started/introduction/': 'getting-started/index.md'
+        'developer-intermediate/agenda/': 'developer-intermediate/index.md'
 
 markdown_extensions:
   - attr_list
