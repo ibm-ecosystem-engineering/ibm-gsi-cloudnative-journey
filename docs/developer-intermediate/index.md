@@ -54,7 +54,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **DevSecOps** | | | |
     | Continuous Integration | Overview of Continuous Integration | [CI](continuous-integration) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrgg0U57nmGHi5fo04?e=WcY0gj" target="_blank" >Link</a> |
     | Continuous Delivery | Overview of Continuous Delivery | [CD](continuous-delivery) | 15 min | |
-    |Deploy your first app demo |
+    |Deploy your first app demo |The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Q & A** | | | 10 mins |
 
     ### Homework
@@ -83,8 +83,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Break** | | | 5 mins | |
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins |  |
-    | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins |  |
-    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min |  |
+    | Image Registry | Container Registry | [Image Registry](image-registry/) | 15 mins |  |
+    | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 15 min |  |
     | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 10 mins | |
     | Logging | Logging with LogDNA | [Logging](log-management/) | 10 mins | |
     | **Q & A** | | | 10 mins | |
@@ -107,11 +107,12 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup/) | 10 mins | |
     | Inventory Application | Objective of the exercise | [Objective](inventory-application/) | 15 mins | |
-    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 30 mins |  |
+    | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 25 mins |  |
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins |  |
     | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui/) | 25 mins | |
-    | AppID | Authentication with AppID |[AppID](../developer-advanced-1/inventory-appid/) |10 mins | |
+    | Inventory CD  | CD with Argocd |[CD](../developer-advanced-1/inventory-cd/) |10 mins | |
+    | TechZone Automation  | Automated Provisioning of Environment | |15 mins | |
     | **Q & A** | | | 10 mins | |
     | **Optional: inventory-app) | 60 mins | |
 
