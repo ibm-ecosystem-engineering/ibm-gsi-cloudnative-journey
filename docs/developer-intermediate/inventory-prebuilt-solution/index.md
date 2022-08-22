@@ -14,6 +14,7 @@ In some cases with self pace hands on labs you may not get everything working. C
 
 - Create a new project from the [Inventory Management Service solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-intermediate/generate)
 named `inv-man-svc-sol-{initials}`
+    - replacing `{initials}` with your actual initials
 
 - Clone the repository to your local machine
 
@@ -29,8 +30,6 @@ named `inv-man-svc-sol-{initials}`
     oc pipeline <git repo url> --tekton
     ```
 
-   replacing `{your initials}` with your actual initials
-
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
@@ -38,7 +37,8 @@ named `inv-man-svc-sol-{initials}`
 ### Inventory BFF
 
 - Create a new project from the [Inventory Management BFF solution template](https://github.com/ibm-ecosystem-lab/inventory-bff-prebuild/generate)
-named `inventory-management-bff-solution`
+named `inventory-management-bff-solution-{initials}`
+    - replacing `{initials}` with your actual initials
 
 - Clone the repository to your local machine
 
@@ -49,8 +49,6 @@ named `inventory-management-bff-solution`
     ```
     oc pipeline --tekton
     ```
-
-   replacing `{your initials}` with your actual initials
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
@@ -78,7 +76,8 @@ service of the microservice: `connectsTo: inventory-svc-ar`
 ### Inventory UI
 
 - Create a new project from the [Inventory Management UI solution template](https://github.com/ibm-ecosystem-lab/inventory-ui-prebuild/generate)
-named `inventory-management-ui-solution`
+named `inventory-management-ui-solution-{initials}`
+    - replacing `{initials}` with your actual initials
 
 - Clone the repository to your local machine
 
@@ -88,8 +87,6 @@ named `inventory-management-ui-solution`
     ```
     oc pipeline --tekton
     ```
-
-   replacing `{your initials}` with your actual initials
 
 - Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
