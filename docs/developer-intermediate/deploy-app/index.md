@@ -66,10 +66,6 @@ section that allows you to select a set of preconfigured [Starter Kits](https://
 
 - If you are on a laptop/desktop, open a browser and make sure you are logged into [Github](https://github.com)
 
-- Open the dashboard by running the following command:
-  ```
-  oc dashboard
-  ```
 
 ### 4. Create your app in Git
 
@@ -302,4 +298,4 @@ You can update your code locally using `git` command line.
 - As soon as you push your code changes successfully, the webhook will trigger a new pipeline run for your project in your namespace in OCP.
   
 !!! Warning
-  **Note:** if the webhook registration step fails, the git push will not trigger the pipeline.
+    **Note:** if the webhook registration step fails, the git push will not trigger the pipeline.
