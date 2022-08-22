@@ -211,6 +211,24 @@ below will walk through locating the installed application within the Web Consol
 
 ![Pods on OpenShift](../../images/deploy-app/topology.png)
 
+### 10. Check how build is progressing
+
+Now you have looked the pipeline running in the console, you can view the running tasks and view the logs from the Web Terminal.
+
+At the end of the `oc pipeline` command you will see two `tkn` CLI commands output onto the console. Copy the values for this and run them in your web terminal.
+
+```bash
+Next steps:
+  Tekton cli:
+    View PipelineRun info - tkn pr describe <app>-<id>
+    View PipelineRun logs - tkn pr logs -f <ap>-<id>
+
+```
+Once you have run these you can quick see what state the pipeline is at and you can tail the logs into the terminal as you watch the visual pipeline stages progress.
+
+![Pods on OpenShift](../images/deploy-app/taillogs.png)
+
+
 !!! success
 
     **Success:** You now have your application running inside your development cluster and being delivered using a Tekton based CI pipeline. This is the beginning of the developer journey with IBM Cloud.
@@ -218,7 +236,7 @@ below will walk through locating the installed application within the Web Consol
 Having reached this point, we recommend you repeat the process a few more
  times using different **Code Patterns** templates and explore the **Developer** view in OpenShift to get familiar with it.
 
-### 10. Run the application locally
+### 11. Run the application locally
 
 Most developers like to run the code natively in local development environment. To do so, follow the instructions listed in the **README.md** file to run the code locally.
 You may be required to install a specific runtime like **Java**, **Node** or **Go**.
@@ -237,7 +255,7 @@ You may be required to install a specific runtime like **Java**, **Node** or **G
     npm run start
     ```
 
-### 11. Make a change to your code
+### 12. Make a change to your code
 
 Within GitHub it is possible to open a full Visual Studio code web editor and make changes to you code.  
 
