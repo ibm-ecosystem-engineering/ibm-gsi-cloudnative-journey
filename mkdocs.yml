@@ -46,9 +46,8 @@ markdown_extensions:
       toc_depth: 3
   - pymdownx.superfences
   - pymdownx.highlight
-  - pymdownx.tabbed
-  #- pymdownx.tabbed:
-      #alternate_style: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.details
 extra_javascript:
   - javascripts/extra.js
