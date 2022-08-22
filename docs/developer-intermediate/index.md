@@ -85,9 +85,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins |  |
     | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins |  |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min |  |
-    | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 5 mins | |
-    | Logging | Logging with LogDNA | [Logging](log-management/) | 5 mins | |
-    | Image Signing | Signing Container Images |  [Signing](https://develop.cloudnativetoolkit.dev/reference/tools/container-image-security-enforcement/) | 25 min | |
+    | Monitoring | Monitoringl with OpenShift | [Monitoring](monitoring/) | 5 mins | |
+    | Logging | Logging with OpenShift | [Logging](log-management/) | 5 mins | |
     | **Q & A** | | | 10 mins | |
 
     ### Homework
@@ -98,8 +97,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Deploy First App](deploy-app) | The very first experience of deploying an application via a Tekton pipeline in OpenShift or Kubernetes | | 25 mins | |
     | [SonarQube](code-analysis#give-it-a-try) | Creating a quality gate for Sonar Scan| | 20mins | |
     | [Image Registry](image-registry#give-it-a-try)| Accessing the image of your first app deployment| | 15 mins | |
-    | [Monitoring](monitoring#give-it-a-try)| Sysdig Hands on Lab| | 15mins | |
-    | [Logging](log-management#give-it-a-try)| LogDNA hands on Lab | | 15mins | |
+    | [Monitoring](monitoring#give-it-a-try)| OpenShift Monitoring Hands on Lab| | 15mins | |
+    | [Logging](log-management#give-it-a-try)| OpenShift Logging Hands on Lab | | 15mins | |
 
     ## Day 3 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
@@ -112,9 +111,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins |  |
     | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui/) | 25 mins | |
-    | AppID | Authentication with AppID |[AppID](../developer-advanced-1/inventory-appid/) |10 mins | |
     | **Q & A** | | | 10 mins | |
-    | **Optional: inventory-app) | 60 mins | |
 
     ### Homework
 
@@ -126,7 +123,6 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Inventory BFF](inventory-bff/) | Creating the Inventory BFF with GraphQL | | 25 mins | |
     | [Inventory UI](inventory-ui/) | Creating the UI microservice | | 25 mins | |
     | [Inventory Backend with Cloudant](../developer-advanced-1/database-with-cloudant/)| Cloudant Database integration | | 30 mins | |
-    | [Inventory UI with Appid](../developer-advanced-1/inventory-appid/) | Protecting Inventory UI with Appid integration | | 30 mins | |
 
 
 !!! success

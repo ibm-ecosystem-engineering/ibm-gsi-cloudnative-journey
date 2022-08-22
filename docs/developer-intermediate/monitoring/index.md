@@ -5,17 +5,16 @@ description: Use Sysdig to monitor your running application
 <!--- cSpell:ignore appview ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 !!! Warning
-  *Note* Only study this section if you are development on an OpenShift Development environment that is managed on IBM Cloud. If you are on AWS or Azure go to the [OpenShift Monitoring](../ocp-monitoring/) content
+    *Note* Only study this section if you are development on an OpenShift Development environment that is managed on IBM Cloud. If you are on AWS or Azure go to the [OpenShift Monitoring](../ocp-monitoring/) content
 
-In IBM Garage Method, one of the Operate practices is to [automate application monitoring](https://www.ibm.com/garage/method/practices/manage/practice_automated_monitoring/). Sysdig automates application monitoring, enabling an operator to view stats and collect metrics about a Kubernetes cluster and its deployments. 
-The <Globals name="env" /> includes an IBM Cloud Monitoring with Sysdig service instance configured with a Sysdig agent installed in the environment's cluster. Simply by deploying your application into the <Globals name="env" />, Sysdig monitors it. 
+In IBM Garage Method, one of the Operate practices is to [automate application monitoring](https://www.ibm.com/garage/method/practices/manage/practice_automated_monitoring/). Sysdig automates application monitoring, enabling an operator to view stats and collect metrics about a Kubernetes cluster and its deployments. OpenShift's development environment includes an IBM Cloud Monitoring with Sysdig service instance configured with a Sysdig agent installed in the environment's cluster. Simply by deploying your application into the OpenShift development environment, Sysdig monitors it. 
 
 - Open the Sysdig web UI by navigating to the OpenShift web console and click on 9 squares icon. It gives a list of the developer tools.
 - Select SysDig and navigate to SysDig UI.
 
 ## Sysdig Monitoring
 
-[IBM Cloud Monitoring with Sysdig](https://cloud.ibm.com/docs/services/Monitoring-with-Sysdig) explains how to configure and use an instance of the Sysdig service, but the <Globals name="env" /> has already done most of this for you. You can skip steps 1-3 about user access, provisioning an instance, and installing an agent.
+[IBM Cloud Monitoring with Sysdig](https://cloud.ibm.com/docs/services/Monitoring-with-Sysdig) explains how to configure and use an instance of the Sysdig service, but the OpenShift development env has already done most of this for you. You can skip steps 1-3 about user access, provisioning an instance, and installing an agent.
 
 ### Sysdig dashboard
 
@@ -35,7 +34,7 @@ By default, the Sysdig dashboard opens the **Explore** page on its **Deployments
 By default, Sysdig opens its **Overview by Process** dashboard, which has panels showing stats about CPU, memory, and networking.
 This is one of Sysdig's **Default Dashboards** (i.e. built-in dashboards).
 
-These are the cumulative totals for all of the pods running in the cluster. Hover over a graph and a key pops up to list
+These are the cumulative totals for all the pods running in the cluster. Hover over a graph and a key pops up to list
 the pods and show each one's color.
 
 - Expand your cluster and namespace, then select your deployment

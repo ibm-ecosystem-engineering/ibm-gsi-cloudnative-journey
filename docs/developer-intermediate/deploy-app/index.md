@@ -49,15 +49,7 @@ project.
 oc sync dev-{your intials} 
 ```
 
-### 3. Grant required access to the service account of the namespace
-
-Openshift Image registry is being used for storing docker images.Hence,permission needs to be given to the service account of the namespace to be able to pull images from registry.
-
-```shell
-oc policy add-role-to-group system:image-puller system:serviceaccounts:${DEV_NAMESPACE} 
-```
-
-### 4. Open the Developer Dashboard
+### 3. Open the Developer Dashboard
 
 The Developer Dashboard makes it easy for you to navigate to the tools, including a
 section that allows you to select a set of preconfigured [Starter Kits](https://develop.cloudnativetoolkit.dev/reference/starter-kit/starter-kit/) that make seeding your development project very easy.
@@ -226,7 +218,7 @@ Next steps:
 ```
 Once you have run these you can quick see what state the pipeline is at and you can tail the logs into the terminal as you watch the visual pipeline stages progress.
 
-![Pods on OpenShift](../images/deploy-app/taillogs.png)
+![Pods on OpenShift](../../images/deploy-app/taillogs.png)
 
 
 !!! success
