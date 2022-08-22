@@ -85,7 +85,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins |  |
     | Image Registry | Container Registry | [Image Registry](image-registry/) | 15 mins |  |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 15 min |  |
-    | Monitoring | Monitoringl with OpenShift | [Monitoring](monitoring/) | 10 mins | |
+    | Monitoring | Monitoring with OpenShift | [Monitoring](monitoring/) | 10 mins | |
     | Logging | Logging with OpenShift | [Logging](log-management/) | 10 mins | |
     | **Q & A** | | | 10 mins | |
 
