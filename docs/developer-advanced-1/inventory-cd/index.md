@@ -42,7 +42,15 @@ Let's get started with using Argo CD.
     git push -u origin test
     ```
 
-- Create the test namespace with the CLI by running `oc sync test-{initials} --dev`
+- Create the test namespace with the CLI by running `oc sync test-{initials}`
+
+### Grant required access to the service account of the  test namespace
+
+Openshift Image registry is being used for storing docker images.Hence,permission needs to be given to the service account of the test namespace to be able to pull images from dev namespace where the docker image of application is stored.
+
+```shell
+oc policy add-role-to-group system:image-puller system:serviceaccounts:${TEST_NAMESPACE} -n {DEV_NAMESPACE}
+```
 
 ### Register the GitOps repo in ArgoCD
 
