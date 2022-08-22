@@ -40,9 +40,11 @@ named `inv-man-svc-sol-{initials}`
 named `inventory-management-bff-solution-{initials}`
     - replacing `{initials}` with your actual initials
 
-- Clone the repository to your local machine
+- Go into the repository directory cloned and execute the following, if you have not executed it previously:
 
-- Go into the repository directory cloned and execute `oc sync ` command. if you are not executed previously. 
+    ```
+    oc sync dev-{your initials} 
+    ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
@@ -81,7 +83,11 @@ named `inventory-management-ui-solution-{initials}`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute `oc sync ` command. if you are not executed previously. 
+- Go into the repository directory cloned and execute the following, if you have not executed it previously:
+
+    ```
+    oc sync dev-{your initials} 
+    ```
 
 - Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
     ```
