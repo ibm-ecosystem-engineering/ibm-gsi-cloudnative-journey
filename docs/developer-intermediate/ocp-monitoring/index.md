@@ -12,7 +12,7 @@ In IBM Garage Method, one of the Operate practices is to [automate application m
 
 In the Observe view you are able to see the following views:
   - Dashboard, giving a summary view of the monitoring events for you namespace
-  - Metrics , allows you to dig deeper into the various collected mertics for your namespace
+  - Metrics , allows you to dig deeper into the various collected metrics for your namespace
   - Alerts, will allow you to see any generated alerts from your applications
   - Events, will allow you to see common events by kubernetes type
 
