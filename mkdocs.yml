@@ -32,6 +32,9 @@ plugins:
       lang: en
   - minify:
       minify_html: true
+  - redirects:
+      redirect_maps:
+        'getting-started/introduction': 'getting-started'
 
 markdown_extensions:
   - attr_list
