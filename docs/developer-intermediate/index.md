@@ -85,9 +85,8 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins |  |
     | Image Registry | Container Registry | [Image Registry](image-registry/) | 10 mins |  |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 10 min |  |
-    | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 5 mins | |
-    | Logging | Logging with LogDNA | [Logging](log-management/) | 5 mins | |
-    | Image Signing | Signing Container Images |  [Signing](https://develop.cloudnativetoolkit.dev/reference/tools/container-image-security-enforcement/) | 25 min | |
+    | Monitoring | Sysdig Monitoring | [Monitoring](monitoring/) | 10 mins | |
+    | Logging | Logging with LogDNA | [Logging](log-management/) | 10 mins | |
     | **Q & A** | | | 10 mins | |
 
     ### Homework
