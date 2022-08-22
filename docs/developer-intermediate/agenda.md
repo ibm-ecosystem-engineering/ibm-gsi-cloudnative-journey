@@ -80,11 +80,10 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](../../developer-intermediate/deploy-app) | 25 mins | |
     | **Break** | | | 5 mins | |
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](../../developer-intermediate/code-analysis) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/9ffe4934f586cf73b92b0f381cacb4a5" target="_blank" >Link</a> |
-    | Image Registry | Container Registry | [Image Registry](../../developer-intermediate/image-registry) | 10 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
+    | Image Registry | Container Registry | [Image Registry](../../developer-intermediate/image-registry) | 15 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/022dd6d9fee2522f3bec6ae3ee75b8b6" target="_blank" >Link</a> |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](developer-intermediate/artifact-management) | 10 min | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/bd7634595e924254d26c22672f88552a" target="_blank" >Link</a> |
-    | Monitoring | Sysdig Monitoring | [Monitoring](../../developer-intermediate/monitoring) | 5 mins | |
-    | Logging | Logging with LogDNA | [Logging](../../developer-intermediate/log-management) | 5 mins | |
-    | Image Signing | Signing Container Images |  [Signing](https://develop.cloudnativetoolkit.dev/reference/tools/container-image-security-enforcement/) | 25 min | |
+    | Monitoring | Sysdig Monitoring | [Monitoring](../../developer-intermediate/monitoring) | 10 mins | |
+    | Logging | Logging with LogDNA | [Logging](../../developer-intermediate/log-management) | 10 mins | |
     | **Q & A** | | | 10 mins | |
 
     ### Homework
@@ -109,7 +108,6 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](../../developer-intermediate/inventory-bff) | 25 mins | <a href="http://gist-reveal-gist-reveal.workshop-team-2ab66b053c14936810608de9a1deac9c-0000.eu-gb.containers.appdomain.cloud/2dbd6e2ae323490c69e57d362245d167" target="_blank" >Link</a> |
     | Inventory UI | Creating the UI microservice | [Inventory UI](../../developer-intermediate/inventory-ui) | 25 mins | |
-    | AppID | Authentication with AppID |[AppID](../../developer-advanced-1/inventory-appid) |10 mins | |
     | **Q & A** | | | 10 mins | |
     | **Optional: After the workshop** | Complete Inventory App creation using a Kubernetes cluster | [Inventory Application](../../developer-intermediate/inventory-app) | 60 mins | |
 
