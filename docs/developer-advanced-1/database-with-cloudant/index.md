@@ -2,7 +2,7 @@
 title: Database with Cloudant
 ---
 
-<!--- cSpell:ignore dataload cloudantcredentials apikey classname gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp -->
+<!--- cSpell:ignore dataload cloudantcredentials apikey classname gradlew viewapp cloudantgitpodscreen crwopenlink crwopenapp gitpodapplaunch gitpodexplorer -->
 
 ## Add a Cloudant integration to your backend service
 
