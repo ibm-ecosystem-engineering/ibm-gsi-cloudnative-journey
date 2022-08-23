@@ -1,85 +1,14 @@
 **Develop and deploy the backend component of the inventory application**
 
-<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
+<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp openshiftconsoleproject openshiftproject openshiftwebterminal desktoplaptop gitpodlogin gitpodworkspacecreation gitpodeditor gitpodgitignore IntelliJ Intelli gitpodapplaunch gitpodexplorer pushcodeorg -->
 
 ## Setup
 
-### Setup your cloud shell
+### Create your OpenShift project and register the pipeline
 
-- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
+- Create a new repository for the service from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
 
-- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
-
-  ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
-
-We have provided a simplified installer that will install tools and configure the shell environment. The installer will first check if the required tool is available in the path. If not, the missing tool(s) will be installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the `.bashrc` or `.zshrc` file to include that directory.
-
-The following tools are included in the shell installer:  
-
-- IBM Cloud cli (ibmcloud)
-- ArgoCD cli (argocd)
-- Tekton cli (tkn)
-- IBM Cloud fast switching (icc)
-- kube-ps1 prompt
-- OpenShift cli (oc)
-- Kubernetes cli (kubectl)
-- JSON cli (jq)
-- IBM Garage Cloud CLI (igc)  
-
----
-
-1. Set up the shell environment by running:
-  ```shell
-  curl -sL shell.cloudnativetoolkit.dev | sh -
-  ```
-  - **Note**: If successful, you should see something like the following:
-   ```shell
-   Downloading scripts: https://github.com/cloud-native-toolkit/cloud-shell-commands/releases/download/0.6.1/assets.tar.gz
-   ** Installing argocd cli
-   ** Installing tkn cli
-   ** Installing kube-ps1
-   ** Installing icc
-   ** Installing Cloud-Native Toolkit cli
-   ```
-2. The installer updates PATH in the `.zshrc` or `.bashrc` file. You will need to source the file to apply the update to the current shell environment:
-  ```shell
-  if [[ "${SHELL}" =~ zsh ]]; then
-    source ~/.zshrc
-  else
-    source ~/.bashrc
-  fi
-  ```
-3. You can check the shell was installed correctly by checking the `oc` version:
-   ```shell
-   oc sync --version
-   ```
-
-    - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-      ![OpenShift](../../images/common/openshiftcluster.png)
-
-    - Access the OpenShift console from within that console by clicking on the button.
-      ![OpenShift Console](../../images/common/openshiftconsole.png)
-
-    - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
-
-      ![OpenShift Login](../../images/common/LoginCommand.png)
-
-    - click on Display Token, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
-
-      ```bash
-      $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
-      Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
-
-      You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
-
-      Using project "dev-ab".
-      ```
-
-Create the initial project and register it with a pipeline for automated builds.
-
-- Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
-
-  You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3.-open-the-developer-dashboard).
+  You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3-open-the-developer-dashboard).
 
 !!! warning
     If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
@@ -87,25 +16,56 @@ Create the initial project and register it with a pipeline for automated builds.
   In order to prevent naming collisions, name the repository `inv-svc-{your initials}`, replacing
   `{your initials}` with your actual initials.
 
-- Clone the new repository to your machine
+- Deploy this application with Tekton pipelines :
+
+=== "Using OpenShift web terminal"
+    - In the OpenShift web console, head up to **Topology** menu on the left on the **Developer** perspective and click **Create a new project**  
+
+    ![OpenShift web console](../../images/common/openshiftconsoleproject.png)
+
+    - Give a name to your project, call it `dev-{your initials}`, the other fields are optional
+
+    ![Creating a project using the graphical interface](../../images/common/openshiftproject.png)
+
+    - Initialize a web terminal using the `>_` button on the top bar next to your name on the cluster. You should have a terminal with all the necessary development tools
+
+    ![OpenShift web terminal](../../images/common/openshiftwebterminal.png)
+
+
+=== "Using your local terminal"
+    !!! note
+        You should have the `oc` and `igc` command line tools installed. If not, refer to the [developers tools setup page](/getting-started/devenvsetup/#tools-installation-on-desktoplaptop).
+    
+    - In the OpenShift web console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
+    
+      ![OpenShift Login](../../images/common/LoginCommand.png)
+    
+    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
+    
+      ```bash
+      $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
+      Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
+    
+      You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
+      ```
+
+- Clone the repository you created earlier
 
   ```
-  git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
+  git clone https://github.com/ibm-workshop-team-one/inv-svc-{your initials}.git
   ```
 
-- Go into the repository directory cloned and execute the following
+- Run the command
 
   ```
   oc sync dev-{your initials} 
   ```
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
+- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
 
   ```
   oc pipeline --tekton
   ```
-
-  replacing `{your initials}` with your actual initials
 
 - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
 
@@ -137,54 +97,38 @@ Create the initial project and register it with a pipeline for automated builds.
     Pipeline run started: inv-svc-ar-181f77c24a4
   ```
 
-- [Open the pipeline](/developer-intermediate/deploy-app#view-your-application-pipeline) to see it running
+- [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
 
 - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
-  for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are
-  developing on code ready workspaces/cloud shell, copy the url and paste it in a new browser window.
+  for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+  This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
-- Run the service locally
-
-  ```
-  ./gradlew bootRun
-  ```
-
-  When the execution output says `Server started`, the app is running.
-
-- Access the running service. This service runs on port 9080.
-
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-
-      ![View App](../../images/inventory-service/viewapp.png)
-=== "Gitpod" 
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-    
-      ![View App](../../images/inventory-service/gitpod01.png)
-    
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
-    
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
-    
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-
-=== "Code Ready Workspaces" 
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
-    
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
-    
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-
-=== "Desktop/Laptop" 
-    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html){:target='blank'}
----
-
-This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
 ## Create initial components
+
+### Choose your development environment
+
+=== "Gitpod"
+    - Head over to [gitpod.io](https://gitpod.io), login with your github account 
+      
+    ![Gitpod login](../../images/common/gitpodlogin.png)
+
+    - Create a new workspace with the repository you created earlier
+
+    ![Workspace creation](../../images/common/gitpodworkspacecreation.png)
+
+    - Pick Visual Studio Code on the browser as an editor. After waiting some time, you should have an editor on your browser with the code on it. Gitpod will automatically run the application at first launch
+
+    ![Gitpod web editor](../../images/common/gitpodeditor.png)
+
+    - Because Gitpod adds a couple more files in the repository, add at the end of the `.gitignore` file a line with `node_modules` to prevent pushing it to the repository
+
+    ![Gitpod web editor](../../images/common/gitpodgitignore.png)
+
+    You are now ready to modify the application
+
+=== "Locally"
+    Clone the project and open it using your favorite text editor or IDE (Visual Studio Code, IntelliJ...).
 
 Spring Boot uses annotations to configure the various components that will be injected into and
 used by the applications. A class with the `@SpringBootApplication` annotation is the starting
@@ -214,11 +158,11 @@ We will start by creating the initial application component.
   import org.springframework.context.annotation.ComponentScan;
   import org.springframework.core.env.Environment;
 
-  import springfox.documentation.swagger2.annotations.EnableSwagger2
+  import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
   @SpringBootApplication
   @EnableSwagger2
-  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_native_toolkit.*", "com.ibm.health"})
+  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
   public class Application extends SpringBootServletInitializer {
       @Autowired
       Environment environment;
@@ -247,11 +191,8 @@ We will start by creating the initial application component.
 - Delete `application.app`
 
   ```
-   git rm -r src/main/java/application/
+  git rm -r src/main/java/application/
   ```
-
-- Run the service locally. The swagger page should no longer contain the `/hello`
-  API endpoint.
 
 - Commit and push the changes to Git.
 
@@ -260,6 +201,11 @@ We will start by creating the initial application component.
   git commit -m "Adds Application and Removes default Application class"
   git push
   ```
+
+!!! note
+    Pushing code from Gitpod into a Github organization might fail. For that you will need to grant Gitpod access to your organization.  
+    ![Gitpod org access](../../images/common/pushcodeorg.png)
+
 
 ### Add StockItem controller
 
@@ -310,10 +256,10 @@ for the REST service.
 
 
   ```java title="src/main/java/com/ibm/inventory_management/controllers/StockItemController.java"
-   package com.ibm.inventory_management.controllers;
+  package com.ibm.inventory_management.controllers;
 
-   public class StockItemController {
-   }
+  public class StockItemController {
+  }
   ```
 
 - Add the tests for the controller behavior and make the corresponding changes to make the tests pass
@@ -379,7 +325,7 @@ for the REST service.
   import org.springframework.web.bind.annotation.RestController;
 
   @RestController
-    public class StockItemController {
+  public class StockItemController {
 
     @GetMapping(path = "/stock-items", produces = "application/json")
     public List listStockItems() {
@@ -394,29 +340,19 @@ for the REST service.
   ./gradlew bootRun
   ```
 
-=== "Cloud Shell"
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-
-      ![View App](../../images/inventory-service/viewapp.png)
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+    - Gitpod should prompt you to make your app public, make it so
     
-      ![View App](../../images/inventory-service/gitpod01.png)
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
+      ![View App](../../images/common/gitpodapplaunch.png)
     
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-=== "Code Ready Workspaces"
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
     
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
+      ![OpenPreview](../../images/common/gitpodexplorer.png)
     
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-=== "Desktop/Laptop"
-    - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should see the stock item entry in the list
+    - You should see the swagger-ui window open
+
+=== "Locally"
+    - When the server starts, open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html) to view the swagger documentation. You should see the stock item entry in the list
 ---
 - Commit and push the changes to Git.
 
@@ -718,37 +654,19 @@ should be placed in a component that is given a `@Service` annotation.
   ./gradlew bootRun
   ```
 
-=== "Cloud Shell"
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-    
-      ![View App](../../images/inventory-service/viewapp.png)
-
-
 === "Gitpod"
+    - Gitpod should prompt you to make your app public, make it so
+    
+      ![View App](../../images/common/gitpodapplaunch.png)
+    
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
+    
+      ![OpenPreview](../../images/common/gitpodexplorer.png)
+    
+    - You should see the swagger-ui window open
 
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-    
-      ![View App](../../images/inventory-service/gitpod01.png)
-    
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
-    
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
-    
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-
-=== "Code Ready Workspaces"
-
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
-    
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
-    
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-
-=== "Desktop/Laptop"
-    - Open a browser to `http://localhost:9080/swagger-ui.html`
+=== "Locally"
+    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html)
 ---
 
 - Run the service by selecting `Try it out` then `Execute`
@@ -758,9 +676,9 @@ should be placed in a component that is given a `@Service` annotation.
 - Commit and push the changes to git
 
   ```bash
-     git add .
-     git commit -m "Adds StockItem service implementation"
-     git push
+  git add .
+  git commit -m "Adds StockItem service implementation"
+  git push
   ```
 
 - The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the route of your service
@@ -769,21 +687,21 @@ should be placed in a component that is given a `@Service` annotation.
 ### Add POST, PUT and DELETE routes
 - Update the `StockItemApi.java` interface to support the other CRUD operations
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemApi.java"
-     package com.ibm.inventory_management.services;
+  package com.ibm.inventory_management.services;
 
-     import java.util.List;
-
-     import com.ibm.inventory_management.models.StockItem;
-
-     public interface StockItemApi {
-       List<StockItem> listStockItems();
-
-       void updateStockItem(String id);
-
-       void addStockItem(String id);
-
-       void deleteStockItem(String id);
-     }
+  import java.util.List;
+  
+  import com.ibm.inventory_management.models.StockItem;
+  
+  public interface StockItemApi {
+    List<StockItem> listStockItems();
+  
+    void updateStockItem(String id, String name, String manufacturer, double price, int stock);
+  
+    void addStockItem(String name, String manufacturer, double price, int stock);
+  
+    void deleteStockItem(String id);
+  }
   ```
 - Update the `StockItemService.java` class to implement the methods of the interface
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
@@ -897,7 +815,7 @@ should be placed in a component that is given a `@Service` annotation.
     }
   }
   ```
-### Verify the changes locally and push the changes
+### Verify the changes and push the new code
 
 - Start the application
 

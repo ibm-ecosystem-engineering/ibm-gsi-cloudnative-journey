@@ -18,19 +18,19 @@ named `inv-svc-solution-{initials}`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute the following
+- Go into the cloned repository directory and execute the following command : 
 
     ```
     oc sync dev-{your initials} 
     ```
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
+- Register the pipeline : [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
     ```
     oc pipeline <git repo url> --tekton
     ```
 
-- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
+- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
@@ -40,25 +40,25 @@ named `inv-svc-solution-{initials}`
 named `inv-bff-solution-{initials}`
     - replacing `{initials}` with your actual initials
 
-- Go into the repository directory cloned and execute the following, if you have not executed it previously:
+- Go into the cloned repository directory and execute the following, if you have not executed it previously:
 
     ```
     oc sync dev-{your initials} 
     ```
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
+- Register the pipeline : [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
 
     ```
     oc pipeline --tekton
     ```
 
-- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
+- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
 - Get the backend service name this value by executing the command `oc get svc -n dev-{initials}`.
     ```
-    $ oc get svc -n dev-ar    
+    $ oc get svc -n dev-ar   
     NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
     inventory-bff-ar   ClusterIP   172.21.180.68   <none>        80/TCP    14m
     inventory-svc-ar   ClusterIP   172.21.4.95     <none>        80/TCP    20m
@@ -83,18 +83,18 @@ named `inv-ui-solution-{initials}`
 
 - Clone the repository to your local machine
 
-- Go into the repository directory cloned and execute the following, if you have not executed it previously:
+- Go into the cloned repository directory and execute the following, if you have not executed it previously:
 
     ```
     oc sync dev-{your initials} 
     ```
 
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
+- Register the pipeline : [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
     ```
     oc pipeline --tekton
     ```
 
-- Execution of the above command. Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
+- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 

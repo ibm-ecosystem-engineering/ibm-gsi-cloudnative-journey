@@ -109,7 +109,7 @@ nav:
         - OpenShift: developer-intermediate/ocp-registry/index.md
         - IBM Cloud: developer-intermediate/image-registry/index.md
       - Log Management:
-        - OpenShift: developer-intermediate/log-management/index.md
+        - OpenShift: developer-intermediate/ocp-log-management/index.md
         - IBM Cloud: developer-intermediate/log-management/index.md
       - Monitoring:
         - OpenShift: developer-intermediate/ocp-monitoring/index.md
