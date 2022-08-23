@@ -158,11 +158,11 @@ We will start by creating the initial application component.
   import org.springframework.context.annotation.ComponentScan;
   import org.springframework.core.env.Environment;
 
-  import springfox.documentation.swagger2.annotations.EnableSwagger2
+  import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
   @SpringBootApplication
   @EnableSwagger2
-  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_native_toolkit.*", "com.ibm.health"})
+  @ComponentScan({"com.ibm.inventory_management.*", "com.ibm.cloud_garage.*", "com.ibm.health"})
   public class Application extends SpringBootServletInitializer {
       @Autowired
       Environment environment;
@@ -325,7 +325,7 @@ for the REST service.
   import org.springframework.web.bind.annotation.RestController;
 
   @RestController
-    public class StockItemController {
+  public class StockItemController {
 
     @GetMapping(path = "/stock-items", produces = "application/json")
     public List listStockItems() {
