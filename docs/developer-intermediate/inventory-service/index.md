@@ -13,7 +13,7 @@
 !!! warning
     If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
 
-  In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
+  In order to prevent naming collisions, name the repository `inv-svc-{your initials}`, replacing
   `{your initials}` with your actual initials.
 
 - Deploy this application with Tekton pipelines :
@@ -52,7 +52,7 @@
 - Clone the repository you created earlier
 
   ```
-  git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
+  git clone https://github.com/ibm-workshop-team-one/inv-svc-{your initials}.git
   ```
 
 - Run the command
@@ -73,7 +73,7 @@
   $ oc pipeline --tekton
   Creating pipeline on openshift cluster in dev-ar namespace
   Retrieving git parameters
-    Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+    Project git repo: https://github.com/aminerachyd/inv-svc-ar.git
   ? Provide the git username: aminerachyd
   ? Provide the git password or personal access token: [hidden]
     Branch: main
@@ -84,17 +84,17 @@
   ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
   ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
   Copying tasks from tools....
-  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
-  Creating TriggerTemplate for pipeline: inventory-management-svc-ar
-  Creating TriggerBinding for pipeline: inventory-management-svc-ar
+  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inv-svc-ar
+  Creating TriggerTemplate for pipeline: inv-svc-ar
+  Creating TriggerBinding for pipeline: inv-svc-ar
   Creating/updating TriggerEventListener for pipeline: tekton
     Waiting for event listener rollout: dev-ar/el-tekton
     Creating/updating Route for pipeline: tekton
-    Creating PipelineRun for pipeline: inventory-management-svc-ar
-    Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+    Creating PipelineRun for pipeline: inv-svc-ar
+    Creating Github webhook for repo: https://github.com/aminerachyd/inv-svc-ar.git
     Warning: Webhook already exists for this trigger in this repository.
 
-    Pipeline run started: inventory-management-svc-ar-181f77c24a4
+    Pipeline run started: inv-svc-ar-181f77c24a4
   ```
 
 - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
