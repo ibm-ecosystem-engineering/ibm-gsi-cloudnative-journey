@@ -49,13 +49,7 @@
       You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
       ```
 
-- Clone the repository you created earlier
-
-  ```
-  git clone https://github.com/ibm-workshop-team-one/inv-svc-{your initials}.git
-  ```
-
-- Run the command
+- Run the following command to setup your project:
 
   ```
   oc sync dev-{your initials} 
@@ -64,38 +58,10 @@
 - Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
 
   ```
-  oc pipeline --tekton
+  oc pipeline --tekton https://github.com/ibm-workshop-team-one/inv-svc-{your initials}
   ```
 
-- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
-
-  ```bash
-  $ oc pipeline --tekton
-  Creating pipeline on openshift cluster in dev-ar namespace
-  Retrieving git parameters
-    Project git repo: https://github.com/aminerachyd/inv-svc-ar.git
-  ? Provide the git username: aminerachyd
-  ? Provide the git password or personal access token: [hidden]
-    Branch: main
-  Retrieving available template pipelines from tools
-  Pipeline templates filtered based on detected runtime: openjdk/gradle
-  ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
-  ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
-  ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
-  ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
-  Copying tasks from tools....
-  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inv-svc-ar
-  Creating TriggerTemplate for pipeline: inv-svc-ar
-  Creating TriggerBinding for pipeline: inv-svc-ar
-  Creating/updating TriggerEventListener for pipeline: tekton
-    Waiting for event listener rollout: dev-ar/el-tekton
-    Creating/updating Route for pipeline: tekton
-    Creating PipelineRun for pipeline: inv-svc-ar
-    Creating Github webhook for repo: https://github.com/aminerachyd/inv-svc-ar.git
-    Warning: Webhook already exists for this trigger in this repository.
-
-    Pipeline run started: inv-svc-ar-181f77c24a4
-  ```
+    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
 - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
 
