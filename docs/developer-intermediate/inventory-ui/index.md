@@ -8,6 +8,7 @@
 
 - Create a new repository from the [Carbon React template](https://github.com/IBM/template-carbon-react/generate) into your Git org.
 
+
     !!! warning
         If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
         - In order to prevent naming collisions, name the repository `inv-ui-{your initials}` replacing `{your initials}` with your actual initials.
@@ -38,32 +39,19 @@
       You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
       ```
 
-- Clone the repository you created earlier
-
-  ```
-  git clone https://github.com/cnw-team-{team}/inv-ui-{your initials}.git
-  ```
-
-- Run the command
+- Run the following command to setup your project:
 
   ```
   oc sync dev-{your initials} 
   ```
 
-- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+- [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
 
   ```
-  oc pipeline --tekton
+  oc pipeline --tekton https://github.com/cnw-team-{team}/inv-ui-{your initials}
   ```
 
-- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-nodejs`
-
-  ```bash
-  $ oc pipeline --tekton
-  ...
-
-    Pipeline run started: inv-ui-ns-181f77c24a4
-  ```
+    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-nodejs`.
 
 - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
 
