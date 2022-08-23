@@ -49,6 +49,7 @@
       You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
       ```
 
+
 - Run the following command to setup your project:
 
   ```
