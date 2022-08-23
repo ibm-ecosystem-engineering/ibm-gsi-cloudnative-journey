@@ -12,39 +12,6 @@ description: Lab for continuous delivery using ArgoCD
 
     Check the [Environment Setup](/getting-started/devenvsetup) page for your setup.
 
-    ## ArgoCD Installation
-
-    - Create the namespace `argocd` to install argocd
-    ```bash
-    oc new-project argocd
-    ```
-    - Install ArgoCD as follows.
-    ```
-    oc apply --filename https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/argo-lab/argocd-operator.yaml
-    ```
-    - When installing the tutorial, make sure you wait until the argocd-operator is finished before installing the argocd-cr..or it will fail. You can do this:
-    ```bash
-    oc get ClusterServiceVersion/argocd-operator-helm.v0.0.3 -n argocd
-    NAME                          DISPLAY                   VERSION   REPLACES                      PHASE
-    argocd-operator-helm.v0.0.3   Argo CD Operator (Helm)   0.0.3     argocd-operator-helm.v0.0.2   Succeeded
-    ```
-    and wait for the "succeeded" to come up before proceeding.
-    ```
-    oc apply --filename https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/argo-lab/argocd-cr.yaml
-    ```
-    - Install the `argocd` CLI, for example on OSX use brew
-    ```bash
-    brew tap argoproj/tap
-    brew install argoproj/tap/argocd
-    ```
-    - Set an environment variable `ARGOCD_URL` using the `EXTERNAL-IP`
-    ```bash
-    export ARGOCD_SERVER="$(oc get route argocd-server -n argocd -o jsonpath='{.status.ingress[0].host}')"
-    export ARGOCD_URL="https://$ARGOCD_SERVER"
-    echo ARGOCD_URL=$ARGOCD_URL
-    echo ARGOCD_SERVER=$ARGOCD_SERVER
-    ```
-
     ## Deploying the app
 
     - Login into the UI.

@@ -12,55 +12,11 @@ Follow the instructions [here](/getting-started/devenvsetup)
 
 === "OpenShift"
 
-    ## SetUp
-
-    ### Tekton CLI Installation
-
-    - [Tekton CLI](https://github.com/tektoncd/cli) is command line utility used to interact with the Tekton resources.
-
-    - Follow the instructions on the tekton CLI github repository https://github.com/tektoncd/cli#installing-tkn
-
-    - For MacOS for example you can use brew
-    ```
-    brew tap tektoncd/tools
-    brew install tektoncd/tools/tektoncd-cli
-    ```
-    - Verify the Tekton cli
-    ```
-    tkn version
-    ```
-    - The command should show a result like:
-    ```
-    $ tkn version
-    Client version: 0.8.0
-    ```
-    - If you already have the `tkn` install you can upgrade running
-    ```
-    brew upgrade tektoncd/tools/tektoncd-cli
-    ```
-
-    ### Tekton Pipelines Installation
-
-    - To deploy the Tekton pipelines:
-    ```
-     oc apply --filename https://raw.githubusercontent.com/ibm-cloud-architecture/learning-cloudnative-101/master/static/yamls/tekton-lab/tekton-operator.yaml
-    ```
-    - ***Note***: It will take few mins for the Tekton pipeline components to be installed, you an watch the status using the command:
-    ```
-    oc get pods -n openshift-operators
-    ```
-    You can use `Ctrl+c` to terminate the watch
-    - A successful deployment of Tekton pipelines will show the following pods:
-    ```
-    NAME                                         READY   STATUS    RESTARTS   AGE
-    openshift-pipelines-operator-9cdbbb854-x9tvs   1/1     Running   0          25s
-    ```
-
     ## Create Target Namespace
 
     - Set the environment variable `NAMESPACE` to `tekton-demo`, if you open a new terminal remember to set this environment again
     ```
-    export NAMESPACE=tekton-demo
+    export NAMESPACE=tekton-demo-{initials}
     ```
     - Create a the namespace using the variable `NAMESPACE`
     ```
