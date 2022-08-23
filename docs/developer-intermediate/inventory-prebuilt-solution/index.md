@@ -24,13 +24,11 @@ named `inv-svc-solution-{initials}`
     oc sync dev-{your initials} 
     ```
 
-- Register the pipeline : [register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline)
+- [Register the pipeline](/developer-intermediate/deploy-app#5.-register-the-application-in-a-devops-pipeline), give git credentials if prompted, and **main** as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
     ```
     oc pipeline <git repo url> --tekton
     ```
-
-- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
@@ -52,7 +50,7 @@ named `inv-bff-solution-{initials}`
     oc pipeline --tekton
     ```
 
-- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
+- Execution of the above command. Give git credentials if prompted, and **main** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
@@ -94,7 +92,7 @@ named `inv-ui-solution-{initials}`
     oc pipeline --tekton
     ```
 
-- Execution of the above command. Give git credentials if prompted, and **master** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
+- Execution of the above command. Give git credentials if prompted, and **main** as the git branch to use. When prompted for the pipeline, select `igc-nodejs-v1-2-0`.
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
