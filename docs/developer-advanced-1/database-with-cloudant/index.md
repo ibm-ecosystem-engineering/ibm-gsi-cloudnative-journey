@@ -646,10 +646,6 @@ existing `env` block
   ./gradlew bootrun
   ```
 
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-
-      ![View App](images/viewapp.png)
 === "Gitpod" 
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
 
@@ -660,20 +656,14 @@ existing `env` block
       ![OpenPreview](images/cloudantgitpodscreen.png)
 
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-=== "Cloud Ready Workspaces"
-    - Click on open link 
-      ![CRW Open Link](images/crwopenlink.png)
 
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](images/crwopenapp.png)
-=== "Desktop/Laptop" 
+=== "Locally" 
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
 ---
 
 - Once the application is up, go the Swagger UI and execute get `stock-items`.
 
--  You should be able to see all the data you pushed to the database
-   through ./dataload.sh
+- You should be able to see all the data you pushed to the database through ./dataload.sh
 
    ![ResultScreen](images/ResultScreen.png)
 

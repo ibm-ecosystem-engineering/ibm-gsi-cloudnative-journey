@@ -4,187 +4,103 @@
 
 ## Setup
 
-### Setup your cloud shell
+### Create your OpenShift project and register the pipeline
+=== "Using OpenShift web terminal"
+    WIP
 
-- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
-
-- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
-
-  ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
-
-We have provided a simplified installer that will install tools and configure the shell environment. The installer will first check if the required tool is available in the path. If not, the missing tool(s) will be installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the `.bashrc` or `.zshrc` file to include that directory.
-
-The following tools are included in the shell installer:  
-
-- IBM Cloud cli (ibmcloud)
-- ArgoCD cli (argocd)
-- Tekton cli (tkn)
-- IBM Cloud fast switching (icc)
-- kube-ps1 prompt
-- OpenShift cli (oc)
-- Kubernetes cli (kubectl)
-- JSON cli (jq)
-- IBM Garage Cloud CLI (igc)  
-
----
-
-1. Set up the shell environment by running:
-  ```shell
-  curl -sL shell.cloudnativetoolkit.dev | sh -
-  ```
-  - **Note**: If successful, you should see something like the following:
-   ```shell
-   Downloading scripts: https://github.com/cloud-native-toolkit/cloud-shell-commands/releases/download/0.6.1/assets.tar.gz
-   ** Installing argocd cli
-   ** Installing tkn cli
-   ** Installing kube-ps1
-   ** Installing icc
-   ** Installing Cloud-Native Toolkit cli
-   ```
-2. The installer updates PATH in the `.zshrc` or `.bashrc` file. You will need to source the file to apply the update to the current shell environment:
-  ```shell
-  if [[ "${SHELL}" =~ zsh ]]; then
-    source ~/.zshrc
-  else
-    source ~/.bashrc
-  fi
-  ```
-3. You can check the shell was installed correctly by checking the `oc` version:
-   ```shell
-   oc sync --version
-   ```
-
-    - Log in to OpenShift Cluster from the cloud console.Go to Resource List and click on the cluster:
-      ![OpenShift](../../images/common/openshiftcluster.png)
-
-    - Access the OpenShift console from within that console by clicking on the button.
-      ![OpenShift Console](../../images/common/openshiftconsole.png)
-
-    - In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
-
+=== "Locally"
+    !!! note
+        You should have the `oc` and `igc` command line tools installed. If not, refer to the [developers tools setup page](/getting-started/devenvsetup/#tools-installation-on-desktoplaptop).
+    
+    - In the OpenShift console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
+    
       ![OpenShift Login](../../images/common/LoginCommand.png)
-
-    - click on Display Token, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
-
+    
+    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
+    
       ```bash
       $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
       Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
-
+    
       You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
-
-      Using project "dev-ab".
       ```
-
-Create the initial project and register it with a pipeline for automated builds.
-
-- Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
-
-  You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3.-open-the-developer-dashboard).
-
-!!! warning
-    If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
-
-  In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
-  `{your initials}` with your actual initials.
-
-- Clone the new repository to your machine
-
-  ```
-  git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
-  ```
-
-- Go into the repository directory cloned and execute the following
-
-  ```
-  oc sync dev-{your initials} 
-  ```
-
-- Register the pipeline [register the pipeline](/developer-intermediate/deploy-app#register-the-app-in-a-devops-pipeline)
-
-  ```
-  oc pipeline --tekton
-  ```
-
-  replacing `{your initials}` with your actual initials
-
-- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
-
-  ```bash
-  $ oc pipeline --tekton
-  Creating pipeline on openshift cluster in dev-ar namespace
-  Retrieving git parameters
-    Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
-  ? Provide the git username: aminerachyd
-  ? Provide the git password or personal access token: [hidden]
-    Branch: main
-  Retrieving available template pipelines from tools
-  Pipeline templates filtered based on detected runtime: openjdk/gradle
-  ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
-  ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
-  ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
-  ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
-  Copying tasks from tools....
-  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
-  Creating TriggerTemplate for pipeline: inventory-management-svc-ar
-  Creating TriggerBinding for pipeline: inventory-management-svc-ar
-  Creating/updating TriggerEventListener for pipeline: tekton
-    Waiting for event listener rollout: dev-ar/el-tekton
-    Creating/updating Route for pipeline: tekton
-    Creating PipelineRun for pipeline: inventory-management-svc-ar
-    Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
-    Warning: Webhook already exists for this trigger in this repository.
-
-    Pipeline run started: inventory-management-svc-ar-181f77c24a4
-  ```
-
-- [Open the pipeline](/developer-intermediate/deploy-app#view-your-application-pipeline) to see it running
-
-- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
-  for the app we just pushed. Select the entry and hit `Enter` to launch the browser. If you are
-  developing on code ready workspaces/cloud shell, copy the url and paste it in a new browser window.
-
-- Run the service locally
-
-  ```
-  ./gradlew bootRun
-  ```
-
-  When the execution output says `Server started`, the app is running.
-
-- Access the running service. This service runs on port 9080.
-
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-
-      ![View App](../../images/inventory-service/viewapp.png)
-=== "Gitpod" 
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
-      ![View App](../../images/inventory-service/gitpod01.png)
+    Create the initial project and register it with a pipeline for automated builds.
     
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
+    - Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
     
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
+      You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3-open-the-developer-dashboard).
     
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
+    !!! warning
+        If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
+    
+      In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
+      `{your initials}` with your actual initials.
+    
+    - Clone the new repository to your machine
+    
+      ```
+      git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
+      ```
+    
+    - After logging into the cluster, run the command
+    
+      ```
+      oc sync dev-{your initials} 
+      ```
+    
+    - Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+    
+      ```
+      oc pipeline --tekton
+      ```
+    
+    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
+    
+      ```bash
+      $ oc pipeline --tekton
+      Creating pipeline on openshift cluster in dev-ar namespace
+      Retrieving git parameters
+        Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+      ? Provide the git username: aminerachyd
+      ? Provide the git password or personal access token: [hidden]
+        Branch: main
+      Retrieving available template pipelines from tools
+      Pipeline templates filtered based on detected runtime: openjdk/gradle
+      ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
+      ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
+      ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
+      ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
+      Copying tasks from tools....
+      Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
+      Creating TriggerTemplate for pipeline: inventory-management-svc-ar
+      Creating TriggerBinding for pipeline: inventory-management-svc-ar
+      Creating/updating TriggerEventListener for pipeline: tekton
+        Waiting for event listener rollout: dev-ar/el-tekton
+        Creating/updating Route for pipeline: tekton
+        Creating PipelineRun for pipeline: inventory-management-svc-ar
+        Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+        Warning: Webhook already exists for this trigger in this repository.
+    
+        Pipeline run started: inventory-management-svc-ar-181f77c24a4
+      ```
+    
+    - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
+    
+    - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
+      for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+      This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
-=== "Code Ready Workspaces" 
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
-    
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
-    
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-
-=== "Desktop/Laptop" 
-    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html){:target='blank'}
----
-
-This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
 ## Create initial components
+
+### Choose your development environment
+
+=== "Gitpod"
+    Head over to [gitpod.io](https://gitpod.io), login with your github account and create a workspace using the repository of the code your cloned before. 
+
+=== "Locally"
+    Clone the project and open it using your favourite text editor or IDE (Visual Studio Code, IntelliJ...).
 
 Spring Boot uses annotations to configure the various components that will be injected into and
 used by the applications. A class with the `@SpringBootApplication` annotation is the starting
@@ -247,7 +163,7 @@ We will start by creating the initial application component.
 - Delete `application.app`
 
   ```
-   git rm -r src/main/java/application/
+  git rm -r src/main/java/application/
   ```
 
 - Run the service locally. The swagger page should no longer contain the `/hello`
@@ -310,10 +226,10 @@ for the REST service.
 
 
   ```java title="src/main/java/com/ibm/inventory_management/controllers/StockItemController.java"
-   package com.ibm.inventory_management.controllers;
+  package com.ibm.inventory_management.controllers;
 
-   public class StockItemController {
-   }
+  public class StockItemController {
+  }
   ```
 
 - Add the tests for the controller behavior and make the corresponding changes to make the tests pass
@@ -394,10 +310,6 @@ for the REST service.
   ./gradlew bootRun
   ```
 
-=== "Cloud Shell"
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-
-      ![View App](../../images/inventory-service/viewapp.png)
 === "Gitpod"
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
@@ -415,7 +327,8 @@ for the REST service.
     
     - To view this application in new tab click top right corner arrow icon
       ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-=== "Desktop/Laptop"
+
+=== "Locally"
     - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should see the stock item entry in the list
 ---
 - Commit and push the changes to Git.
@@ -718,14 +631,7 @@ should be placed in a component that is given a `@Service` annotation.
   ./gradlew bootRun
   ```
 
-=== "Cloud Shell"
-    - To view the running app click on the **Eye Icon** on the top right and select the port `9080` this will open a browser tab and display the running app on that port.
-    
-      ![View App](../../images/inventory-service/viewapp.png)
-
-
 === "Gitpod"
-
     - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
     
       ![View App](../../images/inventory-service/gitpod01.png)
@@ -736,18 +642,7 @@ should be placed in a component that is given a `@Service` annotation.
     
     - Selecting "Open Browser" opens a new browser tab for accessing the URL.
 
-=== "Code Ready Workspaces"
-
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
-    
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
-    
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
-
-=== "Desktop/Laptop"
+=== "Locally"
     - Open a browser to `http://localhost:9080/swagger-ui.html`
 ---
 
@@ -758,9 +653,9 @@ should be placed in a component that is given a `@Service` annotation.
 - Commit and push the changes to git
 
   ```bash
-     git add .
-     git commit -m "Adds StockItem service implementation"
-     git push
+  git add .
+  git commit -m "Adds StockItem service implementation"
+  git push
   ```
 
 - The pipeline should kick off and you will be able to see the running service by running `oc endpoints -n dev-{initials}` and selecting the route of your service
@@ -769,21 +664,21 @@ should be placed in a component that is given a `@Service` annotation.
 ### Add POST, PUT and DELETE routes
 - Update the `StockItemApi.java` interface to support the other CRUD operations
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemApi.java"
-     package com.ibm.inventory_management.services;
+  package com.ibm.inventory_management.services;
 
-     import java.util.List;
+  import java.util.List;
 
-     import com.ibm.inventory_management.models.StockItem;
+  import com.ibm.inventory_management.models.StockItem;
 
-     public interface StockItemApi {
-       List<StockItem> listStockItems();
+  public interface StockItemApi {
+    List<StockItem> listStockItems();
 
-       void updateStockItem(String id);
+    void updateStockItem(String id);
 
-       void addStockItem(String id);
+    void addStockItem(String id);
 
-       void deleteStockItem(String id);
-     }
+    void deleteStockItem(String id);
+  }
   ```
 - Update the `StockItemService.java` class to implement the methods of the interface
   ```java title="src/main/java/com/ibm/inventory_management/services/StockItemService.java"
