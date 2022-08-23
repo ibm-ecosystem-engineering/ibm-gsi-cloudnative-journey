@@ -71,7 +71,6 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Cloud Native Development](../developer-foundation/cloud-native-app-dev/#activities)| Reading through different concepts in cloud native development | | 90 mins | |
     | [Continuous Integration](continuous-integration-handson/)| Continuous Integration Hands on Exercise| | 60 mins | |
     | [Continuous Delivery](continuous-delivery-handson/)| Continuous Delivery Hands on Exercise| | 60 mins | |
-    | [Continuous Delivery](https://developers.redhat.com/courses/gitops/getting-started-argocd-and-openshift-gitops-operator)| Continuous Delivery Hands on Exercise| | 60 mins | |
 
     ## Day 2 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
