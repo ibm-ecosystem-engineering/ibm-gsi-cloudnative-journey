@@ -367,20 +367,7 @@ If you are starting from the solution, use the following steps to enable the Clo
 !!! tip
     If you are using MongoDB on **OpenShift**, you can use the `oc port-forward` command to access your database instance through `localhost`
 
-=== "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-
-      ![View App](../../images/database-with-cloudant/gitpod01.png)
-
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
-
-      ![OpenPreview](../../images/database-with-cloudant/cloudantgitpodscreen.png)
-
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-
-=== "Locally"
-    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
----
+- Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
 
 - Once the application is up, go the Swagger UI and execute get `stock-items`.
 

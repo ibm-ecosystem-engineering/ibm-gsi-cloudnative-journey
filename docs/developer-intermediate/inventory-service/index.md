@@ -5,14 +5,38 @@
 ## Setup
 
 ### Create your OpenShift project and register the pipeline
-=== "Using OpenShift web terminal"
-    WIP
 
-=== "Locally"
+- Create a new repository for the service from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
+
+  You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3-open-the-developer-dashboard).
+
+!!! warning
+    If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
+
+  In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
+  `{your initials}` with your actual initials.
+
+- Deploy this application with Tekton pipelines :
+
+=== "Using OpenShift web terminal"
+    - In the OpenShift web console, head up to **Topology** menu on the left on the **Developer** perspective and click **Create a new project**  
+
+    ![OpenShift web console](../../images/common/openshiftconsoleproject.png)
+
+    - Give a name to your project, call it `dev-{your initials}`, the other fields are optional
+
+    ![Creating a project using the graphical interface](../../images/common/openshiftproject.png)
+
+    - Initialize a web terminal using the `>_` button on the top bar next to your name on the cluster. You should have a terminal with all the necessary development tools
+
+    ![OpenShift web terminal](../../images/common/openshiftwebterminal.png)
+
+
+=== "Using your local terminal"
     !!! note
         You should have the `oc` and `igc` command line tools installed. If not, refer to the [developers tools setup page](/getting-started/devenvsetup/#tools-installation-on-desktoplaptop).
     
-    - In the OpenShift console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
+    - In the OpenShift web console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
     
       ![OpenShift Login](../../images/common/LoginCommand.png)
     
@@ -24,72 +48,60 @@
     
       You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
       ```
-    
-    Create the initial project and register it with a pipeline for automated builds.
-    
-    - Create a new repository from the [Spring Boot Microservice](https://github.com/IBM/template-java-spring/generate) template. Make the cloned repository public.
-    
-      You can also access this template on the Code Patterns page in the [Developer Dashboard](/developer-intermediate/deploy-app/#3-open-the-developer-dashboard).
-    
-    !!! warning
-        If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
-    
-      In order to prevent naming collisions, name the repository `inventory-management-svc-{your initials}`, replacing
-      `{your initials}` with your actual initials.
-    
-    - Clone the new repository to your machine
-    
-      ```
-      git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
-      ```
-    
-    - After logging into the cluster, run the command
-    
-      ```
-      oc sync dev-{your initials} 
-      ```
-    
-    - Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
-    
-      ```
-      oc pipeline --tekton
-      ```
-    
-    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
-    
-      ```bash
-      $ oc pipeline --tekton
-      Creating pipeline on openshift cluster in dev-ar namespace
-      Retrieving git parameters
-        Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
-      ? Provide the git username: aminerachyd
-      ? Provide the git password or personal access token: [hidden]
-        Branch: main
-      Retrieving available template pipelines from tools
-      Pipeline templates filtered based on detected runtime: openjdk/gradle
-      ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
-      ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
-      ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
-      ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
-      Copying tasks from tools....
-      Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
-      Creating TriggerTemplate for pipeline: inventory-management-svc-ar
-      Creating TriggerBinding for pipeline: inventory-management-svc-ar
-      Creating/updating TriggerEventListener for pipeline: tekton
-        Waiting for event listener rollout: dev-ar/el-tekton
-        Creating/updating Route for pipeline: tekton
-        Creating PipelineRun for pipeline: inventory-management-svc-ar
-        Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
-        Warning: Webhook already exists for this trigger in this repository.
-    
-        Pipeline run started: inventory-management-svc-ar-181f77c24a4
-      ```
-    
-    - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
-    
-    - When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
-      for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
-      This will display the Swagger UI page that provides a user interface to exercise the APIs.
+
+- Clone the repository you created earlier
+
+  ```
+  git clone https://github.com/ibm-workshop-team-one/inventory-svc-{your initials}.git
+  ```
+
+- Run the command
+
+  ```
+  oc sync dev-{your initials} 
+  ```
+
+- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+
+  ```
+  oc pipeline --tekton
+  ```
+
+- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`
+
+  ```bash
+  $ oc pipeline --tekton
+  Creating pipeline on openshift cluster in dev-ar namespace
+  Retrieving git parameters
+    Project git repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+  ? Provide the git username: aminerachyd
+  ? Provide the git password or personal access token: [hidden]
+    Branch: main
+  Retrieving available template pipelines from tools
+  Pipeline templates filtered based on detected runtime: openjdk/gradle
+  ? Select the Pipeline to use in the PipelineRun: ibm-java-gradle
+  ? scan-image: Enable the pipeline to scan the image for vulnerabilities? Yes
+  ? health-endpoint: Endpoint to check health after deployment, liberty uses / not /health? /health
+  ? lint-dockerfile: Enable the pipeline to lint the Dockerfile for best practices? Yes
+  Copying tasks from tools....
+  Copied Pipeline from tools/ibm-java-gradle to dev-ar/inventory-management-svc-ar
+  Creating TriggerTemplate for pipeline: inventory-management-svc-ar
+  Creating TriggerBinding for pipeline: inventory-management-svc-ar
+  Creating/updating TriggerEventListener for pipeline: tekton
+    Waiting for event listener rollout: dev-ar/el-tekton
+    Creating/updating Route for pipeline: tekton
+    Creating PipelineRun for pipeline: inventory-management-svc-ar
+    Creating Github webhook for repo: https://github.com/aminerachyd/inventory-management-svc-ar.git
+    Warning: Webhook already exists for this trigger in this repository.
+
+    Pipeline run started: inventory-management-svc-ar-181f77c24a4
+  ```
+
+- [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
+
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry
+  for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+  This will display the Swagger UI page that provides a user interface to exercise the APIs.
 
 
 ## Create initial components
@@ -97,7 +109,23 @@
 ### Choose your development environment
 
 === "Gitpod"
-    Head over to [gitpod.io](https://gitpod.io), login with your github account and create a workspace using the repository of the code your cloned before. 
+    - Head over to [gitpod.io](https://gitpod.io), login with your github account 
+      
+    ![Gitpod login](../../images/common/gitpodlogin.png)
+
+    - Create a new workspace with the repository you created earlier
+
+    ![Workspace creation](../../images/common/gitpodworkspacecreation.png)
+
+    - Pick Visual Studio Code on the browser as an editor. After waiting some time, you should have an editor on your browser with the code on it. Gitpod will automatically run the application at first launch
+
+    ![Gitpod web editor](../../images/common/gitpodeditor.png)
+
+    - Because Gitpod adds a couple more files in the repository, add at the end of the `.gitignore` file a line with `node_modules` to prevent pushing it to the repository
+
+    ![Gitpod web editor](../../images/common/gitpodgitignore.png)
+
+    You are now ready to modify the application
 
 === "Locally"
     Clone the project and open it using your favourite text editor or IDE (Visual Studio Code, IntelliJ...).
@@ -165,9 +193,6 @@ We will start by creating the initial application component.
   ```
   git rm -r src/main/java/application/
   ```
-
-- Run the service locally. The swagger page should no longer contain the `/hello`
-  API endpoint.
 
 - Commit and push the changes to Git.
 
@@ -311,25 +336,18 @@ for the REST service.
   ```
 
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+    - Gitpod should prompt you to make your app public, make it so
     
-      ![View App](../../images/inventory-service/gitpod01.png)
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
+      ![View App](../../images/common/gitpodapplaunch.png)
     
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
-=== "Code Ready Workspaces"
-    - Click on yes
-      ![CRW Open Link](../../images/inventory-service/crwexposeservice.png)
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
     
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
+      ![OpenPreview](../../images/common/gitpodexplorer.png)
     
-    - To view this application in new tab click top right corner arrow icon
-      ![CRW Open App](../../images/inventory-service/crwopenapp.png)
+    - You should see the swagger-ui window open
 
 === "Locally"
-    - When the server starts, open a browser to `http://localhost:9080/swagger-ui.html` to view the swagger documentation. You should see the stock item entry in the list
+    - When the server starts, open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html) to view the swagger documentation. You should see the stock item entry in the list
 ---
 - Commit and push the changes to Git.
 
@@ -632,18 +650,18 @@ should be placed in a component that is given a `@Service` annotation.
   ```
 
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+    - Gitpod should prompt you to make your app public, make it so
     
-      ![View App](../../images/inventory-service/gitpod01.png)
+      ![View App](../../images/common/gitpodapplaunch.png)
     
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
     
-      ![OpenPreview](../../images/inventory-service/gitpod02.png)
+      ![OpenPreview](../../images/common/gitpodexplorer.png)
     
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
+    - You should see the swagger-ui window open
 
 === "Locally"
-    - Open a browser to `http://localhost:9080/swagger-ui.html`
+    - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html)
 ---
 
 - Run the service by selecting `Try it out` then `Execute`
@@ -792,7 +810,7 @@ should be placed in a component that is given a `@Service` annotation.
     }
   }
   ```
-### Verify the changes locally and push the changes
+### Verify the changes and push the new code
 
 - Start the application
 

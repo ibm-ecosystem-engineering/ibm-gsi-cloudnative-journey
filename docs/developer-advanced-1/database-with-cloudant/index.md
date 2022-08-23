@@ -638,7 +638,7 @@ existing `env` block
       - name: DATABASE_NAME
         value: {{ .Values.databaseName | quote }}
     ```
-### Running the application locally
+### Running the application
 
 - Start the application.
   ```bash
@@ -647,15 +647,15 @@ existing `env` block
   ```
 
 === "Gitpod" 
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
+    - Gitpod should prompt you to make your app public, make it so
 
-      ![View App](images/gitpod01.png)
+      ![View App](../../images/common/gitpodapplaunch.png)
 
-    - Selecting "Open Preview" opens a window inside gitpod workspace tab.
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
 
-      ![OpenPreview](images/cloudantgitpodscreen.png)
+      ![OpenPreview](../../images/common/gitpodexplorer.png)
 
-    - Selecting "Open Browser" opens a new browser tab for accessing the URL.
+    - You should see the swagger-ui window open
 
 === "Locally" 
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080:swagger-ui.html)
