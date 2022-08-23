@@ -56,13 +56,11 @@
   oc sync dev-{your initials} 
   ```
 
-- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline), give git credentials if prompted, and `main` as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
   ```
   oc pipeline --tekton https://github.com/ibm-workshop-team-one/inv-svc-{your initials}
   ```
-
-    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-java-gradle`.
 
 - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
 

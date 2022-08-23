@@ -45,13 +45,11 @@
   oc sync dev-{your initials} 
   ```
 
-- [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+- [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline), give git credentials if prompted, and **main** as the git branch to use. When prompted for the pipeline, select `ibm-nodejs`.
 
   ```
   oc pipeline --tekton https://github.com/cnw-team-{team}/inv-ui-{your initials}
   ```
-
-    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-nodejs`.
 
 - [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
 
