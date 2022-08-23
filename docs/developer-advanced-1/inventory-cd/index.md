@@ -106,11 +106,11 @@ To create a project, do the following:
 ### Configure the GitOps repo for Inventory Management service
 
 - Clone the GitOps repository you created earlier, copy the folder `templates/app-helm` to the root of the repository and give it a name that matches the Inventory Management service component
-(e.g. `inventory-management-svc-{initials}`)
+(e.g. `inv-svc-{initials}`)
 
-- Update `inventory-management-svc-{initials}/Chart.yaml` and update the name to match the directory name
+- Update `inv-svc-{initials}/Chart.yaml` and update the name to match the directory name
 
-- Update `inventory-management-svc-{initials}/requirements.yaml` with the following values:
+- Update `inv-svc-{initials}/requirements.yaml` with the following values:
 
     - `name` - the name of helm chart/image. This should match the folder name
     - `version` - the version number of the helm chart
@@ -119,7 +119,7 @@ To create a project, do the following:
 - here is an example
     ```yaml
     dependencies:
-    - name: inventory-management-svc-mjp
+    - name: inv-svc-mjp
       version: 1.0.0-1
       repository: http://artifactory.mooc-one-rhos-cluster.us-east.containers.appdomain.cloud/artifactory/generic-local/mooc-team-one/
     ```
@@ -132,13 +132,13 @@ To create a project, do the following:
 - Run `kubectl get configmap/ibmcloud-config -n tools -o yaml` to print the configuration information
 for the cluster
 
-- In `inventory-management-svc-{initials}/values.yaml` replace `<app-chart-name>` with the directory name. Replace `ingressSubdomain` with the value from the previous step. Update `tlsSecretName` with the value from the previous step. The result should look something like the following
-    ```yaml title="inventory-management-svc-{initials}/values.yaml"
+- In `inv-svc-{initials}/values.yaml` replace `<app-chart-name>` with the directory name. Replace `ingressSubdomain` with the value from the previous step. Update `tlsSecretName` with the value from the previous step. The result should look something like the following
+    ```yaml title="inv-svc-{initials}/values.yaml"
     global:
       ingressSubdomain: sms-test.us-south.containers.appdomain.cloud
       tlsSecretName: sms-test-cluster
 
-    inventory-management-svc-{initials}:
+    inv-svc-{initials}:
       replicaCount: 1
 
       ingress:
@@ -149,7 +149,7 @@ for the cluster
 - Commit and push the changes
     ```bash
     git add .
-    git commit -m "Adds inventory-management-svc config"
+    git commit -m "Adds inv-svc config"
     git push
     ```
 
@@ -162,12 +162,12 @@ connecting the config within the Git repo to the cluster and namespace.
 
 - Click `New Application` and provide the following values:
 
-    - `application name` - `test-inventory-management-svc`
+    - `application name` - `test-inv-svc`
     - `project` - `inventory-management`
     - `sync-policy` - `Automatic`
     - `repository url` - The url of the GitOps repository you created earlier
     - `revision` - `test`
-    - `path` - `inventory-management-svc-{initials}`
+    - `path` - `inv-svc-{initials}`
     - `destination cluster` - The cluster url for the deployment
     - `destination namespace` - `test-{initials}`
     - `values file` - `values.yaml`
@@ -189,13 +189,13 @@ watch ArgoCD apply the change.
     git checkout test
     ```
 
-- Update `inventory-management-svc-{initials}/values.yaml` to increase the replica count
-    ```yaml title="inventory-management-svc-{initials}/values.yaml"
+- Update `inv-svc-{initials}/values.yaml` to increase the replica count
+    ```yaml title="inv-svc-{initials}/values.yaml"
     global:
       ingressSubdomain: sms-test.us-south.containers.appdomain.cloud
       tlsSecretName: sms-test-cluster
 
-    inventory-management-svc-{initials}:
+    inv-svc-{initials}:
       replicaCount: 3
 
       ingress:

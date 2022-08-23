@@ -11,116 +11,93 @@ The Inventory solution will use [GraphQL](https://graphql.org/) for its BFF laye
 
 ## Setup
 
-### [Optional]: Access cloud shell 
-
-If you don't plan to use your workstation to run this lab, you can use IBM Cloud Shell:
-
-- Open the IBM Cloud console (cloud.ibm.com) in your browser and log in if needed.
-
-- Invoke Cloud Shell by clicking on the button at the top, right-hand corner of the browser window.
-
-   ![Invoke Cloud Shell](../../images/common/invokecloudshell.png)
-
-### Setup your shell environment
-
-We have provided a simplified installer that will install tools and configure the shell environment. The
-installer will first check if the required tool is available in the path. If not, the missing tool(s) will be
-installed into the `bin/` folder of the current user's home directory and the `PATH` variable will be updated in the
-`.bashrc` or `.zshrc` file to include that directory.
-
-The following tools are included in the shell installer:
-
-- IBM Cloud cli (ibmcloud)
-- ArgoCD cli (argocd)
-- Tekton cli (tkn)
-- IBM Cloud fast switching (icc)
-- kube-ps1 prompt
-- OpenShift cli (oc)
-- Kubernetes cli (kubectl)
-- JSON cli (jq)
-- IBM Garage Cloud CLI (igc)
-
-1. Set up the shell environment by running:
-  ```shell
-  curl -sL shell.cloudnativetoolkit.dev | sh -
-  ```
-  - **Note**: If successful, you should see something like the following:
-   ```shell
-   Downloading scripts: https://github.com/cloud-native-toolkit/cloud-shell-commands/releases/download/0.6.1/assets.tar.gz
-   ** Installing argocd cli
-   ** Installing tkn cli
-   ** Installing kube-ps1
-   ** Installing icc
-   ** Installing Cloud-Native Toolkit cli
-   ```
-2. The installer updates PATH in the `.zshrc` or `.bashrc` file. You will need to source the file to apply the update to the current shell environment:
-  ```shell
-  if [[ "${SHELL}" =~ zsh ]]; then
-    source ~/.zshrc
-  else
-    source ~/.bashrc
-  fi
-  ```
-3. You can check the shell was installed correctly by checking the `oc` version:
-    ```shell
-    oc sync --version
-    ```
-
-### Log in to OpenShift Cluster
-
-- Log in to OpenShift Cluster from the cloud console. Go to Resource listStockItems and click on the cluster:
-
-    ![OpenShift](../../images/common/openshiftcluster.png)
-
-- Access the OpenShift console from within that console by clicking on the button.
-
-    ![OpenShift Console](../../images/common/openshiftconsole.png)
-
-- In OpenShift Console, click on email address top right, Click on Copy Login Command and get the OpenShift login command, which includes a token.
-
-    ![OpenShift Login](../../images/common/LoginCommand.png)
-
-- click on **_Display Token_**, copy the Login with the token. `oc login` command  will log you in. Run the login command in the cloud shell terminal:
-    ```bash
-    $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
-    Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
-
-    You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
-
-    Using project "dev-ab".
-    ```
-
-### Setup code base
-
-To get the initial BFF project created and registered with a pipeline for automated builds follow these steps.
+### Create your OpenShift project and register the pipeline
 
 - Create a new repository from the [Typescript GraphQL template](https://github.com/IBM/template-graphql-typescript/generate).
 
     !!! warning
         If you are developing on a shared education cluster, place the repository in the **Git Organization** listed in your notification email and remember to add your initials as a suffix to the app name.
-        - In order to prevent naming collisions, name the repository `inventory-management-bff-{your initials}` replacing `{your initials}` with your actual initials.
+        - In order to prevent naming collisions, name the repository `inv-bff-{your initials}` replacing `{your initials}` with your actual initials.
 
-- Clone the new repository to your machine.
+- Deploy this application with Tekton pipelines :
 
-- Run `npm install` to install all the package dependencies.
+=== "Using OpenShift web terminal"
+    - In the OpenShift web console, head up to **Topology** menu on the left on the **Developer** perspective and click **Create a new project**.
 
-- Go into the repository directory cloned and execute the following:
+    - Give a name to your project, call it `dev-{your initials}`, the other fields are optional.
 
+    - Initialize a web terminal using the `>_` button on the top bar next to your name on the cluster. You should have a terminal with all the necessary development tools.
+
+=== "Using your local terminal"
+    !!! note
+        You should have the `oc` and `igc` command line tools installed. If not, refer to the [developers tools setup page](/getting-started/devenvsetup/#tools-installation-on-desktoplaptop).
+    
+    - In the OpenShift web console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
+        
+    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
+    
+      ```bash
+      $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
+      Logged into "https://c103-e.us-south.containers.cloud.ibm.com:30979" as "IAM#email@company" using the token provided.
+    
+      You have access to 71 projects, the list has been suppressed. You can list all projects with 'oc projects'
+      ```
+
+- Clone the repository you created earlier
+
+  ```
+  git clone https://github.com/cnw-team-{team}/inv-bff-{your initials}.git
+  ```
+
+- Run the command
+
+  ```
+  oc sync dev-{your initials} 
+  ```
+
+- Go to the directory of the repository your cloned and [Register the pipeline](/developer-intermediate/deploy-app#5-register-the-application-in-a-openshift-pipeline)
+
+  ```
+  oc pipeline --tekton
+  ```
+
+- Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `ibm-nodejs`
+
+  ```bash
+  $ oc pipeline --tekton
+  ...
+
+    Pipeline run started: inv-bff-ns-181f77c24a4
+  ```
+
+- [Open the pipeline](/developer-intermediate/deploy-app/#5-register-the-application-in-a-openshift-pipeline) to see it running
+
+- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry for the app we just pushed. Select the entry and hit `Enter` to launch the browser.
+
+### Choose your development environment
+
+=== "Gitpod"
+    - Head over to [gitpod.io](https://gitpod.io), login with your github account by clicking **Continue with GitHub**.
+      
+    - Grant access to gitpod to your GitHub organization by going to account settings on the top right corner, navigate to **Integrations**, go to GitHub and click **Manage on GitHub**.
+      
+    - On GitHub, search the organization you have used to create the repository and click **grant** to allow gitpod to access repositories in that organization.
+      
+    - Back to [gitpod.io](https://gitpod.io/workspaces), navigate to workspaces and click **New Workspace** to create a new workspace, give it your newly create repository URL.
+
+    - If it is your first gitpod workspace, it will ask you for your preferred editor, pick the in browser Visual Studio Code, and the workspace will be created automatically for your.
+    
+    You are now ready to modify the application!
+
+=== "Locally"
+    Clone the project and open it using your favorite text editor or IDE (Visual Studio Code, Atom...).
+
+    ```sh
+
+    git clone https://github.com/cnw-team-{team}/inv-bff-{your initials}.git
+    cd inv-bff-{your initials}
+    code .
     ```
-    oc sync dev-{your initials}
-    ```
-
-- Register the pipeline:
-    ```
-    oc pipeline --tekton
-    ```
-    - replacing `{your initials}` with your actual initials
-    - Give git credentials if prompted, and master as the git branch to use. When prompted for the pipeline, select `igc-nodejs-<VERSION>`.
-
-- Open the pipeline to see it running, using the link provided in the command output.
-
-- When the pipeline is completed, run `oc endpoints -n dev-{your initials}`. You should see an entry for the app we just pushed. Select the entry and hit `Enter` to launch the browser, if you are working on your desktop/laptop. Otherwise copy the url and paste it in a new browser tab.
-
 ## Create the REST interface
 
 The controller provides the REST interface for our BFF. The template uses the `typescript-rest`
@@ -655,7 +632,7 @@ The config class separates how the config is loaded from how it is used. In this
     ```yaml title="chart/base/values.yaml"
     ...
 
-    connectsTo: inventory-management-svc-{your initials}
+    connectsTo: inv-svc-{your initials}
 
     ...
     ```

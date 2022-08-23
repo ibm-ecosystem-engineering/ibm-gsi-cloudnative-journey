@@ -13,7 +13,7 @@ In some cases with self pace hands on labs you may not get everything working. C
 ### Inventory Service
 
 - Create a new project from the [Inventory Management Service solution template](https://github.com/ibm-ecosystem-lab/inventory-management-svc-intermediate/generate)
-named `inv-man-svc-sol-{initials}`
+named `inv-svc-solution-{initials}`
     - replacing `{initials}` with your actual initials
 
 - Clone the repository to your local machine
@@ -37,7 +37,7 @@ named `inv-man-svc-sol-{initials}`
 ### Inventory BFF
 
 - Create a new project from the [Inventory Management BFF solution template](https://github.com/ibm-ecosystem-lab/inventory-bff-prebuild/generate)
-named `inventory-management-bff-solution-{initials}`
+named `inv-bff-solution-{initials}`
     - replacing `{initials}` with your actual initials
 
 - Go into the repository directory cloned and execute the following, if you have not executed it previously:
@@ -56,7 +56,7 @@ named `inventory-management-bff-solution-{initials}`
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline)
 
-- Get the backend service name this value by executing the command `oc get svc -n dev-{initials}.
+- Get the backend service name this value by executing the command `oc get svc -n dev-{initials}`.
     ```
     $ oc get svc -n dev-ar    
     NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
@@ -78,7 +78,7 @@ service of the microservice: `connectsTo: inventory-svc-ar`
 ### Inventory UI
 
 - Create a new project from the [Inventory Management UI solution template](https://github.com/ibm-ecosystem-lab/inventory-ui-prebuild/generate)
-named `inventory-management-ui-solution-{initials}`
+named `inv-ui-solution-{initials}`
     - replacing `{initials}` with your actual initials
 
 - Clone the repository to your local machine
@@ -98,7 +98,7 @@ named `inventory-management-ui-solution-{initials}`
 
 - Open the [pipeline to see it running](/developer-intermediate/deploy-app/#6-view-your-application-pipeline).
 
-- Get the bff service name this value by executing the command `oc get svc -n dev-{initials}.
+- Get the bff service name this value by executing the command `oc get svc -n dev-{initials}`.
     ```
     $ oc get svc -n dev-ar    
     NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
