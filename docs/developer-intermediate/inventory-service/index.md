@@ -202,6 +202,11 @@ We will start by creating the initial application component.
   git push
   ```
 
+!!! note
+    Pushing code from Gitpod into a Github organization might fail. For that you will need to grant Gitpod access to your organization.  
+    ![Gitpod org access](../../images/common/pushcodeorg.png)
+
+
 ### Add StockItem controller
 
 In Spring Boot, the `@RestController` annotation tells the framework that the class provides a
