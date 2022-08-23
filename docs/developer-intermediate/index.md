@@ -1,7 +1,7 @@
 ---
 title: Agenda
 ---
-<!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
+<!--- cSpell:ignore onedrive ICPA resid ithint openshiftconsole Theia userid toolset cpptx authkey crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
 !!! note
 
@@ -83,7 +83,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Break** | | | 5 mins | |
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!283&ithint=file%2cpptx&authkey=!AKqKZyBZ98nHgu0" target="_blank" >Link</a> |
-    | Image Registry | Container Registry | [Image Registry](image-registry/) | 15 mins | <a href="onedrive.live.com/view.aspx?resid=6B383190B2A9868D!284&ithint=file%2cpptx&authkey=!ANxpti7m6WnmZss" target="_blank" >Link</a> |
+    | Image Registry | Container Registry | [Image Registry](image-registry/) | 15 mins | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!284&ithint=file%2cpptx&authkey=!ANxpti7m6WnmZss" target="_blank" >Link</a> |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 15 min | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!285&ithint=file%2cpptx&authkey=!AA8oh5YhYoZY6R0" target="_blank" >Link</a> |
     | Monitoring | Monitoring with OpenShift | [Monitoring](monitoring/) | 10 mins | |
     | Logging | Logging with OpenShift | [Logging](log-management/) | 10 mins | |
