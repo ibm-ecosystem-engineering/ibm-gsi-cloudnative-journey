@@ -98,7 +98,7 @@ Since we will be developing this microservice following the [Test Driven Develop
 - Create the controller test:
     ```typescript title="test/controllers/stock-items.controller.spec.ts"
     import {Application} from 'express';
-    import * as request from 'supertest';
+    import request from 'supertest';
 
     import {buildApiServer} from '../helper';
 
@@ -148,6 +148,7 @@ Since we will be developing this microservice following the [Test Driven Develop
 - Add the controller to the controllers `index.ts`. (Using `index.ts` is a good way to manage which components are exposed
 by a component and provide a good way to load the modules that will be injected into other components):
     ```typescript title="src/controllers/index.ts"
+    export * from './hello-world.controller';
     export * from './health.controller';
     export * from './stock-items.controller';
     ```
@@ -419,6 +420,7 @@ for GraphQL.
 
 - Add the stock-items schema to the `index.ts` in the schemas directory:
     ```typescript title="src/schemas/index.ts"
+    ...
     export * from './stock-item.schema'
     ```
 
@@ -430,12 +432,12 @@ for GraphQL.
     import { resolverManager } from './_resolver-manager';
     import { StockItem } from '../schemas';
     import { StockItemModel } from '../models';
-    import { StockItemsService } from '../services';
+    import { StockItemsMockService } from '../services';
 
     @Resolver(of => StockItem)
     export class StockItemResolver {
         @Inject
-        service: StockItemsService;
+        service: StockItemsMockService;
 
         @Query(returns => [StockItem])
         async stockItems(): Promise<StockItemModel[]> {
@@ -453,6 +455,7 @@ for GraphQL.
 
 - Add the stock-items resolver to `index.ts` in the resolvers directory:
     ```typescript title="src/resolvers/index.ts"
+    ...
     export * from './stock-item.resolver';
     ```
 
@@ -545,11 +548,9 @@ The config class separates how the config is loaded from how it is used. In this
                 get(`${this.config.baseUrl}/stock-items`)
                     .set('Accept', 'application/json')
                     .then(res => {
-                        console.error('LOGTAMER', res.body);
                         resolve(this.mapStockItems(res.body));
                     })
                     .catch(err => {
-                        console.error('LOGTAMER', err);
                         reject(err);
                     });
             });
@@ -572,7 +573,12 @@ The config class separates how the config is loaded from how it is used. In this
     }
     ```
 
-- Add `stock-item.service` to `index.ts` in the service directory
+- Add `stock-item.service` to `index.ts` in the `services` directory:
+    ```typescript title="src/services/index.ts"
+    ...
+    export * from './stock-items.service';
+    ```
+
 - Replace `StockItemsMockService` with `StockItemsService` in the following files:
   - `src/resolvers/stock-item.resolver.ts`
   - `src/controllers/stock-items.controller.ts`
@@ -588,8 +594,8 @@ The config class separates how the config is loaded from how it is used. In this
     ```
 
     !!! info
-      The `values.yaml` file of the Helm chart defines the variables that can be provided to the
-      template as input. Now that we've added a new variable, we will need to update the appropriate template file to use our new variable.
+        The `values.yaml` file of the Helm chart defines the variables that can be provided to the
+        template as input. Now that we've added a new variable, we will need to update the appropriate template file to use our new variable.
 
 - Add a new environment variable named `SERVICE_URL` to the list of existing environment variables in deployment.yaml. (`SERVICE_URL` is the name we gave the environment variable in our `stock-item-service.config` class as the first step in this section.) The value of this environment variable should come from the `connectsTo` value we defined. You can add
 `| quote` to wrap the value in quotes in case the value is not formatted correctly:
@@ -608,9 +614,9 @@ The config class separates how the config is loaded from how it is used. In this
     ```
 
     !!! info
-      `deployment.yaml` is a templatized Kubernetes yaml file that describes the deployment of our component.
-      The deployment will create one or more pods based on the pod template defined in the deployment.
-      Each pod that starts will have the environment variables that we have defined in the `env` section available for the container image to reference.
+        `deployment.yaml` is a templatized Kubernetes yaml file that describes the deployment of our component.
+        The deployment will create one or more pods based on the pod template defined in the deployment.
+        Each pod that starts will have the environment variables that we have defined in the `env` section available for the container image to reference.
 
 - Commit and push the changes to git:
     ```bash
