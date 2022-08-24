@@ -68,9 +68,9 @@ The Inventory solution will use [GraphQL](https://graphql.org/) for its BFF laye
       
     - On GitHub, search the organization you have used to create the repository and click **grant** to allow gitpod to access repositories in that organization.
       
-    - Back to [gitpod.io](https://gitpod.io/workspaces), navigate to workspaces and click **New Workspace** to create a new workspace, give it your newly create repository URL.
+    - Back to [gitpod.io](https://gitpod.io/workspaces), navigate to workspaces and click **New Workspace** to create a new workspace, give it your newly created repository URL.
 
-    - If it is your first gitpod workspace, it will ask you for your preferred editor, pick the in browser Visual Studio Code, and the workspace will be created automatically for your.
+    - If it is your first gitpod workspace, it will ask you for your preferred editor, pick the in browser Visual Studio Code, and the workspace will be created automatically for you.
     
     You are now ready to modify the application!
 
