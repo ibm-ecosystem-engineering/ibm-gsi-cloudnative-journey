@@ -74,7 +74,7 @@ section that allows you to select a set of preconfigured [Starter Kits](https://
         tile displays the GitHub 404 page, log in and reload the page.
 
 
-- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application, select the **Typescript Microservice**. This also works well in the Cloud Shell.
+- Pick one of the templates that is a good architectural fit for your application and the language and framework that you prefer to work with. For your first application, select the **Typescript Microservice**. This also works well in the web terminal.
 
   Click on a <Globals name="template" /> **Tile** to create your app github repository from the
     template repository selected. You can also click on the **Git Icon** to browse the source template

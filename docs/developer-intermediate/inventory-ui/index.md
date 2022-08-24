@@ -30,7 +30,7 @@
     
       ![OpenShift Login](../../images/common/LoginCommand.png)
     
-    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
+    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in your terminal:
     
       ```bash
       $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
