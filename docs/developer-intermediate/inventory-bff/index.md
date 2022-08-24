@@ -34,7 +34,7 @@ The Inventory solution will use [GraphQL](https://graphql.org/) for its BFF laye
     
     - In the OpenShift web console, click on email address top right, click on **Copy login command** and get the OpenShift login command, which includes a token.
         
-    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in the cloud shell terminal:
+    - Click on **Display Token**, copy the Login with the token. oc login command will log you in. Run the login command in your terminal:
     
       ```bash
       $ oc login --token=qvARHflZDlOYfjJZRJUEs53Yfy4F8aa6_L3ezoagQFM --server=https://c103-e.us-south.containers.cloud.ibm.com:30979
@@ -157,21 +157,10 @@ by a component and provide a good way to load the modules that will be injected 
     npm start
     ```
 
-- Access the running service. This service runs on port `3000`.
-
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
-
-    ![View App](../../images/inventory-service/viewapp.png)
+- Access the running service. This service runs on port `3000`:
 
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-    
-      ![View App](../../images/inventory-service/gitpod01.png)
-
-=== "Code Ready Workspaces"
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
+    - Once you run the application, Gitpod gives the option to make the port **Public**, in the bottom-right corner.Once you make the port Public, it gives you the option to **Open Preview** or **Open Browser**.
 
 === "Desktop/Laptop" 
     - Open a browser to `http://localhost:3000/api-docs` to see the swagger page
@@ -381,21 +370,10 @@ into javascript and to put the business logic in a separate service component.
     npm start
     ```
 
-- Access the running service. This service runs on port `3000`.
-
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
-
-    ![View App](../../images/inventory-service/viewapp.png)
+- Access the running service. This service runs on port `3000`:
 
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-    
-      ![View App](../../images/inventory-service/gitpod01.png)
-
-=== "Code Ready Workspaces"
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
+    - Once you run the application, Gitpod gives the option to make the port **Public**, in the bottom-right corner.Once you make the port Public, it gives you the option to **Open Preview** or **Open Browser**.
 
 === "Desktop/Laptop" 
     - Open a browser to `http://localhost:3000/api-docs` to see the swagger page
@@ -483,25 +461,12 @@ for GraphQL.
     npm start
     ```
 - Verify that the that the resolver is available using the Graph QL browser provided by the template:
-    - Open GraphQL Playground: `http://localhost:3000/graphql`
-    - Run the query `query { stockItems { name } }`
-
-=== "Cloud Shell" 
-    - To view the running app click on the **Eye Icon** on the top right and select the port `3000` this will open a browser tab and display the running app on that port.
-
-    ![View App](../../images/inventory-service/viewapp.png)
 
 === "Gitpod"
-    - Once you run the application,gitpod gives the option to make the port "Public".Once you make the port Public, it gives you the option to "Open Preview" or "Open Browser".
-    
-      ![View App](../../images/inventory-service/gitpod01.png)
-
-=== "Code Ready Workspaces"
-    - Click on open link
-      ![CRW Open Link](../../images/inventory-service/crwopenlink.png)
+    - Once you run the application, Gitpod gives the option to make the port **Public**, in the bottom-right corner.Once you make the port Public, it gives you the option to **Open Preview** or **Open Browser**.
 
 === "Desktop/Laptop" 
-    - Open GraphQL Playground: `http://localhost:3000/graphql`
+    - In your Browser, open GraphQL playground: `http://localhost:3000/graphql`
     - Run the query `query { stockItems { name } }`
 
 - Push the changes we've made to the repository:
