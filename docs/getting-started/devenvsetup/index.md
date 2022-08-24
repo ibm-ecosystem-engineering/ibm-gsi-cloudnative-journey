@@ -148,3 +148,17 @@ To be able to run CLI commands to drive common operations on the cluster you wil
   $ git config --global user.email "<email>"
   $ git config --global user.name "<short_name>"
   ```
+
+## *Optional*: Use Gitpod for development
+
+[Gitpod](https://www.gitpod.io/) is an open-source Kubernetes application for ready-to-code developer environments that spins up fresh, automated dev environments for each task, in the cloud, in seconds.
+
+If you want to use Gitpod as the tool to write code for this journey, complete the following steps to get you started:
+
+- Head over to [gitpod.io](https://gitpod.io), login with your github account by clicking **Continue with GitHub**.
+
+- If you have been invite to a GitHub organization or want to use a specific one to complete this journey, Gitpod is going to need to have access to the repositories in that organization. Grant access to gitpod to your GitHub organization by going to account **Settings** on the top right corner, navigate to **Integrations**, select **GitHub** and click **Manage on GitHub**.
+
+- You should be redirected to [GitHub](https://github.com), search the organization you are using for the journey and click **grant** to allow Gitpod to access repositories in that organization.
+
+There you go! Back to [gitpod.io](https://gitpod.io/workspaces), navigate to workspaces and click **New Workspace** to create workspaces as you go through the labs.
