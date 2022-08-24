@@ -16,7 +16,7 @@ An [MVP](https://www.ibm.com/garage/method/practices/think/practice_minimum_viab
 
 - **What**: A secure web application that enables easy access to list of product [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit) inventory levels and inventory locations
 
-- **Wow**: Make the system appealing and easy to use. Deliver it hosted on the IBM Cloud platform. Develop it quickly as a [minimum viable product](https://www.ibm.com/garage/method/practices/think/practice_minimum_viable_product/). Use the latest managed container runtimes and DevOps best practices to enable post MVP feature improvements. Simulate a release to a _Test_ environment.
+- **Wow**: Make the system appealing and easy to use. Develop it quickly as a [minimum viable product](https://www.ibm.com/garage/method/practices/think/practice_minimum_viable_product/). Use the latest managed container runtimes and DevOps best practices to enable post MVP feature improvements. Simulate a release to a _Test_ environment.
 
 ## Architecture
 
