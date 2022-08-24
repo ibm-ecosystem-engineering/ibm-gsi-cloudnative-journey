@@ -21,11 +21,7 @@
 === "Using OpenShift web terminal"
     - In the OpenShift web console, head up to **Topology** menu on the left on the **Developer** perspective and click **Create a new project**  
 
-    ![OpenShift web console](../../images/common/openshiftconsoleproject.png)
-
     - Give a name to your project, call it `dev-{your initials}`, the other fields are optional
-
-    ![Creating a project using the graphical interface](../../images/common/openshiftproject.png)
 
     - Initialize a web terminal using the `>_` button on the top bar next to your name on the cluster. You should have a terminal with all the necessary development tools
 
@@ -74,26 +70,27 @@
 ### Choose your development environment
 
 === "Gitpod"
-    - Head over to [gitpod.io](https://gitpod.io), login with your github account 
+    - Head over to [gitpod.io](https://gitpod.io), login with your github account by clicking **Continue with GitHub**.
       
-    ![Gitpod login](../../images/common/gitpodlogin.png)
+    - Grant Access to gitpod to your GitHub organization by going to account settings on the top right corner, navigate to **Integrations**, go to GitHub and click **Manage on GitHub**.
 
-    - Create a new workspace with the repository you created earlier
+    - On GitHub, search the organization you have used to create the repository and click **grant** to allow gitpod to access repositories in that organization.
 
-    ![Workspace creation](../../images/common/gitpodworkspacecreation.png)
+    - Back to [gitpod.io](https://gitpod.io), navigate to workspaces and click **New Workspace** to create a new workspace, give it your newly created repository URL. 
 
+    - If it is your first gitpod workspace, it will ask you for your preferred editor, pick the in-browser Visual Studio Code, and the workspace will be created automatically for you.
     - Pick Visual Studio Code on the browser as an editor. After waiting some time, you should have an editor on your browser with the code on it. Gitpod will automatically run the application at first launch
 
-    ![Gitpod web editor](../../images/common/gitpodeditor.png)
-
-    - Because Gitpod adds a couple more files in the repository, add at the end of the `.gitignore` file a line with `node_modules` to prevent pushing it to the repository
-
-    ![Gitpod web editor](../../images/common/gitpodgitignore.png)
-
-    You are now ready to modify the application
+    You are now ready to modify the application!
 
 === "Locally"
     Clone the project and open it using your favorite text editor or IDE (Visual Studio Code, IntelliJ...).
+
+    ```sh
+    git clone https://github.com/cnw-team-{team}/inv-svc-{your initials}.git
+    cd inv-svc-{your initials}
+    code .
+    ```
 
 Spring Boot uses annotations to configure the various components that will be injected into and
 used by the applications. A class with the `@SpringBootApplication` annotation is the starting
@@ -166,11 +163,6 @@ We will start by creating the initial application component.
   git commit -m "Adds Application and Removes default Application class"
   git push
   ```
-
-!!! note
-    Pushing code from Gitpod into a Github organization might fail. For that you will need to grant Gitpod access to your organization.  
-    ![Gitpod org access](../../images/common/pushcodeorg.png)
-
 
 ### Add StockItem controller
 
@@ -306,19 +298,15 @@ for the REST service.
   ```
 
 === "Gitpod"
-    - Gitpod should prompt you to make your app public, make it so
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running, which is port `9080` in our case.  
+    Click on the **open browser** button (the globe icon).
     
-      ![View App](../../images/common/gitpodapplaunch.png)
-    
-    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
-    
-      ![OpenPreview](../../images/common/gitpodexplorer.png)
-    
-    - You should see the swagger-ui window open
 
 === "Locally"
-    - When the server starts, open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html) to view the swagger documentation. You should see the stock item entry in the list
+    - When the server starts, open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html)
 ---
+- You should see the swagger-ui window documentation with the stock item entry in the list
+
 - Commit and push the changes to Git.
 
   ```bash
@@ -620,15 +608,9 @@ should be placed in a component that is given a `@Service` annotation.
   ```
 
 === "Gitpod"
-    - Gitpod should prompt you to make your app public, make it so
+    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running, which is port `9080` in our case.  
+    Click on the **open browser** button (the globe icon).
     
-      ![View App](../../images/common/gitpodapplaunch.png)
-    
-    - Go to the **Remote explorer** tab at the left of the Gitpod editor, you should see the port where your application is running. Click on the **open browser** button
-    
-      ![OpenPreview](../../images/common/gitpodexplorer.png)
-    
-    - You should see the swagger-ui window open
 
 === "Locally"
     - Open a browser to [`http://localhost:9080/swagger-ui.html`](http://localhost:9080/swagger-ui.html)
