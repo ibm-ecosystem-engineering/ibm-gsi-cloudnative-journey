@@ -385,4 +385,9 @@
          <lastmod>2022-08-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
+    <url>
+         <loc>https://learning-journey.cloudnativetoolkit.dev/guides/toolkit-install/</loc>
+         <lastmod>2022-08-25</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
 </urlset>
