@@ -82,10 +82,10 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Deploy your first app | The very first experience of deploying an app in OpenShift or Kubernetes | [Deploy First App](deploy-app/) | 25 mins | |
     | **Break** | | | 5 mins | |
     | Code Analysis | Code Quality with Sonarqube | [Code Analysis](code-analysis/) | 15 mins | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!283&ithint=file%2cpptx&authkey=!AKqKZyBZ98nHgu0" target="_blank" >Link</a> |
-    | Image Registry | Container Registry | [Image Registry](image-registry/) | 15 mins | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!284&ithint=file%2cpptx&authkey=!ANxpti7m6WnmZss" target="_blank" >Link</a> |
+    | Image Registry | Container Registry | [Image Registry](ocp-registry/) | 15 mins | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!284&ithint=file%2cpptx&authkey=!ANxpti7m6WnmZss" target="_blank" >Link</a> |
     | Artifact Management | Artifact Management with Artifactory | [Artifact Management](artifact-management/) | 15 min | <a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!285&ithint=file%2cpptx&authkey=!AA8oh5YhYoZY6R0" target="_blank" >Link</a> |
-    | Monitoring | Monitoring with OpenShift | [Monitoring](monitoring/) | 10 mins | |
-    | Logging | Logging with OpenShift | [Logging](log-management/) | 10 mins | |
+    | Monitoring | Monitoring with OpenShift | [Monitoring](ocp-monitoring/) | 10 mins | |
+    | Logging | Logging with OpenShift | [Logging](ocp-log-management/) | 10 mins | |
     | **Q & A** | | | 10 mins | |
 
     ### Homework
@@ -105,7 +105,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | Recap | Recap of things learned in Day 1 & 2 | | 10 mins | |
     | **Apply all we have learnt so far to develop a set of microservices and deploy them on OpenShift** | | | | |
     | Preparing for the Hands-On Labs | Setting up the Development Tools | [Dev. Tools Setup](../getting-started/devenvsetup/) | 10 mins | |
-    | Inventory Application | Objective of the exercise | [Objective](inventory-application/) | 15 mins | |
+    | Inventory Application | Objective of the exercise | [Objective](inventory-application/) | 15 mins |<a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!286&ithint=file%2cpptx&authkey=!AEp5ugPlSQPS0PI" target="_blank" >Link</a> |
     | Inventory Backend | Creating the Inventory Service with Java | [Inventory Backend](inventory-service/) | 25 mins |  |
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins |  |
