@@ -266,7 +266,7 @@ git push
 <span class=nx>app</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=w></span>
 <span class=s1>&#39;/api&#39;</span><span class=p>,</span><span class=w></span>
 <span class=nx>createProxyMiddleware</span><span class=p>({</span><span class=w></span>
-<span class=w>    </span><span class=nx>target</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_HOST</span><span class=p>,</span><span class=w></span>
+<span class=w>    </span><span class=nx>target</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_HOST</span><span class=w> </span><span class=o>??</span><span class=w> </span><span class=s1>&#39;http://example.com&#39;</span><span class=p>,</span><span class=w></span>
 <span class=w>    </span><span class=nx>changeOrigin</span><span class=o>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w></span>
 <span class=w>    </span><span class=nx>pathRewrite</span><span class=o>:</span><span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w>    </span><span class=s1>&#39;^/api&#39;</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;/&#39;</span><span class=w></span>
@@ -292,7 +292,7 @@ git push
 <span class=nx>app</span><span class=p>.</span><span class=nx>use</span><span class=p>(</span><span class=w></span>
 <span class=w>    </span><span class=s1>&#39;/api&#39;</span><span class=p>,</span><span class=w></span>
 <span class=w>    </span><span class=nx>createProxyMiddleware</span><span class=p>({</span><span class=w></span>
-<span class=w>    </span><span class=nx>target</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_HOST</span><span class=p>,</span><span class=w></span>
+<span class=w>    </span><span class=nx>target</span><span class=o>:</span><span class=w> </span><span class=nx>process</span><span class=p>.</span><span class=nx>env</span><span class=p>.</span><span class=nx>API_HOST</span><span class=w> </span><span class=o>??</span><span class=w> </span><span class=s1>&#39;http://example.com&#39;</span><span class=p>,</span><span class=w></span>
 <span class=w>    </span><span class=nx>changeOrigin</span><span class=o>:</span><span class=w> </span><span class=kc>true</span><span class=p>,</span><span class=w></span>
 <span class=w>    </span><span class=nx>pathRewrite</span><span class=o>:</span><span class=w> </span><span class=p>{</span><span class=w></span>
 <span class=w>        </span><span class=s1>&#39;^/api&#39;</span><span class=o>:</span><span class=w> </span><span class=s1>&#39;/&#39;</span><span class=w></span>
@@ -355,15 +355,15 @@ git push
 <span class=nn>...</span><span class=w></span>
 </code></pre></div></p> </li> <li> <p>Add a new environment variable named <code>API_HOST</code> to the list of existing environment variables in deployment.yaml. The value of this environment variable should come from the <code>connectsTo</code> value we defined. You can add <code>| quote</code> to wrap the value in quotes in case the value is not formatted correctly: <div class=highlight><span class=filename>chart/base/templates/deployment.yaml</span><pre><span></span><code><span class=nn>...</span><span class=w></span>
 <span class=nt>env</span><span class=p>:</span><span class=w></span>
-<span class=w>    </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">INGRESS_HOST</span><span class=w></span>
+<span class=w>  </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">INGRESS_HOST</span><span class=w></span>
 <span class=w>    </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=s>&quot;&quot;</span><span class=w></span>
-<span class=w>    </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">PROTOCOLS</span><span class=w></span>
+<span class=w>  </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">PROTOCOLS</span><span class=w></span>
 <span class=w>    </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class=s>&quot;&quot;</span><span class=w></span>
-<span class=w>    </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span><span class=w></span>
+<span class=w>  </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">LOG_LEVEL</span><span class=w></span>
 <span class=w>    </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class="p p-Indicator">{{</span><span class=w> </span><span class=nv>.Values.logLevel | quote</span><span class=w> </span><span class="p p-Indicator">}}</span><span class=w></span>
-<span class=w>    </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">API_HOST</span><span class=w></span>
-<span class=w>    </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class="p p-Indicator">{{</span><span class=w> </span><span class=nv>printf &quot;%s</span><span class="p p-Indicator">:</span><span class=nv>80&quot; .Values.connectsTo | quote</span><span class=w> </span><span class="p p-Indicator">}</span><span class=w></span>
-<span class=nv>...</span><span class=w></span>
+<span class=w>  </span><span class="p p-Indicator">-</span><span class=w> </span><span class=nt>name</span><span class=p>:</span><span class=w> </span><span class="l l-Scalar l-Scalar-Plain">API_HOST</span><span class=w></span>
+<span class=w>    </span><span class=nt>value</span><span class=p>:</span><span class=w> </span><span class="p p-Indicator">{{</span><span class=w> </span><span class=nv>printf &quot;%s</span><span class="p p-Indicator">:</span><span class=nv>80&quot; .Values.connectsTo | quote</span><span class=w> </span><span class="p p-Indicator">}}</span><span class=w></span>
+<span class=nn>...</span><span class=w></span>
 </code></pre></div></p> </li> <li> <p>Push the changes we've made to the repository: <div class=highlight><pre><span></span><code>git add .
 git commit -m <span class=s2>&quot;Updates the StockItemsList view&quot;</span>
 git push
