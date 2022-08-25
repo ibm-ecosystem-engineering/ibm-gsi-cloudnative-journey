@@ -409,7 +409,7 @@ Now that we have a mock service that injects data, we can build an implementatio
     app.use(
     '/api',
     createProxyMiddleware({
-        target: process.env.API_HOST,
+        target: process.env.API_HOST ?? 'http://example.com',
         changeOrigin: true,
         pathRewrite: {
         '^/api': '/'
@@ -439,7 +439,7 @@ Now that we have a mock service that injects data, we can build an implementatio
     app.use(
         '/api',
         createProxyMiddleware({
-        target: process.env.API_HOST,
+        target: process.env.API_HOST ?? 'http://example.com',
         changeOrigin: true,
         pathRewrite: {
             '^/api': '/'
