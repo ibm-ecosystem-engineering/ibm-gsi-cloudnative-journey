@@ -124,7 +124,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | [Inventory BFF](inventory-bff/) | Creating the Inventory BFF with GraphQL | | 25 mins | |
     | [Inventory UI](inventory-ui/) | Creating the UI microservice | | 25 mins | |
     | [Inventory Backend with Cloudant](../developer-advanced-1/database-with-cloudant/)| Cloudant Database integration | | 30 mins | |
-
+    | [Install the toolkit](../guides/toolkit-install/)| Install the Cloud-Native Toolkit in your cluster | | 30 mins | |
 
 !!! success
 
