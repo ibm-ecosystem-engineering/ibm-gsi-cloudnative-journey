@@ -521,14 +521,14 @@ Now that we have a mock service that injects data, we can build an implementatio
     ```yaml title="chart/base/templates/deployment.yaml"
     ...
     env:
-        - name: INGRESS_HOST
+      - name: INGRESS_HOST
         value: ""
-        - name: PROTOCOLS
+      - name: PROTOCOLS
         value: ""
-        - name: LOG_LEVEL
+      - name: LOG_LEVEL
         value: {{ .Values.logLevel | quote }}
-        - name: API_HOST
-        value: {{ printf "%s:80" .Values.connectsTo | quote }
+      - name: API_HOST
+        value: {{ printf "%s:80" .Values.connectsTo | quote }}
     ...
     ```
 
