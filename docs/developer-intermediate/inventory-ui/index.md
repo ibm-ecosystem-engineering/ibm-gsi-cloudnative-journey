@@ -528,7 +528,7 @@ Now that we have a mock service that injects data, we can build an implementatio
       - name: LOG_LEVEL
         value: {{ .Values.logLevel | quote }}
       - name: API_HOST
-        value: {{ printf "%s:80" .Values.connectsTo | quote }}
+        value: {{ printf "http://%s:80" .Values.connectsTo | quote }}
     ...
     ```
 
