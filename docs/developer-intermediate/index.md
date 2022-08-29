@@ -42,7 +42,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     ## Day 1 (2.5 Hours)
     | Task                            | Description         | Link        | Time    | Presentations  |
     | --------------------------------| ------------------  |:----------- |---------|----------------|
-    | Welcome Message | Introductions & Logistics | | 15 mins | |
+    | Welcome Message | Introductions & Logistics | | 15 mins |<a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!288&ithint=file%2cpptx&authkey=!ABnMMPKxhP9wiEM" target="_blank" >Link</a> |
     | **Introduction to Cloud-Native Development** | | | | |
     | What is Cloud-Native | Introduction to Cloud-Native Development |  [Cloud-Native Development](../developer-foundation/cloud-native-overview) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrggpHefC0Q4tkWgyR?e=ow0ffv" target="_blank" >Link</a> |
     | Cloud-Native Applications | Cloud-Native Application Characteristics |  [Cloud-Native Applications](../developer-foundation/cloud-native-app-dev) | 15 min | <a href="https://1drv.ms/p/s!Ao2GqbKQMThrghpeZexAKaD1D08b?e=KYyu9l" target="_blank" >Link</a> |
@@ -110,7 +110,7 @@ The learning tasks help you understand the Developer Experience with IBM RedHat 
     | **Break** | | | 5 mins | |
     | Inventory BFF | Creating the Inventory BFF with GraphQL | [Inventory BFF](inventory-bff/) | 25 mins |  |
     | Inventory UI | Creating the UI microservice | [Inventory UI](inventory-ui/) | 25 mins | |
-    | Inventory CD  | CD with Argocd |[CD](../developer-advanced-1/inventory-cd/) |10 mins | |
+    | Inventory CD  | CD with Argocd |[CD](../developer-advanced-1/inventory-cd/) |10 mins |<a href="https://onedrive.live.com/view.aspx?resid=6B383190B2A9868D!287&ithint=file%2cpptx&authkey=!AD-Ia-lyMqJEh_M" target="_blank" >Link</a> |
     | TechZone Automation  | Automated Provisioning of Environment | |30 mins | |
     | **Q & A** | | | 10 mins | |
 
