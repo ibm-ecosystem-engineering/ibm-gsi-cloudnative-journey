@@ -15,7 +15,7 @@ Continuous delivery is closely related to continuous deployment. The distinction
 - Continuous delivery deploys an application when a user manually triggers deployment
 - Continuous deployment deploys an application automatically when it is ready
 
-An application is ready for deployment when it passes a set of tests that prove it doesn't contain any significant problems. These tests must be automated so that deployment can be automated. Until you have this set of automated tests and trust them sufficiently, stick with continuous delivery.
+An application is ready for deployment when it passes a set of tests that prove it does not contain any significant problems. These tests must be automated so that deployment can be automated. Until you have run set of automated tests and can sufficiently trust them, stick with continuous delivery.
 
 ### What is GitOps
 
@@ -23,12 +23,12 @@ An application is ready for deployment when it passes a set of tests that prove 
 
 GitOps takes advantage of several Git features:
 - Git has an audit log of changes
-- Whole releases can be managed from a pull request
-- Git enables changes to be rolled back quickly if there is an issue with a new release
+- Entire releases can be managed from a pull request
+- Git enables changes to be rolled back quickly when there is an issue with a new release
 
 ### CI/CD integration
 
-For the full end-to-end build and delivery process, both the CI and CD pipelines are required. For this to work, a Git repo is used to convey the configuration values. Within the Developer Environment, we have used certain naming conventions to streamline and simplify the integration between the various components.
+For the full end-to-end build and delivery process, both the CI and CD pipelines are required. For this to work, a Git repo is used to convey the configuration values. Within the Developer Environment, we have used certain naming conventions to streamline and simplify the integration between various components.
 
 ![Argo CD config](../../images/continuous-delivery/CI_CD-pipelines.png)
 
@@ -93,7 +93,7 @@ Argo CD uses a Git repo to express the desired state of the Kubernetes environme
 1. The repository contains a template Helm chart in the `app-artifactory` folder. Copy that folder and rename it to match one of
 the application names in your project, i.e. `{app repo}`.
 
-   The application name should match the repository name if the CI pipeline is going push changes to the CD pipeline.
+   The application name should match the repository name if the CI pipeline is going to push changes to the CD pipeline.
 
 1. Update `Chart.yaml`
 
@@ -137,8 +137,7 @@ Now that the repository has been created, we need to tell Argo CD where it is.
 
 1. Select the `Repositories` option
 
-1. Press either the Connect Repo using HTTPS or Connect Repo using SSH button at the top and provide the information
-for the Git repo
+1. Press either the Connect Repo using HTTPS or Connect Repo using SSH button at the top and provide the information for the Git repo
 
 ### Create a project in Argo CD (Optional)
 
@@ -169,13 +168,11 @@ To create a project:
     - Press Create
 
     **Note:** Initially, the only cluster that is available is the one in which Argo CD is -
-    `https://kubernetes.default.svc`. By adding the two destinations we have allowed the project to be deployed
-    to both the `test` and `staging` namespaces within the current cluster.
+    `https://kubernetes.default.svc`. By adding the two destinations we have allowed the project to be deployed to both the `test` and `staging` namespaces within the current cluster.
 
 ### Add an application in Argo CD for each application component (Helm chart)
 
-The last step in the process is to define the application(s) within Argo CD that should be managed. This consists of
-connecting the config within the Git repo to the cluster and namespace.
+The last step in the process is to define the application(s) within Argo CD that should be managed. This consists of connecting the config within the Git repo to the cluster and namespace.
 
 1. Log into Argo CD
 
@@ -191,17 +188,13 @@ connecting the config within the Git repo to the cluster and namespace.
     - `destination cluster` - The cluster url for the deployment
     - `destination namespace` - The namespace where the application should be deployed
 
-1. Repeat that step for each application and each environment
+1. Repeat the step for each application and each environment
 
 ### Hook the CI pipeline to the CD pipeline
 
-The last stage in the CI pipeline updates the version number in the `requirements.yaml` to the version of the helm chart
-that was just built. Through a couple naming conventions the only thing the pipeline needs in order to interact
-with the CD process is a Kubernetes secret named `gitops-cd-secret` that provides the details needed
-to connect to the git repo to push updates.
+The last stage in the CI pipeline updates the version number in the `requirements.yaml` to the version of the helm chart that was just built. Through a couple naming conventions the only thing the pipeline needs in order to interact with the CD process is a Kubernetes secret named `gitops-cd-secret` that provides the details needed to connect to the git repo to push updates.
 
-Fortunately, a CLI command provides a simple way to create a Kubernetes secret
-that contains git credentials.
+Fortunately, a CLI command provides a simple way to create a Kubernetes secret that contains git credentials.
 
 Create the `gitops-cd-secret`:
 
@@ -221,5 +214,5 @@ kubectl get secrets/gitops-cd-secret -n dev-{initials} -o yaml
 
 **Note:**
 
-- For the secret to be available to the CI pipeline, the secret needs to be created in the same namespace where the pipeline is running (e.g. `dev-{initials}`).
-- The value provided for `branch` is the one the pipeline will use to when committing changes to trigger the CD pipeline. `test` is the recommended value for the branch field.
+- For the secret to be available in the CI pipeline, the secret needs to be created in the same namespace where the pipeline is running (e.g. `dev-{initials}`).
+- The value provided for `branch` is the one the pipeline will use when committing changes to trigger the CD pipeline. `test` is the recommended value for the branch field.
