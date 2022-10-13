@@ -5,7 +5,7 @@ description: Use Jenkins to automate your continuous integration process
 
 <!--- cSpell:ignore ICPA openshiftconsole Theia userid toolset crwexposeservice gradlew bluemix ocinstall Mico crwopenlink crwopenapp swaggerui gitpat gituser  buildconfig yourproject wireframe devenvsetup viewapp crwopenlink  atemplatized rtifactoryurlsetup Kata Koda configmap Katacoda checksetup cndp katacoda checksetup Linespace igccli regcred REPLACEME Tavis pipelinerun openshiftcluster invokecloudshell cloudnative sampleapp bwoolf hotspots multicloud pipelinerun Sricharan taskrun Vadapalli Rossel REPLACEME cloudnativesampleapp artifactoryuntar untar Hotspot devtoolsservices Piyum Zonooz Farr Kamal Arora Laszewski  Roadmap roadmap Istio Packt buildpacks automatable ksonnet jsonnet targetport podsiks SIGTERM SIGKILL minikube apiserver multitenant kubelet multizone Burstable checksetup handson  stockbffnode codepatterns devenvsetup newwindow preconfigured cloudantcredentials apikey Indexyaml classname  errorcondition tektonpipeline gradlew gitsecret viewapp cloudantgitpodscreen crwopenlink cdply crwopenapp -->
 
-In IBM Garage Method, one of the Develop practices is [continuous integration](https://www.ibm.com/garage/method/practices/code/practice_continuous_integration/). The <Globals name="env" /> uses a Jenkins pipeline to automate continuous integration.
+In IBM Garage method, one of the Develop practices is [continuous integration](https://www.ibm.com/garage/method/practices/code/practice_continuous_integration/). The <Globals name="env" /> uses a Jenkins pipeline to automate continuous integration.
 
 ## What is continuous integration
 
@@ -32,21 +32,19 @@ Jenkins Pipeline provides an extensible set of tools for modeling simple-to-comp
 
 ### Pipelines
 
-Pipelines offer a set of stages or steps that can be chained together to allow a level of software
-automation. This automation can be tailored to the specific project requirements.
+Pipelines offer a set of stages or steps that can be chained together to allow a level of software automation. This automation can be tailored to the specific project requirements.
 
 You can read more information about Jenkins Pipelines [here](https://jenkins.io/doc/book/pipeline/)
 
 ### Stages
 
-Pipelines are defined in a `Jenkinsfile` that sits in the root of your application code. It defines a number of stages. Each of the [<Globals name="templates" />](/resources/codepatterns-overview) includes a `Jenkinsfile` that offers a number of stages. The stages have been configured to complete the build, test, package, and deploy of the application code. Each stage can use the defined defined `secrets` and `config maps` that were previously configured during the installation of Development cluster setup.
+Pipelines are defined in a `Jenkinsfile` that sits in the root of your application code. It defines a number of stages. Each of the [<Globals name="templates" />](/resources/codepatterns-overview) includes a `Jenkinsfile` that offers a number of stages. The stages have been configured to complete the build, test, package, and deploy of the application code. Each stage can use the defined `secrets` and `config maps` that were previously configured during the installation of Development cluster setup.
 
 ## Developer Tools Pipeline
 
 To enable application compatibility between Kubernetes and OpenShift, the `Jenkinsfile` is consistent between pipeline registration with
 both platforms. Also, the Docker images are built from 
-[UBI images](https://www.redhat.com/en/blog/introducing-red-hat-universal-base-image) 
-so that their containers can run on both platforms.
+[UBI images](https://www.redhat.com/en/blog introducing-red-hat-universal-base-image) so that their containers can run on both platforms.
 
 These are the stages in the pipeline and a description of what each stage does. The **bold stage names** indicate 
 the stages that are required; the ***italics stage names*** indicate optional stages that can be deleted or will be ignored if the tool 
@@ -65,7 +63,7 @@ supporting the stage is not installed. These stages represent a typical producti
 
 ## Registering Pipelines
 
-The [<Globals name="templates" />](../../resources/codepatterns-overview) are a good place to start to see how `Jenkinsfile` and `Dockerfile` should be configured for use in a Jenkins CI pipeline. To register your git repo, use the [IGC CLI](../../getting-started/cli/). This command automates a number of manual steps you would have to do with Jenkins, including: managing secrets, webhooks, and pipeline registration in the Jenkins tools.
+The [<Globals name="templates" />](../../resources/codepatterns-overview) are a good place to start to see how `Jenkinsfile` and `Dockerfile` should be configured for use in a Jenkins CI pipeline. To register your git repo, use the [IGC CLI](../../getting-started/cli/). This command automates a number of manual steps you would have to undertake with Jenkins, including: managing secrets, webhooks, and pipeline registration in the Jenkins tools.
 
 ```bash
 igc pipeline
