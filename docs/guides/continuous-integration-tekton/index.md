@@ -26,13 +26,10 @@ Tekton provides open-source components to help you standardize your CI/CD toolin
 - For more information read up about it [App Build Tutorial with Tekton](https://developer.ibm.com/tutorials/knative-build-app-development-with-tekton/)
 
 The IBM Cloud is standardizing on using Tekton in both IBM Cloud DevOps
- service and IBM Cloud Pak for Applications. OpenShift 4.2 will also natively
-  support it.
+ service and IBM Cloud Pak for Applications. OpenShift 4.2 will also natively support it.
 
 This guide will focus on using Tekton when the Development tools have been
- installed in Redhat OpenShift, IBM Kubernetes Managed services and **Red Hat
-  Code Ready Containers** to give you choice for you Continuous Integration
-   Cloud-Native development toolset.
+ installed in Redhat OpenShift, IBM Kubernetes Managed services and **Red Hat Code Ready Containers** to give you choice for you Continuous Integration Cloud-Native development toolset.
 
 !!! note
 
@@ -42,8 +39,7 @@ This guide will focus on using Tekton when the Development tools have been
 
 ### Common App Tasks
 
-The following gives a description of each `Task` that is commonly used in a
- `Pipeline`. The *Optional* stages can be deleted or ignored if the tool support it is not installed. These stages represent a typical production pipeline flow for a Cloud-Native application.
+The following gives a description of each `Task` that is commonly used in a `Pipeline`. The *Optional* stages can be deleted or ignored if the tool support it is not installed. These stages represent a typical production pipeline flow for a Cloud-Native application.
 
 - **Setup** clones the code into the pipeline
 - **Build** runs the build commands for the code
@@ -66,9 +62,7 @@ Tekton can be installed in both RedHat Openshift and IBM Kubernetes manage
   components follow the steps below.
 
 - Install IBM Garage for Cloud Developer Tools on your
- managed OpenShift,CRC or IKS development cluster on the IBM Cloud. This will
-  help configure the tools and `secrets` and `configMap` to make working with
-   IBM Cloud so much easier.
+ managed OpenShift,CRC or IKS development cluster on the IBM Cloud. This will help configure the tools and `secrets` and `configMap` to make working with IBM Cloud so much easier.
 
 
 === "OpenShift 4.x"
@@ -188,8 +182,7 @@ To validate your pipeline have been correctly configured, and has triggered a
 
 ### Running Application
 
-Once the **Tekton** pipeline has successfully completed you can validate your
- app has been successfully deployed.
+Once the **Tekton** pipeline has successfully completed you can validate your app has been successfully deployed.
 
 - Open the OpenShift Console and select the {new-namespace} project and click on **Workloads**
     ![OpenShift](images/openshiftconsole.png)
@@ -206,8 +199,7 @@ Once the **Tekton** pipeline has successfully completed you can validate your
 - Use the application URL to open it your browser for testing
 
 Once you become familiar with deploying code into OpenShift using **Tekton
-**, read up about how you can manage code deployment with `Continuous
- Delivery` with `ArgoCD` and `Artifactory`
+**, we recommend you read up about how you can manage code deployment with `Continuous Delivery` with `ArgoCD` and `Artifactory`
 
 
 
