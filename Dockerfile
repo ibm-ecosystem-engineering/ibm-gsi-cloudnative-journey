@@ -5,7 +5,7 @@ ADD . ./
 RUN npm install
 RUN node_modules/.bin/gatsby build
 
-FROM alpine
+FROM alpine:3.17.3
 
 COPY --from=build /app/public /pub
 
