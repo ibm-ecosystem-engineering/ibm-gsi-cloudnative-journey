@@ -145,8 +145,9 @@ namespace into the development namespace/project. This enables the pipelines to 
 project.
 
 ```shell
-oc sync ${DEV_NAMESPACE}
+oc sync -p ${DEV_NAMESPACE}
 ```
+- **Note:** the `-p` flag is required only if you are going to use tekton pipelines, in order for the tekton pipeline service account to be given privileged scc.
 
 ### 3. Open the Developer Dashboard
 
