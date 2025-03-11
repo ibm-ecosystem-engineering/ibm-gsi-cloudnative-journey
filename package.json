@@ -41,7 +41,7 @@
   },
   "homepage": "https://github.com/cloud-native-toolkit/developer-guide#readme",
   "devDependencies": {
-    "cspell": "^5.4.1",
+    "cspell": "^6.8.0",
     "run-script-os": "^1.1.6"
   }
 }
